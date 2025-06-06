@@ -1,7 +1,7 @@
 import os
 from datetime import datetime
 
-BASE_URL = "https://games.mahalohana-bruce.com"
+BASE_URL = "https://tests.mahalohana-bruce.com"
 
 def get_html_files(root_dir="."):
     html_files = []
