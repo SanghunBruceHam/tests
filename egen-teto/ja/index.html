@@ -3,345 +3,467 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>エゲン vs テト 性格診断テスト｜あなたに合う理想の異性タイプ診断</title>
-  <meta name="description" content="エゲン女・テト女・エゲン男・テト男、10問で分かる性格タイプと相性の良い異性・おすすめ職業も診断！シェア・コピー機能付き、Z世代向けトレンド心理テスト。" />
-  <meta name="keywords" content="エゲンテトテスト, エゲン女, テト女, エゲン男, テト男, 性格テスト, 相性診断, 心理テスト, おすすめ職業, 理想の異性, 無料心理テスト, Threadsシェア, SNSテスト" />
-
-  <!-- Open Graph (SNS共有用) -->
+  <title>エゲン vs テト 性格テスト｜あなたの性格と相性ピッタリの異性タイプ診断</title>
+  <meta name="description" content="エゲン女子/テト女子/エゲン男子/テト男子、10問心理テストで自分の性格と相性が良い異性タイプ、適職もチェック！SNSシェア・コピー機能完備、Z世代向け人気診断・完全無料。" />
+  <meta name="keywords" content="エゲンテトテスト, エゲン女子, テト女子, エゲン男子, テト男子, 性格診断, 相性診断, 心理テスト, 適職診断, 理想のタイプ, 無料診断, Threadsシェア, SNSテスト" />
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="エゲン vs テト 性格診断テスト｜理想の相性タイプまで！" />
-  <meta property="og:description" content="10問で分かる性格タイプ・相性の良い異性・おすすめ職業を診断！コピー・シェア機能完備、スマホ最適化心理テスト。" />
+  <meta property="og:title" content="エゲン vs テト 性格テスト｜相性ピッタリの異性タイプ診断！" />
+  <meta property="og:description" content="10問でわかる自分の性格と相性ピッタリの異性タイプ、適職も診断！結果コピー・シェア機能、スマホ最適化。" />
   <meta property="og:image" content="https://tests.mahalohana-bruce.com/egen-teto/ja/thumbnail.png" />
   <meta property="og:url" content="https://tests.mahalohana-bruce.com/egen-teto/ja/index.html" />
-
-  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="エゲン vs テト 性格診断テスト" />
-  <meta name="twitter:description" content="あなたの性格・おすすめ職業・相性の良い異性を10問でサクッと診断！コピー・シェアもOK。" />
+  <meta name="twitter:title" content="エゲン vs テト 性格テスト" />
+  <meta name="twitter:description" content="10問で性格・適職・相性タイプをすぐ診断！シェア・コピーも簡単。" />
   <meta name="twitter:image" content="https://tests.mahalohana-bruce.com/egen-teto/ja/thumbnail.png" />
-
-  <!-- Favicon & Canonical -->
-  <link rel="icon" href="https://tests.mahalohana-bruce.com/egen-teto/ja/favicon.png" />
+  <link rel="icon" href="https://tests.mahalohana-bruce.com/ja/favicon.png" />
   <link rel="canonical" href="https://tests.mahalohana-bruce.com/egen-teto/ja/index.html" />
-
-  <!-- Gmarket Sans & SUIT フォント -->
   <link href="https://fonts.googleapis.com/css2?family=Gmarket+Sans:wght@400;700&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/static/woff2/SUIT.css" rel="stylesheet">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-45VSGEM7EZ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-45VSGEM7EZ');
+  </script>
+  <script async custom-element="amp-ad" src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"></script>
   <style>
+    :root {
+      --egen: #ff7eb3;
+      --teto: #8ac6ff;
+      --egen-soft: #ffe6f3;
+      --teto-soft: #e6f2ff;
+      --card-bg: #fff;
+      --bar-bg: #f3f3fa;
+      --btn-bg: #fff;
+      --btn-border: #ff7eb3;
+      --btn-color: #ff7eb3;
+      --btn-hover-bg: #ff7eb315;
+      --btn-hover-color: #e75480;
+      --btn-active-bg: #ff7eb340;
+    }
     body {
-      font-family: 'Gmarket Sans', 'SUIT', 'Pretendard', 'Noto Sans JP', sans-serif;
+      font-family: 'Gmarket Sans', 'SUIT', 'Pretendard', 'Noto Sans JP', 'Noto Sans KR', sans-serif;
       background: linear-gradient(135deg, #FFDEE9, #B5FFFC);
       max-width: 600px;
       margin: auto;
-      padding: 6px 0 6px 0;
+      padding: 24px 0 24px 0;
     }
     h1 {
-      font-size: 2.3rem;
+      font-size: 2.1rem;
       text-align: center;
       color: #222;
-      font-weight: 700;
+      font-weight: 900;
       margin-bottom: 14px;
+      letter-spacing: -0.02em;
+    }
+    .desc-link {
+      display: block;
+      text-align: right;
+      margin-bottom: 10px;
+      font-size: 1.07rem;
+      color: #4970f5;
+      text-decoration: underline;
+      font-weight: 600;
       letter-spacing: -0.01em;
+      cursor: pointer;
+      transition: color .18s;
+    }
+    .desc-link:hover { color: var(--egen);}
+    #progress-bar {
+      height: 10px;
+      background: var(--egen);
+      width: 0%;
+      transition: width 0.3s;
+      margin-bottom: 16px;
+      border-radius: 6px;
     }
     .question, #result {
       display: none;
-      margin-bottom: 10px;
-      padding: 18px 10px;
-      background: #ffffffcc;
-      border-radius: 14px;
-      animation: fade 0.6s ease-in-out;
+      margin-bottom: 18px;
+      padding: 28px 18px;
+      background: var(--card-bg);
+      border-radius: 20px;
+      box-shadow: 0 4px 22px #ff7eb315;
+      animation: fade 0.5s;
     }
-    .question.active {
-      display: block;
-    }
-    .question p,
-    .question {
-      font-size: 1.3rem;
-      font-weight: 600;
-      margin-bottom: 12px;
-      color: #444;
-    }
-    button {
-      display: block;
-      margin: 12px 0 0 0;
-      padding: 15px 0;
-      width: 100%;
-      border: none;
-      background: #ff7eb3;
-      color: #fff;
-      border-radius: 10px;
-      font-size: 1.18rem;
+    .question.active { display: block;}
+    .question p, .question {
+      font-size: 1.20rem;
       font-weight: 700;
-      font-family: inherit;
+      color: #363636;
+      margin-bottom: 16px;
       letter-spacing: -0.01em;
-      box-shadow: 0 2px 8px #f4a1c4;
-      cursor: pointer;
-      transition: background 0.2s;
     }
-    button:hover { background: #ff54a1; }
-    #progress-bar {
-      height: 10px;
-      background: #ff7eb3;
-      width: 0%;
-      transition: width 0.3s;
-      margin-bottom: 12px;
-      border-radius: 5px;
+    .question label {
+      margin: 6px 0 0 2px;
+      font-size: 1.09rem;
+      font-weight: 600;
+      color: #555;
+      cursor: pointer;
+      letter-spacing: -0.01em;
+    }
+    .center-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 180px;
+      margin-top: 10px;
+    }
+    .center-box p, .center-box label, .center-box button {
+      text-align: center;
+      width: 100%;
+    }
+    .answer-btns, .scale-btns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 10px;
+    }
+    .answer-btns button, .scale-btns button, button, .share-btns button {
+      flex: 1 1 46%;
+      background: var(--btn-bg);
+      color: var(--btn-color);
+      font-size: 1.13rem;
+      font-weight: 700;
+      border: 2px solid var(--btn-border);
+      border-radius: 14px;
+      min-height: 46px;
+      margin: 0;
+      padding: 0;
+      box-shadow: none;
+      transition: background 0.13s, color 0.13s, border 0.13s, transform 0.09s;
+      cursor: pointer;
+      letter-spacing: -0.01em;
+      outline: none;
+      position: relative;
+      z-index: 1;
+    }
+    .scale-btns button {
+      border-color: var(--teto);
+      color: #2976e8;
+    }
+    .answer-btns button:hover, .scale-btns button:hover, button:hover, .share-btns button:hover {
+      background: var(--btn-hover-bg);
+      color: var(--btn-hover-color);
+      border-color: #e75480;
+      transform: scale(1.025);
+    }
+    button:active, .share-btns button:active {
+      background: var(--btn-active-bg);
+      color: #fff;
+      transform: scale(0.98);
+    }
+    button:focus, .share-btns button:focus {
+      outline: 2.5px solid #2976e8;
+      outline-offset: 2px;
     }
     #result-title {
-      color: #FF7EB3;
-      font-size: 1.5rem;
+      color: var(--egen);
+      font-size: 1.37rem;
       font-weight: 900;
-      margin-bottom: 6px;
-      letter-spacing: -0.01em;
+      margin-bottom: 10px;
       text-align: center;
+      letter-spacing: -0.01em;
+    }
+    #result-mascot {
+      display: block;
+      text-align: center;
+      font-size: 2.3rem;
+      margin-bottom: 5px;
     }
     #result-description {
       color: #444;
-      font-size: 1.1rem;
-      margin: 10px 0 7px 0;
-      font-weight: 500;
+      font-size: 1.12rem;
+      margin: 10px 0 12px 0;
       text-align: center;
+      font-weight: 600;
     }
+    #score-graph {
+      width: 98%;
+      margin: 17px auto 10px auto;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+    .score-bar {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+    .score-label {
+      width: 54px; font-size: 1.03rem; color: #555; font-weight: 700;
+    }
+    .bar-bg {
+      background: var(--bar-bg);
+      border-radius: 7px;
+      flex: 1;
+      height: 16px;
+      margin-right: 4px;
+      position: relative;
+      overflow: hidden;
+    }
+    .bar-egen, .bar-teto {
+      height: 100%; border-radius: 7px;
+      transition: width 0.65s cubic-bezier(.57,.21,.69,1.25);
+    }
+    .bar-egen { background: linear-gradient(90deg, #ff7eb3 40%, #ffa2c6 100%);}
+    .bar-teto { background: linear-gradient(90deg, #8ac6ff 40%, #3f72af 100%);}
+    .bar-score { font-size: 1.04rem; color: #888;}
     #result-bestmatch {
       color: #4970f5;
-      font-size: 1.02rem;
-      font-weight: 700;
       background: #e4eaff;
-      border-radius: 7px;
-      padding: 6px 0;
-      margin: 0 0 7px 0;
-      display: block;
+      border-radius: 8px;
+      padding: 8px 0;
+      margin-bottom: 8px;
+      font-size: 1.01rem;
+      font-weight: 700;
       text-align: center;
-      width: 100%;
     }
     #result-recommendation {
       color: #22B573;
-      font-weight: 700;
-      font-size: 1.07rem;
-      margin-top: 7px;
       background: #e8faf2;
       border-radius: 8px;
       padding: 8px 0;
+      margin-bottom: 8px;
+      font-size: 1.01rem;
+      font-weight: 700;
+      text-align: center;
+    }
+    .result-music, .result-movie {
       display: block;
       text-align: center;
       width: 100%;
+      margin-bottom: 8px;
+      padding: 8px 0 8px 0;
+      border-radius: 8px;
+      font-size: 1.01rem;
+      font-weight: 700;
     }
+    .result-music { background: var(--egen-soft); color: #e75480;}
+    .result-movie { background: var(--teto-soft); color: #2976e8;}
     .share-btns {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-top: 14px;
-      justify-content: center;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin: 24px 0 0 0;
     }
     .share-btns button {
-      flex: 1 1 46%;
-      background: #ececec;
-      color: #333;
-      font-size: 1.06rem;
-      font-weight: 600;
-      border: 1px solid #e2e2e2;
       margin: 0;
-      padding: 12px 0;
-      font-family: inherit;
-    }
-    .share-btns button:hover {
-      background: #ff7eb3;
-      color: #fff;
-      border-color: #ff7eb3;
+      min-width: 0;
+      min-height: 44px;
+      font-size: 1.08rem;
+      font-weight: 700;
+      background: #fff;
+      color: var(--egen);
+      border: 2px solid var(--egen);
+      border-radius: 14px;
     }
     .watermark {
       text-align: center;
       color: #aaa;
-      font-size: 0.93rem;
-      margin-top: 10px;
-      letter-spacing: -0.02em;
+      font-size: 0.97rem;
+      margin-top: 16px;
       user-select: text;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+    }
+    .retry-btn {
+      display: block;
+      width: 120px;
+      margin: 22px auto 0 auto;
+      background: #ffe6f3;
+      color: #e75480;
+      border: 2px solid #e75480;
+      border-radius: 15px;
+      font-size: 1.13rem;
+      font-weight: 800;
+      min-height: 46px;
+      box-shadow: none;
+      transition: background 0.13s, color 0.13s, border 0.13s, transform 0.09s;
+      cursor: pointer;
+      letter-spacing: -0.01em;
+    }
+    .retry-btn:hover {
+      background: #ffb3d9;
+      color: #fff;
+      border-color: #ff7eb3;
+      transform: scale(1.03);
     }
     @media (max-width: 450px) {
-      h1 { font-size: 1.34rem; }
-      .question, .question p, #result-title { font-size: 1.09rem; }
-      button, .share-btns button { font-size: 0.97rem; padding: 10px 0; }
-      #result-description, #result-bestmatch, #result-recommendation, .watermark { font-size: 0.89rem; }
+      h1 { font-size: 1.24rem; }
+      .question, .question p, #result-title { font-size: 1.04rem; }
+      .question, #result { padding: 16px 6px; }
+      #result-description, #result-bestmatch, #result-recommendation, .watermark { font-size: 0.92rem; }
+      #result-mascot { font-size: 1.6rem; }
+      .share-btns button { font-size: 0.99rem; min-height: 40px;}
+      .retry-btn { width: 90px; font-size: 1.01rem; min-height: 38px;}
     }
     @keyframes fade {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    
-    .desc-link {
-      display: block;
-      text-align: right;
-      margin-bottom: 7px;
-      font-size: 1.03rem;
-      color: #4970f5;
-      text-decoration: underline;
-      font-weight: 600;
-      letter-spacing: -0.01em;
-      transition: color 0.2s;
-      cursor: pointer;
-    }
-    .desc-link:hover {
-      color: #ff7eb3;
-      text-decoration: underline;
+      from { opacity: 0; transform: translateY(18px);}
+      to { opacity: 1; transform: translateY(0);}
     }
   </style>
-  
-  <script async custom-element="amp-ad" src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"></script>
-  
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-0ED4W9VBFJ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-0ED4W9VBFJ');
-</script>
-  
-  
 </head>
 <body>
-  <h1>エゲン vs テト 性格診断テスト </h1>
-  <audio id="bgm" controls style="display:block; margin:12px auto;">
-    <source src="https://www.bensound.com/bensound-music/bensound-sunny.mp3" type="audio/mpeg">
-    お使いのブラウザはオーディオに対応していません。
-  </audio>
+  <h1>エゲン vs テト 性格テスト</h1>
   <div id="progress-bar"></div>
   <div id="test">
     <div class="question active" id="q0">
-    <a href="https://tests.mahalohana-bruce.com/egen-teto/ja/about.html" class="desc-link" target="_blank">エゲン・テト診断とは？</a>
-      <p>性別を選択してください：</p>
-      <label><input type="radio" name="gender" value="female" /> 女性</label><br>
-      <label><input type="radio" name="gender" value="male" /> 男性</label><br>
-      <button onclick="nextQuestion()">スタート</button>
+      <a href="https://tests.mahalohana-bruce.com/egen-teto/ja/about.html" class="desc-link" target="_blank">エゲン vs テト 性格テストとは？</a>
+      <div class="center-box">
+        <p>性別を選択してください：</p>
+        <label><input type="radio" name="gender" value="female" aria-label="女性" /> 女性</label>
+        <label><input type="radio" name="gender" value="male" aria-label="男性" /> 男性</label><br>
+        <button onclick="nextQuestion()">スタート</button>
+      </div>
     </div>
-    <div class="question" id="q1">
-      質問1：感情的な方ですか？<br>
-      <button onclick="answer('egen')">はい</button>
-      <button onclick="answer('teto')">いいえ</button>
-    </div>
-    <div class="question" id="q2">
-      質問2：一人でいるのが好きですか？<br>
-      <button onclick="answer('egen')">はい</button>
-      <button onclick="answer('teto')">いいえ</button>
-    </div>
-    <div class="question" id="q3">
-      質問3：計画的な性格ですか？<br>
-      <button onclick="answer('egen')">はい</button>
-      <button onclick="answer('teto')">いいえ</button>
-    </div>
-    <div class="question" id="q4">
-      質問4：人をよく助けますか？<br>
-      <button onclick="answer('egen')">はい</button>
-      <button onclick="answer('teto')">いいえ</button>
-    </div>
-    <div class="question" id="q5">
-      質問5：目標がはっきりしていますか？<br>
-      <button onclick="answer('egen')">はい</button>
-      <button onclick="answer('teto')">いいえ</button>
-    </div>
-    <div class="question" id="q6">
-      質問6：感情に共感しますか？<br>
-      <button onclick="answer('egen')">はい</button>
-      <button onclick="answer('teto')">いいえ</button>
-    </div>
-    <div class="question" id="q7">
-      質問7：一人で決断しますか？<br>
-      <button onclick="answer('egen')">はい</button>
-      <button onclick="answer('teto')">いいえ</button>
-    </div>
-    <div class="question" id="q8">
-      質問8：リーダーシップがありますか？<br>
-      <button onclick="answer('egen')">はい</button>
-      <button onclick="answer('teto')">いいえ</button>
-    </div>
-    <div class="question" id="q9">
-      質問9：感情表現が豊かですか？<br>
-      <button onclick="answer('egen')">はい</button>
-      <button onclick="answer('teto')">いいえ</button>
-    </div>
-    <div class="question" id="q10">
-      質問10：危機的状況でも冷静ですか？<br>
-      <button onclick="answer('egen')">はい</button>
-      <button onclick="answer('teto')">いいえ</button>
-    </div>
+    <div id="dynamic-questions"></div>
   </div>
   <div id="result">
+    <div id="result-mascot"></div>
     <h2 id="result-title"></h2>
-    <p id="result-description"></p>
+    <div id="result-description"></div>
+    <div id="score-graph"></div>
     <div id="result-bestmatch"></div>
     <div id="result-recommendation"></div>
+    <div class="result-music" id="result-music"></div>
+    <div class="result-movie" id="result-movie"></div>
     <div class="share-btns">
-      <button onclick="shareResult('twitter')">X(Twitter)でシェア</button>
+      <button onclick="shareResult('twitter')">X（ツイッター）でシェア</button>
       <button onclick="shareResult('facebook')">Facebookでシェア</button>
       <button onclick="shareResult('threads')">Threadsでシェア</button>
       <button onclick="copyResult()">結果をコピー</button>
     </div>
-    <button onclick="location.reload()" style="margin-top:14px;">もう一度テスト</button>
+    <button class="retry-btn" onclick="location.reload()">もう一度</button>
     <div class="watermark">
-      © エゲン vs テト 性格診断テスト | <a href="https://tests.mahalohana-bruce.com/egen-teto/ja/index.html" style="color:#bbb;text-decoration:underline;" target="_blank">tests.mahalohana-bruce.com</a>
+      © エゲン vs テト 性格テスト | <a href="https://tests.mahalohana-bruce.com/egen-teto/ja/index.html" style="color:#bbb;text-decoration:underline;" target="_blank">tests.mahalohana-bruce.com</a>
     </div>
   </div>
-  
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5508768187151867"
-     crossorigin="anonymous"></script>
-<!-- 디스플레이 광고 -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-5508768187151867"
-     data-ad-slot="8394292465"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-
-  <amp-ad width="100vw" height="320"
-     type="adsense"
-     data-ad-client="ca-pub-5508768187151867"
-     data-ad-slot="8394292465"
-     data-auto-format="rspv"
-     data-full-width="">
-  <div overflow=""></div>
-</amp-ad>
-  
-  
   <script>
+    // 日本語 質問バンク（例文も自然스럽게 조정）
+    const questionBank = [
+      {type:'scale', q:"他人の感情に共感しやすいほうだ。"},
+      {type:'scale', q:"一人の時間が必要だと感じる。"},
+      {type:'scale', q:"計画的に物事を進めるのが好きだ。"},
+      {type:'scale', q:"新しいことに挑戦するのが怖くない。"},
+      {type:'scale', q:"感情を素直に表現できる。"},
+      {type:'scale', q:"他人に助けを求めることが多い。"},
+      {type:'scale', q:"リーダー役を任されるのが好きだ。"},
+      {type:'scale', q:"決断するときは慎重に考える。"},
+      {type:'scale', q:"目標を達成するために粘り強く努力する。"},
+      {type:'scale', q:"感情が揺れやすいタイプだ。"},
+      {type:'yn', q:"自分は内向的だと思う。"},
+      {type:'yn', q:"問題が起きたらすぐに行動する。"},
+      {type:'yn', q:"感性的な芸術や音楽、絵が好きだ。"},
+      {type:'yn', q:"人と協力して作業するのが得意だ。"},
+      {type:'yn', q:"自分で自分をよく励ますことができる。"},
+      {type:'yn', q:"論理よりも感情を重視する。"},
+      {type:'yn', q:"ピンチでも冷静に対応できる。"},
+      {type:'yn', q:"他人の期待に応えようと頑張る。"},
+      {type:'yn', q:"気まぐれに旅行に行くのが好きだ。"},
+      {type:'yn', q:"感情が表情に出やすい。"},
+      {type:'yn', q:"友達にアドバイスするのが好きだ。"},
+      {type:'yn', q:"緊張感のある場面ほど実力を発揮できる。"},
+      {type:'yn', q:"人前で発表するのは怖くない。"},
+      {type:'yn', q:"一人で楽しめる趣味をたくさん持っている。"},
+      {type:'yn', q:"目標を達成したら自分を褒めるタイプだ。"},
+      {type:'yn', q:"新しい友達を作るのが好きだ。"},
+      {type:'yn', q:"失敗してもすぐ立ち直るほうだ。"},
+      {type:'yn', q:"誰かの悩みを聞くのが苦ではない。"},
+      {type:'yn', q:"自分で決めた計画は必ず守るタイプだ。"},
+    ];
     let currentQuestion = 0;
     let egenScore = 0;
     let tetoScore = 0;
     const totalQuestions = 10;
-    const testLink = window.location.href;
+    let pickedQuestions = [];
+
+    // 日本語 結果マッピング
     const resultMap = {
-      'エゲン女': {
-        title: '感情共感力が高いエゲン女 💖',
-        description: '温かい感性と繊細さで周囲を包み込むリーダータイプ。',
-        recommend: 'おすすめ職業：カウンセラー、デザイナー、コンテンツ企画者',
-        bestmatch: '相性の良い異性：テト男 🚀'
+      'エゲン女子': {
+        mascot: "💖",
+        title: '感情共感力の高いエゲン女子',
+        description: '優しくて繊細、感情への共感力が抜群。周囲を包み込みながらリーダーシップも発揮できるタイプです。',
+        recommend: 'おすすめ職業：カウンセラー、デザイナー、コンテンツ企画',
+        bestmatch: '相性ピッタリ：テト男子 🚀',
+        music: 'おすすめ音楽：IU - Love Poem',
+        movie: 'おすすめ映画：インサイド・ヘッド',
+        color: '#ff7eb3'
       },
-      'テト女': {
-        title: 'カリスマ溢れるテト女 💼',
-        description: '迅速な判断と推進力でチームを引っ張る戦略家タイプ。',
-        recommend: 'おすすめ職業：CEO、弁護士、プランナー',
-        bestmatch: '相性の良い異性：エゲン男 🎨'
+      'テト女子': {
+        mascot: "💼",
+        title: 'カリスマ性のあるテト女子',
+        description: '実行力・推進力が高く、戦略的に物事を進めるタイプ。厳しさもありつつ、調整力も兼ね備えています。',
+        recommend: 'おすすめ職業：経営者、弁護士、企画職',
+        bestmatch: '相性ピッタリ：エゲン男子 🎨',
+        music: 'おすすめ音楽：NewJeans - Super Shy',
+        movie: 'おすすめ映画：キングスマン',
+        color: '#8ac6ff'
       },
-      'エゲン男': {
-        title: '感受性豊かなエゲン男 🎨',
-        description: '芸術的な感性と深い共感力を持つあなた。',
+      'エゲン男子': {
+        mascot: "🎨",
+        title: '感受性豊かなエゲン男子',
+        description: '芸術的感性と共感力が高く、創造力や思いやりも持つタイプです。',
         recommend: 'おすすめ職業：作家、アーティスト、心理カウンセラー',
-        bestmatch: '相性の良い異性：テト女 💼'
+        bestmatch: '相性ピッタリ：テト女子 💼',
+        music: 'おすすめ音楽：폴킴 - 모든 날, 모든 순간',
+        movie: 'おすすめ映画：ラ・ラ・ランド',
+        color: '#ff7eb3'
       },
-      'テト男': {
-        title: 'リーダーシップ抜群のテト男 🚀',
-        description: '実行力と戦略的思考で課題を解決するタイプ。',
+      'テト男子': {
+        mascot: "🚀",
+        title: 'リーダーシップあふれるテト男子',
+        description: '戦略的かつ責任感が強く、問題解決能力も優れています。周りに活力を与える存在！',
         recommend: 'おすすめ職業：起業家、マーケター、自衛官',
-        bestmatch: '相性の良い異性：エゲン女 💖'
+        bestmatch: '相性ピッタリ：エゲン女子 💖',
+        music: 'おすすめ音楽：BTS - FIRE',
+        movie: 'おすすめ映画：マネーボール',
+        color: '#8ac6ff'
       }
     };
+
+    function shuffle(arr) {
+      let a = arr.slice();
+      for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+      }
+      return a;
+    }
+
+    function renderQuestions() {
+      pickedQuestions = shuffle(questionBank).slice(0, totalQuestions);
+      let html = '';
+      pickedQuestions.forEach((q, idx) => {
+        if(q.type === 'scale') {
+          html += `<div class="question" id="q${idx+1}"><p>${idx+1}. ${q.q}</p>
+            <div class="scale-btns">
+              <button onclick="answer(${idx+1}, 2)">とてもそう思う</button>
+              <button onclick="answer(${idx+1}, 1)">ややそう思う</button>
+              <button onclick="answer(${idx+1}, 0)">どちらでもない</button>
+              <button onclick="answer(${idx+1}, -1)">あまりそう思わない</button>
+              <button onclick="answer(${idx+1}, -2)">全くそう思わない</button>
+            </div>
+          </div>`;
+        } else {
+          html += `<div class="question" id="q${idx+1}"><p>${idx+1}. ${q.q}</p>
+            <div class="answer-btns">
+              <button onclick="answer(${idx+1}, 1)">はい</button>
+              <button onclick="answer(${idx+1}, -1)">いいえ</button>
+            </div>
+          </div>`;
+        }
+      });
+      document.getElementById('dynamic-questions').innerHTML = html;
+    }
 
     function updateProgress() {
       document.getElementById("progress-bar").style.width = (currentQuestion / totalQuestions) * 100 + "%";
     }
+
     function nextQuestion() {
       if (currentQuestion === 0) {
         const gender = document.querySelector('input[name="gender"]:checked');
@@ -349,41 +471,72 @@
           alert("性別を選択してください。");
           return;
         }
+        document.getElementById("q0").classList.remove("active");
+        document.getElementById("q1").classList.add("active");
+        currentQuestion++;
+        updateProgress();
+        return;
       }
-      const current = document.getElementById(`q${currentQuestion}`);
-      if (current) current.classList.remove("active");
-      currentQuestion++;
-      const next = document.getElementById(`q${currentQuestion}`);
-      if (next) {
-        next.classList.add("active");
+    }
+
+    function answer(qIdx, score) {
+      if ((qIdx-1) % 2 === 0) {
+        egenScore += score;
+      } else {
+        tetoScore += score;
+      }
+      document.getElementById(`q${qIdx}`).classList.remove("active");
+      if (qIdx < totalQuestions) {
+        document.getElementById(`q${qIdx+1}`).classList.add("active");
+        currentQuestion++;
         updateProgress();
       } else {
         showResult();
       }
     }
-    function answer(type) {
-      if (type === 'egen') egenScore++;
-      else if (type === 'teto') tetoScore++;
-      nextQuestion();
-    }
+
     function showResult() {
+      const egenNorm = egenScore + 10;
+      const tetoNorm = tetoScore + 10;
+      const egenPct = Math.max(0, Math.min(100, Math.round((egenNorm / (egenNorm + tetoNorm)) * 100)));
+      const tetoPct = 100 - egenPct;
+
       const gender = document.querySelector('input[name="gender"]:checked');
-      if (!gender) return alert("性別を選択してください。");
-      const resultType = gender.value === "female"
-        ? (egenScore > tetoScore ? "エゲン女" : "テト女")
-        : (egenScore > tetoScore ? "エゲン男" : "テト男");
+      let resultType;
+      if (!gender) return;
+      if (gender.value === "female") {
+        resultType = egenPct > tetoPct ? "エゲン女子" : "テト女子";
+      } else {
+        resultType = egenPct > tetoPct ? "エゲン男子" : "テト男子";
+      }
       const result = resultMap[resultType];
-      document.getElementById("test").style.display = "none";
-      document.getElementById("result").style.display = "block";
+
       document.getElementById("result-title").innerText = result.title;
+      document.getElementById("result-mascot").innerText = result.mascot;
       document.getElementById("result-description").innerText = result.description;
       document.getElementById("result-bestmatch").innerText = result.bestmatch;
       document.getElementById("result-recommendation").innerText = result.recommend;
+      document.getElementById("result-music").innerText = result.music;
+      document.getElementById("result-movie").innerText = result.movie;
+
+      document.getElementById("score-graph").innerHTML =
+        `<div class="score-bar"><span class="score-label">エゲン</span>
+          <div class="bar-bg"><div class="bar-egen" style="width:${egenPct}%;"></div></div>
+          <span class="bar-score">${egenPct}%</span>
+        </div>
+        <div class="score-bar"><span class="score-label">テト</span>
+          <div class="bar-bg"><div class="bar-teto" style="width:${tetoPct}%;"></div></div>
+          <span class="bar-score">${tetoPct}%</span>
+        </div>`;
+
+      document.getElementById("test").style.display = "none";
+      document.getElementById("result").style.display = "block";
     }
+
     function shareResult(platform) {
       const title = document.getElementById("result-title")?.innerText || "";
       const url = encodeURIComponent(window.location.href);
-      const text = encodeURIComponent(title + ' - 私も診断してみよう！');
+      const text = encodeURIComponent(title + ' - 私も診断！');
       if (platform === "twitter") {
         window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank');
       } else if (platform === "facebook") {
@@ -394,12 +547,15 @@
     }
     function copyResult() {
       const title = document.getElementById("result-title")?.innerText || "";
+      const mascot = document.getElementById("result-mascot")?.innerText || "";
       const description = document.getElementById("result-description")?.innerText || "";
       const bestmatch = document.getElementById("result-bestmatch")?.innerText || "";
       const recommendation = document.getElementById("result-recommendation")?.innerText || "";
-      const source = "\n\n出典：エゲン vs テト 性格診断テスト (yourdomain.com)";
+      const music = document.getElementById("result-music")?.innerText || "";
+      const movie = document.getElementById("result-movie")?.innerText || "";
       const link = window.location.href;
-      const text = `${title}\n${description}\n${bestmatch}\n${recommendation}\n診断テストはこちら: ${link}${source}`;
+      const source = "\n\n出典：エゲン vs テト 性格テスト (tests.mahalohana-bruce.com/egen-teto/ja/index.html)";
+      const text = `${mascot} ${title}\n${description}\n${bestmatch}\n${recommendation}\n${music}\n${movie}\nテストはこちら：${link}${source}`;
       if (navigator.clipboard) {
         navigator.clipboard.writeText(text).then(function() {
           alert("結果がコピーされました！");
@@ -407,7 +563,6 @@
           alert("コピーに失敗しました。もう一度お試しください。");
         });
       } else {
-        // 旧ブラウザ対応
         const temp = document.createElement("textarea");
         temp.value = text;
         document.body.appendChild(temp);
@@ -417,8 +572,28 @@
         alert("結果がコピーされました！");
       }
     }
+
+    renderQuestions();
   </script>
-  
- 
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5508768187151867"
+     crossorigin="anonymous"></script>
+  <ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-5508768187151867"
+     data-ad-slot="8394292465"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+  <script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  <amp-ad width="100vw" height="320"
+     type="adsense"
+     data-ad-client="ca-pub-5508768187151867"
+     data-ad-slot="8394292465"
+     data-auto-format="rspv"
+     data-full-width="">
+  <div overflow=""></div>
+  </amp-ad>
 </body>
 </html>
