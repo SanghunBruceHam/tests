@@ -19,9 +19,7 @@
   <link rel="canonical" href="https://tests.mahalohana-bruce.com/egen-teto/ko/index.html" />
   <link href="https://fonts.googleapis.com/css2?family=Gmarket+Sans:wght@400;700&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/static/woff2/SUIT.css" rel="stylesheet">
-
   <script async custom-element="amp-ad" src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"></script>
-
   <style>
     :root {
       --egen: #ff7eb3;
@@ -98,6 +96,20 @@
       cursor: pointer;
       letter-spacing: -0.01em;
     }
+    /* 성별 선택 영역만 가운데 정렬 */
+    .center-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 180px;
+      margin-top: 10px;
+    }
+    .center-box p, .center-box label, .center-box button {
+      text-align: center;
+      width: 100%;
+    }
+    /* 버튼 심플화 */
     .answer-btns, .scale-btns {
       display: flex;
       flex-wrap: wrap;
@@ -295,10 +307,12 @@
   <div id="test">
     <div class="question active" id="q0">
       <a href="https://tests.mahalohana-bruce.com/egen-teto/ko/about.html" class="desc-link" target="_blank">에겐 vs 테토 성향 테스트란?</a>
-      <p>성별을 선택하세요:</p>
-      <label><input type="radio" name="gender" value="female" aria-label="여성" /> 여성</label><br>
-      <label><input type="radio" name="gender" value="male" aria-label="남성" /> 남성</label><br>
-      <button onclick="nextQuestion()">시작하기</button>
+      <div class="center-box">
+        <p>성별을 선택하세요:</p>
+        <label><input type="radio" name="gender" value="female" aria-label="여성" /> 여성</label>
+        <label><input type="radio" name="gender" value="male" aria-label="남성" /> 남성</label><br>
+        <button onclick="nextQuestion()">시작하기</button>
+      </div>
     </div>
     <div id="dynamic-questions"></div>
   </div>
@@ -565,7 +579,7 @@
     // 광고/추적코드 등(필요시 <body> 하단에 삽입)
   </script>
 
- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5508768187151867"
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5508768187151867"
      crossorigin="anonymous"></script>
   <ins class="adsbygoogle"
      style="display:block"
