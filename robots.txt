@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://games.mahalohana-bruce.com/sitemap.xml
