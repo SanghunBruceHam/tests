@@ -1,37 +1,38 @@
-name: Generate sitemap
+import os
+from datetime import datetime
 
-on:
-  schedule:
-    - cron: '0 0 * * *'   # 매일 오전 9시 KST (UTC 0시)
-    - cron: '0 12 * * *'  # 매일 오후 9시 KST (UTC 12시)
-  workflow_dispatch:
+BASE_URL = "https://games.mahalohana-bruce.com"
 
-permissions:
-  contents: write
+def get_html_files(root_dir="."):
+    html_files = []
+    for dirpath, _, filenames in os.walk(root_dir):
+        for f in filenames:
+            if f.endswith(".html"):
+                rel_dir = os.path.relpath(dirpath, root_dir)
+                rel_file = os.path.join(rel_dir, f) if rel_dir != "." else f
+                html_files.append(rel_file.replace("\\", "/"))
+    return html_files
 
-jobs:
-  generate:
-    runs-on: ubuntu-latest
+def make_url(path):
+    # 깃허브 Pages의 index.html은 URL에서 생략
+    if path.endswith("/index.html"):
+        url = f"{BASE_URL}/{path[:-10]}"
+    else:
+        url = f"{BASE_URL}/{path}"
+    # 맨 뒤에 // 생기는 것 방지
+    return url.replace("//", "/").replace(":/", "://")
 
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+def main():
+    files = get_html_files(".")
+    now = datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%SZ')
+    sitemap = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
+    for file in files:
+        url = make_url(file)
+        sitemap.append(f"  <url><loc>{url}</loc><lastmod>{now}</lastmod></url>")
+    sitemap.append("</urlset>")
+    with open("sitemap.xml", "w", encoding="utf-8") as f:
+        f.write("\n".join(sitemap))
+    print(f"총 {len(files)}개의 페이지가 sitemap.xml에 추가되었습니다.")
 
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.10'
-
-      - name: Pull latest main
-        run: git pull --rebase origin main
-
-      - name: Generate sitemap.xml
-        run: python sitemap_generator.py
-
-      - name: Commit and push sitemap
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add sitemap.xml
-          git commit -m "Auto-generate sitemap.xml" || echo "No changes to commit"
-          git push
+if __name__ == "__main__":
+    main()
