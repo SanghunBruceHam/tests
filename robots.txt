@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://games.mahalohana-bruce.com/sitemap.xml
+Sitemap: https://tests.mahalohana-bruce.com/sitemap.xml

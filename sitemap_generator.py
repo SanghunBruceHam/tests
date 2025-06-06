@@ -1,7 +1,7 @@
 import os
 from datetime import datetime
 
-BASE_URL = "https://games.mahalohana-bruce.com"  # 커스텀 도메인
+BASE_URL = "https://tests.mahalohana-bruce.com"  # 커스텀 도메인
 SITEMAP_FILE = "sitemap.xml"
 
 def find_html_files(directory="."):
