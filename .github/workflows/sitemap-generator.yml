@@ -18,11 +18,11 @@ jobs:
         with:
           python-version: '3.10'
 
-      - name: Generate sitemap.xml
-        run: python sitemap_generator.py
-
       - name: Pull latest main
         run: git pull --rebase origin main
+
+      - name: Generate sitemap.xml
+        run: python sitemap_generator.py
 
       - name: Commit and push sitemap
         run: |
