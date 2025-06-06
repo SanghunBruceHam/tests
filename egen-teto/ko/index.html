@@ -98,7 +98,6 @@
       cursor: pointer;
       letter-spacing: -0.01em;
     }
-    /* 버튼 심플화 */
     .answer-btns, .scale-btns {
       display: flex;
       flex-wrap: wrap;
@@ -143,7 +142,6 @@
       outline: 2.5px solid #2976e8;
       outline-offset: 2px;
     }
-    /* 결과 타이틀/그래프/설명 통일 */
     #result-title {
       color: var(--egen);
       font-size: 1.37rem;
@@ -216,7 +214,6 @@
       font-weight: 700;
       text-align: center;
     }
-    /* 추천 음악/영화 별도 박스 분리 */
     .result-music, .result-movie {
       display: block;
       text-align: center;
@@ -229,7 +226,6 @@
     }
     .result-music { background: var(--egen-soft); color: #e75480;}
     .result-movie { background: var(--teto-soft); color: #2976e8;}
-    /* 공유 버튼 */
     .share-btns {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -294,11 +290,7 @@
   </style>
 </head>
 <body>
-  <h1>에겐 vs 테토 성향 테스트 <span style="font-size:0.95rem;color:#bbb;font-weight:400;">v2025-06-06</span></h1>
-  <audio id="bgm" controls style="display:block; margin:12px auto;">
-    <source src="https://www.bensound.com/bensound-music/bensound-sunny.mp3" type="audio/mpeg">
-    브라우저가 오디오를 지원하지 않습니다.
-  </audio>
+  <h1>에겐 vs 테토 성향 테스트</h1>
   <div id="progress-bar"></div>
   <div id="test">
     <div class="question active" id="q0">
@@ -308,7 +300,6 @@
       <label><input type="radio" name="gender" value="male" aria-label="남성" /> 남성</label><br>
       <button onclick="nextQuestion()">시작하기</button>
     </div>
-    <!-- 질문들은 JS에서 랜덤으로 10개 뿌림 -->
     <div id="dynamic-questions"></div>
   </div>
   <div id="result">
@@ -574,17 +565,17 @@
     // 광고/추적코드 등(필요시 <body> 하단에 삽입)
   </script>
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5508768187151867"
+ <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5508768187151867"
      crossorigin="anonymous"></script>
-<ins class="adsbygoogle"
+  <ins class="adsbygoogle"
      style="display:block"
-     data-ad-format="autorelaxed"
      data-ad-client="ca-pub-5508768187151867"
-     data-ad-slot="9345718962"></ins>
-<script>
+     data-ad-slot="8394292465"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+  <script>
      (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-
+  </script>
   <amp-ad width="100vw" height="320"
      type="adsense"
      data-ad-client="ca-pub-5508768187151867"
@@ -592,7 +583,6 @@
      data-auto-format="rspv"
      data-full-width="">
   <div overflow=""></div>
-</amp-ad>
-
+  </amp-ad>
 </body>
 </html>
