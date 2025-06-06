@@ -1,0 +1,31 @@
+name: Update robots.txt and ads.txt
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # 매일 오전 9시 UTC
+    - cron: '0 12 * * *'  # 매일 오후 9시 UTC
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Run update_files.py
+        run: python update_files.py
+
+      - name: Commit and push
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add robots.txt ads.txt
+          git commit -m "Auto-update robots.txt and ads.txt"
+          git push
