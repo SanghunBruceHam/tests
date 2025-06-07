@@ -1,38 +1,36 @@
 import os
 from datetime import datetime
 
-BASE_URL = "https://tests.mahalohana-bruce.com"
+BASE_URL = "https://games.mahalohana-bruce.com"  # 커스텀 도메인
+SITEMAP_FILE = "sitemap.xml"
 
-def get_html_files(root_dir="."):
+def find_html_files(directory="."):
     html_files = []
-    for dirpath, _, filenames in os.walk(root_dir):
-        for f in filenames:
-            if f.endswith(".html"):
-                rel_dir = os.path.relpath(dirpath, root_dir)
-                rel_file = os.path.join(rel_dir, f) if rel_dir != "." else f
-                html_files.append(rel_file.replace("\\", "/"))
+    for root, dirs, files in os.walk(directory):
+        for file in files:
+            if file.endswith(".html"):
+                full_path = os.path.join(root, file).replace("\\", "/")
+                if ".git" in full_path or "node_modules" in full_path:
+                    continue
+                url = BASE_URL + "/" + full_path.lstrip("./")
+                html_files.append(url)
     return html_files
 
-def make_url(path):
-    # 깃허브 Pages의 index.html은 URL에서 생략
-    if path.endswith("/index.html"):
-        url = f"{BASE_URL}/{path[:-10]}"
-    else:
-        url = f"{BASE_URL}/{path}"
-    # 맨 뒤에 // 생기는 것 방지
-    return url.replace("//", "/").replace(":/", "://")
-
-def main():
-    files = get_html_files(".")
-    now = datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%SZ')
-    sitemap = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
-    for file in files:
-        url = make_url(file)
-        sitemap.append(f"  <url><loc>{url}</loc><lastmod>{now}</lastmod></url>")
+def generate_sitemap():
+    urls = find_html_files()
+    now = datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
+    sitemap = ['<?xml version="1.0" encoding="UTF-8"?>',
+               '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
+    for url in urls:
+        sitemap.append("  <url>")
+        sitemap.append(f"    <loc>{url}</loc>")
+        sitemap.append(f"    <lastmod>{now}</lastmod>")
+        sitemap.append("    <changefreq>daily</changefreq>")
+        sitemap.append("    <priority>0.8</priority>")
+        sitemap.append("  </url>")
     sitemap.append("</urlset>")
-    with open("sitemap.xml", "w", encoding="utf-8") as f:
+    with open(SITEMAP_FILE, "w", encoding="utf-8") as f:
         f.write("\n".join(sitemap))
-    print(f"총 {len(files)}개의 페이지가 sitemap.xml에 추가되었습니다.")
 
 if __name__ == "__main__":
-    main()
+    generate_sitemap()
