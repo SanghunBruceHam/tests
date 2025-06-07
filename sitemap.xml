@@ -2,31 +2,31 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://tests.mahalohana-bruce.com/index.html</loc>
-    <lastmod>2025-06-07T00:00:37Z</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://tests.mahalohana-bruce.com/egen-teto/ja/index.html</loc>
-    <lastmod>2025-06-07T00:00:37Z</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://tests.mahalohana-bruce.com/egen-teto/ja/about.html</loc>
-    <lastmod>2025-06-07T00:00:37Z</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://tests.mahalohana-bruce.com/egen-teto/ko/index.html</loc>
-    <lastmod>2025-06-07T00:00:37Z</lastmod>
+    <lastmod>2025-06-07T00:46:28Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tests.mahalohana-bruce.com/egen-teto/ko/about.html</loc>
-    <lastmod>2025-06-07T00:00:37Z</lastmod>
+    <lastmod>2025-06-07T00:46:28Z</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://tests.mahalohana-bruce.com/egen-teto/ko/index.html</loc>
+    <lastmod>2025-06-07T00:46:28Z</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://tests.mahalohana-bruce.com/egen-teto/ja/about.html</loc>
+    <lastmod>2025-06-07T00:46:28Z</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://tests.mahalohana-bruce.com/egen-teto/ja/index.html</loc>
+    <lastmod>2025-06-07T00:46:28Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
