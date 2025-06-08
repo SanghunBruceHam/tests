@@ -12,7 +12,6 @@ with open("robots.txt", "w", encoding="utf-8") as f:
 
 # 2. ads.txt
 ads_txt = """google.com, pub-5508768187151867, DIRECT, f08c47fec0942fa0
-google.com, pub-1111111111111111, DIRECT, f08c47fec0942fa0
 # Last updated: {}
 """.format(datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S UTC'))
 
