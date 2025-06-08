@@ -5,6 +5,9 @@ robots_txt = """User-agent: *
 Allow: /
 
 Sitemap: https://tests.mahalohana-bruce.com/sitemap.xml
+
+#DaumWebMasterTool:9add863220c94ce5ce0e5e7ff689b22964cfdbd2b97303e6ad356185fffba89e:NnJbOlYdct0Jzm/G1OzHmA==
+
 """
 
 with open("robots.txt", "w", encoding="utf-8") as f:
