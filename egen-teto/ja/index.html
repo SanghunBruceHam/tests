@@ -19,15 +19,6 @@
   <link rel="canonical" href="https://tests.mahalohana-bruce.com/egen-teto/ja/index.html" />
   <link href="https://fonts.googleapis.com/css2?family=Gmarket+Sans:wght@400;700&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/static/woff2/SUIT.css" rel="stylesheet">
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-45VSGEM7EZ"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-45VSGEM7EZ');
-  </script>
-  <script async custom-element="amp-ad" src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"></script>
   <style>
     :root {
       --egen: #ff7eb3;
@@ -343,7 +334,7 @@
     </div>
   </div>
   <script>
-    // 日本語 質問バンク（例文も自然스럽게 조정）
+    // 질문 데이터 (생략하지 않고 전체 구성)
     const questionBank = [
       {type:'scale', q:"他人の感情に共感しやすいほうだ。"},
       {type:'scale', q:"一人の時間が必要だと感じる。"},
@@ -375,87 +366,97 @@
       {type:'yn', q:"誰かの悩みを聞くのが苦ではない。"},
       {type:'yn', q:"自分で決めた計画は必ず守るタイプだ。"},
     ];
+
+    // 결과 매핑(음악/영화 여러개를 배열로)
+    const resultMap = {
+      'エゲン女子': {
+        mascot: "💖",
+        title: '感情共感力の高いエゲン女子',
+        description: `あなたは友達や家族から「話しやすい」「安心感がある」と言われる共感力No.1タイプ！
+人の気持ちにすぐ気づくので、周りから自然と相談されやすく、SNSやカフェ巡り、推し活も大好き。
+小さな幸せや季節感を大切にして、自分の好きな世界観も表現できるクリエイティブな一面もあります。
+「癒し・かわいい・空気を読む・褒め上手」そんな言葉がぴったりです。`,
+        recommend: 'おすすめ職業：SNSマーケター、保育士、カウンセラー、イラストレーター',
+        bestmatch: '相性ピッタリ：テト男子 🚀（頼れるリーダータイプ）',
+        music: [
+          "YOASOBI「アイドル」", "Mrs. GREEN APPLE「ダンスホール」",
+          "Vaundy「怪獣の花唄」", "imase「NIGHT DANCER」",
+          "Aimer「残響散歌」", "米津玄師「KICK BACK」"
+        ],
+        movie: [
+          "すずめの戸締まり", "君たちはどう生きるか", "花束みたいな恋をした",
+          "ちひろさん", "今夜、世界からこの恋が消えても"
+        ],
+        color: '#ff7eb3'
+      },
+      'テト女子': {
+        mascot: "💼",
+        title: 'カリスマ性のあるテト女子',
+        description: `「しっかりしてて頼れる」と言われることが多く、友達グループのリーダーやまとめ役を任されがち。
+イベントやフェスも自分から計画し、みんなを引っ張る“お祭り番長”タイプ！
+しっかり者だけど、本当はムードメーカーで優しさもいっぱい。
+サバサバしていて決断が早いけど、意外と涙もろい一面もあります。`,
+        recommend: 'おすすめ職業：イベントプランナー、広報、YouTuber、外資系会社員',
+        bestmatch: '相性ピッタリ：エゲン男子 🎨（優しさ&個性派男子）',
+        music: [
+          "King Gnu「SPECIALZ」", "Ado「唱」",
+          "Official髭男dism「Subtitle」", "Mrs. GREEN APPLE「ブルーアンビエンス」",
+          "imase「NIGHT DANCER」", "YOASOBI「群青」"
+        ],
+        movie: [
+          "シン・ゴジラ", "ゴールデンカムイ", "グレイテスト・ショーマン",
+          "SLAM DUNK 新劇場版", "ONE PIECE FILM RED"
+        ],
+        color: '#8ac6ff'
+      },
+      'エゲン男子': {
+        mascot: "🎨",
+        title: '感受性豊かなエゲン男子',
+        description: `自分の好きなことや世界観を大事にする“個性派アーティスト”。友達の話もじっくり聞いてくれて、アニメ・映画・マンガ・音楽などオタク気質な一面も。
+「優しい」「空気が柔らかい」と言われがちで、少人数や一人の時間も大切にするタイプ。
+好きなものを追求するクリエイター気質なので、表現系の仕事や趣味がピッタリです。`,
+        recommend: 'おすすめ職業：クリエイター、バンドマン、デザイナー、心理カウンセラー',
+        bestmatch: '相性ピッタリ：テト女子 💼（行動力のある女性）',
+        music: [
+          "米津玄師「Lemon」", "Vaundy「花占い」",
+          "Official髭男dism「Pretender」", "Mrs. GREEN APPLE「ケセラセラ」",
+          "Saucy Dog「シンデレラボーイ」", "Ado「向日葵」"
+        ],
+        movie: [
+          "BLUE GIANT", "聲の形", "君の名は。",
+          "花束みたいな恋をした", "ちひろさん"
+        ],
+        color: '#ff7eb3'
+      },
+      'テト男子': {
+        mascot: "🚀",
+        title: 'リーダーシップあふれるテト男子',
+        description: `友達から頼りにされることが多く、新しいことやチャレンジも怖がらない“陽キャリーダー”タイプ！
+部活やバイト、サークルでもまとめ役を任されやすい。
+みんなでワイワイするのが得意で、時には失敗もポジティブに変換できる力があります。
+決断力と実行力はグループNo.1。「話が早い」「信頼できる」と言われがちです。`,
+        recommend: 'おすすめ職業：スタートアップ社長、スポーツインストラクター、Webディレクター、営業',
+        bestmatch: '相性ピッタリ：エゲン女子 💖（癒し&共感型女子）',
+        music: [
+          "Ado「向日葵」", "King Gnu「白日」",
+          "YOASOBI「群青」", "Mrs. GREEN APPLE「Magic」",
+          "SEKAI NO OWARI「Habit」", "imase「NIGHT DANCER」"
+        ],
+        movie: [
+          "SLAM DUNK 新劇場版", "ONE PIECE FILM RED", "シン・ゴジラ",
+          "トップガン マーヴェリック", "THE FIRST SLAM DUNK"
+        ],
+        color: '#8ac6ff'
+      }
+    };
+
     let currentQuestion = 0;
     let egenScore = 0;
     let tetoScore = 0;
     const totalQuestions = 10;
     let pickedQuestions = [];
 
-    // 日本語 結果マッピング
-    const resultMap = {
-  'エゲン女子': {
-    mascot: "💖",
-    title: '感情共感力の高いエゲン女子',
-    description: `あなたは友達や家族から「話しやすい」「安心感がある」と言われる共感力No.1タイプ！
-人の気持ちにすぐ気づくので、周りから自然と相談されやすく、SNSやカフェ巡り、推し活も大好き。
-小さな幸せや季節感を大切にして、自分の好きな世界観も表現できるクリエイティブな一面もあります。
-「癒し・かわいい・空気を読む・褒め上手」そんな言葉がぴったりです。`,
-    recommend: 'おすすめ職業：SNSマーケター、保育士、カウンセラー、イラストレーター',
-    bestmatch: '相性ピッタリ：テト男子 🚀（頼れるリーダータイプ）',
-    music: `おすすめ音楽：
-- YOASOBI「アイドル」, Mrs. GREEN APPLE「ダンスホール」
-- Vaundy「怪獣の花唄」, imase「NIGHT DANCER」
-- Aimer「残響散歌」, 米津玄師「KICK BACK」`,
-    movie: `おすすめ映画：
-- すずめの戸締まり、君たちはどう生きるか、花束みたいな恋をした
-- ちひろさん、今夜、世界からこの恋が消えても`,
-    color: '#ff7eb3'
-  },
-  'テト女子': {
-    mascot: "💼",
-    title: 'カリスマ性のあるテト女子',
-    description: `「しっかりしてて頼れる」と言われることが多く、友達グループのリーダーやまとめ役を任されがち。
-イベントやフェスも自分から計画し、みんなを引っ張る“お祭り番長”タイプ！
-しっかり者だけど、本当はムードメーカーで優しさもいっぱい。
-サバサバしていて決断が早いけど、意外と涙もろい一面もあります。`,
-    recommend: 'おすすめ職業：イベントプランナー、広報、YouTuber、外資系会社員',
-    bestmatch: '相性ピッタリ：エゲン男子 🎨（優しさ&個性派男子）',
-    music: `おすすめ音楽：
-- King Gnu「SPECIALZ」, Ado「唱」
-- Official髭男dism「Subtitle」, Mrs. GREEN APPLE「ブルーアンビエンス」
-- imase「NIGHT DANCER」, YOASOBI「群青」`,
-    movie: `おすすめ映画：
-- シン・ゴジラ、ゴールデンカムイ、グレイテスト・ショーマン
-- SLAM DUNK 新劇場版、ONE PIECE FILM RED`,
-    color: '#8ac6ff'
-  },
-  'エゲン男子': {
-    mascot: "🎨",
-    title: '感受性豊かなエゲン男子',
-    description: `自分の好きなことや世界観を大事にする“個性派アーティスト”。友達の話もじっくり聞いてくれて、アニメ・映画・マンガ・音楽などオタク気質な一面も。
-「優しい」「空気が柔らかい」と言われがちで、少人数や一人の時間も大切にするタイプ。
-好きなものを追求するクリエイター気質なので、表現系の仕事や趣味がピッタリです。`,
-    recommend: 'おすすめ職業：クリエイター、バンドマン、デザイナー、心理カウンセラー',
-    bestmatch: '相性ピッタリ：テト女子 💼（行動力のある女性）',
-    music: `おすすめ音楽：
-- 米津玄師「Lemon」, Vaundy「花占い」
-- Official髭男dism「Pretender」, Mrs. GREEN APPLE「ケセラセラ」
-- Saucy Dog「シンデレラボーイ」, Ado「向日葵」`,
-    movie: `おすすめ映画：
-- BLUE GIANT、聲の形、君の名は。
-- 花束みたいな恋をした、ちひろさん`,
-    color: '#ff7eb3'
-  },
-  'テト男子': {
-    mascot: "🚀",
-    title: 'リーダーシップあふれるテト男子',
-    description: `友達から頼りにされることが多く、新しいことやチャレンジも怖がらない“陽キャリーダー”タイプ！
-部活やバイト、サークルでもまとめ役を任されやすい。
-みんなでワイワイするのが得意で、時には失敗もポジティブに変換できる力があります。
-決断力と実行力はグループNo.1。「話が早い」「信頼できる」と言われがちです。`,
-    recommend: 'おすすめ職業：スタートアップ社長、スポーツインストラクター、Webディレクター、営業',
-    bestmatch: '相性ピッタリ：エゲン女子 💖（癒し&共感型女子）',
-    music: `おすすめ音楽：
-- Ado「向日葵」, King Gnu「白日」
-- YOASOBI「群青」, Mrs. GREEN APPLE「Magic」
-- SEKAI NO OWARI「Habit」, imase「NIGHT DANCER」`,
-    movie: `おすすめ映画：
-- SLAM DUNK 新劇場版、ONE PIECE FILM RED、シン・ゴジラ
-- トップガン マーヴェリック、THE FIRST SLAM DUNK`,
-    color: '#8ac6ff'
-  }
-};
-
+    // 질문 렌더링
     function shuffle(arr) {
       let a = arr.slice();
       for (let i = a.length - 1; i > 0; i--) {
@@ -542,13 +543,19 @@
       }
       const result = resultMap[resultType];
 
+      // 추천 음악/영화에서 하나씩 랜덤으로 추출
+      const musicArr = result.music;
+      const movieArr = result.movie;
+      const musicPick = Array.isArray(musicArr) ? musicArr[Math.floor(Math.random() * musicArr.length)] : musicArr;
+      const moviePick = Array.isArray(movieArr) ? movieArr[Math.floor(Math.random() * movieArr.length)] : movieArr;
+
       document.getElementById("result-title").innerText = result.title;
       document.getElementById("result-mascot").innerText = result.mascot;
       document.getElementById("result-description").innerText = result.description;
       document.getElementById("result-bestmatch").innerText = result.bestmatch;
       document.getElementById("result-recommendation").innerText = result.recommend;
-      document.getElementById("result-music").innerText = result.music;
-      document.getElementById("result-movie").innerText = result.movie;
+      document.getElementById("result-music").innerText = "おすすめ音楽：" + musicPick;
+      document.getElementById("result-movie").innerText = "おすすめ映画：" + moviePick;
 
       document.getElementById("score-graph").innerHTML =
         `<div class="score-bar"><span class="score-label">エゲン</span>
@@ -564,6 +571,7 @@
       document.getElementById("result").style.display = "block";
     }
 
+    // SNS 공유 기능
     function shareResult(platform) {
       const title = document.getElementById("result-title")?.innerText || "";
       const url = encodeURIComponent(window.location.href);
@@ -606,25 +614,5 @@
 
     renderQuestions();
   </script>
-
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5508768187151867"
-     crossorigin="anonymous"></script>
-  <ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-5508768187151867"
-     data-ad-slot="8394292465"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-  <script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-  </script>
-  <amp-ad width="100vw" height="320"
-     type="adsense"
-     data-ad-client="ca-pub-5508768187151867"
-     data-ad-slot="8394292465"
-     data-auto-format="rspv"
-     data-full-width="">
-  <div overflow=""></div>
-  </amp-ad>
 </body>
 </html>
