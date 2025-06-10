@@ -25,11 +25,9 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-45VSGEM7EZ');
 </script>
   <script async custom-element="amp-ad" src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"></script>
-
   <style>
     :root {
       --egen: #ff7eb3;
@@ -106,7 +104,6 @@
       cursor: pointer;
       letter-spacing: -0.01em;
     }
-    /* 성별 선택 영역만 가운데 정렬 */
     .center-box {
       display: flex;
       flex-direction: column;
@@ -119,7 +116,6 @@
       text-align: center;
       width: 100%;
     }
-    /* 버튼 심플화 */
     .answer-btns, .scale-btns {
       display: flex;
       flex-wrap: wrap;
@@ -347,7 +343,7 @@
     </div>
   </div>
   <script>
-    // 질문 은행 (5점 척도 + 예/아니오형 혼합, 30개 샘플)
+    // 질문 은행
     const questionBank = [
       {type:'scale', q:"다른 사람의 감정에 잘 공감하는 편이다."},
       {type:'scale', q:"혼자만의 시간이 필요하다."},
@@ -385,76 +381,86 @@
     const totalQuestions = 10;
     let pickedQuestions = [];
 
-    // 결과 맵 (마스코트/추천/테마 컬러/추천콘텐츠 샘플)
-   const resultMap = {
-  '에겐녀': {
-    mascot: "💖",
-    title: '감성공감력 높은 에겐녀',
-    description: `당신은 주변 사람들에게 ‘상담소장’, ‘힐링 보스’라고 불릴 만큼 공감력이 뛰어난 타입이에요.
+    // 결과 맵 - 음악/영화 배열화!
+    const resultMap = {
+      '에겐녀': {
+        mascot: "💖",
+        title: '감성공감력 높은 에겐녀',
+        description: `당신은 주변 사람들에게 ‘상담소장’, ‘힐링 보스’라고 불릴 만큼 공감력이 뛰어난 타입이에요.
 감정을 잘 읽고 표현해서, 친구의 고민에 자연스럽게 귀 기울여주고 때론 카페 투어, 플리마켓, 전시회도 즐기는 트렌드세터.
 자신만의 취향과 ‘덕질’도 확실한 편! SNS에 하루하루의 소소한 행복, 예쁜 순간을 기록하며 감성을 나누는 게 잘 어울려요.
 “친근함, 귀여움, 분위기 메이커, 위로해주는 친구”라는 말이 꼭 맞아요.`,
-    recommend: '추천 직업: SNS마케터, 상담사, 카페운영자, 일러스트레이터',
-    bestmatch: '찰떡궁합: 테토남 🚀 (믿음직한 리더형)',
-    music: `추천 음악:
-- NewJeans "Super Shy", IVE "I AM", 세븐틴 "손오공"
-- AKMU "Love Lee", 지수 "꽃", aespa "Spicy"`,
-    movie: `추천 영화:
-- 콘크리트 유토피아, 12.12: 더 데이, 스즈메의 문단속
-- 인어공주, 20세기 소녀, 드림`,
-    color: '#ff7eb3'
-  },
-  '테토녀': {
-    mascot: "💼",
-    title: '카리스마 넘치는 테토녀',
-    description: `실행력과 추진력이 뛰어나서 “언니만 믿고 따라가!” 소리를 자주 듣는 리더형이에요.
+        recommend: '추천 직업: SNS마케터, 상담사, 카페운영자, 일러스트레이터',
+        bestmatch: '찰떡궁합: 테토남 🚀 (믿음직한 리더형)',
+        music: [
+          'NewJeans "Super Shy"', 'IVE "I AM"', '세븐틴 "손오공"',
+          'AKMU "Love Lee"', '지수 "꽃"', 'aespa "Spicy"'
+        ],
+        movie: [
+          "콘크리트 유토피아", "12.12: 더 데이", "스즈메의 문단속",
+          "인어공주", "20세기 소녀", "드림"
+        ],
+        color: '#ff7eb3'
+      },
+      '테토녀': {
+        mascot: "💼",
+        title: '카리스마 넘치는 테토녀',
+        description: `실행력과 추진력이 뛰어나서 “언니만 믿고 따라가!” 소리를 자주 듣는 리더형이에요.
 새로운 모임, 행사, 여행도 직접 계획하고 추진하는데, 친구들에게는 든든한 기둥 같은 존재!
 겉으론 쿨하고 당당해 보이지만, 속으론 따뜻한 위로와 조언을 아끼지 않죠.
 야무지고 현실감각도 뛰어나서, 위기 상황에서도 침착하게 해결하는 능력자입니다.`,
-    recommend: '추천 직업: 행사기획자, 콘텐츠 디렉터, 마케터, 변호사',
-    bestmatch: '찰떡궁합: 에겐남 🎨 (따뜻하고 감성적인 남자)',
-    music: `추천 음악:
-- (여자)아이들 "퀸카", NewJeans "ETA", ZEROBASEONE "In Bloom"
-- 임영웅 "사랑은 늘 도망가", 아이브 "After LIKE", 태연 "INVU"`,
-    movie: `추천 영화:
-- 밀수, 12.12: 더 데이, 범죄도시3
-- 극한직업, 헌트, 완벽한 타인`,
-    color: '#8ac6ff'
-  },
-  '에겐남': {
-    mascot: "🎨",
-    title: '감수성 풍부한 에겐남',
-    description: `조용하지만 남다른 감수성과 창의력이 빛나는 타입!
+        recommend: '추천 직업: 행사기획자, 콘텐츠 디렉터, 마케터, 변호사',
+        bestmatch: '찰떡궁합: 에겐남 🎨 (따뜻하고 감성적인 남자)',
+        music: [
+          '(여자)아이들 "퀸카"', 'NewJeans "ETA"', 'ZEROBASEONE "In Bloom"',
+          '임영웅 "사랑은 늘 도망가"', '아이브 "After LIKE"', '태연 "INVU"'
+        ],
+        movie: [
+          "밀수", "12.12: 더 데이", "범죄도시3",
+          "극한직업", "헌트", "완벽한 타인"
+        ],
+        color: '#8ac6ff'
+      },
+      '에겐남': {
+        mascot: "🎨",
+        title: '감수성 풍부한 에겐남',
+        description: `조용하지만 남다른 감수성과 창의력이 빛나는 타입!
 애니, 음악, 영화, 그림 등 자기만의 ‘덕질’을 진심으로 즐기고, 소수의 진짜 친구들과 깊은 대화를 나누는 걸 좋아해요.
 친구들에게는 “마음이 편안해지는 사람”, “내 얘기 잘 들어주는 친구”로 통하고, 새로운 아이디어로 팀에 활력을 불어넣기도 합니다.
 때로는 내성적인 듯 보여도, 관심사에는 열정적이고 진중해요.`,
-    recommend: '추천 직업: 아티스트, 심리상담사, 디자이너, 웹툰작가',
-    bestmatch: '찰떡궁합: 테토녀 💼 (야무진 추진형 여성)',
-    music: `추천 음악:
-- 폴킴 "모든 날, 모든 순간", 잔나비 "주저하는 연인들을 위해"
-- 아이유 "Love wins all", 혁오 "TOMBOY", 임한별 "이별하러 가는 길"`,
-    movie: `추천 영화:
-- 라라랜드, 헤어질 결심, 드림, 소울, 20세기 소녀, 뮤직 앤 리얼리티`,
-    color: '#ff7eb3'
-  },
-  '테토남': {
-    mascot: "🚀",
-    title: '리더십 넘치는 테토남',
-    description: `결단력 있고, 도전정신이 강해 어떤 모임에서도 자연스럽게 리더 역할을 맡아요.
+        recommend: '추천 직업: 아티스트, 심리상담사, 디자이너, 웹툰작가',
+        bestmatch: '찰떡궁합: 테토녀 💼 (야무진 추진형 여성)',
+        music: [
+          '폴킴 "모든 날, 모든 순간"', '잔나비 "주저하는 연인들을 위해"',
+          '아이유 "Love wins all"', '혁오 "TOMBOY"', '임한별 "이별하러 가는 길"'
+        ],
+        movie: [
+          "라라랜드", "헤어질 결심", "드림",
+          "소울", "20세기 소녀", "뮤직 앤 리얼리티"
+        ],
+        color: '#ff7eb3'
+      },
+      '테토남': {
+        mascot: "🚀",
+        title: '리더십 넘치는 테토남',
+        description: `결단력 있고, 도전정신이 강해 어떤 모임에서도 자연스럽게 리더 역할을 맡아요.
 일도 사랑도 주도적으로 이끌고, 위기에도 흔들림 없는 ‘멋짐’으로 주목받는 스타일!
 운동, 여행, 자기계발 등 다양한 활동에 적극적이며, 목표를 위해 꾸준히 달리는 ‘실행력 끝판왕’.
 친구들에게는 “믿고 의지할 수 있는 사람”, “일 잘하는 친구”라는 인상을 많이 줍니다.`,
-    recommend: '추천 직업: 창업가, 마케팅팀장, 트레이너, 팀 리더',
-    bestmatch: '찰떡궁합: 에겐녀 💖 (따뜻한 공감형 여성)',
-    music: `추천 음악:
-- 지코 "새삥", 아이브 "Kitsch", 임영웅 "Polaroid"
-- aespa "Drama", 방탄소년단 "Butter", NCT DREAM "Candy"`,
-    movie: `추천 영화:
-- 범죄도시3, 12.12: 더 데이, 콘크리트 유토피아, 탑건 매버릭
-- 국제시장, 드림, 극한직업`,
-    color: '#8ac6ff'
-  }
-};
+        recommend: '추천 직업: 창업가, 마케팅팀장, 트레이너, 팀 리더',
+        bestmatch: '찰떡궁합: 에겐녀 💖 (따뜻한 공감형 여성)',
+        music: [
+          '지코 "새삥"', '아이브 "Kitsch"', '임영웅 "Polaroid"',
+          'aespa "Drama"', '방탄소년단 "Butter"', 'NCT DREAM "Candy"'
+        ],
+        movie: [
+          "범죄도시3", "12.12: 더 데이", "콘크리트 유토피아",
+          "탑건 매버릭", "국제시장", "드림", "극한직업"
+        ],
+        color: '#8ac6ff'
+      }
+    };
+
     function shuffle(arr) {
       let a = arr.slice();
       for (let i = a.length - 1; i > 0; i--) {
@@ -510,14 +516,11 @@
     }
 
     function answer(qIdx, score) {
-      const qObj = pickedQuestions[qIdx-1];
-      // QID가 짝수면 에겐, 홀수면 테토(더 정교하게 할 수도 있음)
       if ((qIdx-1) % 2 === 0) {
         egenScore += score;
       } else {
         tetoScore += score;
       }
-      // 현재 질문 숨기고 다음 질문 보이기
       document.getElementById(`q${qIdx}`).classList.remove("active");
       if (qIdx < totalQuestions) {
         document.getElementById(`q${qIdx+1}`).classList.add("active");
@@ -529,7 +532,6 @@
     }
 
     function showResult() {
-      // 점수 normalize
       const egenNorm = egenScore + 10;
       const tetoNorm = tetoScore + 10;
       const egenPct = Math.max(0, Math.min(100, Math.round((egenNorm / (egenNorm + tetoNorm)) * 100)));
@@ -545,16 +547,20 @@
       }
       const result = resultMap[resultType];
 
-      // 컬러 테마 적용(필요시 CSS 변수 조작 가능)
+      // 음악/영화 랜덤 1개씩 뽑기
+      const musicArr = result.music;
+      const movieArr = result.movie;
+      const musicPick = Array.isArray(musicArr) ? musicArr[Math.floor(Math.random() * musicArr.length)] : musicArr;
+      const moviePick = Array.isArray(movieArr) ? movieArr[Math.floor(Math.random() * movieArr.length)] : movieArr;
+
       document.getElementById("result-title").innerText = result.title;
       document.getElementById("result-mascot").innerText = result.mascot;
       document.getElementById("result-description").innerText = result.description;
       document.getElementById("result-bestmatch").innerText = result.bestmatch;
       document.getElementById("result-recommendation").innerText = result.recommend;
-      document.getElementById("result-music").innerText = result.music;
-      document.getElementById("result-movie").innerText = result.movie;
+      document.getElementById("result-music").innerText = "추천 음악: " + musicPick;
+      document.getElementById("result-movie").innerText = "추천 영화: " + moviePick;
 
-      // 점수 그래프
       document.getElementById("score-graph").innerHTML =
         `<div class="score-bar"><span class="score-label">에겐</span>
           <div class="bar-bg"><div class="bar-egen" style="width:${egenPct}%;"></div></div>
@@ -609,10 +615,7 @@
       }
     }
 
-    // 진입 시 동적 질문 생성
     renderQuestions();
-
-    // 광고/추적코드 등(필요시 <body> 하단에 삽입)
   </script>
 
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5508768187151867"
