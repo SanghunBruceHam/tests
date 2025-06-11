@@ -14,7 +14,7 @@ jobs:
       - name: Ping Google with Updated Sitemap
         run: |
           echo "📤 Notifying Google of sitemap update..."
-          curl "https://www.google.com/ping?sitemap=https://mahalohana-bruce.com/sitemap.xml"
-          curl "https://www.bing.com/ping?sitemap=https://mahalohana-bruce.com/sitemap.xml"
-          curl "https://webmaster.yandex.com/ping?sitemap=https://mahalohana-bruce.com/sitemap.xml"
+          curl "https://www.google.com/ping?sitemap=https://tests.mahalohana-bruce.com/sitemap.xml"
+          curl "https://www.bing.com/ping?sitemap=https://tests.mahalohana-bruce.com/sitemap.xml"
+          curl "https://webmaster.yandex.com/ping?sitemap=https://tests.mahalohana-bruce.com/sitemap.xml"
 
