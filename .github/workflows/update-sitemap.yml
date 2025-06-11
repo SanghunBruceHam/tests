@@ -57,5 +57,4 @@ jobs:
           curl "https://www.bing.com/indexnow?url=https://tests.mahalohana-bruce.com/sitemap.xml&key=5cbdaab6677a4f3db093ec20be02affb"
           curl "https://www.bing.com/ping?sitemap=https://tests.mahalohana-bruce.com/sitemap.xml"         
           curl "https://webmaster.yandex.com/ping?sitemap=https://tests.mahalohana-bruce.com/sitemap.xml"
-          curl -s "https://search.naver.com/ping?sitemap=https://tests.mahalohana-bruce.com/sitemap.xml"
-          curl -s "https://search.daum.net/ping?sitemap=https://tests.mahalohana-bruce.com/sitemap.xml"
+       
