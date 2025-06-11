@@ -1,0 +1,58 @@
+name: Update Sitemap and Notify Search Engines
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '**.html'
+
+jobs:
+  sitemap:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Generate sitemap.xml
+        run: python sitemap_generator.py
+
+      - name: Check sitemap change
+        id: check_diff
+        run: |
+          if git diff --quiet sitemap.xml; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit and push if sitemap changed
+        if: steps.check_diff.outputs.changed == 'true'
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add sitemap.xml
+          git commit -m "Auto-update sitemap on HTML change"
+          git push --force-with-lease
+
+      - name: Submit to Google Search Console
+        if: steps.check_diff.outputs.changed == 'true'
+        env:
+          GSC_CREDENTIALS_BASE64: ${{ secrets.GSC_CREDENTIALS_BASE64 }}
+        run: |
+          pip install --quiet google-api-python-client google-auth
+          python submit_sitemap.py
+
+      - name: Ping Bing/Yandex
+        if: steps.check_diff.outputs.changed == 'true'
+        run: |
+          curl "https://www.bing.com/indexnow?url=https://mahalohana-bruce.com/sitemap.xml&key=9a4d441f03954eb89ed9bb85fe40c36c"
+          curl "https://webmaster.yandex.com/ping?sitemap=https://mahalohana-bruce.com/sitemap.xml"
