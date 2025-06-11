@@ -13,8 +13,8 @@ credentials = service_account.Credentials.from_service_account_info(creds_dict, 
 service = build('webmasters', 'v3', credentials=credentials)
 
 # 제출할 사이트와 sitemap 경로
-SITE_URL = "https://mahalohana-bruce.com/"
-SITEMAP_URL = "https://mahalohana-bruce.com/sitemap.xml"
+SITE_URL = "https://tests.mahalohana-bruce.com/"
+SITEMAP_URL = "https://tests.mahalohana-bruce.com/sitemap.xml"
 
 # 제출 실행
 service.sitemaps().submit(siteUrl=SITE_URL, feedpath=SITEMAP_URL).execute()
