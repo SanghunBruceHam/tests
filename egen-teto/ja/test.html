@@ -79,6 +79,27 @@
       margin-top: 46px;
       margin-bottom: 26px;
     }
+    .desc-link {
+      display: block;
+      text-align: right;
+      margin-bottom: 10px;
+      font-size: 1.07rem;
+      color: #4970f5;
+      text-decoration: underline;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      cursor: pointer;
+      transition: color .18s;
+    }
+    .desc-link:hover { color: var(--egen);}
+    #progress-bar {
+      height: 10px;
+      background: var(--egen);
+      width: 0%;
+      transition: width 0.3s;
+      margin-bottom: 16px;
+      border-radius: 6px;
+    }
     .progress-wrap {
       width: 100%;
       max-width: 540px;
@@ -450,6 +471,7 @@
 <body>
   <div class="container">
     <h1>エゲン vs テト 性格テスト</h1>
+    <a href="https://tests.mahalohana-bruce.com/egen-teto/ko/about.html" class="desc-link" target="_blank">에겐 vs 테토 성향 테스트란?</a>
     <div class="progress-wrap">
       <div class="progress-bar" id="progress-bar"></div>
     </div>
