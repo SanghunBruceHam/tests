@@ -600,6 +600,8 @@
         <button class="answer-btn" style="margin: 24px auto 0 auto;display:block;width:140px;" onclick="startQuiz()">スタート</button>
       `;
       document.getElementById('result-card').style.display = "none";
+      document.getElementById('quiz-card').style.display = '';
+
     }
     function startQuiz() {
       const genderInput = document.querySelector('input[name="gender"]:checked');
