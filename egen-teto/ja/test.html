@@ -86,6 +86,9 @@
       text-align: center;
       margin-bottom: 38px;
       margin-top: 0;
+      min-height: 340px
+      position: relative; /* 반드시 필요! */
+
     }
     .answer-group {
       width: 100%;
@@ -101,7 +104,7 @@
       max-width: 175px;
       background: var(--btn-bg);
       color: var(--btn-color);
-      font-size: 1.13rem;
+      font-size: 1rem;
       font-weight: 700;
       border: 2px solid var(--btn-border);
       border-radius: 18px;
@@ -144,6 +147,7 @@
       text-align: center;
       font-size: 2.7rem;
       margin-bottom: 2px;
+      
     }
     .result-title {
       color: var(--egen);
@@ -396,14 +400,18 @@
       .celeb-list { grid-template-columns: 1fr; }
     }
     .watermark {
-      text-align: center;
-      color: #aaa;
-      font-size: 0.96rem;
-      margin-top: 19px;
-      user-select: text;
-      font-weight: 500;
-      letter-spacing: -0.01em;
-    }
+  position: absolute;
+  left: 0;
+  bottom: 22px;
+  width: 100%;
+  text-align: center;
+  color: #aaa;
+  font-size: 0.96rem;
+  user-select: text;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  z-index: 2;
+}
     #typeModalContainer {
   display: none;
   position: fixed;
@@ -434,10 +442,13 @@
     <div id="quiz-card" class="quiz-card">
       <div id="step-gender">
         <div class="quiz-title">性別を選択してください：</div>
+        
         <div style="text-align:center;">
           <label><input type="radio" name="gender" value="female" /> 女性</label>
           <label style="margin-left:16px;"><input type="radio" name="gender" value="male" /> 男性</label>
+          
         </div>
+        
         
         <button class="answer-btn" style="margin: 24px auto 0 auto;display:block;width:140px;" onclick="startQuiz()">スタート</button>
       </div>
@@ -445,7 +456,8 @@
         <div class="quiz-title" id="question-title"></div>
         <div class="answer-group" id="answer-group"></div>
       </div>
-      
+      <div class="watermark">© エゲン vs テト 性格テスト</div>
+
     </div>
 
     <div id="result-card" class="result-card" style="display:none;">
@@ -638,6 +650,8 @@ function renderStartCard() {
     </div>
     
     <button class="answer-btn" style="margin: 24px auto 0 auto;display:block;width:140px;" onclick="startQuiz()">スタート</button>
+    <div class="watermark">© エゲン vs テト 性格テスト</div>
+
   `;
 }
 function startQuiz() {
@@ -671,6 +685,8 @@ function renderQuestionCard() {
   document.getElementById('quiz-card').innerHTML = `
     <div class="quiz-title">${currentQuestion + 1}. ${q.q}</div>
     <div class="answer-group">${btnHtml}</div>
+    <div class="watermark">© エゲン vs テト 性格テスト</div>
+
   `;
   updateProgress();
 }
@@ -711,7 +727,9 @@ function showResult() {
       <h3>他のタイプを見る</h3>
       <div class="other-types-list" id="otherTypeCards"></div>
       <div class="compat-section">
+      
         <label>友達や恋人との相性をチェック！</label>
+        
         <select id="inputMatchType">
           <option value="">相手のタイプを選択</option>
           <option value="エゲン女子">エゲン女子</option>
@@ -736,8 +754,10 @@ function showResult() {
         <button class="sns-btn" onclick="copyResult()">結果をコピー</button>
       </div>
     </div>
+    
     <button class="retry-btn" onclick="renderStartCard()">もう一度</button>
-    <div class="watermark">© エゲン vs テト 性格テスト</div>
+    
+    
   `;
   renderOtherTypeCards(resultType);
   renderCelebList(resultType);
@@ -826,6 +846,7 @@ function copyResult() {
     });
   }
 }
+
 
 // 모달 외부 클릭 닫기
 document.addEventListener('DOMContentLoaded', function() {
