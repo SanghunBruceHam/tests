@@ -404,6 +404,24 @@
       font-weight: 500;
       letter-spacing: -0.01em;
     }
+    #typeModalContainer {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0; top: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(25,32,40,0.22);
+  align-items: center;
+  justify-content: center;
+  transition: background 0.18s;
+}
+#typeModalContainer > div {
+  animation: modalIn 0.25s cubic-bezier(.36,1.23,.56,1) 1;
+}
+@keyframes modalIn {
+  0% { opacity:0; transform:translateY(36px) scale(.93);}
+  100%{ opacity:1; transform:translateY(0) scale(1);}
+}
   </style>
 </head>
 <body>
