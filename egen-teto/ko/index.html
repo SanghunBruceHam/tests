@@ -1,90 +1,641 @@
 <!DOCTYPE html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
-    <title>에겐 vs 테토 성향 테스트｜나의 성향과 찰떡궁합 이성 유형 찾기</title>
-    <meta name="description" content="에겐녀/테토녀/에겐남/테토남, 10문항 심리테스트로 나의 성향과 잘 어울리는 이성, 추천 직업까지 확인! 공유하기/복사 기능 완비, Z세대 트렌디 심리테스트 무료." />
-    <meta name="keywords" content="에겐 테토 테스트, 에겐녀, 테토녀, 에겐남, 테토남, 성향 테스트, 찰떡궁합, 심리테스트, 직업 추천, 이상형, 무료 심리테스트, 카카오톡 공유, 인스타그램 공유, SNS 테스트" />
-    
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="에겐 vs 테토 성향 테스트｜찰떡궁합 이상형까지!" />
-    <meta property="og:description" content="10문항으로 알아보는 내 성향과 찰떡궁합 이성 유형, 추천 직업! 결과 복사/공유 기능, 모바일 최적화 심리테스트." />
-    <meta property="og:image" content="https://tests.mahalohana-bruce.com/egen-teto/ko/thumbnail.png" />
-    <meta property="og:url" content="https://tests.mahalohana-bruce.com/egen-teto/ko/" />
-    
-    <!-- Twitter Card Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="에겐 vs 테토 성향 테스트" />
-    <meta name="twitter:description" content="내 성향/추천 직업/이상형, 10문항으로 초간단 진단! 바로 결과 복사/공유." />
-    <meta name="twitter:image" content="https://tests.mahalohana-bruce.com/egen-teto/ko/thumbnail.png" />
-    
-    <link rel="icon" href="./favicon.png" type="image/png" />
-    <link rel="canonical" href="https://tests.mahalohana-bruce.com/egen-teto/ko/" />
-    
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Gmarket+Sans:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-    <link href="https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/static/woff2/SUIT.css" rel="stylesheet">
-    
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-45VSGEM7EZ"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-45VSGEM7EZ');
-    </script>
-    
-    <!-- JSON-LD Structured Data -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "에겐 vs 테토 성향 테스트",
-      "description": "에겐녀/테토녀/에겐남/테토남, 10문항 심리테스트로 나의 성향과 잘 어울리는 이성, 추천 직업까지 확인!",
-      "url": "https://tests.mahalohana-bruce.com/egen-teto/ko/",
-      "applicationCategory": "LifestyleApplication",
-      "operatingSystem": "Any",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "KRW"
-      },
-      "author": {
-        "@type": "Person",
-        "name": "SanghunBruceHam"
-      },
-      "inLanguage": "ko-KR",
-      "keywords": "에겐 테토 테스트, 성향 테스트, 심리테스트, 찰떡궁합"
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>에겐 vs 테토 성향 테스트｜나의 성향과 찰떡궁합 이성 유형 찾기</title>
+  <meta name="description" content="에겐녀/테토녀/에겐남/테토남, 10문항 심리테스트로 나의 성향과 잘 어울리는 이성, 추천 직업까지 확인! 공유하기/복사 기능 완비, Z세대 트렌디 심리테스트 무료." />
+  <meta name="keywords" content="에겐 테토 테스트, 에겐녀, 테토녀, 에겐남, 테토남, 성향 테스트, 찰떡궁합, 심리테스트, 직업 추천, 이상형, 무료 심리테스트, Threads 공유, SNS 테스트" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="에겐 vs 테토 성향 테스트｜찰떡궁합 이상형까지!" />
+  <meta property="og:description" content="10문항으로 알아보는 내 성향과 찰떡궁합 이성 유형, 추천 직업! 결과 복사/공유 기능, 모바일 최적화 심리테스트." />
+  <meta property="og:image" content="https://tests.mahalohana-bruce.com/egen-teto/ko/thumbnail.png" />
+  <meta property="og:url" content="https://tests.mahalohana-bruce.com/egen-teto/ko/index.html" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="에겐 vs 테토 성향 테스트" />
+  <meta name="twitter:description" content="내 성향/추천 직업/이상형, 10문항으로 초간단 진단! 바로 결과 복사/공유." />
+  <meta name="twitter:image" content="https://tests.mahalohana-bruce.com/egen-teto/ko/thumbnail.png" />
+  <link rel="icon" href="https://tests.mahalohana-bruce.com/egen-teto/ko/favicon.png" />
+  <link rel="canonical" href="https://tests.mahalohana-bruce.com/egen-teto/ko/index.html" />
+  <link href="https://fonts.googleapis.com/css2?family=Gmarket+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/static/woff2/SUIT.css" rel="stylesheet">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-45VSGEM7EZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-45VSGEM7EZ');
+</script>
+  <script async custom-element="amp-ad" src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"></script>
+  <style>
+    :root {
+      --egen: #ff7eb3;
+      --teto: #8ac6ff;
+      --egen-soft: #ffe6f3;
+      --teto-soft: #e6f2ff;
+      --card-bg: #fff;
+      --bar-bg: #f3f3fa;
+      --btn-bg: #fff;
+      --btn-border: #ff7eb3;
+      --btn-color: #ff7eb3;
+      --btn-hover-bg: #ff7eb315;
+      --btn-hover-color: #e75480;
+      --btn-active-bg: #ff7eb340;
     }
-    </script>
-    
-    <!-- Google AdSense -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5508768187151867" crossorigin="anonymous"></script>
-    <script type="module" crossorigin src="./assets/index-zCtgUHeI.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-DOL7RTK1.css">
-  </head>
-  <body>
-    <div id="root"></div>
-    
-    <!-- Google AdSense Display Ad -->
-    <ins class="adsbygoogle"
-         style="display:block"
-         data-ad-client="ca-pub-5508768187151867"
-         data-ad-slot="8394292465"
-         data-ad-format="auto"
-         data-full-width-responsive="true"></ins>
-    <script>
-         (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
-    
-    
-  </body>
+    body {
+      font-family: 'Gmarket Sans', 'SUIT', 'Pretendard', 'Noto Sans KR', sans-serif;
+      background: linear-gradient(135deg, #FFDEE9, #B5FFFC);
+      max-width: 600px;
+      margin: auto;
+      padding: 24px 0 24px 0;
+    }
+    h1 {
+      font-size: 2.1rem;
+      text-align: center;
+      color: #222;
+      font-weight: 900;
+      margin-bottom: 14px;
+      letter-spacing: -0.02em;
+    }
+    .desc-link {
+      display: block;
+      text-align: right;
+      margin-bottom: 10px;
+      font-size: 1.07rem;
+      color: #4970f5;
+      text-decoration: underline;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      cursor: pointer;
+      transition: color .18s;
+    }
+    .desc-link:hover { color: var(--egen);}
+    #progress-bar {
+      height: 10px;
+      background: var(--egen);
+      width: 0%;
+      transition: width 0.3s;
+      margin-bottom: 16px;
+      border-radius: 6px;
+    }
+    .question, #result {
+      display: none;
+      margin-bottom: 18px;
+      padding: 28px 18px;
+      background: var(--card-bg);
+      border-radius: 20px;
+      box-shadow: 0 4px 22px #ff7eb315;
+      animation: fade 0.5s;
+    }
+    .question.active { display: block;}
+    .question p, .question {
+      font-size: 1.20rem;
+      font-weight: 700;
+      color: #363636;
+      margin-bottom: 16px;
+      letter-spacing: -0.01em;
+    }
+    .question label {
+      margin: 6px 0 0 2px;
+      font-size: 1.09rem;
+      font-weight: 600;
+      color: #555;
+      cursor: pointer;
+      letter-spacing: -0.01em;
+    }
+    .center-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 180px;
+      margin-top: 10px;
+    }
+    .center-box p, .center-box label, .center-box button {
+      text-align: center;
+      width: 100%;
+    }
+    .answer-btns, .scale-btns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 10px;
+    }
+    .answer-btns button, .scale-btns button, button, .share-btns button {
+      flex: 1 1 46%;
+      background: var(--btn-bg);
+      color: var(--btn-color);
+      font-size: 1.13rem;
+      font-weight: 700;
+      border: 2px solid var(--btn-border);
+      border-radius: 14px;
+      min-height: 46px;
+      margin: 0;
+      padding: 0;
+      box-shadow: none;
+      transition: background 0.13s, color 0.13s, border 0.13s, transform 0.09s;
+      cursor: pointer;
+      letter-spacing: -0.01em;
+      outline: none;
+      position: relative;
+      z-index: 1;
+    }
+    .scale-btns button {
+      border-color: var(--teto);
+      color: #2976e8;
+    }
+    .answer-btns button:hover, .scale-btns button:hover, button:hover, .share-btns button:hover {
+      background: var(--btn-hover-bg);
+      color: var(--btn-hover-color);
+      border-color: #e75480;
+      transform: scale(1.025);
+    }
+    button:active, .share-btns button:active {
+      background: var(--btn-active-bg);
+      color: #fff;
+      transform: scale(0.98);
+    }
+    button:focus, .share-btns button:focus {
+      outline: 2.5px solid #2976e8;
+      outline-offset: 2px;
+    }
+    #result-title {
+      color: var(--egen);
+      font-size: 1.37rem;
+      font-weight: 900;
+      margin-bottom: 10px;
+      text-align: center;
+      letter-spacing: -0.01em;
+    }
+    #result-mascot {
+      display: block;
+      text-align: center;
+      font-size: 2.3rem;
+      margin-bottom: 5px;
+    }
+    #result-description {
+      color: #444;
+      font-size: 1.12rem;
+      margin: 10px 0 12px 0;
+      text-align: center;
+      font-weight: 600;
+    }
+    #score-graph {
+      width: 98%;
+      margin: 17px auto 10px auto;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+    .score-bar {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+    .score-label {
+      width: 54px; font-size: 1.03rem; color: #555; font-weight: 700;
+    }
+    .bar-bg {
+      background: var(--bar-bg);
+      border-radius: 7px;
+      flex: 1;
+      height: 16px;
+      margin-right: 4px;
+      position: relative;
+      overflow: hidden;
+    }
+    .bar-egen, .bar-teto {
+      height: 100%; border-radius: 7px;
+      transition: width 0.65s cubic-bezier(.57,.21,.69,1.25);
+    }
+    .bar-egen { background: linear-gradient(90deg, #ff7eb3 40%, #ffa2c6 100%);}
+    .bar-teto { background: linear-gradient(90deg, #8ac6ff 40%, #3f72af 100%);}
+    .bar-score { font-size: 1.04rem; color: #888;}
+    #result-bestmatch {
+      color: #4970f5;
+      background: #e4eaff;
+      border-radius: 8px;
+      padding: 8px 0;
+      margin-bottom: 8px;
+      font-size: 1.01rem;
+      font-weight: 700;
+      text-align: center;
+    }
+    #result-recommendation {
+      color: #22B573;
+      background: #e8faf2;
+      border-radius: 8px;
+      padding: 8px 0;
+      margin-bottom: 8px;
+      font-size: 1.01rem;
+      font-weight: 700;
+      text-align: center;
+    }
+    .result-music, .result-movie {
+      display: block;
+      text-align: center;
+      width: 100%;
+      margin-bottom: 8px;
+      padding: 8px 0 8px 0;
+      border-radius: 8px;
+      font-size: 1.01rem;
+      font-weight: 700;
+    }
+    .result-music { background: var(--egen-soft); color: #e75480;}
+    .result-movie { background: var(--teto-soft); color: #2976e8;}
+    .share-btns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin: 24px 0 0 0;
+    }
+    .share-btns button {
+      margin: 0;
+      min-width: 0;
+      min-height: 44px;
+      font-size: 1.08rem;
+      font-weight: 700;
+      background: #fff;
+      color: var(--egen);
+      border: 2px solid var(--egen);
+      border-radius: 14px;
+    }
+    .watermark {
+      text-align: center;
+      color: #aaa;
+      font-size: 0.97rem;
+      margin-top: 16px;
+      user-select: text;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+    }
+    .retry-btn {
+      display: block;
+      width: 120px;
+      margin: 22px auto 0 auto;
+      background: #ffe6f3;
+      color: #e75480;
+      border: 2px solid #e75480;
+      border-radius: 15px;
+      font-size: 1.13rem;
+      font-weight: 800;
+      min-height: 46px;
+      box-shadow: none;
+      transition: background 0.13s, color 0.13s, border 0.13s, transform 0.09s;
+      cursor: pointer;
+      letter-spacing: -0.01em;
+    }
+    .retry-btn:hover {
+      background: #ffb3d9;
+      color: #fff;
+      border-color: #ff7eb3;
+      transform: scale(1.03);
+    }
+    @media (max-width: 450px) {
+      h1 { font-size: 1.24rem; }
+      .question, .question p, #result-title { font-size: 1.04rem; }
+      .question, #result { padding: 16px 6px; }
+      #result-description, #result-bestmatch, #result-recommendation, .watermark { font-size: 0.92rem; }
+      #result-mascot { font-size: 1.6rem; }
+      .share-btns button { font-size: 0.99rem; min-height: 40px;}
+      .retry-btn { width: 90px; font-size: 1.01rem; min-height: 38px;}
+    }
+    @keyframes fade {
+      from { opacity: 0; transform: translateY(18px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+  </style>
+</head>
+<body>
+  <h1>에겐 vs 테토 성향 테스트</h1>
+  <div id="progress-bar"></div>
+  <div id="test">
+    <div class="question active" id="q0">
+      <a href="https://tests.mahalohana-bruce.com/egen-teto/ko/about.html" class="desc-link" target="_blank">에겐 vs 테토 성향 테스트란?</a>
+      <div class="center-box">
+        <p>성별을 선택하세요:</p>
+        <label><input type="radio" name="gender" value="female" aria-label="여성" /> 여성</label>
+        <label><input type="radio" name="gender" value="male" aria-label="남성" /> 남성</label><br>
+        <button onclick="nextQuestion()">시작하기</button>
+      </div>
+    </div>
+    <div id="dynamic-questions"></div>
+  </div>
+  <div id="result">
+    <div id="result-mascot"></div>
+    <h2 id="result-title"></h2>
+    <div id="result-description"></div>
+    <div id="score-graph"></div>
+    <div id="result-bestmatch"></div>
+    <div id="result-recommendation"></div>
+    <div class="result-music" id="result-music"></div>
+    <div class="result-movie" id="result-movie"></div>
+    <div class="share-btns">
+      <button onclick="shareResult('twitter')">X(트위터)에 공유</button>
+      <button onclick="shareResult('facebook')">페이스북에 공유</button>
+      <button onclick="shareResult('threads')">쓰레드 공유</button>
+      <button onclick="copyResult()">결과 복사하기</button>
+    </div>
+    <button class="retry-btn" onclick="location.reload()">다시하기</button>
+    <div class="watermark">
+      © 에겐 vs 테토 성향 테스트 | <a href="https://tests.mahalohana-bruce.com/egen-teto/ko/index.html" style="color:#bbb;text-decoration:underline;" target="_blank">tests.mahalohana-bruce.com</a>
+    </div>
+  </div>
+  <script>
+    // 질문 은행
+    const questionBank = [
+      {type:'scale', q:"다른 사람의 감정에 잘 공감하는 편이다."},
+      {type:'scale', q:"혼자만의 시간이 필요하다."},
+      {type:'scale', q:"계획적으로 일하는 것을 선호한다."},
+      {type:'scale', q:"새로운 일에 도전하는 걸 두려워하지 않는다."},
+      {type:'scale', q:"감정을 솔직하게 표현한다."},
+      {type:'scale', q:"타인의 도움을 자주 요청한다."},
+      {type:'scale', q:"리더 역할을 맡는 걸 즐긴다."},
+      {type:'scale', q:"결정을 내릴 때 신중한 편이다."},
+      {type:'scale', q:"목표를 이루기 위해 끈기있게 노력한다."},
+      {type:'scale', q:"감정에 쉽게 흔들린다."},
+      {type:'yn', q:"내향적인 편이다."},
+      {type:'yn', q:"문제가 생기면 즉시 행동에 옮긴다."},
+      {type:'yn', q:"감성적인 예술, 음악, 그림을 좋아한다."},
+      {type:'yn', q:"사람들과 협력하는 것을 즐긴다."},
+      {type:'yn', q:"스스로 동기부여가 잘 된다."},
+      {type:'yn', q:"감정보다 논리를 더 중시한다."},
+      {type:'yn', q:"위기 상황에서도 침착하다."},
+      {type:'yn', q:"타인의 기대에 부응하려 노력한다."},
+      {type:'yn', q:"즉흥적으로 여행을 떠나는 걸 좋아한다."},
+      {type:'yn', q:"감정이 얼굴에 잘 드러난다."},
+      {type:'yn', q:"친구에게 조언해주는 걸 좋아한다."},
+      {type:'yn', q:"긴장감 있는 상황에서 실력이 더 나온다."},
+      {type:'yn', q:"사람들 앞에서 발표하는 걸 두려워하지 않는다."},
+      {type:'yn', q:"혼자서 하는 취미를 여러 개 갖고 있다."},
+      {type:'yn', q:"목표를 달성했을 때 스스로를 칭찬한다."},
+      {type:'yn', q:"새로운 친구 사귀는 걸 좋아한다."},
+      {type:'yn', q:"실수해도 금방 회복하는 편이다."},
+      {type:'yn', q:"누군가의 고민을 들어주는 게 어렵지 않다."},
+      {type:'yn', q:"내가 세운 계획은 꼭 지키는 편이다."},
+    ];
+    let currentQuestion = 0;
+    let egenScore = 0;
+    let tetoScore = 0;
+    const totalQuestions = 10;
+    let pickedQuestions = [];
+
+    // 결과 맵 - 음악/영화 배열화!
+    const resultMap = {
+      '에겐녀': {
+        mascot: "💖",
+        title: '감성공감력 높은 에겐녀',
+        description: `당신은 주변 사람들에게 ‘상담소장’, ‘힐링 보스’라고 불릴 만큼 공감력이 뛰어난 타입이에요.
+감정을 잘 읽고 표현해서, 친구의 고민에 자연스럽게 귀 기울여주고 때론 카페 투어, 플리마켓, 전시회도 즐기는 트렌드세터.
+자신만의 취향과 ‘덕질’도 확실한 편! SNS에 하루하루의 소소한 행복, 예쁜 순간을 기록하며 감성을 나누는 게 잘 어울려요.
+“친근함, 귀여움, 분위기 메이커, 위로해주는 친구”라는 말이 꼭 맞아요.`,
+        recommend: '추천 직업: SNS마케터, 상담사, 카페운영자, 일러스트레이터',
+        bestmatch: '찰떡궁합: 테토남 🚀 (믿음직한 리더형)',
+        music: [
+          'NewJeans "Super Shy"', 'IVE "I AM"', '세븐틴 "손오공"',
+          'AKMU "Love Lee"', '지수 "꽃"', 'aespa "Spicy"'
+        ],
+        movie: [
+          "콘크리트 유토피아", "12.12: 더 데이", "스즈메의 문단속",
+          "인어공주", "20세기 소녀", "드림"
+        ],
+        color: '#ff7eb3'
+      },
+      '테토녀': {
+        mascot: "💼",
+        title: '카리스마 넘치는 테토녀',
+        description: `실행력과 추진력이 뛰어나서 “언니만 믿고 따라가!” 소리를 자주 듣는 리더형이에요.
+새로운 모임, 행사, 여행도 직접 계획하고 추진하는데, 친구들에게는 든든한 기둥 같은 존재!
+겉으론 쿨하고 당당해 보이지만, 속으론 따뜻한 위로와 조언을 아끼지 않죠.
+야무지고 현실감각도 뛰어나서, 위기 상황에서도 침착하게 해결하는 능력자입니다.`,
+        recommend: '추천 직업: 행사기획자, 콘텐츠 디렉터, 마케터, 변호사',
+        bestmatch: '찰떡궁합: 에겐남 🎨 (따뜻하고 감성적인 남자)',
+        music: [
+          '(여자)아이들 "퀸카"', 'NewJeans "ETA"', 'ZEROBASEONE "In Bloom"',
+          '임영웅 "사랑은 늘 도망가"', '아이브 "After LIKE"', '태연 "INVU"'
+        ],
+        movie: [
+          "밀수", "12.12: 더 데이", "범죄도시3",
+          "극한직업", "헌트", "완벽한 타인"
+        ],
+        color: '#8ac6ff'
+      },
+      '에겐남': {
+        mascot: "🎨",
+        title: '감수성 풍부한 에겐남',
+        description: `조용하지만 남다른 감수성과 창의력이 빛나는 타입!
+애니, 음악, 영화, 그림 등 자기만의 ‘덕질’을 진심으로 즐기고, 소수의 진짜 친구들과 깊은 대화를 나누는 걸 좋아해요.
+친구들에게는 “마음이 편안해지는 사람”, “내 얘기 잘 들어주는 친구”로 통하고, 새로운 아이디어로 팀에 활력을 불어넣기도 합니다.
+때로는 내성적인 듯 보여도, 관심사에는 열정적이고 진중해요.`,
+        recommend: '추천 직업: 아티스트, 심리상담사, 디자이너, 웹툰작가',
+        bestmatch: '찰떡궁합: 테토녀 💼 (야무진 추진형 여성)',
+        music: [
+          '폴킴 "모든 날, 모든 순간"', '잔나비 "주저하는 연인들을 위해"',
+          '아이유 "Love wins all"', '혁오 "TOMBOY"', '임한별 "이별하러 가는 길"'
+        ],
+        movie: [
+          "라라랜드", "헤어질 결심", "드림",
+          "소울", "20세기 소녀", "뮤직 앤 리얼리티"
+        ],
+        color: '#ff7eb3'
+      },
+      '테토남': {
+        mascot: "🚀",
+        title: '리더십 넘치는 테토남',
+        description: `결단력 있고, 도전정신이 강해 어떤 모임에서도 자연스럽게 리더 역할을 맡아요.
+일도 사랑도 주도적으로 이끌고, 위기에도 흔들림 없는 ‘멋짐’으로 주목받는 스타일!
+운동, 여행, 자기계발 등 다양한 활동에 적극적이며, 목표를 위해 꾸준히 달리는 ‘실행력 끝판왕’.
+친구들에게는 “믿고 의지할 수 있는 사람”, “일 잘하는 친구”라는 인상을 많이 줍니다.`,
+        recommend: '추천 직업: 창업가, 마케팅팀장, 트레이너, 팀 리더',
+        bestmatch: '찰떡궁합: 에겐녀 💖 (따뜻한 공감형 여성)',
+        music: [
+          '지코 "새삥"', '아이브 "Kitsch"', '임영웅 "Polaroid"',
+          'aespa "Drama"', '방탄소년단 "Butter"', 'NCT DREAM "Candy"'
+        ],
+        movie: [
+          "범죄도시3", "12.12: 더 데이", "콘크리트 유토피아",
+          "탑건 매버릭", "국제시장", "드림", "극한직업"
+        ],
+        color: '#8ac6ff'
+      }
+    };
+
+    function shuffle(arr) {
+      let a = arr.slice();
+      for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+      }
+      return a;
+    }
+
+    function renderQuestions() {
+      pickedQuestions = shuffle(questionBank).slice(0, totalQuestions);
+      let html = '';
+      pickedQuestions.forEach((q, idx) => {
+        if(q.type === 'scale') {
+          html += `<div class="question" id="q${idx+1}"><p>${idx+1}. ${q.q}</p>
+            <div class="scale-btns">
+              <button onclick="answer(${idx+1}, 2)">매우 그렇다</button>
+              <button onclick="answer(${idx+1}, 1)">약간 그렇다</button>
+              <button onclick="answer(${idx+1}, 0)">중간</button>
+              <button onclick="answer(${idx+1}, -1)">약간 아니다</button>
+              <button onclick="answer(${idx+1}, -2)">전혀 아니다</button>
+            </div>
+          </div>`;
+        } else {
+          html += `<div class="question" id="q${idx+1}"><p>${idx+1}. ${q.q}</p>
+            <div class="answer-btns">
+              <button onclick="answer(${idx+1}, 1)">예</button>
+              <button onclick="answer(${idx+1}, -1)">아니오</button>
+            </div>
+          </div>`;
+        }
+      });
+      document.getElementById('dynamic-questions').innerHTML = html;
+    }
+
+    function updateProgress() {
+      document.getElementById("progress-bar").style.width = (currentQuestion / totalQuestions) * 100 + "%";
+    }
+
+    function nextQuestion() {
+      if (currentQuestion === 0) {
+        const gender = document.querySelector('input[name="gender"]:checked');
+        if (!gender) {
+          alert("성별을 선택해주세요.");
+          return;
+        }
+        document.getElementById("q0").classList.remove("active");
+        document.getElementById("q1").classList.add("active");
+        currentQuestion++;
+        updateProgress();
+        return;
+      }
+    }
+
+    function answer(qIdx, score) {
+      if ((qIdx-1) % 2 === 0) {
+        egenScore += score;
+      } else {
+        tetoScore += score;
+      }
+      document.getElementById(`q${qIdx}`).classList.remove("active");
+      if (qIdx < totalQuestions) {
+        document.getElementById(`q${qIdx+1}`).classList.add("active");
+        currentQuestion++;
+        updateProgress();
+      } else {
+        showResult();
+      }
+    }
+
+    function showResult() {
+      const egenNorm = egenScore + 10;
+      const tetoNorm = tetoScore + 10;
+      const egenPct = Math.max(0, Math.min(100, Math.round((egenNorm / (egenNorm + tetoNorm)) * 100)));
+      const tetoPct = 100 - egenPct;
+
+      const gender = document.querySelector('input[name="gender"]:checked');
+      let resultType;
+      if (!gender) return;
+      if (gender.value === "female") {
+        resultType = egenPct > tetoPct ? "에겐녀" : "테토녀";
+      } else {
+        resultType = egenPct > tetoPct ? "에겐남" : "테토남";
+      }
+      const result = resultMap[resultType];
+
+      // 음악/영화 랜덤 1개씩 뽑기
+      const musicArr = result.music;
+      const movieArr = result.movie;
+      const musicPick = Array.isArray(musicArr) ? musicArr[Math.floor(Math.random() * musicArr.length)] : musicArr;
+      const moviePick = Array.isArray(movieArr) ? movieArr[Math.floor(Math.random() * movieArr.length)] : movieArr;
+
+      document.getElementById("result-title").innerText = result.title;
+      document.getElementById("result-mascot").innerText = result.mascot;
+      document.getElementById("result-description").innerText = result.description;
+      document.getElementById("result-bestmatch").innerText = result.bestmatch;
+      document.getElementById("result-recommendation").innerText = result.recommend;
+      document.getElementById("result-music").innerText = "추천 음악: " + musicPick;
+      document.getElementById("result-movie").innerText = "추천 영화: " + moviePick;
+
+      document.getElementById("score-graph").innerHTML =
+        `<div class="score-bar"><span class="score-label">에겐</span>
+          <div class="bar-bg"><div class="bar-egen" style="width:${egenPct}%;"></div></div>
+          <span class="bar-score">${egenPct}%</span>
+        </div>
+        <div class="score-bar"><span class="score-label">테토</span>
+          <div class="bar-bg"><div class="bar-teto" style="width:${tetoPct}%;"></div></div>
+          <span class="bar-score">${tetoPct}%</span>
+        </div>`;
+
+      document.getElementById("test").style.display = "none";
+      document.getElementById("result").style.display = "block";
+    }
+
+    function shareResult(platform) {
+      const title = document.getElementById("result-title")?.innerText || "";
+      const url = encodeURIComponent(window.location.href);
+      const text = encodeURIComponent(title + ' - 나도 테스트!');
+      if (platform === "twitter") {
+        window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank');
+      } else if (platform === "facebook") {
+        window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
+      } else if (platform === "threads") {
+        window.open(`https://www.threads.net/intent/post?text=${text}%20${url}`, '_blank');
+      }
+    }
+    function copyResult() {
+      const title = document.getElementById("result-title")?.innerText || "";
+      const mascot = document.getElementById("result-mascot")?.innerText || "";
+      const description = document.getElementById("result-description")?.innerText || "";
+      const bestmatch = document.getElementById("result-bestmatch")?.innerText || "";
+      const recommendation = document.getElementById("result-recommendation")?.innerText || "";
+      const music = document.getElementById("result-music")?.innerText || "";
+      const movie = document.getElementById("result-movie")?.innerText || "";
+      const link = window.location.href;
+      const source = "\n\n출처: 에겐 vs 테토 성향 테스트 (tests.mahalohana-bruce.com/egen-teto/ko/index.html)";
+      const text = `${mascot} ${title}\n${description}\n${bestmatch}\n${recommendation}\n${music}\n${movie}\n테스트 바로가기: ${link}${source}`;
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(text).then(function() {
+          alert("결과가 복사되었습니다!");
+        }, function() {
+          alert("복사에 실패했습니다. 다시 시도해 주세요.");
+        });
+      } else {
+        const temp = document.createElement("textarea");
+        temp.value = text;
+        document.body.appendChild(temp);
+        temp.select();
+        document.execCommand("copy");
+        document.body.removeChild(temp);
+        alert("결과가 복사되었습니다!");
+      }
+    }
+
+    renderQuestions();
+  </script>
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5508768187151867"
+     crossorigin="anonymous"></script>
+  <ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-5508768187151867"
+     data-ad-slot="8394292465"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+  <script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  <amp-ad width="100vw" height="320"
+     type="adsense"
+     data-ad-client="ca-pub-5508768187151867"
+     data-ad-slot="8394292465"
+     data-auto-format="rspv"
+     data-full-width="">
+  <div overflow=""></div>
+  </amp-ad>
+</body>
 </html>
