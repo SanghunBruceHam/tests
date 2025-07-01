@@ -1,4 +1,3 @@
-
 /* 에겐 테토 테스트 전용 스타일 - 압축 최적화 버전 */
 *{margin:0;padding:0;box-sizing:border-box}
 
@@ -497,6 +496,429 @@ h1{
   border-color:#dee2e6
 }
 
+/* 키보드 네비게이션 개선 */
+.option:focus,
+.gender-option:focus {
+  outline: 3px solid #ff6b9d;
+  outline-offset: 2px;
+}
+
+/* 이미지 최적화 */
+.optimized-image {
+  max-width: 100%;
+  height: auto;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.optimized-image.loading {
+  opacity: 0.5;
+  filter: blur(2px);
+}
+
+.optimized-image.loaded {
+  opacity: 1;
+  filter: none;
+}
+
+.optimized-image.error {
+  opacity: 0.7;
+  filter: grayscale(100%);
+}
+
+.image-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.image-container.image-loading::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  z-index: 1;
+}
+
+.image-container.loaded::before {
+  display: none;
+}
+
+/* WebP 지원 감지 */
+.webp .fallback-image {
+  display: none;
+}
+
+.no-webp .webp-image {
+  display: none;
+}
+
+/* 적응형 이미지 */
+@media (max-width: 768px) {
+  .desktop-image {
+    display: none;
+  }
+
+  .mobile-image {
+    display: block;
+  }
+}
+
+@media (min-width: 769px) {
+  .desktop-image {
+    display: block;
+  }
+
+  .mobile-image {
+    display: none;
+  }
+}
+
+/* 이미지 스켈레톤 로딩 */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* 썸네일 최적화 */
+.thumbnail-container {
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto 20px;
+  aspect-ratio: 16/9;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.thumbnail-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.thumbnail-container:hover .thumbnail-image {
+  transform: scale(1.05);
+}
+
+/* 고급 애니메이션 효과 */
+@keyframes questionSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes questionSlideOut {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+}
+
+@keyframes questionTransition {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.3;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes countUp {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(-5px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes progressPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 107, 157, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(255, 107, 157, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 107, 157, 0);
+  }
+}
+
+@keyframes sparkle {
+  0% {
+    opacity: 0;
+    transform: scale(0) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1) rotate(180deg);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0) rotate(360deg);
+  }
+}
+
+@keyframes resultCountUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.8);
+  }
+  60% {
+    opacity: 0.8;
+    transform: translateY(-10px) scale(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes floatIn {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* 스파클 효과 */
+.sparkle {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: radial-gradient(circle, #ffd700, #ffeb3b);
+  border-radius: 50%;
+  animation: sparkle 0.8s ease-out forwards;
+  pointer-events: none;
+  z-index: 100;
+}
+
+.sparkle::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: radial-gradient(circle, rgba(255, 215, 0, 0.3), transparent);
+  border-radius: 50%;
+}
+
+/* 선택 효과 개선 */
+.option.selecting {
+  animation: selectingPulse 0.2s ease-in-out;
+  transform: scale(0.98);
+}
+
+@keyframes selectingPulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 4px 15px rgba(255, 107, 157, 0.2);
+  }
+  50% {
+    transform: scale(0.98);
+    box-shadow: 0 8px 25px rgba(255, 107, 157, 0.4);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 4px 15px rgba(255, 107, 157, 0.2);
+  }
+}
+
+/* 질문 애니메이션 */
+.question-section {
+  animation-fill-mode: both;
+}
+
+.question-text {
+  animation: questionSlideIn 0.6s ease-out;
+  animation-delay: 0.2s;
+  animation-fill-mode: both;
+}
+
+.option {
+  animation: floatIn 0.5s ease-out;
+  animation-fill-mode: both;
+}
+
+.option:nth-child(1) { animation-delay: 0.4s; }
+.option:nth-child(2) { animation-delay: 0.5s; }
+.option:nth-child(3) { animation-delay: 0.6s; }
+.option:nth-child(4) { animation-delay: 0.7s; }
+
+/* 결과 화면 애니메이션 */
+.result-section {
+  animation: scaleIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.result-emoji {
+  animation: resultCountUp 1s ease-out;
+  animation-delay: 0.3s;
+  animation-fill-mode: both;
+}
+
+.result-title {
+  animation: floatIn 0.6s ease-out;
+  animation-delay: 0.5s;
+  animation-fill-mode: both;
+}
+
+.result-description {
+  animation: floatIn 0.6s ease-out;
+  animation-delay: 0.7s;
+  animation-fill-mode: both;
+}
+
+.detail-item {
+  animation: floatIn 0.5s ease-out;
+  animation-fill-mode: both;
+}
+
+.detail-item:nth-child(1) { animation-delay: 0.9s; }
+.detail-item:nth-child(2) { animation-delay: 1.0s; }
+.detail-item:nth-child(3) { animation-delay: 1.1s; }
+.detail-item:nth-child(4) { animation-delay: 1.2s; }
+
+/* 로딩 버튼 효과 */
+.btn.loading {
+  position: relative;
+  color: transparent;
+}
+
+.btn.loading::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 20px;
+  height: 20px;
+  margin: -10px 0 0 -10px;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  border-top-color: transparent;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* 성별 선택 애니메이션 */
+.gender-option {
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.gender-option:hover {
+  transform: translateY(-3px) scale(1.02);
+}
+
+.gender-option.selected {
+  animation: genderSelected 0.5s ease-out;
+}
+
+@keyframes genderSelected {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1.05);
+  }
+}
+
+/* 진행률 바 개선 */
+.progress-fill {
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  animation: progressShine 2s infinite;
+}
+
+@keyframes progressShine {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(200%);
+  }
+}
+
+/* 모바일 햅틱 피드백 시각 효과 */
+.haptic-feedback {
+  animation: hapticPulse 0.1s ease-out;
+}
+
+@keyframes hapticPulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
 /* 이미지 최적화 개선 */
 .optimized-image{
   width:100%;
@@ -675,7 +1097,7 @@ h1{
   h1{font-size:1.5rem}
   .question-text{font-size:1.1rem}
   .share-buttons{grid-template-columns:1fr}
-  
+
   /* 모바일에서 터치 최적화 */
   .option{
     padding:18px 20px;
