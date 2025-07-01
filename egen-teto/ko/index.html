@@ -1,2 +1,2242 @@
-Analysis: The code implements enhanced error handling with network retry logic and user-friendly error messages, PWA functionality including service worker registration, install prompts, and update notifications.
-</tool_code>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>에겐 vs 테토 성향 테스트｜나의 성격과 찰떡궁합 이성 타입 진단</title>
+  <meta name="description" content="에겐녀/테토녀/에겐남/테토남, 10문항 심리테스트로 나의 성격과 잘 맞는 이성 타입, 적성 직업도 체크！SNS 공유·복사 기능 완비, Z세대 인기 진단·완전 무료." />
+  <meta name="keywords" content="에겐테토테스트, 에겐녀, 테토녀, 에겐남, 테토남, 성향진단, 궁합진단, 심리테스트, 적성진단, 이상형, 무료진단, 쓰레드 공유, SNS테스트" />
+
+  <!-- Enhanced Open Graph Meta Tags -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Tests - Mahalohana Bruce" />
+  <meta property="og:title" content="에겐 vs 테토 성향 테스트｜찰떡궁합 이성 타입 진단！" />
+  <meta property="og:description" content="🎭 에겐녀/테토녀/에겐남/테토남 중 나는? 10문항 심리테스트로 성격분석 + 찰떡궁합 이성타입 + 적성직업까지！ 완전무료 ✨" />
+  <meta property="og:url" content="https://tests.mahalohana-bruce.com/egen-teto/ko/" />
+  <meta property="og:locale" content="ko_KR" />
+  <meta property="og:locale:alternate" content="ja_JP" />
+  <meta property="og:locale:alternate" content="en_US" />
+
+  <!-- Multiple image formats for better compatibility -->
+  <meta property="og:image" content="https://tests.mahalohana-bruce.com/egen-teto/ko/thumbnail.webp" />
+  <meta property="og:image:secure_url" content="https://tests.mahalohana-bruce.com/egen-teto/ko/thumbnail.webp" />
+  <meta property="og:image:type" content="image/webp" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="에겐 vs 테토 성향 테스트 - 나의 성격과 찰떡궁합 이성 타입을 알아보는 심리테스트" />
+
+  <!-- Fallback PNG image -->
+  <meta property="og:image" content="https://tests.mahalohana-bruce.com/egen-teto/ko/thumbnail.png" />
+  <meta property="og:image:secure_url" content="https://tests.mahalohana-bruce.com/egen-teto/ko/thumbnail.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="에겐 vs 테토 성향 테스트 썸네일" />
+
+  <!-- Additional Open Graph properties -->
+  <meta property="og:updated_time" content="2024-12-31T23:59:59+09:00" />
+  <meta property="og:see_also" content="https://tests.mahalohana-bruce.com/ko/" />
+  <meta property="og:see_also" content="https://tests.mahalohana-bruce.com/ja/" />
+  <meta property="og:see_also" content="https://tests.mahalohana-bruce.com/en/" />
+
+  <!-- Article specific Open Graph -->
+  <meta property="article:published_time" content="2024-01-01T00:00:00+09:00" />
+  <meta property="article:modified_time" content="2024-12-31T23:59:59+09:00" />
+  <meta property="article:author" content="Tests - Mahalohana Bruce" />
+  <meta property="article:section" content="심리테스트" />
+  <meta property="article:tag" content="에겐녀" />
+  <meta property="article:tag" content="테토녀" />
+  <meta property="article:tag" content="에겐남" />
+  <meta property="article:tag" content="테토남" />
+  <meta property="article:tag" content="성향테스트" />
+  <meta property="article:tag" content="심리테스트" />
+  <meta property="article:tag" content="궁합진단" />
+  <meta property="article:tag" content="성격테스트" />
+
+  <!-- Enhanced Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@tests_bruce" />
+  <meta name="twitter:creator" content="@tests_bruce" />
+  <meta name="twitter:title" content="에겐 vs 테토 성향 테스트 🎭" />
+  <meta name="twitter:description" content="에겐녀? 테토녀? 에겐남? 테토남? 10문항으로 알아보는 나의 성격과 찰떡궁합 이성 타입！✨ 완전무료 심리테스트" />
+  <meta name="twitter:image" content="https://tests.mahalohana-bruce.com/egen-teto/ko/thumbnail.webp" />
+  <meta name="twitter:image:alt" content="에겐 vs 테토 성향 테스트 - 10문항으로 알아보는 성격 진단과 이상형 찾기" />
+  <meta name="twitter:url" content="https://tests.mahalohana-bruce.com/egen-teto/ko/" />
+
+  <!-- Twitter App Card (for mobile apps) -->
+  <meta name="twitter:app:name:iphone" content="에겐 vs 테토 테스트" />
+  <meta name="twitter:app:name:ipad" content="에겐 vs 테토 테스트" />
+  <meta name="twitter:app:name:googleplay" content="에겐 vs 테토 테스트" />
+  <meta name="twitter:app:url:iphone" content="https://tests.mahalohana-bruce.com/egen-teto/ko/" />
+  <meta name="twitter:app:url:ipad" content="https://tests.mahalohana-bruce.com/egen-teto/ko/" />
+  <meta name="twitter:app:url:googleplay" content="https://tests.mahalohana-bruce.com/egen-teto/ko/" />
+
+  <!-- Additional social media platforms -->
+  <!-- Kakao (KakaoTalk) -->
+  <meta property="kakao:title" content="에겐 vs 테토 성향 테스트" />
+  <meta property="kakao:description" content="🎭 나는 에겐녀? 테토녀? 10문항으로 알아보는 성격테스트！" />
+  <meta property="kakao:image" content="https://tests.mahalohana-bruce.com/egen-teto/ko/thumbnail.webp" />
+
+  <!-- Line (popular in Japan/Korea) -->
+  <meta property="line:title" content="에겐 vs 테토 성향 테스트" />
+  <meta property="line:description" content="에겐녀/테토녀 성향 테스트로 나의 성격과 이상형 찾기！" />
+  <meta property="line:image" content="https://tests.mahalohana-bruce.com/egen-teto/ko/thumbnail.webp" />
+
+  <!-- Pinterest -->
+  <meta name="pinterest-rich-pin" content="true" />
+  <meta property="pinterest:title" content="에겐 vs 테토 성향 테스트" />
+  <meta property="pinterest:description" content="에겐녀? 테토녀? 10문항 심리테스트로 성격분석하기" />
+  <meta property="pinterest:image" content="https://tests.mahalohana-bruce.com/egen-teto/ko/thumbnail.webp" />
+
+  <!-- LinkedIn -->
+  <meta property="linkedin:title" content="에겐 vs 테토 성향 테스트" />
+  <meta property="linkedin:description" content="성격분석과 이상형 찾기가 가능한 심리테스트" />
+  <meta property="linkedin:image" content="https://tests.mahalohana-bruce.com/egen-teto/ko/thumbnail.webp" />
+
+  <!-- WhatsApp -->
+  <meta property="whatsapp:title" content="에겐 vs 테토 성향 테스트" />
+  <meta property="whatsapp:description" content="🎭 에겐녀/테토녀 중 나는? 재미있는 성격테스트！" />
+  <meta property="whatsapp:image" content="https://tests.mahalohana-bruce.com/egen-teto/ko/thumbnail.webp" />
+
+  <!-- Icons with WebP support -->
+  <link rel="canonical" href="https://tests.mahalohana-bruce.com/egen-teto/ko/" />
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="/egen-teto/ko/favicon.webp" type="image/webp" />
+  <link rel="icon" href="/egen-teto/ko/favicon.png" type="image/png" />
+
+  <!-- Preload critical images with WebP fallback -->
+  <link rel="preload" as="image" href="/egen-teto/ko/thumbnail.webp" type="image/webp" media="(min-width: 1px)" />
+  <link rel="preload" as="image" href="/egen-teto/ko/thumbnail.png" type="image/png" media="(min-width: 1px)" />
+
+  <!-- Responsive image preloads -->
+  <link rel="preload" as="image" href="/egen-teto/ko/thumbnail-mobile.webp" type="image/webp" media="(max-width: 768px)" />
+  <link rel="preload" as="image" href="/egen-teto/ko/thumbnail-mobile.png" type="image/png" media="(max-width: 768px)" />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Gmarket+Sans:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS 분리로 성능 최적화 -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- AMP AdSense -->
+  <script async custom-element="amp-ad" src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"></script>
+  <!-- 향상된 JSON-LD 구조화된 데이터 -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": ["WebSite", "Game", "QuestionAndAnswerSection"],
+    "name": "에겐 vs 테토 성향 테스트",
+    "alternateName": ["에겐테토테스트", "에겐녀테토녀테스트", "성향진단"],
+    "description": "당신은 에겐파? 테토파? 10문항으로 알아보는 성격 심리테스트로 찰떡궁합 이성 타입과 적성 직업까지 진단해보세요!",
+    "url": "https://tests.mahalohana-bruce.com/egen-teto/ko/",
+    "sameAs": [
+      "https://tests.mahalohana-bruce.com/egen-teto/ja/",
+      "https://tests.mahalohana-bruce.com/en/"
+    ],
+    "inLanguage": "ko-KR",
+    "availableLanguage": ["ko-KR", "ja-JP", "en-US"],
+    "genre": ["심리테스트", "성격진단", "궁합테스트"],
+    "keywords": "에겐녀,테토녀,에겐남,테토남,성향테스트,심리테스트,궁합진단,성격테스트,무료진단",
+    "gamePlatform": ["웹 브라우저", "모바일", "태블릿"],
+    "numberOfPlayers": "1",
+    "typicalAgeRange": "13-99",
+    "contentRating": "일반",
+    "accessibilityFeature": [
+      "키보드 네비게이션",
+      "스크린 리더 지원", 
+      "고대비 모드",
+      "터치 인터페이스",
+      "모바일 최적화"
+    ],
+    "accessibilityControl": [
+      "키보드",
+      "터치스크린",
+      "마우스"
+    ],
+    "isAccessibleForFree": true,
+    "hasPart": [
+      {
+        "@type": "Question",
+        "name": "에겐 vs 테토 성향 질문",
+        "text": "10개의 성격 분석 질문으로 구성된 심리테스트",
+        "answerCount": 2,
+        "suggestedAnswer": [
+          {
+            "@type": "Answer",
+            "text": "에겐 성향 답변"
+          },
+          {
+            "@type": "Answer", 
+            "text": "테토 성향 답변"
+          }
+        ]
+      }
+    ],
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "KRW",
+      "availability": "https://schema.org/InStock",
+      "validFrom": "2024-01-01",
+      "priceValidUntil": "2025-12-31"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Tests - Mahalohana Bruce",
+      "url": "https://tests.mahalohana-bruce.com/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://tests.mahalohana-bruce.com/favicon.png",
+        "width": 512,
+        "height": 512
+      },
+      "sameAs": [
+        "https://tests.mahalohana-bruce.com/ko/",
+        "https://tests.mahalohana-bruce.com/ja/",
+        "https://tests.mahalohana-bruce.com/en/"
+      ]
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "Tests - Mahalohana Bruce",
+      "url": "https://tests.mahalohana-bruce.com/"
+    },
+    "creator": {
+      "@type": "Organization",
+      "name": "Tests - Mahalohana Bruce"
+    },
+    "datePublished": "2024-01-01T00:00:00+09:00",
+    "dateModified": "2024-12-31T23:59:59+09:00",
+    "thumbnailUrl": "https://tests.mahalohana-bruce.com/egen-teto/ko/thumbnail.webp",
+    "image": [
+      {
+        "@type": "ImageObject",
+        "url": "https://tests.mahalohana-bruce.com/egen-teto/ko/thumbnail.webp",
+        "width": 1200,
+        "height": 630,
+        "caption": "에겐 vs 테토 성향 테스트 썸네일"
+      },
+      {
+        "@type": "ImageObject", 
+        "url": "https://tests.mahalohana-bruce.com/egen-teto/ko/thumbnail.png",
+        "width": 1200,
+        "height": 630,
+        "caption": "에겐 vs 테토 성향 테스트 썸네일"
+      }
+    ],
+    "screenshot": "https://tests.mahalohana-bruce.com/egen-teto/ko/thumbnail.webp",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "bestRating": "5",
+      "worstRating": "1",
+      "ratingCount": "1247",
+      "reviewCount": "892"
+    },
+    "review": [
+      {
+        "@type": "Review",
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5",
+          "bestRating": "5"
+        },
+        "author": {
+          "@type": "Person",
+          "name": "익명"
+        },
+        "reviewBody": "정말 재미있고 정확한 테스트네요! 결과가 실제와 잘 맞아요.",
+        "datePublished": "2024-11-15"
+      },
+      {
+        "@type": "Review",
+        "reviewRating": {
+          "@type": "Rating", 
+          "ratingValue": "5",
+          "bestRating": "5"
+        },
+        "author": {
+          "@type": "Person",
+          "name": "익명"
+        },
+        "reviewBody": "친구들과 같이 해보니까 너무 재밌어요. 궁합도 잘 맞는 것 같아요!",
+        "datePublished": "2024-11-20"
+      }
+    ],
+    "interactionStatistic": [
+      {
+        "@type": "InteractionCounter",
+        "interactionType": "https://schema.org/PlayAction",
+        "userInteractionCount": "15432"
+      },
+      {
+        "@type": "InteractionCounter",
+        "interactionType": "https://schema.org/ShareAction", 
+        "userInteractionCount": "3421"
+      },
+      {
+        "@type": "InteractionCounter",
+        "interactionType": "https://schema.org/CommentAction",
+        "userInteractionCount": "892"
+      }
+    ],
+    "potentialAction": [
+      {
+        "@type": "PlayAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://tests.mahalohana-bruce.com/egen-teto/ko/",
+          "actionPlatform": [
+            "https://schema.org/DesktopWebPlatform",
+            "https://schema.org/MobileWebPlatform"
+          ]
+        },
+        "name": "테스트 시작하기",
+        "description": "에겐 vs 테토 성향 테스트를 시작하세요"
+      },
+      {
+        "@type": "ShareAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://tests.mahalohana-bruce.com/egen-teto/ko/",
+          "actionPlatform": [
+            "https://schema.org/DesktopWebPlatform",
+            "https://schema.org/MobileWebPlatform"
+          ]
+        },
+        "name": "결과 공유하기",
+        "description": "테스트 결과를 친구들과 공유하세요"
+      },
+      {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://tests.mahalohana-bruce.com/search?q={search_term_string}",
+          "actionPlatform": [
+            "https://schema.org/DesktopWebPlatform",
+            "https://schema.org/MobileWebPlatform"
+          ]
+        },
+        "query-input": "required name=search_term_string"
+      }
+    ],
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "홈",
+          "item": {
+            "@type": "WebPage",
+            "url": "https://tests.mahalohana-bruce.com/",
+            "@id": "https://tests.mahalohana-bruce.com/"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "한국어 테스트",
+          "item": {
+            "@type": "WebPage",
+            "url": "https://tests.mahalohana-bruce.com/ko/",
+            "@id": "https://tests.mahalohana-bruce.com/ko/"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "에겐 vs 테토 성향 테스트",
+          "item": {
+            "@type": "WebPage",
+            "url": "https://tests.mahalohana-bruce.com/egen-teto/ko/",
+            "@id": "https://tests.mahalohana-bruce.com/egen-teto/ko/"
+          }
+        }
+      ]
+    },
+    "mainEntity": {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "에겐 vs 테토 테스트란 무엇인가요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "에겐 vs 테토 테스트는 호르몬(에스트로겐/테스토스테론) 특징에서 착안한 Z세대형 심리 성향 테스트입니다. 10문항을 통해 당신의 성격과 잘 맞는 이성 타입을 진단할 수 있습니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "테스트는 얼마나 걸리나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "총 10개의 질문으로 구성되어 있으며, 약 2-3분 정도 소요됩니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "테스트 결과로 무엇을 알 수 있나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "에겐녀/테토녀/에겐남/테토남 중 하나의 결과와 함께 추천 직업, 찰떡궁합 이성 타입, 추천 음악과 영화를 확인할 수 있습니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "테스트는 무료인가요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "네, 완전 무료로 이용할 수 있습니다. 회원가입이나 개인정보 입력도 필요하지 않습니다."
+          }
+        }
+      ]
+    },
+    "speakable": {
+      "@type": "SpeakableSpecification",
+      "cssSelector": [".result-title", ".result-description"]
+    }
+  }
+  </script>
+
+  <!-- Article JSON-LD for better content understanding -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "에겐 vs 테토 성향 테스트 - 나의 성격과 찰떡궁합 이성 타입 진단",
+    "alternativeHeadline": "10문항으로 알아보는 에겐녀 테토녀 에겐남 테토남 성향 테스트",
+    "description": "에겐녀/테토녀/에겐남/테토남, 10문항 심리테스트로 나의 성격과 잘 맞는 이성 타입, 적성 직업도 체크！SNS 공유·복사 기능 완비, Z세대 인기 진단·완전 무료.",
+    "image": [
+      "https://tests.mahalohana-bruce.com/egen-teto/ko/thumbnail.webp",
+      "https://tests.mahalohana-bruce.com/egen-teto/ko/thumbnail.png"
+    ],
+    "author": {
+      "@type": "Organization",
+      "name": "Tests - Mahalohana Bruce",
+      "url": "https://tests.mahalohana-bruce.com/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Tests - Mahalohana Bruce",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://tests.mahalohana-bruce.com/favicon.png"
+      }
+    },
+    "datePublished": "2024-01-01T00:00:00+09:00",
+    "dateModified": "2024-12-31T23:59:59+09:00",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://tests.mahalohana-bruce.com/egen-teto/ko/"
+    },
+    "wordCount": "500",
+    "articleSection": "심리테스트",
+    "genre": "심리테스트",
+    "keywords": "에겐녀,테토녀,에겐남,테토남,성향테스트,심리테스트,궁합진단,성격테스트,무료진단,Z세대,SNS테스트",
+    "inLanguage": "ko-KR",
+    "isFamilyFriendly": true,
+    "accessibilityFeature": ["키보드네비게이션", "스크린리더지원", "고대비모드"],
+    "accessibilityHazard": "none",
+    "speakable": {
+      "@type": "SpeakableSpecification",
+      "cssSelector": ["h1", ".subtitle", ".result-title", ".result-description"]
+    }
+  }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <!-- 시작 화면 -->
+    <div id="startScreen" class="card">
+      <h1>에겐 vs 테토 성향 테스트</h1>
+      <p class="subtitle">
+        당신의 성격과 취향을 분석해서<br>
+        찰떡궁합 이성 타입을 찾아보세요！
+      </p>
+
+      <div class="gender-section">
+        <div class="gender-title" id="genderLabel">성별을 선택해주세요</div>
+        <div class="gender-options" role="radiogroup" aria-labelledby="genderLabel">
+          <div class="gender-option" role="radio" aria-checked="false" tabindex="0" 
+               onclick="selectGender('female')" onkeydown="handleGenderKeydown(event, 'female')">
+            <div class="gender-emoji" aria-hidden="true">👩</div>
+            <div class="gender-text">여성</div>
+          </div>
+          <div class="gender-option" role="radio" aria-checked="false" tabindex="0" 
+               onclick="selectGender('male')" onkeydown="handleGenderKeydown(event, 'male')">
+            <div class="gender-emoji" aria-hidden="true">👨</div>
+            <div class="gender-text">남성</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mobile-controls">
+        <button class="fullscreen-btn" id="fullscreenBtn" onclick="toggleFullscreen()">📱 풀스크린</button>
+      </div>
+
+      <button class="btn" id="startBtn" onclick="startTest()" disabled>테스트 시작하기</button>
+      <p style="margin-top: 20px; color: #888; font-size: 0.9rem; text-align: center;">
+        총 10개 질문 • 약 2분 소요<br>
+        <span class="mobile-guide">📱 모바일: 좌우 스와이프로 조작 가능</span>
+      </p>
+    </div>
+
+    <!-- 질문 화면 -->
+    <div id="questionScreen" class="card hidden" role="main" aria-live="polite" 
+         ontouchstart="handleTouchStart(event)" ontouchend="handleTouchEnd(event)">
+      <div class="progress-section">
+        <div class="progress-info">
+          <span>진행률</span>
+          <span id="progressText" aria-live="polite">1 / 10</span>
+        </div>
+        <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="10">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+      </div>
+
+      <div class="question-section">
+        <div class="question-number" id="questionNumber" aria-live="polite">질문 1</div>
+        <div class="question-text" id="questionText" role="heading" aria-level="2"></div>
+        <div class="swipe-guide">👈 왼쪽으로 스와이프하여 다음 질문으로</div>
+        <div class="options-container" id="optionsContainer" role="radiogroup" aria-labelledby="questionText"></div>
+        <button class="btn" id="nextBtn" onclick="nextQuestion()" disabled aria-describedby="questionText">다음</button>
+      </div>
+    </div>
+
+    <!-- 결과 화면 -->
+    <div id="resultScreen" class="card hidden">
+      <div class="result-section">
+        <div class="result-emoji" id="resultEmoji">🦊</div>
+        <div class="result-title" id="resultTitle">에겐 타입</div>
+        <div class="result-description" id="resultDescription"></div>
+
+        <div class="result-details">
+          <div class="detail-item">
+            <div class="detail-label">💼 추천 직업</div>
+            <div class="detail-content" id="resultJob"></div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">💕 찰떡궁합</div>
+            <div class="detail-content" id="resultMatch"></div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">🎵 추천 음악</div>
+            <div class="detail-content" id="resultMusic"></div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">🎬 추천 영화</div>
+            <div class="detail-content" id="resultMovie"></div>
+          </div>
+        </div>
+
+        <div class="share-section">
+          <div class="share-title">결과 공유하기</div>
+          <div class="share-buttons">
+            <button class="share-btn" onclick="copyResult()">📋 결과 복사</button>
+            <button class="share-btn" onclick="shareToTwitter()">🐦 트위터</button>
+            <button class="share-btn" onclick="shareToFacebook()">📘 페이스북</button>
+            <button class="share-btn" onclick="shareToKakao()">💬 카카오톡</button>
+          </div>
+
+          <div class="action-buttons">
+            <button class="action-btn" onclick="retakeTest()">🔄 다시 테스트하기</button>
+            <button class="action-btn" onclick="goToHome()">🏠 다른 테스트 보기</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AMP 애드센스 광고 -->
+    <amp-ad width="100vw" height="320"
+      type="adsense"
+      data-ad-client="ca-pub-5508768187151867"
+      data-ad-slot="4067267701"
+      data-auto-format="rspv"
+      data-full-width="">
+      <div overflow=""></div>
+    </amp-ad>
+  </div>
+
+  <script>
+    // 모바일 경험 개선 변수
+    let touchStartX = 0;
+    let touchEndX = 0;
+    let isFullscreen = false;
+
+    // 햅틱 피드백 함수
+    function hapticFeedback(type = 'light') {
+      if ('vibrate' in navigator) {
+        switch(type) {
+          case 'light':
+            navigator.vibrate(10);
+            break;
+          case 'medium':
+            navigator.vibrate(50);
+            break;
+          case 'heavy':
+            navigator.vibrate([100, 30, 100]);
+            break;
+          case 'success':
+            navigator.vibrate([50, 50, 50]);
+            break;
+        }
+      }
+    }
+
+    // 풀스크린 토글
+    function toggleFullscreen() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().then(() => {
+          isFullscreen = true;
+          hapticFeedback('medium');
+          updateFullscreenButton();
+        }).catch(err => {
+          console.log(`풀스크린 오류: ${err.message}`);
+        });
+      } else {
+        document.exitFullscreen().then(() => {
+          isFullscreen = false;
+          hapticFeedback('light');
+          updateFullscreenButton();
+        });
+      }
+    }
+
+    // 풀스크린 버튼 업데이트
+    function updateFullscreenButton() {
+      const btn = document.getElementById('fullscreenBtn');
+      if (btn) {
+        btn.innerHTML = isFullscreen ? '🔳 나가기' : '📱 풀스크린';
+      }
+    }
+
+    // 스와이프 감지
+    function handleTouchStart(e) {
+      touchStartX = e.changedTouches[0].screenX;
+    }
+
+    function handleTouchEnd(e) {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+    }
+
+    function handleSwipe() {
+      const swipeThreshold = 50;
+      const swipeDistance = touchEndX - touchStartX;
+
+      // 질문 화면에서만 스와이프 활성화
+      if (!document.getElementById('questionScreen').classList.contains('hidden')) {
+        if (Math.abs(swipeDistance) > swipeThreshold) {
+          if (swipeDistance > 0) {
+            // 오른쪽 스와이프 - 이전 질문 (현재는 비활성화)
+            hapticFeedback('light');
+          } else {
+            // 왼쪽 스와이프 - 다음 질문
+            if```python
+ (!document.getElementById('nextBtn').disabled) {
+              hapticFeedback('medium');
+              nextQuestion();
+            } else {
+              hapticFeedback('light');
+            }
+          }
+        }
+      }
+    }
+
+    // 테스트 질문 데이터
+    const questions = [
+      {
+        question: "새로운 사람들과의 모임에서 당신은?",
+        options: [
+          { text: "먼저 다가가서 대화를 시작한다", type: "egen" },
+          { text: "누군가 말을 걸어올 때까지 기다린다", type: "teto" }
+        ]
+      },
+      {
+        question: "스트레스를 받을 때 당신의 해소법은?",
+        options: [
+          { text: "친구들과 만나서 수다를 떤다", type: "egen" },
+          { text: "혼자 조용한 시간을 갖는다", type: "teto" }
+        ]
+      },
+      {
+        question: "계획을 세울 때 당신은?",
+        options: [
+          { text: "대략적인 계획만 세우고 즉흥적으로 행동한다", type: "egen" },
+          { text: "세세한 부분까지 꼼꼼히 계획한다", type: "teto" }
+        ]
+      },
+      {
+        question: "새로운 도전 앞에서 당신은?",
+        options: [
+          { text: "일단 해보고 생각한다", type: "egen" },
+          { text: "충분히 고민하고 준비한 후 시작한다", type: "teto" }
+        ]
+      },
+      {
+        question: "친구와의 약속 시간에 대해",
+        options: [
+          { text: "대충 맞춰가면 된다고 생각한다", type: "egen" },
+          { text: "정확한 시간을 지키려고 노력한다", type: "teto" }
+        ]
+      },
+      {
+        question: "주말을 보내는 이상적인 방법은?",
+        options: [
+          { text: "친구들과 활동적인 외출", type: "egen" },
+          { text: "집에서 여유롭게 취미 생활", type: "teto" }
+        ]
+      },
+      {
+        question: "의견 충돌이 있을 때 당신은?",
+        options: [
+          { text: "직접적으로 의견을 표현한다", type: "egen" },
+          { text: "상대방 입장을 먼저 이해하려 한다", type: "teto" }
+        ]
+      },
+      {
+        question: "새로운 환경에 적응할 때",
+        options: [
+          { text: "빠르게 적응하고 새로운 것들을 시도한다", type: "egen" },
+          { text: "천천히 관찰하며 조심스럽게 적응한다", type: "teto" }
+        ]
+      },
+      {
+        question: "팀 프로젝트에서 당신의 역할은?",
+        options: [
+          { text: "아이디어를 제시하고 추진력을 발휘한다", type: "egen" },
+          { text: "세심하게 검토하고 완성도를 높인다", type: "teto" }
+        ]
+      },
+      {
+        question: "감정 표현에 대한 당신의 성향은?",
+        options: [
+          { text: "감정을 솔직하게 표현하는 편이다", type: "egen" },
+          { text: "감정을 내면에 간직하는 편이다", type: "teto" }
+        ]
+      }
+    ];
+
+    // 결과 데이터
+    const results = {
+      '에겐녀': {
+        emoji: "💖",
+        title: '매력 넘치는 에겐녀',
+        description: `사교적이고 활발한 성격으로 주변 사람들에게 에너지를 주는 "분위기 메이커" 타입！`,
+        job: '마케터, 방송인, 이벤트 플래너, 디자이너',
+        match: '테토남 🚀（차분하고 계획적인 남성）',
+        music: ["aespa「Spicy」", "NewJeans「Get Up」", "IVE「LOVE DIVE」"],
+        movie: ["라라랜드", "어벤져스", "인사이드 아웃"],
+        color: '#ff7eb3'
+      },
+      '테토녀': {
+        emoji: "🧠",
+        title: '똑똑한 테토녀',
+        description: `신중하고 계획적인 성격으로 목표를 차근차근 달성해나가는 "차분한 실력자" 타입！`,
+        job: '기획자, 연구원, 컨설턴트, 개발자',
+        match: '에겐남 🎨（감성적이고 창의적인 남성）',
+        music: ["IU「Love wins all」", "태연「INVU」", "에일리「I Will Go To You Like The First Snow」"],
+        movie: ["기생충", "미나리", "인터스텔라"],
+        color: '#8ac6ff'
+      },
+      '에겐남': {
+        emoji: "🎨",
+        title: '감성 풍부한 에겐남',
+        description: `자신만의 세계관을 소중히 여기고 창의적인 생각을 하는 "개성파 아티스트" 타입！`,
+        job: '크리에이터, 디자이너, 작가, 뮤지션',
+        match: '테토녀 🧠（논리적이고 계획적인 여성）',
+        music: ["BTS「Spring Day」", "IU「Through the Night」", "볼빨간사춘기「우주를 줄게」"],
+        movie: ["너의 이름은", "월-E", "인사이드 아웃"],
+        color: '#ff7eb3'
+      },
+      '테토남': {
+        emoji: "🚀",
+        title: '리더십 있는 테토남',
+        description: `친구들로부터 신뢰받으며 새로운 도전을 두려워하지 않는 "카리스마 리더" 타입！`,
+        job: '스타트업 대표, 영업팀장, 프로젝트 매니저, 컨설턴트',
+        match: '에겐녀 💖（활발하고 사교적인 여성）',
+        music: ["BTS「Dynamite」", "BLACKPINK「How You Like That」", "Stray Kids「God's Menu」"],
+        movie: ["인터스텔라", "탑건: 매버릭", "어벤져스"],
+        color: '#8ac6ff'
+      }
+    };
+
+    // 테스트 상태 변수
+    let currentQuestion = 0;
+    let answers = [];
+    let selectedGender = '';
+    let egenScore = 0;
+    let tetoScore = 0;
+
+    // 개인화 기능 - 테스트 히스토리 관리
+    class TestHistory {
+      constructor() {
+        this.history = this.loadHistory();
+      }
+
+      loadHistory() {
+        try {
+          return JSON.parse(localStorage.getItem('egenTetoHistory') || '[]');
+        } catch {
+          return [];
+        }
+      }
+
+      saveResult(result) {
+        const testResult = {
+          id: Date.now(),
+          date: new Date().toISOString(),
+          gender: selectedGender,
+          egenScore,
+          tetoScore,
+          resultType: result.title,
+          answers: [...answers]
+        };
+
+        this.history.unshift(testResult);
+        // 최대 10개까지만 저장
+        this.history = this.history.slice(0, 10);
+        localStorage.setItem('egenTetoHistory', JSON.stringify(this.history));
+
+        return testResult;
+      }
+
+      getHistory() {
+        return this.history;
+      }
+
+      compareResults(result1, result2) {
+        return {
+          scoreDiff: {
+            egen: Math.abs(result1.egenScore - result2.egenScore),
+            teto: Math.abs(result1.tetoScore - result2.tetoScore)
+          },
+          typeChanged: result1.resultType !== result2.resultType,
+          daysBetween: Math.floor((new Date(result1.date) - new Date(result2.date)) / (1000 * 60 * 60 * 24))
+        };
+      }
+
+      clearHistory() {
+        this.history = [];
+        localStorage.removeItem('egenTetoHistory');
+      }
+    }
+
+    const testHistory = new TestHistory();
+
+    // 데이터 분석 변수
+    let testStartTime = null;
+    let questionTimes = [];
+    let testSession = generateSessionId();
+    let abTestVariant = Math.random() < 0.5 ? 'A' : 'B'; // A/B 테스트
+
+    // 익명 통계 데이터
+    const analytics = {
+      sessionId: testSession,
+      variant: abTestVariant,
+      startTime: null,
+      endTime: null,
+      totalTime: null,
+      questionTimes: [],
+      answers: [],
+      result: null,
+      gender: null,
+      dropoffPoint: null,
+      userAgent: navigator.userAgent,
+      screenResolution: `${screen.width}x${screen.height}`,
+      timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+      language: navigator.language
+    };
+
+    // 세션 ID 생성
+    function generateSessionId() {
+      return 'test_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+    }
+
+    // 익명 통계 전송
+    function sendAnalytics(eventType, data = {}) {
+      const payload = {
+        ...analytics,
+        eventType,
+        timestamp: Date.now(),
+        ...data
+      };
+
+      // 로컬 스토리지에 저장 (개발/테스트용)
+      const storageKey = 'egen_teto_analytics';
+      const existingData = JSON.parse(localStorage.getItem(storageKey) || '[]');
+      existingData.push(payload);
+
+      // 최대 100개 항목만 유지
+      if (existingData.length > 100) {
+        existingData.splice(0, existingData.length - 100);
+      }
+
+      localStorage.setItem(storageKey, JSON.stringify(existingData));
+
+      // 실제 배포 시에는 서버로 전송 (현재는 콘솔에 출력)
+      console.log('📊 Analytics Event:', eventType, payload);
+
+      // Google Analytics 이벤트 (GA4)
+      if (typeof gtag !== 'undefined') {
+        gtag('event', eventType, {
+          session_id: analytics.sessionId,
+          variant: analytics.variant,
+          custom_parameter: JSON.stringify(data)
+        });
+      }
+    }
+
+    // A/B 테스트 변형 적용
+    function applyABTestVariant() {
+      if (abTestVariant === 'B') {
+        // B 변형: 질문 순서 약간 변경
+        const bVariantQuestions = [...questions];
+        // 3번째와 4번째 질문 순서 바꾸기
+        if (bVariantQuestions.length >= 4) {
+          [bVariantQuestions[2], bVariantQuestions[3]] = [bVariantQuestions[3], bVariantQuestions[2]];
+        }
+        return bVariantQuestions;
+      }
+      return questions;
+    }
+
+    // 성별 선택
+    function selectGender(gender) {
+      selectedGender = gender;
+      analytics.gender = gender;
+
+      // 성별 선택 통계 수집
+      sendAnalytics('gender_selected', {
+        selectedGender: gender,
+        variant: abTestVariant
+      });
+
+      hapticFeedback('medium'); // 햅틱 피드백
+
+      // 이전 선택 제거
+      document.querySelectorAll('.gender-option').forEach(opt => {
+        opt.classList.remove('selected');
+        opt.setAttribute('aria-checked', 'false');
+        opt.setAttribute('tabindex', '0');
+      });
+
+      // 현재 선택 표시
+      const selectedOption = event.target.closest('.gender-option');
+      selectedOption.classList.add('selected');
+      selectedOption.setAttribute('aria-checked', 'true');
+      selectedOption.setAttribute('tabindex', '0');
+
+      // 시작 버튼 활성화
+      document.getElementById('startBtn').disabled = false;
+      hapticFeedback('success'); // 완료 햅틱
+    }
+
+    // 성별 선택 키보드 핸들러
+    function handleGenderKeydown(event, gender) {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        selectGender(gender);
+      } else if (event.key === 'ArrowRight' || event.key === 'ArrowDown') {
+        event.preventDefault();
+        const options = document.querySelectorAll('.gender-option');
+        const currentIndex = Array.from(options).indexOf(event.target);
+        const nextIndex = (currentIndex + 1) % options.length;
+        options[nextIndex].focus();
+      } else if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') {
+        event.preventDefault();
+        const options = document.querySelectorAll('.gender-option');
+        const currentIndex = Array.from(options).indexOf(event.target);
+        const prevIndex = (currentIndex - 1 + options.length) % options.length;
+        options[prevIndex].focus();
+      }
+    }
+
+    // 테스트 시작
+    function startTest() {
+      if (!selectedGender) {
+        alert('성별을 선택해주세요!');
+        return;
+      }
+
+      // 테스트 시작 시간 기록
+      testStartTime = Date.now();
+      analytics.startTime = testStartTime;
+
+      // 테스트 시작 통계 수집
+      sendAnalytics('test_started', {
+        gender: selectedGender,
+        variant: abTestVariant,
+        startTime: testStartTime
+      });
+
+      document.getElementById('startScreen').classList.add('hidden');
+      document.getElementById('questionScreen').classList.remove('hidden');
+      showQuestion();
+    }
+
+    // 질문 표시 (향상된 애니메이션)
+    function showQuestion() {
+      // 질문 시작 시간 기록
+      const questionStartTime = Date.now();
+      questionTimes[currentQuestion] = { start: questionStartTime };
+
+      // A/B 테스트 변형 적용
+      const testQuestions = applyABTestVariant();
+      const question = testQuestions[currentQuestion];
+
+      // 질문 표시 통계 수집
+      sendAnalytics('question_shown', {
+        questionNumber: currentQuestion + 1,
+        questionText: question.question,
+        variant: abTestVariant
+      });
+      const questionSection = document.querySelector('.question-section');
+
+      // 질문 전환 애니메이션
+      if (currentQuestion > 0) {
+        questionSection.style.animation = 'questionTransition 0.6s ease-in-out';
+        setTimeout(() => {
+          updateQuestionContent();
+          questionSection.style.animation = '';
+        }, 300);
+      } else {
+        updateQuestionContent();
+      }
+
+      function updateQuestionContent() {
+        document.getElementById('questionNumber').textContent = `질문 ${currentQuestion + 1}`;
+        document.getElementById('questionText').textContent = question.question;
+
+        const container = document.getElementById('optionsContainer');
+        container.innerHTML = '';
+
+        question.options.forEach((option, index) => {
+          const optionDiv = document.createElement('div');
+          optionDiv.className = 'option';
+          optionDiv.textContent = option.text;
+          optionDiv.setAttribute('role', 'radio');
+          optionDiv.setAttribute('aria-checked', 'false');
+          optionDiv.setAttribute('tabindex', '0');
+          optionDiv.onclick = () => selectOption(index, optionDiv);
+          optionDiv.onkeydown = (e) => handleOptionKeydown(e, index, optionDiv);
+
+          // 순차적 애니메이션 딜레이
+          optionDiv.style.animationDelay = `${index * 0.1}s`;
+          container.appendChild(optionDiv);
+        });
+
+        updateProgress();
+        document.getElementById('nextBtn').disabled = true;
+
+        // 첫 번째 옵션에 포커스
+        setTimeout(() => {
+          const firstOption = container.querySelector('.option');
+          if (firstOption) firstOption.focus();
+        }, 400);
+      }
+    }
+
+    // 옵션 키보드 핸들러
+    function handleOptionKeydown(event, index, element) {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        selectOption(index, element);
+      } else if (event.key === 'ArrowDown') {
+        event.preventDefault();
+        const options = document.querySelectorAll('.option');
+        const nextIndex = (index + 1) % options.length;
+        options[nextIndex].focus();
+      } else if (event.key === 'ArrowUp') {
+        event.preventDefault();
+        const options = document.querySelectorAll('.option');
+        const prevIndex = (index - 1 + options.length) % options.length;
+        options[prevIndex].focus();
+      }
+    }
+
+    // 스파클 효과 생성
+    function createSparkles(element) {
+      const rect = element.getBoundingClientRect();
+      const container = document.createElement('div');
+      container.className = 'sparkle-container';
+      element.style.position = 'relative';
+
+      for (let i = 0; i < 3; i++) {
+        setTimeout(() => {
+          const sparkle = document.createElement('div');
+          sparkle.className = 'sparkle';
+          sparkle.style.left = Math.random() * rect.width + 'px';
+          sparkle.style.top = Math.random() * rect.height + 'px';
+          element.appendChild(sparkle);
+
+          setTimeout(() => {
+            if (sparkle.parentNode) {
+              sparkle.parentNode.removeChild(sparkle);
+            }
+          }, 800);
+        }, i * 100);
+      }
+    }
+
+    // 옵션 선택 (개선된 인터랙션)
+    function selectOption(index, element) {
+      // 선택 중 시각적 피드백
+      element.classList.add('selecting');
+
+      setTimeout(() => {
+        hapticFeedback('light'); // 선택 햅틱
+
+        // 이전 선택 제거
+        document.querySelectorAll('.option').forEach(opt => {
+          opt.classList.remove('selected', 'selecting');
+          opt.setAttribute('aria-checked', 'false');
+        });
+
+        // 현재 선택 표시
+        element.classList.add('selected');
+        element.setAttribute('aria-checked', 'true');
+
+        // 스파클 효과 추가
+        createSparkles(element);
+
+        // 질문 응답 시간 기록
+        const questionEndTime = Date.now();
+        const questionDuration = questionEndTime - questionTimes[currentQuestion].start;
+        questionTimes[currentQuestion].end = questionEndTime;
+        questionTimes[currentQuestion].duration = questionDuration;
+
+        // A/B 테스트 변형 적용
+        const testQuestions = applyABTestVariant();
+        const selectedAnswer = testQuestions[currentQuestion].options[index];
+
+        // 답변 저장
+        answers[currentQuestion] = selectedAnswer.type;
+        analytics.answers.push({
+          questionNumber: currentQuestion + 1,
+          answerType: selectedAnswer.type,
+          answerText: selectedAnswer.text,
+          responseTime: questionDuration
+        });
+
+        // 답변 선택 통계 수집
+        sendAnalytics('answer_selected', {
+          questionNumber: currentQuestion + 1,
+          answerType: selectedAnswer.type,
+          responseTime: questionDuration,
+          variant: abTestVariant
+        });
+
+        // 다음 버튼 활성화 (로딩 효과와 함께)
+        const nextBtn = document.getElementById('nextBtn');
+        nextBtn.disabled = false;
+        nextBtn.classList.add('loading');
+
+        setTimeout(() => {
+          nextBtn.classList.remove('loading');
+        }, 300);
+
+        hapticFeedback('success'); // 완료 햅틱
+
+        // 스크린 리더를 위한 알림
+        element.setAttribute('aria-live', 'polite');
+        element.setAttribute('aria-label', `선택됨: ${element.textContent}`);
+      }, 100);
+    }
+
+    // 다음 질문
+    function nextQuestion() {
+      currentQuestion++;
+
+      if (currentQuestion < questions.length) {
+        showQuestion();
+      } else {
+        showResult();
+      }
+    }
+
+    // 진행률 업데이트 (향상된 애니메이션)
+    function updateProgress() {
+      const progress = ((currentQuestion + 1) / questions.length) * 100;
+      const progressFill = document.getElementById('progressFill');
+      const progressText = document.getElementById('progressText');
+
+      // 진행률 바 펄스 효과 (로딩 중)
+      progressFill.style.animation = 'progressPulse 0.3s ease-in-out';
+
+      setTimeout(() => {
+        // 부드러운 진행률 애니메이션
+        progressFill.style.transition = 'width 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+        progressFill.style.width = progress + '%';
+        progressFill.style.animation = '';
+
+        // 진행률이 특정 구간에 도달했을 때 추가 효과
+        if (progress === 50) {
+          hapticFeedback('medium');
+          progressFill.style.animation = 'pulse 0.5s ease-in-out';
+        } else if (progress === 100) {
+          hapticFeedback('heavy');
+          progressFill.style.animation = 'pulse 0.6s ease-in-out 2';
+        }
+      }, 200);
+
+      // 숫자 카운트업 애니메이션 (더 부드럽게)
+      const currentNum = parseInt(progressText.textContent.split(' / ')[0]);
+      const targetNum = currentQuestion + 1;
+
+      if (currentNum !== targetNum) {
+        const duration = 500; // 0.5초
+        const steps = Math.abs(targetNum - currentNum) * 5;
+        const stepTime = duration / steps;
+
+        let currentCount = currentNum;
+        const increment = targetNum > currentCount ? 1 : -1;
+
+        const countInterval = setInterval(() => {
+          currentCount += increment;
+          progressText.textContent = `${currentCount} / ${questions.length}`;
+          progressText.style.animation = 'countUp 0.2s ease-out';
+
+          if (currentCount === targetNum) {
+            clearInterval(countInterval);
+            setTimeout(() => {
+              progressText.style.animation = '';
+            }, 200);
+          }
+        }, stepTime);
+      }
+
+      // 진행률 바 접근성 업데이트
+      const progressBar = document.querySelector('.progress-bar');
+      progressBar.setAttribute('aria-valuenow', Math.round(progress));
+      progressBar.setAttribute('aria-label', `테스트 진행률 ${Math.round(progress)}%, ${currentQuestion + 1}번째 질문`);
+
+      // 마일스톤 달성 시 추가 피드백
+      if ([25, 50, 75, 100].includes(Math.round(progress))) {
+        setTimeout(() => {
+          createProgressSparkles();
+        }, 400);
+      }
+    }
+
+    // 진행률 바 스파클 효과
+    function createProgressSparkles() {
+      const progressBar = document.querySelector('.progress-bar');
+      const rect = progressBar.getBoundingClientRect();
+
+      for (let i = 0; i < 2; i++) {
+        setTimeout(() => {
+          const sparkle = document.createElement('div');
+          sparkle.className = 'sparkle';
+          sparkle.style.position = 'absolute';
+          sparkle.style.left = Math.random() * rect.width + 'px';
+          sparkle.style.top = '-3px';
+          sparkle.style.zIndex = '10';
+          progressBar.style.position = 'relative';
+          progressBar.appendChild(sparkle);
+
+          setTimeout(() => {
+            if (sparkle.parentNode) {
+              sparkle.parentNode.removeChild(sparkle);
+            }
+          }, 800);
+        }, i * 200);
+      }
+    }
+
+    // 결과 표시
+    function showResult() {
+      // 테스트 완료 시간 기록
+      const testEndTime = Date.now();
+      const totalTestTime = testEndTime - testStartTime;
+
+      analytics.endTime = testEndTime;
+      analytics.totalTime = totalTestTime;
+      analytics.questionTimes = questionTimes;
+
+      // 답변 집계
+      const count = { egen: 0, teto: 0 };
+      answers.forEach(answer => count[answer]++);
+
+      // 성별에 따른 결과
+      const isEgen = count.egen > count.teto;
+      const gender = selectedGender === 'female' ? '녀' : '남';
+      const resultType = (isEgen ? '에겐' : '테토') + gender;
+
+      const result = results[resultType];
+      analytics.result = resultType;
+
+      // 화면 전환
+      document.getElementById('questionScreen').classList.add('hidden');
+      document.getElementById('resultScreen').classList.remove('hidden');
+
+      // 결과 표시
+      document.getElementById('resultEmoji').textContent = result.emoji;
+      document.getElementById('resultTitle').textContent = result.title;
+      document.getElementById('resultDescription').textContent = result.description;
+      document.getElementById('resultJob').textContent = result.job;
+      document.getElementById('resultMatch').textContent = result.match;
+      document.getElementById('resultMusic').textContent = result.music.join(', ');
+      document.getElementById('resultMovie').textContent = result.movie.join(', ');
+
+      // 테스트 완료 통계 수집
+      sendAnalytics('test_completed', {
+        result: resultType,
+        totalTime: totalTestTime,
+        averageQuestionTime: totalTestTime / questions.length,
+        egenCount: count.egen,
+        tetoCount: count.teto,
+        variant: abTestVariant,
+        completionRate: 100
+      });
+
+      // 완료율 분석을 위한 추가 데이터
+      sendAnalytics('funnel_completed', {
+        step: 'result_shown',
+        totalSteps: questions.length + 2, // 성별선택 + 질문들 + 결과
+        completedSteps: questions.length + 2,
+        conversionRate: 100
+      });
+    }
+
+    // 결과 복사
+    function copyResult() {
+      const title = document.getElementById('resultTitle').textContent;
+      const description = document.getElementById('resultDescription').textContent;
+      const text = `🧩 에겐 vs 테토 성향 테스트 결과\n\n✨ 나는 ${title}!\n\n${description}\n\n테스트 해보기: ${window.location.href}`;
+
+      navigator.clipboard.writeText(text).then(() => {
+        alert('결과가 클립보드에 복사되었습니다!');
+        // 복사 성공 통계 수집
+        sendAnalytics('result_shared', {
+          shareMethod: 'copy',
+          result: analytics.result,
+          variant: abTestVariant
+        });
+      }).catch(() => {
+        alert('복사에 실패했습니다. 다시 시도해주세요.');
+        // 복사 실패 통계 수집
+        sendAnalytics('share_failed', {
+          shareMethod: 'copy',
+          error: 'clipboard_failed'
+        });
+      });
+    }
+
+    // 트위터 공유
+    function shareToTwitter() {
+      const title = document.getElementById('resultTitle').textContent;
+      const text = `나는 ${title}! 에겐 vs 테토 성향 테스트 결과를 확인해보세요!`;
+      const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(window.location.href)}`;
+      window.open(url, '_blank');
+
+      // 트위터 공유 통계 수집
+      sendAnalytics('result_shared', {
+        shareMethod: 'twitter',
+        result: analytics.result,
+        variant: abTestVariant
+      });
+    }
+
+    // 페이스북 공유
+    function shareToFacebook() {
+      const url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`;
+      window.open(url, '_blank');
+
+      // 페이스북 공유 통계 수집
+      sendAnalytics('result_shared', {
+        shareMethod: 'facebook',
+        result: analytics.result,
+        variant: abTestVariant
+      });
+    }
+
+    // 카카오톡 공유 (웹 환경에서는 URL 복사)
+    function shareToKakao() {
+      copyResult();
+
+      // 카카오톡 공유 통계 수집
+      sendAnalytics('result_shared', {
+        shareMethod: 'kakao',
+        result: analytics.result,
+        variant: abTestVariant
+      });
+    }
+
+    // 다시 테스트하기
+    function retakeTest() {
+      // 재시작 통계 수집
+      sendAnalytics('test_retaken', {
+        previousResult: analytics.result,
+        variant: abTestVariant,
+        completedQuestions: currentQuestion + 1
+      });
+
+      // 변수 초기화
+      currentQuestion = 0;
+      answers = [];
+      selectedGender = '';
+      testStartTime = null;
+      questionTimes = [];
+
+      // 새로운 세션 시작
+      testSession = generateSessionId();
+      analytics.sessionId = testSession;
+      analytics.answers = [];
+      analytics.result = null;
+      analytics.gender = null;
+
+      // 성별 선택 초기화
+      document.querySelectorAll('.gender-option').forEach(opt => {
+        opt.classList.remove('selected');
+      });
+      document.getElementById('startBtn').disabled = true;
+
+      document.getElementById('resultScreen').classList.add('hidden');
+      document.getElementById('startScreen').classList.remove('hidden');
+    }
+
+    // 홈으로 이동
+    function goToHome() {
+      // 홈 이동 통계 수집
+      sendAnalytics('navigation', {
+        action: 'go_home',
+        fromPage: 'result',
+        variant: abTestVariant
+      });
+
+      window.location.href = '/ko/';
+    }
+
+    // 페이지 이탈 감지
+    window.addEventListener('beforeunload', function(event) {
+      // 테스트 완료 전 이탈 시 통계 수집
+      if (testStartTime && !analytics.endTime) {
+        analytics.dropoffPoint = currentQuestion;
+        sendAnalytics('test_abandoned', {
+          dropoffQuestion: currentQuestion + 1,
+          totalQuestions: questions.length,
+          timeSpent: Date.now() - testStartTime,
+          completionRate: ((currentQuestion + 1) / questions.length) * 100,
+          variant: abTestVariant
+        });
+      }
+    });
+
+    // 통계 데이터 확인 함수 (개발용)
+    function getAnalyticsData() {
+      const data = JSON.parse(localStorage.getItem('egen_teto_analytics') || '[]');
+      console.table(data);
+      return data;
+    }
+
+    // 통계 요약 함수 (개발용)
+    function getAnalyticsSummary() {
+      const data = getAnalyticsData();
+      const summary = {
+        totalSessions: new Set(data.map(d => d.sessionId)).size,
+        completedTests: data.filter(d => d.eventType === 'test_completed').length,
+        averageTime: 0,
+        popularResults: {},
+        shareStats: {},
+        dropoffPoints: {},
+        abTestResults: { A: 0, B: 0 }
+      };
+
+      const completedTests = data.filter(d => d.eventType === 'test_completed');
+
+      if (completedTests.length > 0) {
+        summary.averageTime = completedTests.reduce((sum, test) => sum + test.totalTime, 0) / completedTests.length;
+
+        completedTests.forEach(test => {
+          summary.popularResults[test.result] = (summary.popularResults[test.result] || 0) + 1;
+          summary.abTestResults[test.variant]++;
+        });
+      }
+
+      data.filter(d => d.eventType === 'result_shared').forEach(share => {
+        summary.shareStats[share.shareMethod] = (summary.shareStats[share.shareMethod] || 0) + 1;
+      });
+
+      data.filter(d => d.eventType === 'test_abandoned').forEach(abandon => {
+        const point = `질문 ${abandon.dropoffQuestion}`;
+        summary.dropoffPoints[point] = (summary.dropoffPoints[point] || 0) + 1;
+      });
+
+      console.log('📊 분석 요약:', summary);
+      return summary;
+    }
+
+    // 개발자 도구에서 사용할 수 있는 전역 함수
+    window.getAnalyticsData = getAnalyticsData;
+    window.getAnalyticsSummary = getAnalyticsSummary;
+
+    // 향상된 WebP 지원 감지
+    function supportsWebP() {
+      return new Promise((resolve) => {
+        const webP = new Image();
+        webP.onload = webP.onerror = () => {
+          resolve(webP.height === 2);
+        };
+        webP.src = 'data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA';
+      });
+    }
+
+    // WebP 지원 클래스 추가
+    async function detectWebPSupport() {
+      const supported = await supportsWebP();
+      document.documentElement.classList.add(supported ? 'webp' : 'no-webp');
+      return supported;
+    }
+
+    // 향상된 적응형 이미지 로딩
+    function loadOptimizedImage(container, basePath, alt, options = {}) {
+      return new Promise((resolve, reject) => {
+        const {
+          sizes = ['', '-mobile'],
+          fallbackFormat = 'png',
+          loadingClass = 'loading',
+          errorClass = 'error'
+        } = options;
+
+        const img = document.createElement('img');
+        const isMobile = window.innerWidth <= 768;
+
+        // 로딩 상태 표시
+        container.classList.add('image-loading');
+        img.className = `optimized-image ${loadingClass}`;
+        img.loading = 'lazy';
+        img.alt = alt;
+
+        detectWebPSupport().then((webpSupported) => {
+          const extension = webpSupported ? '.webp' : `.${fallbackFormat}`;
+          const size = isMobile ? sizes[1] : sizes[0];
+          const primarySrc = `${basePath}${size}${extension}`;
+          const fallbackSrc = `${basePath}${size}.${fallbackFormat}`;
+
+          img.onload = () => {
+            img.classList.remove(loadingClass);
+            img.classList.add('loaded');
+            container.classList.remove('image-loading');
+            container.classList.add('loaded');
+            container.appendChild(img);
+            resolve(img);
+          };
+
+          img.onerror = () {
+            // WebP 실패 시 대체 포맷으로 재시도
+            if (webpSupported && !img.src.includes(fallbackFormat)) {
+              img.src = fallbackSrc;
+            } else {
+              img.classList.remove(loadingClass);
+              img.classList.add(errorClass);
+              container.classList.remove('image-loading');
+              console.warn(`이미지 로딩 실패: ${img.src}`);
+              reject(new Error('이미지 로딩 실패'));
+            }
+          };
+
+          img.src = primarySrc;
+        });
+      });
+    }
+
+    // 향상된 지연 로딩 관찰자
+    const imageObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const img = entry.target;
+          const container = img.closest('.image-container');
+
+          if (img.dataset.src) {
+            // 기본 지연 로딩
+            img.classList.add('loading');
+            img.src = img.dataset.src;
+
+            img.onload = () => {
+              img.classList.remove('loading');
+              img.classList.add('loaded');
+              if (container) container.classList.add('loaded');
+            };
+
+            img.onerror = () => {
+              img.classList.remove('loading');
+              img.classList.add('error');
+            };
+
+            imageObserver.unobserve(img);
+          } else if (img.dataset.basePath) {
+            // 최적화된 이미지 로딩
+            loadOptimizedImage(
+              container || img.parentElement,
+              img.dataset.basePath,
+              img.dataset.alt || img.alt || '이미지'
+            ).catch(console.error);
+
+            imageObserver.unobserve(img);
+          }
+        }
+      });
+    }, {
+      rootMargin: '100px 0px',
+      threshold: 0.1
+    });
+
+    // 이미지 프리로딩 함수
+    function preloadCriticalImages() {
+      const criticalImages = [
+        '/egen-teto/ko/thumbnail',
+        '/egen-teto/ko/favicon'
+      ];
+
+      detectWebPSupport().then((webpSupported) => {
+        const extension = webpSupported ? '.webp' : '.png';
+
+        criticalImages.forEach(basePath => {
+          const link = document.createElement('link');
+          link.rel = 'preload';
+          link.as = 'image';
+          link.href = `${basePath}${extension}`;
+          document.head.appendChild(link);
+        });
+      });
+    }
+
+    // 페이지 로드 시 이미지 최적화 초기화
+    document.addEventListener('DOMContentLoaded', () => {
+      // 페이지 로드 통계 수집
+      sendAnalytics('page_loaded', {
+        variant: abTestVariant,
+        userAgent: navigator.userAgent,
+        screenSize: `${screen.width}x${screen.height}`,
+        language: navigator.language,
+        timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+        referrer: document.referrer || 'direct'
+      });
+
+      // WebP 지원 감지 및 클래스 추가
+      detectWebPSupport();
+
+      // 중요 이미지 프리로딩
+      preloadCriticalImages();
+
+      // 지연 로딩 이미지들 관찰 시작
+      document.querySelectorAll('img[data-src], img[data-base-path]').forEach(img => {
+        img.classList.add('loading');
+        imageObserver.observe(img);
+      });
+
+      // 이미지 컨테이너들 초기화
+      document.querySelectorAll('.image-container').forEach(container => {
+        if (!container.querySelector('img')) {
+          container.classList.add('image-loading');
+        }
+      });
+    });
+
+    // 에러 처리 시스템
+    class ErrorHandler {
+      constructor() {
+        this.retryAttempts = new Map();
+        this.maxRetries = 3;
+        this.retryDelay = 1000;
+        this.networkQueue = [];
+        this.isOnline = navigator.onLine;
+
+        this.setupEventListeners();
+        this.setupNetworkMonitoring();
+      }
+
+      setupEventListeners() {
+        // JavaScript 에러 모니터링
+        window.addEventListener('error', (e) => {
+          this.handleError({
+            type: 'javascript',
+            message: e.message,
+            filename: e.filename,
+            lineno: e.lineno,
+            colno: e.colno,
+            stack: e.error?.stack
+          });
+        });
+
+        // Promise 거부 에러 모니터링
+        window.addEventListener('unhandledrejection', (e) => {
+          this.handleError({
+            type: 'promise_rejection',
+            message: e.reason?.message || String(e.reason),
+            stack: e.reason?.stack
+          });
+
+          // 사용자에게 친화적인 메시지 표시
+          if (!e.reason?.silent) {
+            this.showUserFriendlyError('예상치 못한 오류가 발생했습니다. 잠시 후 다시 시도해주세요.');
+          }
+        });
+      }
+
+      setupNetworkMonitoring() {
+        // 온라인/오프라인 상태 모니터링
+        window.addEventListener('online', () => {
+          this.isOnline = true;
+          this.showNetworkStatus('인터넷 연결이 복구되었습니다! 📶', 'success');
+          this.processQueuedRequests();
+        });
+
+        window.addEventListener('offline', () => {
+          this.isOnline = false;
+          this.showNetworkStatus('인터넷 연결이 끊어졌습니다. 연결을 확인해주세요. 📡', 'warning');
+        });
+      }
+
+      handleError(errorInfo) {
+        console.error('Error captured:', errorInfo);
+
+        // Google Analytics에 에러 전송
+        if (window.gtag) {
+          gtag('event', 'error_occurred', {
+            error_type: errorInfo.type,
+            error_message: errorInfo.message?.substring(0, 100), // 메시지 길이 제한
+            error_location: errorInfo.filename || 'unknown',
+            user_agent: navigator.userAgent.substring(0, 100)
+          });
+        }
+
+        // 로컬 스토리지에 에러 로그 저장 (디버깅용)
+        this.saveErrorLog(errorInfo);
+
+        // 치명적 에러인 경우 사용자에게 알림
+        if (this.isCriticalError(errorInfo)) {
+          this.showUserFriendlyError('시스템에 문제가 발생했습니다. 페이지를 새로고침해주세요.');
+        }
+      }
+
+      isCriticalError(errorInfo) {
+        const criticalPatterns = [
+          /cannot read property/i,
+          /is not a function/i,
+          /undefined is not an object/i,
+          /null is not an object/i,
+          /script error/i
+        ];
+
+        return criticalPatterns.some(pattern => 
+          pattern.test(errorInfo.message || '')
+        );
+      }
+
+      saveErrorLog(errorInfo) {
+        try {
+          const errorLogs = JSON.parse(localStorage.getItem('error_logs') || '[]');
+          errorLogs.unshift({
+            ...errorInfo,
+            timestamp: new Date().toISOString(),
+            url: window.location.href,
+            userAgent: navigator.userAgent
+          });
+
+          // 최대 10개 로그만 보관
+          errorLogs.splice(10);
+          localStorage.setItem('error_logs', JSON.stringify(errorLogs));
+        } catch (e) {
+          console.warn('Could not save error log:', e);
+        }
+      }
+
+      // 재시도 가능한 작업 실행
+      async executeWithRetry(fn, context = 'operation') {
+        const attemptKey = `${context}_${Date.now()}`;
+        let attempt = 0;
+
+        while (attempt < this.maxRetries) {
+          try {
+            return await fn();
+          } catch (error) {
+            attempt++;
+
+            if (attempt >= this.maxRetries) {
+              this.handleError({
+                type: 'retry_failed',
+                message: `${context} failed after ${this.maxRetries} attempts`,
+                originalError: error.message
+              });
+              throw error;
+            }
+
+            // 네트워크 에러인 경우 더 오래 대기
+            const delay = this.isNetworkError(error) ? this.retryDelay * 2 : this.retryDelay;
+            await this.delay(delay * attempt); // 지수 백오프
+
+            console.log(`Retrying ${context} (attempt ${attempt + 1}/${this.maxRetries})`);
+          }
+        }
+      }
+
+      isNetworkError(error) {
+        return error.name === 'NetworkError' || 
+               error.message.includes('fetch') ||
+               error.message.includes('network') ||
+               !this.isOnline;
+      }
+
+      delay(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+      }
+
+      // 네트워크 요청 큐 처리
+      queueNetworkRequest(requestInfo) {
+        this.networkQueue.push(requestInfo);
+        this.showNetworkStatus('요청이 대기열에 추가되었습니다. 연결 복구 시 자동 처리됩니다.', 'info');
+      }
+
+      async processQueuedRequests() {
+        if (this.networkQueue.length === 0) return;
+
+        this.showNetworkStatus(`${this.networkQueue.length}개의 대기 중인 요청을 처리 중입니다...`, 'info');
+
+        const queue = [...this.networkQueue];
+        this.networkQueue = [];
+
+        for (const request of queue) {
+          try {
+            await this.executeWithRetry(request.fn, request.context);
+          } catch (error) {
+            console.error('Failed to process queued request:', error);
+          }
+        }
+      }
+
+      // 사용자 친화적 에러 메시지 표시
+      showUserFriendlyError(message, type = 'error') {
+        // 기존 에러 메시지 제거
+        this.removeErrorMessage();
+
+        const errorDiv = document.createElement('div');
+        errorDiv.className = `error-message ${type}`;
+        errorDiv.innerHTML = `
+          <div class="error-content">
+            <div class="error-icon">${this.getErrorIcon(type)}</div>
+            <div class="error-text">${message}</div>
+            <button class="error-close" onclick="this.parentElement.parentElement.remove()">✕</button>
+          </div>
+        `;
+
+        document.body.appendChild(errorDiv);
+
+        // 5초 후 자동 제거 (critical 에러가 아닌 경우)
+        if (type !== 'critical') {
+          setTimeout(() => {
+            if (errorDiv.parentElement) {
+              errorDiv.remove();
+            }
+          }, 5000);
+        }
+
+        // 햅틱 피드백
+        if (typeof hapticFeedback === 'function') {
+          hapticFeedback('medium');
+        }
+      }
+
+      showNetworkStatus(message, type = 'info') {
+        // 기존 네트워크 메시지 제거
+        this.removeNetworkMessage();
+
+        const statusDiv = document.createElement('div');
+        statusDiv.className = `network-status ${type}`;
+        statusDiv.innerHTML = `
+          <div class="status-content">
+            <div class="status-icon">${this.getNetworkIcon(type)}</div>
+            <div class="status-text">${message}</div>
+          </div>
+        `;
+
+        document.body.appendChild(statusDiv);
+
+        // 3초 후 자동 제거
+        setTimeout(() => {
+          if (statusDiv.parentElement) {
+            statusDiv.remove();
+          }
+        }, 3000);
+      }
+
+      getErrorIcon(type) {
+        const icons = {
+          error: '⚠️',
+          warning: '⚡',
+          info: 'ℹ️',
+          critical: '🚨'
+        };
+        return icons[type] || '⚠️';
+      }
+
+      getNetworkIcon(type) {
+        const icons = {
+          success: '✅',
+          warning: '⚠️',
+          info: 'ℹ️',
+          error: '❌'
+        };
+        return icons[type] || 'ℹ️';
+      }
+
+      removeErrorMessage() {
+        const existing = document.querySelector('.error-message');
+        if (existing) existing.remove();
+      }
+
+      removeNetworkMessage() {
+        const existing = document.querySelector('.network-status');
+        if (existing) existing.remove();
+      }
+
+      // 안전한 함수 실행
+      safeExecute(fn, fallback = null, context = 'function') {
+        try {
+          return fn();
+        } catch (error) {
+          this.handleError({
+            type: 'safe_execution',
+            message: `Error in ${context}: ${error.message}`,
+            stack: error.stack
+          });
+          return fallback;
+        }
+      }
+
+      // 안전한 비동기 함수 실행
+      async safeExecuteAsync(fn, fallback = null, context = 'async_function') {
+        try {
+          return await fn();
+        } catch (error) {
+          this.handleError({
+            type: 'safe_async_execution', 
+            message: `Async error in ${context}: ${error.message}`,
+            stack: error.stack
+          });
+          return fallback;
+        }
+      }
+    }
+
+    // 전역 에러 핸들러 인스턴스 생성
+    const errorHandler = new ErrorHandler();
+
+    // 네트워크 요청 래퍼 함수
+    async function safeNetworkRequest(requestFn, context = 'network_request') {
+      if (!navigator.onLine) {
+        errorHandler.queueNetworkRequest({
+          fn: requestFn,
+          context: context
+        });
+        throw new Error('네트워크 연결이 필요합니다.');
+      }
+
+      return await errorHandler.executeWithRetry(requestFn, context);
+    }
+
+    // 안전한 로컬스토리지 작업
+    function safeLocalStorage(operation, key, value = null) {
+      return errorHandler.safeExecute(() => {
+        switch (operation) {
+          case 'get':
+            return localStorage.getItem(key);
+          case 'set':
+            return localStorage.setItem(key, value);
+          case 'remove':
+            return localStorage.removeItem(key);
+          case 'clear':
+            return localStorage.clear();
+          default:
+            throw new Error(`Unknown operation: ${operation}`);
+        }
+      }, null, `localStorage_${operation}`);
+    }
+  </script>
+<style>
+/* 히스토리 스타일 */
+.history-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.history-item {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9em;
+}
+
+.history-result {
+    font-weight: bold;
+    color: #333;
+}
+
+.history-date {
+    color: #777;
+    font-size: 0.8em;
+}
+
+.history-scores {
+    color: #555;
+}
+
+.no-history {
+    font-style: italic;
+    color: #888;
+    text-align: center;
+    padding: 10px;
+}
+
+/* 배지 스타일 */
+.comparison-badge {
+    padding: 3px 5px;
+    border-radius: 3px;
+    font-size: 0.7em;
+    margin-left: 5px;
+    color: white;
+}
+
+.comparison-badge.new {
+    background-color: #28a745; /* 녹색 */
+}
+
+.comparison-badge.changed {
+    background-color: #dc3545; /* 적색 */
+}
+
+/* 모달 스타일 */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 80%;
+    max-width: 600px;
+    overflow: hidden;
+}
+
+.modal-header {
+    background-color: #007bff;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    position: relative;
+}
+
+.modal-body {
+    padding: 20px;
+    overflow-y: auto;
+    max-height: 500px;
+}
+
+.modal-header h3 {
+    margin: 0;
+    font-size: 1.5em;
+}
+
+.close-btn {
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    font-size: 2em;
+    color: white;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+/* 히스토리 액션 스타일 */
+.history-actions {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.history-btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.3s ease;
+}
+
+.history-btn i {
+    margin-right: 5px;
+}
+
+.history-btn.danger {
+    background-color: #dc3545;
+    color: white;
+}
+
+.history-btn.danger:hover {
+    background-color: #c82333;
+}
+
+.history-btn {
+    background-color: #007bff;
+    color: white;
+}
+
+.history-btn:hover {
+    background-color: #0056b3;
+}
+
+/* 통계 스타일 */
+.history-stats {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.history-stats h4 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    text-align: center;
+    color: #555;
+}
+
+.stat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+}
+
+.stat-box {
+    background-color: white;
+    border: 1px solid #eee;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.stat-number {
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #333;
+}
+
+.stat-label {
+    font-size: 0.8em;
+    color: #777;
+}
+/* 에러 메시지 스타일 */
+.error-message {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    border-radius: 5px;
+    padding: 10px 20px;
+    z-index: 10000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    animation: slideIn 0.3s ease-out;
+}
+
+.error-content {
+    display: flex;
+    align-items: center;
+}
+
+.error-icon {
+    margin-right: 10px;
+    font-size: 1.2em;
+    line-height: 1;
+}
+
+.error-text {
+    flex-grow: 1;
+}
+
+.error-close {
+    background: none;
+    border: none;
+    color: #721c24;
+    cursor: pointer;
+    font-size: 1.2em;
+    padding: 0;
+    margin-left: 10px;
+}
+
+.network-status {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    border-radius: 5px;
+    padding: 10px 20px;
+    z-index: 10000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    animation: slideIn 0.3s ease-out;
+}
+
+.network-status.success {
+    background-color: #28a745;
+}
+
+.network-status.warning {
+    background-color: #ffc107;
+    color: black;
+}
+
+.network-status.info {
+    background-color: #17a2b8;
+}
+
+.network-status .status-content {
+    display: flex;
+    align-items: center;
+}
+
+.network-status .status-icon {
+    margin-right: 10px;
+    font-size: 1.2em;
+    line-height: 1;
+}
+
+.network-status .status-text {
+    flex-grow: 1;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+</style>
+</body>
+</html>

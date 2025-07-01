@@ -1018,7 +1018,8 @@ h1{
 .hidden{display:none}
 
 /* 모바일 컨트롤 */
-.mobile-controls{Adding error toast styles and PWA related styles to the CSS file.  display:flex;
+.mobile-controls{
+  display:flex;
   justify-content:center;
   margin-bottom:20px
 }
@@ -1201,25 +1202,178 @@ h1{
       box-shadow: 0 5px 15px rgba(0,0,0,0.2);
     }
 
-    /* 모달 스타일 */
-    .modal {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.8);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
+    /* 에러 메시지 스타일 */
+.error-message {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+    max-width: 90%;
+    min-width: 300px;
+    animation: slideDown 0.3s ease-out;
+}
 
-    .modal:not(.hidden) {
-      opacity: 1;
+.error-message.error {
+    background: linear-gradient(135deg, #ff6b6b, #ee5a5a);
+    color: white;
+    box-shadow: 0 4px 20px rgba(255, 107, 107, 0.3);
+}
+
+.error-message.warning {
+    background: linear-gradient(135deg, #ffa726, #ff9800);
+    color: white;
+    box-shadow: 0 4px 20px rgba(255, 167, 38, 0.3);
+}
+
+.error-message.info {
+    background: linear-gradient(135deg, #42a5f5, #2196f3);
+    color: white;
+    box-shadow: 0 4px 20px rgba(66, 165, 245, 0.3);
+}
+
+.error-message.critical {
+    background: linear-gradient(135deg, #e53e3e, #c53030);
+    color: white;
+    box-shadow: 0 4px 20px rgba(229, 62, 62, 0.4);
+    border: 2px solid #fff;
+}
+
+.error-content {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    position: relative;
+}
+
+.error-icon {
+    font-size: 1.2rem;
+    margin-right: 10px;
+    flex-shrink: 0;
+}
+
+.error-text {
+    flex: 1;
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+.error-close {
+    background: none;
+    border: none;
+    color: inherit;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 4px;
+    margin-left: 10px;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease;
+}
+
+.error-close:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* 네트워크 상태 메시지 스타일 */
+.network-status {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9998;
+    max-width: 90%;
+    min-width: 280px;
+    animation: slideUp 0.3s ease-out;
+}
+
+.network-status.success {
+    background: linear-gradient(135deg, #66bb6a, #4caf50);
+    color: white;
+    box-shadow: 0 4px 20px rgba(102, 187, 106, 0.3);
+}
+
+.network-status.warning {
+    background: linear-gradient(135deg, #ffa726, #ff9800);
+    color: white;
+    box-shadow: 0 4px 20px rgba(255, 167, 38, 0.3);
+}
+
+.network-status.info {
+    background: linear-gradient(135deg, #42a5f5, #2196f3);
+    color: white;
+    box-shadow: 0 4px 20px rgba(66, 165, 245, 0.3);
+}
+
+.network-status.error {
+    background: linear-gradient(135deg, #ef5350, #f44336);
+    color: white;
+    box-shadow: 0 4px 20px rgba(239, 83, 80, 0.3);
+}
+
+.status-content {
+    display: flex;
+    align-items: center;
+    padding: 10px 16px;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+}
+
+.status-icon {
+    font-size: 1.1rem;
+    margin-right: 8px;
+    flex-shrink: 0;
+}
+
+.status-text {
+    flex: 1;
+    font-weight: 500;
+    font-size: 0.9rem;
+    line-height: 1.3;
+}
+
+/* 애니메이션 */
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-20px);
     }
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+/* 모달 스타일 */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
 
     .modal-content {
       background: var(--bg-card);
@@ -1254,409 +1408,54 @@ h1{
       color: var(--accent-color);
     }
 
-    /* 통계 스타일 */
-.history-stats {
-    margin-top: 20px;
-    padding: 15px;
-    background-color: #f8f9fa;
-    border-radius: 5px;
-    border: 1px solid #ddd;
-}
-
-.history-stats h4 {
-    margin-top: 0;
-    margin-bottom: 15px;
-    text-align: center;
-    color: #555;
-}
-
-.stat-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 10px;
-}
-
-.stat-box {
-    background-color: white;
-    border: 1px solid #eee;
-    padding: 10px;
-    border-radius: 5px;
-    text-align: center;
-}
-
-.stat-number {
-    font-size: 1.3em;
-    font-weight: bold;
-    color: #333;
-}
-
-.stat-label {
-    font-size: 0.8em;
-    color: #777;
-}
-
-/* 에러 토스트 스타일 */
-.error-toast {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background: linear-gradient(135deg, #fff5f5, #ffffff);
-    border: 1px solid #f87171;
-    border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(248, 113, 113, 0.2);
-    padding: 16px;
-    max-width: 400px;
-    min-width: 300px;
-    z-index: 10000;
-    animation: slideIn 0.3s ease-out;
-    backdrop-filter: blur(10px);
-}
-
-.error-toast[data-type="network"] {
-    background: linear-gradient(135deg, #fef3c7, #ffffff);
-    border-color: #f59e0b;
-    box-shadow: 0 10px 25px rgba(245, 158, 11, 0.2);
-}
-
-.error-toast-content {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-}
-
-.error-toast-icon {
-    font-size: 20px;
-    flex-shrink: 0;
-    margin-top: 2px;
-}
-
-.error-toast-text {
-    flex: 1;
-}
-
-.error-toast-title {
-    font-weight: 600;
-    color: #dc2626;
-    margin-bottom: 4px;
-    font-size: 14px;
-}
-
-.error-toast[data-type="network"] .error-toast-title {
-    color: #d97706;
-}
-
-.error-toast-message {
-    color: #6b7280;
-    font-size: 13px;
-    line-height: 1.4;
-}
-
-.error-toast-close {
-    background: none;
-    border: none;
-    color: #9ca3af;
-    font-size: 18px;
-    cursor: pointer;
-    padding: 0;
-    width: 20px;
-    height: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 4px;
-    transition: all 0.2s ease;
-}
-
-.error-toast-close:hover {
-    background: rgba(156, 163, 175, 0.1);
-    color: #6b7280;
-}
-
-.error-toast-actions {
-    margin-top: 12px;
-    display: flex;
-    gap: 8px;
-    justify-content: flex-end;
-}
-
-.error-toast-action-btn {
-    padding: 6px 12px;
-    background: #dc2626;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    font-size: 12px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-
-.error-toast-action-btn:hover {
-    background: #b91c1c;
-    transform: translateY(-1px);
-}
-
-.error-toast[data-type="network"] .error-toast-action-btn {
-    background: #d97706;
-}
-
-.error-toast[data-type="network"] .error-toast-action-btn:hover {
-    background: #b45309;
-}
-
-/* 에러 토스트 애니메이션 */
-@keyframes slideIn {
-    from {
-        transform: translateX(100%);
-        opacity: 0;
-    }
-    to {
-        transform: translateX(0);
-        opacity: 1;
-    }
-}
-
-@keyframes slideOut {
-    from {
-        transform: translateX(0);
-        opacity: 1;
-    }
-    to {
-        transform: translateX(100%);
-        opacity: 0;
-    }
-}
-
-/* 모바일 에러 토스트 */
-@media (max-width: 480px) {
-    .error-toast {
-        top: 10px;
-        right: 10px;
-        left: 10px;
-        right: 10px;
-        max-width: none;
-        min-width: auto;
-    }
-}
-
-/* 에러 토스트 스택 */
-.error-toast:nth-child(n+2) {
-    margin-top: 10px;
-}
-
-/* 다크모드 지원 */
-[data-theme="dark"] .error-toast {
-    background: linear-gradient(135deg, rgba(30, 30, 50, 0.95), rgba(50, 50, 70, 0.9));
-    border-color: #f87171;
-    color: #e0e0e0;
-}
-
-[data-theme="dark"] .error-toast-title {
-    color: #fca5a5;
-}
-
-[data-theme="dark"] .error-toast-message {
-    color: #d1d5db;
-}
-
-[data-theme="dark"] .error-toast[data-type="network"] {
-    border-color: #fbbf24;
-}
-
-[data-theme="dark"] .error-toast[data-type="network"] .error-toast-title {
-    color: #fcd34d;
-}
-
-/* PWA 설치 버튼 스타일 */
-.pwa-install-container {
-    margin-top: 20px;
-    text-align: center;
-}
-
-.pwa-install-btn {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    border: none;
-    border-radius: 12px;
-    padding: 12px 24px;
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.pwa-install-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
-}
-
-.pwa-install-btn:active {
-    transform: translateY(0);
-}
-
-/* PWA 상태 표시 */
-.pwa-status-indicator {
-    position: fixed;
-    top: 10px;
-    left: 10px;
-    background: rgba(16, 185, 129, 0.9);
-    color: white;
-    padding: 8px 12px;
-    border-radius: 20px;
-    font-size: 12px;
-    font-weight: 600;
-    z-index: 9999;
-    display: none;
-    animation: slideInLeft 0.3s ease-out;
-}
-
-.pwa-status-indicator.show {
-    display: block;
-}
-
-.pwa-status-indicator.offline {
-    background: rgba(239, 68, 68, 0.9);
-}
-
-.pwa-status-indicator.installing {
-    background: rgba(245, 158, 11, 0.9);
-}
-
-@keyframes slideInLeft {
-    from {
-        transform: translateX(-100%);
-        opacity: 0;
-    }
-    to {
-        transform: translateX(0);
-        opacity: 1;
-    }
-}
-
-/* 스탠드얼론 모드 (설치된 PWA) 스타일 */
-@media all and (display-mode: standalone) {
-    body {
-        user-select: none; /* 텍스트 선택 방지 */
-        -webkit-touch-callout: none; /* iOS 길게 누르기 방지 */
+    .history-stats {
+      margin-top: 20px;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
     }
 
-    /* 상단 패딩 추가 (노치 대응) */
-    .container {
-        padding-top: env(safe-area-inset-top, 20px);
-        padding-bottom: env(safe-area-inset-bottom, 20px);
-        padding-left: env(safe-area-inset-left, 20px);
-        padding-right: env(safe-area-inset-right, 20px);
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 15px;
+      margin-top: 15px;
     }
 
-    /* PWA 설치 버튼 숨기기 */
-    .pwa-install-container {
-        display: none;
-    }
-}
-
-/* iOS Safari 홈 스크린 추가 감지 */
-@media all and (display-mode: browser) {
-    .ios-standalone-message {
-        display: none;
-    }
-}
-
-.ios-standalone-message {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    padding: 10px;
-    text-align: center;
-    font-size: 12px;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
-
-/* 캐시 정보 표시 */
-.cache-info {
-    position: fixed;
-    bottom: 10px;
-    right: 10px;
-    background: rgba(0, 0, 0, 0.8);
-    color: white;
-    padding: 8px 12px;
-    border-radius: 8px;
-    font-size: 11px;
-    z-index: 9999;
-    display: none;
-}
-
-.cache-info.show {
-    display: block;
-    animation: fadeIn 0.3s ease-in;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-/* 오프라인 인디케이터 */
-.offline-indicator {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: rgba(239, 68, 68, 0.95);
-    color: white;
-    padding: 20px;
-    border-radius: 12px;
-    text-align: center;
-    z-index: 10001;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    display: none;
-}
-
-.offline-indicator.show {
-    display: block;
-    animation: bounceIn 0.5s ease-out;
-}
-
-@keyframes bounceIn {
-    0% {
-        transform: translate(-50%, -50%) scale(0.3);
-        opacity: 0;
-    }
-    50% {
-        transform: translate(-50%, -50%) scale(1.05);
-    }
-    70% {
-        transform: translate(-50%, -50%) scale(0.9);
-    }
-    100% {
-        transform: translate(-50%, -50%) scale(1);
-        opacity: 1;
-    }
-}
-
-/* 모바일 PWA 최적화 */
-@media (max-width: 480px) {
-    .pwa-install-btn {
-        width: 100%;
-        padding: 15px;
-        font-size: 16px;
+    .stat-box {
+      text-align: center;
+      padding: 15px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
     }
 
-    .pwa-status-indicator {
-        top: 5px;
-        left: 5px;
-        font-size: 11px;
-        padding: 6px 10px;
+    .stat-number {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--accent-color);
     }
 
-    .cache-info {
-        bottom: 5px;
-        right: 5px;
-        font-size: 10px;
-        padding: 6px 8px;
+    .stat-label {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      margin-top: 5px;
     }
-}
+
+    .comparison-badge {
+      display: inline-block;
+      padding: 4px 8px;
+      background: var(--accent-color);
+      color: white;
+      border-radius: 15px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      margin-left: 8px;
+    }
+
+    .comparison-badge.new {
+      background: #2ed573;
+    }
+
+    .comparison-badge.changed {
+      background: #ffa502;
+    }
