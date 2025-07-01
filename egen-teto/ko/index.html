@@ -1,107 +1,351 @@
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
-  <title>에겐 vs 테토 성향 테스트｜나의 성향과 찰떡궁합 이성 유형 찾기</title>
-  <meta name="description" content="에겐녀/테토녀/에겐남/테토남, 10문항 심리테스트로 나의 성향과 잘 어울리는 이성, 추천 직업까지 확인! 공유하기/복사 기능 완비, Z세대 트렌디 심리테스트 무료." />
-
-  <!-- Open Graph Meta Tags -->
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="에겐 vs 테토 성향 테스트｜찰떡궁합 이상형까지!" />
-  <meta property="og:description" content="10문항으로 알아보는 내 성향과 찰떡궁합 이성 유형, 추천 직업! 결과 복사/공유 기능, 모바일 최적화 심리테스트." />
-  <meta property="og:image" content="https://tests.mahalohana-bruce.com/egen-teto/ko/thumbnail.png" />
-  <meta property="og:url" content="https://tests.mahalohana-bruce.com/egen-teto/ko/" />
-
-  <link rel="icon" href="./favicon.png" type="image/png" />
-  <link rel="canonical" href="https://tests.mahalohana-bruce.com/egen-teto/ko/" />
-  <link href="https://fonts.googleapis.com/css2?family=Gmarket+Sans:wght@400;700&display=swap" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/static/woff2/SUIT.css" rel="stylesheet">
-
-  <!-- 공통 테마 CSS -->
-  <link rel="stylesheet" href="/assets/common-theme.css">
-
-  <!-- 페이지별 CSS -->
-  <link rel="stylesheet" href="./assets/index-DOL7RTK1.css">
-
-  <style>
-    /* 레이아웃 충돌 방지 */
-    .container {
-      position: relative;
-      z-index: 1;
-    }
-
-    /* 겹침 방지 */
-    .main-content {
-      position: relative;
-      z-index: 2;
-      background: var(--card-bg);
-      border-radius: var(--border-radius);
-      padding: 20px;
-      margin: 20px auto;
-      max-width: 800px;
-    }
-
-    /* 다크모드 토글 위치 조정 */
-    .theme-toggle {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      z-index: 1000;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>에겐 vs 테토 성향 테스트</title>
+    <link rel="stylesheet" href="/assets/common-theme.css">
+    <style>
+        /* 에겐/테토 전용 스타일 */
+        .character-card {
+            padding: 20px;
+            border-radius: 15px;
+            margin: 10px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .egen-card {
+            background: linear-gradient(135deg, var(--egen-color), #ff9cc9);
+            color: white;
+        }
+        
+        .teto-card {
+            background: linear-gradient(135deg, var(--teto-color), #5cb3ff);
+            color: white;
+        }
+        
+        .score-bar {
+            height: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 15px 0;
+            background: #f0f0f0;
+        }
+        
+        .score-fill {
+            height: 100%;
+            transition: width 0.5s ease;
+        }
+        
+        .question-card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            margin: 20px 0;
+            box-shadow: var(--shadow);
+        }
+        
+        .question-number {
+            color: var(--accent-color);
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 <body>
-  <!-- 다크모드 토글 버튼 -->
-  <button class="theme-toggle" onclick="toggleTheme()" aria-label="테마 변경">
-    <span class="sun-icon">☀️</span>
-    <span class="moon-icon">🌙</span>
-  </button>
+    <div class="container">
+        <!-- 헤더 컨트롤 -->
+        <div class="header-controls">
+            <div class="lang-selector">
+                <a href="/egen-teto/ko/index.html" class="lang-btn active">한국어</a>
+                <a href="/egen-teto/ja/index.html" class="lang-btn">日本語</a>
+                <a href="/egen-teto/en/index.html" class="lang-btn">English</a>
+            </div>
+            <button class="theme-toggle" id="themeToggle">🌙</button>
+        </div>
 
-  <div class="main-content">
-    <div id="root"></div>
-  </div>
+        <!-- 메인 콘텐츠 -->
+        <div class="main-card">
+            <h1>에겐 vs 테토 성향 테스트</h1>
+            <p class="subtitle">
+                당신의 성향과 취향을 분석해서<br>
+                유월을 찾아보세요
+            </p>
 
-  <script type="module" src="./assets/index-zCtgUHeI.js"></script>
+            <!-- 테스트 시작 화면 -->
+            <div id="startScreen" class="text-center">
+                <div class="character-card egen-card">
+                    <h3>🦊 에겐</h3>
+                    <p>활발하고 적극적인 성격</p>
+                </div>
+                
+                <div class="character-card teto-card">
+                    <h3>🎤 테토</h3>
+                    <p>차분하고 신중한 성격</p>
+                </div>
+                
+                <button class="btn" onclick="startTest()">테스트 시작하기</button>
+                <p style="margin-top: 20px; color: var(--text-secondary);">
+                    총 10개의 질문 • 약 2분 소요
+                </p>
+            </div>
 
-  <!-- 다크모드 스크립트 -->
-  <script>
-    // 다크모드 토글 함수
-    function toggleTheme() {
-      const html = document.documentElement;
-      const currentTheme = html.getAttribute('data-theme');
-      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            <!-- 진행률 바 -->
+            <div id="progressSection" class="hidden">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <p class="text-center" id="progressText">질문 1 / 10</p>
+            </div>
 
-      html.setAttribute('data-theme', newTheme);
-      localStorage.setItem('theme', newTheme);
+            <!-- 질문 화면 -->
+            <div id="questionScreen" class="hidden">
+                <div class="question-card">
+                    <div class="question-number" id="questionNumber">질문 1</div>
+                    <h3 class="question-title" id="questionTitle"></h3>
+                    <div class="answer-options" id="answerOptions"></div>
+                    <button class="btn" id="nextButton" onclick="nextQuestion()" disabled>다음</button>
+                </div>
+            </div>
 
-      // 아이콘 표시 업데이트
-      updateThemeIcon(newTheme);
-    }
+            <!-- 결과 화면 -->
+            <div id="resultScreen" class="hidden">
+                <div class="result-section">
+                    <div class="result-header">
+                        <span class="result-emoji" id="resultEmoji">🦊</span>
+                        <h2 class="result-title" id="resultTitle">에겐형</h2>
+                        <p id="resultDescription"></p>
+                    </div>
 
-    // 테마 아이콘 업데이트
-    function updateThemeIcon(theme) {
-      const sunIcon = document.querySelector('.sun-icon');
-      const moonIcon = document.querySelector('.moon-icon');
+                    <div class="score-bar">
+                        <div class="score-fill" id="scoreFill" style="background: linear-gradient(90deg, var(--egen-color), var(--teto-color));"></div>
+                    </div>
 
-      if (theme === 'dark') {
-        sunIcon.style.display = 'inline';
-        moonIcon.style.display = 'none';
-      } else {
-        sunIcon.style.display = 'none';
-        moonIcon.style.display = 'inline';
-      }
-    }
+                    <div class="stats">
+                        <div class="stat-item">
+                            <div class="stat-number" id="egenScore">50%</div>
+                            <div class="stat-label">에겐 성향</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" id="tetoScore">50%</div>
+                            <div class="stat-label">테토 성향</div>
+                        </div>
+                    </div>
 
-    // 초기 테마 설정
-    function initTheme() {
-      const savedTheme = localStorage.getItem('theme') || 'light';
-      document.documentElement.setAttribute('data-theme', savedTheme);
-      updateThemeIcon(savedTheme);
-    }
+                    <div class="share-buttons">
+                        <button class="share-btn" onclick="shareResult()">
+                            📱<br>결과 공유
+                        </button>
+                        <button class="share-btn" onclick="retakeTest()">
+                            🔄<br>다시 하기
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-    // 페이지 로드 시 테마 초기화
-    document.addEventListener('DOMContentLoaded', initTheme);
-  </script>
+        <!-- 푸터 -->
+        <div class="footer">
+            <p>&copy; 2024 성향 테스트. Made with ❤️</p>
+        </div>
+    </div>
+
+    <script>
+        // 다크모드 토글
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+
+        // 저장된 테마 불러오기
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        body.setAttribute('data-theme', savedTheme);
+        themeToggle.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            body.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            themeToggle.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+        });
+
+        // 테스트 데이터
+        const questions = [
+            {
+                question: "새로운 사람들과의 모임에서 당신은?",
+                answers: [
+                    { text: "먼저 다가가서 대화를 시작한다", type: "egen" },
+                    { text: "누군가 말을 걸어올 때까지 기다린다", type: "teto" }
+                ]
+            },
+            {
+                question: "스트레스를 받을 때 당신의 해소법은?",
+                answers: [
+                    { text: "친구들과 만나서 수다를 떤다", type: "egen" },
+                    { text: "혼자 조용한 시간을 갖는다", type: "teto" }
+                ]
+            },
+            {
+                question: "계획을 세울 때 당신은?",
+                answers: [
+                    { text: "대략적인 계획만 세우고 즉흥적으로 행동한다", type: "egen" },
+                    { text: "세세한 부분까지 꼼꼼히 계획한다", type: "teto" }
+                ]
+            },
+            {
+                question: "새로운 도전 앞에서 당신은?",
+                answers: [
+                    { text: "일단 해보고 생각한다", type: "egen" },
+                    { text: "충분히 고민하고 준비한 후 시작한다", type: "teto" }
+                ]
+            },
+            {
+                question: "친구와의 약속 시간에 대해",
+                answers: [
+                    { text: "대충 맞춰가면 된다고 생각한다", type: "egen" },
+                    { text: "정확한 시간을 지키려고 노력한다", type: "teto" }
+                ]
+            },
+            {
+                question: "주말을 보내는 이상적인 방법은?",
+                answers: [
+                    { text: "친구들과 활동적인 외출", type: "egen" },
+                    { text: "집에서 여유롭게 취미 생활", type: "teto" }
+                ]
+            },
+            {
+                question: "의견 충돌이 있을 때 당신은?",
+                answers: [
+                    { text: "직접적으로 의견을 표현한다", type: "egen" },
+                    { text: "상대방 입장을 먼저 이해하려 한다", type: "teto" }
+                ]
+            },
+            {
+                question: "새로운 환경에 적응할 때",
+                answers: [
+                    { text: "빠르게 적응하고 새로운 것들을 시도한다", type: "egen" },
+                    { text: "천천히 관찰하며 조심스럽게 적응한다", type: "teto" }
+                ]
+            },
+            {
+                question: "팀 프로젝트에서 당신의 역할은?",
+                answers: [
+                    { text: "아이디어를 제시하고 추진력을 발휘한다", type: "egen" },
+                    { text: "세심하게 검토하고 완성도를 높인다", type: "teto" }
+                ]
+            },
+            {
+                question: "감정 표현에 대한 당신의 성향은?",
+                answers: [
+                    { text: "감정을 솔직하게 표현하는 편이다", type: "egen" },
+                    { text: "감정을 내면에 간직하는 편이다", type: "teto" }
+                ]
+            }
+        ];
+
+        let currentQuestion = 0;
+        let scores = { egen: 0, teto: 0 };
+
+        function startTest() {
+            document.getElementById('startScreen').classList.add('hidden');
+            document.getElementById('progressSection').classList.remove('hidden');
+            document.getElementById('questionScreen').classList.remove('hidden');
+            showQuestion();
+        }
+
+        function showQuestion() {
+            const question = questions[currentQuestion];
+            document.getElementById('questionNumber').textContent = `질문 ${currentQuestion + 1}`;
+            document.getElementById('questionTitle').textContent = question.question;
+            
+            const optionsContainer = document.getElementById('answerOptions');
+            optionsContainer.innerHTML = '';
+            
+            question.answers.forEach((answer, index) => {
+                const option = document.createElement('div');
+                option.className = 'answer-option';
+                option.textContent = answer.text;
+                option.onclick = () => selectAnswer(index);
+                optionsContainer.appendChild(option);
+            });
+
+            updateProgress();
+        }
+
+        function selectAnswer(index) {
+            const options = document.querySelectorAll('.answer-option');
+            options.forEach(option => option.classList.remove('selected'));
+            options[index].classList.add('selected');
+            
+            const selectedAnswer = questions[currentQuestion].answers[index];
+            scores[selectedAnswer.type]++;
+            
+            document.getElementById('nextButton').disabled = false;
+        }
+
+        function nextQuestion() {
+            currentQuestion++;
+            
+            if (currentQuestion < questions.length) {
+                showQuestion();
+                document.getElementById('nextButton').disabled = true;
+            } else {
+                showResult();
+            }
+        }
+
+        function updateProgress() {
+            const progress = ((currentQuestion + 1) / questions.length) * 100;
+            document.getElementById('progressFill').style.width = progress + '%';
+            document.getElementById('progressText').textContent = `질문 ${currentQuestion + 1} / ${questions.length}`;
+        }
+
+        function showResult() {
+            document.getElementById('questionScreen').classList.add('hidden');
+            document.getElementById('progressSection').classList.add('hidden');
+            document.getElementById('resultScreen').classList.remove('hidden');
+            
+            const egenPercentage = Math.round((scores.egen / questions.length) * 100);
+            const tetoPercentage = Math.round((scores.teto / questions.length) * 100);
+            
+            const isEgen = scores.egen > scores.teto;
+            
+            document.getElementById('resultEmoji').textContent = isEgen ? '🦊' : '🎤';
+            document.getElementById('resultTitle').textContent = isEgen ? '에겐형' : '테토형';
+            document.getElementById('resultDescription').textContent = isEgen 
+                ? '활발하고 적극적인 성격으로 새로운 도전을 즐기는 타입입니다!'
+                : '차분하고 신중한 성격으로 깊이 있는 사고를 하는 타입입니다!';
+            
+            document.getElementById('egenScore').textContent = egenPercentage + '%';
+            document.getElementById('tetoScore').textContent = tetoPercentage + '%';
+            document.getElementById('scoreFill').style.width = egenPercentage + '%';
+        }
+
+        function shareResult() {
+            const result = document.getElementById('resultTitle').textContent;
+            const text = `나는 ${result}! 에겐 vs 테토 성향 테스트 결과를 확인해보세요!`;
+            
+            if (navigator.share) {
+                navigator.share({
+                    title: '에겐 vs 테토 성향 테스트',
+                    text: text,
+                    url: window.location.href
+                });
+            } else {
+                navigator.clipboard.writeText(text + ' ' + window.location.href);
+                alert('결과가 클립보드에 복사되었습니다!');
+            }
+        }
+
+        function retakeTest() {
+            currentQuestion = 0;
+            scores = { egen: 0, teto: 0 };
+            
+            document.getElementById('resultScreen').classList.add('hidden');
+            document.getElementById('startScreen').classList.remove('hidden');
+        }
+    </script>
 </body>
 </html>
