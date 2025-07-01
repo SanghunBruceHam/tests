@@ -250,8 +250,27 @@
           <p>차분하고 신중한 성격</p>
         </div>
       </div>
+
+      <!-- 성별 선택 섹션 -->
+      <div class="gender-selection" style="margin: 30px 0;">
+        <h3 style="font-size: 1.2rem; margin-bottom: 15px; color: #333;">성별을 선택해주세요</h3>
+        <div class="gender-options" style="display: flex; gap: 15px; justify-content: center;">
+          <div class="gender-option" onclick="selectGender('female')" style="flex: 1; max-width: 120px;">
+            <div class="option gender-female" style="display: flex; flex-direction: column; align-items: center; padding: 20px 15px;">
+              <div style="font-size: 2rem; margin-bottom: 8px;">👩</div>
+              <span style="font-weight: 600;">여성</span>
+            </div>
+          </div>
+          <div class="gender-option" onclick="selectGender('male')" style="flex: 1; max-width: 120px;">
+            <div class="option gender-male" style="display: flex; flex-direction: column; align-items: center; padding: 20px 15px;">
+              <div style="font-size: 2rem; margin-bottom: 8px;">👨</div>
+              <span style="font-weight: 600;">남성</span>
+            </div>
+          </div>
+        </div>
+      </div>
       
-      <button class="btn" onclick="startTest()">테스트 시작하기</button>
+      <button class="btn" id="startBtn" onclick="startTest()" disabled>테스트 시작하기</button>
       <p style="margin-top: 20px; color: #888; font-size: 0.9rem;">
         총 10개 질문 • 약 2분 소요
       </p>
@@ -427,8 +446,29 @@
 
     let currentQuestion = 0;
     let answers = [];
+    let selectedGender = '';
+
+    function selectGender(gender) {
+      selectedGender = gender;
+      
+      // 이전 선택 제거
+      document.querySelectorAll('.gender-option .option').forEach(opt => {
+        opt.classList.remove('selected');
+      });
+      
+      // 현재 선택 표시
+      document.querySelector(`.gender-${gender}`).classList.add('selected');
+      
+      // 시작 버튼 활성화
+      document.getElementById('startBtn').disabled = false;
+    }
 
     function startTest() {
+      if (!selectedGender) {
+        alert('성별을 선택해주세요!');
+        return;
+      }
+      
       document.getElementById('startScreen').classList.add('hidden');
       document.getElementById('progressContainer').classList.remove('hidden');
       document.getElementById('questionContainer').classList.remove('hidden');
@@ -490,9 +530,9 @@
       const count = { egen: 0, teto: 0 };
       answers.forEach(answer => count[answer]++);
       
-      // 성별에 따른 결과 (여기서는 임의로 설정, 실제로는 사용자 입력 받아야 함)
+      // 성별에 따른 결과
       const isEgen = count.egen > count.teto;
-      const gender = Math.random() > 0.5 ? '녀' : '남'; // 임시로 랜덤 설정
+      const gender = selectedGender === 'female' ? '녀' : '남';
       const resultType = (isEgen ? '에겐' : '테토') + gender;
       
       const result = results[resultType];
@@ -532,6 +572,13 @@
     function retakeTest() {
       currentQuestion = 0;
       answers = [];
+      selectedGender = '';
+      
+      // 성별 선택 초기화
+      document.querySelectorAll('.gender-option .option').forEach(opt => {
+        opt.classList.remove('selected');
+      });
+      document.getElementById('startBtn').disabled = true;
       
       document.getElementById('resultContainer').classList.add('hidden');
       document.getElementById('startScreen').classList.remove('hidden');
