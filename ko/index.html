@@ -48,11 +48,21 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- FontAwesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Resource Hints for Performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="preconnect" href="https://www.google-analytics.com">
+  <link rel="dns-prefetch" href="https://googleads.g.doubleclick.net">
+  <link rel="dns-prefetch" href="https://tpc.googlesyndication.com">
 
-  <!-- 공통 테마 CSS -->
-  <link rel="stylesheet" href="/assets/common-theme.css">
+  <!-- FontAwesome with loading optimization -->
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
+
+  <!-- 공통 테마 CSS with preload -->
+  <link rel="preload" href="/assets/common-theme.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="/assets/common-theme.css"></noscript>
 
   <!-- Google Analytics -->
   <amp-analytics type="gtag" data-credentials="include">
@@ -61,12 +71,62 @@
       "vars": {
         "gtag_id": "G-45VSGEM7EZ",
         "config": {
-          "G-45VSGEM7EZ": {}
+          "G-45VSGEM7EZ": {
+            "custom_map": {
+              "dimension1": "theme_mode",
+              "dimension2": "device_type",
+              "dimension3": "loading_performance"
+            }
+          }
+        }
+      },
+      "triggers": {
+        "pageview": {
+          "on": "visible",
+          "request": "pageview",
+          "vars": {
+            "custom_dimension.theme_mode": "${isDarkMode}",
+            "custom_dimension.device_type": "${deviceType}",
+            "custom_dimension.loading_performance": "${loadingTime}"
+          }
+        },
+        "cwv_lcp": {
+          "on": "ini-load",
+          "request": "event",
+          "vars": {
+            "event_name": "core_web_vitals",
+            "event_category": "performance",
+            "event_label": "LCP"
+          }
+        },
+        "cwv_fid": {
+          "on": "click",
+          "request": "event",
+          "vars": {
+            "event_name": "core_web_vitals",
+            "event_category": "performance", 
+            "event_label": "FID"
+          }
+        },
+        "scroll_depth": {
+          "on": "scroll",
+          "scrollSpec": {
+            "verticalBoundaries": [25, 50, 75, 90]
+          },
+          "request": "event",
+          "vars": {
+            "event_name": "scroll_depth",
+            "event_category": "engagement"
+          }
         }
       }
     }
     </script>
   </amp-analytics>
+
+  <!-- Core Web Vitals 모니터링 -->
+  <script async custom-element="amp-web-vitals" src="https://cdn.ampproject.org/v0/amp-web-vitals-0.1.js"></script>
+  <amp-web-vitals layout="nodisplay"></amp-web-vitals>
 
   <!-- JSON-LD Structured Data -->
   <script type="application/ld+json">
@@ -421,10 +481,166 @@
       localStorage.setItem('darkMode', isDarkMode);
     }
 
+    // 성능 모니터링
+    const performanceMonitor = {
+      startTime: Date.now(),
+      metrics: {},
+      
+      // Core Web Vitals 측정
+      measureCWV() {
+        // FCP (First Contentful Paint) 측정
+        if ('PerformanceObserver' in window) {
+          const observer = new PerformanceObserver((list) => {
+            for (const entry of list.getEntries()) {
+              if (entry.name === 'first-contentful-paint') {
+                this.metrics.FCP = entry.startTime;
+                this.sendMetric('FCP', entry.startTime);
+              }
+            }
+          });
+          observer.observe({ entryTypes: ['paint'] });
+
+          // LCP (Largest Contentful Paint) 측정
+          const lcpObserver = new PerformanceObserver((list) => {
+            const entries = list.getEntries();
+            const lastEntry = entries[entries.length - 1];
+            this.metrics.LCP = lastEntry.startTime;
+            this.sendMetric('LCP', lastEntry.startTime);
+          });
+          lcpObserver.observe({ entryTypes: ['largest-contentful-paint'] });
+
+          // CLS (Cumulative Layout Shift) 측정
+          let clsValue = 0;
+          const clsObserver = new PerformanceObserver((list) => {
+            for (const entry of list.getEntries()) {
+              if (!entry.hadRecentInput) {
+                clsValue += entry.value;
+              }
+            }
+            this.metrics.CLS = clsValue;
+            this.sendMetric('CLS', clsValue);
+          });
+          clsObserver.observe({ entryTypes: ['layout-shift'] });
+        }
+
+        // 페이지 로딩 시간 측정
+        window.addEventListener('load', () => {
+          const loadTime = Date.now() - this.startTime;
+          this.metrics.loadTime = loadTime;
+          this.sendMetric('page_load_time', loadTime);
+          
+          // Navigation API 지원 시 더 정확한 측정
+          if ('performance' in window && 'getEntriesByType' in performance) {
+            const navEntries = performance.getEntriesByType('navigation');
+            if (navEntries.length > 0) {
+              const nav = navEntries[0];
+              this.sendMetric('dom_content_loaded', nav.domContentLoadedEventEnd - nav.domContentLoadedEventStart);
+              this.sendMetric('dom_interactive', nav.domInteractive - nav.fetchStart);
+            }
+          }
+        });
+      },
+
+      // 메트릭 전송
+      sendMetric(name, value) {
+        if (window.gtag) {
+          gtag('event', 'performance_metric', {
+            metric_name: name,
+            metric_value: Math.round(value),
+            device_type: this.getDeviceType(),
+            connection_type: this.getConnectionType()
+          });
+        }
+      },
+
+      // 디바이스 타입 감지
+      getDeviceType() {
+        const width = window.innerWidth;
+        if (width < 480) return 'mobile';
+        if (width < 768) return 'tablet';
+        return 'desktop';
+      },
+
+      // 연결 타입 감지
+      getConnectionType() {
+        if ('connection' in navigator) {
+          return navigator.connection.effectiveType || 'unknown';
+        }
+        return 'unknown';
+      },
+
+      // 성능 이슈 감지
+      detectPerformanceIssues() {
+        setTimeout(() => {
+          if (this.metrics.LCP > 2500) {
+            this.sendMetric('performance_issue', 'slow_lcp');
+          }
+          if (this.metrics.CLS > 0.1) {
+            this.sendMetric('performance_issue', 'high_cls');
+          }
+          if (this.metrics.loadTime > 3000) {
+            this.sendMetric('performance_issue', 'slow_load');
+          }
+        }, 3000);
+      },
+
+      // 메모리 사용량 모니터링
+      monitorMemory() {
+        if ('memory' in performance) {
+          setInterval(() => {
+            const memory = performance.memory;
+            this.sendMetric('memory_used', memory.usedJSHeapSize);
+            this.sendMetric('memory_total', memory.totalJSHeapSize);
+            
+            // 메모리 사용률이 높은 경우 경고
+            const usage = memory.usedJSHeapSize / memory.totalJSHeapSize;
+            if (usage > 0.9) {
+              this.sendMetric('performance_issue', 'high_memory');
+            }
+          }, 30000); // 30초마다 체크
+        }
+      }
+    };
+
+    // 성능 모니터링 시작
+    performanceMonitor.measureCWV();
+    performanceMonitor.detectPerformanceIssues();
+    performanceMonitor.monitorMemory();
+
+    // 사용자 상호작용 지연 측정
+    let interactionStart = 0;
+    document.addEventListener('click', () => {
+      interactionStart = Date.now();
+    });
+
     // 이벤트 리스너
     document.querySelector('.theme-toggle').addEventListener('click', () => {
+      const responseTime = Date.now() - interactionStart;
+      performanceMonitor.sendMetric('theme_toggle_response', responseTime);
+      
       isDarkMode = !isDarkMode;
       updateTheme();
+    });
+
+    // 에러 모니터링
+    window.addEventListener('error', (e) => {
+      if (window.gtag) {
+        gtag('event', 'javascript_error', {
+          error_message: e.message,
+          error_filename: e.filename,
+          error_lineno: e.lineno,
+          error_colno: e.colno
+        });
+      }
+    });
+
+    // 언핸들드 Promise 에러 모니터링
+    window.addEventListener('unhandledrejection', (e) => {
+      if (window.gtag) {
+        gtag('event', 'promise_rejection', {
+          error_reason: e.reason
+        });
+      }
     });
   </script>
 </body>
