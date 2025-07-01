@@ -485,7 +485,7 @@
     const performanceMonitor = {
       startTime: Date.now(),
       metrics: {},
-      
+
       // Core Web Vitals 측정
       measureCWV() {
         // FCP (First Contentful Paint) 측정
@@ -505,6 +505,7 @@
             const entries = list.getEntries();
             const lastEntry = entries[entries.length - 1];
             this.metrics.LCP = lastEntry.startTime;
+            this.sendMetric('LCP', lastEntry.startTime);
             this.sendMetric('LCP', lastEntry.startTime);
           });
           lcpObserver.observe({ entryTypes: ['largest-contentful-paint'] });
@@ -528,7 +529,7 @@
           const loadTime = Date.now() - this.startTime;
           this.metrics.loadTime = loadTime;
           this.sendMetric('page_load_time', loadTime);
-          
+
           // Navigation API 지원 시 더 정확한 측정
           if ('performance' in window && 'getEntriesByType' in performance) {
             const navEntries = performance.getEntriesByType('navigation');
@@ -591,7 +592,7 @@
             const memory = performance.memory;
             this.sendMetric('memory_used', memory.usedJSHeapSize);
             this.sendMetric('memory_total', memory.totalJSHeapSize);
-            
+
             // 메모리 사용률이 높은 경우 경고
             const usage = memory.usedJSHeapSize / memory.totalJSHeapSize;
             if (usage > 0.9) {
@@ -617,7 +618,7 @@
     document.querySelector('.theme-toggle').addEventListener('click', () => {
       const responseTime = Date.now() - interactionStart;
       performanceMonitor.sendMetric('theme_toggle_response', responseTime);
-      
+
       isDarkMode = !isDarkMode;
       updateTheme();
     });

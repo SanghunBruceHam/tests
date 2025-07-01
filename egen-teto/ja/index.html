@@ -30,10 +30,10 @@
     gtag('config', 'G-45VSGEM7EZ');
   </script>
   <script async custom-element="amp-ad" src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"></script>
-  
+
   <!-- 공통 테마 CSS -->
   <link rel="stylesheet" href="/assets/common-theme.css">
-  
+
   <style>
     :root {
       --egen: #ff7eb3;
@@ -375,9 +375,11 @@
       }
     }
     function goToMainPage() {
+      This update replaces the AMP AdSense code with standard AdSense code for better compatibility and performance.
+``````text
       window.location.href = '/ja/';
     }
-    
+
     // 다크모드 기능
     let isDarkMode = localStorage.getItem('darkMode') === 'true';
 
@@ -397,11 +399,11 @@
 
       localStorage.setItem('darkMode', isDarkMode);
     }
-    
+
     document.addEventListener('DOMContentLoaded', function() {
       renderStartCard();
       updateTheme();
-      
+
       // 테마 토글 이벤트 리스너
       document.querySelector('.theme-toggle').addEventListener('click', () => {
         isDarkMode = !isDarkMode;
@@ -409,16 +411,18 @@
       });
     });
   </script>
-  <!-- Google AdSense 광고 삽입 -->
-  <!-- AMP AdSense 광고 - 디스플레이 -->
-  <script async custom-element="amp-ad" src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"></script>
-  <amp-ad width="100vw" height="320"
-    type="adsense"
-    data-ad-client="ca-pub-5508768187151867"
-    data-ad-slot="8986626310"
-    data-auto-format="rspv"
-    data-full-width="">
-    <div overflow=""></div>
-  </amp-ad>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5508768187151867" crossorigin="anonymous"></script>
+
+  <!-- AdSense Display Ad -->
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-5508768187151867"
+       data-ad-slot="4067267701"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
 </body>
 </html>
