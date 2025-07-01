@@ -54,6 +54,11 @@
   <!-- FontAwesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
+  <!-- 공통 컴포넌트 모듈 -->
+  <script src="/assets/common-components.js"></script>
+
+  <!-- Google Analytics & AdSense -->
+
   <!-- 공통 테마 CSS -->
   <link rel="stylesheet" href="/assets/common-theme.css">
 
@@ -439,6 +444,12 @@
       isDarkMode = !isDarkMode;
       updateTheme();
     });
+
+    function shareResult(platform) {
+      const title = document.querySelector(".result-title")?.innerText || "";
+      const text = title + ' - 私も診断！';
+      window.CommonComponents.shareToSNS(platform, text);
+    }
   </script>
 </body>
 </html>
