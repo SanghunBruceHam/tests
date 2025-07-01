@@ -5,6 +5,7 @@ run = "1234"
 channel = "stable-24_05"
 
 [workflows]
+runButton = "DailyFortune Dev"
 
 [[workflows.workflow]]
 name = "DailyFortune Dev"
@@ -14,6 +15,10 @@ mode = "parallel"
 [[workflows.workflow.tasks]]
 task = "shell.exec"
 args = "cd dailyfortune && npm run dev"
+
+[[ports]]
+localPort = 3000
+externalPort = 3000
 
 [[ports]]
 localPort = 5000
