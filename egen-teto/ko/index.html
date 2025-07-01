@@ -12,19 +12,29 @@
   <meta property="og:type" content="website" />
   <meta property="og:title" content="에겐 vs 테토 성향 테스트｜찰떡궁합 이성 타입 진단！" />
   <meta property="og:description" content="10문항으로 알아보는 나의 성격과 찰떡궁합 이성 타입, 적성 직업도 진단！결과 복사·공유 기능, 모바일 최적화." />
-  <meta property="og:image" content="https://tests.mahalohana-bruce.com/egen-teto/ko/thumbnail.png" />
+  <meta property="og:image" content="https://tests.mahalohana-bruce.com/egen-teto/ko/thumbnail.webp" />
+  <meta property="og:image:alt" content="에겐 vs 테토 성향 테스트 썸네일" />
+  <meta property="og:image:type" content="image/webp" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
   <meta property="og:url" content="https://tests.mahalohana-bruce.com/egen-teto/ko/" />
   
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="에겐 vs 테토 성향 테스트" />
   <meta name="twitter:description" content="10문항으로 알아보는 나의 성격과 찰떡궁합 이성 타입 진단！" />
-  <meta name="twitter:image" content="https://tests.mahalohana-bruce.com/egen-teto/ko/thumbnail.png" />
+  <meta name="twitter:image" content="https://tests.mahalohana-bruce.com/egen-teto/ko/thumbnail.webp" />
+  <meta name="twitter:image:alt" content="에겐 vs 테토 성향 테스트 썸네일" />
   
-  <!-- Icons -->
+  <!-- Icons with WebP support -->
   <link rel="canonical" href="https://tests.mahalohana-bruce.com/egen-teto/ko/" />
   <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-  <link rel="icon" href="/egen-teto/ko/favicon.png" />
+  <link rel="icon" href="/egen-teto/ko/favicon.webp" type="image/webp" />
+  <link rel="icon" href="/egen-teto/ko/favicon.png" type="image/png" />
+  
+  <!-- Preload critical images -->
+  <link rel="preload" as="image" href="/egen-teto/ko/thumbnail.webp" type="image/webp" />
+  <link rel="preload" as="image" href="/egen-teto/ko/thumbnail.png" type="image/png" />
   
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Gmarket+Sans:wght@400;700&display=swap" rel="stylesheet">
@@ -46,14 +56,16 @@
       </p>
       
       <div class="gender-section">
-        <div class="gender-title">성별을 선택해주세요</div>
-        <div class="gender-options">
-          <div class="gender-option" onclick="selectGender('female')">
-            <div class="gender-emoji">👩</div>
+        <div class="gender-title" id="genderLabel">성별을 선택해주세요</div>
+        <div class="gender-options" role="radiogroup" aria-labelledby="genderLabel">
+          <div class="gender-option" role="radio" aria-checked="false" tabindex="0" 
+               onclick="selectGender('female')" onkeydown="handleGenderKeydown(event, 'female')">
+            <div class="gender-emoji" aria-hidden="true">👩</div>
             <div class="gender-text">여성</div>
           </div>
-          <div class="gender-option" onclick="selectGender('male')">
-            <div class="gender-emoji">👨</div>
+          <div class="gender-option" role="radio" aria-checked="false" tabindex="0" 
+               onclick="selectGender('male')" onkeydown="handleGenderKeydown(event, 'male')">
+            <div class="gender-emoji" aria-hidden="true">👨</div>
             <div class="gender-text">남성</div>
           </div>
         </div>
@@ -66,22 +78,22 @@
     </div>
 
     <!-- 질문 화면 -->
-    <div id="questionScreen" class="card hidden">
+    <div id="questionScreen" class="card hidden" role="main" aria-live="polite">
       <div class="progress-section">
         <div class="progress-info">
           <span>진행률</span>
-          <span id="progressText">1 / 10</span>
+          <span id="progressText" aria-live="polite">1 / 10</span>
         </div>
-        <div class="progress-bar">
+        <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="10">
           <div class="progress-fill" id="progressFill"></div>
         </div>
       </div>
 
       <div class="question-section">
-        <div class="question-number" id="questionNumber">질문 1</div>
-        <div class="question-text" id="questionText"></div>
-        <div class="options-container" id="optionsContainer"></div>
-        <button class="btn" id="nextBtn" onclick="nextQuestion()" disabled>다음</button>
+        <div class="question-number" id="questionNumber" aria-live="polite">질문 1</div>
+        <div class="question-text" id="questionText" role="heading" aria-level="2"></div>
+        <div class="options-container" id="optionsContainer" role="radiogroup" aria-labelledby="questionText"></div>
+        <button class="btn" id="nextBtn" onclick="nextQuestion()" disabled aria-describedby="questionText">다음</button>
       </div>
     </div>
 
@@ -270,13 +282,38 @@
       // 이전 선택 제거
       document.querySelectorAll('.gender-option').forEach(opt => {
         opt.classList.remove('selected');
+        opt.setAttribute('aria-checked', 'false');
+        opt.setAttribute('tabindex', '0');
       });
       
       // 현재 선택 표시
-      event.target.closest('.gender-option').classList.add('selected');
+      const selectedOption = event.target.closest('.gender-option');
+      selectedOption.classList.add('selected');
+      selectedOption.setAttribute('aria-checked', 'true');
+      selectedOption.setAttribute('tabindex', '0');
       
       // 시작 버튼 활성화
       document.getElementById('startBtn').disabled = false;
+    }
+
+    // 성별 선택 키보드 핸들러
+    function handleGenderKeydown(event, gender) {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        selectGender(gender);
+      } else if (event.key === 'ArrowRight' || event.key === 'ArrowDown') {
+        event.preventDefault();
+        const options = document.querySelectorAll('.gender-option');
+        const currentIndex = Array.from(options).indexOf(event.target);
+        const nextIndex = (currentIndex + 1) % options.length;
+        options[nextIndex].focus();
+      } else if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') {
+        event.preventDefault();
+        const options = document.querySelectorAll('.gender-option');
+        const currentIndex = Array.from(options).indexOf(event.target);
+        const prevIndex = (currentIndex - 1 + options.length) % options.length;
+        options[prevIndex].focus();
+      }
     }
 
     // 테스트 시작
@@ -304,27 +341,63 @@
         const optionDiv = document.createElement('div');
         optionDiv.className = 'option';
         optionDiv.textContent = option.text;
+        optionDiv.setAttribute('role', 'radio');
+        optionDiv.setAttribute('aria-checked', 'false');
+        optionDiv.setAttribute('tabindex', '0');
         optionDiv.onclick = () => selectOption(index, optionDiv);
+        optionDiv.onkeydown = (e) => handleOptionKeydown(e, index, optionDiv);
         container.appendChild(optionDiv);
       });
 
       updateProgress();
       document.getElementById('nextBtn').disabled = true;
+      
+      // 첫 번째 옵션에 포커스
+      setTimeout(() => {
+        const firstOption = container.querySelector('.option');
+        if (firstOption) firstOption.focus();
+      }, 100);
+    }
+
+    // 옵션 키보드 핸들러
+    function handleOptionKeydown(event, index, element) {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        selectOption(index, element);
+      } else if (event.key === 'ArrowDown') {
+        event.preventDefault();
+        const options = document.querySelectorAll('.option');
+        const nextIndex = (index + 1) % options.length;
+        options[nextIndex].focus();
+      } else if (event.key === 'ArrowUp') {
+        event.preventDefault();
+        const options = document.querySelectorAll('.option');
+        const prevIndex = (index - 1 + options.length) % options.length;
+        options[prevIndex].focus();
+      }
     }
 
     // 옵션 선택
     function selectOption(index, element) {
       // 이전 선택 제거
-      document.querySelectorAll('.option').forEach(opt => opt.classList.remove('selected'));
+      document.querySelectorAll('.option').forEach(opt => {
+        opt.classList.remove('selected');
+        opt.setAttribute('aria-checked', 'false');
+      });
       
       // 현재 선택 표시
       element.classList.add('selected');
+      element.setAttribute('aria-checked', 'true');
       
       // 답변 저장
       answers[currentQuestion] = questions[currentQuestion].options[index].type;
       
       // 다음 버튼 활성화
       document.getElementById('nextBtn').disabled = false;
+      
+      // 스크린 리더를 위한 알림
+      element.setAttribute('aria-live', 'polite');
+      element.setAttribute('aria-label', `선택됨: ${element.textContent}`);
     }
 
     // 다음 질문
@@ -343,6 +416,11 @@
       const progress = ((currentQuestion + 1) / questions.length) * 100;
       document.getElementById('progressFill').style.width = progress + '%';
       document.getElementById('progressText').textContent = `${currentQuestion + 1} / ${questions.length}`;
+      
+      // 진행률 바 접근성 업데이트
+      const progressBar = document.querySelector('.progress-bar');
+      progressBar.setAttribute('aria-valuenow', Math.round(progress));
+      progressBar.setAttribute('aria-label', `테스트 진행률 ${Math.round(progress)}%`);
     }
 
     // 결과 표시

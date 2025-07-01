@@ -117,14 +117,35 @@ h1{
   border-radius:20px;
   font-size:0.9rem;
   font-weight:600;
-  margin-bottom:20px
+  margin-bottom:20px;
+  animation:slideInFromTop 0.5s ease-out
 }
 .question-text{
   font-size:1.2rem;
   font-weight:600;
   margin-bottom:25px;
   line-height:1.5;
-  color:#333
+  color:#333;
+  animation:fadeInUp 0.6s ease-out 0.1s both
+}
+
+/* 애니메이션 키프레임 */
+@keyframes slideInFromTop{
+  0%{transform:translateY(-20px);opacity:0}
+  100%{transform:translateY(0);opacity:1}
+}
+@keyframes fadeInUp{
+  0%{transform:translateY(20px);opacity:0}
+  100%{transform:translateY(0);opacity:1}
+}
+@keyframes countUp{
+  0%{transform:scale(0.8);opacity:0}
+  50%{transform:scale(1.1)}
+  100%{transform:scale(1);opacity:1}
+}
+@keyframes slideInLeft{
+  0%{transform:translateX(-30px);opacity:0}
+  100%{transform:translateX(0);opacity:1}
 }
 .options-container{
   display:flex;
@@ -141,16 +162,23 @@ h1{
   transition:all 0.3s ease;
   font-size:1rem;
   line-height:1.5;
-  text-align:left
+  text-align:left;
+  animation:slideInLeft 0.4s ease-out;
+  transform:translateX(0)
 }
+.option:nth-child(1){animation-delay:0.1s}
+.option:nth-child(2){animation-delay:0.2s}
 .option:hover{
   background:#e3f2fd;
-  border-color:#2196f3
+  border-color:#2196f3;
+  transform:translateX(5px)
 }
 .option.selected{
   background:linear-gradient(135deg,#ff7eb3,#8ac6ff);
   color:white;
-  border-color:#ff7eb3
+  border-color:#ff7eb3;
+  transform:scale(1.02);
+  animation:none
 }
 
 /* 버튼 */
@@ -181,7 +209,8 @@ h1{
 .result-emoji{
   font-size:4rem;
   margin-bottom:20px;
-  display:block
+  display:block;
+  animation:countUp 1s ease-out
 }
 .result-title{
   font-size:2rem;
@@ -190,7 +219,8 @@ h1{
   background:linear-gradient(135deg,#ff7eb3,#8ac6ff);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
-  background-clip:text
+  background-clip:text;
+  animation:fadeInUp 0.8s ease-out 0.3s both
 }
 .result-description{
   font-size:1.1rem;
