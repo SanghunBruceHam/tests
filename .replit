@@ -10,7 +10,7 @@ runButton = "DailyFortune Dev"
 [[workflows.workflow]]
 name = "DailyFortune Dev"
 author = 44423350
-mode = "parallel"
+mode = "sequential"
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"
