@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: hsl(0, 0%, 100%);
+  --foreground: hsl(20, 14.3%, 4.1%);
+  --muted: hsl(60, 4.8%, 95.9%);
+  --muted-foreground: hsl(25, 5.3%, 44.7%);
+  --popover: hsl(0, 0%, 100%);
+  --popover-foreground: hsl(20, 14.3%, 4.1%);
+  --card: hsl(0, 0%, 100%);
+  --card-foreground: hsl(20, 14.3%, 4.1%);
+  --border: hsl(20, 5.9%, 90%);
+  --input: hsl(20, 5.9%, 90%);
+  --primary: hsl(207, 90%, 54%);
+  --primary-foreground: hsl(211, 100%, 99%);
+  --secondary: hsl(60, 4.8%, 95.9%);
+  --secondary-foreground: hsl(24, 9.8%, 10%);
+  --accent: hsl(60, 4.8%, 95.9%);
+  --accent-foreground: hsl(24, 9.8%, 10%);
+  --destructive: hsl(0, 84.2%, 60.2%);
+  --destructive-foreground: hsl(60, 9.1%, 97.8%);
+  --ring: hsl(20, 14.3%, 4.1%);
+  --radius: 0.5rem;
+  
+  /* Korean traditional colors */
+  --korean-red: hsl(351, 63%, 46%);
+  --korean-gold: hsl(51, 100%, 50%);
+  --korean-blue: hsl(224, 87%, 36%);
+  --korean-dark-red: hsl(0, 100%, 27%);
+  --korean-light-gold: hsl(51, 78%, 93%);
+}
+
+.dark {
+  --background: hsl(240, 10%, 3.9%);
+  --foreground: hsl(0, 0%, 98%);
+  --muted: hsl(240, 3.7%, 15.9%);
+  --muted-foreground: hsl(240, 5%, 64.9%);
+  --popover: hsl(240, 10%, 3.9%);
+  --popover-foreground: hsl(0, 0%, 98%);
+  --card: hsl(240, 10%, 3.9%);
+  --card-foreground: hsl(0, 0%, 98%);
+  --border: hsl(240, 3.7%, 15.9%);
+  --input: hsl(240, 3.7%, 15.9%);
+  --primary: hsl(207, 90%, 54%);
+  --primary-foreground: hsl(211, 100%, 99%);
+  --secondary: hsl(240, 3.7%, 15.9%);
+  --secondary-foreground: hsl(0, 0%, 98%);
+  --accent: hsl(240, 3.7%, 15.9%);
+  --accent-foreground: hsl(0, 0%, 98%);
+  --destructive: hsl(0, 62.8%, 30.6%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --ring: hsl(240, 4.9%, 83.9%);
+  --radius: 0.5rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+    font-family: 'Noto Sans KR', sans-serif;
+  }
+}
+
+@layer components {
+  /* Font Size Classes */
+  .font-small {
+    font-size: 14px;
+  }
+
+  .font-small h1 { font-size: 1.5rem; }
+  .font-small h2 { font-size: 1.25rem; }
+  .font-small h3 { font-size: 1.125rem; }
+  .font-small .text-lg { font-size: 1rem; }
+  .font-small .text-xl { font-size: 1.125rem; }
+  .font-small .text-2xl { font-size: 1.25rem; }
+  .font-small .text-3xl { font-size: 1.5rem; }
+  .font-small .text-4xl { font-size: 1.75rem; }
+
+  .font-medium {
+    font-size: 16px;
+  }
+
+  .font-large {
+    font-size: 18px;
+  }
+
+  .font-large h1 { font-size: 2.5rem; }
+  .font-large h2 { font-size: 2rem; }
+  .font-large h3 { font-size: 1.75rem; }
+  .font-large .text-lg { font-size: 1.25rem; }
+  .font-large .text-xl { font-size: 1.5rem; }
+  .font-large .text-2xl { font-size: 1.75rem; }
+  .font-large .text-3xl { font-size: 2.25rem; }
+  .font-large .text-4xl { font-size: 2.75rem; }
+
+  .traditional-border {
+    @apply border-2 border-yellow-400 rounded-xl relative;
+  }
+  
+  .traditional-border::before {
+    content: '';
+    @apply absolute -inset-1 border border-red-600 rounded-2xl -z-10;
+  }
+  
+  .zodiac-card {
+    @apply transition-all duration-300 ease-in-out;
+  }
+  
+  .zodiac-card:hover {
+    @apply transform -translate-y-1 shadow-lg;
+    box-shadow: 0 8px 25px hsla(351, 63%, 46%, 0.15);
+  }
+  
+  .fortune-gradient {
+    background: linear-gradient(135deg, hsl(51, 78%, 93%) 0%, hsl(51, 100%, 50%) 100%);
+  }
+  
+  .header-gradient {
+    background: linear-gradient(135deg, hsl(351, 63%, 46%) 0%, hsl(0, 100%, 27%) 100%);
+  }
+  
+  .watermark {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    font-size: 11px;
+    color: rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    pointer-events: none;
+  }
+  
+  .dark .watermark {
+    color: rgba(255, 255, 255, 0.3);
+  }
+  
+  .ad-container {
+    margin: 20px 0;
+    text-align: center;
+    min-height: 120px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .dark .ad-container {
+    background: #1a202c;
+  }
+}
