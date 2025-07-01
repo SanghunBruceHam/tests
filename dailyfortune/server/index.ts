@@ -61,5 +61,7 @@ app.use((req, res, next) => {
   const port = 3000;
   server.listen(port, "0.0.0.0", () => {
     log(`serving on port ${port}`);
+    log(`dailyfortune app available at: http://localhost:${port}/`);
+    log(`or via domain: https://tests.mahalohana-bruce.com:${port}/`);
   });
 })();
