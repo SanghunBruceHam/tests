@@ -16,6 +16,9 @@
   <link rel="icon" href="./favicon.png" type="image/png" />
   <link rel="canonical" href="https://tests.mahalohana-bruce.com/egen-teto/ko/" />
   
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5508768187151867" crossorigin="anonymous"></script>
+  
   <style>
     * {
       margin: 0;
@@ -25,10 +28,41 @@
     
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Malgun Gothic', '맑은 고딕', 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      background: linear-gradient(135deg, #FF6B9D 0%, #C44569 25%, #4834DF 50%, #6C5CE7 75%, #FD79A8 100%);
+      background-size: 400% 400%;
+      animation: gradientShift 8s ease infinite;
       min-height: 100vh;
       padding: 20px;
       color: #333;
+    }
+    
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    
+    /* 화사한 플로팅 파티클 효과 */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.3) 2px, transparent 2px),
+        radial-gradient(circle at 80% 80%, rgba(255, 107, 157, 0.4) 2px, transparent 2px),
+        radial-gradient(circle at 40% 40%, rgba(108, 92, 231, 0.3) 1px, transparent 1px);
+      background-size: 50px 50px, 100px 100px, 25px 25px;
+      animation: float 20s linear infinite;
+      pointer-events: none;
+      z-index: -1;
+    }
+    
+    @keyframes float {
+      0% { transform: translateY(0px) rotate(0deg); }
+      100% { transform: translateY(-100vh) rotate(360deg); }
     }
     
     .container {
@@ -41,16 +75,18 @@
     }
     
     .card {
-      background: white;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
       border-radius: 24px;
       padding: 32px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+      box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
       width: 100%;
-      animation: slideUp 0.6s ease-out;
+      animation: slideUp 0.8s ease-out;
     }
     
     @keyframes slideUp {
-      from { opacity: 0; transform: translateY(20px); }
+      from { opacity: 0; transform: translateY(30px); }
       to { opacity: 1; transform: translateY(0); }
     }
     
@@ -68,11 +104,11 @@
     }
     
     .title .egen {
-      color: #EC4899;
+      color: #FF6B9D;
     }
     
     .title .teto {
-      color: #3B82F6;
+      color: #4834DF;
     }
     
     .subtitle {
@@ -85,7 +121,7 @@
     .info-badge {
       display: inline-flex;
       align-items: center;
-      background: #3B82F6;
+      background: linear-gradient(135deg, #FF6B9D, #4834DF);
       color: white;
       padding: 8px 16px;
       border-radius: 16px;
@@ -93,11 +129,12 @@
       font-weight: 600;
       cursor: pointer;
       transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(255, 107, 157, 0.3);
     }
     
     .info-badge:hover {
-      background: #2563EB;
-      transform: translateY(-1px);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(255, 107, 157, 0.4);
     }
     
     .info-badge::before {
@@ -139,34 +176,36 @@
       border-radius: 16px;
       cursor: pointer;
       transition: all 0.3s ease;
-      background: #F9FAFB;
+      background: rgba(255, 255, 255, 0.8);
     }
     
     .gender-option.female {
-      background: #FEF7F0;
-      border-color: #FDCFE8;
+      background: linear-gradient(135deg, rgba(255, 107, 157, 0.1), rgba(253, 121, 168, 0.1));
+      border-color: #FF6B9D;
     }
     
     .gender-option.male {
-      background: #F0F9FF;
-      border-color: #BFDBFE;
+      background: linear-gradient(135deg, rgba(72, 52, 223, 0.1), rgba(108, 92, 231, 0.1));
+      border-color: #4834DF;
     }
     
     .gender-option:hover {
       transform: translateY(-2px);
-      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
     }
     
     .gender-option.selected.female {
-      background: #FDF2F8;
-      border-color: #EC4899;
-      color: #EC4899;
+      background: linear-gradient(135deg, #FF6B9D, #FD79A8);
+      border-color: #FF6B9D;
+      color: white;
+      box-shadow: 0 8px 25px rgba(255, 107, 157, 0.4);
     }
     
     .gender-option.selected.male {
-      background: #EFF6FF;
-      border-color: #3B82F6;
-      color: #3B82F6;
+      background: linear-gradient(135deg, #4834DF, #6C5CE7);
+      border-color: #4834DF;
+      color: white;
+      box-shadow: 0 8px 25px rgba(72, 52, 223, 0.4);
     }
     
     .gender-icon {
@@ -218,10 +257,27 @@
     
     .progress-bar {
       height: 100%;
-      background: linear-gradient(90deg, #EC4899, #3B82F6);
+      background: linear-gradient(90deg, #FF6B9D, #4834DF, #6C5CE7);
       border-radius: 4px;
       transition: width 0.5s ease;
       width: 0%;
+      position: relative;
+    }
+    
+    .progress-bar::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+      animation: shimmer 2s ease-in-out infinite;
+    }
+    
+    @keyframes shimmer {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
     }
     
     .progress-text {
@@ -267,7 +323,7 @@
     
     .answer-option {
       padding: 16px 20px;
-      background: #F9FAFB;
+      background: rgba(255, 255, 255, 0.8);
       border: 2px solid #E5E7EB;
       border-radius: 16px;
       cursor: pointer;
@@ -278,15 +334,17 @@
     }
     
     .answer-option:hover {
-      border-color: #8B5CF6;
-      background: #F5F3FF;
+      border-color: #FF6B9D;
+      background: rgba(255, 107, 157, 0.1);
       transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(255, 107, 157, 0.2);
     }
     
     .answer-option.selected {
-      border-color: #8B5CF6;
-      background: #8B5CF6;
+      border-color: #FF6B9D;
+      background: linear-gradient(135deg, #FF6B9D, #4834DF);
       color: white;
+      box-shadow: 0 8px 20px rgba(255, 107, 157, 0.3);
     }
     
     /* Yes/No 답변 */
@@ -306,7 +364,7 @@
       font-size: 16px;
       font-weight: 600;
       text-align: center;
-      background: #F9FAFB;
+      background: rgba(255, 255, 255, 0.8);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -314,11 +372,13 @@
     }
     
     .yn-option.yes {
-      color: #3B82F6;
+      color: #4834DF;
+      border-color: #4834DF;
     }
     
     .yn-option.no {
-      color: #EC4899;
+      color: #FF6B9D;
+      border-color: #FF6B9D;
     }
     
     .yn-option:hover {
@@ -327,15 +387,17 @@
     }
     
     .yn-option.selected.yes {
-      background: #3B82F6;
-      border-color: #3B82F6;
+      background: linear-gradient(135deg, #4834DF, #6C5CE7);
+      border-color: #4834DF;
       color: white;
+      box-shadow: 0 8px 25px rgba(72, 52, 223, 0.4);
     }
     
     .yn-option.selected.no {
-      background: #EC4899;
-      border-color: #EC4899;
+      background: linear-gradient(135deg, #FF6B9D, #FD79A8);
+      border-color: #FF6B9D;
       color: white;
+      box-shadow: 0 8px 25px rgba(255, 107, 157, 0.4);
     }
     
     .yn-option::before {
@@ -365,13 +427,14 @@
     }
     
     .btn-primary {
-      background: linear-gradient(135deg, #EC4899, #8B5CF6);
+      background: linear-gradient(135deg, #FF6B9D, #4834DF);
       color: white;
+      box-shadow: 0 4px 15px rgba(255, 107, 157, 0.3);
     }
     
     .btn-primary:hover:not(:disabled) {
       transform: translateY(-2px);
-      box-shadow: 0 8px 16px rgba(236, 72, 153, 0.3);
+      box-shadow: 0 8px 25px rgba(255, 107, 157, 0.4);
     }
     
     .btn:disabled {
@@ -411,9 +474,9 @@
       animation: bounce 1.4s ease-in-out infinite both;
     }
     
-    .dot:nth-child(1) { background: #EC4899; animation-delay: -0.32s; }
-    .dot:nth-child(2) { background: #8B5CF6; animation-delay: -0.16s; }
-    .dot:nth-child(3) { background: #3B82F6; animation-delay: 0s; }
+    .dot:nth-child(1) { background: #FF6B9D; animation-delay: -0.32s; }
+    .dot:nth-child(2) { background: #4834DF; animation-delay: -0.16s; }
+    .dot:nth-child(3) { background: #6C5CE7; animation-delay: 0s; }
     
     @keyframes bounce {
       0%, 80%, 100% { transform: scale(0); }
@@ -426,10 +489,11 @@
     }
     
     .result-chart {
-      background: #F9FAFB;
+      background: rgba(255, 255, 255, 0.8);
       border-radius: 16px;
       padding: 20px;
       margin-bottom: 20px;
+      backdrop-filter: blur(10px);
     }
     
     .chart-title {
@@ -463,11 +527,11 @@
     }
     
     .chart-label.egen {
-      color: #EC4899;
+      color: #FF6B9D;
     }
     
     .chart-label.teto {
-      color: #3B82F6;
+      color: #4834DF;
     }
     
     .chart-label::before {
@@ -479,11 +543,11 @@
     }
     
     .chart-label.egen::before {
-      background: #EC4899;
+      background: #FF6B9D;
     }
     
     .chart-label.teto::before {
-      background: #3B82F6;
+      background: #4834DF;
     }
     
     .chart-bar {
@@ -503,11 +567,11 @@
     }
     
     .chart-fill.egen {
-      background: linear-gradient(90deg, #EC4899, #F472B6);
+      background: linear-gradient(90deg, #FF6B9D, #FD79A8);
     }
     
     .chart-fill.teto {
-      background: linear-gradient(90deg, #3B82F6, #60A5FA);
+      background: linear-gradient(90deg, #4834DF, #6C5CE7);
     }
     
     .chart-percentage {
@@ -524,21 +588,22 @@
     }
     
     .result-card {
-      background: #F9FAFB;
+      background: rgba(255, 255, 255, 0.9);
       border-radius: 16px;
       padding: 20px;
       text-align: left;
-      border: 2px solid #E5E7EB;
+      border: 2px solid transparent;
+      backdrop-filter: blur(10px);
     }
     
     .result-card.personality {
-      background: linear-gradient(135deg, #FEF7F0, #FDF2F8);
-      border-color: #EC4899;
+      background: linear-gradient(135deg, rgba(255, 107, 157, 0.1), rgba(253, 121, 168, 0.1));
+      border-color: #FF6B9D;
     }
     
     .result-card.match {
-      background: linear-gradient(135deg, #F0F9FF, #EFF6FF);
-      border-color: #3B82F6;
+      background: linear-gradient(135deg, rgba(72, 52, 223, 0.1), rgba(108, 92, 231, 0.1));
+      border-color: #4834DF;
     }
     
     .result-card-header {
@@ -566,7 +631,7 @@
     
     .match-type {
       display: inline-block;
-      background: #3B82F6;
+      background: linear-gradient(135deg, #FF6B9D, #4834DF);
       color: white;
       padding: 4px 12px;
       border-radius: 12px;
@@ -603,12 +668,13 @@
     }
     
     .keyword-tag {
-      background: linear-gradient(135deg, #EC4899, #8B5CF6);
+      background: linear-gradient(135deg, #FF6B9D, #4834DF);
       color: white;
       padding: 6px 12px;
       border-radius: 12px;
       font-size: 13px;
       font-weight: 500;
+      box-shadow: 0 2px 8px rgba(255, 107, 157, 0.3);
     }
     
     /* 상세 정보 카드들 - 정렬 개선 */
@@ -620,11 +686,12 @@
     }
     
     .info-card {
-      background: white;
+      background: rgba(255, 255, 255, 0.9);
       border-radius: 12px;
       padding: 16px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
       text-align: center;
+      backdrop-filter: blur(10px);
     }
     
     .info-card-title {
@@ -664,7 +731,7 @@
     }
     
     .info-item {
-      background: #F3F4F6;
+      background: rgba(243, 244, 246, 0.8);
       padding: 6px 10px;
       border-radius: 8px;
       font-size: 12px;
@@ -672,15 +739,16 @@
       color: #374151;
       text-align: center;
       width: 100%;
+      backdrop-filter: blur(5px);
     }
     
     .info-item.career {
-      background: #DCFCE7;
+      background: rgba(220, 252, 231, 0.8);
       color: #166534;
     }
     
     .info-item.lifestyle {
-      background: #FEF3C7;
+      background: rgba(254, 243, 199, 0.8);
       color: #92400E;
     }
     
@@ -730,7 +798,7 @@
     
     .share-btn:hover {
       transform: translateY(-2px);
-      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     }
     
     .share-btn.kakao {
@@ -739,7 +807,7 @@
     }
     
     .share-btn.instagram {
-      background: #E4405F;
+      background: linear-gradient(135deg, #E4405F, #F56040);
       color: white;
     }
     
@@ -759,7 +827,7 @@
     }
     
     .share-btn.copy {
-      background: #10B981;
+      background: linear-gradient(135deg, #10B981, #34D399);
       color: white;
     }
     
@@ -788,13 +856,21 @@
     }
     
     .action-btn.restart {
-      background: #F3F4F6;
+      background: rgba(243, 244, 246, 0.8);
       color: #6B7280;
+      backdrop-filter: blur(10px);
     }
     
     .action-btn.restart:hover {
-      background: #E5E7EB;
+      background: rgba(229, 231, 235, 0.9);
       transform: translateY(-1px);
+    }
+    
+    /* AdSense 광고 스타일 */
+    .adsbygoogle {
+      display: block;
+      margin: 20px auto;
+      text-align: center;
     }
     
     /* 반응형 */
@@ -823,6 +899,14 @@
         </div>
         
         <div class="mascot">💖🧠</div>
+        
+        <!-- AdSense 광고 - 상단 -->
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-5508768187151867"
+             data-ad-slot="1234567890"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
         
         <div class="gender-section">
           <h3>성별을 선택해주세요</h3>
@@ -864,6 +948,17 @@
           <div class="question-emoji" id="questionEmoji"></div>
           <div class="question-number" id="questionNumber">질문 1/10</div>
           <h2 class="question-title" id="questionTitle"></h2>
+          
+          <!-- AdSense 광고 - 질문 중간 (5번째 질문 후) -->
+          <div id="midAdContainer" class="hidden">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-5508768187151867"
+                 data-ad-slot="9876543210"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+          </div>
+          
           <div id="answerContainer"></div>
           <button class="btn btn-primary" id="nextBtn" onclick="nextQuestion()" disabled>다음 질문</button>
         </div>
@@ -889,20 +984,28 @@
           <div class="result-chart">
             <div class="chart-title">성향 분석</div>
             <div class="chart-item">
-              <div class="chart-label egen">● 에겐 성향</div>
+              <div class="chart-label egen">에겐 성향</div>
               <div class="chart-bar">
                 <div class="chart-fill egen" id="egenBar"></div>
               </div>
               <div class="chart-percentage" id="egenPercent">0%</div>
             </div>
             <div class="chart-item">
-              <div class="chart-label teto">● 테토 성향</div>
+              <div class="chart-label teto">테토 성향</div>
               <div class="chart-bar">
                 <div class="chart-fill teto" id="tetoBar"></div>
               </div>
               <div class="chart-percentage" id="tetoPercent">0%</div>
             </div>
           </div>
+          
+          <!-- AdSense 광고 - 결과 상단 -->
+          <ins class="adsbygoogle"
+               style="display:block"
+               data-ad-client="ca-pub-5508768187151867"
+               data-ad-slot="1357924680"
+               data-ad-format="auto"
+               data-full-width-responsive="true"></ins>
           
           <!-- 주요 결과 카드 -->
           <div class="result-cards">
@@ -962,6 +1065,14 @@
             </div>
           </div>
           
+          <!-- AdSense 광고 - 결과 하단 -->
+          <ins class="adsbygoogle"
+               style="display:block"
+               data-ad-client="ca-pub-5508768187151867"
+               data-ad-slot="2468013579"
+               data-ad-format="auto"
+               data-full-width-responsive="true"></ins>
+          
           <!-- 공유 섹션 -->
           <div class="share-section">
             <div class="share-title">결과 공유하기</div>
@@ -1008,6 +1119,9 @@
   </div>
   
   <script>
+    // AdSense 초기화
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    
     // 테스트 데이터
     const questions = [
       {
@@ -1211,6 +1325,18 @@
       document.getElementById('questionTitle').textContent = question.q;
       document.getElementById('questionNumber').textContent = `질문 ${currentQuestion + 1}/10`;
       
+      // 5번째 질문 후 광고 표시
+      if (currentQuestion === 5) {
+        const midAdContainer = document.getElementById('midAdContainer');
+        midAdContainer.classList.remove('hidden');
+        // AdSense 광고 로드
+        try {
+          (adsbygoogle = window.adsbygoogle || []).push({});
+        } catch (e) {
+          console.log('AdSense loading error:', e);
+        }
+      }
+      
       const container = document.getElementById('answerContainer');
       container.innerHTML = '';
       
@@ -1301,6 +1427,14 @@
     function showResult() {
       document.getElementById('loadingScreen').classList.add('hidden');
       document.getElementById('resultScreen').classList.remove('hidden');
+      
+      // AdSense 광고 로드
+      try {
+        (adsbygoogle = window.adsbygoogle || []).push({});
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      } catch (e) {
+        console.log('AdSense loading error:', e);
+      }
       
       const totalScore = egenScore + tetoScore;
       const egenPercent = totalScore > 0 ? Math.round((egenScore / totalScore) * 100) : 50;
@@ -1433,9 +1567,15 @@ ${result.description}
       const result = results[resultType][selectedGender];
       const text = `나는 ${result.title}! 너도 테스트해봐~ https://psycho-tetris-mahalohanabruce.replit.app/`;
       
-      // Threads는 웹 공유 API가 제한적이므로 클립보드 복사
-      copyToClipboard(text);
-      alert('텍스트가 복사되었습니다! Threads에 붙여넣기 해주세요.');
+      try {
+        // Threads 직접 공유 시도
+        const threadsUrl = `https://threads.net/intent/post?text=${encodeURIComponent(text)}`;
+        window.open(threadsUrl, '_blank', 'noopener,noreferrer');
+      } catch (err) {
+        // 실패시 클립보드 복사
+        copyToClipboard(text);
+        alert('텍스트가 복사되었습니다! Threads에 붙여넣기 해주세요.');
+      }
     }
     
     function shareTwitter() {
@@ -1482,6 +1622,7 @@ ${result.description}
       
       document.getElementById('resultScreen').classList.add('hidden');
       document.getElementById('startScreen').classList.remove('hidden');
+      document.getElementById('midAdContainer').classList.add('hidden');
       
       document.querySelectorAll('.gender-option').forEach(option => {
         option.classList.remove('selected');
