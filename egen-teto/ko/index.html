@@ -1,2 +1,280 @@
 Analysis: The code implements enhanced error handling with network retry logic and user-friendly error messages, PWA functionality including service worker registration, install prompts, and update notifications.
 </tool_code>
+// 언핸들드 Promise 에러 모니터링
+    window.addEventListener('unhandledrejection', (e) => {
+      if (window.gtag) {
+        gtag('event', 'promise_rejection', {
+          error_reason: e.reason
+        });
+      }
+    });
+
+    // PWA 기능
+    const PWAManager = {
+      deferredPrompt: null,
+      isInstalled: false,
+      isInstallable: false,
+
+      // Service Worker 등록
+      async registerServiceWorker() {
+        if ('serviceWorker' in navigator) {
+          try {
+            const registration = await navigator.serviceWorker.register('/egen-teto/ko/sw.js', {
+              scope: '/egen-teto/ko/'
+            });
+
+            console.log('[PWA] Service Worker 등록 성공:', registration.scope);
+
+            // 업데이트 감지
+            registration.addEventListener('updatefound', () => {
+              const newWorker = registration.installing;
+              if (newWorker) {
+                newWorker.addEventListener('statechange', () => {
+                  if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                    this.showUpdateNotification();
+                  }
+                });
+              }
+            });
+
+            // 활성 Service Worker 변경 감지
+            navigator.serviceWorker.addEventListener('controllerchange', () => {
+              window.location.reload();
+            });
+
+            return registration;
+          } catch (error) {
+            console.error('[PWA] Service Worker 등록 실패:', error);
+            this.showErrorNotification('오프라인 기능을 활성화할 수 없습니다.');
+          }
+        } else {
+          console.warn('[PWA] Service Worker를 지원하지 않는 브라우저입니다.');
+        }
+      },
+
+      // 설치 프롬프트 처리
+      handleInstallPrompt() {
+        window.addEventListener('beforeinstallprompt', (e) => {
+          e.preventDefault();
+          this.deferredPrompt = e;
+          this.isInstallable = true;
+          this.showInstallButton();
+
+          console.log('[PWA] 설치 프롬프트 준비됨');
+        });
+
+        // 설치 완료 감지
+        window.addEventListener('appinstalled', () => {
+          this.isInstalled = true;
+          this.hideInstallButton();
+          this.showSuccessNotification('앱이 홈 화면에 설치되었습니다! 🎉');
+
+          if (window.gtag) {
+            gtag('event', 'pwa_installed', {
+              event_category: 'PWA',
+              event_label: 'app_installed'
+            });
+          }
+        });
+      },
+
+      // 앱 설치 실행
+      async installApp() {
+        if (!this.deferredPrompt) {
+          this.showInfoNotification('브라우저 메뉴에서 "홈 화면에 추가"를 선택해주세요.');
+          return;
+        }
+
+        try {
+          this.deferredPrompt.prompt();
+          const { outcome } = await this.deferredPrompt.userChoice;
+
+          if (outcome === 'accepted') {
+            console.log('[PWA] 사용자가 설치를 승인했습니다.');
+          } else {
+            console.log('[PWA] 사용자가 설치를 거부했습니다.');
+          }
+
+          this.deferredPrompt = null;
+          this.isInstallable = false;
+
+          if (window.gtag) {
+            gtag('event', 'pwa_install_prompt', {
+              event_category: 'PWA',
+              event_label: outcome
+            });
+          }
+        } catch (error) {
+          console.error('[PWA] 설치 중 오류:', error);
+          this.showErrorNotification('설치 중 오류가 발생했습니다.');
+        }
+      },
+
+      // 설치 버튼 표시
+      showInstallButton() {
+        let installBtn = document.getElementById('pwa-install-btn');
+        if (!installBtn) {
+          installBtn = document.createElement('button');
+          installBtn.id = 'pwa-install-btn';
+          installBtn.className = 'pwa-install-btn';
+          installBtn.innerHTML = '<i class="fas fa-download"></i> 앱 설치';
+          installBtn.onclick = () => this.installApp();
+
+          // 헤더 컨트롤에 추가
+          const headerControls = document.querySelector('.header-controls');
+          if (headerControls) {
+            headerControls.appendChild(installBtn);
+          }
+        }
+        installBtn.style.display = 'flex';
+      },
+
+      // 설치 버튼 숨기기
+      hideInstallButton() {
+        const installBtn = document.getElementById('pwa-install-btn');
+        if (installBtn) {
+          installBtn.style.display = 'none';
+        }
+      },
+
+      // 업데이트 알림
+      showUpdateNotification() {
+        const message = `
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <div>새로운 버전이 있습니다!</div>
+            <button onclick="location.reload()" style="padding: 6px 12px; background: #27ae60; color: white; border: none; border-radius: 6px; cursor: pointer;">
+              업데이트
+            </button>
+          </div>
+        `;
+        this.showNotification(message, 'info', 10000);
+      },
+
+      // 알림 시스템
+      showNotification(message, type = 'info', duration = 5000) {
+        const notification = document.createElement('div');
+        notification.className = `error-notification ${type}`;
+
+        const iconMap = {
+          error: 'fas fa-exclamation-circle',
+          success: 'fas fa-check-circle',
+          warning: 'fas fa-exclamation-triangle',
+          info: 'fas fa-info-circle'
+        };
+
+        notification.innerHTML = `
+          <div class="error-content">
+            <i class="${iconMap[type]}"></i>
+            <div class="error-message">${message}</div>
+            <button class="error-close" onclick="this.parentElement.parentElement.remove()">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+        `;
+
+        let container = document.querySelector('.error-container');
+        if (!container) {
+          container = document.createElement('div');
+          container.className = 'error-container';
+          document.body.appendChild(container);
+        }
+
+        container.appendChild(notification);
+
+        // 애니메이션
+        setTimeout(() => notification.classList.add('show'), 100);
+
+        // 자동 제거
+        if (duration > 0) {
+          setTimeout(() => {
+            notification.classList.remove('show');
+            setTimeout(() => notification.remove(), 300);
+          }, duration);
+        }
+      },
+
+      showErrorNotification(message) {
+        this.showNotification(message, 'error');
+      },
+
+      showSuccessNotification(message) {
+        this.showNotification(message, 'success');
+      },
+
+      showWarningNotification(message) {
+        this.showNotification(message, 'warning');
+      },
+
+      showInfoNotification(message) {
+        this.showNotification(message, 'info');
+      },
+
+      // 네트워크 상태 모니터링
+      monitorNetworkStatus() {
+        const updateNetworkStatus = () => {
+          const isOnline = navigator.onLine;
+          let statusElement = document.querySelector('.network-status');
+
+          if (!statusElement) {
+            statusElement = document.createElement('div');
+            statusElement.className = 'network-status';
+            document.body.appendChild(statusElement);
+          }
+
+          if (isOnline) {
+            statusElement.textContent = '온라인 상태';
+            statusElement.classList.add('online');
+            statusElement.classList.add('show');
+
+            setTimeout(() => {
+              statusElement.classList.remove('show');
+            }, 2000);
+          } else {
+            statusElement.textContent = '오프라인 상태 - 캐시된 콘텐츠 사용 중';
+            statusElement.classList.remove('online');
+            statusElement.classList.add('show');
+          }
+
+          if (window.gtag) {
+            gtag('event', 'network_status', {
+              event_category: 'PWA',
+              event_label: isOnline ? 'online' : 'offline'
+            });
+          }
+        };
+
+        window.addEventListener('online', updateNetworkStatus);
+        window.addEventListener('offline', updateNetworkStatus);
+
+        // 초기 상태 확인
+        updateNetworkStatus();
+      },
+
+      // PWA 기능 초기화
+      async init() {
+        console.log('[PWA] PWA 매니저 초기화 중...');
+
+        // Service Worker 등록
+        await this.registerServiceWorker();
+
+        // 설치 프롬프트 처리
+        this.handleInstallPrompt();
+
+        // 네트워크 상태 모니터링
+        this.monitorNetworkStatus();
+
+        // 이미 설치된 상태인지 확인
+        if (window.matchMedia('(display-mode: standalone)').matches) {
+          this.isInstalled = true;
+          console.log('[PWA] 앱이 이미 설치되어 실행 중입니다.');
+        }
+
+        console.log('[PWA] PWA 매니저 초기화 완료');
+      }
+    };
+
+    // PWA 초기화 (DOM 로드 후)
+    document.addEventListener('DOMContentLoaded', () => {
+      PWAManager.init();
+    });
+  </script>

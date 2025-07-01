@@ -1807,6 +1807,37 @@ h1{
       background: rgba(39, 174, 96, 0.9);
     }
 
+    /* PWA 설치 버튼 */
+    .pwa-install-btn {
+      display: none;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 14px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+      white-space: nowrap;
+    }
+
+    .pwa-install-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+    }
+
+    .pwa-install-btn:active {
+      transform: translateY(0);
+    }
+
+    .pwa-install-btn i {
+      font-size: 16px;
+    }
+
     /* 모바일 대응 */
     @media (max-width: 768px) {
       .error-container {
@@ -1826,5 +1857,14 @@ h1{
 
       .error-message {
         font-size: 13px;
+      }
+
+      .pwa-install-btn {
+        padding: 8px 12px;
+        font-size: 13px;
+      }
+
+      .pwa-install-btn i {
+        font-size: 14px;
       }
     }
