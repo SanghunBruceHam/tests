@@ -447,6 +447,64 @@
     let currentQuestion = 0;
     let answers = [];
     let selectedGender = '';
+    let egenScore = 0;
+    let tetoScore = 0;
+
+    // 개인화 기능 - 테스트 히스토리 관리
+    class TestHistory {
+      constructor() {
+        this.history = this.loadHistory();
+      }
+
+      loadHistory() {
+        try {
+          return JSON.parse(localStorage.getItem('egenTetoHistory') || '[]');
+        } catch {
+          return [];
+        }
+      }
+
+      saveResult(result) {
+        const testResult = {
+          id: Date.now(),
+          date: new Date().toISOString(),
+          gender: selectedGender,
+          egenScore,
+          tetoScore,
+          resultType: result.title,
+          answers: [...answers]
+        };
+
+        this.history.unshift(testResult);
+        // 최대 10개까지만 저장
+        this.history = this.history.slice(0, 10);
+        localStorage.setItem('egenTetoHistory', JSON.stringify(this.history));
+
+        return testResult;
+      }
+
+      getHistory() {
+        return this.history;
+      }
+
+      compareResults(result1, result2) {
+        return {
+          scoreDiff: {
+            egen: Math.abs(result1.egenScore - result2.egenScore),
+            teto: Math.abs(result1.tetoScore - result2.tetoScore)
+          },
+          typeChanged: result1.resultType !== result2.resultType,
+          daysBetween: Math.floor((new Date(result1.date) - new Date(result2.date)) / (1000 * 60 * 60 * 24))
+        };
+      }
+
+      clearHistory() {
+        this.history = [];
+        localStorage.removeItem('egenTetoHistory');
+      }
+    }
+
+    const testHistory = new TestHistory();
 
     // 데이터 분석 변수
     let testStartTime = null;
@@ -728,6 +786,7 @@
         const questionEndTime = Date.now();
         const questionDuration = questionEndTime - questionTimes[currentQuestion].start;
         questionTimes[currentQuestion].end = questionEndTime;
+```text
         questionTimes[currentQuestion].duration = questionDuration;
 
         // A/B 테스트 변형 적용
@@ -1259,5 +1318,195 @@
       });
     });
   </script>
+<style>
+/* 히스토리 스타일 */
+.history-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.history-item {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9em;
+}
+
+.history-result {
+    font-weight: bold;
+    color: #333;
+}
+
+.history-date {
+    color: #777;
+    font-size: 0.8em;
+}
+
+.history-scores {
+    color: #555;
+}
+
+.no-history {
+    font-style: italic;
+    color: #888;
+    text-align: center;
+    padding: 10px;
+}
+
+/* 배지 스타일 */
+.comparison-badge {
+    padding: 3px 5px;
+    border-radius: 3px;
+    font-size: 0.7em;
+    margin-left: 5px;
+    color: white;
+}
+
+.comparison-badge.new {
+    background-color: #28a745; /* 녹색 */
+}
+
+.comparison-badge.changed {
+    background-color: #dc3545; /* 적색 */
+}
+
+/* 모달 스타일 */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 80%;
+    max-width: 600px;
+    overflow: hidden;
+}
+
+.modal-header {
+    background-color: #007bff;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    position: relative;
+}
+
+.modal-body {
+    padding: 20px;
+    overflow-y: auto;
+    max-height: 500px;
+}
+
+.modal-header h3 {
+    margin: 0;
+    font-size: 1.5em;
+}
+
+.close-btn {
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    font-size: 2em;
+    color: white;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+/* 히스토리 액션 스타일 */
+.history-actions {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.history-btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.3s ease;
+}
+
+.history-btn i {
+    margin-right: 5px;
+}
+
+.history-btn.danger {
+    background-color: #dc3545;
+    color: white;
+}
+
+.history-btn.danger:hover {
+    background-color: #c82333;
+}
+
+.history-btn {
+    background-color: #007bff;
+    color: white;
+}
+
+.history-btn:hover {
+    background-color: #0056b3;
+}
+
+/* 통계 스타일 */
+.history-stats {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.history-stats h4 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    text-align: center;
+    color: #555;
+}
+
+.stat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+}
+
+.stat-box {
+    background-color: white;
+    border: 1px solid #eee;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.stat-number {
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #333;
+}
+
+.stat-label {
+    font-size: 0.8em;
+    color: #777;
+}
+</style>
 </body>
 </html>
