@@ -5,12 +5,11 @@ run = "1234"
 channel = "stable-24_05"
 
 [workflows]
-runButton = "DailyFortune Dev"
 
 [[workflows.workflow]]
 name = "DailyFortune Dev"
 author = 44423350
-mode = "sequential"
+mode = "parallel"
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"
