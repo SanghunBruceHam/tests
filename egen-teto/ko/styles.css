@@ -1,0 +1,663 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Gmarket Sans', 'Noto Sans KR', 'SUIT', sans-serif;
+  background: linear-gradient(135deg, #FFDEE9, #B5FFFC);
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  color: #333;
+  animation: fadeIn 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes bounce-gentle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.slide-up {
+  animation: slideUp 0.5s ease-out forwards;
+}
+
+.bounce-gentle {
+  animation: bounce-gentle 2s infinite;
+}
+
+.progress-bar {
+  transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.container {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 10px;
+  background: linear-gradient(135deg, #ff7eb3, #8ac6ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subtitle {
+  text-align: center;
+  color: #666;
+  margin-bottom: 30px;
+  line-height: 1.5;
+}
+
+/* 성별 선택 개선 */
+.gender-section {
+  margin-bottom: 30px;
+}
+
+.gender-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.gender-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.gender-option {
+  background: #f8f9fa;
+  border: 2px solid #e9ecef;
+  border-radius: 15px;
+  padding: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.gender-option:hover {
+  background: #e3f2fd;
+  border-color: #2196f3;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(33, 150, 243, 0.2);
+}
+
+.gender-option.selected {
+  background: linear-gradient(135deg, #ff7eb3, #8ac6ff);
+  color: white;
+  border-color: #ff7eb3;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(255, 126, 179, 0.3);
+}
+
+.gender-option.selected::before {
+  content: '✓';
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.gender-emoji {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  transition: transform 0.3s ease;
+}
+
+.gender-option:hover .gender-emoji {
+  transform: scale(1.1);
+}
+
+.gender-text {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+/* 진행률 개선 */
+.progress-section {
+  margin-bottom: 25px;
+}
+
+.progress-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background: #e9ecef;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #ff7eb3, #8ac6ff);
+  transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 10px;
+  position: relative;
+}
+
+.progress-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* 질문 섹션 개선 */
+.question-section {
+  text-align: center;
+}
+
+.question-number {
+  display: inline-block;
+  background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
+  color: #374151;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.question-text {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 25px;
+  line-height: 1.5;
+  color: #333;
+  animation: slideUp 0.5s ease-out;
+}
+
+.options-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 30px;
+}
+
+.option {
+  background: #f8f9fa;
+  border: 2px solid #e9ecef;
+  border-radius: 12px;
+  padding: 15px 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+  line-height: 1.5;
+  text-align: left;
+  position: relative;
+  animation: slideUp 0.5s ease-out;
+}
+
+.option:nth-child(1) { animation-delay: 0.1s; }
+.option:nth-child(2) { animation-delay: 0.2s; }
+
+.option:hover {
+  background: #e3f2fd;
+  border-color: #2196f3;
+  transform: translateX(5px);
+  box-shadow: 0 3px 10px rgba(33, 150, 243, 0.2);
+}
+
+.option.selected {
+  background: linear-gradient(135deg, #ff7eb3, #8ac6ff);
+  color: white;
+  border-color: #ff7eb3;
+  transform: translateX(5px);
+  box-shadow: 0 5px 15px rgba(255, 126, 179, 0.3);
+}
+
+.option.selected::after {
+  content: '✓';
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-weight: bold;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+}
+
+/* 버튼 개선 */
+.btn {
+  background: linear-gradient(135deg, #ff7eb3, #8ac6ff);
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 25px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s;
+}
+
+.btn:hover:not(:disabled)::before {
+  left: 100%;
+}
+
+.btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(255, 126, 179, 0.4);
+}
+
+.btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* 결과 섹션 개선 */
+.result-section {
+  text-align: center;
+}
+
+.result-emoji {
+  font-size: 4rem;
+  margin-bottom: 20px;
+  display: block;
+  animation: bounce-gentle 2s infinite;
+}
+
+.result-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  background: linear-gradient(135deg, #ff7eb3, #8ac6ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: slideUp 0.5s ease-out;
+}
+
+.result-description {
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 25px;
+  line-height: 1.6;
+  animation: slideUp 0.5s ease-out 0.2s both;
+}
+
+.result-details {
+  background: linear-gradient(135deg, #f8f9fa, #f1f3f4);
+  border-radius: 15px;
+  padding: 20px;
+  margin: 20px 0;
+  text-align: left;
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.05);
+  animation: slideUp 0.5s ease-out 0.4s both;
+}
+
+.detail-item {
+  margin: 15px 0;
+  padding: 10px 0;
+  border-bottom: 1px solid #e9ecef;
+  animation: slideUp 0.5s ease-out both;
+}
+
+.detail-item:nth-child(1) { animation-delay: 0.5s; }
+.detail-item:nth-child(2) { animation-delay: 0.6s; }
+.detail-item:nth-child(3) { animation-delay: 0.7s; }
+.detail-item:nth-child(4) { animation-delay: 0.8s; }
+
+.detail-item:last-child {
+  border-bottom: none;
+}
+
+.detail-label {
+  font-weight: 700;
+  color: #ff7eb3;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.detail-content {
+  color: #555;
+  line-height: 1.5;
+}
+
+/* 공유 섹션 개선 */
+.share-section {
+  margin: 30px 0;
+  animation: slideUp 0.5s ease-out 0.9s both;
+}
+
+.share-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.share-buttons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.share-btn {
+  background: #fff;
+  border: 2px solid #ff7eb3;
+  color: #ff7eb3;
+  padding: 12px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.share-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: #ff7eb3;
+  transition: left 0.3s ease;
+  z-index: -1;
+}
+
+.share-btn:hover {
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(255, 126, 179, 0.3);
+}
+
+.share-btn:hover::before {
+  left: 0;
+}
+
+.action-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.action-btn {
+  background: #f8f9fa;
+  border: 2px solid #e9ecef;
+  color: #666;
+  padding: 12px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.action-btn:hover {
+  background: #e9ecef;
+  border-color: #dee2e6;
+  transform: translateY(-1px);
+}
+
+.hidden {
+  display: none;
+}
+
+/* 로딩 스피너 추가 */
+.loading-spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 1s ease-in-out infinite;
+  margin-right: 10px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* 토스트 메시지 */
+.toast {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  z-index: 1000;
+  animation: slideUp 0.3s ease-out;
+}
+
+.toast.success {
+  background: rgba(34, 197, 94, 0.9);
+}
+
+.toast.error {
+  background: rgba(239, 68, 68, 0.9);
+}
+
+/* 접근성 개선 */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* 포커스 표시 개선 */
+.btn:focus,
+.option:focus,
+.gender-option:focus,
+.share-btn:focus,
+.action-btn:focus {
+  outline: 2px solid #ff7eb3;
+  outline-offset: 2px;
+}
+
+/* 고대비 모드 지원 */
+@media (prefers-contrast: high) {
+  .card {
+    border: 2px solid #333;
+  }
+  
+  .option {
+    border: 2px solid #666;
+  }
+  
+  .option:hover {
+    border-color: #000;
+  }
+}
+
+/* 모션 감소 설정 */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* 모바일 반응형 개선 */
+@media (max-width: 480px) {
+  .container {
+    padding: 15px;
+  }
+
+  .card {
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  .question-text {
+    font-size: 1.1rem;
+  }
+
+  .share-buttons {
+    grid-template-columns: 1fr;
+  }
+  
+  .gender-options {
+    gap: 10px;
+  }
+  
+  .gender-option {
+    padding: 15px;
+  }
+  
+  .gender-emoji {
+    font-size: 2rem;
+  }
+}
+
+/* 다크모드 지원 */
+@media (prefers-color-scheme: dark) {
+  body {
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    color: #e0e0e0;
+  }
+  
+  .card {
+    background: rgba(30, 30, 50, 0.95);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  .gender-option,
+  .option {
+    background: #2d3748;
+    border-color: #4a5568;
+    color: #e0e0e0;
+  }
+  
+  .gender-option:hover,
+  .option:hover {
+    background: #374151;
+    border-color: #6b7280;
+  }
+  
+  .question-number {
+    background: linear-gradient(135deg, #374151, #4b5563);
+    color: #e0e0e0;
+  }
+  
+  .result-details {
+    background: linear-gradient(135deg, #2d3748, #374151);
+  }
+  
+  .detail-content {
+    color: #cbd5e0;
+  }
+  
+  .share-btn {
+    background: #2d3748;
+    border-color: #ff7eb3;
+  }
+  
+  .action-btn {
+    background: #2d3748;
+    border-color: #4a5568;
+    color: #cbd5e0;
+  }
+}
