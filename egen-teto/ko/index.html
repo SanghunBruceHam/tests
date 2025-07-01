@@ -372,23 +372,93 @@
     let selectedGender = '';
     
     // 데이터 분석 변수
-    let sessionId = '';
-    let testStartTime = 0;
+    let testStartTime = null;
     let questionTimes = [];
-    let abTestVariant = '';
+    let testSession = generateSessionId();
+    let abTestVariant = Math.random() < 0.5 ? 'A' : 'B'; // A/B 테스트
     
     // 익명 통계 데이터
     const analytics = {
-      results: {},
-      averageTime: 0,
-      completionRate: 0,
-      questionAnalytics: {},
-      abTestResults: {}
+      sessionId: testSession,
+      variant: abTestVariant,
+      startTime: null,
+      endTime: null,
+      totalTime: null,
+      questionTimes: [],
+      answers: [],
+      result: null,
+      gender: null,
+      dropoffPoint: null,
+      userAgent: navigator.userAgent,
+      screenResolution: `${screen.width}x${screen.height}`,
+      timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+      language: navigator.language
     };
+
+    // 세션 ID 생성
+    function generateSessionId() {
+      return 'test_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+    }
+
+    // 익명 통계 전송
+    function sendAnalytics(eventType, data = {}) {
+      const payload = {
+        ...analytics,
+        eventType,
+        timestamp: Date.now(),
+        ...data
+      };
+      
+      // 로컬 스토리지에 저장 (개발/테스트용)
+      const storageKey = 'egen_teto_analytics';
+      const existingData = JSON.parse(localStorage.getItem(storageKey) || '[]');
+      existingData.push(payload);
+      
+      // 최대 100개 항목만 유지
+      if (existingData.length > 100) {
+        existingData.splice(0, existingData.length - 100);
+      }
+      
+      localStorage.setItem(storageKey, JSON.stringify(existingData));
+      
+      // 실제 배포 시에는 서버로 전송 (현재는 콘솔에 출력)
+      console.log('📊 Analytics Event:', eventType, payload);
+      
+      // Google Analytics 이벤트 (GA4)
+      if (typeof gtag !== 'undefined') {
+        gtag('event', eventType, {
+          session_id: analytics.sessionId,
+          variant: analytics.variant,
+          custom_parameter: JSON.stringify(data)
+        });
+      }
+    }
+
+    // A/B 테스트 변형 적용
+    function applyABTestVariant() {
+      if (abTestVariant === 'B') {
+        // B 변형: 질문 순서 약간 변경
+        const bVariantQuestions = [...questions];
+        // 3번째와 4번째 질문 순서 바꾸기
+        if (bVariantQuestions.length >= 4) {
+          [bVariantQuestions[2], bVariantQuestions[3]] = [bVariantQuestions[3], bVariantQuestions[2]];
+        }
+        return bVariantQuestions;
+      }
+      return questions;
+    }
 
     // 성별 선택
     function selectGender(gender) {
       selectedGender = gender;
+      analytics.gender = gender;
+      
+      // 성별 선택 통계 수집
+      sendAnalytics('gender_selected', {
+        selectedGender: gender,
+        variant: abTestVariant
+      });
+      
       hapticFeedback('medium'); // 햅틱 피드백
       
       // 이전 선택 제거
@@ -438,11 +508,12 @@
       
       // 테스트 시작 시간 기록
       testStartTime = Date.now();
-      questionTimes = [];
+      analytics.startTime = testStartTime;
       
-      // 분석 데이터 기록
-      recordAnalytics('test_start', {
+      // 테스트 시작 통계 수집
+      sendAnalytics('test_started', {
         gender: selectedGender,
+        variant: abTestVariant,
         startTime: testStartTime
       });
       
@@ -453,7 +524,20 @@
 
     // 질문 표시 (향상된 애니메이션)
     function showQuestion() {
-      const question = questions[currentQuestion];
+      // 질문 시작 시간 기록
+      const questionStartTime = Date.now();
+      questionTimes[currentQuestion] = { start: questionStartTime };
+      
+      // A/B 테스트 변형 적용
+      const testQuestions = applyABTestVariant();
+      const question = testQuestions[currentQuestion];
+      
+      // 질문 표시 통계 수집
+      sendAnalytics('question_shown', {
+        questionNumber: currentQuestion + 1,
+        questionText: question.question,
+        variant: abTestVariant
+      });
       const questionSection = document.querySelector('.question-section');
       
       // 질문 전환 애니메이션
@@ -468,9 +552,6 @@
       }
       
       function updateQuestionContent() {
-        // 질문 시작 시간 기록
-        questionTimes[currentQuestion] = Date.now();
-        
         document.getElementById('questionNumber').textContent = `질문 ${currentQuestion + 1}`;
         document.getElementById('questionText').textContent = question.question;
         
@@ -500,12 +581,6 @@
           const firstOption = container.querySelector('.option');
           if (firstOption) firstOption.focus();
         }, 400);
-        
-        // 질문 표시 분석 데이터 기록
-        recordAnalytics('question_shown', {
-          questionNumber: currentQuestion + 1,
-          questionText: question.question
-        });
       }
     }
 
@@ -553,10 +628,6 @@
 
     // 옵션 선택 (개선된 인터랙션)
     function selectOption(index, element) {
-      // 질문 응답 시간 기록
-      const questionStartTime = questionTimes[currentQuestion] || Date.now();
-      const questionTime = Date.now() - questionStartTime;
-      
       // 선택 중 시각적 피드백
       element.classList.add('selecting');
       
@@ -576,17 +647,31 @@
         // 스파클 효과 추가
         createSparkles(element);
         
-        // 답변 저장
-        answers[currentQuestion] = questions[currentQuestion].options[index].type;
+        // 질문 응답 시간 기록
+        const questionEndTime = Date.now();
+        const questionDuration = questionEndTime - questionTimes[currentQuestion].start;
+        questionTimes[currentQuestion].end = questionEndTime;
+        questionTimes[currentQuestion].duration = questionDuration;
         
-        // 분석 데이터 기록
-        recordAnalytics('question_answered', {
+        // A/B 테스트 변형 적용
+        const testQuestions = applyABTestVariant();
+        const selectedAnswer = testQuestions[currentQuestion].options[index];
+        
+        // 답변 저장
+        answers[currentQuestion] = selectedAnswer.type;
+        analytics.answers.push({
           questionNumber: currentQuestion + 1,
-          questionText: questions[currentQuestion].question,
-          selectedAnswer: element.textContent,
-          answerType: questions[currentQuestion].options[index].type,
-          questionTime: questionTime,
-          optionIndex: index
+          answerType: selectedAnswer.type,
+          answerText: selectedAnswer.text,
+          responseTime: questionDuration
+        });
+        
+        // 답변 선택 통계 수집
+        sendAnalytics('answer_selected', {
+          questionNumber: currentQuestion + 1,
+          answerType: selectedAnswer.type,
+          responseTime: questionDuration,
+          variant: abTestVariant
         });
         
         // 다음 버튼 활성화 (로딩 효과와 함께)
@@ -708,8 +793,13 @@
 
     // 결과 표시
     function showResult() {
-      // 테스트 완료 시간 계산
-      const totalTime = Date.now() - testStartTime;
+      // 테스트 완료 시간 기록
+      const testEndTime = Date.now();
+      const totalTestTime = testEndTime - testStartTime;
+      
+      analytics.endTime = testEndTime;
+      analytics.totalTime = totalTestTime;
+      analytics.questionTimes = questionTimes;
       
       // 답변 집계
       const count = { egen: 0, teto: 0 };
@@ -721,22 +811,7 @@
       const resultType = (isEgen ? '에겐' : '테토') + gender;
       
       const result = results[resultType];
-      
-      // 테스트 완료 분석 데이터 기록
-      recordAnalytics('test_complete', {
-        result: resultType,
-        totalTime: totalTime,
-        egenCount: count.egen,
-        tetoCount: count.teto,
-        answers: answers,
-        gender: selectedGender,
-        questionTimes: questionTimes.map((startTime, index) => {
-          if (index < questionTimes.length - 1) {
-            return questionTimes[index + 1] - startTime;
-          }
-          return Date.now() - startTime;
-        })
-      });
+      analytics.result = resultType;
       
       // 화면 전환
       document.getElementById('questionScreen').classList.add('hidden');
@@ -751,13 +826,24 @@
       document.getElementById('resultMusic').textContent = result.music.join(', ');
       document.getElementById('resultMovie').textContent = result.movie.join(', ');
       
-      // 완료 햅틱 피드백
-      hapticFeedback('success');
+      // 테스트 완료 통계 수집
+      sendAnalytics('test_completed', {
+        result: resultType,
+        totalTime: totalTestTime,
+        averageQuestionTime: totalTestTime / questions.length,
+        egenCount: count.egen,
+        tetoCount: count.teto,
+        variant: abTestVariant,
+        completionRate: 100
+      });
       
-      // 완료 후 잠시 후 분석 데이터 콘솔 출력 (개발용)
-      setTimeout(() => {
-        console.log('🎉 테스트 완료! 분석 데이터를 확인하려면 showAnalytics()를 실행하세요.');
-      }, 2000);
+      // 완료율 분석을 위한 추가 데이터
+      sendAnalytics('funnel_completed', {
+        step: 'result_shown',
+        totalSteps: questions.length + 2, // 성별선택 + 질문들 + 결과
+        completedSteps: questions.length + 2,
+        conversionRate: 100
+      });
     }
 
     // 결과 복사
@@ -766,16 +852,21 @@
       const description = document.getElementById('resultDescription').textContent;
       const text = `🧩 에겐 vs 테토 성향 테스트 결과\n\n✨ 나는 ${title}!\n\n${description}\n\n테스트 해보기: ${window.location.href}`;
       
-      // 공유 분석 데이터 기록
-      recordAnalytics('result_shared', {
-        shareMethod: 'copy',
-        resultType: title
-      });
-      
       navigator.clipboard.writeText(text).then(() => {
         alert('결과가 클립보드에 복사되었습니다!');
+        // 복사 성공 통계 수집
+        sendAnalytics('result_shared', {
+          shareMethod: 'copy',
+          result: analytics.result,
+          variant: abTestVariant
+        });
       }).catch(() => {
         alert('복사에 실패했습니다. 다시 시도해주세요.');
+        // 복사 실패 통계 수집
+        sendAnalytics('share_failed', {
+          shareMethod: 'copy',
+          error: 'clipboard_failed'
+        });
       });
     }
 
@@ -784,74 +875,149 @@
       const title = document.getElementById('resultTitle').textContent;
       const text = `나는 ${title}! 에겐 vs 테토 성향 테스트 결과를 확인해보세요!`;
       const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(window.location.href)}`;
-      
-      // 공유 분석 데이터 기록
-      recordAnalytics('result_shared', {
-        shareMethod: 'twitter',
-        resultType: title
-      });
-      
       window.open(url, '_blank');
+      
+      // 트위터 공유 통계 수집
+      sendAnalytics('result_shared', {
+        shareMethod: 'twitter',
+        result: analytics.result,
+        variant: abTestVariant
+      });
     }
 
     // 페이스북 공유
     function shareToFacebook() {
-      const title = document.getElementById('resultTitle').textContent;
       const url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`;
-      
-      // 공유 분석 데이터 기록
-      recordAnalytics('result_shared', {
-        shareMethod: 'facebook',
-        resultType: title
-      });
-      
       window.open(url, '_blank');
+      
+      // 페이스북 공유 통계 수집
+      sendAnalytics('result_shared', {
+        shareMethod: 'facebook',
+        result: analytics.result,
+        variant: abTestVariant
+      });
     }
 
     // 카카오톡 공유 (웹 환경에서는 URL 복사)
     function shareToKakao() {
-      const title = document.getElementById('resultTitle').textContent;
-      
-      // 공유 분석 데이터 기록
-      recordAnalytics('result_shared', {
-        shareMethod: 'kakao',
-        resultType: title
-      });
-      
       copyResult();
+      
+      // 카카오톡 공유 통계 수집
+      sendAnalytics('result_shared', {
+        shareMethod: 'kakao',
+        result: analytics.result,
+        variant: abTestVariant
+      });
     }
 
     // 다시 테스트하기
     function retakeTest() {
-      // 재시작 분석 데이터 기록
-      recordAnalytics('test_retake', {
-        previousResult: document.getElementById('resultTitle').textContent
+      // 재시작 통계 수집
+      sendAnalytics('test_retaken', {
+        previousResult: analytics.result,
+        variant: abTestVariant,
+        completedQuestions: currentQuestion + 1
       });
       
+      // 변수 초기화
       currentQuestion = 0;
       answers = [];
       selectedGender = '';
-      testStartTime = 0;
+      testStartTime = null;
       questionTimes = [];
+      
+      // 새로운 세션 시작
+      testSession = generateSessionId();
+      analytics.sessionId = testSession;
+      analytics.answers = [];
+      analytics.result = null;
+      analytics.gender = null;
       
       // 성별 선택 초기화
       document.querySelectorAll('.gender-option').forEach(opt => {
         opt.classList.remove('selected');
-        opt.setAttribute('aria-checked', 'false');
       });
       document.getElementById('startBtn').disabled = true;
       
       document.getElementById('resultScreen').classList.add('hidden');
       document.getElementById('startScreen').classList.remove('hidden');
-      
-      // 새로운 세션 ID 생성 (선택사항)
-      // sessionId = generateSessionId();
     }
 
     // 홈으로 이동
     function goToHome() {
+      // 홈 이동 통계 수집
+      sendAnalytics('navigation', {
+        action: 'go_home',
+        fromPage: 'result',
+        result: analytics.result,
+        variant: abTestVariant
+      });
+      
       window.location.href = '/ko/';
     }
+
+    // 페이지 이탈 감지
+    window.addEventListener('beforeunload', function(event) {
+      // 테스트 완료 전 이탈 시 통계 수집
+      if (testStartTime && !analytics.endTime) {
+        analytics.dropoffPoint = currentQuestion;
+        sendAnalytics('test_abandoned', {
+          dropoffQuestion: currentQuestion + 1,
+          totalQuestions: questions.length,
+          timeSpent: Date.now() - testStartTime,
+          completionRate: ((currentQuestion + 1) / questions.length) * 100,
+          variant: abTestVariant
+        });
+      }
+    });
+
+    // 통계 데이터 확인 함수 (개발용)
+    function getAnalyticsData() {
+      const data = JSON.parse(localStorage.getItem('egen_teto_analytics') || '[]');
+      console.table(data);
+      return data;
+    }
+
+    // 통계 요약 함수 (개발용)
+    function getAnalyticsSummary() {
+      const data = getAnalyticsData();
+      const summary = {
+        totalSessions: new Set(data.map(d => d.sessionId)).size,
+        completedTests: data.filter(d => d.eventType === 'test_completed').length,
+        averageTime: 0,
+        popularResults: {},
+        shareStats: {},
+        dropoffPoints: {},
+        abTestResults: { A: 0, B: 0 }
+      };
+      
+      const completedTests = data.filter(d => d.eventType === 'test_completed');
+      
+      if (completedTests.length > 0) {
+        summary.averageTime = completedTests.reduce((sum, test) => sum + test.totalTime, 0) / completedTests.length;
+        
+        completedTests.forEach(test => {
+          summary.popularResults[test.result] = (summary.popularResults[test.result] || 0) + 1;
+          summary.abTestResults[test.variant]++;
+        });
+      }
+      
+      data.filter(d => d.eventType === 'result_shared').forEach(share => {
+        summary.shareStats[share.shareMethod] = (summary.shareStats[share.shareMethod] || 0) + 1;
+      });
+      
+      data.filter(d => d.eventType === 'test_abandoned').forEach(abandon => {
+        const point = `질문 ${abandon.dropoffQuestion}`;
+        summary.dropoffPoints[point] = (summary.dropoffPoints[point] || 0) + 1;
+      });
+      
+      console.log('📊 분석 요약:', summary);
+      return summary;
+    }
+
+    // 개발자 도구에서 사용할 수 있는 전역 함수
+    window.getAnalyticsData = getAnalyticsData;
+    window.getAnalyticsSummary = getAnalyticsSummary;
 
     // 향상된 WebP 지원 감지
     function supportsWebP() {
@@ -984,171 +1150,17 @@
       });
     }
 
-    // 세션 ID 생성
-    function generateSessionId() {
-      return 'session_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
-    }
-    
-    // A/B 테스트 변형 선택
-    function initializeAbTest() {
-      const variants = ['control', 'variant_a', 'variant_b'];
-      abTestVariant = variants[Math.floor(Math.random() * variants.length)];
-      
-      // A/B 테스트에 따른 UI 변경
-      switch(abTestVariant) {
-        case 'variant_a':
-          // 변형 A: 더 밝은 색상 테마
-          document.documentElement.style.setProperty('--accent-color', '#ff5722');
-          document.documentElement.style.setProperty('--accent-hover', '#e64a19');
-          break;
-        case 'variant_b':
-          // 변형 B: 진행률 바 위치 변경
-          const progressSection = document.querySelector('.progress-section');
-          if (progressSection) {
-            progressSection.style.position = 'sticky';
-            progressSection.style.top = '10px';
-            progressSection.style.zIndex = '10';
-            progressSection.style.background = 'rgba(255,255,255,0.95)';
-            progressSection.style.borderRadius = '15px';
-            progressSection.style.padding = '15px';
-            progressSection.style.backdropFilter = 'blur(10px)';
-          }
-          break;
-        default:
-          // 기본 버전 (control)
-          break;
-      }
-      
-      // A/B 테스트 데이터 기록
-      recordAnalytics('ab_test_start', {
-        variant: abTestVariant,
-        timestamp: Date.now()
-      });
-    }
-    
-    // 익명 통계 데이터 기록
-    function recordAnalytics(eventType, data = {}) {
-      const analyticsData = {
-        sessionId: sessionId,
-        eventType: eventType,
-        timestamp: Date.now(),
-        abTestVariant: abTestVariant,
-        userAgent: navigator.userAgent.substring(0, 100), // 개인정보 보호를 위해 제한
-        screenSize: `${screen.width}x${screen.height}`,
-        language: navigator.language,
-        ...data
-      };
-      
-      // 로컬 스토리지에 익명 데이터 저장 (개발 환경용)
-      const existingData = JSON.parse(localStorage.getItem('test_analytics') || '[]');
-      existingData.push(analyticsData);
-      
-      // 최대 1000개 항목만 유지
-      if (existingData.length > 1000) {
-        existingData.splice(0, existingData.length - 1000);
-      }
-      
-      localStorage.setItem('test_analytics', JSON.stringify(existingData));
-      
-      // 실제 환경에서는 서버로 전송
-      if (typeof gtag !== 'undefined') {
-        gtag('event', eventType, {
-          custom_parameter_1: abTestVariant,
-          custom_parameter_2: data.result || '',
-          value: data.questionTime || 0
-        });
-      }
-    }
-    
-    // 통계 분석 함수
-    function analyzeTestData() {
-      const data = JSON.parse(localStorage.getItem('test_analytics') || '[]');
-      const analysis = {
-        totalSessions: new Set(data.map(d => d.sessionId)).size,
-        completionRate: 0,
-        averageTime: 0,
-        popularResults: {},
-        questionTimes: {},
-        abTestResults: {
-          control: { completions: 0, averageTime: 0 },
-          variant_a: { completions: 0, averageTime: 0 },
-          variant_b: { completions: 0, averageTime: 0 }
-        }
-      };
-      
-      const startSessions = data.filter(d => d.eventType === 'test_start').length;
-      const completedSessions = data.filter(d => d.eventType === 'test_complete').length;
-      
-      if (startSessions > 0) {
-        analysis.completionRate = (completedSessions / startSessions * 100).toFixed(1);
-      }
-      
-      // 결과별 통계
-      const results = data.filter(d => d.eventType === 'test_complete');
-      results.forEach(result => {
-        const resultType = result.result;
-        if (resultType) {
-          analysis.popularResults[resultType] = (analysis.popularResults[resultType] || 0) + 1;
-        }
-        
-        // A/B 테스트 분석
-        const variant = result.abTestVariant;
-        if (analysis.abTestResults[variant]) {
-          analysis.abTestResults[variant].completions++;
-          analysis.abTestResults[variant].averageTime += result.totalTime || 0;
-        }
-      });
-      
-      // A/B 테스트 평균 시간 계산
-      Object.keys(analysis.abTestResults).forEach(variant => {
-        const data = analysis.abTestResults[variant];
-        if (data.completions > 0) {
-          data.averageTime = Math.round(data.averageTime / data.completions / 1000); // 초 단위
-        }
-      });
-      
-      // 질문별 응답 시간 분석
-      data.filter(d => d.eventType === 'question_answered').forEach(q => {
-        const questionNum = q.questionNumber;
-        if (!analysis.questionTimes[questionNum]) {
-          analysis.questionTimes[questionNum] = [];
-        }
-        analysis.questionTimes[questionNum].push(q.questionTime);
-      });
-      
-      return analysis;
-    }
-    
-    // 분석 결과 콘솔 출력 (개발용)
-    function showAnalytics() {
-      const analysis = analyzeTestData();
-      console.log('📊 테스트 분석 결과:', analysis);
-      
-      // 사용자에게 알림
-      if (analysis.totalSessions > 0) {
-        console.log(`
-🎯 테스트 통계:
-- 총 세션: ${analysis.totalSessions}개
-- 완료율: ${analysis.completionRate}%
-- 인기 결과: ${Object.entries(analysis.popularResults)
-  .sort(([,a], [,b]) => b - a)
-  .slice(0, 2)
-  .map(([type, count]) => `${type}(${count}개)`)
-  .join(', ')}
-
-🔬 A/B 테스트 결과:
-${Object.entries(analysis.abTestResults)
-  .map(([variant, data]) => `- ${variant}: ${data.completions}완료, 평균 ${data.averageTime}초`)
-  .join('\n')}
-        `);
-      }
-    }
-    
     // 페이지 로드 시 이미지 최적화 초기화
     document.addEventListener('DOMContentLoaded', () => {
-      // 세션 초기화
-      sessionId = generateSessionId();
-      initializeAbTest();
+      // 페이지 로드 통계 수집
+      sendAnalytics('page_loaded', {
+        variant: abTestVariant,
+        userAgent: navigator.userAgent,
+        screenSize: `${screen.width}x${screen.height}`,
+        language: navigator.language,
+        timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+        referrer: document.referrer || 'direct'
+      });
       
       // WebP 지원 감지 및 클래스 추가
       detectWebPSupport();
@@ -1168,12 +1180,6 @@ ${Object.entries(analysis.abTestResults)
           container.classList.add('image-loading');
         }
       });
-      
-      // 페이지 방문 기록
-      recordAnalytics('page_visit');
-      
-      // 개발자 콘솔에 분석 기능 안내
-      console.log('📊 분석 데이터를 보려면 showAnalytics() 함수를 실행하세요.');
     });
   </script>
 </body>
