@@ -1,11 +1,376 @@
-Analysis: The code implements enhanced error handling with network retry logic and user-friendly error messages.
-</tool_code>
-// 언핸들드 Promise 에러 모니터링
-    window.addEventListener('unhandledrejection', (e) => {
-      if (window.gtag) {
-        gtag('event', 'promise_rejection', {
-          error_reason: e.reason
-        });
+
+<!DOCTYPE html>
+<html ⚡ lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>에겐 vs 테토 성향 테스트 - 심리테스트</title>
+  <meta name="description" content="당신은 에겐파? 테토파? 두 캐릭터 중 어느 쪽에 더 가까운지 알아보는 재미있는 심리테스트!">
+  <meta name="keywords" content="에겐테토, 성향테스트, 심리테스트, 캐릭터테스트, 무료테스트">
+
+  <!-- AMP Runtime -->
+  <script async src="https://cdn.ampproject.org/v0.js"></script>
+
+  <!-- AMP Components -->
+  <script async custom-element="amp-ad" src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"></script>
+  <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="에겐 vs 테토 성향 테스트">
+  <meta property="og:description" content="당신은 에겐파? 테토파? 두 캐릭터 중 어느 쪽에 더 가까운지 알아보는 재미있는 심리테스트!">
+  <meta property="og:image" content="https://tests.mahalohana-bruce.com/egen-teto/ko/thumbnail.png">
+  <meta property="og:url" content="https://tests.mahalohana-bruce.com/egen-teto/ko/">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="에겐 vs 테토 성향 테스트">
+  <meta name="twitter:description" content="당신은 에겐파? 테토파? 재미있는 심리테스트로 알아보세요!">
+  <meta name="twitter:image" content="https://tests.mahalohana-bruce.com/egen-teto/ko/thumbnail.png">
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://tests.mahalohana-bruce.com/egen-teto/ko/">
+
+  <!-- Favicon -->
+  <link rel="icon" href="./favicon.png" type="image/png">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Gmarket+Sans:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+  <!-- Google Analytics -->
+  <amp-analytics type="gtag" data-credentials="include">
+    <script type="application/json">
+    {
+      "vars": {
+        "gtag_id": "G-45VSGEM7EZ",
+        "config": {
+          "G-45VSGEM7EZ": {
+            "groups": "default"
+          }
+        }
+      },
+      "triggers": {
+        "pageview": {
+          "on": "visible",
+          "request": "pageview"
+        }
       }
-    });
+    }
+    </script>
+  </amp-analytics>
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "에겐 vs 테토 성향 테스트",
+    "description": "당신은 에겐파? 테토파? 두 캐릭터 중 어느 쪽에 더 가까운지 알아보는 재미있는 심리테스트!",
+    "url": "https://tests.mahalohana-bruce.com/egen-teto/ko/",
+    "applicationCategory": "Entertainment",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "KRW"
+    }
+  }
   </script>
+
+  <style amp-custom>
+    :root {
+      --bg-primary: linear-gradient(135deg, #FFDEE9 0%, #B5FFFC 100%);
+      --bg-card: rgba(255, 255, 255, 0.95);
+      --text-primary: #333;
+      --text-secondary: #666;
+      --accent-color: #ff6b9d;
+      --accent-hover: #e55a87;
+      --border-color: rgba(255, 255, 255, 0.3);
+      --shadow: 0 10px 30px rgba(0,0,0,0.1);
+      --border-radius: 20px;
+    }
+
+    [data-theme="dark"] {
+      --bg-primary: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      --bg-card: rgba(30, 30, 50, 0.95);
+      --text-primary: #e0e0e0;
+      --text-secondary: #b0b0b0;
+      --accent-color: #ff7eb3;
+      --accent-hover: #ff9cc9;
+      --border-color: rgba(255, 255, 255, 0.1);
+      --shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Gmarket Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg-primary);
+      min-height: 100vh;
+      color: var(--text-primary);
+      transition: all 0.3s ease;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .header-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .lang-selector {
+      display: flex;
+      gap: 10px;
+    }
+
+    .lang-btn {
+      padding: 8px 16px;
+      border: 2px solid var(--accent-color);
+      background: transparent;
+      color: var(--accent-color);
+      border-radius: 25px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 600;
+      font-size: 14px;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .lang-btn.active,
+    .lang-btn:hover {
+      background: var(--accent-color);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    .theme-toggle {
+      padding: 10px;
+      border: none;
+      background: var(--bg-card);
+      color: var(--text-primary);
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+      transition: all 0.3s ease;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+    }
+
+    .main-card {
+      background: var(--bg-card);
+      padding: 40px;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border-color);
+      backdrop-filter: blur(10px);
+      text-align: center;
+    }
+
+    .logo {
+      font-size: 4rem;
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+      background: linear-gradient(45deg, var(--accent-color), #4facfe);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+      color: var(--text-secondary);
+      margin-bottom: 40px;
+      line-height: 1.6;
+    }
+
+    .start-button {
+      background: linear-gradient(135deg, var(--accent-color), #4facfe);
+      color: white;
+      border: none;
+      padding: 20px 40px;
+      font-size: 1.3rem;
+      font-weight: 700;
+      border-radius: 15px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow);
+      text-decoration: none;
+      display: inline-block;
+      margin-bottom: 30px;
+    }
+
+    .start-button:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .feature-item {
+      text-align: center;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      border: 1px solid var(--border-color);
+    }
+
+    .feature-icon {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    .feature-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+
+    .feature-desc {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 40px;
+      padding: 20px;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 15px;
+      }
+
+      .main-card {
+        padding: 25px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .logo {
+        font-size: 3rem;
+      }
+
+      .start-button {
+        padding: 15px 30px;
+        font-size: 1.1rem;
+      }
+
+      .features {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header-controls">
+      <div class="lang-selector">
+        <a href="/egen-teto/ko/" class="lang-btn active">한국어</a>
+        <a href="/egen-teto/ja/" class="lang-btn">日本語</a>
+        <a href="/egen-teto/en/" class="lang-btn">English</a>
+      </div>
+      <button class="theme-toggle">🌙</button>
+    </div>
+
+    <div class="main-card">
+      <div class="header">
+        <div class="logo">🎭✨</div>
+        <h1>에겐 vs 테토 성향 테스트</h1>
+        <p class="subtitle">당신은 에겐파? 테토파?<br>재미있는 질문들로 알아보는 성향 테스트!</p>
+      </div>
+
+      <a href="#" class="start-button" onclick="startTest()">🚀 테스트 시작하기</a>
+
+      <div class="features">
+        <div class="feature-item">
+          <div class="feature-icon">⚡</div>
+          <div class="feature-title">빠른 테스트</div>
+          <div class="feature-desc">5분 만에 완료</div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">🎯</div>
+          <div class="feature-title">정확한 분석</div>
+          <div class="feature-desc">성향 맞춤 결과</div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">💝</div>
+          <div class="feature-title">무료 서비스</div>
+          <div class="feature-desc">완전 무료 제공</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p>&copy; 2024 Tests - Mahalohana Bruce. All rights reserved.</p>
+    </div>
+  </div>
+
+  <script>
+    let isDarkMode = localStorage.getItem('darkMode') === 'true';
+
+    document.addEventListener('DOMContentLoaded', function() {
+      updateTheme();
+    });
+
+    function updateTheme() {
+      const themeToggle = document.querySelector('.theme-toggle');
+      
+      if (isDarkMode) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        themeToggle.textContent = '☀️';
+      } else {
+        document.documentElement.removeAttribute('data-theme');
+        themeToggle.textContent = '🌙';
+      }
+      
+      localStorage.setItem('darkMode', isDarkMode);
+    }
+
+    document.querySelector('.theme-toggle').addEventListener('click', () => {
+      isDarkMode = !isDarkMode;
+      updateTheme();
+    });
+
+    function startTest() {
+      alert('테스트가 곧 시작됩니다! 🎉');
+    }
+  </script>
+</body>
+</html>
