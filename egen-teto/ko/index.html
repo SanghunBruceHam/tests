@@ -27,114 +27,80 @@
     }
     
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Malgun Gothic', '맑은 고딕', 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #FF6B9D 0%, #C44569 25%, #4834DF 50%, #6C5CE7 75%, #FD79A8 100%);
-      background-size: 400% 400%;
-      animation: gradientShift 8s ease infinite;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       min-height: 100vh;
-      padding: 15px;
-      color: #333;
-    }
-    
-    @keyframes gradientShift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-    
-    /* 화사한 플로팅 파티클 효과 */
-    body::before {
-      content: '';
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: 
-        radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.3) 2px, transparent 2px),
-        radial-gradient(circle at 80% 80%, rgba(255, 107, 157, 0.4) 2px, transparent 2px),
-        radial-gradient(circle at 40% 40%, rgba(108, 92, 231, 0.3) 1px, transparent 1px);
-      background-size: 50px 50px, 100px 100px, 25px 25px;
-      animation: float 20s linear infinite;
-      pointer-events: none;
-      z-index: -1;
-    }
-    
-    @keyframes float {
-      0% { transform: translateY(0px) rotate(0deg); }
-      100% { transform: translateY(-100vh) rotate(360deg); }
+      padding: 20px;
+      color: #2d3748;
     }
     
     .container {
-      max-width: 400px;
+      max-width: 420px;
       margin: 0 auto;
-      min-height: calc(100vh - 30px);
+      min-height: calc(100vh - 40px);
       display: flex;
       align-items: center;
       justify-content: center;
     }
     
     .card {
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(20px);
-      border-radius: 24px;
-      padding: 24px;
-      box-shadow: 0 30px 60px rgba(0,0,0,0.15);
-      border: 1px solid rgba(255,255,255,0.3);
+      background: white;
+      border-radius: 20px;
+      padding: 32px;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
       width: 100%;
-      animation: slideUp 0.8s ease-out;
+      position: relative;
     }
     
-    @keyframes slideUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    
-    /* 헤더 스타일 */
+    /* 헤더 */
     .header {
       text-align: center;
-      margin-bottom: 24px;
+      margin-bottom: 32px;
     }
     
     .title {
-      font-size: 26px;
+      font-size: 28px;
       font-weight: 800;
       margin-bottom: 8px;
       line-height: 1.2;
     }
     
     .title .egen {
-      color: #FF6B9D;
+      color: #ec4899;
+    }
+    
+    .title .vs {
+      color: #6b7280;
+      font-weight: 400;
     }
     
     .title .teto {
-      color: #4834DF;
+      color: #3b82f6;
     }
     
     .subtitle {
-      font-size: 14px;
-      color: #6B7280;
-      margin-bottom: 16px;
-      line-height: 1.4;
+      font-size: 16px;
+      color: #6b7280;
+      margin-bottom: 24px;
+      line-height: 1.5;
     }
     
     .info-badge {
       display: inline-flex;
       align-items: center;
-      background: linear-gradient(135deg, #FF6B9D, #4834DF);
+      background: #3b82f6;
       color: white;
-      padding: 6px 14px;
-      border-radius: 16px;
-      font-size: 13px;
-      font-weight: 600;
+      padding: 8px 16px;
+      border-radius: 50px;
+      font-size: 14px;
+      font-weight: 500;
       cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 15px rgba(255, 107, 157, 0.3);
+      transition: all 0.2s ease;
     }
     
     .info-badge:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(255, 107, 157, 0.4);
+      background: #2563eb;
+      transform: translateY(-1px);
     }
     
     .info-badge::before {
@@ -142,92 +108,67 @@
       margin-right: 6px;
     }
     
-    /* 마스코트 - 빈 공간 최소화 */
-    .mascot {
-      font-size: 40px;
-      margin: 16px 0;
-      text-align: center;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 6px;
-    }
-    
     /* 성별 선택 */
     .gender-section h3 {
       text-align: center;
-      font-size: 18px;
+      font-size: 20px;
       font-weight: 700;
-      margin-bottom: 20px;
-      color: #1F2937;
+      margin-bottom: 24px;
+      color: #1f2937;
     }
     
     .gender-options {
       display: grid;
-      gap: 10px;
-      margin-bottom: 20px;
+      gap: 12px;
+      margin-bottom: 32px;
     }
     
     .gender-option {
       display: flex;
       align-items: center;
-      padding: 14px 18px;
-      border: 2px solid #E5E7EB;
-      border-radius: 16px;
+      padding: 16px 20px;
+      border: 2px solid #e5e7eb;
+      border-radius: 12px;
       cursor: pointer;
-      transition: all 0.3s ease;
-      background: rgba(255, 255, 255, 0.8);
-    }
-    
-    .gender-option.female {
-      background: linear-gradient(135deg, rgba(255, 107, 157, 0.1), rgba(253, 121, 168, 0.1));
-      border-color: #FF6B9D;
-    }
-    
-    .gender-option.male {
-      background: linear-gradient(135deg, rgba(72, 52, 223, 0.1), rgba(108, 92, 231, 0.1));
-      border-color: #4834DF;
+      transition: all 0.2s ease;
+      background: #f9fafb;
     }
     
     .gender-option:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      border-color: #d1d5db;
+      background: #f3f4f6;
     }
     
-    .gender-option.selected.female {
-      background: linear-gradient(135deg, #FF6B9D, #FD79A8);
-      border-color: #FF6B9D;
-      color: white;
-      box-shadow: 0 8px 25px rgba(255, 107, 157, 0.4);
-    }
-    
-    .gender-option.selected.male {
-      background: linear-gradient(135deg, #4834DF, #6C5CE7);
-      border-color: #4834DF;
-      color: white;
-      box-shadow: 0 8px 25px rgba(72, 52, 223, 0.4);
+    .gender-option.selected {
+      border-color: #3b82f6;
+      background: #eff6ff;
+      color: #1d4ed8;
     }
     
     .gender-icon {
-      font-size: 18px;
-      margin-right: 12px;
-      width: 20px;
+      font-size: 20px;
+      margin-right: 16px;
+      width: 24px;
       text-align: center;
     }
     
     .gender-text {
       flex: 1;
-      font-size: 15px;
+      font-size: 16px;
       font-weight: 600;
     }
     
     .radio-circle {
-      width: 18px;
-      height: 18px;
-      border: 2px solid currentColor;
+      width: 20px;
+      height: 20px;
+      border: 2px solid #d1d5db;
       border-radius: 50%;
       position: relative;
-      transition: all 0.3s ease;
+      transition: all 0.2s ease;
+    }
+    
+    .gender-option.selected .radio-circle {
+      border-color: #3b82f6;
     }
     
     .gender-option.selected .radio-circle::after {
@@ -235,56 +176,51 @@
       position: absolute;
       top: 50%;
       left: 50%;
-      width: 8px;
-      height: 8px;
-      background: currentColor;
+      width: 10px;
+      height: 10px;
+      background: #3b82f6;
       border-radius: 50%;
       transform: translate(-50%, -50%);
     }
     
     /* 진행률 바 */
     .progress-section {
-      margin-bottom: 20px;
+      margin-bottom: 32px;
     }
     
-    .progress-bar-container {
-      height: 8px;
-      background: #E5E7EB;
-      border-radius: 4px;
-      overflow: hidden;
-      margin-bottom: 10px;
+    .progress-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    
+    .progress-label {
+      font-size: 14px;
+      color: #6b7280;
+      font-weight: 500;
+    }
+    
+    .progress-counter {
+      font-size: 14px;
+      color: #374151;
+      font-weight: 600;
     }
     
     .progress-bar {
-      height: 100%;
-      background: linear-gradient(90deg, #FF6B9D, #4834DF, #6C5CE7);
-      border-radius: 4px;
-      transition: width 0.5s ease;
-      width: 0%;
-      position: relative;
-    }
-    
-    .progress-bar::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
       width: 100%;
+      height: 8px;
+      background: #e5e7eb;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    
+    .progress-fill {
       height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-      animation: shimmer 2s ease-in-out infinite;
-    }
-    
-    @keyframes shimmer {
-      0% { transform: translateX(-100%); }
-      100% { transform: translateX(100%); }
-    }
-    
-    .progress-text {
-      display: flex;
-      justify-content: space-between;
-      font-size: 12px;
-      color: #6B7280;
+      background: linear-gradient(90deg, #ec4899, #3b82f6);
+      border-radius: 4px;
+      transition: width 0.3s ease;
+      width: 0%;
     }
     
     /* 질문 섹션 */
@@ -292,118 +228,94 @@
       text-align: center;
     }
     
-    .question-emoji {
-      font-size: 28px;
-      margin-bottom: 12px;
-      display: block;
-      text-align: center;
-    }
-    
     .question-number {
+      display: inline-block;
+      background: #f3f4f6;
+      color: #374151;
+      padding: 6px 12px;
+      border-radius: 20px;
       font-size: 14px;
       font-weight: 600;
-      color: #6B7280;
-      margin-bottom: 10px;
+      margin-bottom: 16px;
     }
     
     .question-title {
-      font-size: 18px;
+      font-size: 24px;
       font-weight: 700;
-      margin-bottom: 24px;
-      line-height: 1.4;
-      color: #1F2937;
+      margin-bottom: 32px;
+      line-height: 1.3;
+      color: #1f2937;
     }
     
     /* 답변 옵션 */
     .answer-options {
       display: grid;
-      gap: 10px;
-      margin-bottom: 20px;
+      gap: 12px;
+      margin-bottom: 32px;
     }
     
     .answer-option {
-      padding: 14px 16px;
-      background: rgba(255, 255, 255, 0.8);
-      border: 2px solid #E5E7EB;
-      border-radius: 14px;
+      padding: 16px 20px;
+      background: #f9fafb;
+      border: 2px solid #e5e7eb;
+      border-radius: 12px;
       cursor: pointer;
-      transition: all 0.3s ease;
-      font-size: 13px;
+      transition: all 0.2s ease;
+      font-size: 16px;
       line-height: 1.4;
       text-align: left;
     }
     
     .answer-option:hover {
-      border-color: #FF6B9D;
-      background: rgba(255, 107, 157, 0.1);
-      transform: translateY(-1px);
-      box-shadow: 0 4px 12px rgba(255, 107, 157, 0.2);
+      border-color: #d1d5db;
+      background: #f3f4f6;
     }
     
     .answer-option.selected {
-      border-color: #FF6B9D;
-      background: linear-gradient(135deg, #FF6B9D, #4834DF);
+      border-color: #3b82f6;
+      background: #3b82f6;
       color: white;
-      box-shadow: 0 8px 20px rgba(255, 107, 157, 0.3);
     }
     
     /* Yes/No 답변 */
     .yn-options {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin-bottom: 20px;
+      gap: 16px;
+      margin-bottom: 32px;
     }
     
     .yn-option {
-      padding: 16px;
-      border: 2px solid #E5E7EB;
-      border-radius: 14px;
+      padding: 24px 20px;
+      border: 2px solid #e5e7eb;
+      border-radius: 12px;
       cursor: pointer;
-      transition: all 0.3s ease;
-      font-size: 14px;
+      transition: all 0.2s ease;
+      font-size: 18px;
       font-weight: 600;
       text-align: center;
-      background: rgba(255, 255, 255, 0.8);
+      background: #f9fafb;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
     }
     
-    .yn-option.yes {
-      color: #4834DF;
-      border-color: #4834DF;
-    }
-    
-    .yn-option.no {
-      color: #FF6B9D;
-      border-color: #FF6B9D;
-    }
-    
     .yn-option:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+      border-color: #d1d5db;
+      background: #f3f4f6;
     }
     
-    .yn-option.selected.yes {
-      background: linear-gradient(135deg, #4834DF, #6C5CE7);
-      border-color: #4834DF;
+    .yn-option.selected {
+      border-color: #3b82f6;
+      background: #3b82f6;
       color: white;
-      box-shadow: 0 8px 25px rgba(72, 52, 223, 0.4);
-    }
-    
-    .yn-option.selected.no {
-      background: linear-gradient(135deg, #FF6B9D, #FD79A8);
-      border-color: #FF6B9D;
-      color: white;
-      box-shadow: 0 8px 25px rgba(255, 107, 157, 0.4);
     }
     
     .yn-option::before {
       display: block;
-      font-size: 18px;
-      margin-bottom: 4px;
+      font-size: 24px;
+      margin-bottom: 8px;
     }
     
     .yn-option.yes::before {
@@ -417,24 +329,23 @@
     /* 버튼 */
     .btn {
       width: 100%;
-      padding: 14px;
+      padding: 16px 24px;
       border: none;
-      border-radius: 14px;
-      font-size: 15px;
+      border-radius: 12px;
+      font-size: 16px;
       font-weight: 600;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: all 0.2s ease;
     }
     
     .btn-primary {
-      background: linear-gradient(135deg, #FF6B9D, #4834DF);
+      background: #3b82f6;
       color: white;
-      box-shadow: 0 4px 15px rgba(255, 107, 157, 0.3);
     }
     
     .btn-primary:hover:not(:disabled) {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(255, 107, 157, 0.4);
+      background: #2563eb;
+      transform: translateY(-1px);
     }
     
     .btn:disabled {
@@ -443,44 +354,31 @@
       transform: none !important;
     }
     
-    .btn-primary::before {
-      content: '▶ ';
-      margin-right: 4px;
-    }
-    
     /* 로딩 화면 */
     .loading-section {
       text-align: center;
-      padding: 30px 0;
+      padding: 60px 0;
+    }
+    
+    .loading-spinner {
+      width: 40px;
+      height: 40px;
+      border: 4px solid #e5e7eb;
+      border-top: 4px solid #3b82f6;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 24px;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
     }
     
     .loading-text {
-      font-size: 16px;
+      font-size: 18px;
       font-weight: 600;
-      margin-bottom: 16px;
-      color: #1F2937;
-    }
-    
-    .loading-dots {
-      display: flex;
-      justify-content: center;
-      gap: 6px;
-    }
-    
-    .dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      animation: bounce 1.4s ease-in-out infinite both;
-    }
-    
-    .dot:nth-child(1) { background: #FF6B9D; animation-delay: -0.32s; }
-    .dot:nth-child(2) { background: #4834DF; animation-delay: -0.16s; }
-    .dot:nth-child(3) { background: #6C5CE7; animation-delay: 0s; }
-    
-    @keyframes bounce {
-      0%, 80%, 100% { transform: scale(0); }
-      40% { transform: scale(1); }
+      color: #374151;
     }
     
     /* 결과 화면 */
@@ -488,371 +386,285 @@
       text-align: center;
     }
     
-    /* 결과 헤더 - 성향 표시 */
     .result-header {
-      text-align: center;
-      margin-bottom: 20px;
-      padding: 20px;
-      border-radius: 20px;
-      position: relative;
-    }
-    
-    .result-header.egen {
-      background: linear-gradient(135deg, rgba(255, 107, 157, 0.15), rgba(253, 121, 168, 0.15));
-      border: 2px solid #FF6B9D;
-    }
-    
-    .result-header.teto {
-      background: linear-gradient(135deg, rgba(72, 52, 223, 0.15), rgba(108, 92, 231, 0.15));
-      border: 2px solid #4834DF;
+      background: #f9fafb;
+      border-radius: 16px;
+      padding: 32px 24px;
+      margin-bottom: 24px;
     }
     
     .result-emoji {
-      font-size: 48px;
-      margin-bottom: 12px;
+      font-size: 64px;
+      margin-bottom: 16px;
       display: block;
     }
     
-    .result-type {
-      font-size: 24px;
+    .result-title {
+      font-size: 28px;
       font-weight: 800;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
+      color: #1f2937;
     }
     
-    .result-type.egen {
-      color: #FF6B9D;
-    }
-    
-    .result-type.teto {
-      color: #4834DF;
+    .result-subtitle {
+      font-size: 16px;
+      color: #6b7280;
+      margin-bottom: 16px;
     }
     
     .result-description {
       font-size: 14px;
-      color: #6B7280;
-      line-height: 1.4;
+      color: #374151;
+      line-height: 1.5;
     }
     
-    .result-chart {
-      background: rgba(255, 255, 255, 0.8);
+    /* 차트 */
+    .chart-section {
+      background: #f9fafb;
       border-radius: 16px;
-      padding: 16px;
-      margin-bottom: 16px;
-      backdrop-filter: blur(10px);
+      padding: 24px;
+      margin-bottom: 24px;
     }
     
     .chart-title {
-      font-size: 16px;
+      font-size: 18px;
       font-weight: 700;
-      margin-bottom: 12px;
-      color: #1F2937;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    
-    .chart-title::before {
-      content: '📊';
-      margin-right: 6px;
+      margin-bottom: 20px;
+      color: #1f2937;
     }
     
     .chart-item {
       display: flex;
       align-items: center;
-      margin-bottom: 10px;
+      margin-bottom: 16px;
+    }
+    
+    .chart-item:last-child {
+      margin-bottom: 0;
     }
     
     .chart-label {
-      width: 70px;
+      width: 80px;
       text-align: left;
-      font-size: 13px;
+      font-size: 14px;
       font-weight: 600;
       display: flex;
       align-items: center;
     }
     
     .chart-label.egen {
-      color: #FF6B9D;
+      color: #ec4899;
     }
     
     .chart-label.teto {
-      color: #4834DF;
+      color: #3b82f6;
     }
     
     .chart-label::before {
-      width: 10px;
-      height: 10px;
+      width: 12px;
+      height: 12px;
       border-radius: 50%;
-      margin-right: 6px;
+      margin-right: 8px;
       content: '';
     }
     
     .chart-label.egen::before {
-      background: #FF6B9D;
+      background: #ec4899;
     }
     
     .chart-label.teto::before {
-      background: #4834DF;
+      background: #3b82f6;
     }
     
     .chart-bar {
       flex: 1;
-      height: 20px;
-      background: #E5E7EB;
-      border-radius: 10px;
-      margin: 0 10px;
-      position: relative;
+      height: 8px;
+      background: #e5e7eb;
+      border-radius: 4px;
+      margin: 0 16px;
       overflow: hidden;
     }
     
     .chart-fill {
       height: 100%;
-      border-radius: 10px;
+      border-radius: 4px;
       transition: width 1s ease;
     }
     
     .chart-fill.egen {
-      background: linear-gradient(90deg, #FF6B9D, #FD79A8);
+      background: #ec4899;
     }
     
     .chart-fill.teto {
-      background: linear-gradient(90deg, #4834DF, #6C5CE7);
+      background: #3b82f6;
     }
     
     .chart-percentage {
-      font-size: 13px;
+      font-size: 14px;
       font-weight: 600;
       color: #374151;
+      width: 40px;
+      text-align: right;
     }
     
     /* 결과 카드들 */
     .result-cards {
       display: grid;
-      gap: 12px;
-      margin-bottom: 16px;
+      gap: 16px;
+      margin-bottom: 24px;
     }
     
     .result-card {
-      background: rgba(255, 255, 255, 0.9);
-      border-radius: 14px;
-      padding: 16px;
+      background: #f9fafb;
+      border-radius: 16px;
+      padding: 24px;
       text-align: left;
-      border: 2px solid transparent;
-      backdrop-filter: blur(10px);
-    }
-    
-    .result-card.personality {
-      background: linear-gradient(135deg, rgba(255, 107, 157, 0.1), rgba(253, 121, 168, 0.1));
-      border-color: #FF6B9D;
-    }
-    
-    .result-card.match {
-      background: linear-gradient(135deg, rgba(72, 52, 223, 0.1), rgba(108, 92, 231, 0.1));
-      border-color: #4834DF;
-    }
-    
-    .result-card-header {
-      display: flex;
-      align-items: center;
-      margin-bottom: 10px;
-    }
-    
-    .result-card-icon {
-      font-size: 18px;
-      margin-right: 6px;
     }
     
     .result-card-title {
-      font-size: 14px;
+      font-size: 18px;
       font-weight: 700;
-      color: #1F2937;
-    }
-    
-    .result-card-content {
-      font-size: 13px;
-      line-height: 1.5;
-      color: #4B5563;
-    }
-    
-    .match-type {
-      display: inline-block;
-      background: linear-gradient(135deg, #FF6B9D, #4834DF);
-      color: white;
-      padding: 3px 10px;
-      border-radius: 10px;
-      font-size: 12px;
-      font-weight: 600;
-      margin-bottom: 6px;
-    }
-    
-    /* 키워드 태그 */
-    .keywords-section {
-      margin-bottom: 16px;
-    }
-    
-    .keywords-title {
-      font-size: 14px;
-      font-weight: 700;
-      margin-bottom: 10px;
-      color: #1F2937;
+      margin-bottom: 12px;
+      color: #1f2937;
       display: flex;
       align-items: center;
-      justify-content: center;
     }
     
-    .keywords-title::before {
-      content: '⭐';
-      margin-right: 6px;
+    .result-card-title::before {
+      margin-right: 8px;
+      font-size: 20px;
+    }
+    
+    .result-card-title.personality::before { content: '🎭'; }
+    .result-card-title.match::before { content: '💕'; }
+    .result-card-title.keywords::before { content: '🏷️'; }
+    
+    .result-card-content {
+      font-size: 16px;
+      line-height: 1.6;
+      color: #374151;
+    }
+    
+    .match-badge {
+      display: inline-block;
+      background: #3b82f6;
+      color: white;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 12px;
     }
     
     .keywords-grid {
       display: flex;
       flex-wrap: wrap;
-      gap: 6px;
-      justify-content: center;
+      gap: 8px;
     }
     
     .keyword-tag {
-      background: linear-gradient(135deg, #FF6B9D, #4834DF);
-      color: white;
-      padding: 4px 10px;
-      border-radius: 10px;
-      font-size: 12px;
+      background: #e5e7eb;
+      color: #374151;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 14px;
       font-weight: 500;
-      box-shadow: 0 2px 8px rgba(255, 107, 157, 0.3);
     }
     
-    /* 상세 정보 카드들 */
+    /* 상세 정보 그리드 */
     .info-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin-bottom: 16px;
+      gap: 16px;
+      margin-bottom: 24px;
     }
     
     .info-card {
-      background: rgba(255, 255, 255, 0.9);
+      background: #f9fafb;
       border-radius: 12px;
-      padding: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      padding: 16px;
       text-align: center;
-      backdrop-filter: blur(10px);
     }
     
     .info-card-title {
-      font-size: 12px;
+      font-size: 14px;
       font-weight: 700;
-      margin-bottom: 6px;
-      color: #1F2937;
+      margin-bottom: 12px;
+      color: #1f2937;
       display: flex;
       align-items: center;
       justify-content: center;
     }
     
     .info-card-title::before {
-      margin-right: 4px;
-      font-size: 14px;
+      margin-right: 6px;
+      font-size: 16px;
     }
     
     .info-card-title.famous::before { content: '👥'; }
-    .info-card-title.quotes::before { content: '💬'; }
     .info-card-title.career::before { content: '💼'; }
-    .info-card-title.lifestyle::before { content: '💡'; }
+    .info-card-title.lifestyle::before { content: '🎨'; }
     .info-card-title.music::before { content: '🎵'; }
-    .info-card-title.movie::before { content: '🎬'; }
-    
-    .info-card-content {
-      font-size: 11px;
-      line-height: 1.4;
-      color: #6B7280;
-      text-align: center;
-    }
     
     .info-list {
       display: flex;
       flex-direction: column;
-      gap: 3px;
-      align-items: center;
+      gap: 8px;
     }
     
     .info-item {
-      background: rgba(243, 244, 246, 0.8);
-      padding: 4px 8px;
-      border-radius: 6px;
-      font-size: 11px;
-      font-weight: 500;
+      background: white;
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 14px;
       color: #374151;
-      text-align: center;
-      width: 100%;
-      backdrop-filter: blur(5px);
-    }
-    
-    .info-item.career {
-      background: rgba(220, 252, 231, 0.8);
-      color: #166534;
-    }
-    
-    .info-item.lifestyle {
-      background: rgba(254, 243, 199, 0.8);
-      color: #92400E;
     }
     
     /* 공유 섹션 */
     .share-section {
-      margin-top: 20px;
+      margin-top: 32px;
     }
     
     .share-title {
-      font-size: 14px;
+      font-size: 18px;
       font-weight: 700;
       text-align: center;
-      margin-bottom: 12px;
-      color: #1F2937;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    
-    .share-title::before {
-      content: '📤';
-      margin-right: 6px;
+      margin-bottom: 20px;
+      color: #1f2937;
     }
     
     .share-buttons {
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 6px;
-      margin-bottom: 12px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 20px;
     }
     
     .share-btn {
-      padding: 10px 6px;
+      padding: 16px 12px;
       border: none;
-      border-radius: 10px;
-      font-size: 11px;
+      border-radius: 12px;
+      font-size: 14px;
       font-weight: 600;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: all 0.2s ease;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      gap: 3px;
-      text-align: center;
+      gap: 8px;
     }
     
     .share-btn:hover {
       transform: translateY(-2px);
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     }
     
     .share-btn.kakao {
-      background: #FEE500;
-      color: #3C1E1E;
+      background: #fee500;
+      color: #3c1e1e;
     }
     
     .share-btn.instagram {
-      background: linear-gradient(135deg, #E4405F, #F56040);
+      background: #e4405f;
       color: white;
     }
     
@@ -862,72 +674,79 @@
     }
     
     .share-btn.twitter {
-      background: #1DA1F2;
+      background: #1da1f2;
       color: white;
     }
     
     .share-btn.facebook {
-      background: #1877F2;
+      background: #1877f2;
       color: white;
     }
     
     .share-btn.copy {
-      background: linear-gradient(135deg, #10B981, #34D399);
+      background: #10b981;
       color: white;
-    }
-    
-    .share-icon {
-      font-size: 14px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
     }
     
     .action-buttons {
       display: grid;
-      grid-template-columns: 1fr;
-      gap: 10px;
+      gap: 12px;
     }
     
     .action-btn {
-      padding: 12px;
-      border: none;
+      padding: 16px;
+      border: 2px solid #e5e7eb;
       border-radius: 12px;
-      font-size: 13px;
+      background: white;
+      color: #374151;
+      font-size: 16px;
       font-weight: 600;
       cursor: pointer;
-      transition: all 0.3s ease;
-      text-align: center;
+      transition: all 0.2s ease;
     }
     
-    .action-btn.restart {
-      background: rgba(243, 244, 246, 0.8);
-      color: #6B7280;
-      backdrop-filter: blur(10px);
+    .action-btn:hover {
+      border-color: #d1d5db;
+      background: #f9fafb;
     }
     
-    .action-btn.restart:hover {
-      background: rgba(229, 231, 235, 0.9);
-      transform: translateY(-1px);
-    }
-    
-    /* AdSense 광고 스타일 */
+    /* AdSense */
     .adsbygoogle {
       display: block;
-      margin: 16px auto;
+      margin: 24px auto;
       text-align: center;
     }
     
     /* 반응형 */
     @media (max-width: 480px) {
-      .container { padding: 10px; }
-      .card { padding: 20px; }
-      .title { font-size: 22px; }
-      .info-grid { grid-template-columns: 1fr; }
-      .share-buttons { grid-template-columns: 1fr 1fr; }
+      .container {
+        padding: 15px;
+      }
+      
+      .card {
+        padding: 24px;
+      }
+      
+      .title {
+        font-size: 24px;
+      }
+      
+      .question-title {
+        font-size: 20px;
+      }
+      
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .share-buttons {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
     
-    .hidden { display: none; }
+    .hidden {
+      display: none;
+    }
   </style>
 </head>
 <body>
@@ -937,15 +756,13 @@
       <div id="startScreen">
         <div class="header">
           <h1 class="title">
-            <span class="egen">에겐</span> vs <span class="teto">테토</span> 성향 테스트
+            <span class="egen">에겐</span> <span class="vs">vs</span> <span class="teto">테토</span> 성향 테스트
           </h1>
           <p class="subtitle">나만의 성향과 찰떡궁합 이성 유형을 찾아보세요</p>
           <div class="info-badge" onclick="showInfo()">에겐 vs 테토 성향 테스트란?</div>
         </div>
         
-        <div class="mascot">💖🧠</div>
-        
-        <!-- AdSense 광고 - 상단 -->
+        <!-- AdSense 광고 -->
         <ins class="adsbygoogle"
              style="display:block"
              data-ad-client="ca-pub-5508768187151867"
@@ -957,14 +774,14 @@
           <h3>성별을 선택해주세요</h3>
           
           <div class="gender-options">
-            <div class="gender-option female" onclick="selectGender('female')">
-              <div class="gender-icon">♀</div>
+            <div class="gender-option" onclick="selectGender('female')">
+              <div class="gender-icon">👩</div>
               <div class="gender-text">여성</div>
               <div class="radio-circle"></div>
             </div>
             
-            <div class="gender-option male" onclick="selectGender('male')">
-              <div class="gender-icon">♂</div>
+            <div class="gender-option" onclick="selectGender('male')">
+              <div class="gender-icon">👨</div>
               <div class="gender-text">남성</div>
               <div class="radio-circle"></div>
             </div>
@@ -979,22 +796,20 @@
       <!-- 질문 화면 -->
       <div id="questionScreen" class="hidden">
         <div class="progress-section">
-          <div class="progress-bar-container">
-            <div class="progress-bar" id="progressBar"></div>
+          <div class="progress-header">
+            <span class="progress-label">진행률</span>
+            <span class="progress-counter" id="progressCounter">1/10</span>
           </div>
-          <div class="progress-text">
-            <span>시작</span>
-            <span id="progressText">1/10</span>
-            <span>완료</span>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
           </div>
         </div>
         
         <div class="question-section">
-          <div class="question-emoji" id="questionEmoji"></div>
-          <div class="question-number" id="questionNumber">질문 1/10</div>
+          <div class="question-number" id="questionNumber">질문 1</div>
           <h2 class="question-title" id="questionTitle"></h2>
           
-          <!-- AdSense 광고 - 질문 중간 (5번째 질문 후) -->
+          <!-- AdSense 광고 - 중간 -->
           <div id="midAdContainer" class="hidden">
             <ins class="adsbygoogle"
                  style="display:block"
@@ -1012,29 +827,25 @@
       <!-- 로딩 화면 -->
       <div id="loadingScreen" class="hidden">
         <div class="loading-section">
-          <div class="mascot">💖🧠</div>
+          <div class="loading-spinner"></div>
           <div class="loading-text">결과를 분석하고 있어요...</div>
-          <div class="loading-dots">
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-          </div>
         </div>
       </div>
       
       <!-- 결과 화면 -->
       <div id="resultScreen" class="hidden">
         <div class="result-section">
-          <!-- 결과 헤더 - 성향 표시 -->
-          <div class="result-header" id="resultHeader">
-            <div class="result-emoji" id="resultEmoji"></div>
-            <div class="result-type" id="resultType"></div>
-            <div class="result-description" id="resultDescription"></div>
+          <!-- 결과 헤더 -->
+          <div class="result-header">
+            <div class="result-emoji" id="resultEmoji">🎭</div>
+            <div class="result-title" id="resultTitle">에겐 성향</div>
+            <div class="result-subtitle" id="resultSubtitle">감성적이고 공감능력이 뛰어난 당신</div>
+            <div class="result-description" id="resultDescription">당신은 감정이 풍부하고 사람들과의 교감을 중시하는 성향입니다.</div>
           </div>
           
           <!-- 성향 분석 차트 -->
-          <div class="result-chart">
-            <div class="chart-title">성향 분석</div>
+          <div class="chart-section">
+            <div class="chart-title">📊 성향 분석</div>
             <div class="chart-item">
               <div class="chart-label egen">에겐 성향</div>
               <div class="chart-bar">
@@ -1051,7 +862,7 @@
             </div>
           </div>
           
-          <!-- AdSense 광고 - 결과 상단 -->
+          <!-- AdSense 광고 -->
           <ins class="adsbygoogle"
                style="display:block"
                data-ad-client="ca-pub-5508768187151867"
@@ -1061,63 +872,48 @@
           
           <!-- 주요 결과 카드 -->
           <div class="result-cards">
-            <div class="result-card personality">
-              <div class="result-card-header">
-                <div class="result-card-icon">💕</div>
-                <div class="result-card-title">당신의 성향 특징</div>
-              </div>
+            <div class="result-card">
+              <div class="result-card-title personality">성향 특징</div>
               <div class="result-card-content" id="personalityContent"></div>
             </div>
             
-            <div class="result-card match">
-              <div class="result-card-header">
-                <div class="result-card-icon">💕</div>
-                <div class="result-card-title">찰떡궁합 이성 유형</div>
-              </div>
+            <div class="result-card">
+              <div class="result-card-title match">찰떡궁합</div>
               <div class="result-card-content" id="matchContent"></div>
             </div>
+            
+            <div class="result-card">
+              <div class="result-card-title keywords">핵심 키워드</div>
+              <div class="result-card-content">
+                <div class="keywords-grid" id="keywordsGrid"></div>
+              </div>
+            </div>
           </div>
           
-          <!-- 키워드 -->
-          <div class="keywords-section">
-            <div class="keywords-title">당신의 핵심 키워드</div>
-            <div class="keywords-grid" id="keywordsGrid"></div>
-          </div>
-          
-          <!-- 상세 정보 그리드 -->
+          <!-- 상세 정보 -->
           <div class="info-grid">
             <div class="info-card">
-              <div class="info-card-title famous">같은 성향 유명인</div>
-              <div class="info-card-content" id="famousContent"></div>
-            </div>
-            
-            <div class="info-card">
-              <div class="info-card-title quotes">당신을 위한 명언</div>
-              <div class="info-card-content" id="quotesContent"></div>
+              <div class="info-card-title famous">닮은 연예인</div>
+              <div class="info-list" id="famousList"></div>
             </div>
             
             <div class="info-card">
               <div class="info-card-title career">추천 직업</div>
-              <div class="info-card-content" id="careerContent"></div>
+              <div class="info-list" id="careerList"></div>
             </div>
             
             <div class="info-card">
-              <div class="info-card-title lifestyle">라이프스타일 팁</div>
-              <div class="info-card-content" id="lifestyleContent"></div>
+              <div class="info-card-title lifestyle">라이프스타일</div>
+              <div class="info-list" id="lifestyleList"></div>
             </div>
             
             <div class="info-card">
               <div class="info-card-title music">추천 음악</div>
-              <div class="info-card-content" id="musicContent"></div>
-            </div>
-            
-            <div class="info-card">
-              <div class="info-card-title movie">추천 영화</div>
-              <div class="info-card-content" id="movieContent"></div>
+              <div class="info-list" id="musicList"></div>
             </div>
           </div>
           
-          <!-- AdSense 광고 - 결과 하단 -->
+          <!-- AdSense 광고 -->
           <ins class="adsbygoogle"
                style="display:block"
                data-ad-client="ca-pub-5508768187151867"
@@ -1131,38 +927,38 @@
             
             <div class="share-buttons">
               <button class="share-btn kakao" onclick="shareKakao()">
-                <div class="share-icon">K</div>
-                <div>카카오톡</div>
+                <span>K</span>
+                <span>카카오톡</span>
               </button>
               
               <button class="share-btn instagram" onclick="shareInstagram()">
-                <div class="share-icon">📷</div>
-                <div>인스타그램</div>
+                <span>📷</span>
+                <span>인스타그램</span>
               </button>
               
               <button class="share-btn threads" onclick="shareThreads()">
-                <div class="share-icon">@</div>
-                <div>쓰레드</div>
+                <span>@</span>
+                <span>쓰레드</span>
               </button>
               
               <button class="share-btn twitter" onclick="shareTwitter()">
-                <div class="share-icon">𝕏</div>
-                <div>X (트위터)</div>
+                <span>𝕏</span>
+                <span>트위터</span>
               </button>
               
               <button class="share-btn facebook" onclick="shareFacebook()">
-                <div class="share-icon">f</div>
-                <div>페이스북</div>
+                <span>f</span>
+                <span>페이스북</span>
               </button>
               
               <button class="share-btn copy" onclick="copyResult()">
-                <div class="share-icon">📋</div>
-                <div>결과 복사</div>
+                <span>📋</span>
+                <span>복사</span>
               </button>
             </div>
             
             <div class="action-buttons">
-              <button class="action-btn restart" onclick="restartTest()">🔄 다시 테스트하기</button>
+              <button class="action-btn" onclick="restartTest()">🔄 다시 테스트하기</button>
             </div>
           </div>
         </div>
@@ -1177,105 +973,95 @@
     // 테스트 데이터
     const questions = [
       {
-        emoji: '🙋‍♀️',
         q: '친구들과 함께 있을 때 당신은?',
         type: 'scale',
         options: [
-          { text: '전혀 아니다', type: 'teto', score: 2 },
-          { text: '아니다', type: 'teto', score: 1 },
-          { text: '보통', type: 'neutral', score: 0 },
-          { text: '그렇다', type: 'egen', score: 1 },
-          { text: '매우 그렇다', type: 'egen', score: 2 }
+          { text: '조용히 듣고 있는 편이다', type: 'teto', score: 2 },
+          { text: '가끔 의견을 말한다', type: 'teto', score: 1 },
+          { text: '보통이다', type: 'neutral', score: 0 },
+          { text: '적극적으로 대화에 참여한다', type: 'egen', score: 1 },
+          { text: '분위기를 주도한다', type: 'egen', score: 2 }
         ]
       },
       {
-        emoji: '🙏',
-        q: '타인의 도움을 자주 요청한다.',
+        q: '새로운 사람을 만날 때 당신의 첫 반응은?',
         type: 'yn',
         options: [
-          { text: '그렇다', type: 'egen', score: 2 },
-          { text: '아니다', type: 'teto', score: 2 }
+          { text: '먼저 다가가서 대화를 시작한다', type: 'egen', score: 2 },
+          { text: '상대방이 먼저 말을 걸기를 기다린다', type: 'teto', score: 2 }
         ]
       },
       {
-        emoji: '👥',
-        q: '사람들과 협력하는 것을 좋아한다.',
-        type: 'yn',
-        options: [
-          { text: '그렇다', type: 'egen', score: 2 },
-          { text: '아니다', type: 'teto', score: 2 }
-        ]
-      },
-      {
-        emoji: '🎯',
         q: '중요한 결정을 내릴 때 당신은?',
         type: 'scale',
         options: [
-          { text: '매우 논리적', type: 'teto', score: 2 },
-          { text: '논리적', type: 'teto', score: 1 },
-          { text: '보통', type: 'neutral', score: 0 },
-          { text: '감정적', type: 'egen', score: 1 },
-          { text: '매우 감정적', type: 'egen', score: 2 }
+          { text: '논리적으로 분석한다', type: 'teto', score: 2 },
+          { text: '신중하게 생각한다', type: 'teto', score: 1 },
+          { text: '보통이다', type: 'neutral', score: 0 },
+          { text: '직감을 따른다', type: 'egen', score: 1 },
+          { text: '감정에 따라 결정한다', type: 'egen', score: 2 }
         ]
       },
       {
-        emoji: '💭',
-        q: '스트레스를 받을 때 친구들과 만나서 이야기한다.',
+        q: '스트레스를 받을 때 당신의 해소법은?',
         type: 'yn',
         options: [
-          { text: '그렇다', type: 'egen', score: 2 },
-          { text: '아니다', type: 'teto', score: 2 }
+          { text: '친구들과 만나서 이야기한다', type: 'egen', score: 2 },
+          { text: '혼자만의 시간을 갖는다', type: 'teto', score: 2 }
         ]
       },
       {
-        emoji: '📱',
-        q: '영화나 드라마를 볼 때 감정이 풍부한 로맨스를 선호한다.',
+        q: '영화나 드라마를 볼 때 선호하는 장르는?',
         type: 'yn',
         options: [
-          { text: '그렇다', type: 'egen', score: 2 },
-          { text: '아니다', type: 'teto', score: 2 }
+          { text: '로맨스, 감동 드라마', type: 'egen', score: 2 },
+          { text: 'SF, 스릴러, 다큐멘터리', type: 'teto', score: 2 }
         ]
       },
       {
-        emoji: '✈️',
         q: '여행 계획을 세울 때 당신은?',
         type: 'scale',
         options: [
-          { text: '완전 즉흥적', type: 'egen', score: 2 },
-          { text: '약간 즉흥적', type: 'egen', score: 1 },
+          { text: '완전 즉흥적으로', type: 'egen', score: 2 },
+          { text: '약간 즉흥적으로', type: 'egen', score: 1 },
           { text: '보통', type: 'neutral', score: 0 },
-          { text: '약간 계획적', type: 'teto', score: 1 },
-          { text: '완전 계획적', type: 'teto', score: 2 }
+          { text: '어느 정도 계획을 세운다', type: 'teto', score: 1 },
+          { text: '미리 자세한 계획을 세운다', type: 'teto', score: 2 }
         ]
       },
       {
-        emoji: '📝',
-        q: '업무나 과제를 미리미리 꾸준히 진행한다.',
+        q: '업무나 과제를 할 때 당신의 스타일은?',
         type: 'yn',
         options: [
-          { text: '그렇다', type: 'teto', score: 2 },
-          { text: '아니다', type: 'egen', score: 2 }
+          { text: '마감일 임박해서 집중력 폭발', type: 'egen', score: 2 },
+          { text: '미리미리 꾸준히 진행', type: 'teto', score: 2 }
         ]
       },
       {
-        emoji: '😤',
-        q: '갈등 상황에서 감정을 솔직하게 표현한다.',
+        q: '갈등 상황에서 당신의 대처법은?',
         type: 'yn',
         options: [
-          { text: '그렇다', type: 'egen', score: 2 },
-          { text: '아니다', type: 'teto', score: 2 }
+          { text: '감정을 솔직하게 표현한다', type: 'egen', score: 2 },
+          { text: '차분하게 해결책을 찾는다', type: 'teto', score: 2 }
         ]
       },
       {
-        emoji: '💕',
-        q: '이상형을 고를 때 가장 중요한 것은?',
+        q: '이상형을 고를 때 가장 중요한 요소는?',
         type: 'scale',
         options: [
-          { text: '완전 논리적 매칭', type: 'teto', score: 2 },
-          { text: '약간 논리적', type: 'teto', score: 1 },
+          { text: '외모와 첫인상', type: 'egen', score: 2 },
+          { text: '감정적 교감', type: 'egen', score: 1 },
           { text: '보통', type: 'neutral', score: 0 },
-          { text: '약간 감정적', type: 'egen', score: 1 },
-          { text: '완전 감정적 교감', type: 'egen', score: 2 }
+          { text: '성격과 가치관', type: 'teto', score: 1 },
+          { text: '미래 계획과 현실성', type: 'teto', score: 2 }
+        ]
+      },
+      {
+        q: '주말에 선호하는 활동은?',
+        type: 'yn',
+        options: [
+          { text: '친구들과 수다떨며 즐거운 시간', type: 'egen', score: 2 },
+          { text: '혼자 책 읽거나 영화 감상', type: 'teto', score: 2 }
         ]
       }
     ];
@@ -1283,70 +1069,62 @@
     const results = {
       egen: {
         male: {
-          title: '에겐남 💖',
+          title: '에겐남',
           subtitle: '감성적인 남성',
-          emoji: '💖✨',
+          emoji: '💖',
           description: '감성적이고 공감능력이 뛰어난 당신',
-          fullDescription: '감정이 풍부하고 공감능력이 뛰어난 당신! 로맨틱하고 따뜻한 매력으로 사람들의 마음을 사로잡는 스타일입니다. 상대방의 마음을 잘 읽고 배려심이 많아 연인과의 관계에서 깊은 유대감을 형성합니다.',
+          fullDescription: '감정이 풍부하고 공감능력이 뛰어난 당신! 로맨틱하고 따뜻한 매력으로 사람들의 마음을 사로잡는 스타일입니다.',
           match: '테토녀 (논리적인 여성)',
-          matchDesc: '차분하고 이성적인 테토녀와 완벽한 균형을 이룹니다. 당신의 감성과 상대방의 논리가 서로를 보완해줍니다.',
-          keywords: ['감성적', '로맨틱', '배려심', '공감능력', '직관적', '따뜻한', '감정표현'],
+          matchDesc: '차분하고 이성적인 테토녀와 완벽한 균형을 이룹니다.',
+          keywords: ['감성적', '로맨틱', '배려심', '공감능력', '직관적'],
           careers: ['심리상담사', '유치원교사', '소설가'],
-          lifestyle: ['감성 카페 탐방', '영화 감상', '음악 감상'],
+          lifestyle: ['감성 카페', '영화 감상', '음악 감상'],
           music: ['감성 발라드', '인디 팝'],
-          movies: ['로맨틱 코미디', '감성 드라마'],
-          famous: ['박보검', '공유', '이종석', '박서준'],
-          quotes: ['"마음이 따뜻한 사람이 되어라"', '"공감은 세상을 바꾸는 힘이다"']
+          famous: ['박보검', '공유', '이종석']
         },
         female: {
-          title: '에겐녀 💕',
+          title: '에겐녀',
           subtitle: '감성적인 여성',
-          emoji: '💕✨',
+          emoji: '💕',
           description: '감성적이고 공감능력이 뛰어난 당신',
-          fullDescription: '따뜻하고 감성적인 당신! 직감적이고 공감능력이 뛰어나며, 사람들과의 감정적 교감을 중시합니다. 로맨틱한 상황을 좋아하고 상대방을 세심하게 배려하는 매력적인 스타일입니다.',
+          fullDescription: '따뜻하고 감성적인 당신! 직감적이고 공감능력이 뛰어나며, 사람들과의 감정적 교감을 중시합니다.',
           match: '테토남 (논리적인 남성)',
-          matchDesc: '안정적이고 계획적인 테토남과 환상의 커플이 됩니다. 당신의 감성이 상대방에게 활력을 주고, 상대방의 안정감이 당신을 든든하게 해줍니다.',
-          keywords: ['감성적', '따뜻한', '배려심', '로맨틱', '공감능력', '직관적', '세심한'],
+          matchDesc: '안정적이고 계획적인 테토남과 환상의 커플이 됩니다.',
+          keywords: ['감성적', '따뜻한', '배려심', '로맨틱', '공감능력'],
           careers: ['간호사', '유치원교사', '심리상담사'],
           lifestyle: ['베이킹', '꽃꽂이', '독서'],
           music: ['감성 발라드', '인디 팝'],
-          movies: ['로맨틱 코미디', '감성 드라마'],
-          famous: ['아이유', '박민영', '한지민', '박보영'],
-          quotes: ['"따뜻한 마음이 세상을 바꾼다"', '"공감이 가장 큰 선물이다"']
+          famous: ['아이유', '박민영', '한지민']
         }
       },
       teto: {
         male: {
-          title: '테토남 🧠',
+          title: '테토남',
           subtitle: '논리적인 남성',
-          emoji: '🧠✨',
+          emoji: '🧠',
           description: '논리적이고 체계적인 사고를 하는 당신',
-          fullDescription: '차분하고 이성적인 당신! 논리적 사고와 계획성이 뛰어나며, 안정적인 관계를 추구합니다. 감정보다는 현실적인 판단을 중시하고, 신뢰할 수 있는 파트너로서의 매력을 가지고 있습니다.',
+          fullDescription: '차분하고 이성적인 당신! 논리적 사고와 계획성이 뛰어나며, 안정적인 관계를 추구합니다.',
           match: '에겐녀 (감성적인 여성)',
-          matchDesc: '감성적이고 따뜻한 에겐녀와 완벽한 조화를 이룹니다. 당신의 안정감이 상대방에게 든든함을 주고, 상대방의 감성이 당신의 삶에 활력을 불어넣습니다.',
-          keywords: ['논리적', '계획적', '안정적', '분석적', '신중한', '체계적', '현실적'],
-          careers: ['소프트웨어 엔지니어', '데이터 분석가', '회계사'],
+          matchDesc: '감성적이고 따뜻한 에겐녀와 완벽한 조화를 이룹니다.',
+          keywords: ['논리적', '계획적', '안정적', '분석적', '신중한'],
+          careers: ['개발자', '데이터분석가', '회계사'],
           lifestyle: ['독서', '게임', '영화 감상'],
           music: ['인디 팝', '힙합'],
-          movies: ['SF', '스릴러'],
-          famous: ['이민호', '현빈', '정우성', '조인성'],
-          quotes: ['"논리는 감정보다 강하다"', '"계획이 성공을 만든다"']
+          famous: ['이민호', '현빈', '정우성']
         },
         female: {
-          title: '테토녀 🎯',
+          title: '테토녀',
           subtitle: '논리적인 여성',
-          emoji: '🎯✨',
+          emoji: '🎯',
           description: '논리적이고 독립적인 사고를 하는 당신',
-          fullDescription: '독립적이고 합리적인 당신! 감정보다는 논리를 중시하며, 체계적으로 문제를 해결하는 능력이 뛰어납니다. 자신만의 확고한 가치관을 가지고 있으며, 실용적인 관계를 선호합니다.',
+          fullDescription: '독립적이고 합리적인 당신! 감정보다는 논리를 중시하며, 체계적으로 문제를 해결합니다.',
           match: '에겐남 (감성적인 남성)',
-          matchDesc: '감성적이고 로맨틱한 에겐남과 완벽한 밸런스를 만듭니다. 당신의 이성적 판단력이 상대방을 안정시키고, 상대방의 감성이 당신의 삶을 풍요롭게 해줍니다.',
-          keywords: ['독립적', '합리적', '목표지향적', '효율적', '분석적', '논리적', '체계적'],
+          matchDesc: '감성적이고 로맨틱한 에겐남과 완벽한 밸런스를 만듭니다.',
+          keywords: ['독립적', '합리적', '목표지향적', '효율적', '분석적'],
           careers: ['의사', '변호사', '연구원'],
           lifestyle: ['운동', '자기계발', '여행'],
           music: ['인디 팝', '힙합'],
-          movies: ['SF', '스릴러'],
-          famous: ['손예진', '전지현', '김태희', '송혜교'],
-          quotes: ['"논리가 길을 보여준다"', '"독립적인 여성이 아름답다"']
+          famous: ['손예진', '전지현', '김태희']
         }
       }
     };
@@ -1365,7 +1143,7 @@
         option.classList.remove('selected');
       });
       
-      document.querySelector('.gender-option.' + gender).classList.add('selected');
+      event.target.closest('.gender-option').classList.add('selected');
       document.getElementById('startBtn').disabled = false;
     }
     
@@ -1381,15 +1159,12 @@
     function showQuestion() {
       const question = questions[currentQuestion];
       
-      document.getElementById('questionEmoji').textContent = question.emoji;
       document.getElementById('questionTitle').textContent = question.q;
-      document.getElementById('questionNumber').textContent = `질문 ${currentQuestion + 1}/10`;
+      document.getElementById('questionNumber').textContent = `질문 ${currentQuestion + 1}`;
       
-      // 5번째 질문 후 광고 표시
       if (currentQuestion === 5) {
         const midAdContainer = document.getElementById('midAdContainer');
         midAdContainer.classList.remove('hidden');
-        // AdSense 광고 로드
         try {
           (adsbygoogle = window.adsbygoogle || []).push({});
         } catch (e) {
@@ -1406,7 +1181,7 @@
         
         question.options.forEach((option, index) => {
           const button = document.createElement('div');
-          button.className = `yn-option ${option.type === 'egen' ? 'yes' : 'no'}`;
+          button.className = 'yn-option';
           button.textContent = option.text;
           button.onclick = () => selectAnswer(index);
           ynDiv.appendChild(button);
@@ -1471,8 +1246,8 @@
     
     function updateProgress() {
       const progress = ((currentQuestion + 1) / questions.length) * 100;
-      document.getElementById('progressBar').style.width = progress + '%';
-      document.getElementById('progressText').textContent = `${currentQuestion + 1}/10`;
+      document.getElementById('progressFill').style.width = progress + '%';
+      document.getElementById('progressCounter').textContent = `${currentQuestion + 1}/10`;
     }
     
     function showLoading() {
@@ -1488,7 +1263,6 @@
       document.getElementById('loadingScreen').classList.add('hidden');
       document.getElementById('resultScreen').classList.remove('hidden');
       
-      // AdSense 광고 로드
       try {
         (adsbygoogle = window.adsbygoogle || []).push({});
         (adsbygoogle = window.adsbygoogle || []).push({});
@@ -1504,11 +1278,9 @@
       const result = results[resultType][selectedGender];
       
       // 결과 헤더 설정
-      const resultHeader = document.getElementById('resultHeader');
-      resultHeader.className = `result-header ${resultType}`;
       document.getElementById('resultEmoji').textContent = result.emoji;
-      document.getElementById('resultType').textContent = result.title;
-      document.getElementById('resultType').className = `result-type ${resultType}`;
+      document.getElementById('resultTitle').textContent = result.title;
+      document.getElementById('resultSubtitle').textContent = result.subtitle;
       document.getElementById('resultDescription').textContent = result.description;
       
       // 차트 업데이트
@@ -1522,7 +1294,7 @@
       // 결과 내용 업데이트
       document.getElementById('personalityContent').textContent = result.fullDescription;
       document.getElementById('matchContent').innerHTML = `
-        <div class="match-type">${result.match}</div>
+        <div class="match-badge">${result.match}</div>
         <div>${result.matchDesc}</div>
       `;
       
@@ -1533,23 +1305,17 @@
       ).join('');
       
       // 상세 정보
-      document.getElementById('famousContent').innerHTML = 
-        `<div class="info-list">${result.famous.map(person => `<div class="info-item">${person}</div>`).join('')}</div>`;
+      document.getElementById('famousList').innerHTML = 
+        result.famous.map(person => `<div class="info-item">${person}</div>`).join('');
       
-      document.getElementById('quotesContent').innerHTML = 
-        `<div class="info-list">${result.quotes.map(quote => `<div class="info-item">"${quote}"</div>`).join('')}</div>`;
+      document.getElementById('careerList').innerHTML = 
+        result.careers.map(career => `<div class="info-item">${career}</div>`).join('');
       
-      document.getElementById('careerContent').innerHTML = 
-        `<div class="info-list">${result.careers.map(career => `<div class="info-item career">${career}</div>`).join('')}</div>`;
+      document.getElementById('lifestyleList').innerHTML = 
+        result.lifestyle.map(item => `<div class="info-item">${item}</div>`).join('');
       
-      document.getElementById('lifestyleContent').innerHTML = 
-        `<div class="info-list">${result.lifestyle.map(item => `<div class="info-item lifestyle">${item}</div>`).join('')}</div>`;
-      
-      document.getElementById('musicContent').innerHTML = 
-        `<div class="info-list">${result.music.map(item => `<div class="info-item">${item}</div>`).join('')}</div>`;
-      
-      document.getElementById('movieContent').innerHTML = 
-        `<div class="info-list">${result.movies.map(item => `<div class="info-item">${item}</div>`).join('')}</div>`;
+      document.getElementById('musicList').innerHTML = 
+        result.music.map(item => `<div class="info-item">${item}</div>`).join('');
     }
     
     function getShareText() {
@@ -1558,12 +1324,11 @@
       
       return `🧠💖 에겐 vs 테토 성향 테스트 결과
 
-🎯 ${result.title}
+🎯 나는 ${result.title}!
 ${result.fullDescription}
 
 💕 찰떡궁합: ${result.match}
 💼 추천 직업: ${result.careers.join(', ')}
-🎨 라이프스타일: ${result.lifestyle.join(', ')}
 🏷️ 키워드: ${result.keywords.join(', ')}
 
 ✨ 나도 테스트하기: https://tests.mahalohana-bruce.com/egen-teto/ko/`;
@@ -1574,9 +1339,8 @@ ${result.fullDescription}
       
       if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(text).then(() => {
-          alert('🎉 결과가 클립보드에 복사되었습니다!\n친구들과 공유해보세요!');
-        }).catch((err) => {
-          console.error('클립보드 복사 실패:', err);
+          alert('🎉 결과가 클립보드에 복사되었습니다!');
+        }).catch(() => {
           fallbackCopy(text);
         });
       } else {
@@ -1595,11 +1359,9 @@ ${result.fullDescription}
       
       try {
         document.execCommand('copy');
-        alert('🎉 결과가 클립보드에 복사되었습니다!\n친구들과 공유해보세요!');
+        alert('🎉 결과가 클립보드에 복사되었습니다!');
       } catch (err) {
-        console.error('복사 실패:', err);
-        alert('복사 기능을 지원하지 않는 브라우저입니다.\n결과를 수동으로 복사해주세요.');
-        textArea.select();
+        alert('복사 기능을 지원하지 않는 브라우저입니다.');
       }
       
       document.body.removeChild(textArea);
@@ -1615,8 +1377,7 @@ ${result.fullDescription}
           title: '에겐 vs 테토 성향 테스트',
           text: text,
           url: 'https://tests.mahalohana-bruce.com/egen-teto/ko/'
-        }).catch(err => {
-          console.log('공유 실패:', err);
+        }).catch(() => {
           copyToClipboard(text);
         });
       } else {
@@ -1625,7 +1386,7 @@ ${result.fullDescription}
     }
     
     function shareInstagram() {
-      const text = '에겐 vs 테토 성향 테스트 결과 확인! https://tests.mahalohana-bruce.com/egen-teto/ko/';
+      const text = '에겐 vs 테토 성향 테스트 결과! https://tests.mahalohana-bruce.com/egen-teto/ko/';
       copyToClipboard(text);
       alert('텍스트가 복사되었습니다! 인스타그램에 붙여넣기 해주세요.');
     }
@@ -1636,11 +1397,9 @@ ${result.fullDescription}
       const text = `나는 ${result.title}! 너도 테스트해봐~ https://tests.mahalohana-bruce.com/egen-teto/ko/`;
       
       try {
-        // Threads 직접 공유 시도
         const threadsUrl = `https://threads.net/intent/post?text=${encodeURIComponent(text)}`;
         window.open(threadsUrl, '_blank', 'noopener,noreferrer');
       } catch (err) {
-        // 실패시 클립보드 복사
         copyToClipboard(text);
         alert('텍스트가 복사되었습니다! Threads에 붙여넣기 해주세요.');
       }
