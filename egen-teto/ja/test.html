@@ -30,6 +30,20 @@
   <script async custom-element="amp-ad" src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"></script>
 
   <style>
+    /* 테스트 카드 내부 광고 배치 방지 */
+    .quiz-card .adsbygoogle,
+    .result-card .adsbygoogle,
+    .container .adsbygoogle {
+      display: none !important;
+    }
+    
+    /* AMP 광고 자동 배치 차단 */
+    .quiz-card::before,
+    .quiz-card::after,
+    .result-card::before,
+    .result-card::after {
+      content: none !important;
+    }
     html, body, *, *:before, *:after { box-sizing: border-box; }
     :root {
       --egen: #ff7eb3;
@@ -842,14 +856,17 @@
   <script>
      (adsbygoogle = window.adsbygoogle || []).push({});
   </script>
-  <amp-ad width="100vw" height="320"
-     type="adsense"
-     data-ad-client="ca-pub-5508768187151867"
-     data-ad-slot="8394292465"
-     data-auto-format="rspv"
-     data-full-width="">
-  <div overflow=""></div>
-  </amp-ad>
+  <!-- 페이지 하단 광고 -->
+  <div style="margin-top: 40px; text-align: center;">
+    <amp-ad width="100vw" height="320"
+       type="adsense"
+       data-ad-client="ca-pub-5508768187151867"
+       data-ad-slot="8394292465"
+       data-auto-format="rspv"
+       data-full-width="">
+    <div overflow=""></div>
+    </amp-ad>
+  </div>
 
 </body>
 </html>

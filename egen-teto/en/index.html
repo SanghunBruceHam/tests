@@ -45,6 +45,19 @@
       position: relative;
     }
 
+    /* 테스트 카드 내부 광고 배치 방지 */
+    .card .adsbygoogle,
+    .quiz-container .adsbygoogle,
+    .result-container .adsbygoogle {
+      display: none !important;
+    }
+    
+    /* AMP 광고 자동 배치 차단 */
+    .card::before,
+    .card::after {
+      content: none !important;
+    }
+
     .card {
       background: white;
       border-radius: 20px;
