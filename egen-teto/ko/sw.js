@@ -1,15 +1,15 @@
 
-const CACHE_NAME = 'egen-teto-test-v1.2.0';
-const OFFLINE_URL = '/egen-teto/ko/offline.html';
+const CACHE_NAME = 'egen-teto-test-v1.3.0';
+const OFFLINE_URL = './offline.html';
 
-// 캐시할 리소스들
+// 캐시할 리소스들  
 const STATIC_CACHE_URLS = [
-  '/egen-teto/ko/',
-  '/egen-teto/ko/index.html',
-  '/egen-teto/ko/style.css',
-  '/egen-teto/ko/manifest.json',
-  '/egen-teto/ko/favicon.png',
-  '/egen-teto/ko/thumbnail.png',
+  './',
+  './index.html',
+  './style.css',
+  './manifest.json',
+  './favicon.png',
+  './thumbnail.png',
   OFFLINE_URL,
   // 폰트
   'https://fonts.googleapis.com/css2?family=Gmarket+Sans:wght@400;700&display=swap',

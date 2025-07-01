@@ -19,8 +19,8 @@ Analysis: The code implements enhanced error handling with network retry logic a
       async registerServiceWorker() {
         if ('serviceWorker' in navigator) {
           try {
-            const registration = await navigator.serviceWorker.register('/egen-teto/ko/sw.js', {
-              scope: '/egen-teto/ko/'
+            const registration = await navigator.serviceWorker.register('./sw.js', {
+              scope: './'
             });
 
             console.log('[PWA] Service Worker 등록 성공:', registration.scope);
@@ -117,7 +117,7 @@ Analysis: The code implements enhanced error handling with network retry logic a
           installBtn = document.createElement('button');
           installBtn.id = 'pwa-install-btn';
           installBtn.className = 'pwa-install-btn';
-          installBtn.innerHTML = '<i class="fas fa-download"></i> 앱 설치';
+          installBtn.innerHTML = '📱 앱 설치';
           installBtn.onclick = () => this.installApp();
 
           // 헤더 컨트롤에 추가
@@ -156,18 +156,18 @@ Analysis: The code implements enhanced error handling with network retry logic a
         notification.className = `error-notification ${type}`;
 
         const iconMap = {
-          error: 'fas fa-exclamation-circle',
-          success: 'fas fa-check-circle',
-          warning: 'fas fa-exclamation-triangle',
-          info: 'fas fa-info-circle'
+          error: '❌',
+          success: '✅',
+          warning: '⚠️',
+          info: 'ℹ️'
         };
 
         notification.innerHTML = `
           <div class="error-content">
-            <i class="${iconMap[type]}"></i>
+            <span style="font-size: 18px;">${iconMap[type]}</span>
             <div class="error-message">${message}</div>
             <button class="error-close" onclick="this.parentElement.parentElement.remove()">
-              <i class="fas fa-times"></i>
+              ✕
             </button>
           </div>
         `;
@@ -273,8 +273,11 @@ Analysis: The code implements enhanced error handling with network retry logic a
       }
     };
 
-    // PWA 초기화 (DOM 로드 후)
-    document.addEventListener('DOMContentLoaded', () => {
-      PWAManager.init();
+    // PWA 초기화 (모든 리소스 로드 후)
+    window.addEventListener('load', () => {
+      // 약간의 지연을 두어 다른 초기화가 완료되도록 함
+      setTimeout(() => {
+        PWAManager.init();
+      }, 1000);
     });
   </script>
