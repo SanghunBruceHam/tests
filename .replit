@@ -4,7 +4,7 @@ modules = ["web", "python-3.12"]
 channel = "stable-24_05"
 
 [workflows]
-runButton = "Development Server"
+runButton = "Auto Commit Watcher"
 
 [[workflows.workflow]]
 name = "Development Server"
