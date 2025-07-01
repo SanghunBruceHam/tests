@@ -738,7 +738,7 @@
       window.location.href = '/ko/';
     }
 
-    // WebP 지원 감지
+    // 향상된 WebP 지원 감지
     function supportsWebP() {
       return new Promise((resolve) => {
         const webP = new Image();
@@ -749,57 +749,145 @@
       });
     }
 
-    // 적응형 이미지 로딩
-    function loadOptimizedImage(container, basePath, alt) {
-      const img = document.createElement('img');
-      const isMobile = window.innerWidth <= 768;
-      const isWebPSupported = supportsWebP();
-      
-      isWebPSupported.then((supported) => {
-        const extension = supported ? '.webp' : '.png';
-        const size = isMobile ? '-mobile' : '';
+    // WebP 지원 클래스 추가
+    async function detectWebPSupport() {
+      const supported = await supportsWebP();
+      document.documentElement.classList.add(supported ? 'webp' : 'no-webp');
+      return supported;
+    }
+
+    // 향상된 적응형 이미지 로딩
+    function loadOptimizedImage(container, basePath, alt, options = {}) {
+      return new Promise((resolve, reject) => {
+        const {
+          sizes = ['', '-mobile'],
+          fallbackFormat = 'png',
+          loadingClass = 'loading',
+          errorClass = 'error'
+        } = options;
+
+        const img = document.createElement('img');
+        const isMobile = window.innerWidth <= 768;
         
-        img.src = `${basePath}${size}${extension}`;
-        img.alt = alt;
-        img.className = 'optimized-image';
+        // 로딩 상태 표시
+        container.classList.add('image-loading');
+        img.className = `optimized-image ${loadingClass}`;
         img.loading = 'lazy';
+        img.alt = alt;
         
-        img.onload = () => {
-          img.classList.add('loaded');
-          container.appendChild(img);
-        };
-        
-        img.onerror = () => {
-          // Fallback to PNG if WebP fails
-          if (supported) {
-            img.src = `${basePath}${size}.png`;
-          }
-        };
+        detectWebPSupport().then((webpSupported) => {
+          const extension = webpSupported ? '.webp' : `.${fallbackFormat}`;
+          const size = isMobile ? sizes[1] : sizes[0];
+          const primarySrc = `${basePath}${size}${extension}`;
+          const fallbackSrc = `${basePath}${size}.${fallbackFormat}`;
+          
+          img.onload = () => {
+            img.classList.remove(loadingClass);
+            img.classList.add('loaded');
+            container.classList.remove('image-loading');
+            container.classList.add('loaded');
+            container.appendChild(img);
+            resolve(img);
+          };
+          
+          img.onerror = () => {
+            // WebP 실패 시 대체 포맷으로 재시도
+            if (webpSupported && !img.src.includes(fallbackFormat)) {
+              img.src = fallbackSrc;
+            } else {
+              img.classList.remove(loadingClass);
+              img.classList.add(errorClass);
+              container.classList.remove('image-loading');
+              console.warn(`이미지 로딩 실패: ${img.src}`);
+              reject(new Error('이미지 로딩 실패'));
+            }
+          };
+          
+          img.src = primarySrc;
+        });
       });
     }
 
-    // 이미지 지연 로딩 관찰자
+    // 향상된 지연 로딩 관찰자
     const imageObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           const img = entry.target;
+          const container = img.closest('.image-container');
+          
           if (img.dataset.src) {
+            // 기본 지연 로딩
+            img.classList.add('loading');
             img.src = img.dataset.src;
-            img.classList.remove('loading');
+            
+            img.onload = () => {
+              img.classList.remove('loading');
+              img.classList.add('loaded');
+              if (container) container.classList.add('loaded');
+            };
+            
+            img.onerror = () => {
+              img.classList.remove('loading');
+              img.classList.add('error');
+            };
+            
+            imageObserver.unobserve(img);
+          } else if (img.dataset.basePath) {
+            // 최적화된 이미지 로딩
+            loadOptimizedImage(
+              container || img.parentElement,
+              img.dataset.basePath,
+              img.dataset.alt || img.alt || '이미지'
+            ).catch(console.error);
+            
             imageObserver.unobserve(img);
           }
         }
       });
     }, {
-      rootMargin: '50px 0px'
+      rootMargin: '100px 0px',
+      threshold: 0.1
     });
+
+    // 이미지 프리로딩 함수
+    function preloadCriticalImages() {
+      const criticalImages = [
+        '/egen-teto/ko/thumbnail',
+        '/egen-teto/ko/favicon'
+      ];
+
+      detectWebPSupport().then((webpSupported) => {
+        const extension = webpSupported ? '.webp' : '.png';
+        
+        criticalImages.forEach(basePath => {
+          const link = document.createElement('link');
+          link.rel = 'preload';
+          link.as = 'image';
+          link.href = `${basePath}${extension}`;
+          document.head.appendChild(link);
+        });
+      });
+    }
 
     // 페이지 로드 시 이미지 최적화 초기화
     document.addEventListener('DOMContentLoaded', () => {
+      // WebP 지원 감지 및 클래스 추가
+      detectWebPSupport();
+      
+      // 중요 이미지 프리로딩
+      preloadCriticalImages();
+      
       // 지연 로딩 이미지들 관찰 시작
-      document.querySelectorAll('img[data-src]').forEach(img => {
+      document.querySelectorAll('img[data-src], img[data-base-path]').forEach(img => {
         img.classList.add('loading');
         imageObserver.observe(img);
+      });
+      
+      // 이미지 컨테이너들 초기화
+      document.querySelectorAll('.image-container').forEach(container => {
+        if (!container.querySelector('img')) {
+          container.classList.add('image-loading');
+        }
       });
     });
   </script>
