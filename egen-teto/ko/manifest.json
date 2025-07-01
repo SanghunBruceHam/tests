@@ -1,0 +1,116 @@
+
+{
+  "name": "에겐 vs 테토 성향 테스트",
+  "short_name": "에겐테토 테스트",
+  "description": "당신의 성격과 취향을 분석해서 찰떡궁합 이성 타입을 찾아보는 심리테스트",
+  "start_url": "/egen-teto/ko/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ff6b9d",
+  "orientation": "portrait",
+  "scope": "/egen-teto/ko/",
+  "lang": "ko-KR",
+  "dir": "ltr",
+  "categories": ["entertainment", "games", "lifestyle"],
+  "screenshots": [
+    {
+      "src": "/egen-teto/ko/screenshots/mobile-1.png",
+      "sizes": "390x844",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "테스트 시작 화면"
+    },
+    {
+      "src": "/egen-teto/ko/screenshots/mobile-2.png", 
+      "sizes": "390x844",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "질문 화면"
+    },
+    {
+      "src": "/egen-teto/ko/screenshots/desktop-1.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "데스크톱 테스트 화면"
+    }
+  ],
+  "icons": [
+    {
+      "src": "/egen-teto/ko/icons/icon-72x72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/egen-teto/ko/icons/icon-96x96.png",
+      "sizes": "96x96", 
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/egen-teto/ko/icons/icon-128x128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/egen-teto/ko/icons/icon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/egen-teto/ko/icons/icon-152x152.png",
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/egen-teto/ko/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/egen-teto/ko/icons/icon-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/egen-teto/ko/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "테스트 시작",
+      "short_name": "시작",
+      "description": "바로 테스트 시작하기",
+      "url": "/egen-teto/ko/?shortcut=start",
+      "icons": [
+        {
+          "src": "/egen-teto/ko/icons/shortcut-start.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "결과 히스토리",
+      "short_name": "히스토리", 
+      "description": "이전 테스트 결과 보기",
+      "url": "/egen-teto/ko/?shortcut=history",
+      "icons": [
+        {
+          "src": "/egen-teto/ko/icons/shortcut-history.png",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false
+}

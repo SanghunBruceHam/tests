@@ -1,0 +1,188 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>오프라인 상태 - 에겐 vs 테토 테스트</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Gmarket Sans', sans-serif;
+      background: linear-gradient(135deg, #FFDEE9 0%, #B5FFFC 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #333;
+    }
+
+    .offline-container {
+      text-align: center;
+      padding: 40px 20px;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      max-width: 500px;
+      width: 100%;
+    }
+
+    .offline-icon {
+      font-size: 80px;
+      margin-bottom: 20px;
+      animation: pulse 2s infinite;
+    }
+
+    .offline-title {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 15px;
+      color: #ff6b9d;
+    }
+
+    .offline-message {
+      font-size: 16px;
+      color: #666;
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+
+    .offline-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .offline-btn {
+      padding: 15px 30px;
+      border: none;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .offline-btn.primary {
+      background: #ff6b9d;
+      color: white;
+    }
+
+    .offline-btn.primary:hover {
+      background: #e55a87;
+      transform: translateY(-2px);
+    }
+
+    .offline-btn.secondary {
+      background: transparent;
+      color: #ff6b9d;
+      border: 2px solid #ff6b9d;
+    }
+
+    .offline-btn.secondary:hover {
+      background: #ff6b9d;
+      color: white;
+    }
+
+    .connection-status {
+      margin-top: 20px;
+      padding: 10px;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+
+    .connection-status.offline {
+      background: #fef2f2;
+      color: #dc2626;
+      border: 1px solid #fecaca;
+    }
+
+    .connection-status.online {
+      background: #f0fdf4;
+      color: #16a34a;
+      border: 1px solid #bbf7d0;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    @media (max-width: 480px) {
+      .offline-container {
+        padding: 30px 15px;
+      }
+
+      .offline-icon {
+        font-size: 60px;
+      }
+
+      .offline-title {
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="offline-container">
+    <div class="offline-icon">📡</div>
+    <h1 class="offline-title">인터넷 연결이 없습니다</h1>
+    <p class="offline-message">
+      현재 오프라인 상태입니다.<br>
+      인터넷에 연결되면 자동으로 복구됩니다.
+    </p>
+
+    <div class="offline-actions">
+      <button class="offline-btn primary" onclick="location.reload()">
+        🔄 다시 시도
+      </button>
+      <a href="/egen-teto/ko/" class="offline-btn secondary">
+        🏠 홈으로 이동
+      </a>
+    </div>
+
+    <div class="connection-status offline" id="connectionStatus">
+      ⚠️ 오프라인 상태
+    </div>
+  </div>
+
+  <script>
+    // 연결 상태 모니터링
+    function updateConnectionStatus() {
+      const statusEl = document.getElementById('connectionStatus');
+      
+      if (navigator.onLine) {
+        statusEl.className = 'connection-status online';
+        statusEl.innerHTML = '✅ 온라인 - 곧 자동으로 복구됩니다';
+        
+        // 3초 후 자동 새로고침
+        setTimeout(() => {
+          location.reload();
+        }, 3000);
+      } else {
+        statusEl.className = 'connection-status offline';
+        statusEl.innerHTML = '⚠️ 오프라인 상태';
+      }
+    }
+
+    // 연결 상태 변경 감지
+    window.addEventListener('online', updateConnectionStatus);
+    window.addEventListener('offline', updateConnectionStatus);
+
+    // 초기 상태 설정
+    updateConnectionStatus();
+
+    // 주기적 연결 확인 (10초마다)
+    setInterval(() => {
+      updateConnectionStatus();
+    }, 10000);
+  </script>
+</body>
+</html>
