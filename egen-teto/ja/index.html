@@ -316,6 +316,7 @@
           </div>
         </div>
         <button class="retry-btn" onclick="location.reload()">もう一度</button>
+        <button class="retry-btn" onclick="goToMainPage()" style="background:#e3eeff; color:#136edc; border-color:#136edc; margin-top:10px;">🏠 他のテストを見る</button>
         <div class="watermark">© エゲン vs テト 性格テスト | <a href="https://tests.mahalohana-bruce.com/egen-teto/ja/index.html" style="color:#bbb;text-decoration:underline;" target="_blank">tests.mahalohana-bruce.com</a></div>
       `;
       renderCelebList(resultType);
@@ -363,6 +364,10 @@
         });
       }
     }
+    function goToMainPage() {
+      window.location.href = '/ja/';
+    }
+    
     document.addEventListener('DOMContentLoaded', function() {
       renderStartCard();
     });

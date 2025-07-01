@@ -962,6 +962,7 @@
 
             <div class="action-buttons">
               <button class="action-btn" onclick="restartTest()">🔄 다시 테스트하기</button>
+              <button class="action-btn" onclick="goToMainPage()">🏠 다른 테스트하기</button>
             </div>
           </div>
         </div>
@@ -1465,6 +1466,10 @@ ${result.fullDescription}
 
     function showInfo() {
       alert('에겐 vs 테토 성향 테스트는 당신의 성향을 분석하여 감성적(에겐) 또는 논리적(테토) 성향 중 어느 쪽에 더 가까운지 알아보는 심리테스트입니다. 결과를 통해 자신과 잘 맞는 이성 유형과 추천 직업까지 확인할 수 있어요!');
+    }
+
+    function goToMainPage() {
+      window.location.href = '/ko/';
     }
   </script>
 </body>

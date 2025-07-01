@@ -891,6 +891,7 @@
 
             <div class="action-buttons">
               <button class="action-btn" onclick="restartTest()">🔄 Take Test Again</button>
+              <button class="action-btn" onclick="goToMainPage()">🏠 Try Other Tests</button>
             </div>
           </div>
         </div>
@@ -1337,6 +1338,10 @@ ${result.fullDescription}
 
     function showInfo() {
       alert('The Estrogen vs Testosterone personality test analyzes your personality to determine whether you are more emotional (estrogen) or logical (testosterone). Through the results, you can discover your ideal partner type and career suggestions!');
+    }
+
+    function goToMainPage() {
+      window.location.href = '/en/';
     }
   </script>
 </body>
