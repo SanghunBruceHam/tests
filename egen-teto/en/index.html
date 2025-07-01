@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,27 +6,27 @@
   <title>Estrogen vs Testosterone Personality Test | Find Your Perfect Match Type</title>
   <meta name="description" content="Discover your personality type and ideal partner match with our 10-question psychological test. Share results and find your perfect compatibility type for free!" />
   <meta name="keywords" content="estrogen testosterone test, personality test, compatibility test, psychological test, free test, personality quiz" />
-  
+
   <!-- Open Graph Meta Tags -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Estrogen vs Testosterone Personality Test | Perfect Match Finder" />
   <meta property="og:description" content="10 questions to discover your personality type and ideal partner match! Copy/share results, mobile optimized psychology test." />
   <meta property="og:image" content="https://tests.mahalohana-bruce.com/egen-teto/en/thumbnail.png" />
   <meta property="og:url" content="https://tests.mahalohana-bruce.com/egen-teto/en/" />
-  
+
   <link rel="icon" href="./favicon.png" type="image/png" />
   <link rel="canonical" href="https://tests.mahalohana-bruce.com/egen-teto/en/" />
-  
+
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5508768187151867" crossorigin="anonymous"></script>
-  
+
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-    
+
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -35,7 +34,7 @@
       padding: 20px;
       color: #2d3748;
     }
-    
+
     .container {
       max-width: 420px;
       margin: 0 auto;
@@ -45,7 +44,7 @@
       justify-content: center;
       position: relative;
     }
-    
+
     .card {
       background: white;
       border-radius: 20px;
@@ -55,40 +54,40 @@
       position: relative;
       overflow: hidden;
     }
-    
+
     /* Header */
     .header {
       text-align: center;
       margin-bottom: 32px;
     }
-    
+
     .title {
       font-size: 28px;
       font-weight: 800;
       margin-bottom: 8px;
       line-height: 1.2;
     }
-    
+
     .title .estrogen {
       color: #ec4899;
     }
-    
+
     .title .vs {
       color: #6b7280;
       font-weight: 400;
     }
-    
+
     .title .testosterone {
       color: #3b82f6;
     }
-    
+
     .subtitle {
       font-size: 16px;
       color: #6b7280;
       margin-bottom: 24px;
       line-height: 1.5;
     }
-    
+
     .info-badge {
       display: inline-flex;
       align-items: center;
@@ -101,17 +100,17 @@
       cursor: pointer;
       transition: all 0.2s ease;
     }
-    
+
     .info-badge:hover {
       background: #2563eb;
       transform: translateY(-1px);
     }
-    
+
     .info-badge::before {
       content: 'ℹ';
       margin-right: 6px;
     }
-    
+
     /* Gender Selection */
     .gender-section h3 {
       text-align: center;
@@ -120,13 +119,13 @@
       margin-bottom: 24px;
       color: #1f2937;
     }
-    
+
     .gender-options {
       display: grid;
       gap: 12px;
       margin-bottom: 32px;
     }
-    
+
     .gender-option {
       display: flex;
       align-items: center;
@@ -137,31 +136,31 @@
       transition: all 0.2s ease;
       background: #f9fafb;
     }
-    
+
     .gender-option:hover {
       border-color: #d1d5db;
       background: #f3f4f6;
     }
-    
+
     .gender-option.selected {
       border-color: #3b82f6;
       background: #eff6ff;
       color: #1d4ed8;
     }
-    
+
     .gender-icon {
       font-size: 20px;
       margin-right: 16px;
       width: 24px;
       text-align: center;
     }
-    
+
     .gender-text {
       flex: 1;
       font-size: 16px;
       font-weight: 600;
     }
-    
+
     .radio-circle {
       width: 20px;
       height: 20px;
@@ -170,11 +169,11 @@
       position: relative;
       transition: all 0.2s ease;
     }
-    
+
     .gender-option.selected .radio-circle {
       border-color: #3b82f6;
     }
-    
+
     .gender-option.selected .radio-circle::after {
       content: '';
       position: absolute;
@@ -186,31 +185,31 @@
       border-radius: 50%;
       transform: translate(-50%, -50%);
     }
-    
+
     /* Progress Bar */
     .progress-section {
       margin-bottom: 32px;
     }
-    
+
     .progress-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin-bottom: 8px;
     }
-    
+
     .progress-label {
       font-size: 14px;
       color: #6b7280;
       font-weight: 500;
     }
-    
+
     .progress-counter {
       font-size: 14px;
       color: #374151;
       font-weight: 600;
     }
-    
+
     .progress-bar {
       width: 100%;
       height: 8px;
@@ -218,7 +217,7 @@
       border-radius: 4px;
       overflow: hidden;
     }
-    
+
     .progress-fill {
       height: 100%;
       background: linear-gradient(90deg, #ec4899, #3b82f6);
@@ -226,12 +225,12 @@
       transition: width 0.3s ease;
       width: 0%;
     }
-    
+
     /* Question Section */
     .question-section {
       text-align: center;
     }
-    
+
     .question-number {
       display: inline-block;
       background: #f3f4f6;
@@ -242,7 +241,7 @@
       font-weight: 600;
       margin-bottom: 16px;
     }
-    
+
     .question-title {
       font-size: 24px;
       font-weight: 700;
@@ -250,14 +249,14 @@
       line-height: 1.3;
       color: #1f2937;
     }
-    
+
     /* Answer Options */
     .answer-options {
       display: grid;
       gap: 12px;
       margin-bottom: 32px;
     }
-    
+
     .answer-option {
       padding: 16px 20px;
       background: #f9fafb;
@@ -269,18 +268,18 @@
       line-height: 1.4;
       text-align: left;
     }
-    
+
     .answer-option:hover {
       border-color: #d1d5db;
       background: #f3f4f6;
     }
-    
+
     .answer-option.selected {
       border-color: #3b82f6;
       background: #3b82f6;
       color: white;
     }
-    
+
     /* Yes/No Options */
     .yn-options {
       display: grid;
@@ -288,7 +287,7 @@
       gap: 16px;
       margin-bottom: 32px;
     }
-    
+
     .yn-option {
       padding: 24px 20px;
       border: 2px solid #e5e7eb;
@@ -304,32 +303,32 @@
       align-items: center;
       justify-content: center;
     }
-    
+
     .yn-option:hover {
       border-color: #d1d5db;
       background: #f3f4f6;
     }
-    
+
     .yn-option.selected {
       border-color: #3b82f6;
       background: #3b82f6;
       color: white;
     }
-    
+
     .yn-option::before {
       display: block;
       font-size: 24px;
       margin-bottom: 8px;
     }
-    
+
     .yn-option.yes::before {
       content: '✓';
     }
-    
+
     .yn-option.no::before {
       content: '✗';
     }
-    
+
     /* Buttons */
     .btn {
       width: 100%;
@@ -341,29 +340,29 @@
       cursor: pointer;
       transition: all 0.2s ease;
     }
-    
+
     .btn-primary {
       background: #3b82f6;
       color: white;
     }
-    
+
     .btn-primary:hover:not(:disabled) {
       background: #2563eb;
       transform: translateY(-1px);
     }
-    
+
     .btn:disabled {
       opacity: 0.5;
       cursor: not-allowed;
       transform: none !important;
     }
-    
+
     /* Loading Screen */
     .loading-section {
       text-align: center;
       padding: 60px 0;
     }
-    
+
     .loading-spinner {
       width: 40px;
       height: 40px;
@@ -373,55 +372,55 @@
       animation: spin 1s linear infinite;
       margin: 0 auto 24px;
     }
-    
+
     @keyframes spin {
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
     }
-    
+
     .loading-text {
       font-size: 18px;
       font-weight: 600;
       color: #374151;
     }
-    
+
     /* Result Screen */
     .result-section {
       text-align: center;
     }
-    
+
     .result-header {
       background: #f9fafb;
       border-radius: 16px;
       padding: 32px 24px;
       margin-bottom: 24px;
     }
-    
+
     .result-emoji {
       font-size: 64px;
       margin-bottom: 16px;
       display: block;
     }
-    
+
     .result-title {
       font-size: 28px;
       font-weight: 800;
       margin-bottom: 8px;
       color: #1f2937;
     }
-    
+
     .result-subtitle {
       font-size: 16px;
       color: #6b7280;
       margin-bottom: 16px;
     }
-    
+
     .result-description {
       font-size: 14px;
       color: #374151;
       line-height: 1.5;
     }
-    
+
     /* Chart */
     .chart-section {
       background: #f9fafb;
@@ -429,24 +428,24 @@
       padding: 24px;
       margin-bottom: 24px;
     }
-    
+
     .chart-title {
       font-size: 18px;
       font-weight: 700;
       margin-bottom: 20px;
       color: #1f2937;
     }
-    
+
     .chart-item {
       display: flex;
       align-items: center;
       margin-bottom: 16px;
     }
-    
+
     .chart-item:last-child {
       margin-bottom: 0;
     }
-    
+
     .chart-label {
       width: 80px;
       text-align: left;
@@ -455,15 +454,15 @@
       display: flex;
       align-items: center;
     }
-    
+
     .chart-label.estrogen {
       color: #ec4899;
     }
-    
+
     .chart-label.testosterone {
       color: #3b82f6;
     }
-    
+
     .chart-label::before {
       width: 12px;
       height: 12px;
@@ -471,15 +470,15 @@
       margin-right: 8px;
       content: '';
     }
-    
+
     .chart-label.estrogen::before {
       background: #ec4899;
     }
-    
+
     .chart-label.testosterone::before {
       background: #3b82f6;
     }
-    
+
     .chart-bar {
       flex: 1;
       height: 8px;
@@ -488,21 +487,21 @@
       margin: 0 16px;
       overflow: hidden;
     }
-    
+
     .chart-fill {
       height: 100%;
       border-radius: 4px;
       transition: width 1s ease;
     }
-    
+
     .chart-fill.estrogen {
       background: #ec4899;
     }
-    
+
     .chart-fill.testosterone {
       background: #3b82f6;
     }
-    
+
     .chart-percentage {
       font-size: 14px;
       font-weight: 600;
@@ -510,21 +509,21 @@
       width: 40px;
       text-align: right;
     }
-    
+
     /* Result Cards */
     .result-cards {
       display: grid;
       gap: 16px;
       margin-bottom: 24px;
     }
-    
+
     .result-card {
       background: #f9fafb;
       border-radius: 16px;
       padding: 24px;
       text-align: left;
     }
-    
+
     .result-card-title {
       font-size: 18px;
       font-weight: 700;
@@ -533,22 +532,22 @@
       display: flex;
       align-items: center;
     }
-    
+
     .result-card-title::before {
       margin-right: 8px;
       font-size: 20px;
     }
-    
+
     .result-card-title.personality::before { content: '🎭'; }
     .result-card-title.match::before { content: '💕'; }
     .result-card-title.keywords::before { content: '🏷️'; }
-    
+
     .result-card-content {
       font-size: 16px;
       line-height: 1.6;
       color: #374151;
     }
-    
+
     .match-badge {
       display: inline-block;
       background: #3b82f6;
@@ -559,13 +558,13 @@
       font-weight: 600;
       margin-bottom: 12px;
     }
-    
+
     .keywords-grid {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
     }
-    
+
     .keyword-tag {
       background: #e5e7eb;
       color: #374151;
@@ -574,7 +573,7 @@
       font-size: 14px;
       font-weight: 500;
     }
-    
+
     /* Info Grid */
     .info-grid {
       display: grid;
@@ -582,14 +581,14 @@
       gap: 16px;
       margin-bottom: 24px;
     }
-    
+
     .info-card {
       background: #f9fafb;
       border-radius: 12px;
       padding: 16px;
       text-align: center;
     }
-    
+
     .info-card-title {
       font-size: 14px;
       font-weight: 700;
@@ -599,23 +598,23 @@
       align-items: center;
       justify-content: center;
     }
-    
+
     .info-card-title::before {
       margin-right: 6px;
       font-size: 16px;
     }
-    
+
     .info-card-title.famous::before { content: '👥'; }
     .info-card-title.career::before { content: '💼'; }
     .info-card-title.lifestyle::before { content: '🎨'; }
     .info-card-title.music::before { content: '🎵'; }
-    
+
     .info-list {
       display: flex;
       flex-direction: column;
       gap: 8px;
     }
-    
+
     .info-item {
       background: white;
       padding: 8px 12px;
@@ -623,12 +622,12 @@
       font-size: 14px;
       color: #374151;
     }
-    
+
     /* Share Section */
     .share-section {
       margin-top: 32px;
     }
-    
+
     .share-title {
       font-size: 18px;
       font-weight: 700;
@@ -636,14 +635,14 @@
       margin-bottom: 20px;
       color: #1f2937;
     }
-    
+
     .share-buttons {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 12px;
       margin-bottom: 20px;
     }
-    
+
     .share-btn {
       padding: 16px 12px;
       border: none;
@@ -657,31 +656,31 @@
       align-items: center;
       gap: 8px;
     }
-    
+
     .share-btn:hover {
       transform: translateY(-2px);
     }
-    
+
     .share-btn.twitter {
       background: #1da1f2;
       color: white;
     }
-    
+
     .share-btn.facebook {
       background: #1877f2;
       color: white;
     }
-    
+
     .share-btn.copy {
       background: #10b981;
       color: white;
     }
-    
+
     .action-buttons {
       display: grid;
       gap: 12px;
     }
-    
+
     .action-btn {
       padding: 16px;
       border: 2px solid #e5e7eb;
@@ -693,39 +692,39 @@
       cursor: pointer;
       transition: all 0.2s ease;
     }
-    
+
     .action-btn:hover {
       border-color: #d1d5db;
       background: #f9fafb;
     }
-    
+
     /* Responsive */
     @media (max-width: 480px) {
       .container {
         padding: 15px;
       }
-      
+
       .card {
         padding: 24px;
       }
-      
+
       .title {
         font-size: 24px;
       }
-      
+
       .question-title {
         font-size: 20px;
       }
-      
+
       .info-grid {
         grid-template-columns: 1fr;
       }
-      
+
       .share-buttons {
         grid-template-columns: repeat(2, 1fr);
       }
     }
-    
+
     .hidden {
       display: none;
     }
@@ -743,30 +742,30 @@
           <p class="subtitle">Discover your personality type and ideal partner match</p>
           <div class="info-badge" onclick="showInfo()">What is this test?</div>
         </div>
-        
+
         <div class="gender-section">
           <h3>Please select your gender</h3>
-          
+
           <div class="gender-options">
             <div class="gender-option" onclick="selectGender('female')">
               <div class="gender-icon">👩</div>
               <div class="gender-text">Female</div>
               <div class="radio-circle"></div>
             </div>
-            
+
             <div class="gender-option" onclick="selectGender('male')">
               <div class="gender-icon">👨</div>
               <div class="gender-text">Male</div>
               <div class="radio-circle"></div>
             </div>
           </div>
-          
+
           <button class="btn btn-primary" id="startBtn" onclick="startTest()" disabled>
             Start Test
           </button>
         </div>
       </div>
-      
+
       <!-- Question Screen -->
       <div id="questionScreen" class="hidden">
         <div class="progress-section">
@@ -778,16 +777,16 @@
             <div class="progress-fill" id="progressFill"></div>
           </div>
         </div>
-        
+
         <div class="question-section">
           <div class="question-number" id="questionNumber">Question 1</div>
           <h2 class="question-title" id="questionTitle"></h2>
-          
+
           <div id="answerContainer"></div>
           <button class="btn btn-primary" id="nextBtn" onclick="nextQuestion()" disabled>Next Question</button>
         </div>
       </div>
-      
+
       <!-- Loading Screen -->
       <div id="loadingScreen" class="hidden">
         <div class="loading-section">
@@ -795,7 +794,7 @@
           <div class="loading-text">Analyzing your results...</div>
         </div>
       </div>
-      
+
       <!-- Result Screen -->
       <div id="resultScreen" class="hidden">
         <div class="result-section">
@@ -806,7 +805,7 @@
             <div class="result-subtitle" id="resultSubtitle">Emotional and empathetic personality</div>
             <div class="result-description" id="resultDescription">You are emotionally rich and value interpersonal connections.</div>
           </div>
-          
+
           <!-- Personality Analysis Chart -->
           <div class="chart-section">
             <div class="chart-title">📊 Personality Analysis</div>
@@ -825,19 +824,19 @@
               <div class="chart-percentage" id="testosteronePercent">0%</div>
             </div>
           </div>
-          
+
           <!-- Result Cards -->
           <div class="result-cards">
             <div class="result-card">
               <div class="result-card-title personality">Personality Traits</div>
               <div class="result-card-content" id="personalityContent"></div>
             </div>
-            
+
             <div class="result-card">
               <div class="result-card-title match">Perfect Match</div>
               <div class="result-card-content" id="matchContent"></div>
             </div>
-            
+
             <div class="result-card">
               <div class="result-card-title keywords">Key Traits</div>
               <div class="result-card-content">
@@ -845,51 +844,51 @@
               </div>
             </div>
           </div>
-          
+
           <!-- Detailed Info -->
           <div class="info-grid">
             <div class="info-card">
               <div class="info-card-title famous">Similar Celebrities</div>
               <div class="info-list" id="famousList"></div>
             </div>
-            
+
             <div class="info-card">
               <div class="info-card-title career">Career Suggestions</div>
               <div class="info-list" id="careerList"></div>
             </div>
-            
+
             <div class="info-card">
               <div class="info-card-title lifestyle">Lifestyle</div>
               <div class="info-list" id="lifestyleList"></div>
             </div>
-            
+
             <div class="info-card">
               <div class="info-card-title music">Music Taste</div>
               <div class="info-list" id="musicList"></div>
             </div>
           </div>
-          
+
           <!-- Share Section -->
           <div class="share-section">
             <div class="share-title">Share Your Results</div>
-            
+
             <div class="share-buttons">
               <button class="share-btn twitter" onclick="shareTwitter()">
                 <span>𝕏</span>
                 <span>Twitter</span>
               </button>
-              
+
               <button class="share-btn facebook" onclick="shareFacebook()">
                 <span>f</span>
                 <span>Facebook</span>
               </button>
-              
+
               <button class="share-btn copy" onclick="copyResult()">
                 <span>📋</span>
                 <span>Copy</span>
               </button>
             </div>
-            
+
             <div class="action-buttons">
               <button class="action-btn" onclick="restartTest()">🔄 Take Test Again</button>
             </div>
@@ -898,7 +897,11 @@
       </div>
     </div>
   </div>
-  
+
+  <!-- Watermark -->
+  <div style="position: fixed; left: 0; bottom: 0; width: 100vw; min-height: 36px; padding: 13px 0 11px 0; background: none; text-align: center; color: #bbb; font-size: 0.98rem; font-weight: 500; letter-spacing: -0.01em; z-index: 1000; user-select: text; pointer-events: none; box-sizing: border-box; backdrop-filter: blur(1px);">
+    © Estrogen vs Testosterone Test | <a href="/en/" style="color:#bbb;text-decoration:underline;pointer-events:auto;">tests.mahalohana-bruce.com</a>
+  </div>
   <script>
     // Test data
     const questions = [
@@ -995,7 +998,7 @@
         ]
       }
     ];
-    
+
     const results = {
       estrogen: {
         male: {
@@ -1058,47 +1061,47 @@
         }
       }
     };
-    
+
     // Test state
     let selectedGender = '';
     let currentQuestion = 0;
     let answers = [];
     let estrogenScore = 0;
     let testosteroneScore = 0;
-    
+
     function selectGender(gender) {
       selectedGender = gender;
-      
+
       document.querySelectorAll('.gender-option').forEach(option => {
         option.classList.remove('selected');
       });
-      
+
       event.target.closest('.gender-option').classList.add('selected');
       document.getElementById('startBtn').disabled = false;
     }
-    
+
     function startTest() {
       if (!selectedGender) return;
-      
+
       document.getElementById('startScreen').classList.add('hidden');
       document.getElementById('questionScreen').classList.remove('hidden');
-      
+
       showQuestion();
     }
-    
+
     function showQuestion() {
       const question = questions[currentQuestion];
-      
+
       document.getElementById('questionTitle').textContent = question.q;
       document.getElementById('questionNumber').textContent = `Question ${currentQuestion + 1}`;
-      
+
       const container = document.getElementById('answerContainer');
       container.innerHTML = '';
-      
+
       if (question.type === 'yn') {
         const ynDiv = document.createElement('div');
         ynDiv.className = 'yn-options';
-        
+
         question.options.forEach((option, index) => {
           const button = document.createElement('div');
           button.className = 'yn-option';
@@ -1106,12 +1109,12 @@
           button.onclick = () => selectAnswer(index);
           ynDiv.appendChild(button);
         });
-        
+
         container.appendChild(ynDiv);
       } else {
         const optionsDiv = document.createElement('div');
         optionsDiv.className = 'answer-options';
-        
+
         question.options.forEach((option, index) => {
           const button = document.createElement('div');
           button.className = 'answer-option';
@@ -1119,17 +1122,17 @@
           button.onclick = () => selectAnswer(index);
           optionsDiv.appendChild(button);
         });
-        
+
         container.appendChild(optionsDiv);
       }
-      
+
       updateProgress();
       document.getElementById('nextBtn').disabled = true;
     }
-    
+
     function selectAnswer(index) {
       const question = questions[currentQuestion];
-      
+
       if (question.type === 'yn') {
         document.querySelectorAll('.yn-option').forEach(option => {
           option.classList.remove('selected');
@@ -1141,61 +1144,61 @@
         });
         document.querySelectorAll('.answer-option')[index].classList.add('selected');
       }
-      
+
       const selectedOption = question.options[index];
       answers[currentQuestion] = selectedOption;
-      
+
       if (selectedOption.type === 'estrogen') {
         estrogenScore += selectedOption.score;
       } else if (selectedOption.type === 'testosterone') {
         testosteroneScore += selectedOption.score;
       }
-      
+
       document.getElementById('nextBtn').disabled = false;
     }
-    
+
     function nextQuestion() {
       currentQuestion++;
-      
+
       if (currentQuestion < questions.length) {
         showQuestion();
       } else {
         showLoading();
       }
     }
-    
+
     function updateProgress() {
       const progress = ((currentQuestion + 1) / questions.length) * 100;
       document.getElementById('progressFill').style.width = progress + '%';
       document.getElementById('progressCounter').textContent = `${currentQuestion + 1}/10`;
     }
-    
+
     function showLoading() {
       document.getElementById('questionScreen').classList.add('hidden');
       document.getElementById('loadingScreen').classList.remove('hidden');
-      
+
       setTimeout(() => {
         showResult();
       }, 3000);
     }
-    
+
     function showResult() {
       document.getElementById('loadingScreen').classList.add('hidden');
       document.getElementById('resultScreen').classList.remove('hidden');
-      
+
       const totalScore = estrogenScore + testosteroneScore;
       const estrogenPercent = totalScore > 0 ? Math.round((estrogenScore / totalScore) * 100) : 50;
       const testosteronePercent = 100 - estrogenPercent;
-      
+
       const resultType = estrogenScore > testosteroneScore ? 'estrogen' : 'testosterone';
       const result = results[resultType][selectedGender];
-      
+
       // Set result header
       document.getElementById('resultEmoji').textContent = result.emoji;
       document.getElementById('resultTitle').textContent = result.title;
       document.getElementById('resultSubtitle').textContent = result.subtitle;
       document.getElementById('resultDescription').textContent = result.description;
-      
+
       // Update chart
       setTimeout(() => {
         document.getElementById('estrogenBar').style.width = estrogenPercent + '%';
@@ -1203,38 +1206,38 @@
         document.getElementById('estrogenPercent').textContent = estrogenPercent + '%';
         document.getElementById('testosteronePercent').textContent = testosteronePercent + '%';
       }, 500);
-      
+
       // Update result content
       document.getElementById('personalityContent').textContent = result.fullDescription;
       document.getElementById('matchContent').innerHTML = `
         <div class="match-badge">${result.match}</div>
         <div>${result.matchDesc}</div>
       `;
-      
+
       // Keywords
       const keywordsGrid = document.getElementById('keywordsGrid');
       keywordsGrid.innerHTML = result.keywords.map(keyword => 
         `<span class="keyword-tag">${keyword}</span>`
       ).join('');
-      
+
       // Detailed info
       document.getElementById('famousList').innerHTML = 
         result.famous.map(person => `<div class="info-item">${person}</div>`).join('');
-      
+
       document.getElementById('careerList').innerHTML = 
         result.careers.map(career => `<div class="info-item">${career}</div>`).join('');
-      
+
       document.getElementById('lifestyleList').innerHTML = 
         result.lifestyle.map(item => `<div class="info-item">${item}</div>`).join('');
-      
+
       document.getElementById('musicList').innerHTML = 
         result.music.map(item => `<div class="info-item">${item}</div>`).join('');
     }
-    
+
     function getShareText() {
       const resultType = estrogenScore > testosteroneScore ? 'estrogen' : 'testosterone';
       const result = results[resultType][selectedGender];
-      
+
       return `🧠💖 Estrogen vs Testosterone Personality Test Result
 
 🎯 I am ${result.title}!
@@ -1246,10 +1249,10 @@ ${result.fullDescription}
 
 ✨ Take the test: https://tests.mahalohana-bruce.com/egen-teto/en/`;
     }
-    
+
     function copyResult() {
       const text = getShareText();
-      
+
       if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(text).then(() => {
           alert('🎉 Results copied to clipboard!');
@@ -1260,7 +1263,7 @@ ${result.fullDescription}
         fallbackCopy(text);
       }
     }
-    
+
     function fallbackCopy(text) {
       const textArea = document.createElement('textarea');
       textArea.value = text;
@@ -1269,22 +1272,22 @@ ${result.fullDescription}
       document.body.appendChild(textArea);
       textArea.focus();
       textArea.select();
-      
+
       try {
         document.execCommand('copy');
         alert('🎉 Results copied to clipboard!');
       } catch (err) {
         alert('Copy function is not supported in this browser.');
       }
-      
+
       document.body.removeChild(textArea);
     }
-    
+
     function shareTwitter() {
       const resultType = estrogenScore > testosteroneScore ? 'estrogen' : 'testosterone';
       const result = results[resultType][selectedGender];
       const text = `I am ${result.title}! Take the test too~ https://tests.mahalohana-bruce.com/egen-teto/en/`;
-      
+
       try {
         const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
         window.open(url, '_blank', 'noopener,noreferrer');
@@ -1293,7 +1296,7 @@ ${result.fullDescription}
         alert('Text copied! Please paste it on Twitter.');
       }
     }
-    
+
     function shareFacebook() {
       try {
         const url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent('https://tests.mahalohana-bruce.com/egen-teto/en/')}`;
@@ -1304,7 +1307,7 @@ ${result.fullDescription}
         alert('Text copied! Please paste it on Facebook.');
       }
     }
-    
+
     function copyToClipboard(text) {
       if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(text).catch(() => {
@@ -1314,24 +1317,24 @@ ${result.fullDescription}
         fallbackCopy(text);
       }
     }
-    
+
     function restartTest() {
       selectedGender = '';
       currentQuestion = 0;
       answers = [];
       estrogenScore = 0;
       testosteroneScore = 0;
-      
+
       document.getElementById('resultScreen').classList.add('hidden');
       document.getElementById('startScreen').classList.remove('hidden');
-      
+
       document.querySelectorAll('.gender-option').forEach(option => {
         option.classList.remove('selected');
       });
-      
+
       document.getElementById('startBtn').disabled = true;
     }
-    
+
     function showInfo() {
       alert('The Estrogen vs Testosterone personality test analyzes your personality to determine whether you are more emotional (estrogen) or logical (testosterone). Through the results, you can discover your ideal partner type and career suggestions!');
     }

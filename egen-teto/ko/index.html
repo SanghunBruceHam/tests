@@ -5,27 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
   <title>에겐 vs 테토 성향 테스트｜나의 성향과 찰떡궁합 이성 유형 찾기</title>
   <meta name="description" content="에겐녀/테토녀/에겐남/테토남, 10문항 심리테스트로 나의 성향과 잘 어울리는 이성, 추천 직업까지 확인! 공유하기/복사 기능 완비, Z세대 트렌디 심리테스트 무료." />
-  
+
   <!-- Open Graph Meta Tags -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="에겐 vs 테토 성향 테스트｜찰떡궁합 이상형까지!" />
   <meta property="og:description" content="10문항으로 알아보는 내 성향과 찰떡궁합 이성 유형, 추천 직업! 결과 복사/공유 기능, 모바일 최적화 심리테스트." />
   <meta property="og:image" content="https://tests.mahalohana-bruce.com/egen-teto/ko/thumbnail.png" />
   <meta property="og:url" content="https://tests.mahalohana-bruce.com/egen-teto/ko/" />
-  
+
   <link rel="icon" href="./favicon.png" type="image/png" />
   <link rel="canonical" href="https://tests.mahalohana-bruce.com/egen-teto/ko/" />
-  
+
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5508768187151867" crossorigin="anonymous"></script>
-  
+
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-    
+
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -33,7 +33,7 @@
       padding: 20px;
       color: #2d3748;
     }
-    
+
     /* AdSense 광고 차단 - 가운데 여백 방지 */
     .adsbygoogle {
       display: block !important;
@@ -41,7 +41,7 @@
       text-align: center !important;
       max-width: 100% !important;
     }
-    
+
     /* 가운데 여백에 광고 표시 방지 */
     .card::before,
     .card::after,
@@ -49,13 +49,13 @@
     .container::after {
       content: none !important;
     }
-    
+
     /* AdSense 자동 배치 차단 */
     body {
       -webkit-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
     }
-    
+
     /* 광고 컨테이너 명시적 제어 */
     .ad-container {
       width: 100%;
@@ -64,7 +64,7 @@
       text-align: center;
       clear: both;
     }
-    
+
     .container {
       max-width: 420px;
       margin: 0 auto;
@@ -74,7 +74,7 @@
       justify-content: center;
       position: relative;
     }
-    
+
     .card {
       background: white;
       border-radius: 20px;
@@ -84,40 +84,40 @@
       position: relative;
       overflow: hidden; /* 광고 오버플로우 방지 */
     }
-    
+
     /* 헤더 */
     .header {
       text-align: center;
       margin-bottom: 32px;
     }
-    
+
     .title {
       font-size: 28px;
       font-weight: 800;
       margin-bottom: 8px;
       line-height: 1.2;
     }
-    
+
     .title .egen {
       color: #ec4899;
     }
-    
+
     .title .vs {
       color: #6b7280;
       font-weight: 400;
     }
-    
+
     .title .teto {
       color: #3b82f6;
     }
-    
+
     .subtitle {
       font-size: 16px;
       color: #6b7280;
       margin-bottom: 24px;
       line-height: 1.5;
     }
-    
+
     .info-badge {
       display: inline-flex;
       align-items: center;
@@ -130,17 +130,17 @@
       cursor: pointer;
       transition: all 0.2s ease;
     }
-    
+
     .info-badge:hover {
       background: #2563eb;
       transform: translateY(-1px);
     }
-    
+
     .info-badge::before {
       content: 'ℹ';
       margin-right: 6px;
     }
-    
+
     /* 성별 선택 */
     .gender-section h3 {
       text-align: center;
@@ -149,13 +149,13 @@
       margin-bottom: 24px;
       color: #1f2937;
     }
-    
+
     .gender-options {
       display: grid;
       gap: 12px;
       margin-bottom: 32px;
     }
-    
+
     .gender-option {
       display: flex;
       align-items: center;
@@ -166,31 +166,31 @@
       transition: all 0.2s ease;
       background: #f9fafb;
     }
-    
+
     .gender-option:hover {
       border-color: #d1d5db;
       background: #f3f4f6;
     }
-    
+
     .gender-option.selected {
       border-color: #3b82f6;
       background: #eff6ff;
       color: #1d4ed8;
     }
-    
+
     .gender-icon {
       font-size: 20px;
       margin-right: 16px;
       width: 24px;
       text-align: center;
     }
-    
+
     .gender-text {
       flex: 1;
       font-size: 16px;
       font-weight: 600;
     }
-    
+
     .radio-circle {
       width: 20px;
       height: 20px;
@@ -199,11 +199,11 @@
       position: relative;
       transition: all 0.2s ease;
     }
-    
+
     .gender-option.selected .radio-circle {
       border-color: #3b82f6;
     }
-    
+
     .gender-option.selected .radio-circle::after {
       content: '';
       position: absolute;
@@ -215,31 +215,31 @@
       border-radius: 50%;
       transform: translate(-50%, -50%);
     }
-    
+
     /* 진행률 바 */
     .progress-section {
       margin-bottom: 32px;
     }
-    
+
     .progress-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin-bottom: 8px;
     }
-    
+
     .progress-label {
       font-size: 14px;
       color: #6b7280;
       font-weight: 500;
     }
-    
+
     .progress-counter {
       font-size: 14px;
       color: #374151;
       font-weight: 600;
     }
-    
+
     .progress-bar {
       width: 100%;
       height: 8px;
@@ -247,7 +247,7 @@
       border-radius: 4px;
       overflow: hidden;
     }
-    
+
     .progress-fill {
       height: 100%;
       background: linear-gradient(90deg, #ec4899, #3b82f6);
@@ -255,12 +255,12 @@
       transition: width 0.3s ease;
       width: 0%;
     }
-    
+
     /* 질문 섹션 */
     .question-section {
       text-align: center;
     }
-    
+
     .question-number {
       display: inline-block;
       background: #f3f4f6;
@@ -271,7 +271,7 @@
       font-weight: 600;
       margin-bottom: 16px;
     }
-    
+
     .question-title {
       font-size: 24px;
       font-weight: 700;
@@ -279,14 +279,14 @@
       line-height: 1.3;
       color: #1f2937;
     }
-    
+
     /* 답변 옵션 */
     .answer-options {
       display: grid;
       gap: 12px;
       margin-bottom: 32px;
     }
-    
+
     .answer-option {
       padding: 16px 20px;
       background: #f9fafb;
@@ -298,18 +298,18 @@
       line-height: 1.4;
       text-align: left;
     }
-    
+
     .answer-option:hover {
       border-color: #d1d5db;
       background: #f3f4f6;
     }
-    
+
     .answer-option.selected {
       border-color: #3b82f6;
       background: #3b82f6;
       color: white;
     }
-    
+
     /* Yes/No 답변 */
     .yn-options {
       display: grid;
@@ -317,7 +317,7 @@
       gap: 16px;
       margin-bottom: 32px;
     }
-    
+
     .yn-option {
       padding: 24px 20px;
       border: 2px solid #e5e7eb;
@@ -333,32 +333,32 @@
       align-items: center;
       justify-content: center;
     }
-    
+
     .yn-option:hover {
       border-color: #d1d5db;
       background: #f3f4f6;
     }
-    
+
     .yn-option.selected {
       border-color: #3b82f6;
       background: #3b82f6;
       color: white;
     }
-    
+
     .yn-option::before {
       display: block;
       font-size: 24px;
       margin-bottom: 8px;
     }
-    
+
     .yn-option.yes::before {
       content: '✓';
     }
-    
+
     .yn-option.no::before {
       content: '✗';
     }
-    
+
     /* 버튼 */
     .btn {
       width: 100%;
@@ -370,29 +370,29 @@
       cursor: pointer;
       transition: all 0.2s ease;
     }
-    
+
     .btn-primary {
       background: #3b82f6;
       color: white;
     }
-    
+
     .btn-primary:hover:not(:disabled) {
       background: #2563eb;
       transform: translateY(-1px);
     }
-    
+
     .btn:disabled {
       opacity: 0.5;
       cursor: not-allowed;
       transform: none !important;
     }
-    
+
     /* 로딩 화면 */
     .loading-section {
       text-align: center;
       padding: 60px 0;
     }
-    
+
     .loading-spinner {
       width: 40px;
       height: 40px;
@@ -402,55 +402,55 @@
       animation: spin 1s linear infinite;
       margin: 0 auto 24px;
     }
-    
+
     @keyframes spin {
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
     }
-    
+
     .loading-text {
       font-size: 18px;
       font-weight: 600;
       color: #374151;
     }
-    
+
     /* 결과 화면 */
     .result-section {
       text-align: center;
     }
-    
+
     .result-header {
       background: #f9fafb;
       border-radius: 16px;
       padding: 32px 24px;
       margin-bottom: 24px;
     }
-    
+
     .result-emoji {
       font-size: 64px;
       margin-bottom: 16px;
       display: block;
     }
-    
+
     .result-title {
       font-size: 28px;
       font-weight: 800;
       margin-bottom: 8px;
       color: #1f2937;
     }
-    
+
     .result-subtitle {
       font-size: 16px;
       color: #6b7280;
       margin-bottom: 16px;
     }
-    
+
     .result-description {
       font-size: 14px;
       color: #374151;
       line-height: 1.5;
     }
-    
+
     /* 차트 */
     .chart-section {
       background: #f9fafb;
@@ -458,24 +458,24 @@
       padding: 24px;
       margin-bottom: 24px;
     }
-    
+
     .chart-title {
       font-size: 18px;
       font-weight: 700;
       margin-bottom: 20px;
       color: #1f2937;
     }
-    
+
     .chart-item {
       display: flex;
       align-items: center;
       margin-bottom: 16px;
     }
-    
+
     .chart-item:last-child {
       margin-bottom: 0;
     }
-    
+
     .chart-label {
       width: 80px;
       text-align: left;
@@ -484,15 +484,15 @@
       display: flex;
       align-items: center;
     }
-    
+
     .chart-label.egen {
       color: #ec4899;
     }
-    
+
     .chart-label.teto {
       color: #3b82f6;
     }
-    
+
     .chart-label::before {
       width: 12px;
       height: 12px;
@@ -500,15 +500,15 @@
       margin-right: 8px;
       content: '';
     }
-    
+
     .chart-label.egen::before {
       background: #ec4899;
     }
-    
+
     .chart-label.teto::before {
       background: #3b82f6;
     }
-    
+
     .chart-bar {
       flex: 1;
       height: 8px;
@@ -517,21 +517,21 @@
       margin: 0 16px;
       overflow: hidden;
     }
-    
+
     .chart-fill {
       height: 100%;
       border-radius: 4px;
       transition: width 1s ease;
     }
-    
+
     .chart-fill.egen {
       background: #ec4899;
     }
-    
+
     .chart-fill.teto {
       background: #3b82f6;
     }
-    
+
     .chart-percentage {
       font-size: 14px;
       font-weight: 600;
@@ -539,21 +539,21 @@
       width: 40px;
       text-align: right;
     }
-    
+
     /* 결과 카드들 */
     .result-cards {
       display: grid;
       gap: 16px;
       margin-bottom: 24px;
     }
-    
+
     .result-card {
       background: #f9fafb;
       border-radius: 16px;
       padding: 24px;
       text-align: left;
     }
-    
+
     .result-card-title {
       font-size: 18px;
       font-weight: 700;
@@ -562,22 +562,22 @@
       display: flex;
       align-items: center;
     }
-    
+
     .result-card-title::before {
       margin-right: 8px;
       font-size: 20px;
     }
-    
+
     .result-card-title.personality::before { content: '🎭'; }
     .result-card-title.match::before { content: '💕'; }
     .result-card-title.keywords::before { content: '🏷️'; }
-    
+
     .result-card-content {
       font-size: 16px;
       line-height: 1.6;
       color: #374151;
     }
-    
+
     .match-badge {
       display: inline-block;
       background: #3b82f6;
@@ -588,13 +588,13 @@
       font-weight: 600;
       margin-bottom: 12px;
     }
-    
+
     .keywords-grid {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
     }
-    
+
     .keyword-tag {
       background: #e5e7eb;
       color: #374151;
@@ -603,7 +603,7 @@
       font-size: 14px;
       font-weight: 500;
     }
-    
+
     /* 상세 정보 그리드 */
     .info-grid {
       display: grid;
@@ -611,14 +611,14 @@
       gap: 16px;
       margin-bottom: 24px;
     }
-    
+
     .info-card {
       background: #f9fafb;
       border-radius: 12px;
       padding: 16px;
       text-align: center;
     }
-    
+
     .info-card-title {
       font-size: 14px;
       font-weight: 700;
@@ -628,23 +628,23 @@
       align-items: center;
       justify-content: center;
     }
-    
+
     .info-card-title::before {
       margin-right: 6px;
       font-size: 16px;
     }
-    
+
     .info-card-title.famous::before { content: '👥'; }
     .info-card-title.career::before { content: '💼'; }
     .info-card-title.lifestyle::before { content: '🎨'; }
     .info-card-title.music::before { content: '🎵'; }
-    
+
     .info-list {
       display: flex;
       flex-direction: column;
       gap: 8px;
     }
-    
+
     .info-item {
       background: white;
       padding: 8px 12px;
@@ -652,12 +652,12 @@
       font-size: 14px;
       color: #374151;
     }
-    
+
     /* 공유 섹션 */
     .share-section {
       margin-top: 32px;
     }
-    
+
     .share-title {
       font-size: 18px;
       font-weight: 700;
@@ -665,14 +665,14 @@
       margin-bottom: 20px;
       color: #1f2937;
     }
-    
+
     .share-buttons {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 12px;
       margin-bottom: 20px;
     }
-    
+
     .share-btn {
       padding: 16px 12px;
       border: none;
@@ -686,46 +686,46 @@
       align-items: center;
       gap: 8px;
     }
-    
+
     .share-btn:hover {
       transform: translateY(-2px);
     }
-    
+
     .share-btn.kakao {
       background: #fee500;
       color: #3c1e1e;
     }
-    
+
     .share-btn.instagram {
       background: #e4405f;
       color: white;
     }
-    
+
     .share-btn.threads {
       background: #000000;
       color: white;
     }
-    
+
     .share-btn.twitter {
       background: #1da1f2;
       color: white;
     }
-    
+
     .share-btn.facebook {
       background: #1877f2;
       color: white;
     }
-    
+
     .share-btn.copy {
       background: #10b981;
       color: white;
     }
-    
+
     .action-buttons {
       display: grid;
       gap: 12px;
     }
-    
+
     .action-btn {
       padding: 16px;
       border: 2px solid #e5e7eb;
@@ -737,41 +737,52 @@
       cursor: pointer;
       transition: all 0.2s ease;
     }
-    
+
     .action-btn:hover {
       border-color: #d1d5db;
       background: #f9fafb;
     }
-    
+
     /* 반응형 */
     @media (max-width: 480px) {
       .container {
         padding: 15px;
       }
-      
+
       .card {
         padding: 24px;
       }
-      
+
       .title {
         font-size: 24px;
       }
-      
+
       .question-title {
         font-size: 20px;
       }
-      
+
       .info-grid {
         grid-template-columns: 1fr;
       }
-      
+
       .share-buttons {
         grid-template-columns: repeat(2, 1fr);
       }
     }
-    
+
     .hidden {
       display: none;
+    }
+
+    /* 워터마크 */
+    .fixed-watermark {
+      position: fixed;
+      bottom: 10px;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      font-size: 12px;
+      color: #999;
     }
   </style>
 </head>
@@ -787,30 +798,30 @@
           <p class="subtitle">나만의 성향과 찰떡궁합 이성 유형을 찾아보세요</p>
           <div class="info-badge" onclick="showInfo()">에겐 vs 테토 성향 테스트란?</div>
         </div>
-        
+
         <div class="gender-section">
           <h3>성별을 선택해주세요</h3>
-          
+
           <div class="gender-options">
             <div class="gender-option" onclick="selectGender('female')">
               <div class="gender-icon">👩</div>
               <div class="gender-text">여성</div>
               <div class="radio-circle"></div>
             </div>
-            
+
             <div class="gender-option" onclick="selectGender('male')">
               <div class="gender-icon">👨</div>
               <div class="gender-text">남성</div>
               <div class="radio-circle"></div>
             </div>
           </div>
-          
+
           <button class="btn btn-primary" id="startBtn" onclick="startTest()" disabled>
             테스트 시작하기
           </button>
         </div>
       </div>
-      
+
       <!-- 질문 화면 -->
       <div id="questionScreen" class="hidden">
         <div class="progress-section">
@@ -822,16 +833,16 @@
             <div class="progress-fill" id="progressFill"></div>
           </div>
         </div>
-        
+
         <div class="question-section">
           <div class="question-number" id="questionNumber">질문 1</div>
           <h2 class="question-title" id="questionTitle"></h2>
-          
+
           <div id="answerContainer"></div>
           <button class="btn btn-primary" id="nextBtn" onclick="nextQuestion()" disabled>다음 질문</button>
         </div>
       </div>
-      
+
       <!-- 로딩 화면 -->
       <div id="loadingScreen" class="hidden">
         <div class="loading-section">
@@ -839,7 +850,7 @@
           <div class="loading-text">결과를 분석하고 있어요...</div>
         </div>
       </div>
-      
+
       <!-- 결과 화면 -->
       <div id="resultScreen" class="hidden">
         <div class="result-section">
@@ -850,7 +861,7 @@
             <div class="result-subtitle" id="resultSubtitle">감성적이고 공감능력이 뛰어난 당신</div>
             <div class="result-description" id="resultDescription">당신은 감정이 풍부하고 사람들과의 교감을 중시하는 성향입니다.</div>
           </div>
-          
+
           <!-- 성향 분석 차트 -->
           <div class="chart-section">
             <div class="chart-title">📊 성향 분석</div>
@@ -869,19 +880,19 @@
               <div class="chart-percentage" id="tetoPercent">0%</div>
             </div>
           </div>
-          
+
           <!-- 주요 결과 카드 -->
           <div class="result-cards">
             <div class="result-card">
               <div class="result-card-title personality">성향 특징</div>
               <div class="result-card-content" id="personalityContent"></div>
             </div>
-            
+
             <div class="result-card">
               <div class="result-card-title match">찰떡궁합</div>
               <div class="result-card-content" id="matchContent"></div>
             </div>
-            
+
             <div class="result-card">
               <div class="result-card-title keywords">핵심 키워드</div>
               <div class="result-card-content">
@@ -889,66 +900,66 @@
               </div>
             </div>
           </div>
-          
+
           <!-- 상세 정보 -->
           <div class="info-grid">
             <div class="info-card">
               <div class="info-card-title famous">닮은 연예인</div>
               <div class="info-list" id="famousList"></div>
             </div>
-            
+
             <div class="info-card">
               <div class="info-card-title career">추천 직업</div>
               <div class="info-list" id="careerList"></div>
             </div>
-            
+
             <div class="info-card">
               <div class="info-card-title lifestyle">라이프스타일</div>
               <div class="info-list" id="lifestyleList"></div>
             </div>
-            
+
             <div class="info-card">
               <div class="info-card-title music">추천 음악</div>
               <div class="info-list" id="musicList"></div>
             </div>
           </div>
-          
+
           <!-- 공유 섹션 -->
           <div class="share-section">
             <div class="share-title">결과 공유하기</div>
-            
+
             <div class="share-buttons">
               <button class="share-btn kakao" onclick="shareKakao()">
                 <span>K</span>
                 <span>카카오톡</span>
               </button>
-              
+
               <button class="share-btn instagram" onclick="shareInstagram()">
                 <span>📷</span>
                 <span>인스타그램</span>
               </button>
-              
+
               <button class="share-btn threads" onclick="shareThreads()">
                 <span>@</span>
                 <span>쓰레드</span>
               </button>
-              
+
               <button class="share-btn twitter" onclick="shareTwitter()">
                 <span>𝕏</span>
                 <span>트위터</span>
               </button>
-              
+
               <button class="share-btn facebook" onclick="shareFacebook()">
                 <span>f</span>
                 <span>페이스북</span>
               </button>
-              
+
               <button class="share-btn copy" onclick="copyResult()">
                 <span>📋</span>
                 <span>복사</span>
               </button>
             </div>
-            
+
             <div class="action-buttons">
               <button class="action-btn" onclick="restartTest()">🔄 다시 테스트하기</button>
             </div>
@@ -957,7 +968,7 @@
       </div>
     </div>
   </div>
-  
+
   <!-- AdSense 광고 - 하단 배치 -->
   <div class="ad-container">
     <ins class="adsbygoogle"
@@ -967,7 +978,11 @@
          data-ad-format="auto"
          data-full-width-responsive="true"></ins>
   </div>
-  
+
+  <div class="fixed-watermark">
+      © 에겐 vs 테토 성향 테스트 | <a href="/ko/" style="color:#bbb;text-decoration:underline;">tests.mahalohana-bruce.com</a>
+    </div>
+
   <script>
     // AdSense 초기화 (페이지 로드 후)
     window.addEventListener('load', function() {
@@ -977,7 +992,7 @@
         console.log('AdSense loading error:', e);
       }
     });
-    
+
     // 테스트 데이터
     const questions = [
       {
@@ -1073,7 +1088,7 @@
         ]
       }
     ];
-    
+
     const results = {
       egen: {
         male: {
@@ -1136,47 +1151,47 @@
         }
       }
     };
-    
+
     // 테스트 상태
     let selectedGender = '';
     let currentQuestion = 0;
     let answers = [];
     let egenScore = 0;
     let tetoScore = 0;
-    
+
     function selectGender(gender) {
       selectedGender = gender;
-      
+
       document.querySelectorAll('.gender-option').forEach(option => {
         option.classList.remove('selected');
       });
-      
+
       event.target.closest('.gender-option').classList.add('selected');
       document.getElementById('startBtn').disabled = false;
     }
-    
+
     function startTest() {
       if (!selectedGender) return;
-      
+
       document.getElementById('startScreen').classList.add('hidden');
       document.getElementById('questionScreen').classList.remove('hidden');
-      
+
       showQuestion();
     }
-    
+
     function showQuestion() {
       const question = questions[currentQuestion];
-      
+
       document.getElementById('questionTitle').textContent = question.q;
       document.getElementById('questionNumber').textContent = `질문 ${currentQuestion + 1}`;
-      
+
       const container = document.getElementById('answerContainer');
       container.innerHTML = '';
-      
+
       if (question.type === 'yn') {
         const ynDiv = document.createElement('div');
         ynDiv.className = 'yn-options';
-        
+
         question.options.forEach((option, index) => {
           const button = document.createElement('div');
           button.className = 'yn-option';
@@ -1184,12 +1199,12 @@
           button.onclick = () => selectAnswer(index);
           ynDiv.appendChild(button);
         });
-        
+
         container.appendChild(ynDiv);
       } else {
         const optionsDiv = document.createElement('div');
         optionsDiv.className = 'answer-options';
-        
+
         question.options.forEach((option, index) => {
           const button = document.createElement('div');
           button.className = 'answer-option';
@@ -1197,17 +1212,17 @@
           button.onclick = () => selectAnswer(index);
           optionsDiv.appendChild(button);
         });
-        
+
         container.appendChild(optionsDiv);
       }
-      
+
       updateProgress();
       document.getElementById('nextBtn').disabled = true;
     }
-    
+
     function selectAnswer(index) {
       const question = questions[currentQuestion];
-      
+
       if (question.type === 'yn') {
         document.querySelectorAll('.yn-option').forEach(option => {
           option.classList.remove('selected');
@@ -1219,61 +1234,61 @@
         });
         document.querySelectorAll('.answer-option')[index].classList.add('selected');
       }
-      
+
       const selectedOption = question.options[index];
       answers[currentQuestion] = selectedOption;
-      
+
       if (selectedOption.type === 'egen') {
         egenScore += selectedOption.score;
       } else if (selectedOption.type === 'teto') {
         tetoScore += selectedOption.score;
       }
-      
+
       document.getElementById('nextBtn').disabled = false;
     }
-    
+
     function nextQuestion() {
       currentQuestion++;
-      
+
       if (currentQuestion < questions.length) {
         showQuestion();
       } else {
         showLoading();
       }
     }
-    
+
     function updateProgress() {
       const progress = ((currentQuestion + 1) / questions.length) * 100;
       document.getElementById('progressFill').style.width = progress + '%';
       document.getElementById('progressCounter').textContent = `${currentQuestion + 1}/10`;
     }
-    
+
     function showLoading() {
       document.getElementById('questionScreen').classList.add('hidden');
       document.getElementById('loadingScreen').classList.remove('hidden');
-      
+
       setTimeout(() => {
         showResult();
       }, 3000);
     }
-    
+
     function showResult() {
       document.getElementById('loadingScreen').classList.add('hidden');
       document.getElementById('resultScreen').classList.remove('hidden');
-      
+
       const totalScore = egenScore + tetoScore;
       const egenPercent = totalScore > 0 ? Math.round((egenScore / totalScore) * 100) : 50;
       const tetoPercent = 100 - egenPercent;
-      
+
       const resultType = egenScore > tetoScore ? 'egen' : 'teto';
       const result = results[resultType][selectedGender];
-      
+
       // 결과 헤더 설정
       document.getElementById('resultEmoji').textContent = result.emoji;
       document.getElementById('resultTitle').textContent = result.title;
       document.getElementById('resultSubtitle').textContent = result.subtitle;
       document.getElementById('resultDescription').textContent = result.description;
-      
+
       // 차트 업데이트
       setTimeout(() => {
         document.getElementById('egenBar').style.width = egenPercent + '%';
@@ -1281,38 +1296,38 @@
         document.getElementById('egenPercent').textContent = egenPercent + '%';
         document.getElementById('tetoPercent').textContent = tetoPercent + '%';
       }, 500);
-      
+
       // 결과 내용 업데이트
       document.getElementById('personalityContent').textContent = result.fullDescription;
       document.getElementById('matchContent').innerHTML = `
         <div class="match-badge">${result.match}</div>
         <div>${result.matchDesc}</div>
       `;
-      
+
       // 키워드
       const keywordsGrid = document.getElementById('keywordsGrid');
       keywordsGrid.innerHTML = result.keywords.map(keyword => 
         `<span class="keyword-tag">${keyword}</span>`
       ).join('');
-      
+
       // 상세 정보
       document.getElementById('famousList').innerHTML = 
         result.famous.map(person => `<div class="info-item">${person}</div>`).join('');
-      
+
       document.getElementById('careerList').innerHTML = 
         result.careers.map(career => `<div class="info-item">${career}</div>`).join('');
-      
+
       document.getElementById('lifestyleList').innerHTML = 
         result.lifestyle.map(item => `<div class="info-item">${item}</div>`).join('');
-      
+
       document.getElementById('musicList').innerHTML = 
         result.music.map(item => `<div class="info-item">${item}</div>`).join('');
     }
-    
+
     function getShareText() {
       const resultType = egenScore > tetoScore ? 'egen' : 'teto';
       const result = results[resultType][selectedGender];
-      
+
       return `🧠💖 에겐 vs 테토 성향 테스트 결과
 
 🎯 나는 ${result.title}!
@@ -1324,10 +1339,10 @@ ${result.fullDescription}
 
 ✨ 나도 테스트하기: https://tests.mahalohana-bruce.com/egen-teto/ko/`;
     }
-    
+
     function copyResult() {
       const text = getShareText();
-      
+
       if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(text).then(() => {
           alert('🎉 결과가 클립보드에 복사되었습니다!');
@@ -1338,7 +1353,7 @@ ${result.fullDescription}
         fallbackCopy(text);
       }
     }
-    
+
     function fallbackCopy(text) {
       const textArea = document.createElement('textarea');
       textArea.value = text;
@@ -1347,22 +1362,22 @@ ${result.fullDescription}
       document.body.appendChild(textArea);
       textArea.focus();
       textArea.select();
-      
+
       try {
         document.execCommand('copy');
         alert('🎉 결과가 클립보드에 복사되었습니다!');
       } catch (err) {
         alert('복사 기능을 지원하지 않는 브라우저입니다.');
       }
-      
+
       document.body.removeChild(textArea);
     }
-    
+
     function shareKakao() {
       const resultType = egenScore > tetoScore ? 'egen' : 'teto';
       const result = results[resultType][selectedGender];
       const text = `나는 ${result.title}! 너도 테스트해봐~ https://tests.mahalohana-bruce.com/egen-teto/ko/`;
-      
+
       if (navigator.share) {
         navigator.share({
           title: '에겐 vs 테토 성향 테스트',
@@ -1375,18 +1390,18 @@ ${result.fullDescription}
         copyToClipboard(text);
       }
     }
-    
+
     function shareInstagram() {
       const text = '에겐 vs 테토 성향 테스트 결과! https://tests.mahalohana-bruce.com/egen-teto/ko/';
       copyToClipboard(text);
       alert('텍스트가 복사되었습니다! 인스타그램에 붙여넣기 해주세요.');
     }
-    
+
     function shareThreads() {
       const resultType = egenScore > tetoScore ? 'egen' : 'teto';
       const result = results[resultType][selectedGender];
       const text = `나는 ${result.title}! 너도 테스트해봐~ https://tests.mahalohana-bruce.com/egen-teto/ko/`;
-      
+
       try {
         const threadsUrl = `https://threads.net/intent/post?text=${encodeURIComponent(text)}`;
         window.open(threadsUrl, '_blank', 'noopener,noreferrer');
@@ -1395,12 +1410,12 @@ ${result.fullDescription}
         alert('텍스트가 복사되었습니다! Threads에 붙여넣기 해주세요.');
       }
     }
-    
+
     function shareTwitter() {
       const resultType = egenScore > tetoScore ? 'egen' : 'teto';
       const result = results[resultType][selectedGender];
       const text = `나는 ${result.title}! 너도 테스트해봐~ https://tests.mahalohana-bruce.com/egen-teto/ko/`;
-      
+
       try {
         const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
         window.open(url, '_blank', 'noopener,noreferrer');
@@ -1409,7 +1424,7 @@ ${result.fullDescription}
         alert('텍스트가 복사되었습니다! X(트위터)에 붙여넣기 해주세요.');
       }
     }
-    
+
     function shareFacebook() {
       try {
         const url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent('https://tests.mahalohana-bruce.com/egen-teto/ko/')}`;
@@ -1420,7 +1435,7 @@ ${result.fullDescription}
         alert('텍스트가 복사되었습니다! 페이스북에 붙여넣기 해주세요.');
       }
     }
-    
+
     function copyToClipboard(text) {
       if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(text).catch(() => {
@@ -1430,24 +1445,24 @@ ${result.fullDescription}
         fallbackCopy(text);
       }
     }
-    
+
     function restartTest() {
       selectedGender = '';
       currentQuestion = 0;
       answers = [];
       egenScore = 0;
       tetoScore = 0;
-      
+
       document.getElementById('resultScreen').classList.add('hidden');
       document.getElementById('startScreen').classList.remove('hidden');
-      
+
       document.querySelectorAll('.gender-option').forEach(option => {
         option.classList.remove('selected');
       });
-      
+
       document.getElementById('startBtn').disabled = true;
     }
-    
+
     function showInfo() {
       alert('에겐 vs 테토 성향 테스트는 당신의 성향을 분석하여 감성적(에겐) 또는 논리적(테토) 성향 중 어느 쪽에 더 가까운지 알아보는 심리테스트입니다. 결과를 통해 자신과 잘 맞는 이성 유형과 추천 직업까지 확인할 수 있어요!');
     }
