@@ -14,11 +14,7 @@ mode = "sequential"
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"
-args = "cd dailyfortune"
-
-[[workflows.workflow.tasks]]
-task = "shell.exec"
-args = "npm run dev"
+args = "cd dailyfortune && npm install && npm run dev"
 
 [[workflows.workflow]]
 name = "All Apps"
