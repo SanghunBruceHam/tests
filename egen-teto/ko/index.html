@@ -306,7 +306,7 @@
         <a href="/egen-teto/ja/" class="lang-btn">日本語</a>
         <a href="/egen-teto/en/" class="lang-btn">English</a>
       </div>
-      <button class="theme-toggle">🌙</button>
+      <button class="theme-toggle" on="tap:AMP.setState({darkMode: !darkMode})" [text]="darkMode ? '☀️' : '🌙'">🌙</button>
     </div>
 
     <div class="main-card">
@@ -316,7 +316,7 @@
         <p class="subtitle">당신은 에겐파? 테토파?<br>재미있는 질문들로 알아보는 성향 테스트!</p>
       </div>
 
-      <a href="#" class="start-button" onclick="startTest()">🚀 테스트 시작하기</a>
+      <a href="./test.html" class="start-button">🚀 테스트 시작하기</a>
 
       <div class="features">
         <div class="feature-item">
@@ -342,35 +342,13 @@
     </div>
   </div>
 
-  <script>
-    let isDarkMode = localStorage.getItem('darkMode') === 'true';
-
-    document.addEventListener('DOMContentLoaded', function() {
-      updateTheme();
-    });
-
-    function updateTheme() {
-      const themeToggle = document.querySelector('.theme-toggle');
-      
-      if (isDarkMode) {
-        document.documentElement.setAttribute('data-theme', 'dark');
-        themeToggle.textContent = '☀️';
-      } else {
-        document.documentElement.removeAttribute('data-theme');
-        themeToggle.textContent = '🌙';
-      }
-      
-      localStorage.setItem('darkMode', isDarkMode);
+  <!-- AMP State for theme -->
+  <amp-state id="theme">
+    <script type="application/json">
+    {
+      "darkMode": false
     }
-
-    document.querySelector('.theme-toggle').addEventListener('click', () => {
-      isDarkMode = !isDarkMode;
-      updateTheme();
-    });
-
-    function startTest() {
-      alert('테스트가 곧 시작됩니다! 🎉');
-    }
-  </script>
+    </script>
+  </amp-state>
 </body>
 </html>
