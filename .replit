@@ -1,11 +1,24 @@
-modules = ["web", "python-3.12"]
+modules = ["nodejs-20", "python-3.12", "web"]
 run = "1234"
 
 [nix]
 channel = "stable-24_05"
 
 [workflows]
-runButton = "Auto Commit Watcher"
+runButton = "DailyFortune Dev"
+
+[[workflows.workflow]]
+name = "DailyFortune Dev"
+author = 44423350
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "cd dailyfortune"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "npm run dev"
 
 [[ports]]
 localPort = 5000
