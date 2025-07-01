@@ -493,30 +493,69 @@
       }
     }
 
-    // 옵션 선택
+    // 스파클 효과 생성
+    function createSparkles(element) {
+      const rect = element.getBoundingClientRect();
+      const container = document.createElement('div');
+      container.className = 'sparkle-container';
+      element.style.position = 'relative';
+      
+      for (let i = 0; i < 3; i++) {
+        setTimeout(() => {
+          const sparkle = document.createElement('div');
+          sparkle.className = 'sparkle';
+          sparkle.style.left = Math.random() * rect.width + 'px';
+          sparkle.style.top = Math.random() * rect.height + 'px';
+          element.appendChild(sparkle);
+          
+          setTimeout(() => {
+            if (sparkle.parentNode) {
+              sparkle.parentNode.removeChild(sparkle);
+            }
+          }, 800);
+        }, i * 100);
+      }
+    }
+
+    // 옵션 선택 (개선된 인터랙션)
     function selectOption(index, element) {
-      hapticFeedback('light'); // 선택 햅틱
+      // 선택 중 시각적 피드백
+      element.classList.add('selecting');
       
-      // 이전 선택 제거
-      document.querySelectorAll('.option').forEach(opt => {
-        opt.classList.remove('selected');
-        opt.setAttribute('aria-checked', 'false');
-      });
-      
-      // 현재 선택 표시
-      element.classList.add('selected');
-      element.setAttribute('aria-checked', 'true');
-      
-      // 답변 저장
-      answers[currentQuestion] = questions[currentQuestion].options[index].type;
-      
-      // 다음 버튼 활성화
-      document.getElementById('nextBtn').disabled = false;
-      hapticFeedback('success'); // 완료 햅틱
-      
-      // 스크린 리더를 위한 알림
-      element.setAttribute('aria-live', 'polite');
-      element.setAttribute('aria-label', `선택됨: ${element.textContent}`);
+      setTimeout(() => {
+        hapticFeedback('light'); // 선택 햅틱
+        
+        // 이전 선택 제거
+        document.querySelectorAll('.option').forEach(opt => {
+          opt.classList.remove('selected', 'selecting');
+          opt.setAttribute('aria-checked', 'false');
+        });
+        
+        // 현재 선택 표시
+        element.classList.add('selected');
+        element.setAttribute('aria-checked', 'true');
+        
+        // 스파클 효과 추가
+        createSparkles(element);
+        
+        // 답변 저장
+        answers[currentQuestion] = questions[currentQuestion].options[index].type;
+        
+        // 다음 버튼 활성화 (로딩 효과와 함께)
+        const nextBtn = document.getElementById('nextBtn');
+        nextBtn.disabled = false;
+        nextBtn.classList.add('loading');
+        
+        setTimeout(() => {
+          nextBtn.classList.remove('loading');
+        }, 300);
+        
+        hapticFeedback('success'); // 완료 햅틱
+        
+        // 스크린 리더를 위한 알림
+        element.setAttribute('aria-live', 'polite');
+        element.setAttribute('aria-label', `선택됨: ${element.textContent}`);
+      }, 100);
     }
 
     // 다음 질문
@@ -530,44 +569,92 @@
       }
     }
 
-    // 진행률 업데이트 (애니메이션 개선)
+    // 진행률 업데이트 (향상된 애니메이션)
     function updateProgress() {
       const progress = ((currentQuestion + 1) / questions.length) * 100;
       const progressFill = document.getElementById('progressFill');
       const progressText = document.getElementById('progressText');
       
-      // 부드러운 진행률 애니메이션
-      progressFill.style.transition = 'width 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
-      progressFill.style.width = progress + '%';
+      // 진행률 바 펄스 효과 (로딩 중)
+      progressFill.style.animation = 'progressPulse 0.3s ease-in-out';
       
-      // 숫자 카운트업 애니메이션
+      setTimeout(() => {
+        // 부드러운 진행률 애니메이션
+        progressFill.style.transition = 'width 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+        progressFill.style.width = progress + '%';
+        progressFill.style.animation = '';
+        
+        // 진행률이 특정 구간에 도달했을 때 추가 효과
+        if (progress === 50) {
+          hapticFeedback('medium');
+          progressFill.style.animation = 'pulse 0.5s ease-in-out';
+        } else if (progress === 100) {
+          hapticFeedback('heavy');
+          progressFill.style.animation = 'pulse 0.6s ease-in-out 2';
+        }
+      }, 200);
+      
+      // 숫자 카운트업 애니메이션 (더 부드럽게)
       const currentNum = parseInt(progressText.textContent.split(' / ')[0]);
       const targetNum = currentQuestion + 1;
       
       if (currentNum !== targetNum) {
+        const duration = 500; // 0.5초
+        const steps = Math.abs(targetNum - currentNum) * 5;
+        const stepTime = duration / steps;
+        
         let currentCount = currentNum;
         const increment = targetNum > currentCount ? 1 : -1;
+        
         const countInterval = setInterval(() => {
           currentCount += increment;
           progressText.textContent = `${currentCount} / ${questions.length}`;
+          progressText.style.animation = 'countUp 0.2s ease-out';
           
           if (currentCount === targetNum) {
             clearInterval(countInterval);
+            setTimeout(() => {
+              progressText.style.animation = '';
+            }, 200);
           }
-        }, 50);
+        }, stepTime);
       }
       
       // 진행률 바 접근성 업데이트
       const progressBar = document.querySelector('.progress-bar');
       progressBar.setAttribute('aria-valuenow', Math.round(progress));
-      progressBar.setAttribute('aria-label', `테스트 진행률 ${Math.round(progress)}%`);
+      progressBar.setAttribute('aria-label', `테스트 진행률 ${Math.round(progress)}%, ${currentQuestion + 1}번째 질문`);
       
-      // 진행률 바 펄스 효과
-      if (progress === 100) {
-        progressFill.style.animation = 'pulse 0.6s ease-in-out';
+      // 마일스톤 달성 시 추가 피드백
+      if ([25, 50, 75, 100].includes(Math.round(progress))) {
         setTimeout(() => {
-          progressFill.style.animation = '';
-        }, 600);
+          createProgressSparkles();
+        }, 400);
+      }
+    }
+
+    // 진행률 바 스파클 효과
+    function createProgressSparkles() {
+      const progressBar = document.querySelector('.progress-bar');
+      const rect = progressBar.getBoundingClientRect();
+      
+      for (let i = 0; i < 2; i++) {
+        setTimeout(() => {
+          const sparkle = document.createElement('div');
+          sparkle.className = 'sparkle';
+          sparkle.style.position = 'absolute';
+          sparkle.style.left = Math.random() * rect.width + 'px';
+          sparkle.style.top = '-3px';
+          sparkle.style.zIndex = '10';
+          progressBar.style.position = 'relative';
+          progressBar.appendChild(sparkle);
+          
+          setTimeout(() => {
+            if (sparkle.parentNode) {
+              sparkle.parentNode.removeChild(sparkle);
+            }
+          }, 800);
+        }, i * 200);
       }
     }
 

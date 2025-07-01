@@ -202,12 +202,146 @@ h1{
   animation:fadeInUp 0.8s ease-out 0.9s both
 }
 
-/* 인터랙션 애니메이션 */
+/* 인터랙션 애니메이션 개선 */
 .option:hover{
-  animation:pulse 0.3s ease-in-out
+  animation:pulse 0.3s ease-in-out;
+  transform:translateY(-2px);
+  box-shadow:0 4px 12px rgba(0,0,0,0.1)
+}
+.option:active{
+  transform:translateY(0) scale(0.98);
+  transition:transform 0.1s ease
 }
 .btn:active{
-  animation:bounce 0.3s ease-in-out
+  animation:bounce 0.3s ease-in-out;
+  transform:scale(0.95)
+}
+.btn:hover:not(:disabled){
+  animation:buttonHover 0.3s ease-in-out forwards
+}
+
+/* 새로운 인터랙션 애니메이션 */
+@keyframes buttonHover{
+  0%{transform:translateY(0) scale(1)}
+  50%{transform:translateY(-3px) scale(1.02)}
+  100%{transform:translateY(-2px) scale(1.01)}
+}
+@keyframes optionSelect{
+  0%{transform:scale(1)}
+  50%{transform:scale(1.05)}
+  100%{transform:scale(1)}
+}
+@keyframes progressPulse{
+  0%{opacity:1}
+  50%{opacity:0.7}
+  100%{opacity:1}
+}
+@keyframes sparkle{
+  0%{transform:scale(0) rotate(0deg);opacity:0}
+  50%{transform:scale(1) rotate(180deg);opacity:1}
+  100%{transform:scale(0) rotate(360deg);opacity:0}
+}
+
+/* 선택 효과 강화 */
+.option.selected{
+  animation:optionSelect 0.4s cubic-bezier(0.68,-0.55,0.265,1.55)
+}
+.option.selecting{
+  transform:scale(0.98);
+  opacity:0.8;
+  transition:all 0.1s ease
+}
+
+/* 진행률 바 애니메이션 개선 */
+.progress-fill{
+  position:relative;
+  overflow:hidden
+}
+.progress-fill::after{
+  content:'';
+  position:absolute;
+  top:0;
+  left:-100%;
+  width:100%;
+  height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,0.3),transparent);
+  animation:progressShimmer 2s infinite
+}
+@keyframes progressShimmer{
+  0%{left:-100%}
+  100%{left:100%}
+}
+
+/* 로딩 스피너 */
+.loading-spinner{
+  display:inline-block;
+  width:20px;
+  height:20px;
+  border:2px solid #f3f3f3;
+  border-top:2px solid #ff7eb3;
+  border-radius:50%;
+  animation:spin 1s linear infinite;
+  margin-right:8px
+}
+@keyframes spin{
+  0%{transform:rotate(0deg)}
+  100%{transform:rotate(360deg)}
+}
+
+/* 버튼 로딩 상태 */
+.btn.loading{
+  pointer-events:none;
+  opacity:0.7
+}
+.btn.loading::before{
+  content:'';
+  display:inline-block;
+  width:16px;
+  height:16px;
+  border:2px solid rgba(255,255,255,0.3);
+  border-top:2px solid white;
+  border-radius:50%;
+  animation:spin 1s linear infinite;
+  margin-right:8px;
+  vertical-align:middle
+}
+
+/* 스파클 효과 컨테이너 */
+.sparkle-container{
+  position:relative;
+  overflow:visible
+}
+.sparkle{
+  position:absolute;
+  width:6px;
+  height:6px;
+  background:radial-gradient(circle,#ff7eb3,#8ac6ff);
+  border-radius:50%;
+  pointer-events:none;
+  animation:sparkle 0.8s ease-out forwards
+}
+
+/* 마이크로 인터랙션 */
+.gender-option:active{
+  transform:scale(0.95);
+  transition:transform 0.1s ease
+}
+.share-btn:hover{
+  transform:translateY(-1px);
+  box-shadow:0 2px 8px rgba(255,126,179,0.2)
+}
+.share-btn:active{
+  transform:translateY(0);
+  transition:transform 0.1s ease
+}
+
+/* 포커스 상태 개선 */
+.option:focus,.gender-option:focus,.btn:focus{
+  outline:3px solid rgba(255,126,179,0.3);
+  outline-offset:2px
+}
+.option:focus:not(:focus-visible),.gender-option:focus:not(:focus-visible),.btn:focus:not(:focus-visible){
+  outline:none
 }
 .options-container{
   display:flex;
