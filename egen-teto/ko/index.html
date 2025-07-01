@@ -178,5 +178,39 @@
         }
       });
     </script>
+    <script>
+      // React 앱 강제 렌더링 - Router 우회
+      window.addEventListener('DOMContentLoaded', function() {
+        // React 앱이 로드되기를 기다린 후 강제로 PersonalityTest 컴포넌트 표시
+        function forceRenderApp() {
+          const rootElement = document.getElementById('root');
+          if (rootElement && rootElement.innerHTML.includes('404 Page Not Found')) {
+            console.log('404 감지, 앱 강제 렌더링 시도');
+            
+            // 페이지 새로고침으로 React 앱 재시작
+            setTimeout(function() {
+              window.location.reload();
+            }, 1000);
+          }
+        }
+        
+        // 1초 후 확인
+        setTimeout(forceRenderApp, 1000);
+        
+        // 3초 후 재확인
+        setTimeout(forceRenderApp, 3000);
+        
+        // 히스토리 이벤트 리스너 추가
+        window.addEventListener('popstate', function() {
+          setTimeout(forceRenderApp, 500);
+        });
+      });
+      
+      // URL 경로 정규화
+      if (window.location.pathname.endsWith('/index.html')) {
+        const newPath = window.location.pathname.replace('/index.html', '/');
+        window.history.replaceState({}, '', newPath);
+      }
+    </script>
 </body>
 </html>
