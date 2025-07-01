@@ -34,6 +34,37 @@
       color: #2d3748;
     }
     
+    /* AdSense 광고 차단 - 가운데 여백 방지 */
+    .adsbygoogle {
+      display: block !important;
+      margin: 20px auto !important;
+      text-align: center !important;
+      max-width: 100% !important;
+    }
+    
+    /* 가운데 여백에 광고 표시 방지 */
+    .card::before,
+    .card::after,
+    .container::before,
+    .container::after {
+      content: none !important;
+    }
+    
+    /* AdSense 자동 배치 차단 */
+    body {
+      -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+    }
+    
+    /* 광고 컨테이너 명시적 제어 */
+    .ad-container {
+      width: 100%;
+      max-width: 380px;
+      margin: 20px auto;
+      text-align: center;
+      clear: both;
+    }
+    
     .container {
       max-width: 420px;
       margin: 0 auto;
@@ -41,6 +72,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      position: relative;
     }
     
     .card {
@@ -50,6 +82,7 @@
       box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
       width: 100%;
       position: relative;
+      overflow: hidden; /* 광고 오버플로우 방지 */
     }
     
     /* 헤더 */
@@ -710,13 +743,6 @@
       background: #f9fafb;
     }
     
-    /* AdSense */
-    .adsbygoogle {
-      display: block;
-      margin: 24px auto;
-      text-align: center;
-    }
-    
     /* 반응형 */
     @media (max-width: 480px) {
       .container {
@@ -762,14 +788,6 @@
           <div class="info-badge" onclick="showInfo()">에겐 vs 테토 성향 테스트란?</div>
         </div>
         
-        <!-- AdSense 광고 -->
-        <ins class="adsbygoogle"
-             style="display:block"
-             data-ad-client="ca-pub-5508768187151867"
-             data-ad-slot="1234567890"
-             data-ad-format="auto"
-             data-full-width-responsive="true"></ins>
-        
         <div class="gender-section">
           <h3>성별을 선택해주세요</h3>
           
@@ -808,16 +826,6 @@
         <div class="question-section">
           <div class="question-number" id="questionNumber">질문 1</div>
           <h2 class="question-title" id="questionTitle"></h2>
-          
-          <!-- AdSense 광고 - 중간 -->
-          <div id="midAdContainer" class="hidden">
-            <ins class="adsbygoogle"
-                 style="display:block"
-                 data-ad-client="ca-pub-5508768187151867"
-                 data-ad-slot="9876543210"
-                 data-ad-format="auto"
-                 data-full-width-responsive="true"></ins>
-          </div>
           
           <div id="answerContainer"></div>
           <button class="btn btn-primary" id="nextBtn" onclick="nextQuestion()" disabled>다음 질문</button>
@@ -862,14 +870,6 @@
             </div>
           </div>
           
-          <!-- AdSense 광고 -->
-          <ins class="adsbygoogle"
-               style="display:block"
-               data-ad-client="ca-pub-5508768187151867"
-               data-ad-slot="1357924680"
-               data-ad-format="auto"
-               data-full-width-responsive="true"></ins>
-          
           <!-- 주요 결과 카드 -->
           <div class="result-cards">
             <div class="result-card">
@@ -912,14 +912,6 @@
               <div class="info-list" id="musicList"></div>
             </div>
           </div>
-          
-          <!-- AdSense 광고 -->
-          <ins class="adsbygoogle"
-               style="display:block"
-               data-ad-client="ca-pub-5508768187151867"
-               data-ad-slot="2468013579"
-               data-ad-format="auto"
-               data-full-width-responsive="true"></ins>
           
           <!-- 공유 섹션 -->
           <div class="share-section">
@@ -966,9 +958,25 @@
     </div>
   </div>
   
+  <!-- AdSense 광고 - 하단 배치 -->
+  <div class="ad-container">
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-5508768187151867"
+         data-ad-slot="1234567890"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+  </div>
+  
   <script>
-    // AdSense 초기화
-    (adsbygoogle = window.adsbygoogle || []).push({});
+    // AdSense 초기화 (페이지 로드 후)
+    window.addEventListener('load', function() {
+      try {
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      } catch (e) {
+        console.log('AdSense loading error:', e);
+      }
+    });
     
     // 테스트 데이터
     const questions = [
@@ -1162,16 +1170,6 @@
       document.getElementById('questionTitle').textContent = question.q;
       document.getElementById('questionNumber').textContent = `질문 ${currentQuestion + 1}`;
       
-      if (currentQuestion === 5) {
-        const midAdContainer = document.getElementById('midAdContainer');
-        midAdContainer.classList.remove('hidden');
-        try {
-          (adsbygoogle = window.adsbygoogle || []).push({});
-        } catch (e) {
-          console.log('AdSense loading error:', e);
-        }
-      }
-      
       const container = document.getElementById('answerContainer');
       container.innerHTML = '';
       
@@ -1262,13 +1260,6 @@
     function showResult() {
       document.getElementById('loadingScreen').classList.add('hidden');
       document.getElementById('resultScreen').classList.remove('hidden');
-      
-      try {
-        (adsbygoogle = window.adsbygoogle || []).push({});
-        (adsbygoogle = window.adsbygoogle || []).push({});
-      } catch (e) {
-        console.log('AdSense loading error:', e);
-      }
       
       const totalScore = egenScore + tetoScore;
       const egenPercent = totalScore > 0 ? Math.round((egenScore / totalScore) * 100) : 50;
@@ -1449,7 +1440,6 @@ ${result.fullDescription}
       
       document.getElementById('resultScreen').classList.add('hidden');
       document.getElementById('startScreen').classList.remove('hidden');
-      document.getElementById('midAdContainer').classList.add('hidden');
       
       document.querySelectorAll('.gender-option').forEach(option => {
         option.classList.remove('selected');
