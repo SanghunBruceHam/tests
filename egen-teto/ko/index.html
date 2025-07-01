@@ -158,5 +158,25 @@
         min-width: 0.875rem !important;
       }
     </style>
+    <script>
+      // React Router 경로 처리 - index.html 지원
+      window.addEventListener('DOMContentLoaded', function() {
+        // 현재 경로가 index.html인 경우 React Router가 올바르게 처리하도록 설정
+        if (window.location.pathname.endsWith('/index.html')) {
+          // 브라우저 히스토리 API로 React Router 친화적 경로로 변경
+          const newPath = window.location.pathname.replace('/index.html', '/');
+          window.history.replaceState({}, '', newPath + window.location.search + window.location.hash);
+          
+          // React 앱이 로드된 후 강제로 라우터 업데이트
+          setTimeout(function() {
+            if (window.React && window.ReactDOM) {
+              // React 앱 강제 리렌더
+              const event = new PopStateEvent('popstate');
+              window.dispatchEvent(event);
+            }
+          }, 100);
+        }
+      });
+    </script>
 </body>
 </html>
