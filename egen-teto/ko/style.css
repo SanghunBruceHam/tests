@@ -396,11 +396,97 @@ h1{
 
 .hidden{display:none}
 
+/* 모바일 컨트롤 */
+.mobile-controls{
+  display:flex;
+  justify-content:center;
+  margin-bottom:20px
+}
+.fullscreen-btn{
+  background:rgba(255,255,255,0.9);
+  border:2px solid var(--accent-color);
+  color:var(--accent-color);
+  padding:8px 16px;
+  border-radius:20px;
+  cursor:pointer;
+  font-size:0.9rem;
+  font-weight:600;
+  transition:all 0.3s ease
+}
+.fullscreen-btn:hover{
+  background:var(--accent-color);
+  color:white
+}
+
+/* 스와이프 가이드 */
+.swipe-guide{
+  font-size:0.8rem;
+  color:#888;
+  text-align:center;
+  margin-bottom:15px;
+  opacity:0.7;
+  animation:fadeInOut 2s infinite
+}
+@keyframes fadeInOut{
+  0%,100%{opacity:0.3}
+  50%{opacity:0.8}
+}
+
+/* 모바일 가이드 */
+.mobile-guide{
+  font-size:0.8rem;
+  color:#999;
+  display:none
+}
+
+/* 터치 인터랙션 개선 */
+.option,.gender-option,.btn{
+  touch-action:manipulation;
+  user-select:none
+}
+
+/* 질문 화면 터치 영역 */
+#questionScreen{
+  touch-action:pan-y;
+  overscroll-behavior-x:none
+}
+
+/* 풀스크린 스타일 */
+:fullscreen .container{
+  padding:10px;
+  max-width:100%
+}
+:fullscreen .card{
+  margin:0;
+  border-radius:0;
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center
+}
+
 /* 모바일 반응형 */
+@media (max-width:768px){
+  .mobile-guide{display:inline}
+  .swipe-guide{display:block}
+}
 @media (max-width:480px){
   .container{padding:15px}
   .card{padding:20px}
   h1{font-size:1.5rem}
   .question-text{font-size:1.1rem}
   .share-buttons{grid-template-columns:1fr}
+  
+  /* 모바일에서 터치 최적화 */
+  .option{
+    padding:18px 20px;
+    font-size:1.1rem
+  }
+  .gender-option{
+    padding:25px 20px
+  }
+  .btn{
+    padding:18px 30px;
+    font-size:1.2rem
+  }
 }

@@ -75,14 +75,20 @@
         </div>
       </div>
       
+      <div class="mobile-controls">
+        <button class="fullscreen-btn" id="fullscreenBtn" onclick="toggleFullscreen()">📱 풀스크린</button>
+      </div>
+      
       <button class="btn" id="startBtn" onclick="startTest()" disabled>테스트 시작하기</button>
       <p style="margin-top: 20px; color: #888; font-size: 0.9rem; text-align: center;">
-        총 10개 질문 • 약 2분 소요
+        총 10개 질문 • 약 2분 소요<br>
+        <span class="mobile-guide">📱 모바일: 좌우 스와이프로 조작 가능</span>
       </p>
     </div>
 
     <!-- 질문 화면 -->
-    <div id="questionScreen" class="card hidden" role="main" aria-live="polite">
+    <div id="questionScreen" class="card hidden" role="main" aria-live="polite" 
+         ontouchstart="handleTouchStart(event)" ontouchend="handleTouchEnd(event)">
       <div class="progress-section">
         <div class="progress-info">
           <span>진행률</span>
@@ -96,6 +102,7 @@
       <div class="question-section">
         <div class="question-number" id="questionNumber" aria-live="polite">질문 1</div>
         <div class="question-text" id="questionText" role="heading" aria-level="2"></div>
+        <div class="swipe-guide">👈 왼쪽으로 스와이프하여 다음 질문으로</div>
         <div class="options-container" id="optionsContainer" role="radiogroup" aria-labelledby="questionText"></div>
         <button class="btn" id="nextBtn" onclick="nextQuestion()" disabled aria-describedby="questionText">다음</button>
       </div>
@@ -156,6 +163,91 @@
   </div>
 
   <script>
+    // 모바일 경험 개선 변수
+    let touchStartX = 0;
+    let touchEndX = 0;
+    let isFullscreen = false;
+    
+    // 햅틱 피드백 함수
+    function hapticFeedback(type = 'light') {
+      if ('vibrate' in navigator) {
+        switch(type) {
+          case 'light':
+            navigator.vibrate(10);
+            break;
+          case 'medium':
+            navigator.vibrate(50);
+            break;
+          case 'heavy':
+            navigator.vibrate([100, 30, 100]);
+            break;
+          case 'success':
+            navigator.vibrate([50, 50, 50]);
+            break;
+        }
+      }
+    }
+
+    // 풀스크린 토글
+    function toggleFullscreen() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().then(() => {
+          isFullscreen = true;
+          hapticFeedback('medium');
+          updateFullscreenButton();
+        }).catch(err => {
+          console.log(`풀스크린 오류: ${err.message}`);
+        });
+      } else {
+        document.exitFullscreen().then(() => {
+          isFullscreen = false;
+          hapticFeedback('light');
+          updateFullscreenButton();
+        });
+      }
+    }
+
+    // 풀스크린 버튼 업데이트
+    function updateFullscreenButton() {
+      const btn = document.getElementById('fullscreenBtn');
+      if (btn) {
+        btn.innerHTML = isFullscreen ? '🔳 나가기' : '📱 풀스크린';
+      }
+    }
+
+    // 스와이프 감지
+    function handleTouchStart(e) {
+      touchStartX = e.changedTouches[0].screenX;
+    }
+
+    function handleTouchEnd(e) {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+    }
+
+    function handleSwipe() {
+      const swipeThreshold = 50;
+      const swipeDistance = touchEndX - touchStartX;
+      
+      // 질문 화면에서만 스와이프 활성화
+      if (!document.getElementById('questionScreen').classList.contains('hidden')) {
+        if (Math.abs(swipeDistance) > swipeThreshold) {
+          if (swipeDistance > 0) {
+            // 오른쪽 스와이프 - 이전 질문 (현재는 비활성화)
+            hapticFeedback('light');
+          } else {
+            // 왼쪽 스와이프 - 다음 질문
+            if (!document.getElementById('nextBtn').disabled) {
+              hapticFeedback('medium');
+              nextQuestion();
+            } else {
+              hapticFeedback('light');
+            }
+          }
+        }
+      }
+    }
+
     // 테스트 질문 데이터
     const questions = [
       {
@@ -282,6 +374,7 @@
     // 성별 선택
     function selectGender(gender) {
       selectedGender = gender;
+      hapticFeedback('medium'); // 햅틱 피드백
       
       // 이전 선택 제거
       document.querySelectorAll('.gender-option').forEach(opt => {
@@ -298,6 +391,7 @@
       
       // 시작 버튼 활성화
       document.getElementById('startBtn').disabled = false;
+      hapticFeedback('success'); // 완료 햅틱
     }
 
     // 성별 선택 키보드 핸들러
@@ -401,6 +495,8 @@
 
     // 옵션 선택
     function selectOption(index, element) {
+      hapticFeedback('light'); // 선택 햅틱
+      
       // 이전 선택 제거
       document.querySelectorAll('.option').forEach(opt => {
         opt.classList.remove('selected');
@@ -416,6 +512,7 @@
       
       // 다음 버튼 활성화
       document.getElementById('nextBtn').disabled = false;
+      hapticFeedback('success'); // 완료 햅틱
       
       // 스크린 리더를 위한 알림
       element.setAttribute('aria-live', 'polite');
