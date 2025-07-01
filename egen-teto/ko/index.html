@@ -32,7 +32,7 @@
       background-size: 400% 400%;
       animation: gradientShift 8s ease infinite;
       min-height: 100vh;
-      padding: 20px;
+      padding: 15px;
       color: #333;
     }
     
@@ -68,7 +68,7 @@
     .container {
       max-width: 400px;
       margin: 0 auto;
-      min-height: calc(100vh - 40px);
+      min-height: calc(100vh - 30px);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -78,7 +78,7 @@
       background: rgba(255, 255, 255, 0.95);
       backdrop-filter: blur(20px);
       border-radius: 24px;
-      padding: 32px;
+      padding: 24px;
       box-shadow: 0 30px 60px rgba(0,0,0,0.15);
       border: 1px solid rgba(255,255,255,0.3);
       width: 100%;
@@ -93,11 +93,11 @@
     /* 헤더 스타일 */
     .header {
       text-align: center;
-      margin-bottom: 32px;
+      margin-bottom: 24px;
     }
     
     .title {
-      font-size: 28px;
+      font-size: 26px;
       font-weight: 800;
       margin-bottom: 8px;
       line-height: 1.2;
@@ -112,9 +112,9 @@
     }
     
     .subtitle {
-      font-size: 15px;
+      font-size: 14px;
       color: #6B7280;
-      margin-bottom: 20px;
+      margin-bottom: 16px;
       line-height: 1.4;
     }
     
@@ -123,9 +123,9 @@
       align-items: center;
       background: linear-gradient(135deg, #FF6B9D, #4834DF);
       color: white;
-      padding: 8px 16px;
+      padding: 6px 14px;
       border-radius: 16px;
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 600;
       cursor: pointer;
       transition: all 0.3s ease;
@@ -142,36 +142,36 @@
       margin-right: 6px;
     }
     
-    /* 마스코트 - 중앙 정렬 개선 */
+    /* 마스코트 - 빈 공간 최소화 */
     .mascot {
-      font-size: 48px;
-      margin: 20px 0;
+      font-size: 40px;
+      margin: 16px 0;
       text-align: center;
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
     }
     
     /* 성별 선택 */
     .gender-section h3 {
       text-align: center;
-      font-size: 20px;
+      font-size: 18px;
       font-weight: 700;
-      margin-bottom: 24px;
+      margin-bottom: 20px;
       color: #1F2937;
     }
     
     .gender-options {
       display: grid;
-      gap: 12px;
-      margin-bottom: 24px;
+      gap: 10px;
+      margin-bottom: 20px;
     }
     
     .gender-option {
       display: flex;
       align-items: center;
-      padding: 16px 20px;
+      padding: 14px 18px;
       border: 2px solid #E5E7EB;
       border-radius: 16px;
       cursor: pointer;
@@ -209,21 +209,21 @@
     }
     
     .gender-icon {
-      font-size: 20px;
+      font-size: 18px;
       margin-right: 12px;
-      width: 24px;
+      width: 20px;
       text-align: center;
     }
     
     .gender-text {
       flex: 1;
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 600;
     }
     
     .radio-circle {
-      width: 20px;
-      height: 20px;
+      width: 18px;
+      height: 18px;
       border: 2px solid currentColor;
       border-radius: 50%;
       position: relative;
@@ -235,8 +235,8 @@
       position: absolute;
       top: 50%;
       left: 50%;
-      width: 10px;
-      height: 10px;
+      width: 8px;
+      height: 8px;
       background: currentColor;
       border-radius: 50%;
       transform: translate(-50%, -50%);
@@ -244,7 +244,7 @@
     
     /* 진행률 바 */
     .progress-section {
-      margin-bottom: 24px;
+      margin-bottom: 20px;
     }
     
     .progress-bar-container {
@@ -252,7 +252,7 @@
       background: #E5E7EB;
       border-radius: 4px;
       overflow: hidden;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
     
     .progress-bar {
@@ -283,7 +283,7 @@
     .progress-text {
       display: flex;
       justify-content: space-between;
-      font-size: 13px;
+      font-size: 12px;
       color: #6B7280;
     }
     
@@ -293,23 +293,23 @@
     }
     
     .question-emoji {
-      font-size: 32px;
-      margin-bottom: 16px;
+      font-size: 28px;
+      margin-bottom: 12px;
       display: block;
       text-align: center;
     }
     
     .question-number {
-      font-size: 16px;
+      font-size: 14px;
       font-weight: 600;
       color: #6B7280;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
     
     .question-title {
-      font-size: 20px;
+      font-size: 18px;
       font-weight: 700;
-      margin-bottom: 32px;
+      margin-bottom: 24px;
       line-height: 1.4;
       color: #1F2937;
     }
@@ -317,18 +317,18 @@
     /* 답변 옵션 */
     .answer-options {
       display: grid;
-      gap: 12px;
-      margin-bottom: 24px;
+      gap: 10px;
+      margin-bottom: 20px;
     }
     
     .answer-option {
-      padding: 16px 20px;
+      padding: 14px 16px;
       background: rgba(255, 255, 255, 0.8);
       border: 2px solid #E5E7EB;
-      border-radius: 16px;
+      border-radius: 14px;
       cursor: pointer;
       transition: all 0.3s ease;
-      font-size: 14px;
+      font-size: 13px;
       line-height: 1.4;
       text-align: left;
     }
@@ -351,17 +351,17 @@
     .yn-options {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-bottom: 24px;
+      gap: 10px;
+      margin-bottom: 20px;
     }
     
     .yn-option {
-      padding: 20px;
+      padding: 16px;
       border: 2px solid #E5E7EB;
-      border-radius: 16px;
+      border-radius: 14px;
       cursor: pointer;
       transition: all 0.3s ease;
-      font-size: 16px;
+      font-size: 14px;
       font-weight: 600;
       text-align: center;
       background: rgba(255, 255, 255, 0.8);
@@ -402,7 +402,7 @@
     
     .yn-option::before {
       display: block;
-      font-size: 20px;
+      font-size: 18px;
       margin-bottom: 4px;
     }
     
@@ -417,10 +417,10 @@
     /* 버튼 */
     .btn {
       width: 100%;
-      padding: 16px;
+      padding: 14px;
       border: none;
-      border-radius: 16px;
-      font-size: 16px;
+      border-radius: 14px;
+      font-size: 15px;
       font-weight: 600;
       cursor: pointer;
       transition: all 0.3s ease;
@@ -451,25 +451,25 @@
     /* 로딩 화면 */
     .loading-section {
       text-align: center;
-      padding: 40px 0;
+      padding: 30px 0;
     }
     
     .loading-text {
-      font-size: 18px;
+      font-size: 16px;
       font-weight: 600;
-      margin-bottom: 20px;
+      margin-bottom: 16px;
       color: #1F2937;
     }
     
     .loading-dots {
       display: flex;
       justify-content: center;
-      gap: 8px;
+      gap: 6px;
     }
     
     .dot {
-      width: 12px;
-      height: 12px;
+      width: 10px;
+      height: 10px;
       border-radius: 50%;
       animation: bounce 1.4s ease-in-out infinite both;
     }
@@ -488,18 +488,63 @@
       text-align: center;
     }
     
+    /* 결과 헤더 - 성향 표시 */
+    .result-header {
+      text-align: center;
+      margin-bottom: 20px;
+      padding: 20px;
+      border-radius: 20px;
+      position: relative;
+    }
+    
+    .result-header.egen {
+      background: linear-gradient(135deg, rgba(255, 107, 157, 0.15), rgba(253, 121, 168, 0.15));
+      border: 2px solid #FF6B9D;
+    }
+    
+    .result-header.teto {
+      background: linear-gradient(135deg, rgba(72, 52, 223, 0.15), rgba(108, 92, 231, 0.15));
+      border: 2px solid #4834DF;
+    }
+    
+    .result-emoji {
+      font-size: 48px;
+      margin-bottom: 12px;
+      display: block;
+    }
+    
+    .result-type {
+      font-size: 24px;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+    
+    .result-type.egen {
+      color: #FF6B9D;
+    }
+    
+    .result-type.teto {
+      color: #4834DF;
+    }
+    
+    .result-description {
+      font-size: 14px;
+      color: #6B7280;
+      line-height: 1.4;
+    }
+    
     .result-chart {
       background: rgba(255, 255, 255, 0.8);
       border-radius: 16px;
-      padding: 20px;
-      margin-bottom: 20px;
+      padding: 16px;
+      margin-bottom: 16px;
       backdrop-filter: blur(10px);
     }
     
     .chart-title {
-      font-size: 18px;
+      font-size: 16px;
       font-weight: 700;
-      margin-bottom: 16px;
+      margin-bottom: 12px;
       color: #1F2937;
       display: flex;
       align-items: center;
@@ -508,19 +553,19 @@
     
     .chart-title::before {
       content: '📊';
-      margin-right: 8px;
+      margin-right: 6px;
     }
     
     .chart-item {
       display: flex;
       align-items: center;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
     
     .chart-label {
-      width: 80px;
+      width: 70px;
       text-align: left;
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 600;
       display: flex;
       align-items: center;
@@ -535,10 +580,10 @@
     }
     
     .chart-label::before {
-      width: 12px;
-      height: 12px;
+      width: 10px;
+      height: 10px;
       border-radius: 50%;
-      margin-right: 8px;
+      margin-right: 6px;
       content: '';
     }
     
@@ -552,17 +597,17 @@
     
     .chart-bar {
       flex: 1;
-      height: 24px;
+      height: 20px;
       background: #E5E7EB;
-      border-radius: 12px;
-      margin: 0 12px;
+      border-radius: 10px;
+      margin: 0 10px;
       position: relative;
       overflow: hidden;
     }
     
     .chart-fill {
       height: 100%;
-      border-radius: 12px;
+      border-radius: 10px;
       transition: width 1s ease;
     }
     
@@ -575,7 +620,7 @@
     }
     
     .chart-percentage {
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 600;
       color: #374151;
     }
@@ -583,14 +628,14 @@
     /* 결과 카드들 */
     .result-cards {
       display: grid;
-      gap: 16px;
-      margin-bottom: 24px;
+      gap: 12px;
+      margin-bottom: 16px;
     }
     
     .result-card {
       background: rgba(255, 255, 255, 0.9);
-      border-radius: 16px;
-      padding: 20px;
+      border-radius: 14px;
+      padding: 16px;
       text-align: left;
       border: 2px solid transparent;
       backdrop-filter: blur(10px);
@@ -609,22 +654,22 @@
     .result-card-header {
       display: flex;
       align-items: center;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
     
     .result-card-icon {
-      font-size: 20px;
-      margin-right: 8px;
+      font-size: 18px;
+      margin-right: 6px;
     }
     
     .result-card-title {
-      font-size: 16px;
+      font-size: 14px;
       font-weight: 700;
       color: #1F2937;
     }
     
     .result-card-content {
-      font-size: 14px;
+      font-size: 13px;
       line-height: 1.5;
       color: #4B5563;
     }
@@ -633,22 +678,22 @@
       display: inline-block;
       background: linear-gradient(135deg, #FF6B9D, #4834DF);
       color: white;
-      padding: 4px 12px;
-      border-radius: 12px;
-      font-size: 13px;
+      padding: 3px 10px;
+      border-radius: 10px;
+      font-size: 12px;
       font-weight: 600;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
     
     /* 키워드 태그 */
     .keywords-section {
-      margin-bottom: 20px;
+      margin-bottom: 16px;
     }
     
     .keywords-title {
-      font-size: 16px;
+      font-size: 14px;
       font-weight: 700;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
       color: #1F2937;
       display: flex;
       align-items: center;
@@ -657,47 +702,47 @@
     
     .keywords-title::before {
       content: '⭐';
-      margin-right: 8px;
+      margin-right: 6px;
     }
     
     .keywords-grid {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
+      gap: 6px;
       justify-content: center;
     }
     
     .keyword-tag {
       background: linear-gradient(135deg, #FF6B9D, #4834DF);
       color: white;
-      padding: 6px 12px;
-      border-radius: 12px;
-      font-size: 13px;
+      padding: 4px 10px;
+      border-radius: 10px;
+      font-size: 12px;
       font-weight: 500;
       box-shadow: 0 2px 8px rgba(255, 107, 157, 0.3);
     }
     
-    /* 상세 정보 카드들 - 정렬 개선 */
+    /* 상세 정보 카드들 */
     .info-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-bottom: 20px;
+      gap: 10px;
+      margin-bottom: 16px;
     }
     
     .info-card {
       background: rgba(255, 255, 255, 0.9);
       border-radius: 12px;
-      padding: 16px;
+      padding: 12px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.08);
       text-align: center;
       backdrop-filter: blur(10px);
     }
     
     .info-card-title {
-      font-size: 14px;
+      font-size: 12px;
       font-weight: 700;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
       color: #1F2937;
       display: flex;
       align-items: center;
@@ -705,8 +750,8 @@
     }
     
     .info-card-title::before {
-      margin-right: 6px;
-      font-size: 16px;
+      margin-right: 4px;
+      font-size: 14px;
     }
     
     .info-card-title.famous::before { content: '👥'; }
@@ -717,7 +762,7 @@
     .info-card-title.movie::before { content: '🎬'; }
     
     .info-card-content {
-      font-size: 13px;
+      font-size: 11px;
       line-height: 1.4;
       color: #6B7280;
       text-align: center;
@@ -726,15 +771,15 @@
     .info-list {
       display: flex;
       flex-direction: column;
-      gap: 4px;
+      gap: 3px;
       align-items: center;
     }
     
     .info-item {
       background: rgba(243, 244, 246, 0.8);
-      padding: 6px 10px;
-      border-radius: 8px;
-      font-size: 12px;
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-size: 11px;
       font-weight: 500;
       color: #374151;
       text-align: center;
@@ -752,16 +797,16 @@
       color: #92400E;
     }
     
-    /* 공유 섹션 - 정렬 개선 */
+    /* 공유 섹션 */
     .share-section {
-      margin-top: 24px;
+      margin-top: 20px;
     }
     
     .share-title {
-      font-size: 16px;
+      font-size: 14px;
       font-weight: 700;
       text-align: center;
-      margin-bottom: 16px;
+      margin-bottom: 12px;
       color: #1F2937;
       display: flex;
       align-items: center;
@@ -770,21 +815,21 @@
     
     .share-title::before {
       content: '📤';
-      margin-right: 8px;
+      margin-right: 6px;
     }
     
     .share-buttons {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
-      gap: 8px;
-      margin-bottom: 16px;
+      gap: 6px;
+      margin-bottom: 12px;
     }
     
     .share-btn {
-      padding: 12px 8px;
+      padding: 10px 6px;
       border: none;
-      border-radius: 12px;
-      font-size: 12px;
+      border-radius: 10px;
+      font-size: 11px;
       font-weight: 600;
       cursor: pointer;
       transition: all 0.3s ease;
@@ -792,7 +837,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 4px;
+      gap: 3px;
       text-align: center;
     }
     
@@ -832,7 +877,7 @@
     }
     
     .share-icon {
-      font-size: 16px;
+      font-size: 14px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -841,14 +886,14 @@
     .action-buttons {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 12px;
+      gap: 10px;
     }
     
     .action-btn {
-      padding: 16px;
+      padding: 12px;
       border: none;
-      border-radius: 16px;
-      font-size: 14px;
+      border-radius: 12px;
+      font-size: 13px;
       font-weight: 600;
       cursor: pointer;
       transition: all 0.3s ease;
@@ -869,15 +914,15 @@
     /* AdSense 광고 스타일 */
     .adsbygoogle {
       display: block;
-      margin: 20px auto;
+      margin: 16px auto;
       text-align: center;
     }
     
     /* 반응형 */
     @media (max-width: 480px) {
       .container { padding: 10px; }
-      .card { padding: 24px; }
-      .title { font-size: 24px; }
+      .card { padding: 20px; }
+      .title { font-size: 22px; }
       .info-grid { grid-template-columns: 1fr; }
       .share-buttons { grid-template-columns: 1fr 1fr; }
     }
@@ -980,6 +1025,13 @@
       <!-- 결과 화면 -->
       <div id="resultScreen" class="hidden">
         <div class="result-section">
+          <!-- 결과 헤더 - 성향 표시 -->
+          <div class="result-header" id="resultHeader">
+            <div class="result-emoji" id="resultEmoji"></div>
+            <div class="result-type" id="resultType"></div>
+            <div class="result-description" id="resultDescription"></div>
+          </div>
+          
           <!-- 성향 분석 차트 -->
           <div class="result-chart">
             <div class="chart-title">성향 분석</div>
@@ -1233,7 +1285,9 @@
         male: {
           title: '에겐남 💖',
           subtitle: '감성적인 남성',
-          description: '감정이 풍부하고 공감능력이 뛰어난 당신! 로맨틱하고 따뜻한 매력으로 사람들의 마음을 사로잡는 스타일입니다. 상대방의 마음을 잘 읽고 배려심이 많아 연인과의 관계에서 깊은 유대감을 형성합니다.',
+          emoji: '💖✨',
+          description: '감성적이고 공감능력이 뛰어난 당신',
+          fullDescription: '감정이 풍부하고 공감능력이 뛰어난 당신! 로맨틱하고 따뜻한 매력으로 사람들의 마음을 사로잡는 스타일입니다. 상대방의 마음을 잘 읽고 배려심이 많아 연인과의 관계에서 깊은 유대감을 형성합니다.',
           match: '테토녀 (논리적인 여성)',
           matchDesc: '차분하고 이성적인 테토녀와 완벽한 균형을 이룹니다. 당신의 감성과 상대방의 논리가 서로를 보완해줍니다.',
           keywords: ['감성적', '로맨틱', '배려심', '공감능력', '직관적', '따뜻한', '감정표현'],
@@ -1247,7 +1301,9 @@
         female: {
           title: '에겐녀 💕',
           subtitle: '감성적인 여성',
-          description: '따뜻하고 감성적인 당신! 직감적이고 공감능력이 뛰어나며, 사람들과의 감정적 교감을 중시합니다. 로맨틱한 상황을 좋아하고 상대방을 세심하게 배려하는 매력적인 스타일입니다.',
+          emoji: '💕✨',
+          description: '감성적이고 공감능력이 뛰어난 당신',
+          fullDescription: '따뜻하고 감성적인 당신! 직감적이고 공감능력이 뛰어나며, 사람들과의 감정적 교감을 중시합니다. 로맨틱한 상황을 좋아하고 상대방을 세심하게 배려하는 매력적인 스타일입니다.',
           match: '테토남 (논리적인 남성)',
           matchDesc: '안정적이고 계획적인 테토남과 환상의 커플이 됩니다. 당신의 감성이 상대방에게 활력을 주고, 상대방의 안정감이 당신을 든든하게 해줍니다.',
           keywords: ['감성적', '따뜻한', '배려심', '로맨틱', '공감능력', '직관적', '세심한'],
@@ -1263,7 +1319,9 @@
         male: {
           title: '테토남 🧠',
           subtitle: '논리적인 남성',
-          description: '차분하고 이성적인 당신! 논리적 사고와 계획성이 뛰어나며, 안정적인 관계를 추구합니다. 감정보다는 현실적인 판단을 중시하고, 신뢰할 수 있는 파트너로서의 매력을 가지고 있습니다.',
+          emoji: '🧠✨',
+          description: '논리적이고 체계적인 사고를 하는 당신',
+          fullDescription: '차분하고 이성적인 당신! 논리적 사고와 계획성이 뛰어나며, 안정적인 관계를 추구합니다. 감정보다는 현실적인 판단을 중시하고, 신뢰할 수 있는 파트너로서의 매력을 가지고 있습니다.',
           match: '에겐녀 (감성적인 여성)',
           matchDesc: '감성적이고 따뜻한 에겐녀와 완벽한 조화를 이룹니다. 당신의 안정감이 상대방에게 든든함을 주고, 상대방의 감성이 당신의 삶에 활력을 불어넣습니다.',
           keywords: ['논리적', '계획적', '안정적', '분석적', '신중한', '체계적', '현실적'],
@@ -1277,7 +1335,9 @@
         female: {
           title: '테토녀 🎯',
           subtitle: '논리적인 여성',
-          description: '독립적이고 합리적인 당신! 감정보다는 논리를 중시하며, 체계적으로 문제를 해결하는 능력이 뛰어납니다. 자신만의 확고한 가치관을 가지고 있으며, 실용적인 관계를 선호합니다.',
+          emoji: '🎯✨',
+          description: '논리적이고 독립적인 사고를 하는 당신',
+          fullDescription: '독립적이고 합리적인 당신! 감정보다는 논리를 중시하며, 체계적으로 문제를 해결하는 능력이 뛰어납니다. 자신만의 확고한 가치관을 가지고 있으며, 실용적인 관계를 선호합니다.',
           match: '에겐남 (감성적인 남성)',
           matchDesc: '감성적이고 로맨틱한 에겐남과 완벽한 밸런스를 만듭니다. 당신의 이성적 판단력이 상대방을 안정시키고, 상대방의 감성이 당신의 삶을 풍요롭게 해줍니다.',
           keywords: ['독립적', '합리적', '목표지향적', '효율적', '분석적', '논리적', '체계적'],
@@ -1440,6 +1500,17 @@
       const egenPercent = totalScore > 0 ? Math.round((egenScore / totalScore) * 100) : 50;
       const tetoPercent = 100 - egenPercent;
       
+      const resultType = egenScore > tetoScore ? 'egen' : 'teto';
+      const result = results[resultType][selectedGender];
+      
+      // 결과 헤더 설정
+      const resultHeader = document.getElementById('resultHeader');
+      resultHeader.className = `result-header ${resultType}`;
+      document.getElementById('resultEmoji').textContent = result.emoji;
+      document.getElementById('resultType').textContent = result.title;
+      document.getElementById('resultType').className = `result-type ${resultType}`;
+      document.getElementById('resultDescription').textContent = result.description;
+      
       // 차트 업데이트
       setTimeout(() => {
         document.getElementById('egenBar').style.width = egenPercent + '%';
@@ -1448,11 +1519,8 @@
         document.getElementById('tetoPercent').textContent = tetoPercent + '%';
       }, 500);
       
-      const resultType = egenScore > tetoScore ? 'egen' : 'teto';
-      const result = results[resultType][selectedGender];
-      
       // 결과 내용 업데이트
-      document.getElementById('personalityContent').textContent = result.description;
+      document.getElementById('personalityContent').textContent = result.fullDescription;
       document.getElementById('matchContent').innerHTML = `
         <div class="match-type">${result.match}</div>
         <div>${result.matchDesc}</div>
@@ -1491,14 +1559,14 @@
       return `🧠💖 에겐 vs 테토 성향 테스트 결과
 
 🎯 ${result.title}
-${result.description}
+${result.fullDescription}
 
 💕 찰떡궁합: ${result.match}
 💼 추천 직업: ${result.careers.join(', ')}
 🎨 라이프스타일: ${result.lifestyle.join(', ')}
 🏷️ 키워드: ${result.keywords.join(', ')}
 
-✨ 나도 테스트하기: https://psycho-tetris-mahalohanabruce.replit.app/`;
+✨ 나도 테스트하기: https://tests.mahalohana-bruce.com/egen-teto/ko/`;
     }
     
     function copyResult() {
@@ -1540,13 +1608,13 @@ ${result.description}
     function shareKakao() {
       const resultType = egenScore > tetoScore ? 'egen' : 'teto';
       const result = results[resultType][selectedGender];
-      const text = `나는 ${result.title}! 너도 테스트해봐~ https://psycho-tetris-mahalohanabruce.replit.app/`;
+      const text = `나는 ${result.title}! 너도 테스트해봐~ https://tests.mahalohana-bruce.com/egen-teto/ko/`;
       
       if (navigator.share) {
         navigator.share({
           title: '에겐 vs 테토 성향 테스트',
           text: text,
-          url: 'https://psycho-tetris-mahalohanabruce.replit.app/'
+          url: 'https://tests.mahalohana-bruce.com/egen-teto/ko/'
         }).catch(err => {
           console.log('공유 실패:', err);
           copyToClipboard(text);
@@ -1557,7 +1625,7 @@ ${result.description}
     }
     
     function shareInstagram() {
-      const text = '에겐 vs 테토 성향 테스트 결과 확인! https://psycho-tetris-mahalohanabruce.replit.app/';
+      const text = '에겐 vs 테토 성향 테스트 결과 확인! https://tests.mahalohana-bruce.com/egen-teto/ko/';
       copyToClipboard(text);
       alert('텍스트가 복사되었습니다! 인스타그램에 붙여넣기 해주세요.');
     }
@@ -1565,7 +1633,7 @@ ${result.description}
     function shareThreads() {
       const resultType = egenScore > tetoScore ? 'egen' : 'teto';
       const result = results[resultType][selectedGender];
-      const text = `나는 ${result.title}! 너도 테스트해봐~ https://psycho-tetris-mahalohanabruce.replit.app/`;
+      const text = `나는 ${result.title}! 너도 테스트해봐~ https://tests.mahalohana-bruce.com/egen-teto/ko/`;
       
       try {
         // Threads 직접 공유 시도
@@ -1581,7 +1649,7 @@ ${result.description}
     function shareTwitter() {
       const resultType = egenScore > tetoScore ? 'egen' : 'teto';
       const result = results[resultType][selectedGender];
-      const text = `나는 ${result.title}! 너도 테스트해봐~ https://psycho-tetris-mahalohanabruce.replit.app/`;
+      const text = `나는 ${result.title}! 너도 테스트해봐~ https://tests.mahalohana-bruce.com/egen-teto/ko/`;
       
       try {
         const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
@@ -1594,10 +1662,10 @@ ${result.description}
     
     function shareFacebook() {
       try {
-        const url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent('https://psycho-tetris-mahalohanabruce.replit.app/')}`;
+        const url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent('https://tests.mahalohana-bruce.com/egen-teto/ko/')}`;
         window.open(url, '_blank', 'noopener,noreferrer');
       } catch (err) {
-        const text = '에겐 vs 테토 성향 테스트 https://psycho-tetris-mahalohanabruce.replit.app/';
+        const text = '에겐 vs 테토 성향 테스트 https://tests.mahalohana-bruce.com/egen-teto/ko/';
         copyToClipboard(text);
         alert('텍스트가 복사되었습니다! 페이스북에 붙여넣기 해주세요.');
       }
