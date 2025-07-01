@@ -15,6 +15,15 @@ mode = "sequential"
 task = "shell.exec"
 args = "python -m http.server 5000"
 
+[[workflows.workflow]]
+name = "Auto Commit Watcher"
+author = 44423350
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "python watch_changes.py"
+
 [[ports]]
 localPort = 5000
 externalPort = 80
