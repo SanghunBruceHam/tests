@@ -17,7 +17,7 @@
   <link rel="canonical" href="https://tests.mahalohana-bruce.com/egen-teto/ko/" />
   
   <style>
-    /* 시스템 폰트 및 기본 스타일 */
+    /* 기본 스타일 */
     * {
       margin: 0;
       padding: 0;
@@ -38,6 +38,12 @@
       border-radius: 24px;
       padding: 32px;
       box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+      animation: fadeIn 0.5s ease-out;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
     
     .title {
@@ -62,6 +68,34 @@
       margin-bottom: 24px;
     }
     
+    /* 진행률 바 */
+    .progress-container {
+      margin-bottom: 24px;
+    }
+    
+    .progress-bar {
+      width: 100%;
+      height: 8px;
+      background: #e5e7eb;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #ec4899, #3b82f6);
+      border-radius: 4px;
+      transition: width 0.3s ease;
+    }
+    
+    .progress-text {
+      text-align: center;
+      margin-top: 8px;
+      color: #6b7280;
+      font-size: 14px;
+    }
+    
+    /* 성별 선택 */
     .gender-section h3 {
       text-align: center;
       font-size: 20px;
@@ -143,7 +177,45 @@
       transform: translate(-50%, -50%);
     }
     
-    .start-button {
+    /* 질문 스타일 */
+    .question-section {
+      text-align: center;
+    }
+    
+    .question-title {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 32px;
+      line-height: 1.4;
+      color: #374151;
+    }
+    
+    .answer-option {
+      display: block;
+      width: 100%;
+      padding: 16px 20px;
+      margin: 12px 0;
+      background: #f9fafb;
+      border: 2px solid #e5e7eb;
+      border-radius: 16px;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-size: 16px;
+      text-align: left;
+    }
+    
+    .answer-option:hover {
+      border-color: #d1d5db;
+      transform: translateY(-1px);
+    }
+    
+    .answer-option.selected {
+      border-color: #8b5cf6;
+      background: #f3f4f6;
+    }
+    
+    /* 버튼 스타일 */
+    .button {
       width: 100%;
       padding: 16px;
       margin-top: 32px;
@@ -157,15 +229,72 @@
       transition: all 0.2s;
     }
     
-    .start-button:hover {
+    .button:hover {
       transform: translateY(-2px);
       box-shadow: 0 10px 20px rgba(0,0,0,0.1);
     }
     
-    .start-button:disabled {
+    .button:disabled {
       opacity: 0.5;
       cursor: not-allowed;
       transform: none;
+    }
+    
+    /* 결과 화면 */
+    .result-section {
+      text-align: center;
+    }
+    
+    .result-badge {
+      display: inline-block;
+      padding: 12px 24px;
+      border-radius: 20px;
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 16px;
+    }
+    
+    .result-badge.egen {
+      background: linear-gradient(135deg, #ec4899, #f472b6);
+      color: white;
+    }
+    
+    .result-badge.teto {
+      background: linear-gradient(135deg, #3b82f6, #60a5fa);
+      color: white;
+    }
+    
+    .result-description {
+      font-size: 16px;
+      line-height: 1.6;
+      color: #4b5563;
+      margin-bottom: 32px;
+    }
+    
+    .share-buttons {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 24px;
+    }
+    
+    .share-button {
+      padding: 12px;
+      border: none;
+      border-radius: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    
+    .share-button.copy {
+      background: #f3f4f6;
+      color: #374151;
+    }
+    
+    .share-button.restart {
+      background: #e5e7eb;
+      color: #374151;
     }
     
     .hidden { display: none; }
@@ -173,56 +302,320 @@
 </head>
 <body>
   <div class="container">
-    <h1 class="title">
-      <span class="egen">에겐</span> vs <span class="teto">테토</span> 성향 테스트
-    </h1>
-    <p class="subtitle">나만의 성향과 찰떡궁합 이성 유형을 찾아보세요</p>
-    
-    <div class="icons">💖🧠</div>
-    
-    <div class="gender-section">
-      <h3>성별을 선택해주세요</h3>
+    <!-- 시작 화면 -->
+    <div id="startScreen">
+      <h1 class="title">
+        <span class="egen">에겐</span> vs <span class="teto">테토</span> 성향 테스트
+      </h1>
+      <p class="subtitle">나만의 성향과 찰떡궁합 이성 유형을 찾아보세요</p>
       
-      <div class="gender-option female" onclick="selectGender('female')">
-        <div class="gender-icon female">♀</div>
-        <div class="gender-text">여성</div>
-        <div class="radio-button"></div>
+      <div class="icons">💖🧠</div>
+      
+      <div class="gender-section">
+        <h3>성별을 선택해주세요</h3>
+        
+        <div class="gender-option female" onclick="selectGender('female')">
+          <div class="gender-icon female">♀</div>
+          <div class="gender-text">여성</div>
+          <div class="radio-button"></div>
+        </div>
+        
+        <div class="gender-option male" onclick="selectGender('male')">
+          <div class="gender-icon male">♂</div>
+          <div class="gender-text">남성</div>
+          <div class="radio-button"></div>
+        </div>
+        
+        <button class="button" id="startBtn" onclick="startTest()" disabled>
+          ▶ 테스트 시작하기
+        </button>
+      </div>
+    </div>
+    
+    <!-- 질문 화면 -->
+    <div id="questionScreen" class="hidden">
+      <div class="progress-container">
+        <div class="progress-bar">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <div class="progress-text" id="progressText">1 / 10</div>
       </div>
       
-      <div class="gender-option male" onclick="selectGender('male')">
-        <div class="gender-icon male">♂</div>
-        <div class="gender-text">남성</div>
-        <div class="radio-button"></div>
+      <div class="question-section">
+        <h2 class="question-title" id="questionTitle"></h2>
+        <div id="answerOptions"></div>
+        <button class="button" id="nextBtn" onclick="nextQuestion()" disabled>다음</button>
       </div>
-      
-      <button class="start-button" id="startBtn" onclick="startTest()" disabled>
-        ▶ 테스트 시작하기
-      </button>
+    </div>
+    
+    <!-- 결과 화면 -->
+    <div id="resultScreen" class="hidden">
+      <div class="result-section">
+        <div class="result-badge" id="resultBadge"></div>
+        <h2 id="resultTitle"></h2>
+        <p class="result-description" id="resultDescription"></p>
+        
+        <div class="share-buttons">
+          <button class="share-button copy" onclick="copyResult()">결과 복사</button>
+          <button class="share-button restart" onclick="restartTest()">다시 하기</button>
+        </div>
+      </div>
     </div>
   </div>
   
   <script>
+    // 테스트 데이터
+    const questions = [
+      {
+        q: "친구들과 함께 있을 때 당신은?",
+        options: [
+          { text: "분위기를 주도하며 활발하게 대화한다", type: "egen", score: 2 },
+          { text: "조용히 듣고 가끔 의견을 말한다", type: "teto", score: 2 },
+          { text: "상황에 따라 다르다", type: "neutral", score: 1 }
+        ]
+      },
+      {
+        q: "새로운 사람을 만날 때 당신의 첫 반응은?",
+        options: [
+          { text: "먼저 다가가서 대화를 시작한다", type: "egen", score: 2 },
+          { text: "상대방이 먼저 말을 걸기를 기다린다", type: "teto", score: 2 },
+          { text: "상황을 보고 판단한다", type: "neutral", score: 1 }
+        ]
+      },
+      {
+        q: "중요한 결정을 내릴 때 당신은?",
+        options: [
+          { text: "직감과 감정을 우선시한다", type: "egen", score: 2 },
+          { text: "논리적으로 분석한 후 결정한다", type: "teto", score: 2 },
+          { text: "둘 다 고려해서 결정한다", type: "neutral", score: 1 }
+        ]
+      },
+      {
+        q: "스트레스를 받을 때 당신의 해소법은?",
+        options: [
+          { text: "친구들과 만나서 이야기한다", type: "egen", score: 2 },
+          { text: "혼자만의 시간을 갖는다", type: "teto", score: 2 },
+          { text: "상황에 따라 다르다", type: "neutral", score: 1 }
+        ]
+      },
+      {
+        q: "영화나 드라마를 볼 때 선호하는 장르는?",
+        options: [
+          { text: "로맨스, 드라마", type: "egen", score: 2 },
+          { text: "스릴러, SF, 다큐멘터리", type: "teto", score: 2 },
+          { text: "코미디, 액션", type: "neutral", score: 1 }
+        ]
+      },
+      {
+        q: "여행 계획을 세울 때 당신은?",
+        options: [
+          { text: "즉흥적으로 그때그때 정한다", type: "egen", score: 2 },
+          { text: "미리 자세한 계획을 세운다", type: "teto", score: 2 },
+          { text: "대략적인 계획만 세운다", type: "neutral", score: 1 }
+        ]
+      },
+      {
+        q: "업무나 과제를 할 때 당신의 스타일은?",
+        options: [
+          { text: "마감일 임박해서 집중력 폭발", type: "egen", score: 2 },
+          { text: "미리미리 꾸준히 진행", type: "teto", score: 2 },
+          { text: "중간 정도에 시작해서 완료", type: "neutral", score: 1 }
+        ]
+      },
+      {
+        q: "갈등 상황에서 당신의 대처법은?",
+        options: [
+          { text: "감정을 솔직하게 표현한다", type: "egen", score: 2 },
+          { text: "차분하게 해결책을 찾는다", type: "teto", score: 2 },
+          { text: "상황을 피하거나 시간을 둔다", type: "neutral", score: 1 }
+        ]
+      },
+      {
+        q: "이상형을 고를 때 가장 중요한 요소는?",
+        options: [
+          { text: "감정적 교감과 로맨틱함", type: "egen", score: 2 },
+          { text: "가치관과 미래 계획의 일치", type: "teto", score: 2 },
+          { text: "편안함과 자연스러움", type: "neutral", score: 1 }
+        ]
+      },
+      {
+        q: "주말에 선호하는 활동은?",
+        options: [
+          { text: "친구들과 수다떨며 즐거운 시간", type: "egen", score: 2 },
+          { text: "혼자 책 읽거나 영화 감상", type: "teto", score: 2 },
+          { text: "가벼운 야외 활동이나 취미", type: "neutral", score: 1 }
+        ]
+      }
+    ];
+    
+    const results = {
+      egen: {
+        male: {
+          title: "에겐남 (감성적인 남성)",
+          description: "감정이 풍부하고 공감능력이 뛰어난 당신! 로맨틱하고 따뜻한 매력으로 사람들의 마음을 사로잡는 스타일입니다. 상대방의 마음을 잘 읽고 배려심이 많아 연인과의 관계에서 깊은 유대감을 형성합니다.",
+          match: "테토녀",
+          careers: ["상담사", "교사", "작가", "예술가", "서비스업"]
+        },
+        female: {
+          title: "에겐녀 (감성적인 여성)",
+          description: "따뜻하고 감성적인 당신! 직감적이고 공감능력이 뛰어나며, 사람들과의 감정적 교감을 중시합니다. 로맨틱한 상황을 좋아하고 상대방을 세심하게 배려하는 매력적인 스타일입니다.",
+          match: "테토남",
+          careers: ["간호사", "유치원교사", "상담사", "디자이너", "마케터"]
+        }
+      },
+      teto: {
+        male: {
+          title: "테토남 (논리적인 남성)",
+          description: "차분하고 이성적인 당신! 논리적 사고와 계획성이 뛰어나며, 안정적인 관계를 추구합니다. 감정보다는 현실적인 판단을 중시하고, 신뢰할 수 있는 파트너로서의 매력을 가지고 있습니다.",
+          match: "에겐녀",
+          careers: ["엔지니어", "분석가", "회계사", "연구원", "IT전문가"]
+        },
+        female: {
+          title: "테토녀 (논리적인 여성)",
+          description: "독립적이고 합리적인 당신! 감정보다는 논리를 중시하며, 체계적으로 문제를 해결하는 능력이 뛰어납니다. 자신만의 확고한 가치관을 가지고 있으며, 실용적인 관계를 선호합니다.",
+          match: "에겐남",
+          careers: ["의사", "변호사", "연구원", "기획자", "금융전문가"]
+        }
+      }
+    };
+    
+    // 테스트 상태
     let selectedGender = '';
+    let currentQuestion = 0;
+    let answers = [];
+    let egenScore = 0;
+    let tetoScore = 0;
     
     function selectGender(gender) {
       selectedGender = gender;
       
-      // 모든 선택 해제
       document.querySelectorAll('.gender-option').forEach(option => {
         option.classList.remove('selected');
       });
       
-      // 선택된 옵션 활성화
       document.querySelector('.gender-option.' + gender).classList.add('selected');
-      
-      // 시작 버튼 활성화
       document.getElementById('startBtn').disabled = false;
     }
     
     function startTest() {
       if (!selectedGender) return;
       
-      alert('심리테스트 기능을 준비 중입니다.\n선택하신 성별: ' + (selectedGender === 'female' ? '여성' : '남성'));
+      document.getElementById('startScreen').classList.add('hidden');
+      document.getElementById('questionScreen').classList.remove('hidden');
+      
+      showQuestion();
+    }
+    
+    function showQuestion() {
+      const question = questions[currentQuestion];
+      document.getElementById('questionTitle').textContent = question.q;
+      
+      const optionsContainer = document.getElementById('answerOptions');
+      optionsContainer.innerHTML = '';
+      
+      question.options.forEach((option, index) => {
+        const button = document.createElement('button');
+        button.className = 'answer-option';
+        button.textContent = option.text;
+        button.onclick = () => selectAnswer(index);
+        optionsContainer.appendChild(button);
+      });
+      
+      updateProgress();
+      document.getElementById('nextBtn').disabled = true;
+    }
+    
+    function selectAnswer(index) {
+      document.querySelectorAll('.answer-option').forEach(option => {
+        option.classList.remove('selected');
+      });
+      
+      document.querySelectorAll('.answer-option')[index].classList.add('selected');
+      
+      const selectedOption = questions[currentQuestion].options[index];
+      answers[currentQuestion] = selectedOption;
+      
+      if (selectedOption.type === 'egen') {
+        egenScore += selectedOption.score;
+      } else if (selectedOption.type === 'teto') {
+        tetoScore += selectedOption.score;
+      }
+      
+      document.getElementById('nextBtn').disabled = false;
+    }
+    
+    function nextQuestion() {
+      currentQuestion++;
+      
+      if (currentQuestion < questions.length) {
+        showQuestion();
+      } else {
+        showResult();
+      }
+    }
+    
+    function updateProgress() {
+      const progress = ((currentQuestion + 1) / questions.length) * 100;
+      document.getElementById('progressFill').style.width = progress + '%';
+      document.getElementById('progressText').textContent = `${currentQuestion + 1} / ${questions.length}`;
+    }
+    
+    function showResult() {
+      document.getElementById('questionScreen').classList.add('hidden');
+      document.getElementById('resultScreen').classList.remove('hidden');
+      
+      const resultType = egenScore > tetoScore ? 'egen' : 'teto';
+      const result = results[resultType][selectedGender];
+      
+      const badge = document.getElementById('resultBadge');
+      badge.className = `result-badge ${resultType}`;
+      badge.textContent = resultType === 'egen' ? '에겐형' : '테토형';
+      
+      document.getElementById('resultTitle').textContent = result.title;
+      document.getElementById('resultDescription').innerHTML = `
+        <strong>🎯 성향 분석</strong><br>
+        ${result.description}<br><br>
+        <strong>💕 찰떡궁합</strong><br>
+        ${result.match}와 가장 잘 어울려요!<br><br>
+        <strong>💼 추천 직업</strong><br>
+        ${result.careers.join(', ')}
+      `;
+    }
+    
+    function copyResult() {
+      const resultType = egenScore > tetoScore ? 'egen' : 'teto';
+      const result = results[resultType][selectedGender];
+      
+      const text = `🧠 에겐 vs 테토 성향 테스트 결과
+
+🎯 ${result.title}
+${result.description}
+
+💕 찰떡궁합: ${result.match}
+💼 추천 직업: ${result.careers.join(', ')}
+
+✨ 나도 테스트하기: https://tests.mahalohana-bruce.com/egen-teto/ko/`;
+      
+      navigator.clipboard.writeText(text).then(() => {
+        alert('결과가 클립보드에 복사되었습니다!');
+      });
+    }
+    
+    function restartTest() {
+      selectedGender = '';
+      currentQuestion = 0;
+      answers = [];
+      egenScore = 0;
+      tetoScore = 0;
+      
+      document.getElementById('resultScreen').classList.add('hidden');
+      document.getElementById('startScreen').classList.remove('hidden');
+      
+      document.querySelectorAll('.gender-option').forEach(option => {
+        option.classList.remove('selected');
+      });
+      
+      document.getElementById('startBtn').disabled = true;
     }
   </script>
 </body>
