@@ -16,19 +16,6 @@ mode = "sequential"
 task = "shell.exec"
 args = "cd dailyfortune && npm run dev"
 
-[[workflows.workflow]]
-name = "All Apps"
-author = 44423350
-mode = "parallel"
-
-[[workflows.workflow.tasks]]
-task = "shell.exec"
-args = "python -m http.server 80"
-
-[[workflows.workflow.tasks]]
-task = "shell.exec"
-args = "cd dailyfortune && npm run dev"
-
 [[ports]]
 localPort = 5000
 externalPort = 80
