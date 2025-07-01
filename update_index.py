@@ -106,6 +106,36 @@ def generate_tests_js(tests):
     
     return ',\n'.join(js_items)
 
+def update_language_index_files(tests):
+    """각 언어별 index 파일 업데이트"""
+    success_count = 0
+    
+    for lang in ['ko', 'ja', 'en']:
+        lang_file = f'{lang}/index.html'
+        if os.path.exists(lang_file):
+            try:
+                with open(lang_file, 'r', encoding='utf-8') as f:
+                    content = f.read()
+                
+                # 테스트 개수 업데이트
+                test_count = len(tests)
+                content = re.sub(
+                    r'(<div class="stat-number"[^>]*>)\d+(</div>\s*<div class="stat-label"[^>]*>테스트|Tests|テスト)',
+                    f'\\g<1>{test_count}\\g<2>',
+                    content
+                )
+                
+                with open(lang_file, 'w', encoding='utf-8') as f:
+                    f.write(content)
+                
+                success_count += 1
+                print(f"✅ {lang_file} 업데이트 완료")
+                
+            except Exception as e:
+                print(f"❌ {lang_file} 업데이트 실패: {e}")
+    
+    return success_count
+
 def main():
     """메인 실행 함수"""
     print("🔍 테스트 디렉토리 스캔 중...")
@@ -119,7 +149,10 @@ def main():
         print("\n📝 index.html 업데이트 중...")
         success = update_index_html(tests)
         
-        if success:
+        print("\n📝 언어별 index 파일 업데이트 중...")
+        lang_success = update_language_index_files(tests)
+        
+        if success or lang_success > 0:
             print("✨ 업데이트 완료!")
         else:
             print("💡 변경사항이 없습니다.")

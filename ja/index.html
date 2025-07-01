@@ -1,34 +1,34 @@
 
 <!DOCTYPE html>
-<html lang="ko" id="html-root">
+<html lang="ja">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>심리테스트 모음집 - Tests | Mahalohana Bruce</title>
-  <meta name="description" content="다양한 심리테스트를 한 곳에서! 에겐 vs 테토 성향 테스트 등 인기 심리테스트들을 무료로 체험해보세요.">
-  <meta name="keywords" content="심리테스트, 성격테스트, 에겐테토, 무료테스트, 온라인테스트">
+  <title>心理テスト集 - Tests | Mahalohana Bruce</title>
+  <meta name="description" content="様々な心理テストを一箇所で！エゲン vs テト性格診断など人気の心理テストを無料で体験してみてください。">
+  <meta name="keywords" content="心理テスト, 性格診断, エゲンテト, 無料テスト, オンラインテスト">
   
   <!-- Open Graph Meta Tags -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="심리테스트 모음집 - Tests">
-  <meta property="og:description" content="다양한 심리테스트를 한 곳에서! 에겐 vs 테토 성향 테스트 등 인기 심리테스트들을 무료로 체험해보세요.">
+  <meta property="og:title" content="心理テスト集 - Tests">
+  <meta property="og:description" content="様々な心理テストを一箇所で！エゲン vs テト性格診断など人気の心理テストを無料で体験してみてください。">
   <meta property="og:image" content="https://tests.mahalohana-bruce.com/favicon.png">
-  <meta property="og:url" content="https://tests.mahalohana-bruce.com/">
+  <meta property="og:url" content="https://tests.mahalohana-bruce.com/ja/">
   
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="심리테스트 모음집 - Tests">
-  <meta name="twitter:description" content="다양한 심리테스트를 한 곳에서! 무료로 체험해보세요.">
+  <meta name="twitter:title" content="心理テスト集 - Tests">
+  <meta name="twitter:description" content="様々な心理テストを一箇所で！無料で体験してみてください。">
   <meta name="twitter:image" content="https://tests.mahalohana-bruce.com/favicon.png">
   
   <!-- Alternate Languages -->
-  <link rel="alternate" hreflang="ko" href="https://tests.mahalohana-bruce.com/">
-  <link rel="alternate" hreflang="ja" href="https://tests.mahalohana-bruce.com/?lang=ja">
-  <link rel="alternate" hreflang="en" href="https://tests.mahalohana-bruce.com/?lang=en">
+  <link rel="alternate" hreflang="ko" href="https://tests.mahalohana-bruce.com/ko/">
+  <link rel="alternate" hreflang="ja" href="https://tests.mahalohana-bruce.com/ja/">
+  <link rel="alternate" hreflang="en" href="https://tests.mahalohana-bruce.com/en/">
   <link rel="alternate" hreflang="x-default" href="https://tests.mahalohana-bruce.com/">
   
   <!-- Canonical URL -->
-  <link rel="canonical" href="https://tests.mahalohana-bruce.com/">
+  <link rel="canonical" href="https://tests.mahalohana-bruce.com/ja/">
   
   <!-- Favicon -->
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
@@ -57,11 +57,12 @@
     "@context": "https://schema.org",
     "@type": "WebSite",
     "name": "Tests - Mahalohana Bruce",
-    "description": "다양한 심리테스트를 한 곳에서! 에겐 vs 테토 성향 테스트 등 인기 심리테스트들을 무료로 체험해보세요.",
-    "url": "https://tests.mahalohana-bruce.com/",
+    "description": "様々な心理テストを一箇所で！エゲン vs テト性格診断など人気の心理テストを無料で体験してみてください。",
+    "url": "https://tests.mahalohana-bruce.com/ja/",
+    "inLanguage": "ja",
     "potentialAction": {
       "@type": "SearchAction",
-      "target": "https://tests.mahalohana-bruce.com/?q={search_term_string}",
+      "target": "https://tests.mahalohana-bruce.com/ja/?q={search_term_string}",
       "query-input": "required name=search_term_string"
     }
   }
@@ -98,7 +99,7 @@
     }
     
     body {
-      font-family: 'Gmarket Sans', 'Noto Sans JP', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-family: 'Noto Sans JP', 'Gmarket Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       background: var(--bg-primary);
       min-height: 100vh;
       color: var(--text-primary);
@@ -360,8 +361,8 @@
   <div class="container">
     <div class="header-controls">
       <div class="lang-selector">
-        <a href="/ko/" class="lang-btn active">한국어</a>
-        <a href="/ja/" class="lang-btn">日本語</a>
+        <a href="/ko/" class="lang-btn">한국어</a>
+        <a href="/ja/" class="lang-btn active">日本語</a>
         <a href="/en/" class="lang-btn">English</a>
       </div>
       <button class="theme-toggle" id="themeToggle">
@@ -372,29 +373,29 @@
     <div class="main-card">
       <div class="header">
         <div class="logo">🧠💖</div>
-        <h1 id="mainTitle">심리테스트 모음</h1>
-        <p class="subtitle" id="mainSubtitle">다양한 심리테스트를 통해 자신을 더 깊이 이해해보세요</p>
+        <h1>心理テスト集</h1>
+        <p class="subtitle">様々な心理テストを通じて自分をより深く理解してみてください</p>
       </div>
       
-      <div class="tests-grid" id="testsGrid">
-        <a href="/egen-teto/ko/index.html" class="test-card" data-test="egen-teto">
-          <div class="test-title" id="egenTetoTitle">에겐 vs 테토 성향 테스트</div>
-          <div class="test-description" id="egenTetoDesc">나의 성향과 찰떡궁합 이성 유형 찾기</div>
+      <div class="tests-grid">
+        <a href="/egen-teto/ja/index.html" class="test-card">
+          <div class="test-title">エゲン vs テト 性格診断</div>
+          <div class="test-description">あなたの性格と相性ピッタリの異性タイプを見つける</div>
         </a>
       </div>
       
       <div class="stats">
         <div class="stat-item">
-          <div class="stat-number" id="testCount">1</div>
-          <div class="stat-label" id="testCountLabel">테스트</div>
+          <div class="stat-number">1</div>
+          <div class="stat-label">テスト</div>
         </div>
         <div class="stat-item">
           <div class="stat-number">100%</div>
-          <div class="stat-label" id="freeLabel">무료</div>
+          <div class="stat-label">無料</div>
         </div>
         <div class="stat-item">
           <div class="stat-number">3</div>
-          <div class="stat-label" id="langLabel">언어 지원</div>
+          <div class="stat-label">言語対応</div>
         </div>
       </div>
     </div>
@@ -405,105 +406,13 @@
   </div>
 
   <script>
-    // 언어 데이터
-    const translations = {
-      ko: {
-        title: "심리테스트 모음집 - Tests | Mahalohana Bruce",
-        description: "다양한 심리테스트를 한 곳에서! 에겐 vs 테토 성향 테스트 등 인기 심리테스트들을 무료로 체험해보세요.",
-        mainTitle: "심리테스트 모음",
-        mainSubtitle: "다양한 심리테스트를 통해 자신을 더 깊이 이해해보세요",
-        egenTetoTitle: "에겐 vs 테토 성향 테스트",
-        egenTetoDesc: "나의 성향과 찰떡궁합 이성 유형 찾기",
-        testCountLabel: "테스트",
-        freeLabel: "무료",
-        langLabel: "언어 지원"
-      },
-      ja: {
-        title: "心理テスト集 - Tests | Mahalohana Bruce",
-        description: "様々な心理テストを一箇所で！エゲン vs テト性格診断など人気の心理テストを無料で体験してみてください。",
-        mainTitle: "心理テスト集",
-        mainSubtitle: "様々な心理テストを通じて自分をより深く理解してみてください",
-        egenTetoTitle: "エゲン vs テト 性格診断",
-        egenTetoDesc: "あなたの性格と相性ピッタリの異性タイプを見つける",
-        testCountLabel: "テスト",
-        freeLabel: "無料",
-        langLabel: "言語対応"
-      },
-      en: {
-        title: "Psychological Tests Collection - Tests | Mahalohana Bruce",
-        description: "Various psychological tests in one place! Try popular tests like Estrogen vs Testosterone personality test for free.",
-        mainTitle: "Psychological Tests",
-        mainSubtitle: "Understand yourself deeper through various psychological tests",
-        egenTetoTitle: "Estrogen vs Testosterone Test",
-        egenTetoDesc: "Find your perfect match personality type",
-        testCountLabel: "Tests",
-        freeLabel: "Free",
-        langLabel: "Languages"
-      }
-    };
-    
-    // 테스트 데이터 (자동 업데이트용)
-    const tests = [
-      {
-        id: "egen-teto",
-        ko: { url: "/egen-teto/ko/index.html", title: "에겐 vs 테토 성향 테스트", desc: "나의 성향과 찰떡궁합 이성 유형 찾기" },
-        ja: { url: "/egen-teto/ja/index.html", title: "エゲン vs テト 性格診断", desc: "あなたの性格と相性ピッタリの異性タイプを見つける" },
-        en: { url: "/egen-teto/en/index.html", title: "Estrogen vs Testosterone Test", desc: "Find your perfect match personality type" }
-      }
-    ];
-    
-    // 현재 언어 상태
-    let currentLang = 'ko';
-    
-    // URL에서 언어 파라미터 확인
-    const urlParams = new URLSearchParams(window.location.search);
-    const langParam = urlParams.get('lang');
-    if (langParam && translations[langParam]) {
-      currentLang = langParam;
-    }
-    
     // 다크모드 상태
     let isDarkMode = localStorage.getItem('darkMode') === 'true';
     
     // 페이지 로드시 초기화
     document.addEventListener('DOMContentLoaded', function() {
-      updateLanguage(currentLang);
       updateTheme();
-      updateTestsGrid();
     });
-    
-    // 언어 변경 함수
-    function updateLanguage(lang) {
-      // 언어별 페이지로 리다이렉트
-      if (lang === 'ko') {
-        window.location.href = '/ko/';
-      } else if (lang === 'ja') {
-        window.location.href = '/ja/';
-      } else if (lang === 'en') {
-        window.location.href = '/en/';
-      }
-    }
-    
-    // 테스트 그리드 업데이트
-    function updateTestsGrid() {
-      const grid = document.getElementById('testsGrid');
-      grid.innerHTML = '';
-      
-      tests.forEach(test => {
-        const testData = test[currentLang];
-        const testCard = document.createElement('a');
-        testCard.href = testData.url;
-        testCard.className = 'test-card';
-        testCard.innerHTML = `
-          <div class="test-title">${testData.title}</div>
-          <div class="test-description">${testData.desc}</div>
-        `;
-        grid.appendChild(testCard);
-      });
-      
-      // 테스트 개수 업데이트
-      document.getElementById('testCount').textContent = tests.length;
-    }
     
     // 테마 변경 함수
     function updateTheme() {
@@ -521,8 +430,7 @@
       localStorage.setItem('darkMode', isDarkMode);
     }
     
-    // 언어 버튼은 이제 직접 링크로 동작
-    
+    // 이벤트 리스너
     document.getElementById('themeToggle').addEventListener('click', () => {
       isDarkMode = !isDarkMode;
       updateTheme();
