@@ -1273,6 +1273,9 @@
 
       document.getElementById('musicList').innerHTML = 
         result.music.map(item => `<div class="info-item">${item}</div>`).join('');
+
+      // 테스트 완료 이벤트 추적
+      trackEvent('test_completed', 'test_interaction');
     }
 
     function getShareText() {
@@ -1382,6 +1385,16 @@ ${result.fullDescription}
 
     function goToMainPage() {
       window.location.href = '/en/';
+    }
+
+    // Google Analytics 이벤트 추적
+    function trackEvent(action, category = 'engagement') {
+      if (typeof gtag !== 'undefined') {
+        gtag('event', action, {
+          event_category: category,
+          event_label: 'en'
+        });
+      }
     }
 
     // 다크모드 기능

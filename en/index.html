@@ -396,45 +396,31 @@
     <div overflow=""></div>
   </amp-ad>
 
-  <!-- AMP AdSense -->
-  <amp-ad width="100vw" height="320"
-    type="adsense"
-    data-ad-client="ca-pub-5508768187151867"
-    data-ad-slot="4067267701"
-    data-auto-format="rspv"
-    data-full-width="">
-    <div overflow=""></div>
-  </amp-ad>
-
   <script>
-    // 다크모드 상태
+    // Theme toggle functionality
     let isDarkMode = localStorage.getItem('darkMode') === 'true';
 
-    // 페이지 로드시 초기화
-    document.addEventListener('DOMContentLoaded', function() {
-      updateTheme();
-    });
-
-    // 테마 변경 함수
     function updateTheme() {
-      const themeToggle = document.getElementById('themeToggle');
-      const icon = themeToggle.querySelector('i');
+      const themeToggle = document.querySelector('.theme-toggle i');
 
       if (isDarkMode) {
         document.documentElement.setAttribute('data-theme', 'dark');
-        icon.className = 'fas fa-sun';
+        themeToggle.className = 'fas fa-sun';
       } else {
         document.documentElement.removeAttribute('data-theme');
-        icon.className = 'fas fa-moon';
+        themeToggle.className = 'fas fa-moon';
       }
 
       localStorage.setItem('darkMode', isDarkMode);
     }
 
-    // 이벤트 리스너
-    document.getElementById('themeToggle').addEventListener('click', () => {
-      isDarkMode = !isDarkMode;
+    document.addEventListener('DOMContentLoaded', function() {
       updateTheme();
+
+      document.getElementById('themeToggle').addEventListener('click', () => {
+        isDarkMode = !isDarkMode;
+        updateTheme();
+      });
     });
   </script>
 </body>
