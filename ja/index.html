@@ -1,56 +1,67 @@
-
 <!DOCTYPE html>
-<html lang="ja">
+<html ⚡ lang="ja">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>心理テスト集 - Tests | Mahalohana Bruce</title>
   <meta name="description" content="様々な心理テストを一箇所で！エゲン vs テト性格診断など人気の心理テストを無料で体験してみてください。">
   <meta name="keywords" content="心理テスト, 性格診断, エゲンテト, 無料テスト, オンラインテスト">
-  
+
+  <!-- AMP Runtime -->
+  <script async src="https://cdn.ampproject.org/v0.js"></script>
+
+  <!-- AMP Components -->
+  <script async custom-element="amp-ad" src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"></script>
+  <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+
   <!-- Open Graph Meta Tags -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="心理テスト集 - Tests">
   <meta property="og:description" content="様々な心理テストを一箇所で！エゲン vs テト性格診断など人気の心理テストを無料で体験してみてください。">
   <meta property="og:image" content="https://tests.mahalohana-bruce.com/favicon.png">
   <meta property="og:url" content="https://tests.mahalohana-bruce.com/ja/">
-  
+
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="心理テスト集 - Tests">
   <meta name="twitter:description" content="様々な心理テストを一箇所で！無料で体験してみてください。">
   <meta name="twitter:image" content="https://tests.mahalohana-bruce.com/favicon.png">
-  
+
   <!-- Alternate Languages -->
   <link rel="alternate" hreflang="ko" href="https://tests.mahalohana-bruce.com/ko/">
   <link rel="alternate" hreflang="ja" href="https://tests.mahalohana-bruce.com/ja/">
   <link rel="alternate" hreflang="en" href="https://tests.mahalohana-bruce.com/en/">
   <link rel="alternate" hreflang="x-default" href="https://tests.mahalohana-bruce.com/">
-  
+
   <!-- Canonical URL -->
   <link rel="canonical" href="https://tests.mahalohana-bruce.com/ja/">
-  
+
   <!-- Favicon -->
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
   <link rel="icon" href="/favicon.png" type="image/png">
-  
+
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Gmarket+Sans:wght@300;400;500;700;900&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  
+
   <!-- FontAwesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  
+
   <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-45VSGEM7EZ"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-45VSGEM7EZ');
-  </script>
-  
+  <amp-analytics type="gtag" data-credentials="include">
+    <script type="application/json">
+    {
+      "vars": {
+        "gtag_id": "G-45VSGEM7EZ",
+        "config": {
+          "G-45VSGEM7EZ": {}
+        }
+      }
+    }
+    </script>
+  </amp-analytics>
+
   <!-- JSON-LD Structured Data -->
   <script type="application/ld+json">
   {
@@ -67,8 +78,8 @@
     }
   }
   </script>
-  
-  <style>
+
+  <style amp-custom>
     :root {
       --bg-primary: linear-gradient(135deg, #FFDEE9 0%, #B5FFFC 100%);
       --bg-card: rgba(255, 255, 255, 0.95);
@@ -80,7 +91,7 @@
       --shadow: 0 10px 30px rgba(0,0,0,0.1);
       --border-radius: 20px;
     }
-    
+
     [data-theme="dark"] {
       --bg-primary: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
       --bg-card: rgba(30, 30, 50, 0.95);
@@ -91,13 +102,13 @@
       --border-color: rgba(255, 255, 255, 0.1);
       --shadow: 0 10px 30px rgba(0,0,0,0.3);
     }
-    
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-    
+
     body {
       font-family: 'Noto Sans JP', 'Gmarket Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       background: var(--bg-primary);
@@ -105,7 +116,7 @@
       color: var(--text-primary);
       transition: all 0.3s ease;
     }
-    
+
     .container {
       max-width: 800px;
       margin: 0 auto;
@@ -115,12 +126,12 @@
       flex-direction: column;
       justify-content: center;
     }
-    
+
     .header {
       text-align: center;
       margin-bottom: 40px;
     }
-    
+
     .header-controls {
       display: flex;
       justify-content: space-between;
@@ -129,12 +140,12 @@
       flex-wrap: wrap;
       gap: 15px;
     }
-    
+
     .lang-selector {
       display: flex;
       gap: 10px;
     }
-    
+
     .lang-btn {
       padding: 8px 16px;
       border: 2px solid var(--accent-color);
@@ -148,14 +159,14 @@
       text-decoration: none;
       display: inline-block;
     }
-    
+
     .lang-btn.active,
     .lang-btn:hover {
       background: var(--accent-color);
       color: white;
       transform: translateY(-2px);
     }
-    
+
     .theme-toggle {
       padding: 10px;
       border: none;
@@ -172,11 +183,7 @@
       justify-content: center;
       font-size: 20px;
     }
-    
-    .theme-toggle:hover {
-      transform: scale(1.1) rotate(180deg);
-    }
-    
+
     .main-card {
       background: var(--bg-card);
       padding: 40px;
@@ -186,13 +193,13 @@
       backdrop-filter: blur(10px);
       text-align: center;
     }
-    
+
     .logo {
       font-size: 3.5rem;
       margin-bottom: 20px;
       display: block;
     }
-    
+
     h1 {
       font-size: 2.5rem;
       font-weight: 700;
@@ -202,20 +209,20 @@
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
-    
+
     .subtitle {
       font-size: 1.2rem;
       color: var(--text-secondary);
       margin-bottom: 40px;
       line-height: 1.6;
     }
-    
+
     .tests-grid {
       display: grid;
       gap: 20px;
       margin-bottom: 40px;
     }
-    
+
     .test-card {
       background: linear-gradient(135deg, var(--accent-color), #4facfe);
       padding: 25px;
@@ -226,46 +233,31 @@
       position: relative;
       overflow: hidden;
     }
-    
-    .test-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-      transition: left 0.5s;
-    }
-    
-    .test-card:hover::before {
-      left: 100%;
-    }
-    
+
     .test-card:hover {
       transform: translateY(-5px);
       box-shadow: 0 15px 40px rgba(0,0,0,0.2);
     }
-    
+
     .test-title {
       font-size: 1.4rem;
       font-weight: 700;
       margin-bottom: 10px;
     }
-    
+
     .test-description {
       font-size: 1rem;
       opacity: 0.9;
       line-height: 1.5;
     }
-    
+
     .stats {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
       gap: 20px;
       margin-top: 40px;
     }
-    
+
     .stat-item {
       text-align: center;
       padding: 20px;
@@ -273,19 +265,19 @@
       border-radius: 15px;
       border: 1px solid var(--border-color);
     }
-    
+
     .stat-number {
       font-size: 2rem;
       font-weight: 700;
       color: var(--accent-color);
     }
-    
+
     .stat-label {
       font-size: 0.9rem;
       color: var(--text-secondary);
       margin-top: 5px;
     }
-    
+
     .footer {
       text-align: center;
       margin-top: 40px;
@@ -293,67 +285,45 @@
       color: var(--text-secondary);
       font-size: 0.9rem;
     }
-    
+
     @media (max-width: 768px) {
       .container {
         padding: 15px;
       }
-      
+
       .main-card {
         padding: 25px;
       }
-      
+
       h1 {
         font-size: 2rem;
       }
-      
+
       .logo {
         font-size: 2.5rem;
       }
-      
+
       .header-controls {
         justify-content: center;
       }
-      
+
       .stats {
         grid-template-columns: repeat(2, 1fr);
       }
     }
-    
+
     @media (max-width: 480px) {
       h1 {
         font-size: 1.7rem;
       }
-      
+
       .subtitle {
         font-size: 1rem;
       }
-      
+
       .stats {
         grid-template-columns: 1fr;
       }
-    }
-    
-    /* 애니메이션 */
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    
-    .main-card {
-      animation: fadeInUp 0.8s ease;
-    }
-    
-    .test-card {
-      animation: fadeInUp 0.8s ease;
-      animation-delay: 0.2s;
-      animation-fill-mode: both;
     }
   </style>
 </head>
@@ -365,25 +335,25 @@
         <a href="/ja/" class="lang-btn active">日本語</a>
         <a href="/en/" class="lang-btn">English</a>
       </div>
-      <button class="theme-toggle" id="themeToggle">
+      <button class="theme-toggle">
         <i class="fas fa-moon"></i>
       </button>
     </div>
-    
+
     <div class="main-card">
       <div class="header">
         <div class="logo">🧠💖</div>
         <h1>心理テスト集</h1>
         <p class="subtitle">様々な心理テストを通じて自分をより深く理解してみてください</p>
       </div>
-      
+
       <div class="tests-grid">
         <a href="/egen-teto/ja/index.html" class="test-card">
           <div class="test-title">エゲン vs テト 性格診断</div>
           <div class="test-description">あなたの性格と相性ピッタリの異性タイプを見つける</div>
         </a>
       </div>
-      
+
       <div class="stats">
         <div class="stat-item">
           <div class="stat-number">1</div>
@@ -399,14 +369,13 @@
         </div>
       </div>
     </div>
-    
+
     <div class="footer">
       <p>&copy; 2024 Tests - Mahalohana Bruce. All rights reserved.</p>
     </div>
   </div>
 
-  <!-- AMP AdSense 광고 -->
-  <script async custom-element="amp-ad" src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"></script>
+  <!-- AMP AdSense -->
   <amp-ad width="100vw" height="320"
     type="adsense"
     data-ad-client="ca-pub-5508768187151867"
@@ -415,37 +384,5 @@
     data-full-width="">
     <div overflow=""></div>
   </amp-ad>
-
-  <script>
-    // 다크모드 상태
-    let isDarkMode = localStorage.getItem('darkMode') === 'true';
-    
-    // 페이지 로드시 초기화
-    document.addEventListener('DOMContentLoaded', function() {
-      updateTheme();
-    });
-    
-    // 테마 변경 함수
-    function updateTheme() {
-      const themeToggle = document.getElementById('themeToggle');
-      const icon = themeToggle.querySelector('i');
-      
-      if (isDarkMode) {
-        document.documentElement.setAttribute('data-theme', 'dark');
-        icon.className = 'fas fa-sun';
-      } else {
-        document.documentElement.removeAttribute('data-theme');
-        icon.className = 'fas fa-moon';
-      }
-      
-      localStorage.setItem('darkMode', isDarkMode);
-    }
-    
-    // 이벤트 리스너
-    document.getElementById('themeToggle').addEventListener('click', () => {
-      isDarkMode = !isDarkMode;
-      updateTheme();
-    });
-  </script>
 </body>
 </html>
