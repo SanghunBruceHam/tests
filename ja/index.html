@@ -395,5 +395,37 @@
     data-full-width="">
     <div overflow=""></div>
   </amp-ad>
+
+  <script>
+    // 다크모드 상태
+    let isDarkMode = localStorage.getItem('darkMode') === 'true';
+
+    // 페이지 로드시 초기화
+    document.addEventListener('DOMContentLoaded', function() {
+      updateTheme();
+    });
+
+    // 테마 변경 함수
+    function updateTheme() {
+      const themeToggle = document.querySelector('.theme-toggle');
+      const icon = themeToggle.querySelector('i');
+
+      if (isDarkMode) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        icon.className = 'fas fa-sun';
+      } else {
+        document.documentElement.removeAttribute('data-theme');
+        icon.className = 'fas fa-moon';
+      }
+
+      localStorage.setItem('darkMode', isDarkMode);
+    }
+
+    // 이벤트 리스너
+    document.querySelector('.theme-toggle').addEventListener('click', () => {
+      isDarkMode = !isDarkMode;
+      updateTheme();
+    });
+  </script>
 </body>
 </html>

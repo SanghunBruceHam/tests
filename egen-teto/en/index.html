@@ -16,12 +16,16 @@
 
   <link rel="icon" href="./favicon.png" type="image/png" />
   <link rel="canonical" href="https://tests.mahalohana-bruce.com/egen-teto/en/" />
-  
+
   <!-- 공통 테마 CSS -->
   <link rel="stylesheet" href="/assets/common-theme.css">
 
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5508768187151867" crossorigin="anonymous"></script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Gmarket+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/static/woff2/SUIT.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
   <style>
     * {
@@ -54,7 +58,7 @@
     .result-container .adsbygoogle {
       display: none !important;
     }
-    
+
     /* AMP 광고 자동 배치 차단 */
     .card::before,
     .card::after {
@@ -748,6 +752,12 @@
 </head>
 <body>
   <div class="container">
+    <div class="header-controls" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+      <h1 style="margin: 0; flex: 1;">Estrogen vs Testosterone Personality Test</h1>
+      <button class="theme-toggle" style="padding: 10px; border: none; background: var(--card-bg); border-radius: 50%; cursor: pointer; box-shadow: 0 2px 10px rgba(0,0,0,0.1); width: 45px; height: 45px; display: flex; align-items: center; justify-content: center;">
+        <i class="fas fa-moon" style="font-size: 18px;"></i>
+      </button>
+    </div>
     <div class="card">
       <!-- Start Screen -->
       <div id="startScreen">
@@ -1370,6 +1380,37 @@ ${result.fullDescription}
     function goToMainPage() {
       window.location.href = '/en/';
     }
+
+    // 다크모드 기능
+    let isDarkMode = localStorage.getItem('darkMode') === 'true';
+
+    function updateTheme() {
+      const themeToggle = document.querySelector('.theme-toggle');
+      const icon = themeToggle.querySelector('i');
+
+      if (isDarkMode) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        document.body.style.background = 'linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)';
+        icon.className = 'fas fa-sun';
+      } else {
+        document.documentElement.removeAttribute('data-theme');
+        document.body.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+        icon.className = 'fas fa-moon';
+      }
+
+      localStorage.setItem('darkMode', isDarkMode);
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      renderStartCard();
+      updateTheme();
+
+      // 테마 토글 이벤트 리스너
+      document.querySelector('.theme-toggle').addEventListener('click', () => {
+        isDarkMode = !isDarkMode;
+        updateTheme();
+      });
+    });
   </script>
 </body>
 </html>

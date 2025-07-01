@@ -38,10 +38,10 @@
 
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5508768187151867" crossorigin="anonymous"></script>
-  
+
   <!-- 공통 테마 CSS -->
   <link rel="stylesheet" href="/assets/common-theme.css">
-  
+
   <script type="module" crossorigin src="./mbti-test/ko/assets/index-mbti123.js"></script>
   <link rel="stylesheet" crossorigin href="./mbti-test/ko/assets/index-mbti123.css">
 </head>
@@ -63,6 +63,36 @@
        data-full-width-responsive="true"></ins>
   <script>
        (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+    // 다크모드 기능
+    let isDarkMode = localStorage.getItem('darkMode') === 'true';
+
+    function updateTheme() {
+      const themeToggle = document.querySelector('.theme-toggle');
+      const icon = themeToggle.querySelector('i');
+
+      if (isDarkMode) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        icon.className = 'fas fa-sun';
+      } else {
+        document.documentElement.removeAttribute('data-theme');
+        icon.className = 'fas fa-moon';
+      }
+
+      localStorage.setItem('darkMode', isDarkMode);
+    }
+
+    // 초기화
+    document.addEventListener('DOMContentLoaded', function() {
+      showWelcome();
+      updateTheme();
+
+      // 테마 토글 이벤트 리스너
+      document.querySelector('.theme-toggle').addEventListener('click', () => {
+        isDarkMode = !isDarkMode;
+        updateTheme();
+      });
+    });
   </script>
 </body>
 </html>
