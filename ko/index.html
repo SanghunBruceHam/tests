@@ -315,6 +315,9 @@
       font-size: 1rem;
       opacity: 0.9;
       line-height: 1.5;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .stats {
@@ -421,7 +424,7 @@
       <div class="tests-grid">
         <a href="/egen-teto/ko/" class="test-card">
           <div class="test-title">🎭 에겐 vs 테토 성향 테스트</div>
-          <div class="test-description">당신은 에겐파? 테토파? 두 캐릭터 중 어느 쪽에 더 가까운지 알아보세요!</div>
+          <div class="test-description" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">당신은 에겐파? 테토파? 두 캐릭터 중 어느 쪽에 더 가까운지 알아보세요!</div>
         </a>
       </div>
 
@@ -441,20 +444,22 @@
       </div>
     </div>
 
+    <!-- AMP AdSense - 메인 카드 외부로 이동 -->
+    <div style="margin: 30px auto; max-width: 600px; text-align: center;">
+      <amp-ad width="100vw" height="320"
+        type="adsense"
+        data-ad-client="ca-pub-5508768187151867"
+        data-ad-slot="4067267701"
+        data-auto-format="rspv"
+        data-full-width="">
+        <div overflow=""></div>
+      </amp-ad>
+    </div>
+
     <div class="footer">
       <p>&copy; 2024 Tests - Mahalohana Bruce. All rights reserved.</p>
     </div>
   </div>
-
-  <!-- AMP AdSense -->
-  <amp-ad width="100vw" height="320"
-    type="adsense"
-    data-ad-client="ca-pub-5508768187151867"
-    data-ad-slot="4067267701"
-    data-auto-format="rspv"
-    data-full-width="">
-    <div overflow=""></div>
-  </amp-ad>
 
   <script>
     // 다크모드 상태
