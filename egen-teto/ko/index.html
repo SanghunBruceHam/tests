@@ -32,9 +32,13 @@
   <link rel="icon" href="/egen-teto/ko/favicon.webp" type="image/webp" />
   <link rel="icon" href="/egen-teto/ko/favicon.png" type="image/png" />
   
-  <!-- Preload critical images -->
-  <link rel="preload" as="image" href="/egen-teto/ko/thumbnail.webp" type="image/webp" />
-  <link rel="preload" as="image" href="/egen-teto/ko/thumbnail.png" type="image/png" />
+  <!-- Preload critical images with WebP fallback -->
+  <link rel="preload" as="image" href="/egen-teto/ko/thumbnail.webp" type="image/webp" media="(min-width: 1px)" />
+  <link rel="preload" as="image" href="/egen-teto/ko/thumbnail.png" type="image/png" media="(min-width: 1px)" />
+  
+  <!-- Responsive image preloads -->
+  <link rel="preload" as="image" href="/egen-teto/ko/thumbnail-mobile.webp" type="image/webp" media="(max-width: 768px)" />
+  <link rel="preload" as="image" href="/egen-teto/ko/thumbnail-mobile.png" type="image/png" media="(max-width: 768px)" />
   
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Gmarket+Sans:wght@400;700&display=swap" rel="stylesheet">
@@ -328,35 +332,53 @@
       showQuestion();
     }
 
-    // 질문 표시
+    // 질문 표시 (향상된 애니메이션)
     function showQuestion() {
       const question = questions[currentQuestion];
-      document.getElementById('questionNumber').textContent = `질문 ${currentQuestion + 1}`;
-      document.getElementById('questionText').textContent = question.question;
+      const questionSection = document.querySelector('.question-section');
       
-      const container = document.getElementById('optionsContainer');
-      container.innerHTML = '';
+      // 질문 전환 애니메이션
+      if (currentQuestion > 0) {
+        questionSection.style.animation = 'questionTransition 0.6s ease-in-out';
+        setTimeout(() => {
+          updateQuestionContent();
+          questionSection.style.animation = '';
+        }, 300);
+      } else {
+        updateQuestionContent();
+      }
       
-      question.options.forEach((option, index) => {
-        const optionDiv = document.createElement('div');
-        optionDiv.className = 'option';
-        optionDiv.textContent = option.text;
-        optionDiv.setAttribute('role', 'radio');
-        optionDiv.setAttribute('aria-checked', 'false');
-        optionDiv.setAttribute('tabindex', '0');
-        optionDiv.onclick = () => selectOption(index, optionDiv);
-        optionDiv.onkeydown = (e) => handleOptionKeydown(e, index, optionDiv);
-        container.appendChild(optionDiv);
-      });
+      function updateQuestionContent() {
+        document.getElementById('questionNumber').textContent = `질문 ${currentQuestion + 1}`;
+        document.getElementById('questionText').textContent = question.question;
+        
+        const container = document.getElementById('optionsContainer');
+        container.innerHTML = '';
+        
+        question.options.forEach((option, index) => {
+          const optionDiv = document.createElement('div');
+          optionDiv.className = 'option';
+          optionDiv.textContent = option.text;
+          optionDiv.setAttribute('role', 'radio');
+          optionDiv.setAttribute('aria-checked', 'false');
+          optionDiv.setAttribute('tabindex', '0');
+          optionDiv.onclick = () => selectOption(index, optionDiv);
+          optionDiv.onkeydown = (e) => handleOptionKeydown(e, index, optionDiv);
+          
+          // 순차적 애니메이션 딜레이
+          optionDiv.style.animationDelay = `${index * 0.1}s`;
+          container.appendChild(optionDiv);
+        });
 
-      updateProgress();
-      document.getElementById('nextBtn').disabled = true;
-      
-      // 첫 번째 옵션에 포커스
-      setTimeout(() => {
-        const firstOption = container.querySelector('.option');
-        if (firstOption) firstOption.focus();
-      }, 100);
+        updateProgress();
+        document.getElementById('nextBtn').disabled = true;
+        
+        // 첫 번째 옵션에 포커스
+        setTimeout(() => {
+          const firstOption = container.querySelector('.option');
+          if (firstOption) firstOption.focus();
+        }, 400);
+      }
     }
 
     // 옵션 키보드 핸들러
@@ -411,16 +433,45 @@
       }
     }
 
-    // 진행률 업데이트
+    // 진행률 업데이트 (애니메이션 개선)
     function updateProgress() {
       const progress = ((currentQuestion + 1) / questions.length) * 100;
-      document.getElementById('progressFill').style.width = progress + '%';
-      document.getElementById('progressText').textContent = `${currentQuestion + 1} / ${questions.length}`;
+      const progressFill = document.getElementById('progressFill');
+      const progressText = document.getElementById('progressText');
+      
+      // 부드러운 진행률 애니메이션
+      progressFill.style.transition = 'width 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+      progressFill.style.width = progress + '%';
+      
+      // 숫자 카운트업 애니메이션
+      const currentNum = parseInt(progressText.textContent.split(' / ')[0]);
+      const targetNum = currentQuestion + 1;
+      
+      if (currentNum !== targetNum) {
+        let currentCount = currentNum;
+        const increment = targetNum > currentCount ? 1 : -1;
+        const countInterval = setInterval(() => {
+          currentCount += increment;
+          progressText.textContent = `${currentCount} / ${questions.length}`;
+          
+          if (currentCount === targetNum) {
+            clearInterval(countInterval);
+          }
+        }, 50);
+      }
       
       // 진행률 바 접근성 업데이트
       const progressBar = document.querySelector('.progress-bar');
       progressBar.setAttribute('aria-valuenow', Math.round(progress));
       progressBar.setAttribute('aria-label', `테스트 진행률 ${Math.round(progress)}%`);
+      
+      // 진행률 바 펄스 효과
+      if (progress === 100) {
+        progressFill.style.animation = 'pulse 0.6s ease-in-out';
+        setTimeout(() => {
+          progressFill.style.animation = '';
+        }, 600);
+      }
     }
 
     // 결과 표시
@@ -502,6 +553,71 @@
     function goToHome() {
       window.location.href = '/ko/';
     }
+
+    // WebP 지원 감지
+    function supportsWebP() {
+      return new Promise((resolve) => {
+        const webP = new Image();
+        webP.onload = webP.onerror = () => {
+          resolve(webP.height === 2);
+        };
+        webP.src = 'data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA';
+      });
+    }
+
+    // 적응형 이미지 로딩
+    function loadOptimizedImage(container, basePath, alt) {
+      const img = document.createElement('img');
+      const isMobile = window.innerWidth <= 768;
+      const isWebPSupported = supportsWebP();
+      
+      isWebPSupported.then((supported) => {
+        const extension = supported ? '.webp' : '.png';
+        const size = isMobile ? '-mobile' : '';
+        
+        img.src = `${basePath}${size}${extension}`;
+        img.alt = alt;
+        img.className = 'optimized-image';
+        img.loading = 'lazy';
+        
+        img.onload = () => {
+          img.classList.add('loaded');
+          container.appendChild(img);
+        };
+        
+        img.onerror = () => {
+          // Fallback to PNG if WebP fails
+          if (supported) {
+            img.src = `${basePath}${size}.png`;
+          }
+        };
+      });
+    }
+
+    // 이미지 지연 로딩 관찰자
+    const imageObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const img = entry.target;
+          if (img.dataset.src) {
+            img.src = img.dataset.src;
+            img.classList.remove('loading');
+            imageObserver.unobserve(img);
+          }
+        }
+      });
+    }, {
+      rootMargin: '50px 0px'
+    });
+
+    // 페이지 로드 시 이미지 최적화 초기화
+    document.addEventListener('DOMContentLoaded', () => {
+      // 지연 로딩 이미지들 관찰 시작
+      document.querySelectorAll('img[data-src]').forEach(img => {
+        img.classList.add('loading');
+        imageObserver.observe(img);
+      });
+    });
   </script>
 </body>
 </html>
