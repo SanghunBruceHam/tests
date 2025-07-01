@@ -405,26 +405,16 @@
     </div>
   </div>
 
-  <!-- AdSense 광고 -->
-  <div style="text-align: center; margin: 20px auto; max-width: 728px;">
-    <ins class="adsbygoogle"
-         style="display:block"
-         data-ad-client="ca-pub-5508768187151867"
-         data-ad-slot="1234567890"
-         data-ad-format="auto"
-         data-full-width-responsive="true"></ins>
-  </div>
-
-  <script>
-    // AdSense 초기화
-    window.addEventListener('load', function() {
-      try {
-        (adsbygoogle = window.adsbygoogle || []).push({});
-      } catch (e) {
-        console.log('AdSense loading error:', e);
-      }
-    });
-  </script>
+  <!-- AMP AdSense 광고 -->
+  <script async custom-element="amp-ad" src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"></script>
+  <amp-ad width="100vw" height="320"
+    type="adsense"
+    data-ad-client="ca-pub-5508768187151867"
+    data-ad-slot="4067267701"
+    data-auto-format="rspv"
+    data-full-width="">
+    <div overflow=""></div>
+  </amp-ad>
 
   <script>
     // 다크모드 상태
