@@ -36,7 +36,7 @@
     .container .adsbygoogle {
       display: none !important;
     }
-    
+
     /* AMP 광고 자동 배치 차단 */
     .quiz-card::before,
     .quiz-card::after,
@@ -493,7 +493,7 @@
 </div>
     <div id="result-card" class="result-card" style="display:none;"></div>
 </div>
- 
+
   </div>
   <div id="typeModalContainer"></div>
   <script>
@@ -594,7 +594,7 @@
       "エゲン女子_エゲン男子": "💖🎨 会話が盛り上がり、お互いを癒せる温かい関係。",
       "エゲン女子_テト男子": "💖🚀 最高の相性！お互いの弱みを補い合う理想のカップル。",
       "テト女子_エゲン女子": "💼💖 タイプの違いで新しい経験ができる、刺激的な関係です。",
-      "テト女子_テト女子": "💼💼 리ーダー気質同士でちょっと競争心も。でも良いライバル＆親友！",
+      "テト女子_テト女子": "💼💼 리ー더気質同士でちょっと競争心も。でも良いライバル＆親友！",
       "テト女子_エゲン男子": "💼🎨 理解し合い応援できる、仕事も趣味も合う相性。",
       "テト女子_テト男子": "💼🚀 情熱たっぷり！一緒に目標を追いかける最強タッグ。",
       "エゲン男子_エゲン女子": "🎨💖 繊細さと共感力のコンビ、話が尽きない親友になれます。",
@@ -737,8 +737,11 @@
           </div>
         </div>
         <button class="retry-btn" onclick="renderStartCard()">もう一度</button>
-            <div class="fixed-watermark">© エゲン vs テト 性格テスト | <a href="/ja/" style="color:#bbb;text-decoration:underline;">tests.mahalohana-bruce.com</a>
+      `;
 
+      // 하단에 워터마크 추가
+      document.body.innerHTML += `
+        <div class="fixed-watermark">© エゲン vs テト 性格テスト | <a href="/ja/" style="color:#bbb;text-decoration:underline;">tests.mahalohana-bruce.com</a></div>
       `;
       renderOtherTypeCards(resultType);
       renderCelebList(resultType);
