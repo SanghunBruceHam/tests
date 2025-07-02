@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -10,7 +11,7 @@
   <meta property="og:title" content="エゲン vs テト 性格テスト｜相性ピッタリの異性タイプ診断！" />
   <meta property="og:description" content="10問でわかる自分の性格と相性ピッタリの異性タイプ、適職も診断！結果コピー・シェア機能、スマホ最適化。" />
   <meta property="og:image" content="https://tests.mahalohana-bruce.com/egen-teto/ja/thumbnail.png" />
-<meta property="og:url" content="https://tests.mahalohana-bruce.com/egen-teto/ja/" />
+  <meta property="og:url" content="https://tests.mahalohana-bruce.com/egen-teto/ja/" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="エゲン vs テト 性格テスト" />
   <meta name="twitter:description" content="10問で性格・適職・相性タイプをすぐ診断！シェア・コピーも簡単。" />
@@ -21,6 +22,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Gmarket+Sans:wght@400;700&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/static/woff2/SUIT.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
   <!-- Google Analytics & AdSense -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-45VSGEM7EZ"></script>
   <script>
@@ -29,350 +31,1572 @@
     gtag('js', new Date());
     gtag('config', 'G-45VSGEM7EZ');
   </script>
-  <script async custom-element="amp-ad" src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5508768187151867" crossorigin="anonymous"></script>
 
   <!-- 공통 테마 CSS -->
   <link rel="stylesheet" href="/assets/common-theme.css">
 
   <style>
-    :root {
-      --egen: #ff7eb3;
-      --teto: #8ac6ff;
-      --egen-soft: #ffe6f3;
-      --teto-soft: #e6f2ff;
-      --card-bg: #fff;
-      --btn-bg: #fff;
-      --btn-color: #ff7eb3;
-      --btn-border: #ff7eb3;
-      --btn-hover-bg: #ff7eb320;
-      --btn-hover-color: #e75480;
-      --gray: #f6f7fa;
-    }
-    body {
-      font-family: 'Noto Sans JP', 'Gmarket Sans', 'SUIT', sans-serif;
-      background: linear-gradient(135deg, #FFD6E8 0%, #B5FFFC 100%);
+    * {
       margin: 0;
-      padding: 0 0 50px 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       min-height: 100vh;
-      max-width: 650px;
-      margin-left: auto; margin-right: auto;
+      padding: 20px;
+      color: #2d3748;
+      transition: all 0.3s ease;
     }
-    .container { max-width: 600px; margin: 0 auto; padding: 18px 0 36px 0; }
-    h1 { font-size: 2rem; text-align: center; font-weight: 900; margin: 24px 0 12px 0;}
-    .desc-link { display:block; text-align:right; font-size:1rem; color:#4970f5; margin-bottom:6px; text-decoration:underline; font-weight:600;}
-    .desc-link:hover { color: var(--egen);}
-    .progress-bar { height: 9px; background: var(--egen); width: 0%; border-radius: 7px; margin-bottom: 16px; transition: width .3s;}
-    .quiz-card, .result-card {
-      background: var(--card-bg);
-      border-radius: 28px;
-      box-shadow: 0 4px 18px #ff7eb315;
-      margin: 0 auto 26px auto;
-      padding: 28px 18px 35px 18px;
-      max-width: 540px; min-width:0; min-height:190px;
-      display: flex; flex-direction: column; align-items: center;
+
+    [data-theme="dark"] body {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      color: #e0e0e0;
     }
-    .quiz-title { font-size:1.18rem; font-weight:700; color:#363636; text-align:center; margin-bottom:36px;}
-    .answer-group { width:100%; display:flex; flex-wrap:wrap; gap:14px; justify-content:center;}
-    .answer-btn {
-      flex: 1 1 44%; min-width: 130px; max-width:180px;
-      background: var(--btn-bg); color: var(--btn-color);
-      font-size: 1rem; font-weight: 700; border: 2px solid var(--btn-border);
-      border-radius: 13px; min-height: 46px; margin: 0;
-      box-shadow: none; cursor: pointer; text-align: center; letter-spacing: -0.01em;
-      transition: background 0.13s, color 0.13s, border 0.13s, transform 0.09s;
-      outline: none; padding:0 5px;
+
+    .container {
+      max-width: 420px;
+      margin: 0 auto;
+      min-height: calc(100vh - 40px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
     }
-    .answer-btn:hover {
-      background: var(--btn-hover-bg); color: var(--btn-hover-color); border-color: #e75480; transform:scale(1.025);
+
+    .header-controls {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
     }
-    .answer-btn:active { background: #ff7eb350; color: #fff; transform: scale(.98);}
-    .result-mascot { text-align:center; font-size:2.6rem; margin-bottom:6px;}
-    .result-title { color: var(--egen); font-size: 1.32rem; font-weight: 900; text-align: center; margin:0 0 10px 0;}
-    .result-desc { color: #232323; font-size: 1.08rem; text-align: center; font-weight: 600; margin-bottom: 19px;}
-    .result-badges { width:100%; display:flex; flex-direction:column; gap:9px; margin-bottom: 13px;}
-    .result-badge { border-radius: 11px; padding: 8px 0; font-weight: 700; font-size: 1.06rem; text-align: center;}
-    .badge-purple { background: #e7e7ff; color: #5871e2;}
-    .badge-green  { background: #e3f8e8; color: #15b94b;}
-    .badge-pink   { background: #ffe1ee; color: #ef3570;}
-    .badge-blue   { background: #e3eeff; color: #136edc;}
-    .celeb-section { width:100%; max-width:500px; margin:22px auto 10px auto; background: #f7faff; border-radius: 16px; padding: 18px 6px 8px 6px; }
-    .celeb-section h3 { font-size: 1.08rem; font-weight: 900; margin-bottom: 14px; text-align: center;}
-    .celeb-list { display: grid; grid-template-columns: 1fr 1fr; gap: 12px;}
-    .celeb-card { display: flex; flex-direction: column; align-items: center; background:#fff; border-radius:11px; box-shadow:0 1.5px 7px #ccdfff21; padding:13px 6px; min-height:97px;}
-    .celeb-emoji { font-size:2rem; margin-bottom:2px;}
-    .celeb-name { font-weight:700; font-size:1.06rem; margin-bottom:1px;}
-    .celeb-desc { font-size:.97rem; color:#555; margin-bottom:6px; text-align:center;}
-    .celeb-links { display:flex; gap:8px; margin-top:auto;}
-    .celeb-link-icon { width:23px; height:23px; display:flex; align-items:center; justify-content:center; border-radius:50%; background:#fff; border:1.5px solid #e3e6ef; color:#3a80e6; font-size:1.2rem; text-decoration:none;}
-    .celeb-link-icon:hover { background:#e3f2fd; color:#1976d2; }
-    .sns-section { background: #fff0fa; border-radius: 14px; width:100%; max-width:420px; margin:18px auto 12px auto; padding:10px 8px 10px 8px; display:flex; flex-direction:column; align-items:center;}
-    .sns-title { font-size:1.06rem; font-weight:800; color:#e75480; margin-bottom:8px; text-align:center;}
-    .sns-btns { display:grid; grid-template-columns:1fr 1fr; gap:11px; width:100%;}
-    .sns-btn { background:#fff; color:var(--egen); border:2px solid var(--egen); border-radius:11px; font-size:1.05rem; font-weight:700; min-height:39px; cursor:pointer; margin:0; padding:0;}
-    .sns-btn:hover { background:#ffeff7; color:#e75480; border-color:#e75480; }
-    .retry-btn { display:block; width:110px; margin:23px auto 0 auto; background:#ffe6f3; color:#e75480; border:2px solid #e75480; border-radius:13px; font-size:1.07rem; font-weight:800; min-height:42px; cursor:pointer; }
-    .retry-btn:hover { background:#ffb3d9; color:#fff; border-color:#ff7eb3; transform:scale(1.03);}
-    .watermark { text-align: center; color: #aaa; font-size: 0.96rem; margin-top: 14px;}
+
+    .theme-toggle {
+      padding: 10px;
+      border: none;
+      background: rgba(255, 255, 255, 0.9);
+      color: #2d3748;
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      width: 45px;
+      height: 45px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      transition: all 0.3s ease;
+    }
+
+    [data-theme="dark"] .theme-toggle {
+      background: rgba(30, 30, 50, 0.9);
+      color: #e0e0e0;
+    }
+
+    .card {
+      background: white;
+      border-radius: 20px;
+      padding: 32px;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      width: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    [data-theme="dark"] .card {
+      background: rgba(30, 30, 50, 0.95);
+      color: #e0e0e0;
+    }
+
+    /* Header */
+    .header {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .title {
+      font-size: 28px;
+      font-weight: 800;
+      margin-bottom: 8px;
+      line-height: 1.2;
+      color: #1f2937;
+    }
+
+    [data-theme="dark"] .title {
+      color: #e0e0e0;
+    }
+
+    .title .estrogen {
+      color: #ec4899;
+    }
+
+    .title .vs {
+      color: #6b7280;
+      font-weight: 400;
+    }
+
+    .title .testosterone {
+      color: #3b82f6;
+    }
+
+    .subtitle {
+      font-size: 16px;
+      color: #6b7280;
+      margin-bottom: 24px;
+      line-height: 1.5;
+    }
+
+    .info-badge {
+      display: inline-flex;
+      align-items: center;
+      background: #3b82f6;
+      color: white;
+      padding: 8px 16px;
+      border-radius: 50px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+
+    .info-badge:hover {
+      background: #2563eb;
+      transform: translateY(-1px);
+    }
+
+    .info-badge::before {
+      content: 'ℹ';
+      margin-right: 6px;
+    }
+
+    /* Gender Selection */
+    .gender-section h3 {
+      text-align: center;
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 24px;
+      color: #1f2937;
+    }
+
+    [data-theme="dark"] .gender-section h3 {
+      color: #e0e0e0;
+    }
+
+    .gender-options {
+      display: grid;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+
+    .gender-option {
+      display: flex;
+      align-items: center;
+      padding: 16px 20px;
+      border: 2px solid #e5e7eb;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      background: #f9fafb;
+    }
+
+    [data-theme="dark"] .gender-option {
+      border-color: #374151;
+      background: rgba(55, 65, 81, 0.3);
+    }
+
+    .gender-option:hover {
+      border-color: #d1d5db;
+      background: #f3f4f6;
+    }
+
+    [data-theme="dark"] .gender-option:hover {
+      border-color: #4b5563;
+      background: rgba(75, 85, 99, 0.3);
+    }
+
+    .gender-option.selected {
+      border-color: #3b82f6;
+      background: #eff6ff;
+      color: #1d4ed8;
+    }
+
+    [data-theme="dark"] .gender-option.selected {
+      background: rgba(59, 130, 246, 0.2);
+      color: #93c5fd;
+    }
+
+    .gender-icon {
+      font-size: 20px;
+      margin-right: 16px;
+      width: 24px;
+      text-align: center;
+    }
+
+    .gender-text {
+      flex: 1;
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .radio-circle {
+      width: 20px;
+      height: 20px;
+      border: 2px solid #d1d5db;
+      border-radius: 50%;
+      position: relative;
+      transition: all 0.2s ease;
+    }
+
+    .gender-option.selected .radio-circle {
+      border-color: #3b82f6;
+    }
+
+    .gender-option.selected .radio-circle::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 10px;
+      height: 10px;
+      background: #3b82f6;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    /* Progress Bar */
+    .progress-section {
+      margin-bottom: 32px;
+    }
+
+    .progress-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .progress-label {
+      font-size: 14px;
+      color: #6b7280;
+      font-weight: 500;
+    }
+
+    .progress-counter {
+      font-size: 14px;
+      color: #374151;
+      font-weight: 600;
+    }
+
+    [data-theme="dark"] .progress-counter {
+      color: #e0e0e0;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 8px;
+      background: #e5e7eb;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    [data-theme="dark"] .progress-bar {
+      background: #374151;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #ec4899, #3b82f6);
+      border-radius: 4px;
+      transition: width 0.3s ease;
+      width: 0%;
+    }
+
+    /* Question Section */
+    .question-section {
+      text-align: center;
+    }
+
+    .question-number {
+      display: inline-block;
+      background: #f3f4f6;
+      color: #374151;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+
+    [data-theme="dark"] .question-number {
+      background: #374151;
+      color: #e0e0e0;
+    }
+
+    .question-title {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 32px;
+      line-height: 1.3;
+      color: #1f2937;
+    }
+
+    [data-theme="dark"] .question-title {
+      color: #e0e0e0;
+    }
+
+    /* Answer Options */
+    .answer-options {
+      display: grid;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+
+    .answer-option {
+      padding: 16px 20px;
+      background: #f9fafb;
+      border: 2px solid #e5e7eb;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-size: 16px;
+      line-height: 1.4;
+      text-align: left;
+    }
+
+    [data-theme="dark"] .answer-option {
+      background: rgba(55, 65, 81, 0.3);
+      border-color: #374151;
+      color: #e0e0e0;
+    }
+
+    .answer-option:hover {
+      border-color: #d1d5db;
+      background: #f3f4f6;
+    }
+
+    [data-theme="dark"] .answer-option:hover {
+      border-color: #4b5563;
+      background: rgba(75, 85, 99, 0.3);
+    }
+
+    .answer-option.selected {
+      border-color: #3b82f6;
+      background: #3b82f6;
+      color: white;
+    }
+
+    /* Yes/No Options */
+    .yn-options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .yn-option {
+      padding: 24px 20px;
+      border: 2px solid #e5e7eb;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-size: 18px;
+      font-weight: 600;
+      text-align: center;
+      background: #f9fafb;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    [data-theme="dark"] .yn-option {
+      background: rgba(55, 65, 81, 0.3);
+      border-color: #374151;
+      color: #e0e0e0;
+    }
+
+    .yn-option:hover {
+      border-color: #d1d5db;
+      background: #f3f4f6;
+    }
+
+    [data-theme="dark"] .yn-option:hover {
+      border-color: #4b5563;
+      background: rgba(75, 85, 99, 0.3);
+    }
+
+    .yn-option.selected {
+      border-color: #3b82f6;
+      background: #3b82f6;
+      color: white;
+    }
+
+    .yn-option::before {
+      display: block;
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+
+    .yn-option.yes::before {
+      content: '✓';
+    }
+
+    .yn-option.no::before {
+      content: '✗';
+    }
+
+    /* Buttons */
+    .btn {
+      width: 100%;
+      padding: 16px 24px;
+      border: none;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-primary {
+      background: #3b82f6;
+      color: white;
+    }
+
+    .btn-primary:hover:not(:disabled) {
+      background: #2563eb;
+      transform: translateY(-1px);
+    }
+
+    .btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none !important;
+    }
+
+    /* Loading Screen */
+    .loading-section {
+      text-align: center;
+      padding: 60px 0;
+    }
+
+    .loading-spinner {
+      width: 40px;
+      height: 40px;
+      border: 4px solid #e5e7eb;
+      border-top: 4px solid #3b82f6;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 24px;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .loading-text {
+      font-size: 18px;
+      font-weight: 600;
+      color: #374151;
+    }
+
+    [data-theme="dark"] .loading-text {
+      color: #e0e0e0;
+    }
+
+    /* Result Screen */
+    .result-section {
+      text-align: center;
+    }
+
+    .result-header {
+      background: #f9fafb;
+      border-radius: 16px;
+      padding: 32px 24px;
+      margin-bottom: 24px;
+    }
+
+    [data-theme="dark"] .result-header {
+      background: rgba(55, 65, 81, 0.3);
+    }
+
+    .result-emoji {
+      font-size: 64px;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .result-title {
+      font-size: 28px;
+      font-weight: 800;
+      margin-bottom: 8px;
+      color: #1f2937;
+    }
+
+    [data-theme="dark"] .result-title {
+      color: #e0e0e0;
+    }
+
+    .result-subtitle {
+      font-size: 16px;
+      color: #6b7280;
+      margin-bottom: 16px;
+    }
+
+    .result-description {
+      font-size: 14px;
+      color: #374151;
+      line-height: 1.5;
+    }
+
+    [data-theme="dark"] .result-description {
+      color: #b0b0b0;
+    }
+
+    /* Chart */
+    .chart-section {
+      background: #f9fafb;
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+
+    [data-theme="dark"] .chart-section {
+      background: rgba(55, 65, 81, 0.3);
+    }
+
+    .chart-title {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: #1f2937;
+    }
+
+    [data-theme="dark"] .chart-title {
+      color: #e0e0e0;
+    }
+
+    .chart-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .chart-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .chart-label {
+      width: 80px;
+      text-align: left;
+      font-size: 14px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+    }
+
+    .chart-label.estrogen {
+      color: #ec4899;
+    }
+
+    .chart-label.testosterone {
+      color: #3b82f6;
+    }
+
+    .chart-label::before {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      margin-right: 8px;
+      content: '';
+    }
+
+    .chart-label.estrogen::before {
+      background: #ec4899;
+    }
+
+    .chart-label.testosterone::before {
+      background: #3b82f6;
+    }
+
+    .chart-bar {
+      flex: 1;
+      height: 8px;
+      background: #e5e7eb;
+      border-radius: 4px;
+      margin: 0 16px;
+      overflow: hidden;
+    }
+
+    [data-theme="dark"] .chart-bar {
+      background: #374151;
+    }
+
+    .chart-fill {
+      height: 100%;
+      border-radius: 4px;
+      transition: width 1s ease;
+    }
+
+    .chart-fill.estrogen {
+      background: #ec4899;
+    }
+
+    .chart-fill.testosterone {
+      background: #3b82f6;
+    }
+
+    .chart-percentage {
+      font-size: 14px;
+      font-weight: 600;
+      color: #374151;
+      width: 40px;
+      text-align: right;
+    }
+
+    [data-theme="dark"] .chart-percentage {
+      color: #e0e0e0;
+    }
+
+    /* Result Cards */
+    .result-cards {
+      display: grid;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .result-card {
+      background: #f9fafb;
+      border-radius: 16px;
+      padding: 24px;
+      text-align: left;
+    }
+
+    [data-theme="dark"] .result-card {
+      background: rgba(55, 65, 81, 0.3);
+    }
+
+    .result-card-title {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: #1f2937;
+      display: flex;
+      align-items: center;
+    }
+
+    [data-theme="dark"] .result-card-title {
+      color: #e0e0e0;
+    }
+
+    .result-card-title::before {
+      margin-right: 8px;
+      font-size: 20px;
+    }
+
+    .result-card-title.personality::before { content: '🎭'; }
+    .result-card-title.match::before { content: '💕'; }
+    .result-card-title.keywords::before { content: '🏷️'; }
+
+    .result-card-content {
+      font-size: 16px;
+      line-height: 1.6;
+      color: #374151;
+    }
+
+    [data-theme="dark"] .result-card-content {
+      color: #b0b0b0;
+    }
+
+    .match-badge {
+      display: inline-block;
+      background: #3b82f6;
+      color: white;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .keywords-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .keyword-tag {
+      background: #e5e7eb;
+      color: #374151;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    [data-theme="dark"] .keyword-tag {
+      background: #4b5563;
+      color: #e0e0e0;
+    }
+
+    /* Info Grid */
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .info-card {
+      background: #f9fafb;
+      border-radius: 12px;
+      padding: 16px;
+      text-align: center;
+    }
+
+    [data-theme="dark"] .info-card {
+      background: rgba(55, 65, 81, 0.3);
+    }
+
+    .info-card-title {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: #1f2937;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    [data-theme="dark"] .info-card-title {
+      color: #e0e0e0;
+    }
+
+    .info-card-title::before {
+      margin-right: 6px;
+      font-size: 16px;
+    }
+
+    .info-card-title.famous::before { content: '👥'; }
+    .info-card-title.career::before { content: '💼'; }
+    .info-card-title.lifestyle::before { content: '🎨'; }
+    .info-card-title.music::before { content: '🎵'; }
+
+    .info-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .info-item {
+      background: white;
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 14px;
+      color: #374151;
+    }
+
+    [data-theme="dark"] .info-item {
+      background: rgba(30, 30, 50, 0.5);
+      color: #b0b0b0;
+    }
+
+    /* Share Section */
+    .share-section {
+      margin-top: 32px;
+    }
+
+    .share-title {
+      font-size: 18px;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 20px;
+      color: #1f2937;
+    }
+
+    [data-theme="dark"] .share-title {
+      color: #e0e0e0;
+    }
+
+    .share-buttons {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .share-btn {
+      padding: 16px 12px;
+      border: none;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .share-btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .share-btn.twitter {
+      background: #1da1f2;
+      color: white;
+    }
+
+    .share-btn.facebook {
+      background: #1877f2;
+      color: white;
+    }
+
+    .share-btn.copy {
+      background: #10b981;
+      color: white;
+    }
+
+    .action-buttons {
+      display: grid;
+      gap: 12px;
+    }
+
+    .action-btn {
+      padding: 16px;
+      border: 2px solid #e5e7eb;
+      border-radius: 12px;
+      background: white;
+      color: #374151;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    [data-theme="dark"] .action-btn {
+      background: rgba(30, 30, 50, 0.5);
+      border-color: #374151;
+      color: #e0e0e0;
+    }
+
+    .action-btn:hover {
+      border-color: #d1d5db;
+      background: #f9fafb;
+    }
+
+    [data-theme="dark"] .action-btn:hover {
+      border-color: #4b5563;
+      background: rgba(75, 85, 99, 0.3);
+    }
+
+    /* Responsive */
     @media (max-width: 480px) {
-      .quiz-card, .result-card {padding:14px 2px 23px 2px; border-radius:14px;}
-      h1 { font-size: 1.09rem; margin:14px 0 6px 0; }
-      .celeb-list { grid-template-columns: 1fr; }
+      .container {
+        padding: 15px;
+      }
+
+      .card {
+        padding: 24px;
+      }
+
+      .title {
+        font-size: 24px;
+      }
+
+      .question-title {
+        font-size: 20px;
+      }
+
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .share-buttons {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .hidden {
+      display: none;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="header-controls" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-      <h1 style="margin: 0; flex: 1;">エゲン vs テト 性格テスト</h1>
-      <button class="theme-toggle" style="padding: 10px; border: none; background: var(--card-bg); border-radius: 50%; cursor: pointer; box-shadow: 0 2px 10px rgba(0,0,0,0.1); width: 45px; height: 45px; display: flex; align-items: center; justify-content: center;">
-        <i class="fas fa-moon" style="font-size: 18px;"></i>
-      </button>
-    </div>
-    <a href="https://tests.mahalohana-bruce.com/egen-teto/ja/about.html" class="desc-link" target="_blank">エゲン vs テト 性格診断とは？</a>
-    <div class="progress-bar" id="progress-bar"></div>
-    <div id="quiz-card" class="quiz-card"></div>
-    <div id="result-card" class="result-card" style="display:none;"></div>
+  <div class="header-controls">
+    <button class="theme-toggle" id="themeToggle">
+      <i class="fas fa-moon"></i>
+    </button>
   </div>
-  <script>
-    // === 테스트 데이터/로직은 기존과 동일 ===
-    const questionBank = [
-      {type:'scale', q:"他人の感情に共感しやすいほうだ。", a:["全くそう思わない","あまりそう思わない","どちらでもない","ややそう思う","とてもそう思う"]},
-      {type:'scale', q:"一人の時間が必要だと感じる。", a:["全くそう思わない","あまりそう思わない","どちらでもない","ややそう思う","とてもそう思う"]},
-      {type:'scale', q:"計画的に物事を進めるのが好きだ。", a:["全くそう思わない","あまりそう思わない","どちらでもない","ややそう思う","とてもそう思う"]},
-      {type:'scale', q:"新しいことに挑戦するのが怖くない。", a:["全くそう思わない","あまりそう思わない","どちらでもない","ややそう思う","とてもそう思う"]},
-      {type:'scale', q:"感情を素直に表現できる。", a:["全くそう思わない","あまりそう思わない","どちらでもない","ややそう思う","とてもそう思う"]},
-      {type:'scale', q:"他人に助けを求めることが多い。", a:["全くそう思わない","あまりそう思わない","どちらでもない","ややそう思う","とてもそう思う"]},
-      {type:'scale', q:"リーダー役を任されるのが好きだ。", a:["全くそう思わない","あまりそう思わない","どちらでもない","ややそう思う","とてもそう思う"]},
-      {type:'scale', q:"決断するときは慎重に考える。", a:["全くそう思わない","あまりそう思わない","どちらでもない","ややそう思う","とてもそう思う"]},
-      {type:'scale', q:"目標を達成するために粘り強く努力する。", a:["全くそう思わない","あまりそう思わない","どちらでもない","ややそう思う","とてもそう思う"]},
-      {type:'scale', q:"感情が揺れやすいタイプだ。", a:["全くそう思わない","あまりそう思わない","どちらでもない","ややそう思う","とてもそう思う"]},
-      {type:'yn', q:"自分は内向的だと思う。", a:["はい","いいえ"]},
-      {type:'yn', q:"問題が起きたらすぐに行動する。", a:["はい","いいえ"]},
-      {type:'yn', q:"感性的な芸術や音楽、絵が好きだ。", a:["はい","いいえ"]},
-      {type:'yn', q:"人と協力して作業するのが得意だ。", a:["はい","いいえ"]},
-      {type:'yn', q:"自分で自分をよく励ますことができる。", a:["はい","いいえ"]},
-      {type:'yn', q:"論理よりも感情を重視する。", a:["はい","いいえ"]},
-      {type:'yn', q:"ピンチでも冷静に対応できる。", a:["はい","いいえ"]},
-      {type:'yn', q:"他人の期待に応えようと頑張る。", a:["はい","いいえ"]},
-      {type:'yn', q:"気まぐれに旅行に行くのが好きだ。", a:["はい","いいえ"]},
-      {type:'yn', q:"感情が表情に出やすい。", a:["はい","いいえ"]},
-    ];
-    const resultMap = {
-      'エゲン女子': {
-        mascot: "💖",
-        title: '感情共感力の高いエゲン女子',
-        description: `あなたは友達や家族から「話しやすい」「安心感がある」と言われる共感力No.1タイプ！`,
-        recommend: 'SNSマーケター、カウンセラー',
-        bestmatch: 'テト男子 🚀（癒し&共感型女子）',
-        music: ["YOASOBI「アイドル」", "Vaundy「怪獣の花唄」"],
-        movie: ["すずめの戸締まり", "君たちはどう生きるか"],
-        color: '#ff7eb3'
-      },
-      'テト女子': {
-        mascot: "💼",
-        title: 'カリスマ性のあるテト女子',
-        description: `「しっかりしてて頼れる」と言われることが多く、友達グループのリーダーやまとめ役を任されがち。`,
-        recommend: 'イベントプランナー、YouTuber',
-        bestmatch: 'エゲン男子 🎨（優しさ&個性派男子）',
-        music: ["King Gnu「SPECIALZ」", "YOASOBI「群青」"],
-        movie: ["シン・ゴジラ", "ゴールデンカムイ"],
-        color: '#8ac6ff'
-      },
-      'エゲン男子': {
-        mascot: "🎨",
-        title: '感受性豊かなエゲン男子',
-        description: `自分の好きなことや世界観を大事にする“個性派アーティスト”。`,
-        recommend: 'クリエイター、デザイナー',
-        bestmatch: 'テト女子 💼（行動力のある女性）',
-        music: ["米津玄師「Lemon」", "Official髭男dism「Pretender」"],
-        movie: ["BLUE GIANT", "君の名は。"],
-        color: '#ff7eb3'
-      },
-      'テト男子': {
-        mascot: "🚀",
-        title: 'リーダーシップあふれるテト男子',
-        description: `友達から頼りにされることが多く、新しいことやチャレンジも怖がらない“陽キャリーダー”タイプ！`,
-        recommend: 'スタートアップ社長、営業',
-        bestmatch: 'エゲン女子 💖（癒し&共感型女子）',
-        music: ["Ado「向日葵」", "King Gnu「白日」"],
-        movie: ["SLAM DUNK 新劇場版", "シン・ゴジラ"],
-        color: '#8ac6ff'
-      }
-    };
-    const celebMap = {
-      "エゲン女子": [
-        { emoji: "🌸", name: "チャン・ウォニョン", desc: "IVE センター・韓国アイドル", instagram: "https://www.instagram.com/for_everyoung10/", wiki: "https://ja.wikipedia.org/wiki/チャン・ウォニョン" },
-        { emoji: "🧸", name: "平手友梨奈", desc: "元 欅坂46 センター・日本アイドル", instagram: "https://www.instagram.com/yurina_hirate_official/", wiki: "https://ja.wikipedia.org/wiki/平手友梨奈" },
-        { emoji: "🎀", name: "新垣結衣", desc: "日本 女優・モデル", instagram: "", wiki: "https://ja.wikipedia.org/wiki/新垣結衣" },
-        { emoji: "🎤", name: "サナ（TWICE）", desc: "TWICE 日本人メンバー", instagram: "https://www.instagram.com/m.by__sana/", wiki: "https://ja.wikipedia.org/wiki/サナ_(歌手)" },
-      ],
-      "テト女子": [
-        { emoji: "🏐", name: "宮下遥", desc: "日本女子バレーボール代表", instagram: "https://www.instagram.com/miyashita.mai/", wiki: "https://ja.wikipedia.org/wiki/宮下遥" },
-        { emoji: "🌟", name: "宮脇咲良", desc: "LE SSERAFIM・元 HKT48", instagram: "https://www.instagram.com/39saku_chan/", wiki: "https://ja.wikipedia.org/wiki/宮脇咲良" },
-        { emoji: "⛸️", name: "本田真凜", desc: "日本フィギュアスケーター", instagram: "https://www.instagram.com/honda_marin/", wiki: "https://ja.wikipedia.org/wiki/本田真凜" },
-        { emoji: "👸", name: "ミナ（TWICE）", desc: "TWICE 日本人メンバー", instagram: "https://www.instagram.com/mina_sr_my/", wiki: "https://ja.wikipedia.org/wiki/ミナ_(歌手)" },
-      ],
-      "エゲン男子": [
-        { emoji: "🎸", name: "米津玄師", desc: "シンガーソングライター・アーティスト", instagram: "https://www.instagram.com/hachi_08/", wiki: "https://ja.wikipedia.org/wiki/米津玄師" },
-        { emoji: "🏀", name: "八村塁", desc: "NBA ワシントン・ウィザーズ 日本人選手", instagram: "https://www.instagram.com/rui_8mura/", wiki: "https://ja.wikipedia.org/wiki/八村塁" },
-        { emoji: "🤖", name: "ジョングク（BTS）", desc: "BTS 韓国アイドル", instagram: "https://www.instagram.com/jungkook.97/", wiki: "https://ja.wikipedia.org/wiki/ジョングク" },
-        { emoji: "🎨", name: "坂口健太郎", desc: "日本 男優・モデル", instagram: "", wiki: "https://ja.wikipedia.org/wiki/坂口健太郎" },
-      ],
-      "テト男子": [
-        { emoji: "⚽", name: "三笘薫", desc: "日本サッカー代表", instagram: "https://www.instagram.com/kaoru.mitoma_official/", wiki: "https://ja.wikipedia.org/wiki/三笘薫" },
-        { emoji: "🎤", name: "ファン・ミンヒョン", desc: "NU'EST、Wanna One 韓国アイドル", instagram: "https://www.instagram.com/optimushwang/", wiki: "https://ja.wikipedia.org/wiki/ファン・ミンヒョン" },
-        { emoji: "🎮", name: "藤井一葉", desc: "JO1 日本人男性アイドル", instagram: "", wiki: "https://ja.wikipedia.org/wiki/藤井一葉" },
-        { emoji: "👑", name: "キム・ヨハン", desc: "WEi 韓国男性アイドル", instagram: "https://www.instagram.com/yohan__kim/", wiki: "https://ja.wikipedia.org/wiki/キム・ヨハン" },
-      ]
-    };
-    // --- 상태변수 ---
-    let currentQuestion = 0, egenScore = 0, tetoScore = 0, totalQuestions = 10, pickedQuestions = [], userGender = "";
 
-    function shuffle(arr) {
-      let a = arr.slice();
-      for (let i = a.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [a[i], a[j]] = [a[j], a[i]];
-      }
-      return a;
-    }
-    function randomPick(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
-    function renderStartCard() {
-      document.getElementById('progress-bar').style.width = "0%";
-      document.getElementById('quiz-card').innerHTML = `
-        <div class="quiz-title">性別を選択してください：</div>
-        <div style="text-align:center;">
-          <label><input type="radio" name="gender" value="female" /> 女性</label>
-          <label style="margin-left:16px;"><input type="radio" name="gender" value="male" /> 男性</label>
+  <div class="container">
+    <div class="card">
+      <!-- Start Screen -->
+      <div id="startScreen">
+        <div class="header">
+          <h1 class="title">
+            <span class="estrogen">エゲン</span> <span class="vs">vs</span> <span class="testosterone">テト</span> テスト
+          </h1>
+          <p class="subtitle">あなたの性格タイプと理想のパートナーマッチを発見</p>
+          <a href="https://tests.mahalohana-bruce.com/egen-teto/ja/about.html" class="info-badge" target="_blank">このテストについて</a>
         </div>
-        <button class="answer-btn" style="margin: 24px auto 0 auto;display:block;width:140px;" onclick="startQuiz()">スタート</button>
-      `;
-      document.getElementById('result-card').style.display = "none";
-      document.getElementById('quiz-card').style.display = '';
-    }
-    function startQuiz() {
-      const genderInput = document.querySelector('input[name="gender"]:checked');
-      if (!genderInput) { alert("性別を選択してください。"); return; }
-      userGender = genderInput.value;
-      egenScore = 0; tetoScore = 0;
-      pickedQuestions = shuffle(questionBank).slice(0, totalQuestions);
-      currentQuestion = 0;
-      updateProgress();
-      renderQuestionCard();
-    }
-    function updateProgress() {
-      document.getElementById('progress-bar').style.width = ((currentQuestion) / totalQuestions) * 100 + "%";
-    }
-    function renderQuestionCard() {
-      const q = pickedQuestions[currentQuestion];
-      let btnHtml = '';
-      if (q.type === 'scale') {
-        btnHtml = q.a.map((txt, idx) =>
-          `<button class="answer-btn" onclick="answer(${idx - 2})">${txt}</button>`
-        ).join('');
-      } else {
-        btnHtml = q.a.map((txt, idx) =>
-          `<button class="answer-btn" onclick="answer(${idx === 0 ? 1 : -1})">${txt}</button>`
-        ).join('');
+
+        <div class="gender-section">
+          <h3>性別を選択してください</h3>
+
+          <div class="gender-options">
+            <div class="gender-option" onclick="selectGender('female')">
+              <div class="gender-icon">👩</div>
+              <div class="gender-text">女性</div>
+              <div class="radio-circle"></div>
+            </div>
+
+            <div class="gender-option" onclick="selectGender('male')">
+              <div class="gender-icon">👨</div>
+              <div class="gender-text">男性</div>
+              <div class="radio-circle"></div>
+            </div>
+          </div>
+
+          <button class="btn btn-primary" id="startBtn" onclick="startTest()" disabled>
+            テスト開始
+          </button>
+        </div>
+      </div>
+
+      <!-- Question Screen -->
+      <div id="questionScreen" class="hidden">
+        <div class="progress-section">
+          <div class="progress-header">
+            <span class="progress-label">進捗</span>
+            <span class="progress-counter" id="progressCounter">1/10</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+        </div>
+
+        <div class="question-section">
+          <div class="question-number" id="questionNumber">質問 1</div>
+          <h2 class="question-title" id="questionTitle"></h2>
+
+          <div id="answerContainer"></div>
+          <button class="btn btn-primary" id="nextBtn" onclick="nextQuestion()" disabled>次の質問</button>
+        </div>
+      </div>
+
+      <!-- Loading Screen -->
+      <div id="loadingScreen" class="hidden">
+        <div class="loading-section">
+          <div class="loading-spinner"></div>
+          <div class="loading-text">結果を分析中...</div>
+        </div>
+      </div>
+
+      <!-- Result Screen -->
+      <div id="resultScreen" class="hidden">
+        <div class="result-section">
+          <!-- Result Header -->
+          <div class="result-header">
+            <div class="result-emoji" id="resultEmoji">🎭</div>
+            <div class="result-title" id="resultTitle">エゲンタイプ</div>
+            <div class="result-subtitle" id="resultSubtitle">感情的で共感力豊かな性格</div>
+            <div class="result-description" id="resultDescription">あなたは感情豊かで人間関係を大切にするタイプです。</div>
+          </div>
+
+          <!-- Personality Analysis Chart -->
+          <div class="chart-section">
+            <div class="chart-title">📊 性格分析</div>
+            <div class="chart-item">
+              <div class="chart-label estrogen">エゲン</div>
+              <div class="chart-bar">
+                <div class="chart-fill estrogen" id="estrogenBar"></div>
+              </div>
+              <div class="chart-percentage" id="estrogenPercent">0%</div>
+            </div>
+            <div class="chart-item">
+              <div class="chart-label testosterone">テト</div>
+              <div class="chart-bar">
+                <div class="chart-fill testosterone" id="testosteroneBar"></div>
+              </div>
+              <div class="chart-percentage" id="testosteronePercent">0%</div>
+            </div>
+          </div>
+
+          <!-- Result Cards -->
+          <div class="result-cards">
+            <div class="result-card">
+              <div class="result-card-title personality">性格の特徴</div>
+              <div class="result-card-content" id="personalityContent"></div>
+            </div>
+
+            <div class="result-card">
+              <div class="result-card-title match">相性の良いタイプ</div>
+              <div class="result-card-content" id="matchContent"></div>
+            </div>
+
+            <div class="result-card">
+              <div class="result-card-title keywords">キーワード</div>
+              <div class="result-card-content">
+                <div class="keywords-grid" id="keywordsGrid"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Detailed Info -->
+          <div class="info-grid">
+            <div class="info-card">
+              <div class="info-card-title famous">似ている有名人</div>
+              <div class="info-list" id="famousList"></div>
+            </div>
+
+            <div class="info-card">
+              <div class="info-card-title career">おすすめ職業</div>
+              <div class="info-list" id="careerList"></div>
+            </div>
+
+            <div class="info-card">
+              <div class="info-card-title lifestyle">ライフスタイル</div>
+              <div class="info-list" id="lifestyleList"></div>
+            </div>
+
+            <div class="info-card">
+              <div class="info-card-title music">音楽の好み</div>
+              <div class="info-list" id="musicList"></div>
+            </div>
+          </div>
+
+          <!-- Share Section -->
+          <div class="share-section">
+            <div class="share-title">結果をシェア</div>
+
+            <div class="share-buttons">
+              <button class="share-btn twitter" onclick="shareTwitter()">
+                <span>𝕏</span>
+                <span>Twitter</span>
+              </button>
+
+              <button class="share-btn facebook" onclick="shareFacebook()">
+                <span>f</span>
+                <span>Facebook</span>
+              </button>
+
+              <button class="share-btn copy" onclick="copyResult()">
+                <span>📋</span>
+                <span>コピー</span>
+              </button>
+            </div>
+
+            <div class="action-buttons">
+              <button class="action-btn" onclick="restartTest()">🔄 もう一度テスト</button>
+              <button class="action-btn" onclick="goToMainPage()">🏠 他のテストを見る</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AdSense 広告 - ページ下部に配置 -->
+  <div style="margin: 30px auto; max-width: 420px; text-align: center;">
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-5508768187151867"
+         data-ad-slot="4067267701"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div>
+
+  <!-- Watermark -->
+  <div style="position: fixed; left: 0; bottom: 0; width: 100vw; min-height: 36px; padding: 13px 0 11px 0; background: rgba(0,0,0,0.05); text-align: center; color: #999; font-size: 0.9rem; font-weight: 500; z-index: 1000; backdrop-filter: blur(2px);">
+    © エゲン vs テト 性格テスト | <a href="/ja/" style="color:#999;text-decoration:underline;">tests.mahalohana-bruce.com</a>
+  </div>
+
+  <script>
+    // Test data
+    const questions = [
+      {
+        q: '友人といるとき、あなたは通常：',
+        type: 'scale',
+        options: [
+          { text: '静かに聞いている', type: 'testosterone', score: 2 },
+          { text: 'たまに意見を言う', type: 'testosterone', score: 1 },
+          { text: '普通', type: 'neutral', score: 0 },
+          { text: '積極的に会話に参加', type: 'estrogen', score: 1 },
+          { text: '雰囲気をリードする', type: 'estrogen', score: 2 }
+        ]
+      },
+      {
+        q: '新しい人に会うとき、最初の反応は：',
+        type: 'yn',
+        options: [
+          { text: '先に話しかけて会話を始める', type: 'estrogen', score: 2 },
+          { text: '相手から話しかけるのを待つ', type: 'testosterone', score: 2 }
+        ]
+      },
+      {
+        q: '重要な決断をするとき、あなたは：',
+        type: 'scale',
+        options: [
+          { text: '論理的に分析する', type: 'testosterone', score: 2 },
+          { text: '慎重に考える', type: 'testosterone', score: 1 },
+          { text: '普通', type: 'neutral', score: 0 },
+          { text: '直感に従う', type: 'estrogen', score: 1 },
+          { text: '感情で決める', type: 'estrogen', score: 2 }
+        ]
+      },
+      {
+        q: 'ストレスを感じたとき、対処法は：',
+        type: 'yn',
+        options: [
+          { text: '友人に会って話す', type: 'estrogen', score: 2 },
+          { text: '一人の時間を持つ', type: 'testosterone', score: 2 }
+        ]
+      },
+      {
+        q: 'あなたの好きな映画・ドラマのジャンルは：',
+        type: 'yn',
+        options: [
+          { text: 'ロマンス、感動ドラマ', type: 'estrogen', score: 2 },
+          { text: 'SF、スリラー、ドキュメンタリー', type: 'testosterone', score: 2 }
+        ]
+      },
+      {
+        q: '旅行の計画を立てるとき、あなたは：',
+        type: 'scale',
+        options: [
+          { text: '完全に無計画', type: 'estrogen', score: 2 },
+          { text: 'やや無計画', type: 'estrogen', score: 1 },
+          { text: '普通', type: 'neutral', score: 0 },
+          { text: 'ある程度計画する', type: 'testosterone', score: 1 },
+          { text: '詳細な計画を事前に立てる', type: 'testosterone', score: 2 }
+        ]
+      },
+      {
+        q: 'あなたの仕事・作業スタイルは：',
+        type: 'yn',
+        options: [
+          { text: '締切近くに集中して取り組む', type: 'estrogen', score: 2 },
+          { text: '早めから着実に進める', type: 'testosterone', score: 2 }
+        ]
+      },
+      {
+        q: '対立状況での対応は：',
+        type: 'yn',
+        options: [
+          { text: '感情を正直に表現する', type: 'estrogen', score: 2 },
+          { text: '冷静に解決策を見つける', type: 'testosterone', score: 2 }
+        ]
+      },
+      {
+        q: '理想のパートナーを選ぶとき、最も重要な要素は：',
+        type: 'scale',
+        options: [
+          { text: '外見と第一印象', type: 'estrogen', score: 2 },
+          { text: '感情的なつながり', type: 'estrogen', score: 1 },
+          { text: '普通', type: 'neutral', score: 0 },
+          { text: '性格と価値観', type: 'testosterone', score: 1 },
+          { text: '将来の計画と実用性', type: 'testosterone', score: 2 }
+        ]
+      },
+      {
+        q: 'あなたの好きな週末の過ごし方は：',
+        type: 'yn',
+        options: [
+          { text: '友人と楽しくおしゃべり', type: 'estrogen', score: 2 },
+          { text: '一人で読書や映画鑑賞', type: 'testosterone', score: 2 }
+        ]
       }
-      document.getElementById('quiz-card').innerHTML = `
-        <div class="quiz-title">${currentQuestion + 1}. ${q.q}</div>
-        <div class="answer-group">${btnHtml}</div>
-      `;
-      updateProgress();
+    ];
+
+    const results = {
+      estrogen: {
+        male: {
+          title: 'エゲン男子',
+          subtitle: '感情的な男性',
+          emoji: '💖',
+          description: '感情的で共感力豊かな性格',
+          fullDescription: 'あなたは感情豊かで素晴らしい共感力を持っています！ロマンチックで温かい魅力で人を惹きつけます。',
+          match: 'テト女子（論理的な女性）',
+          matchDesc: '冷静で理性的なテト女子と完璧なバランスを作ります。',
+          keywords: ['感情的', 'ロマンチック', '思いやり', '共感力', '直感的'],
+          careers: ['カウンセラー', '教師', '作家', 'アーティスト', 'ソーシャルワーカー'],
+          lifestyle: ['美術館', 'カフェ', 'ライブ音楽', '詩の朗読'],
+          music: ['感動的なバラード', 'インディーポップ', 'フォーク音楽', 'ジャズ'],
+          famous: ['ライアン・ゴズリング', 'マイケル・セラ', 'ティモシー・シャラメ', 'アダム・レヴィーン', 'ジョン・メイヤー']
+        },
+        female: {
+          title: 'エゲン女子',
+          subtitle: '感情的な女性',
+          emoji: '💕',
+          description: '感情的で共感力豊かな性格',
+          fullDescription: 'あなたは温かく感情的です！直感的で共感力があり、人との感情的なつながりを大切にします。',
+          match: 'テト男子（論理的な男性）',
+          matchDesc: '安定して計画性のあるテト男子と素晴らしいカップルになります。',
+          keywords: ['感情的', '温かい', '思いやり', 'ロマンチック', '共感的'],
+          careers: ['看護師', '教師', 'カウンセラー', 'セラピスト', 'デザイナー'],
+          lifestyle: ['お菓子作り', 'フラワーアレンジメント', '読書', 'ヨガ', 'アートセラピー'],
+          music: ['感動的なバラード', 'インディーポップ', 'フォーク', 'クラシック'],
+          famous: ['テイラー・スウィフト', 'エマ・ストーン', 'ジェニファー・ローレンス', 'アリアナ・グランデ', 'ビリー・アイリッシュ']
+        }
+      },
+      testosterone: {
+        male: {
+          title: 'テト男子',
+          subtitle: '論理的な男性',
+          emoji: '🧠',
+          description: '論理的で体系的な思考者',
+          fullDescription: 'あなたは冷静で理性的です！論理的思考と計画性に優れ、安定した関係を求めます。',
+          match: 'エゲン女子（感情的な女性）',
+          matchDesc: '感情的で温かいエゲン女子と完璧な調和を作ります。',
+          keywords: ['論理的', '計画的', '安定', '分析的', '慎重'],
+          careers: ['開発者', 'データアナリスト', '会計士', 'エンジニア', '研究者'],
+          lifestyle: ['読書', 'ゲーム', '映画', 'テック集会', '戦略ゲーム'],
+          music: ['インディーポップ', 'ヒップホップ', 'エレクトロニック', 'ロック'],
+          famous: ['イーロン・マスク', 'マーク・ザッカーバーグ', 'ビル・ゲイツ', 'スティーブ・ジョブズ', 'ジェフ・ベゾス']
+        },
+        female: {
+          title: 'テト女子',
+          subtitle: '論理的な女性',
+          emoji: '🎯',
+          description: '論理的で独立した思考者',
+          fullDescription: 'あなたは独立心旺盛で理性的です！感情より論理を優先し、体系的に問題を解決します。',
+          match: 'エゲン男子（感情的な男性）',
+          matchDesc: '感情的でロマンチックなエゲン男子と完璧なバランスを作ります。',
+          keywords: ['独立的', '理性的', '目標志向', '効率的', '分析的'],
+          careers: ['医師', '弁護士', '研究者', 'CEO', '科学者'],
+          lifestyle: ['運動', '自己啓発', '旅行', 'ネットワーキング', 'リーダーシップ'],
+          music: ['インディーポップ', 'ヒップホップ', 'エレクトロニック', 'ポップ'],
+          famous: ['シェリル・サンドバーグ', 'オプラ・ウィンフリー', 'ミシェル・オバマ', 'セリーナ・ウィリアムズ', 'リアーナ']
+        }
+      }
+    };
+
+    // Test state
+    let selectedGender = '';
+    let currentQuestion = 0;
+    let answers = [];
+    let estrogenScore = 0;
+    let testosteroneScore = 0;
+
+    function selectGender(gender) {
+      selectedGender = gender;
+
+      document.querySelectorAll('.gender-option').forEach(option => {
+        option.classList.remove('selected');
+      });
+
+      event.target.closest('.gender-option').classList.add('selected');
+      document.getElementById('startBtn').disabled = false;
     }
-    function answer(score) {
-      if (currentQuestion % 2 === 0) egenScore += score;
-      else tetoScore += score;
+
+    function startTest() {
+      if (!selectedGender) return;
+
+      document.getElementById('startScreen').classList.add('hidden');
+      document.getElementById('questionScreen').classList.remove('hidden');
+
+      showQuestion();
+    }
+
+    function showQuestion() {
+      const question = questions[currentQuestion];
+
+      document.getElementById('questionTitle').textContent = question.q;
+      document.getElementById('questionNumber').textContent = `質問 ${currentQuestion + 1}`;
+
+      const container = document.getElementById('answerContainer');
+      container.innerHTML = '';
+
+      if (question.type === 'yn') {
+        const ynDiv = document.createElement('div');
+        ynDiv.className = 'yn-options';
+
+        question.options.forEach((option, index) => {
+          const button = document.createElement('div');
+          button.className = `yn-option ${index === 0 ? 'yes' : 'no'}`;
+          button.textContent = option.text;
+          button.onclick = () => selectAnswer(index);
+          ynDiv.appendChild(button);
+        });
+
+        container.appendChild(ynDiv);
+      } else {
+        const optionsDiv = document.createElement('div');
+        optionsDiv.className = 'answer-options';
+
+        question.options.forEach((option, index) => {
+          const button = document.createElement('div');
+          button.className = 'answer-option';
+          button.textContent = option.text;
+          button.onclick = () => selectAnswer(index);
+          optionsDiv.appendChild(button);
+        });
+
+        container.appendChild(optionsDiv);
+      }
+
+      updateProgress();
+      document.getElementById('nextBtn').disabled = true;
+    }
+
+    function selectAnswer(index) {
+      const question = questions[currentQuestion];
+
+      if (question.type === 'yn') {
+        document.querySelectorAll('.yn-option').forEach(option => {
+          option.classList.remove('selected');
+        });
+        document.querySelectorAll('.yn-option')[index].classList.add('selected');
+      } else {
+        document.querySelectorAll('.answer-option').forEach(option => {
+          option.classList.remove('selected');
+        });
+        document.querySelectorAll('.answer-option')[index].classList.add('selected');
+      }
+
+      const selectedOption = question.options[index];
+      answers[currentQuestion] = selectedOption;
+
+      if (selectedOption.type === 'estrogen') {
+        estrogenScore += selectedOption.score;
+      } else if (selectedOption.type === 'testosterone') {
+        testosteroneScore += selectedOption.score;
+      }
+
+      document.getElementById('nextBtn').disabled = false;
+    }
+
+    function nextQuestion() {
       currentQuestion++;
-      if (currentQuestion < totalQuestions) {
-        renderQuestionCard();
+
+      if (currentQuestion < questions.length) {
+        showQuestion();
       } else {
+        showLoading();
+      }
+    }
+
+    function updateProgress() {
+      const progress = ((currentQuestion + 1) / questions.length) * 100;
+      document.getElementById('progressFill').style.width = progress + '%';
+      document.getElementById('progressCounter').textContent = `${currentQuestion + 1}/10`;
+    }
+
+    function showLoading() {
+      document.getElementById('questionScreen').classList.add('hidden');
+      document.getElementById('loadingScreen').classList.remove('hidden');
+
+      setTimeout(() => {
         showResult();
-      }
+      }, 3000);
     }
+
     function showResult() {
-      document.getElementById('progress-bar').style.width = "100%";
-      const egenNorm = egenScore + 10, tetoNorm = tetoScore + 10;
-      const egenPct = Math.max(0, Math.min(100, Math.round((egenNorm / (egenNorm + tetoNorm)) * 100)));
-      const tetoPct = 100 - egenPct;
-      let resultType = "";
-      if (userGender === "female") { resultType = egenPct > tetoPct ? "エゲン女子" : "テト女子"; }
-      else { resultType = egenPct > tetoPct ? "エゲン男子" : "テト男子"; }
-      const result = resultMap[resultType];
-      document.getElementById('quiz-card').style.display= 'none';
-      document.getElementById('result-card').style.display = "";
-      document.getElementById('result-card').innerHTML = `
-        <div class="result-mascot">${result.mascot}</div>
-        <div class="result-title" style="color:${result.color}">${result.title}</div>
-        <div class="result-desc">${result.description}</div>
-        <div class="result-badges">
-          <div class="result-badge badge-purple">相性ピッタリ：${result.bestmatch}</div>
-          <div class="result-badge badge-green">おすすめ職業：${result.recommend}</div>
-          <div class="result-badge badge-pink">おすすめ音楽：${randomPick(result.music)}</div>
-          <div class="result-badge badge-blue">おすすめ映画：${randomPick(result.movie)}</div>
-        </div>
-        <div class="celeb-section">
-          <h3>あなたと同じタイプの有名人</h3>
-          <div class="celeb-list" id="celebList"></div>
-        </div>
-        <div class="sns-section">
-          <div class="sns-title">SNS共有</div>
-          <div class="sns-btns">
-            <button class="sns-btn" onclick="shareResult('twitter')">X（ツイッター）</button>
-            <button class="sns-btn" onclick="shareResult('facebook')">Facebook</button>
-            <button class="sns-btn" onclick="shareResult('threads')">Threads</button>
-            <button class="sns-btn" onclick="copyResult()">結果をコピー</button>
-          </div>
-        </div>
-        <button class="retry-btn" onclick="location.reload()">もう一度</button>
-        <button class="retry-btn" onclick="goToMainPage()" style="background:#e3eeff; color:#136edc; border-color:#136edc; margin-top:10px;">🏠 他のテストを見る</button>
-        <div class="watermark">© エゲン vs テト 性格テスト | <a href="https://tests.mahalohana-bruce.com/egen-teto/ja/index.html" style="color:#bbb;text-decoration:underline;" target="_blank">tests.mahalohana-bruce.com</a></div>
+      document.getElementById('loadingScreen').classList.add('hidden');
+      document.getElementById('resultScreen').classList.remove('hidden');
+
+      const totalScore = estrogenScore + testosteroneScore;
+      const estrogenPercent = totalScore > 0 ? Math.round((estrogenScore / totalScore) * 100) : 50;
+      const testosteronePercent = 100 - estrogenPercent;
+
+      const resultType = estrogenScore > testosteroneScore ? 'estrogen' : 'testosterone';
+      const result = results[resultType][selectedGender];
+
+      // Set result header
+      document.getElementById('resultEmoji').textContent = result.emoji;
+      document.getElementById('resultTitle').textContent = result.title;
+      document.getElementById('resultSubtitle').textContent = result.subtitle;
+      document.getElementById('resultDescription').textContent = result.description;
+
+      // Update chart
+      setTimeout(() => {
+        document.getElementById('estrogenBar').style.width = estrogenPercent + '%';
+        document.getElementById('testosteroneBar').style.width = testosteronePercent + '%';
+        document.getElementById('estrogenPercent').textContent = estrogenPercent + '%';
+        document.getElementById('testosteronePercent').textContent = testosteronePercent + '%';
+      }, 500);
+
+      // Update result content
+      document.getElementById('personalityContent').textContent = result.fullDescription;
+      document.getElementById('matchContent').innerHTML = `
+        <div class="match-badge">${result.match}</div>
+        <div>${result.matchDesc}</div>
       `;
-      renderCelebList(resultType);
+
+      // Keywords
+      const keywordsGrid = document.getElementById('keywordsGrid');
+      keywordsGrid.innerHTML = result.keywords.map(keyword => 
+        `<span class="keyword-tag">${keyword}</span>`
+      ).join('');
+
+      // Detailed info
+      document.getElementById('famousList').innerHTML = 
+        result.famous.map(person => `<div class="info-item">${person}</div>`).join('');
+
+      document.getElementById('careerList').innerHTML = 
+        result.careers.map(career => `<div class="info-item">${career}</div>`).join('');
+
+      document.getElementById('lifestyleList').innerHTML = 
+        result.lifestyle.map(item => `<div class="info-item">${item}</div>`).join('');
+
+      document.getElementById('musicList').innerHTML = 
+        result.music.map(item => `<div class="info-item">${item}</div>`).join('');
+
+      // 테스트 완료 이벤트 추적
+      trackEvent('test_completed', 'test_interaction');
     }
-    function renderCelebList(type) {
-      const celebList = celebMap[type] || [];
-      const INSTAGRAM_ICON = `<svg width="18" height="18" fill="none" viewBox="0 0 48 48"><rect width="36" height="36" x="6" y="6" rx="9" stroke="#e75480" stroke-width="3"/><circle cx="24" cy="24" r="8" stroke="#e75480" stroke-width="3"/><circle cx="31" cy="17" r="2" fill="#e75480"/></svg>`;
-      const WIKI_ICON = `<svg width="18" height="18" fill="none" viewBox="0 0 48 48"><circle cx="24" cy="24" r="20" stroke="#1976d2" stroke-width="3"/><path d="M15 33L21 15L27 33L33 15" stroke="#1976d2" stroke-width="3"/></svg>`;
-      const html = celebList.map(celeb => `
-        <div class="celeb-card">
-          <span class="celeb-emoji">${celeb.emoji}</span>
-          <span class="celeb-name">${celeb.name}</span>
-          <span class="celeb-desc">${celeb.desc}</span>
-          <div class="celeb-links">
-            ${celeb.instagram ? `<a class="celeb-link-icon" href="${celeb.instagram}" target="_blank" title="Instagram">${INSTAGRAM_ICON}</a>` : ''}
-            ${celeb.wiki ? `<a class="celeb-link-icon" href="${celeb.wiki}" target="_blank" title="Wikipedia">${WIKI_ICON}</a>` : ''}
-          </div>
-        </div>
-      `).join("");
-      document.getElementById("celebList").innerHTML = html || "例なし";
+
+    function getShareText() {
+      const resultType = estrogenScore > testosteroneScore ? 'estrogen' : 'testosterone';
+      const result = results[resultType][selectedGender];
+
+      return `🧠💖 エゲン vs テト 性格テスト結果
+
+🎯 私は${result.title}です！
+${result.fullDescription}
+
+💕 相性の良いタイプ: ${result.match}
+💼 おすすめ職業: ${result.careers.join(', ')}
+🏷️ キーワード: ${result.keywords.join(', ')}
+
+✨ テストを受ける: https://tests.mahalohana-bruce.com/egen-teto/ja/`;
     }
-    function shareResult(platform) {
-      const title = document.querySelector(".result-title")?.innerText || "";
-      const url = encodeURIComponent(window.location.href);
-      const text = encodeURIComponent(title + ' - 私も診断！');
-      if (platform === "twitter") {
-        window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank');
-      } else if (platform === "facebook") {
-        window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
-      } else if (platform === "threads") {
-        window.open(`https://www.threads.net/intent/post?text=${text}%20${url}`, '_blank');
+
+    function copyResult() {
+      const text = getShareText();
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(() => {
+          alert('🎉 結果がクリップボードにコピーされました！');
+        }).catch(() => {
+          fallbackCopy(text);
+        });
+      } else {
+        fallbackCopy(text);
       }
     }
-    function copyResult() {
-      const title = document.querySelector(".result-title")?.innerText || "";
-      const mascot = document.querySelector(".result-mascot")?.innerText || "";
-      const desc = document.querySelector(".result-desc")?.innerText || "";
-      const badges = Array.from(document.querySelectorAll(".result-badge")).map(x => x.innerText).join("\n");
-      const link = window.location.href;
-      const source = "\n\n出典：エゲン vs テト 性格テスト";
-      const text = `${mascot} ${title}\n${desc}\n${badges}\nテストはこちら：${link}${source}`;
-      if (navigator.clipboard) {
-        navigator.clipboard.writeText(text).then(function() {
-          alert("結果がコピーされました！");
+
+    function fallbackCopy(text) {
+      const textArea = document.createElement('textarea');
+      textArea.value = text;
+      textArea.style.position = 'fixed';
+      textArea.style.opacity = '0';
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+
+      try {
+        document.execCommand('copy');
+        alert('🎉 結果がクリップボードにコピーされました！');
+      } catch (err) {
+        alert('コピー機能はこのブラウザではサポートされていません。');
+      }
+
+      document.body.removeChild(textArea);
+    }
+
+    function shareTwitter() {
+      const resultType = estrogenScore > testosteroneScore ? 'estrogen' : 'testosterone';
+      const result = results[resultType][selectedGender];
+      const text = `私は${result.title}です！あなたもテストしてみて~ https://tests.mahalohana-bruce.com/egen-teto/ja/`;
+
+      try {
+        const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
+        window.open(url, '_blank', 'noopener,noreferrer');
+      } catch (err) {
+        copyToClipboard(text);
+        alert('テキストがコピーされました！Twitterに貼り付けてください。');
+      }
+    }
+
+    function shareFacebook() {
+      try {
+        const url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent('https://tests.mahalohana-bruce.com/egen-teto/ja/')}`;
+        window.open(url, '_blank', 'noopener,noreferrer');
+      } catch (err) {
+        const text = 'エゲン vs テト 性格テスト https://tests.mahalohana-bruce.com/egen-teto/ja/';
+        copyToClipboard(text);
+        alert('テキストがコピーされました！Facebookに貼り付けてください。');
+      }
+    }
+
+    function copyToClipboard(text) {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).catch(() => {
+          fallbackCopy(text);
+        });
+      } else {
+        fallbackCopy(text);
+      }
+    }
+
+    function restartTest() {
+      selectedGender = '';
+      currentQuestion = 0;
+      answers = [];
+      estrogenScore = 0;
+      testosteroneScore = 0;
+
+      document.getElementById('resultScreen').classList.add('hidden');
+      document.getElementById('startScreen').classList.remove('hidden');
+
+      document.querySelectorAll('.gender-option').forEach(option => {
+        option.classList.remove('selected');
+      });
+
+      document.getElementById('startBtn').disabled = true;
+    }
+
+    function goToMainPage() {
+      window.location.href = '/ja/';
+    }
+
+    // Google Analytics 이벤트 추적
+    function trackEvent(action, category = 'engagement') {
+      if (typeof gtag !== 'undefined') {
+        gtag('event', action, {
+          event_category: category,
+          event_label: 'ja'
         });
       }
     }
-    function goToMainPage() {
-      This update replaces
+
+    // 다크모드 기능
+    let isDarkMode = localStorage.getItem('darkMode') === 'true';
+
+    function updateTheme() {
+      const themeToggle = document.querySelector('.theme-toggle');
+      const icon = themeToggle.querySelector('i');
+
+      if (isDarkMode) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        icon.className = 'fas fa-sun';
+      } else {
+        document.documentElement.removeAttribute('data-theme');
+        icon.className = 'fas fa-moon';
+      }
+
+      localStorage.setItem('darkMode', isDarkMode);
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      updateTheme();
+
+      // 테마 토글 이벤트 리스너
+      document.querySelector('.theme-toggle').addEventListener('click', () => {
+        isDarkMode = !isDarkMode;
+        updateTheme();
+      });
+    });
+  </script>
+</body>
+</html>
