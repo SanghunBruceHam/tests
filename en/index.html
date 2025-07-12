@@ -124,10 +124,7 @@
       background-clip: text;
     }
 
-    .logo {
-      font-size: 3rem;
-      margin-bottom: 10px;
-    }
+    
 
     .subtitle {
       font-size: 1.3rem;
@@ -217,18 +214,33 @@
     @media (max-width: 768px) {
       .container {
         padding: 15px;
-        padding-top: 80px;
+        padding-top: 70px;
       }
 
       .header-controls {
-        top: 15px;
-        right: 15px;
-        flex-direction: column;
-        gap: 10px;
+        top: 10px;
+        right: 10px;
+        flex-direction: row;
+        gap: 8px;
+        background: rgba(255, 255, 255, 0.1);
+        padding: 8px;
+        border-radius: 15px;
+        backdrop-filter: blur(10px);
       }
 
       .language-selector {
-        order: 2;
+        gap: 6px;
+      }
+
+      .lang-btn {
+        padding: 6px 12px;
+        font-size: 12px;
+      }
+
+      .theme-toggle {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
       }
 
       h1 {
@@ -326,7 +338,6 @@
 
   <div class="container">
     <div class="header">
-      <div class="logo">🧠</div>
       <h1>Psychology Tests</h1>
       <p class="subtitle">Fun psychology tests to discover yourself<br>Personality, love, career - all tests are here!</p>
     </div>
@@ -337,7 +348,7 @@
         <div class="stat-label">Test Types</div>
       </div>
       <div class="stat-item">
-        <div class="stat-number">500K+</div>
+        <div class="stat-number">10K+</div>
         <div class="stat-label">Total Users</div>
       </div>
       <div class="stat-item">
