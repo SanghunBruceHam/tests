@@ -57,13 +57,16 @@
       line-height: 1.6;
     }
 
-    .language-selector {
+    .header-controls {
       position: fixed;
       top: 20px;
       right: 20px;
+      z-index: 1000;
+    }
+
+    .language-selector {
       display: flex;
       gap: 10px;
-      z-index: 1000;
     }
 
     .lang-btn {
@@ -172,6 +175,12 @@
       color: inherit;
       display: block;
       min-height: 140px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .test-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
     }
 
     .test-title {
@@ -342,11 +351,13 @@
   </script>
 </head>
 <body>
-  <!-- 언어 선택기 -->
-  <div class="language-selector">
-    <a href="/" class="lang-btn active">한국어</a>
-    <a href="./ja/" class="lang-btn">日本語</a>
-    <a href="./en/" class="lang-btn">English</a>
+  <!-- 헤더 컨트롤 -->
+  <div class="header-controls">
+    <div class="language-selector">
+      <a href="/" class="lang-btn active">한국어</a>
+      <a href="./ja/" class="lang-btn">日本語</a>
+      <a href="./en/" class="lang-btn">English</a>
+    </div>
   </div>
 
   <!-- AdSense - 메인 배너 광고 -->
