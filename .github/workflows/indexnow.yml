@@ -1,0 +1,32 @@
+name: IndexNow Auto Ping
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '**.html'
+
+jobs:
+  indexnow:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
+
+      - name: Send IndexNow Pings
+        run: |
+          FILES=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep '\.html$' || true)
+
+          if [ -z "$FILES" ]; then
+            echo "🔸 변경된 HTML 파일이 없습니다. IndexNow Ping 생략합니다."
+            exit 0
+          fi
+
+          for file in $FILES; do
+            URL="https://tests.mahalohana-bruce.com/${file}"
+            echo "🔗 Pinging: $URL"
+            curl "https://www.bing.com/indexnow?url=${URL}&key=5cbdaab6677a4f3db093ec20be02affb"
+          done

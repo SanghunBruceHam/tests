@@ -1,0 +1,23 @@
+modules = ["nodejs-20", "python-3.12", "web", "postgresql-16"]
+run = "1234"
+
+[nix]
+channel = "stable-24_05"
+
+
+
+[[ports]]
+localPort = 3000
+externalPort = 3000
+
+[[ports]]
+localPort = 5000
+externalPort = 80
+
+[deployment]
+run = ["sh", "-c", "npm start"]
+deploymentTarget = "cloudrun"
+build = ["sh", "-c", "npm install"]
+
+[workflows]
+runButton = "Static Web Server"

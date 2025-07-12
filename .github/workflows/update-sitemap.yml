@@ -1,0 +1,42 @@
+name: Update Sitemap
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - '**/*.html'
+  schedule:
+    - cron: '0 6 * * *'  # 매일 오전 6시 (UTC)
+  workflow_dispatch:
+
+jobs:
+  update-sitemap:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+
+      - name: Generate sitemap
+        run: python sitemap_generator.py
+
+      - name: Commit and push if changed
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add sitemap.xml
+          git diff --staged --quiet || git commit -m "Auto-update sitemap"
+          git push
+
+      - name: Submit to Google Search Console
+        env:
+          GSC_CREDENTIALS_BASE64: ${{ secrets.GSC_CREDENTIALS_BASE64 }}
+        run: |
+          if [ ! -z "$GSC_CREDENTIALS_BASE64" ]; then
+            python submit_sitemap.py
+          fi
