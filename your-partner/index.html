@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>연애 심리 테스트 1 : 당신이 연인에게 요구하는 것</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #f8f8f8;
+      padding: 20px;
+      line-height: 1.6;
+      color: #333;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+    h1 {
+      font-size: 20px;
+      background: #efefef;
+      padding: 10px;
+      border-radius: 8px;
+      text-align: center;
+    }
+    .question img {
+      width: 100%;
+      border-radius: 8px;
+      margin: 20px 0;
+    }
+    .choices button {
+      display: block;
+      width: 100%;
+      margin: 10px 0;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background: #fff;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .choices button:hover {
+      background: #f0f0f0;
+    }
+    .result {
+      margin-top: 30px;
+      display: none;
+      background: #fff4f4;
+      padding: 15px;
+      border-radius: 8px;
+      border-left: 4px solid #f08080;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>연애 심리 테스트 1 : 당신이 연인에게 요구하는 것</h1>
+    <div class="question">
+      <img src="https://cdn.pixabay.com/photo/2016/08/09/15/22/ice-1588160_1280.jpg" alt="바닐라 아이스크림">
+      <p><strong>Q.</strong> 바닐라 아이스에 토핑한다면 다음 중 어느 것?</p>
+    </div>
+    <div class="choices">
+      <button onclick="showResult('A')">A 딸기 잼</button>
+      <button onclick="showResult('B')">B 말차 시럽</button>
+      <button onclick="showResult('C')">C 견과류 & 말린 과일</button>
+      <button onclick="showResult('D')">D 초콜릿 시럽</button>
+    </div>
+    <div id="result" class="result"></div>
+  </div>
+
+  <script>
+    const resultTexts = {
+      A: "🔥 <strong>열의</strong>를 요구하는 타입!<br>당신은 불타는 패션의 소유자이며, 연인에게도 열정을 기대합니다.",
+      B: "🌿 <strong>안정</strong>을 요구하는 타입!<br>평온하고 신뢰할 수 있는 연애를 중요시합니다.",
+      C: "📘 <strong>지성</strong>을 요구하는 타입!<br>지적인 대화를 즐기며, 지루한 사람은 금방 질리는 스타일이에요.",
+      D: "💐 <strong>상냥함</strong>을 요구하는 타입!<br>당신이 힘들 때 위로해주는 로맨틱한 연인을 이상적으로 생각합니다."
+    };
+
+    function showResult(choice) {
+      const resultBox = document.getElementById("result");
+      resultBox.innerHTML = `<p><strong>▼ 결과</strong></p><p>${resultTexts[choice]}</p>`;
+      resultBox.style.display = "block";
+      window.scrollTo({ top: resultBox.offsetTop - 20, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>
