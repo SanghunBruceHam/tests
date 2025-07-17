@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>연애 심리 테스트 1: 당신이 연인에게 요구하는 것</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>연애 심리 테스트 1: 당신이 연인에게 요구하는 것</h1>
+    <div class="question"><p>Q. 바닐라 아이스크림에 토핑을 고른다면?</p></div>
+    <div class="choices"><button onclick="showResult('A')">A. 딸기잼</button>
+<button onclick="showResult('B')">B. 말차 시럽</button>
+<button onclick="showResult('C')">C. 견과류 & 말린 과일</button>
+<button onclick="showResult('D')">D. 초콜릿 시럽</button></div>
+    <div id="result" class="result" style="display:none; margin-top: 20px;"></div>
+    <div class="share-box">
+      <p>📢 이 테스트를 공유해보세요!</p>
+      <a id="share-line" target="_blank">LINE</a>
+      <a id="share-x" target="_blank">X</a>
+      <a id="share-fb" target="_blank">Facebook</a>
+      <button onclick="copyLink()">URL 복사</button>
+    </div>
+    <footer>© 당신의 연애 심리 테스트 | tests.mahalohana-bruce.com</footer>
+  </div>
+  <script>
+    const resultTexts = {
+      A: "🔥 열정을 요구하는 타입!",
+      B: "🌿 안정감을 바라는 타입.",
+      C: "📘 지적 자극을 원해요.",
+      D: "💐 상냥한 사람이 이상형이에요."
+    };
+    function showResult(choice) {
+      const resultBox = document.getElementById("result");
+      resultBox.innerHTML = resultTexts[choice];
+      resultBox.style.display = "block";
+    }
+    function copyLink() {
+      const dummy = document.createElement("input");
+      const text = window.location.href;
+      document.body.appendChild(dummy);
+      dummy.value = text;
+      dummy.select();
+      document.execCommand("copy");
+      document.body.removeChild(dummy);
+      alert("URL이 복사되었습니다!");
+    }
+    const url = encodeURIComponent(window.location.href);
+    const text = encodeURIComponent("연애 심리 테스트 1: 당신이 연인에게 요구하는 것");
+    document.getElementById("share-line").href = `https://social-plugins.line.me/lineit/share?url=${url}`;
+    document.getElementById("share-x").href = `https://twitter.com/intent/tweet?text=${text}&url=${url}`;
+    document.getElementById("share-fb").href = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+  </script>
+</body>
+</html>

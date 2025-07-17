@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>연애 심리 테스트 3: 좋아하는 사람 앞에서 감추고 싶은 모습</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>연애 심리 테스트 3: 좋아하는 사람 앞에서 감추고 싶은 모습</h1>
+    <div class="question"><p>Q. 혼자 있는 주말, 당신은?</p></div>
+    <div class="choices"><button onclick="showResult('A')">A. 넷플릭스</button>
+<button onclick="showResult('B')">B. 청소</button>
+<button onclick="showResult('C')">C. SNS 눈팅</button>
+<button onclick="showResult('D')">D. 침대에서 뒹굴기</button></div>
+    <div id="result" class="result" style="display:none; margin-top: 20px;"></div>
+    <div class="share-box">
+      <p>📢 이 테스트를 공유해보세요!</p>
+      <a id="share-line" target="_blank">LINE</a>
+      <a id="share-x" target="_blank">X</a>
+      <a id="share-fb" target="_blank">Facebook</a>
+      <button onclick="copyLink()">URL 복사</button>
+    </div>
+    <footer>© 당신의 연애 심리 테스트 | tests.mahalohana-bruce.com</footer>
+  </div>
+  <script>
+    const resultTexts = {
+      A: "🎬 집순이/집돌이 타입.",
+      B: "🧹 완벽주의자.",
+      C: "📱 외로움에 약함.",
+      D: "🛌 무기력한 모습 감춤."
+    };
+    function showResult(choice) {
+      const resultBox = document.getElementById("result");
+      resultBox.innerHTML = resultTexts[choice];
+      resultBox.style.display = "block";
+    }
+    function copyLink() {
+      const dummy = document.createElement("input");
+      const text = window.location.href;
+      document.body.appendChild(dummy);
+      dummy.value = text;
+      dummy.select();
+      document.execCommand("copy");
+      document.body.removeChild(dummy);
+      alert("URL이 복사되었습니다!");
+    }
+    const url = encodeURIComponent(window.location.href);
+    const text = encodeURIComponent("연애 심리 테스트 3: 좋아하는 사람 앞에서 감추고 싶은 모습");
+    document.getElementById("share-line").href = `https://social-plugins.line.me/lineit/share?url=${url}`;
+    document.getElementById("share-x").href = `https://twitter.com/intent/tweet?text=${text}&url=${url}`;
+    document.getElementById("share-fb").href = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+  </script>
+</body>
+</html>
