@@ -1,0 +1,57 @@
+.share-buttons {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: nowrap;
+  margin-top: 20px;
+  overflow-x: auto;
+  padding: 0 10px;
+}
+
+.share-btn {
+  padding: 8px 12px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  text-decoration: none;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
+  border: none;
+  cursor: pointer;
+}
+
+.share-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+}
+
+.choice {
+  background: #f8fafc;
+  border: 2px solid #cbd5e0;
+  border-radius: 15px;
+  padding: 20px;
+  margin: 10px 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 16px;
+  font-weight: 500;
+  color: #2d3748;
+}
+
+.choice:hover {
+  border-color: #667eea;
+  background: #edf2f7;
+  transform: translateY(-2px);
+  color: #1a202c;
+}
+
+footer {
+  text-align: center;
+  margin-top: 20px;
+  padding: 15px;
+  color: #666;
+  font-size: 14px;
+}
