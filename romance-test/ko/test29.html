@@ -3,62 +3,185 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <title>연애 심리 테스트 29: 당신의 연인 선택 기준</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>연애 심리 테스트 29: 당신의 연인 선택 기준 | 무료 심리 테스트</title>
+  <meta name="description" content="파트너 고르는 나만의 기준으로 알아보는 당신의 연인 선택 기준은? 재미있는 연애 심리 테스트로 나의 연애 성향을 분석해보세요!">
+  <meta name="keywords" content="연애 심리 테스트, 연인 선택 기준, 심리 테스트, 연애 성향, 무료 테스트">
+
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="연애 심리 테스트 29: 당신의 연인 선택 기준" />
+  <meta property="og:description" content="파트너 고르는 나만의 기준으로 알아보는 당신의 연인 선택 기준은?" />
+  <meta property="og:image" content="https://tests.mahalohana-bruce.com/romance-test/ko/thumbnail.png" />
+  <meta property="og:url" content="https://tests.mahalohana-bruce.com/romance-test/ko/test29.html" />
+
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="연애 심리 테스트: 연인 선택 기준" />
+  <meta name="twitter:description" content="파트너 고르는 나만의 기준으로 알아보는 나의 연인 선택!" />
+  <meta name="twitter:image" content="https://tests.mahalohana-bruce.com/romance-test/ko/thumbnail.png" />
+
+  <link rel="canonical" href="https://tests.mahalohana-bruce.com/romance-test/ko/test29.html">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+
+  <!-- hreflang for multilingual SEO -->
+  <link rel="alternate" hreflang="ko" href="https://tests.mahalohana-bruce.com/romance-test/ko/test29.html" />
+  <link rel="alternate" hreflang="ja" href="https://tests.mahalohana-bruce.com/romance-test/ja/test29.html" />
+  <link rel="alternate" hreflang="en" href="https://tests.mahalohana-bruce.com/romance-test/en/test29.html" />
+  <link rel="alternate" hreflang="x-default" href="https://tests.mahalohana-bruce.com/romance-test/ko/test29.html" />
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-45VSGEM7EZ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-45VSGEM7EZ');
+  </script>
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5508768187151867" crossorigin="anonymous"></script>
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "연애 심리 테스트 29: 당신의 연인 선택 기준",
+    "description": "파트너 고르는 나만의 기준으로 알아보는 당신의 연인 선택 기준은?",
+    "image": "https://tests.mahalohana-bruce.com/romance-test/ko/thumbnail.png",
+    "author": {
+      "@type": "Organization",
+      "name": "Psychological Tests"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Psychological Tests",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://tests.mahalohana-bruce.com/favicon.png"
+      }
+    },
+    "datePublished": "2024-01-01",
+    "dateModified": "2024-01-01",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://tests.mahalohana-bruce.com/romance-test/ko/test29.html"
+    }
+  }
+  </script>
+
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
     <h1>연애 심리 테스트 29: 당신의 연인 선택 기준</h1>
-    <div class="question"><p>Q. 연인을 선택할 때 가장 중요한 기준은?</p></div>
+
+    <div class="question">
+      <h2>Q. 연인을 선택할 때 가장 중요하게 생각하는 것은?</h2>
+    </div>
+
     <div class="choices">
-      <button onclick="showResult('A')">A. 외모와 첫인상</button>
-      <button onclick="showResult('B')">B. 성격과 인성</button>
-      <button onclick="showResult('C')">C. 경제력과 안정성</button>
-      <button onclick="showResult('D')">D. 취미와 관심사의 일치</button>
+      <div class="choice" onclick="showResult('A')">A. 성격과 인성</div>
+      <div class="choice" onclick="showResult('B')">B. 외모와 첫인상</div>
+      <div class="choice" onclick="showResult('C')">C. 경제력과 안정성</div>
+      <div class="choice" onclick="showResult('D')">D. 취미와 가치관의 일치</div>
     </div>
-    <div id="result" class="result" style="display:none; margin-top: 20px;"></div>
-    <div class="share-box">
-      <p>📢 이 테스트를 공유해보세요!</p>
-      <a id="share-line" target="_blank">LINE</a>
-      <a id="share-x" target="_blank">X</a>
-      <a id="share-fb" target="_blank">Facebook</a>
-      <button onclick="copyLink()">URL 복사</button>
+
+    <div id="result" class="result hidden">
+      <h3>결과</h3>
+      <p id="result-text"></p>
     </div>
-    <div class="nav-buttons">
-      <a href="test28.html">← 이전</a>
-      <a href="index.html">📚 목차로</a>
-      <a href="test30.html">다음 →</a>
+
+    <div class="share-buttons">
+      <a href="#" class="share-btn" onclick="shareToThreads()">Threads 공유</a>
+      <a href="#" class="share-btn" onclick="shareToTwitter()">X 공유</a>
+      <a href="#" class="share-btn" onclick="shareToFacebook()">Facebook 공유</a>
+      <button class="share-btn" onclick="copyURL()">URL 복사</button>
     </div>
+
+    <div class="navigation">
+      <a href="test28.html" class="nav-btn">← 이전</a>
+      <a href="index.html" class="nav-btn">📚 목차로</a>
+      <a href="test30.html" class="nav-btn">다음 →</a>
+    </div>
+
     <footer>© 당신의 연애 심리 테스트 | tests.mahalohana-bruce.com</footer>
   </div>
+
   <script>
     const resultTexts = {
-      A: "👀 시각적 매력 중시형! 첫인상과 외적 매력을 중요하게 생각하는 감각적인 연인 선택 기준을 가지고 있어요.",
-      B: "💖 내면 중시형! 성격과 인성을 가장 소중히 여기는 진정한 사랑을 추구하는 이상적인 연인 선택 기준이에요.",
-      C: "💼 안정성 중시형! 현실적이고 실용적인 면을 고려하는 미래를 생각하는 신중한 연인 선택 기준을 가지고 있어요.",
-      D: "🎨 공감대 중시형! 함께할 수 있는 관심사와 취미를 중시하는 동반자적 연인 선택 기준을 가지고 있어요."
+      A: "💝 내면 중시형! 상대방의 성격과 인성을 가장 중요하게 생각하는 당신. 진정한 사랑은 마음에서 나온다고 믿으며, 내면의 아름다움을 알아보는 능력이 뛰어난 사람이에요.",
+      B: "✨ 감성 중시형! 첫눈에 반하는 설렘과 외적 매력을 중요시하는 당신. 상대방에게서 느끼는 즉각적인 끌림과 화학적 반응을 연애의 시작으로 여기는 로맨틱한 타입입니다.",
+      C: "🏡 현실 중시형! 미래를 함께 그려나갈 수 있는 안정적인 파트너를 원하는 당신. 사랑도 중요하지만 현실적인 조건들을 고려하여 신중하게 선택하는 실용적인 사람이에요.",
+      D: "🎭 공감대 중시형! 함께 즐길 수 있는 공통점과 비슷한 가치관을 중요시하는 당신. 서로를 이해하고 깊이 있는 소통이 가능한 관계를 추구하는 지적인 타입입니다."
     };
+
     function showResult(choice) {
-      const resultBox = document.getElementById("result");
-      resultBox.innerHTML = resultTexts[choice];
-      resultBox.style.display = "block";
+      const resultElement = document.getElementById("result");
+      const resultText = document.getElementById("result-text");
+      resultText.textContent = resultTexts[choice];
+      resultElement.classList.remove("hidden");
     }
-    function copyLink() {
-      const dummy = document.createElement("input");
-      const text = window.location.href;
-      document.body.appendChild(dummy);
-      dummy.value = text;
-      dummy.select();
-      document.execCommand("copy");
-      document.body.removeChild(dummy);
-      alert("URL이 복사되었습니다!");
+
+    function shareToThreads() {
+      const text = '연애 심리 테스트: 당신의 연인 선택 기준 결과를 확인해보세요!';
+      const url = window.location.href;
+      try {
+        window.open(`https://threads.net/intent/post?text=${encodeURIComponent(text + ' ' + url)}`, '_blank', 'noopener,noreferrer');
+      } catch (error) {
+        console.error('Threads 공유 실패:', error);
+        copyURL();
+      }
     }
-    const url = encodeURIComponent(window.location.href);
-    const text = encodeURIComponent("연애 심리 테스트 29: 당신의 연인 선택 기준");
-    document.getElementById("share-line").href = `https://social-plugins.line.me/lineit/share?url=${url}`;
-    document.getElementById("share-x").href = `https://twitter.com/intent/tweet?text=${text}&url=${url}`;
-    document.getElementById("share-fb").href = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+
+    function shareToTwitter() {
+      const text = '연애 심리 테스트: 당신의 연인 선택 기준 결과를 확인해보세요!';
+      const url = window.location.href;
+      try {
+        window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`, '_blank', 'noopener,noreferrer');
+      } catch (error) {
+        console.error('Twitter 공유 실패:', error);
+        copyURL();
+      }
+    }
+
+    function shareToFacebook() {
+      const url = window.location.href;
+      try {
+        window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank', 'noopener,noreferrer');
+      } catch (error) {
+        console.error('Facebook 공유 실패:', error);
+        copyURL();
+      }
+    }
+
+    function copyURL() {
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(window.location.href).then(() => {
+          alert('URL이 복사되었습니다!');
+        }).catch(() => {
+          fallbackCopyURL();
+        });
+      } else {
+        fallbackCopyURL();
+      }
+    }
+
+    function fallbackCopyURL() {
+      const textArea = document.createElement('textarea');
+      textArea.value = window.location.href;
+      document.body.appendChild(textArea);
+      textArea.select();
+      try {
+        document.execCommand('copy');
+        alert('URL이 복사되었습니다!');
+      } catch (error) {
+        console.error('URL 복사 실패:', error);
+        prompt('수동으로 복사해주세요:', window.location.href);
+      }
+      document.body.removeChild(textArea);
+    }
   </script>
 </body>
 </html>

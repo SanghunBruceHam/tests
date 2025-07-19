@@ -3,62 +3,190 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <title>연애 심리 테스트 30: 당신의 연애 운명</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>연애 심리 테스트 30: 당신의 연애 운명 | 무료 심리 테스트</title>
+  <meta name="description" content="당신의 사랑 운세와 미래로 알아보는 연애 운명은? 재미있는 연애 심리 테스트로 나의 연애 성향을 분석해보세요!">
+  <meta name="keywords" content="연애 심리 테스트, 연애 운명, 심리 테스트, 연애 성향, 무료 테스트">
+
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="연애 심리 테스트 30: 당신의 연애 운명" />
+  <meta property="og:description" content="당신의 사랑 운세와 미래로 알아보는 연애 운명은?" />
+  <meta property="og:image" content="https://tests.mahalohana-bruce.com/romance-test/ko/thumbnail.png" />
+  <meta property="og:url" content="https://tests.mahalohana-bruce.com/romance-test/ko/test30.html" />
+
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="연애 심리 테스트: 연애 운명" />
+  <meta name="twitter:description" content="당신의 사랑 운세와 미래로 알아보는 나의 연애 운명!" />
+  <meta name="twitter:image" content="https://tests.mahalohana-bruce.com/romance-test/ko/thumbnail.png" />
+
+  <link rel="canonical" href="https://tests.mahalohana-bruce.com/romance-test/ko/test30.html">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+
+  <!-- hreflang for multilingual SEO -->
+  <link rel="alternate" hreflang="ko" href="https://tests.mahalohana-bruce.com/romance-test/ko/test30.html" />
+  <link rel="alternate" hreflang="ja" href="https://tests.mahalohana-bruce.com/romance-test/ja/test30.html" />
+  <link rel="alternate" hreflang="en" href="https://tests.mahalohana-bruce.com/romance-test/en/test30.html" />
+  <link rel="alternate" hreflang="x-default" href="https://tests.mahalohana-bruce.com/romance-test/ko/test30.html" />
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-45VSGEM7EZ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-45VSGEM7EZ');
+  </script>
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5508768187151867" crossorigin="anonymous"></script>
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "연애 심리 테스트 30: 당신의 연애 운명",
+    "description": "당신의 사랑 운세와 미래로 알아보는 연애 운명은?",
+    "image": "https://tests.mahalohana-bruce.com/romance-test/ko/thumbnail.png",
+    "author": {
+      "@type": "Organization",
+      "name": "Psychological Tests"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Psychological Tests",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://tests.mahalohana-bruce.com/favicon.png"
+      }
+    },
+    "datePublished": "2024-01-01",
+    "dateModified": "2024-01-01",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://tests.mahalohana-bruce.com/romance-test/ko/test30.html"
+    }
+  }
+  </script>
+
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
     <h1>연애 심리 테스트 30: 당신의 연애 운명</h1>
-    <div class="question"><p>Q. 이상적인 연애의 결말은 무엇이라고 생각하나요?</p></div>
+
+    <div class="question">
+      <h2>Q. 이상적인 연애는 어떤 모습인가요?</h2>
+    </div>
+
     <div class="choices">
-      <button onclick="showResult('A')">A. 결혼해서 행복한 가정 꾸리기</button>
-      <button onclick="showResult('B')">B. 평생 서로를 사랑하며 함께하기</button>
-      <button onclick="showResult('C')">C. 각자의 꿈을 응원하며 성장하기</button>
-      <button onclick="showResult('D')">D. 아름다운 추억으로 남기기</button>
+      <div class="choice" onclick="showResult('A')">A. 서로를 완전히 이해하는 운명적 사랑</div>
+      <div class="choice" onclick="showResult('B')">B. 함께 성장해가는 동반자 관계</div>
+      <div class="choice" onclick="showResult('C')">C. 편안하고 따뜻한 일상의 사랑</div>
+      <div class="choice" onclick="showResult('D')">D. 서로의 꿈을 응원하는 독립적 사랑</div>
     </div>
-    <div id="result" class="result" style="display:none; margin-top: 20px;"></div>
-    <div class="share-box">
-      <p>📢 이 테스트를 공유해보세요!</p>
-      <a id="share-line" target="_blank">LINE</a>
-      <a id="share-x" target="_blank">X</a>
-      <a id="share-fb" target="_blank">Facebook</a>
-      <button onclick="copyLink()">URL 복사</button>
+
+    <div id="result" class="result hidden">
+      <h3>결과</h3>
+      <p id="result-text"></p>
+      
+      <div class="final-message">
+        <h4>🎉 30개 테스트 완주를 축하합니다!</h4>
+        <p>모든 연애 심리 테스트를 통해 당신의 다양한 면모를 발견하셨길 바라요. 💕</p>
+      </div>
     </div>
-    <div class="nav-buttons">
-      <a href="test29.html">← 이전</a>
-      <a href="index.html">📚 목차로</a>
-      <a href="index.html">🏠 처음으로</a>
+
+    <div class="share-buttons">
+      <a href="#" class="share-btn" onclick="shareToThreads()">Threads 공유</a>
+      <a href="#" class="share-btn" onclick="shareToTwitter()">X 공유</a>
+      <a href="#" class="share-btn" onclick="shareToFacebook()">Facebook 공유</a>
+      <button class="share-btn" onclick="copyURL()">URL 복사</button>
     </div>
+
+    <div class="navigation">
+      <a href="test29.html" class="nav-btn">← 이전</a>
+      <a href="index.html" class="nav-btn">📚 목차로</a>
+      <a href="test1.html" class="nav-btn">처음부터 →</a>
+    </div>
+
     <footer>© 당신의 연애 심리 테스트 | tests.mahalohana-bruce.com</footer>
   </div>
+
   <script>
     const resultTexts = {
-      A: "🏠 안정형 연애 운명! 따뜻한 가정을 꾸리며 평범하지만 확실한 행복을 찾는 전통적인 사랑의 완성형이에요.",
-      B: "💕 영원형 연애 운명! 시간이 흘러도 변하지 않는 진실한 사랑으로 평생을 함께할 운명적 사랑을 만날 거예요.",
-      C: "🌟 성장형 연애 운명! 서로의 꿈과 목표를 응원하며 함께 발전해가는 현대적이고 성숙한 사랑을 하게 될 거예요.",
-      D: "🌸 추억형 연애 운명! 짧지만 강렬하고 아름다운 사랑들을 경험하며 인생을 풍요롭게 만드는 감성적인 운명이에요."
+      A: "✨ 운명적 사랑의 주인공! 당신의 연애 운명은 드라마틱하고 강렬한 사랑입니다. 평생에 몇 번 없는 깊고 진정한 사랑을 경험하게 될 것이며, 서로에게 완벽한 반쪽이 되는 관계를 만나게 될 거예요.",
+      B: "🌱 성장하는 사랑의 주인공! 당신의 연애 운명은 함께 발전해가는 건강한 파트너십입니다. 서로의 장점을 이끌어내고 단점을 보완해주며, 시간이 지날수록 더욱 단단해지는 사랑을 하게 될 거예요.",
+      C: "🏠 따뜻한 사랑의 주인공! 당신의 연애 운명은 평범하지만 소중한 일상의 행복입니다. 화려하지 않아도 진짜 사랑이 무엇인지 아는 당신은 편안하고 안정적인 관계에서 진정한 행복을 찾게 될 거예요.",
+      D: "🚀 자유로운 사랑의 주인공! 당신의 연애 운명은 서로의 꿈을 응원하는 독립적인 사랑입니다. 속박하지 않으면서도 깊은 애정을 나누며, 각자의 목표를 향해 달려가면서도 함께하는 특별한 관계를 만들어갈 거예요."
     };
+
     function showResult(choice) {
-      const resultBox = document.getElementById("result");
-      resultBox.innerHTML = resultTexts[choice];
-      resultBox.style.display = "block";
+      const resultElement = document.getElementById("result");
+      const resultText = document.getElementById("result-text");
+      resultText.textContent = resultTexts[choice];
+      resultElement.classList.remove("hidden");
     }
-    function copyLink() {
-      const dummy = document.createElement("input");
-      const text = window.location.href;
-      document.body.appendChild(dummy);
-      dummy.value = text;
-      dummy.select();
-      document.execCommand("copy");
-      document.body.removeChild(dummy);
-      alert("URL이 복사되었습니다!");
+
+    function shareToThreads() {
+      const text = '연애 심리 테스트 30개 완주! 당신의 연애 운명 결과를 확인해보세요!';
+      const url = window.location.href;
+      try {
+        window.open(`https://threads.net/intent/post?text=${encodeURIComponent(text + ' ' + url)}`, '_blank', 'noopener,noreferrer');
+      } catch (error) {
+        console.error('Threads 공유 실패:', error);
+        copyURL();
+      }
     }
-    const url = encodeURIComponent(window.location.href);
-    const text = encodeURIComponent("연애 심리 테스트 30: 당신의 연애 운명");
-    document.getElementById("share-line").href = `https://social-plugins.line.me/lineit/share?url=${url}`;
-    document.getElementById("share-x").href = `https://twitter.com/intent/tweet?text=${text}&url=${url}`;
-    document.getElementById("share-fb").href = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+
+    function shareToTwitter() {
+      const text = '연애 심리 테스트 30개 완주! 당신의 연애 운명 결과를 확인해보세요!';
+      const url = window.location.href;
+      try {
+        window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`, '_blank', 'noopener,noreferrer');
+      } catch (error) {
+        console.error('Twitter 공유 실패:', error);
+        copyURL();
+      }
+    }
+
+    function shareToFacebook() {
+      const url = window.location.href;
+      try {
+        window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank', 'noopener,noreferrer');
+      } catch (error) {
+        console.error('Facebook 공유 실패:', error);
+        copyURL();
+      }
+    }
+
+    function copyURL() {
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(window.location.href).then(() => {
+          alert('URL이 복사되었습니다!');
+        }).catch(() => {
+          fallbackCopyURL();
+        });
+      } else {
+        fallbackCopyURL();
+      }
+    }
+
+    function fallbackCopyURL() {
+      const textArea = document.createElement('textarea');
+      textArea.value = window.location.href;
+      document.body.appendChild(textArea);
+      textArea.select();
+      try {
+        document.execCommand('copy');
+        alert('URL이 복사되었습니다!');
+      } catch (error) {
+        console.error('URL 복사 실패:', error);
+        prompt('수동으로 복사해주세요:', window.location.href);
+      }
+      document.body.removeChild(textArea);
+    }
   </script>
 </body>
 </html>
