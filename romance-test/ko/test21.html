@@ -98,8 +98,15 @@
     </div>
 
     <div id="result" class="result hidden">
-      <h3>결과</h3>
+      <h3>🎯 당신의 연애 스타일</h3>
       <p id="result-text"></p>
+
+      <div class="share-buttons">
+        <a href="#" class="share-btn" onclick="shareKakao()">카카오톡 공유</a>
+        <a href="#" class="share-btn" onclick="shareTwitter()">X 공유</a>
+        <a href="#" class="share-btn" onclick="shareFacebook()">페이스북 공유</a>
+        <a href="#" class="share-btn" onclick="copyUrl()">링크 복사</a>
+      </div>
     </div>
 
     <div class="navigation">
@@ -130,19 +137,36 @@
       resultElement.classList.remove("hidden");
     }
 
-    function copyLink() {
-      navigator.clipboard.writeText(window.location.href).then(() => {
-        alert("URL이 복사되었습니다!");
-      });
+    function shareKakao() {
+      const url = window.location.href;
+      const text = "연애 심리 테스트 21: 당신의 연애 스타일! 나의 결과를 확인해보세요!";
+
+      if (navigator.share) {
+        navigator.share({
+          title: text,
+          url: url
+        });
+      } else {
+        window.open(`https://story.kakao.com/share?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`);
+      }
     }
 
-    // 공유 링크 설정
-    const url = encodeURIComponent(window.location.href);
-    const text = encodeURIComponent("연애 심리 테스트 21: 당신의 연애 스타일");
+    function shareTwitter() {
+      const url = window.location.href;
+      const text = "연애 심리 테스트 21: 당신의 연애 스타일! 나의 결과를 확인해보세요!";
+      window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`);
+    }
 
-    document.getElementById("share-line").href = `https://social-plugins.line.me/lineit/share?url=${url}`;
-    document.getElementById("share-x").href = `https://twitter.com/intent/tweet?text=${text}&url=${url}`;
-    document.getElementById("share-fb").href = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+    function shareFacebook() {
+      const url = window.location.href;
+      window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`);
+    }
+
+    function copyUrl() {
+      navigator.clipboard.writeText(window.location.href).then(() => {
+        alert('링크가 복사되었습니다!');
+      });
+    }
   </script>
 </body>
 </html>
