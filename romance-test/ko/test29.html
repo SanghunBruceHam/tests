@@ -73,30 +73,39 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- Google AdSense Ad -->
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-5508768187151867"
+       data-ad-slot="7298546648"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
   <div class="container">
-    <h1>연애 심리 테스트 29: 당신의 연인 선택 기준</h1>
-
     <div class="question">
-      <h2>Q. 연인을 선택할 때 가장 중요하게 생각하는 것은?</h2>
-    </div>
-
-    <div class="choices">
-      <div class="choice" onclick="showResult('A')">A. 성격과 인성</div>
-      <div class="choice" onclick="showResult('B')">B. 외모와 첫인상</div>
-      <div class="choice" onclick="showResult('C')">C. 경제력과 안정성</div>
-      <div class="choice" onclick="showResult('D')">D. 취미와 가치관의 일치</div>
+      <h1>💖 연애 심리 테스트 29</h1>
+      <h2>연인을 선택할 때 가장 중요하게 생각하는 것은?</h2>
+      <div class="choices">
+        <div class="choice" onclick="showResult('A')">A. 성격과 인성</div>
+        <div class="choice" onclick="showResult('B')">B. 외모와 첫인상</div>
+        <div class="choice" onclick="showResult('C')">C. 경제력과 안정성</div>
+        <div class="choice" onclick="showResult('D')">D. 취미와 가치관의 일치</div>
+      </div>
     </div>
 
     <div id="result" class="result hidden">
-      <h3>결과</h3>
+      <h3>💖 당신의 연인 선택 기준</h3>
       <p id="result-text"></p>
-    </div>
 
-    <div class="share-buttons">
-      <a href="#" class="share-btn" onclick="shareToThreads()">Threads 공유</a>
-      <a href="#" class="share-btn" onclick="shareToTwitter()">X 공유</a>
-      <a href="#" class="share-btn" onclick="shareToFacebook()">Facebook 공유</a>
-      <button class="share-btn" onclick="copyURL()">URL 복사</button>
+      <div class="share-buttons">
+        <a href="#" class="share-btn" onclick="shareKakao()">카카오톡 공유</a>
+        <a href="#" class="share-btn" onclick="shareTwitter()">X 공유</a>
+        <a href="#" class="share-btn" onclick="shareFacebook()">페이스북 공유</a>
+        <a href="#" class="share-btn" onclick="copyUrl()">링크 복사</a>
+      </div>
     </div>
 
     <div class="navigation">
@@ -105,8 +114,12 @@
       <a href="test30.html" class="nav-btn">다음 →</a>
     </div>
 
-    <footer>© 연애 심리 테스트 | <a href="https://tests.mahalohana-bruce.com" target="_blank" rel="noopener noreferrer">tests.mahalohana-bruce.com</a></footer>
+    <div class="additional-nav">
+      <a href="https://tests.mahalohana-bruce.com/ko/" class="other-tests-btn">🧠 다른 심리테스트 해보기</a>
+    </div>
   </div>
+
+  <footer>© 연애 심리 테스트 | <a href="https://tests.mahalohana-bruce.com" target="_blank" rel="noopener noreferrer">tests.mahalohana-bruce.com</a></footer>
 
   <script>
     const resultTexts = {
@@ -123,63 +136,41 @@
       resultElement.classList.remove("hidden");
     }
 
-    function shareToThreads() {
-      const text = '연애 심리 테스트: 당신의 연인 선택 기준 결과를 확인해보세요!';
+    function shareKakao() {
       const url = window.location.href;
-      try {
-        window.open(`https://threads.net/intent/post?text=${encodeURIComponent(text + ' ' + url)}`, '_blank', 'noopener,noreferrer');
-      } catch (error) {
-        console.error('Threads 공유 실패:', error);
-        copyURL();
-      }
-    }
+      const text = "연애 심리 테스트 29: 당신의 연인 선택 기준! 나의 결과를 확인해보세요!";
 
-    function shareToTwitter() {
-      const text = '연애 심리 테스트: 당신의 연인 선택 기준 결과를 확인해보세요!';
-      const url = window.location.href;
-      try {
-        window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`, '_blank', 'noopener,noreferrer');
-      } catch (error) {
-        console.error('Twitter 공유 실패:', error);
-        copyURL();
-      }
-    }
-
-    function shareToFacebook() {
-      const url = window.location.href;
-      try {
-        window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank', 'noopener,noreferrer');
-      } catch (error) {
-        console.error('Facebook 공유 실패:', error);
-        copyURL();
-      }
-    }
-
-    function copyURL() {
-      if (navigator.clipboard && window.isSecureContext) {
-        navigator.clipboard.writeText(window.location.href).then(() => {
-          alert('URL이 복사되었습니다!');
-        }).catch(() => {
-          fallbackCopyURL();
+      if (navigator.share) {
+        navigator.share({
+          title: text,
+          url: url
         });
       } else {
-        fallbackCopyURL();
+        window.open(`https://story.kakao.com/share?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`);
       }
     }
 
-    function fallbackCopyURL() {
-      const textArea = document.createElement('textarea');
-      textArea.value = window.location.href;
-      document.body.appendChild(textArea);
-      textArea.select();
-      try {
-        document.execCommand('copy');
-        alert('URL이 복사되었습니다!');
-      } catch (error) {
-        console.error('URL 복사 실패:', error);
-        prompt('수동으로 복사해주세요:', window.location.href);
-      }
-      document.body.removeChild(textArea);
+    function shareTwitter() {
+      const url = window.location.href;
+      const text = "연애 심리 테스트 29: 당신의 연인 선택 기준! 나의 결과를 확인해보세요!";
+      window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`);
+    }
+
+    function shareFacebook() {
+      const url = window.location.href;
+      window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`);
+    }
+
+    function copyUrl() {
+      navigator.clipboard.writeText(window.location.href).then(() => {
+        alert('링크가 복사되었습니다!');
+      });
+
+      // Google Analytics 이벤트 추적
+      gtag('event', 'quiz_complete', {
+        'event_category': 'Romance Test',
+        'event_label': 'Test 29 - Choice ' + choice
+      });
     }
   </script>
 </body>
