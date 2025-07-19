@@ -77,3 +77,20 @@ h1 {
 /* 반응형 디자인 */
 @media (max-width: 768px) {
 }
+
+.other-tests-btn {
+  background: var(--accent-color);
+  color: white;
+  padding: 15px 25px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  min-width: 120px;
+  text-align: center;
+}
+
+.other-tests-btn:hover {
+  background: var(--accent-hover);
+  transform: translateY(-2px);
+}
