@@ -1,50 +1,333 @@
 
-body {
-  font-family: sans-serif;
-  background: #f9f9f9;
-  padding: 20px;
-  color: #333;
-}
-h1 {
-  text-align: center;
-  margin-bottom: 30px;
-}
-ul {
-  list-style: none;
-  padding: 0;
-  max-width: 600px;
-  margin: auto;
-}
-li {
-  background: white;
-  margin: 8px 0;
-  padding: 14px 18px;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-}
-li a {
-  text-decoration: none;
-  color: #333;
-  display: block;
-}
-footer {
-  text-align: center;
-  margin-top: 40px;
-  color: #aaa;
-  font-size: 13px;
+/* 연애 심리 테스트 공통 스타일 */
+:root {
+  --primary-gradient: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+  --card-bg: rgba(255, 255, 255, 0.95);
+  --text-primary: #333;
+  --text-secondary: #666;
+  --accent-color: #ff6b9d;
+  --accent-hover: #e55a87;
+  --border-color: rgba(255, 255, 255, 0.3);
+  --shadow: 0 10px 30px rgba(0,0,0,0.1);
+  --border-radius: 20px;
 }
 
-.nav-buttons {
-  margin-top: 30px;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+  background: var(--primary-gradient);
+  min-height: 100vh;
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  min-height: 100vh;
+}
+
+h1 {
+  text-align: center;
+  color: #2d3748;
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  font-weight: 800;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #4a5568;
+  margin-bottom: 40px;
+  line-height: 1.5;
+}
+
+.test-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.test-card {
+  background: var(--card-bg);
+  border-radius: var(--border-radius);
+  padding: 25px;
+  text-decoration: none;
+  color: var(--text-primary);
+  box-shadow: var(--shadow);
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.test-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--accent-color), #ffd700);
+}
+
+.test-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+  border-color: var(--accent-color);
+}
+
+.test-number {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--accent-color);
+  margin-bottom: 10px;
+}
+
+.test-card h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #2d3748;
+}
+
+.test-card p {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.question {
+  background: var(--card-bg);
+  border-radius: var(--border-radius);
+  padding: 30px;
+  margin-bottom: 30px;
+  box-shadow: var(--shadow);
   text-align: center;
 }
-.nav-buttons a {
-  margin: 0 8px;
-  display: inline-block;
-  padding: 8px 14px;
-  background: #444;
+
+.question h2 {
+  color: #2d3748;
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  line-height: 1.4;
+}
+
+.choices {
+  display: grid;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.choice {
+  background: var(--card-bg);
+  border: 2px solid var(--border-color);
+  border-radius: 15px;
+  padding: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.choice:hover {
+  border-color: var(--accent-color);
+  background: linear-gradient(135deg, #fff 0%, #ffeef2 100%);
+  transform: translateX(5px);
+}
+
+.result {
+  background: linear-gradient(135deg, #fff 0%, #f8f9ff 100%);
+  border-radius: var(--border-radius);
+  padding: 30px;
+  margin-top: 30px;
+  box-shadow: var(--shadow);
+  border-left: 5px solid var(--accent-color);
+}
+
+.result h3 {
+  color: var(--accent-color);
+  font-size: 1.4rem;
+  margin-bottom: 15px;
+}
+
+.result p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--text-primary);
+}
+
+.share-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 25px;
+  flex-wrap: wrap;
+}
+
+.share-btn {
+  background: var(--accent-color);
   color: white;
+  padding: 12px 20px;
+  border-radius: 25px;
   text-decoration: none;
-  border-radius: 6px;
-  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.share-btn:hover {
+  background: var(--accent-hover);
+  transform: translateY(-2px);
+}
+
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 40px;
+  gap: 20px;
+}
+
+.nav-btn {
+  background: var(--accent-color);
+  color: white;
+  padding: 15px 25px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  min-width: 120px;
+  text-align: center;
+}
+
+.nav-btn:hover {
+  background: var(--accent-hover);
+  transform: translateY(-2px);
+}
+
+.language-selector {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 40px;
+}
+
+.lang-btn {
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--text-primary);
+  padding: 10px 20px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: 2px solid var(--border-color);
+}
+
+.lang-btn:hover {
+  background: var(--accent-color);
+  color: white;
+  border-color: var(--accent-color);
+}
+
+footer {
+  text-align: center;
+  margin-top: 50px;
+  padding: 20px;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.hidden {
+  display: none;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+  .container {
+    padding: 15px;
+  }
+  
+  h1 {
+    font-size: 2rem;
+  }
+  
+  .subtitle {
+    font-size: 1rem;
+  }
+  
+  .test-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  
+  .test-card {
+    padding: 20px;
+  }
+  
+  .question {
+    padding: 25px 20px;
+  }
+  
+  .question h2 {
+    font-size: 1.5rem;
+  }
+  
+  .choice {
+    padding: 15px;
+    font-size: 1rem;
+  }
+  
+  .share-buttons {
+    gap: 10px;
+  }
+  
+  .share-btn {
+    padding: 10px 15px;
+    font-size: 0.8rem;
+  }
+  
+  .navigation {
+    flex-direction: column;
+  }
+  
+  .nav-btn {
+    width: 100%;
+  }
+  
+  .language-selector {
+    gap: 10px;
+  }
+  
+  .lang-btn {
+    padding: 8px 15px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.8rem;
+  }
+  
+  .test-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .test-card h3 {
+    font-size: 1.1rem;
+  }
+  
+  .test-card p {
+    font-size: 0.9rem;
+  }
 }
