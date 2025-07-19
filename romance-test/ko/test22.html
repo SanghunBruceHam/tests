@@ -166,6 +166,31 @@
       window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`);
     }
 
+    function shareKakao() {
+      const url = window.location.href;
+      const text = "연애 심리 테스트 22: 당신의 이별 극복 방법! 나의 결과를 확인해보세요!";
+
+      if (navigator.share) {
+        navigator.share({
+          title: text,
+          url: url
+        });
+      } else {
+        window.open(`https://story.kakao.com/share?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`);
+      }
+    }
+
+    function shareTwitter() {
+      const url = window.location.href;
+      const text = "연애 심리 테스트 22: 당신의 이별 극복 방법! 나의 결과를 확인해보세요!";
+      window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`);
+    }
+
+    function shareFacebook() {
+      const url = window.location.href;
+      window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`);
+    }
+
     function copyUrl() {
       navigator.clipboard.writeText(window.location.href).then(() => {
         alert('링크가 복사되었습니다!');
