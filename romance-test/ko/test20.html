@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -7,29 +6,29 @@
   <title>연애 심리 테스트 20: 당신의 결혼 확실성 정도 | 무료 심리 테스트</title>
   <meta name="description" content="연인과의 미래를 생각할 때 드는 생각으로 알아보는 당신의 결혼 확실성 정도는? 재미있는 연애 심리 테스트로 나의 연애 성향을 분석해보세요!">
   <meta name="keywords" content="연애 심리 테스트, 결혼 확실성, 심리 테스트, 연애 성향, 무료 테스트">
-  
+
   <!-- Open Graph Meta Tags -->
   <meta property="og:type" content="article" />
   <meta property="og:title" content="연애 심리 테스트 20: 당신의 결혼 확실성 정도" />
   <meta property="og:description" content="연인과의 미래를 생각할 때 드는 생각으로 알아보는 당신의 결혼 확실성 정도는?" />
   <meta property="og:image" content="https://tests.mahalohana-bruce.com/romance-test/ko/thumbnail.png" />
   <meta property="og:url" content="https://tests.mahalohana-bruce.com/romance-test/ko/test20.html" />
-  
+
   <!-- Twitter Card Meta Tags -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="연애 심리 테스트: 결혼 확실성" />
   <meta name="twitter:description" content="연인과의 미래로 알아보는 나의 결혼 의지!" />
   <meta name="twitter:image" content="https://tests.mahalohana-bruce.com/romance-test/ko/thumbnail.png" />
-  
+
   <link rel="canonical" href="https://tests.mahalohana-bruce.com/romance-test/ko/test20.html">
   <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-  
+
   <!-- hreflang for multilingual SEO -->
   <link rel="alternate" hreflang="ko" href="https://tests.mahalohana-bruce.com/romance-test/ko/test20.html" />
   <link rel="alternate" hreflang="ja" href="https://tests.mahalohana-bruce.com/romance-test/ja/test20.html" />
   <link rel="alternate" hreflang="en" href="https://tests.mahalohana-bruce.com/romance-test/en/test20.html" />
   <link rel="alternate" hreflang="x-default" href="https://tests.mahalohana-bruce.com/romance-test/ko/test20.html" />
-  
+
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-45VSGEM7EZ"></script>
   <script>
@@ -71,44 +70,43 @@
   }
   </script>
 
-  <link rel="stylesheet" href="../style.css">
-</head>
+  <link rel="stylesheet" href="style.css"></head>
 <body>
   <div class="container">
     <h1>연애 심리 테스트 20: 당신의 결혼 확실성 정도</h1>
-    
+
     <div class="question">
       <h2>Q. 연인과의 미래를 생각할 때 드는 생각은?</h2>
     </div>
-    
+
     <div class="choices">
       <div class="choice" onclick="showResult('A')">A. "언제 프러포즈할까?"</div>
       <div class="choice" onclick="showResult('B')">B. "계속 행복했으면 좋겠다"</div>
       <div class="choice" onclick="showResult('C')">C. "아직은 모르겠다"</div>
       <div class="choice" onclick="showResult('D')">D. "지금이 좋다"</div>
     </div>
-    
+
     <div id="result" class="result hidden">
       <h3>결과</h3>
       <p id="result-text"></p>
     </div>
-    
+
     <div class="share-buttons">
       <a href="#" class="share-btn" id="share-line">LINE 공유</a>
       <a href="#" class="share-btn" id="share-x">X 공유</a>
       <a href="#" class="share-btn" id="share-fb">Facebook 공유</a>
       <button class="share-btn" onclick="copyLink()">URL 복사</button>
     </div>
-    
+
     <div class="navigation">
       <a href="test19.html" class="nav-btn">← 이전</a>
       <a href="index.html" class="nav-btn">📚 목차로</a>
       <a href="test21.html" class="nav-btn">다음 →</a>
     </div>
-    
+
     <footer>© 당신의 연애 심리 테스트 | tests.mahalohana-bruce.com</footer>
   </div>
-  
+
   <script>
     const resultTexts = {
       A: "💍 결혼 확실성 95%! 이미 평생을 함께할 사람으로 확신하고 있는 진짜 사랑을 하고 계시네요.",
@@ -116,24 +114,24 @@
       C: "🤷‍♀️ 결혼 확실성 50%. 아직 확신이 서지 않는 상태. 더 많은 시간이 필요한 것 같아요.",
       D: "😊 결혼 확실성 30%. 현재를 즐기는 것에 집중하는 타입. 결혼은 아직 먼 미래의 일이네요."
     };
-    
+
     function showResult(choice) {
       const resultElement = document.getElementById("result");
       const resultText = document.getElementById("result-text");
       resultText.textContent = resultTexts[choice];
       resultElement.classList.remove("hidden");
     }
-    
+
     function copyLink() {
       navigator.clipboard.writeText(window.location.href).then(() => {
         alert("URL이 복사되었습니다!");
       });
     }
-    
+
     // 공유 링크 설정
     const url = encodeURIComponent(window.location.href);
     const text = encodeURIComponent("연애 심리 테스트 20: 당신의 결혼 확실성 정도");
-    
+
     document.getElementById("share-line").href = `https://social-plugins.line.me/lineit/share?url=${url}`;
     document.getElementById("share-x").href = `https://twitter.com/intent/tweet?text=${text}&url=${url}`;
     document.getElementById("share-fb").href = `https://www.facebook.com/sharer/sharer.php?u=${url}`;

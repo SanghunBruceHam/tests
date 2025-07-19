@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -7,29 +6,29 @@
   <title>연애 심리 테스트 15: 당신은 원거리 연애를 견딜 수 있습니까? | 무료 심리 테스트</title>
   <meta name="description" content="연인과 연락이 안 될 때 반응으로 알아보는 원거리 연애 가능성은? 재미있는 연애 심리 테스트로 나의 연애 성향을 분석해보세요!">
   <meta name="keywords" content="연애 심리 테스트, 원거리 연애, 심리 테스트, 연애 성향, 무료 테스트">
-  
+
   <!-- Open Graph Meta Tags -->
   <meta property="og:type" content="article" />
   <meta property="og:title" content="연애 심리 테스트 15: 당신은 원거리 연애를 견딜 수 있습니까?" />
   <meta property="og:description" content="연인과 연락이 안 될 때 반응으로 알아보는 원거리 연애 가능성은?" />
   <meta property="og:image" content="https://tests.mahalohana-bruce.com/romance-test/ko/thumbnail.png" />
   <meta property="og:url" content="https://tests.mahalohana-bruce.com/romance-test/ko/test15.html" />
-  
+
   <!-- Twitter Card Meta Tags -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="연애 심리 테스트: 원거리 연애 가능성" />
   <meta name="twitter:description" content="연락 안 될 때 반응으로 알아보는 나의 원거리 연애 적성!" />
   <meta name="twitter:image" content="https://tests.mahalohana-bruce.com/romance-test/ko/thumbnail.png" />
-  
+
   <link rel="canonical" href="https://tests.mahalohana-bruce.com/romance-test/ko/test15.html">
   <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-  
+
   <!-- hreflang for multilingual SEO -->
   <link rel="alternate" hreflang="ko" href="https://tests.mahalohana-bruce.com/romance-test/ko/test15.html" />
   <link rel="alternate" hreflang="ja" href="https://tests.mahalohana-bruce.com/romance-test/ja/test15.html" />
   <link rel="alternate" hreflang="en" href="https://tests.mahalohana-bruce.com/romance-test/en/test15.html" />
   <link rel="alternate" hreflang="x-default" href="https://tests.mahalohana-bruce.com/romance-test/ko/test15.html" />
-  
+
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-45VSGEM7EZ"></script>
   <script>
@@ -71,44 +70,43 @@
   }
   </script>
 
-  <link rel="stylesheet" href="../style.css">
-</head>
+  <link rel="stylesheet" href="style.css"></head>
 <body>
   <div class="container">
     <h1>연애 심리 테스트 15: 당신은 원거리 연애를 견딜 수 있습니까?</h1>
-    
+
     <div class="question">
       <h2>Q. 연인과 며칠 연락이 안 될 때 당신은?</h2>
     </div>
-    
+
     <div class="choices">
       <div class="choice" onclick="showResult('A')">A. 계속 전화를 걸어본다</div>
       <div class="choice" onclick="showResult('B')">B. 바쁘겠거니 기다린다</div>
       <div class="choice" onclick="showResult('C')">C. 친구에게 하소연한다</div>
       <div class="choice" onclick="showResult('D')">D. 혼자 불안해한다</div>
     </div>
-    
+
     <div id="result" class="result hidden">
       <h3>결과</h3>
       <p id="result-text"></p>
     </div>
-    
+
     <div class="share-buttons">
       <a href="#" class="share-btn" id="share-line">LINE 공유</a>
       <a href="#" class="share-btn" id="share-x">X 공유</a>
       <a href="#" class="share-btn" id="share-fb">Facebook 공유</a>
       <button class="share-btn" onclick="copyLink()">URL 복사</button>
     </div>
-    
+
     <div class="navigation">
       <a href="test14.html" class="nav-btn">← 이전</a>
       <a href="index.html" class="nav-btn">📚 목차로</a>
       <a href="test16.html" class="nav-btn">다음 →</a>
     </div>
-    
+
     <footer>© 당신의 연애 심리 테스트 | tests.mahalohana-bruce.com</footer>
   </div>
-  
+
   <script>
     const resultTexts = {
       A: "📱 원거리 연애 가능성 30%. 상대와의 소통을 무엇보다 중요하게 생각하는 타입이에요.",
@@ -116,24 +114,24 @@
       C: "💬 원거리 연애 가능성 60%. 주변의 지지가 있다면 충분히 견뎌낼 수 있는 타입입니다.",
       D: "😰 원거리 연애 가능성 20%. 혼자 고민하는 성향으로 원거리는 힘들 것 같아요."
     };
-    
+
     function showResult(choice) {
       const resultElement = document.getElementById("result");
       const resultText = document.getElementById("result-text");
       resultText.textContent = resultTexts[choice];
       resultElement.classList.remove("hidden");
     }
-    
+
     function copyLink() {
       navigator.clipboard.writeText(window.location.href).then(() => {
         alert("URL이 복사되었습니다!");
       });
     }
-    
+
     // 공유 링크 설정
     const url = encodeURIComponent(window.location.href);
     const text = encodeURIComponent("연애 심리 테스트 15: 당신은 원거리 연애를 견딜 수 있습니까?");
-    
+
     document.getElementById("share-line").href = `https://social-plugins.line.me/lineit/share?url=${url}`;
     document.getElementById("share-x").href = `https://twitter.com/intent/tweet?text=${text}&url=${url}`;
     document.getElementById("share-fb").href = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
