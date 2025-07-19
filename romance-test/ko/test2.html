@@ -73,7 +73,7 @@
       <p id="result-text"></p>
       
       <div class="share-buttons">
-        <a href="#" onclick="shareToLine()" class="share-btn">📱 LINE 공유</a>
+        <a href="#" onclick="shareToThreads()" class="share-btn">🧵 Threads 공유</a>
         <a href="#" onclick="shareToTwitter()" class="share-btn">🐦 X 공유</a>
         <a href="#" onclick="shareToFacebook()" class="share-btn">📘 Facebook 공유</a>
         <a href="#" onclick="copyURL()" class="share-btn">🔗 URL 복사</a>
@@ -86,6 +86,8 @@
       <a href="test3.html" class="nav-btn">다음 테스트 →</a>
     </div>
   </div>
+  
+  <footer>© 연애 심리 테스트 | tests.mahalohana-bruce.com</footer>
 
   <script>
     function showResult(choice) {
@@ -109,10 +111,10 @@
       });
     }
 
-    function shareToLine() {
+    function shareToThreads() {
       const text = '연애 심리 테스트: 당신의 사랑에 열중할 때 결과를 확인해보세요!';
       const url = window.location.href;
-      window.open(`https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`);
+      window.open(`https://threads.net/intent/post?text=${encodeURIComponent(text + ' ' + url)}`);
     }
 
     function shareToTwitter() {
