@@ -85,10 +85,9 @@
   </script>
 
   <div class="container">
-    <h1>연애 심리 테스트 20: 당신의 결혼 확실성 정도</h1>
-
     <div class="question">
-      <h2>Q. 연인과의 미래를 생각할 때 드는 생각은?</h2>
+      <h1>💕 연애 심리 테스트 20</h1>
+      <h2>연인과의 미래를 생각할 때 드는 생각은?</h2>
     </div>
 
     <div class="choices">
@@ -99,15 +98,15 @@
     </div>
 
     <div id="result" class="result hidden">
-      <h3>결과</h3>
-      <p id="result-text"></p>
-    </div>
+      <h3>🎯 당신의 결혼 확실성</h3>
+      <p id="resultText"></p>
 
-    <div class="share-buttons">
-      <a href="#" class="share-btn" id="share-line">LINE 공유</a>
-      <a href="#" class="share-btn" id="share-x">X 공유</a>
-      <a href="#" class="share-btn" id="share-fb">Facebook 공유</a>
-      <button class="share-btn" onclick="copyLink()">URL 복사</button>
+      <div class="share-buttons">
+        <a href="#" class="share-btn" onclick="shareKakao()">카카오톡 공유</a>
+        <a href="#" class="share-btn" onclick="shareTwitter()">X 공유</a>
+        <a href="#" class="share-btn" onclick="shareFacebook()">페이스북 공유</a>
+        <a href="#" class="share-btn" onclick="copyUrl()">링크 복사</a>
+      </div>
     </div>
 
     <div class="navigation">
@@ -132,25 +131,46 @@
     };
 
     function showResult(choice) {
-      const resultElement = document.getElementById("result");
-      const resultText = document.getElementById("result-text");
-      resultText.textContent = resultTexts[choice];
-      resultElement.classList.remove("hidden");
-    }
+      document.getElementById('result').classList.remove('hidden');
+      document.getElementById('resultText').innerText = resultTexts[choice];
 
-    function copyLink() {
-      navigator.clipboard.writeText(window.location.href).then(() => {
-        alert("URL이 복사되었습니다!");
+      // Google Analytics 이벤트 추적
+      gtag('event', 'quiz_complete', {
+        'event_category': 'Romance Test',
+        'event_label': 'Test 20 - Choice ' + choice
       });
     }
 
-    // 공유 링크 설정
-    const url = encodeURIComponent(window.location.href);
-    const text = encodeURIComponent("연애 심리 테스트 20: 당신의 결혼 확실성 정도");
+    function shareKakao() {
+      const url = window.location.href;
+      const text = "연애 심리 테스트 20: 당신의 결혼 확실성 정도! 나의 결과를 확인해보세요!";
 
-    document.getElementById("share-line").href = `https://social-plugins.line.me/lineit/share?url=${url}`;
-    document.getElementById("share-x").href = `https://twitter.com/intent/tweet?text=${text}&url=${url}`;
-    document.getElementById("share-fb").href = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+      if (navigator.share) {
+        navigator.share({
+          title: text,
+          url: url
+        });
+      } else {
+        window.open(`https://story.kakao.com/share?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`);
+      }
+    }
+
+    function shareTwitter() {
+      const url = window.location.href;
+      const text = "연애 심리 테스트 20: 당신의 결혼 확실성 정도! 나의 결과를 확인해보세요!";
+      window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`);
+    }
+
+    function shareFacebook() {
+      const url = window.location.href;
+      window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`);
+    }
+
+    function copyUrl() {
+      navigator.clipboard.writeText(window.location.href).then(() => {
+        alert('링크가 복사되었습니다!');
+      });
+    }
   </script>
 </body>
 </html>
