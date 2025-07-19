@@ -139,57 +139,36 @@
   </script>
 </body>
 </html>
-```
-
-```python
-def generate_test_file(test_number):
-    file_name = f"test{test_number}.html"
-    title = f"연애 심리 테스트 {test_number}"
-    description = f"연애 심리 테스트 {test_number} 입니다."
-    next_test = test_number + 1
-    prev_test = test_number -1
-    
-    if test_number == 7:
-        prev_link = "index.html"
-    else:
-        prev_link = f"test{prev_test}.html"
-    
-    if test_number == 30:
-        next_link = "index.html"
-    else:
-        next_link = f"test{next_test}.html"
-
-    content = f"""
-<!DOCTYPE html>
+```<!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{title} | 무료 심리 테스트</title>
-  <meta name="description" content="{description}">
-  <meta name="keywords" content="연애 심리 테스트, 심리 테스트, 연애 성향, 무료 테스트">
+  <title>연애 심리 테스트 18: 연인과 싸울 때 추천 대처법 | 무료 심리 테스트</title>
+  <meta name="description" content="다툼에서 가장 화나는 순간으로 알아보는 당신에게 맞는 싸움 대처법은? 재미있는 연애 심리 테스트로 나의 연애 성향을 분석해보세요!">
+  <meta name="keywords" content="연애 심리 테스트, 싸움 대처법, 심리 테스트, 연애 성향, 무료 테스트">
 
   <!-- Open Graph Meta Tags -->
   <meta property="og:type" content="article" />
-  <meta property="og:title" content="{title}" />
-  <meta property="og:description" content="{description}" />
+  <meta property="og:title" content="연애 심리 테스트 18: 연인과 싸울 때 추천 대처법" />
+  <meta property="og:description" content="다툼에서 가장 화나는 순간으로 알아보는 당신에게 맞는 싸움 대처법은?" />
   <meta property="og:image" content="https://tests.mahalohana-bruce.com/romance-test/ko/thumbnail.png" />
-  <meta property="og:url" content="https://tests.mahalohana-bruce.com/romance-test/ko/{file_name}" />
+  <meta property="og:url" content="https://tests.mahalohana-bruce.com/romance-test/ko/test18.html" />
 
   <!-- Twitter Card Meta Tags -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="{title}" />
-  <meta name="twitter:description" content="{description}" />
+  <meta name="twitter:title" content="연애 심리 테스트: 싸움 대처법" />
+  <meta name="twitter:description" content="다툼에서 화나는 순간으로 알아보는 나만의 해결책!" />
   <meta name="twitter:image" content="https://tests.mahalohana-bruce.com/romance-test/ko/thumbnail.png" />
 
-  <link rel="canonical" href="https://tests.mahalohana-bruce.com/romance-test/ko/{file_name}">
+  <link rel="canonical" href="https://tests.mahalohana-bruce.com/romance-test/ko/test18.html">
   <link rel="icon" href="/favicon.ico" type="image/x-icon" />
 
   <!-- hreflang for multilingual SEO -->
-  <link rel="alternate" hreflang="ko" href="https://tests.mahalohana-bruce.com/romance-test/ko/{file_name}" />
-  <link rel="alternate" hreflang="ja" href="https://tests.mahalohana-bruce.com/romance-test/ja/{file_name}" />
-  <link rel="alternate" hreflang="en" href="https://tests.mahalohana-bruce.com/romance-test/en/{file_name}" />
-  <link rel="alternate" hreflang="x-default" href="https://tests.mahalohana-bruce.com/romance-test/ko/{file_name}" />
+  <link rel="alternate" hreflang="ko" href="https://tests.mahalohana-bruce.com/romance-test/ko/test18.html" />
+  <link rel="alternate" hreflang="ja" href="https://tests.mahalohana-bruce.com/romance-test/ja/test18.html" />
+  <link rel="alternate" hreflang="en" href="https://tests.mahalohana-bruce.com/romance-test/en/test18.html" />
+  <link rel="alternate" hreflang="x-default" href="https://tests.mahalohana-bruce.com/romance-test/ko/test18.html" />
 
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-45VSGEM7EZ"></script>
@@ -205,48 +184,48 @@ def generate_test_file(test_number):
 
   <!-- JSON-LD Structured Data -->
   <script type="application/ld+json">
-  {{
+  {
     "@context": "https://schema.org",
     "@type": "Article",
-    "headline": "{title}",
-    "description": "{description}",
+    "headline": "연애 심리 테스트 18: 연인과 싸울 때 추천 대처법",
+    "description": "다툼에서 가장 화나는 순간으로 알아보는 당신에게 맞는 싸움 대처법은?",
     "image": "https://tests.mahalohana-bruce.com/romance-test/ko/thumbnail.png",
-    "author": {{
+    "author": {
       "@type": "Organization",
       "name": "Psychological Tests"
-    }},
-    "publisher": {{
+    },
+    "publisher": {
       "@type": "Organization",
       "name": "Psychological Tests",
-      "logo": {{
+      "logo": {
         "@type": "ImageObject",
         "url": "https://tests.mahalohana-bruce.com/favicon.png"
-      }}
-    }},
+      }
+    },
     "datePublished": "2024-01-01",
     "dateModified": "2024-01-01",
-    "mainEntityOfPage": {{
+    "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": "https://tests.mahalohana-bruce.com/romance-test/ko/{file_name}"
-    }}
-  }}
+      "@id": "https://tests.mahalohana-bruce.com/romance-test/ko/test18.html"
+    }
+  }
   </script>
 
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
-    <h1>{title}</h1>
+    <h1>연애 심리 테스트 18: 연인과 싸울 때 추천 대처법</h1>
 
     <div class="question">
-      <h2>Q. Question for test {test_number}?</h2>
+      <h2>Q. 연인과 다툴 때 가장 화가 나는 순간은?</h2>
     </div>
 
     <div class="choices">
-      <div class="choice" onclick="showResult('A')">A. Choice A</div>
-      <div class="choice" onclick="showResult('B')">B. Choice B</div>
-      <div class="choice" onclick="showResult('C')">C. Choice C</div>
-      <div class="choice" onclick="showResult('D')">D. Choice D</div>
+      <div class="choice" onclick="showResult('A')">A. 내 말을 끝까지 듣지 않을 때</div>
+      <div class="choice" onclick="showResult('B')">B. 논리적이지 않을 때</div>
+      <div class="choice" onclick="showResult('C')">C. 감정적으로 대응할 때</div>
+      <div class="choice" onclick="showResult('D')">D. 무시하거나 회피할 때</div>
     </div>
 
     <div id="result" class="result hidden">
@@ -262,63 +241,45 @@ def generate_test_file(test_number):
     </div>
 
     <div class="navigation">
-      <a href="{prev_link}" class="nav-btn">← 이전</a>
+      <a href="test17.html" class="nav-btn">← 이전</a>
       <a href="index.html" class="nav-btn">📚 목차로</a>
-      <a href="{next_link}" class="nav-btn">다음 →</a>
+      <a href="test19.html" class="nav-btn">다음 →</a>
     </div>
 
     <footer>© 당신의 연애 심리 테스트 | tests.mahalohana-bruce.com</footer>
   </div>
 
   <script>
-    const resultTexts = {{
-      A: "Result A",
-      B: "Result B",
-      C: "Result C",
-      D: "Result D"
-    }};
+    const resultTexts = {
+      A: "🗣️ 대화형 해결법을 추천해요. 서로의 입장을 차근차근 들어보고 충분히 소통하는 시간을 가져보세요.",
+      B: "📊 분석형 해결법을 추천해요. 문제의 원인을 객관적으로 분석하고 단계별로 해결책을 찾아보세요.",
+      C: "💝 감정 수용형 해결법을 추천해요. 서로의 감정을 인정하고 위로하는 시간을 먼저 가져보세요.",
+      D: "⏰ 시간차 해결법을 추천해요. 잠시 시간을 두고 각자 생각을 정리한 후 다시 대화해보세요."
+    };
 
-    function showResult(choice) {{
+    function showResult(choice) {
       const resultElement = document.getElementById("result");
       const resultText = document.getElementById("result-text");
       resultText.textContent = resultTexts[choice];
       resultElement.classList.remove("hidden");
-    }}
+    }
 
-    function copyLink() {{
-      navigator.clipboard.writeText(window.location.href).then(() => {{
+    function copyLink() {
+      navigator.clipboard.writeText(window.location.href).then(() => {
         alert("URL이 복사되었습니다!");
-      }});
-    }}
+      });
+    }
 
     // 공유 링크 설정
     const url = encodeURIComponent(window.location.href);
-    const text = encodeURIComponent("{title}");
+    const text = encodeURIComponent("연애 심리 테스트 18: 연인과 싸울 때 추천 대처법");
 
     document.getElementById("share-line").href = `https://social-plugins.line.me/lineit/share?url=${url}`;
     document.getElementById("share-x").href = `https://twitter.com/intent/tweet?text=${text}&url=${url}`;
     document.getElementById("share-fb").href = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
   </script>
 </body>
-</html>
-"""
-    return content
-
-print("Generating test files...")
-for i in range(7, 31):
-    file_content = generate_test_file(i)
-    with open(f"test{i}.html", "w", encoding="utf-8") as f:
-        f.write(file_content)
-    print(f"test{i}.html generated.")
-
-print("All test files generated!")
-```
-
-This script generates the requested HTML files with the updated CSS path.
-Here's the complete code enclosed in the requested tags.
-
-```replit_final_file
-<!DOCTYPE html>
+</html><!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
