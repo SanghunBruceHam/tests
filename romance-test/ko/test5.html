@@ -1,23 +1,24 @@
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>연애 심리 테스트 5: 바람 용서 능력 | 무료 심리 테스트</title>
-  <meta name="description" content="배신 상황에서의 선택으로 알아보는 당신의 바람 용서 능력은? 재미있는 연애 심리 테스트로 나의 연애 성향을 분석해보세요!">
-  <meta name="keywords" content="연애 심리 테스트, 바람 용서, 심리 테스트, 연애 성향, 무료 테스트">
+  <title>연애 심리 테스트 5: 당신의 이상형은? | 무료 심리 테스트</title>
+  <meta name="description" content="카페에서 주문하는 음료로 알아보는 당신의 이상형은? 재미있는 연애 심리 테스트로 나의 연애 성향을 분석해보세요!">
+  <meta name="keywords" content="연애 심리 테스트, 이상형, 심리 테스트, 연애 성향, 무료 테스트">
 
   <!-- Open Graph Meta Tags -->
   <meta property="og:type" content="article" />
-  <meta property="og:title" content="연애 심리 테스트 5: 바람 용서 능력" />
-  <meta property="og:description" content="배신 상황에서의 선택으로 알아보는 당신의 바람 용서 능력은?" />
+  <meta property="og:title" content="연애 심리 테스트 5: 당신의 이상형은?" />
+  <meta property="og:description" content="카페에서 주문하는 음료로 알아보는 당신의 이상형은?" />
   <meta property="og:image" content="https://tests.mahalohana-bruce.com/romance-test/ko/thumbnail.png" />
   <meta property="og:url" content="https://tests.mahalohana-bruce.com/romance-test/ko/test5.html" />
 
   <!-- Twitter Card Meta Tags -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="연애 심리 테스트: 바람 용서 능력" />
-  <meta name="twitter:description" content="배신 상황에서 알아보는 나의 용서 능력!" />
+  <meta name="twitter:title" content="연애 심리 테스트: 이상형" />
+  <meta name="twitter:description" content="카페 음료로 알아보는 나의 이상형!" />
   <meta name="twitter:image" content="https://tests.mahalohana-bruce.com/romance-test/ko/thumbnail.png" />
 
   <link rel="canonical" href="https://tests.mahalohana-bruce.com/romance-test/ko/test5.html">
@@ -46,16 +47,16 @@
   {
     "@context": "https://schema.org",
     "@type": "Article",
-    "headline": "연애 심리 테스트 5: 바람 용서 능력",
-    "description": "배신 상황에서의 선택으로 알아보는 당신의 바람 용서 능력은?",
+    "headline": "연애 심리 테스트 5: 당신의 이상형은?",
+    "description": "카페에서 주문하는 음료로 알아보는 당신의 이상형은?",
     "image": "https://tests.mahalohana-bruce.com/romance-test/ko/thumbnail.png",
     "author": {
       "@type": "Organization",
-      "name": "Mahalohana Bruce Tests"
+      "name": "Psychological Tests"
     },
     "publisher": {
       "@type": "Organization",
-      "name": "Mahalohana Bruce Tests",
+      "name": "Psychological Tests",
       "logo": {
         "@type": "ImageObject",
         "url": "https://tests.mahalohana-bruce.com/favicon.png"
@@ -87,24 +88,24 @@
   <div class="container">
     <div class="question">
       <h1>💖 연애 심리 테스트 5</h1>
-      <h2>가장 친한 친구가 당신의 연인과 바람을 피웠다면?</h2>
+      <h2>카페에서 주문하는 음료는?</h2>
       <div class="choices">
-        <div class="choice" onclick="showResult('A')">A. 둘 다 용서할 수 없다</div>
-        <div class="choice" onclick="showResult('B')">B. 연인만 용서한다</div>
-        <div class="choice" onclick="showResult('C')">C. 친구만 용서한다</div>
-        <div class="choice" onclick="showResult('D')">D. 시간이 지나면 둘 다 용서한다</div>
+        <div class="choice" onclick="showResult('A')">A. 아메리카노</div>
+        <div class="choice" onclick="showResult('B')">B. 카페라떼</div>
+        <div class="choice" onclick="showResult('C')">C. 프라푸치노</div>
+        <div class="choice" onclick="showResult('D')">D. 허브티</div>
       </div>
     </div>
 
     <div id="result" class="result hidden">
-      <h3>💔 당신의 바람 용서 능력</h3>
-      <p id="resultText"></p>
+      <h3>💕 당신의 이상형</h3>
+      <p id="result-text"></p>
 
       <div class="share-buttons">
-        <a href="#" class="share-btn" onclick="shareKakao()">카카오톡 공유</a>
-        <a href="#" class="share-btn" onclick="shareTwitter()">X 공유</a>
-        <a href="#" class="share-btn" onclick="shareFacebook()">페이스북 공유</a>
-        <a href="#" class="share-btn" onclick="copyUrl()">링크 복사</a>
+        <a href="#" onclick="shareToThreads()" class="share-btn">🧵 Threads 공유</a>
+        <a href="#" onclick="shareToTwitter()" class="share-btn">🐦 X 공유</a>
+        <a href="#" onclick="shareToFacebook()" class="share-btn">📘 Facebook 공유</a>
+        <a href="#" onclick="copyURL()" class="share-btn">🔗 URL 복사</a>
       </div>
     </div>
 
@@ -122,53 +123,84 @@
   <footer>© 연애 심리 테스트 | <a href="https://tests.mahalohana-bruce.com" target="_blank" rel="noopener noreferrer">tests.mahalohana-bruce.com</a></footer>
 
   <script>
-    const results = {
-      'A': '불용서형! 배신에 대해서는 절대 타협하지 않는 당신. 연애에서 신뢰와 충성도를 가장 중요하게 여기며, 한 번 깨진 신뢰는 회복하기 어렵다고 생각하는 확고한 원칙주의자입니다.',
-      'B': '선택적 용서형! 상황에 따라 다르게 판단하는 현실적인 당신. 연애에서도 관계의 중요도와 상황을 종합적으로 고려하여 합리적인 결정을 내리는 균형감각을 가지고 있습니다.',
-      'C': '우선순위형! 사랑하는 사람을 더 소중히 여기는 당신. 연애에서 연인과의 관계를 최우선으로 생각하며, 사랑 앞에서는 다른 모든 것을 포기할 수 있는 헌신적인 성격입니다.',
-      'D': '관대한 용서형! 시간이 해결책이라고 믿는 따뜻한 당신. 연애에서도 상대방의 실수를 이해하고 용서할 줄 아는 넓은 마음을 가지고 있으며, 화해와 회복을 중시하는 포용력 있는 성격입니다.'
-    };
-
     function showResult(choice) {
+      const results = {
+        'A': '당신의 이상형은 "솔직하고 진실한 사람"입니다. 꾸밈없는 자연스러운 매력을 가진 사람을 좋아하며, 복잡하지 않고 단순명료한 성격의 파트너를 원합니다. 진정성 있는 관계를 추구하는 타입이에요.',
+        'B': '당신의 이상형은 "따뜻하고 포근한 사람"입니다. 부드럽고 세심한 배려를 해주는 사람에게 끌리며, 안정감을 주는 파트너를 원합니다. 편안하고 아늑한 분위기를 만들어주는 사람이 이상형이에요.',
+        'C': '당신의 이상형은 "활발하고 재미있는 사람"입니다. 에너지가 넘치고 창의적인 사람에게 매력을 느끼며, 함께 있으면 즐겁고 신나는 파트너를 원합니다. 색다른 경험을 함께 할 수 있는 사람이 이상형이에요.',
+        'D': '당신의 이상형은 "차분하고 지적인 사람"입니다. 깊이 있는 대화를 나눌 수 있는 사람을 좋아하며, 내면의 아름다움을 중시하는 파트너를 원합니다. 정신적으로 성숙한 사람이 이상형이에요.'
+      };
+
+      document.getElementById('result-text').innerText = results[choice];
       document.getElementById('result').classList.remove('hidden');
-      document.getElementById('resultText').innerText = results[choice];
+
+      // 결과로 스크롤
+      document.getElementById('result').scrollIntoView({ behavior: 'smooth' });
 
       // Google Analytics 이벤트 추적
-      gtag('event', 'quiz_complete', {
-        'event_category': 'Romance Test',
-        'event_label': 'Test 5 - Choice ' + choice
+      gtag('event', 'test_completed', {
+        'test_name': 'romance_test_5',
+        'result': choice
       });
     }
 
-    function shareKakao() {
+    function shareToThreads() {
+      const text = '연애 심리 테스트: 당신의 이상형 결과를 확인해보세요!';
       const url = window.location.href;
-      const text = "연애 심리 테스트 5: 바람 용서 능력! 나의 결과를 확인해보세요!";
-
-      if (navigator.share) {
-        navigator.share({
-          title: text,
-          url: url
-        });
-      } else {
-        window.open(`https://story.kakao.com/share?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`);
+      try {
+        window.open(`https://threads.net/intent/post?text=${encodeURIComponent(text + ' ' + url)}`, '_blank', 'noopener,noreferrer');
+      } catch (error) {
+        console.error('Threads 공유 실패:', error);
+        copyURL();
       }
     }
 
-    function shareTwitter() {
+    function shareToTwitter() {
+      const text = '연애 심리 테스트: 당신의 이상형 결과를 확인해보세요!';
       const url = window.location.href;
-      const text = "연애 심리 테스트 5: 바람 용서 능력! 나의 결과를 확인해보세요!";
-      window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`);
+      try {
+        window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`, '_blank', 'noopener,noreferrer');
+      } catch (error) {
+        console.error('Twitter 공유 실패:', error);
+        copyURL();
+      }
     }
 
-    function shareFacebook() {
+    function shareToFacebook() {
       const url = window.location.href;
-      window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`);
+      try {
+        window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank', 'noopener,noreferrer');
+      } catch (error) {
+        console.error('Facebook 공유 실패:', error);
+        copyURL();
+      }
     }
 
-    function copyUrl() {
-      navigator.clipboard.writeText(window.location.href).then(() => {
-        alert('링크가 복사되었습니다!');
-      });
+    function copyURL() {
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(window.location.href).then(() => {
+          alert('URL이 복사되었습니다!');
+        }).catch(() => {
+          fallbackCopyURL();
+        });
+      } else {
+        fallbackCopyURL();
+      }
+    }
+
+    function fallbackCopyURL() {
+      const textArea = document.createElement('textarea');
+      textArea.value = window.location.href;
+      document.body.appendChild(textArea);
+      textArea.select();
+      try {
+        document.execCommand('copy');
+        alert('URL이 복사되었습니다!');
+      } catch (error) {
+        console.error('URL 복사 실패:', error);
+        prompt('수동으로 복사해주세요:', window.location.href);
+      }
+      document.body.removeChild(textArea);
     }
   </script>
 </body>
