@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -11,14 +12,14 @@
   <meta property="og:type" content="article" />
   <meta property="og:title" content="연애 심리 테스트 9: 당신의 연인에 대한 응석 능력" />
   <meta property="og:description" content="선물 받는 상황으로 알아보는 당신의 응석 능력은?" />
-  <meta property="og:image" content="https://tests.mahalohana-bruce.com/romance-test/ko/test9-thumbnail.png" />
+  <meta property="og:image" content="https://tests.mahalohana-bruce.com/romance-test/ko/thumbnail.png" />
   <meta property="og:url" content="https://tests.mahalohana-bruce.com/romance-test/ko/test9.html" />
   
   <!-- Twitter Card Meta Tags -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="연애 심리 테스트: 응석 능력" />
   <meta name="twitter:description" content="선물 받는 상황으로 알아보는 나의 응석 능력!" />
-  <meta name="twitter:image" content="https://tests.mahalohana-bruce.com/romance-test/ko/test9-thumbnail.png" />
+  <meta name="twitter:image" content="https://tests.mahalohana-bruce.com/romance-test/ko/thumbnail.png" />
   
   <link rel="canonical" href="https://tests.mahalohana-bruce.com/romance-test/ko/test9.html">
   <link rel="icon" href="/favicon.ico" type="image/x-icon" />
@@ -41,7 +42,7 @@
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5508768187151867" crossorigin="anonymous"></script>
 
-  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <!-- Google AdSense Ad -->
@@ -72,7 +73,7 @@
       <p id="result-text"></p>
       
       <div class="share-buttons">
-        <a href="#" onclick="shareToLine()" class="share-btn">📱 LINE 공유</a>
+        <a href="#" onclick="shareToThreads()" class="share-btn">🧵 Threads 공유</a>
         <a href="#" onclick="shareToTwitter()" class="share-btn">🐦 X 공유</a>
         <a href="#" onclick="shareToFacebook()" class="share-btn">📘 Facebook 공유</a>
         <a href="#" onclick="copyURL()" class="share-btn">🔗 URL 복사</a>
@@ -84,7 +85,13 @@
       <a href="index.html" class="nav-btn">목차로</a>
       <a href="test10.html" class="nav-btn">다음 테스트 →</a>
     </div>
+    
+    <div class="additional-nav">
+      <a href="https://tests.mahalohana-bruce.com/ko/" class="other-tests-btn">🧠 다른 심리테스트 해보기</a>
+    </div>
   </div>
+  
+  <footer>© 연애 심리 테스트 | <a href="https://tests.mahalohana-bruce.com" target="_blank" rel="noopener noreferrer">tests.mahalohana-bruce.com</a></footer>
 
   <script>
     function showResult(choice) {
@@ -108,27 +115,63 @@
       });
     }
 
-    function shareToLine() {
+    function shareToThreads() {
       const text = '연애 심리 테스트: 당신의 연인에 대한 응석 능력은? 결과를 확인해보세요!';
       const url = window.location.href;
-      window.open(`https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`);
+      try {
+        window.open(`https://threads.net/intent/post?text=${encodeURIComponent(text + ' ' + url)}`, '_blank', 'noopener,noreferrer');
+      } catch (error) {
+        console.error('Threads 공유 실패:', error);
+        copyURL();
+      }
     }
 
     function shareToTwitter() {
       const text = '연애 심리 테스트: 당신의 연인에 대한 응석 능력은? 결과를 확인해보세요!';
       const url = window.location.href;
-      window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`);
+      try {
+        window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`, '_blank', 'noopener,noreferrer');
+      } catch (error) {
+        console.error('Twitter 공유 실패:', error);
+        copyURL();
+      }
     }
 
     function shareToFacebook() {
       const url = window.location.href;
-      window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`);
+      try {
+        window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank', 'noopener,noreferrer');
+      } catch (error) {
+        console.error('Facebook 공유 실패:', error);
+        copyURL();
+      }
     }
 
     function copyURL() {
-      navigator.clipboard.writeText(window.location.href).then(() => {
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(window.location.href).then(() => {
+          alert('URL이 복사되었습니다!');
+        }).catch(() => {
+          fallbackCopyURL();
+        });
+      } else {
+        fallbackCopyURL();
+      }
+    }
+
+    function fallbackCopyURL() {
+      const textArea = document.createElement('textarea');
+      textArea.value = window.location.href;
+      document.body.appendChild(textArea);
+      textArea.select();
+      try {
+        document.execCommand('copy');
         alert('URL이 복사되었습니다!');
-      });
+      } catch (error) {
+        console.error('URL 복사 실패:', error);
+        prompt('수동으로 복사해주세요:', window.location.href);
+      }
+      document.body.removeChild(textArea);
     }
   </script>
 </body>
