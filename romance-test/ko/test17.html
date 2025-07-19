@@ -154,3 +154,33 @@
   </script>
 </body>
 </html>
+```const resultTexts = {
+      A: "🥂 당신은 로맨틱한 스타일을 좋아합니다. 분위기와 감성을 중요시하며, 섬세한 배려에 감동하는 편입니다.",
+      B: "🎬 당신은 편안한 스타일을 선호합니다. 함께 시간을 보내면서 서로를 알아가는 것을 좋아하고, 소소한 즐거움을 추구합니다.",
+      C: "🌿 당신은 자연스러운 스타일을 좋아합니다. 꾸밈없고 편안한 분위기에서 진솔한 대화를 나누는 것을 선호합니다.",
+      D: "🎢 당신은 활동적인 스타일을 좋아합니다. 함께 새로운 경험을 하고 즐거움을 만끽할 수 있는 사람에게 끌립니다."
+    };
+
+    function showResult(choice) {
+      const resultElement = document.getElementById("result");
+      const resultText = document.getElementById("result-text");
+      resultText.textContent = resultTexts[choice];
+      resultElement.classList.remove("hidden");
+    }
+
+    function copyLink() {
+      navigator.clipboard.writeText(window.location.href).then(() => {
+        alert("URL이 복사되었습니다!");
+      });
+    }
+
+    // 공유 링크 설정
+    const url = encodeURIComponent(window.location.href);
+    const text = encodeURIComponent("연애 심리 테스트 7: 당신이 좋아하는 스타일은?");
+
+    document.getElementById("share-line").href = `https://social-plugins.line.me/lineit/share?url=${url}`;
+    document.getElementById("share-x").href = `https://twitter.com/intent/tweet?text=${text}&url=${url}`;
+    document.getElementById("share-fb").href = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+  </script>
+</body>
+</html>
