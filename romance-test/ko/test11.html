@@ -51,11 +51,11 @@
     "image": "https://tests.mahalohana-bruce.com/romance-test/ko/thumbnail.png",
     "author": {
       "@type": "Organization",
-      "name": "Mahalohana Bruce Tests"
+      "name": "Psychological Tests"
     },
     "publisher": {
       "@type": "Organization",
-      "name": "Mahalohana Bruce Tests",
+      "name": "Psychological Tests",
       "logo": {
         "@type": "ImageObject",
         "url": "https://tests.mahalohana-bruce.com/favicon.png"
@@ -82,7 +82,7 @@
 
   <div class="container">
     <div class="question">
-      <h1>연애 심리 테스트 11</h1>
+      <h1>💖 연애 심리 테스트 11</h1>
       <h2>길을 걷다가 넘어졌을 때 첫 반응은?</h2>
     </div>
 
@@ -95,14 +95,13 @@
 
     <div id="result" class="result hidden">
       <h3>💖 당신의 천연도</h3>
-
-      <p id="resultText"></p>
+      <p id="result-text"></p>
 
       <div class="share-buttons">
-        <a href="#" class="share-btn" onclick="shareKakao()">카카오톡 공유</a>
-        <a href="#" class="share-btn" onclick="shareTwitter()">X 공유</a>
-        <a href="#" class="share-btn" onclick="shareFacebook()">페이스북 공유</a>
-        <a href="#" class="share-btn" onclick="copyUrl()">링크 복사</a>
+        <a href="#" onclick="shareToThreads()" class="share-btn">🧵 Threads 공유</a>
+        <a href="#" onclick="shareToTwitter()" class="share-btn">🐦 X 공유</a>
+        <a href="#" onclick="shareToFacebook()" class="share-btn">📘 Facebook 공유</a>
+        <a href="#" onclick="copyURL()" class="share-btn">🔗 URL 복사</a>
       </div>
     </div>
 
@@ -110,7 +109,6 @@
       <a href="test10.html" class="nav-btn">← 이전</a>
       <a href="index.html" class="nav-btn">📚 목차로</a>
       <a href="test12.html" class="nav-btn">다음 →</a>
-      <a href="test1.html" class="nav-btn">다시 처음부터</a>
     </div>
 
     <div class="additional-nav">
@@ -129,45 +127,76 @@
     };
 
     function showResult(choice) {
+      document.getElementById('result-text').innerText = results[choice];
       document.getElementById('result').classList.remove('hidden');
-      document.getElementById('resultText').innerText = results[choice];
+
+      // 결과로 스크롤
+      document.getElementById('result').scrollIntoView({ behavior: 'smooth' });
 
       // Google Analytics 이벤트 추적
-      gtag('event', 'quiz_complete', {
-        'event_category': 'Romance Test',
-        'event_label': 'Test 11 - Choice ' + choice
+      gtag('event', 'test_completed', {
+        'test_name': 'romance_test_11',
+        'result': choice
       });
     }
 
-    function shareKakao() {
+    function shareToThreads() {
+      const text = '연애 심리 테스트: 당신의 천연도 결과를 확인해보세요!';
       const url = window.location.href;
-      const text = "연애 심리 테스트 11: 당신의 천연도! 나의 결과를 확인해보세요!";
-
-      if (navigator.share) {
-        navigator.share({
-          title: text,
-          url: url
-        });
-      } else {
-        window.open(`https://story.kakao.com/share?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`);
+      try {
+        window.open(`https://threads.net/intent/post?text=${encodeURIComponent(text + ' ' + url)}`, '_blank', 'noopener,noreferrer');
+      } catch (error) {
+        console.error('Threads 공유 실패:', error);
+        copyURL();
       }
     }
 
-    function shareTwitter() {
+    function shareToTwitter() {
+      const text = '연애 심리 테스트: 당신의 천연도 결과를 확인해보세요!';
       const url = window.location.href;
-      const text = "연애 심리 테스트 11: 당신의 천연도! 나의 결과를 확인해보세요!";
-      window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`);
+      try {
+        window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`, '_blank', 'noopener,noreferrer');
+      } catch (error) {
+        console.error('Twitter 공유 실패:', error);
+        copyURL();
+      }
     }
 
-    function shareFacebook() {
+    function shareToFacebook() {
       const url = window.location.href;
-      window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`);
+      try {
+        window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank', 'noopener,noreferrer');
+      } catch (error) {
+        console.error('Facebook 공유 실패:', error);
+        copyURL();
+      }
     }
 
-    function copyUrl() {
-      navigator.clipboard.writeText(window.location.href).then(() => {
-        alert('링크가 복사되었습니다!');
-      });
+    function copyURL() {
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(window.location.href).then(() => {
+          alert('URL이 복사되었습니다!');
+        }).catch(() => {
+          fallbackCopyURL();
+        });
+      } else {
+        fallbackCopyURL();
+      }
+    }
+
+    function fallbackCopyURL() {
+      const textArea = document.createElement('textarea');
+      textArea.value = window.location.href;
+      document.body.appendChild(textArea);
+      textArea.select();
+      try {
+        document.execCommand('copy');
+        alert('URL이 복사되었습니다!');
+      } catch (error) {
+        console.error('URL 복사 실패:', error);
+        prompt('수동으로 복사해주세요:', window.location.href);
+      }
+      document.body.removeChild(textArea);
     }
   </script>
 </body>
