@@ -130,8 +130,13 @@
     };
 
     function showResult(choice) {
-      document.getElementById('result').classList.remove('hidden');
-      document.getElementById('result-text').innerText = resultTexts[choice];
+      const resultElement = document.getElementById('result');
+      const resultText = document.getElementById('result-text');
+      resultText.textContent = resultTexts[choice];
+      resultElement.classList.remove("hidden");
+
+      // 결과로 스크롤
+      resultElement.scrollIntoView({ behavior: 'smooth' });
 
       // Google Analytics 이벤트 추적
       gtag('event', 'quiz_complete', {
