@@ -132,6 +132,9 @@
       document.getElementById('result').classList.remove('hidden');
       document.getElementById('result-text').innerText = results[choice];
 
+      // 결과로 스크롤
+      document.getElementById('result').scrollIntoView({ behavior: 'smooth' });
+
       // Google Analytics 이벤트 추적
       gtag('event', 'quiz_complete', {
         'event_category': 'Romance Test',
