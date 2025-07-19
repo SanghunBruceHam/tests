@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>연애 심리 테스트 22: 당신의 이별 극복 방법</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>연애 심리 테스트 22: 당신의 이별 극복 방법</h1>
+    <div class="question"><p>Q. 이별 후 가장 먼저 하고 싶은 일은?</p></div>
+    <div class="choices">
+      <button onclick="showResult('A')">A. 친구들과 만나서 털어놓기</button>
+      <button onclick="showResult('B')">B. 혼자만의 시간 갖기</button>
+      <button onclick="showResult('C')">C. 새로운 취미나 활동 시작하기</button>
+      <button onclick="showResult('D')">D. 일이나 공부에 집중하기</button>
+    </div>
+    <div id="result" class="result" style="display:none; margin-top: 20px;"></div>
+    <div class="share-box">
+      <p>📢 이 테스트를 공유해보세요!</p>
+      <a id="share-line" target="_blank">LINE</a>
+      <a id="share-x" target="_blank">X</a>
+      <a id="share-fb" target="_blank">Facebook</a>
+      <button onclick="copyLink()">URL 복사</button>
+    </div>
+    <div class="nav-buttons">
+      <a href="test21.html">← 이전</a>
+      <a href="index.html">📚 목차로</a>
+      <a href="test23.html">다음 →</a>
+    </div>
+    <footer>© 당신의 연애 심리 테스트 | tests.mahalohana-bruce.com</footer>
+  </div>
+  <script>
+    const resultTexts = {
+      A: "💬 소통형 극복법! 주변 사람들과의 대화로 감정을 정리하고 위로받으며 빠르게 회복하는 타입이에요.",
+      B: "🤍 성찰형 극복법! 혼자서 충분히 아파하고 생각한 후 스스로 일어서는 내적 치유력이 강한 타입입니다.",
+      C: "🌟 도전형 극복법! 새로운 경험과 변화를 통해 과거를 떨쳐내고 새로운 자신을 찾아가는 적극적 타입이에요.",
+      D: "🎯 집중형 극복법! 목표에 몰입하며 성취감으로 상처를 치유하고 더 발전된 모습으로 성장하는 타입입니다."
+    };
+    function showResult(choice) {
+      const resultBox = document.getElementById("result");
+      resultBox.innerHTML = resultTexts[choice];
+      resultBox.style.display = "block";
+    }
+    function copyLink() {
+      const dummy = document.createElement("input");
+      const text = window.location.href;
+      document.body.appendChild(dummy);
+      dummy.value = text;
+      dummy.select();
+      document.execCommand("copy");
+      document.body.removeChild(dummy);
+      alert("URL이 복사되었습니다!");
+    }
+    const url = encodeURIComponent(window.location.href);
+    const text = encodeURIComponent("연애 심리 테스트 22: 당신의 이별 극복 방법");
+    document.getElementById("share-line").href = `https://social-plugins.line.me/lineit/share?url=${url}`;
+    document.getElementById("share-x").href = `https://twitter.com/intent/tweet?text=${text}&url=${url}`;
+    document.getElementById("share-fb").href = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+  </script>
+</body>
+</html>

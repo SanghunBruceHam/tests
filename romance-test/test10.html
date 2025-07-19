@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>연애 심리 테스트 10: 당신의 연인의 연애 경향은?</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>연애 심리 테스트 10: 당신의 연인의 연애 경향은?</h1>
+    <div class="question"><p>Q. 연인이 가장 좋아할 만한 데이트 장소는?</p></div>
+    <div class="choices">
+      <button onclick="showResult('A')">A. 조용한 카페</button>
+      <button onclick="showResult('B')">B. 놀이공원</button>
+      <button onclick="showResult('C')">C. 미술관이나 박물관</button>
+      <button onclick="showResult('D')">D. 맛집 투어</button>
+    </div>
+    <div id="result" class="result" style="display:none; margin-top: 20px;"></div>
+    <div class="share-box">
+      <p>📢 이 테스트를 공유해보세요!</p>
+      <a id="share-line" target="_blank">LINE</a>
+      <a id="share-x" target="_blank">X</a>
+      <a id="share-fb" target="_blank">Facebook</a>
+      <button onclick="copyLink()">URL 복사</button>
+    </div>
+    <div class="nav-buttons">
+      <a href="test9.html">← 이전</a>
+      <a href="index.html">📚 목차로</a>
+      <a href="test11.html">다음 →</a>
+    </div>
+    <footer>© 당신의 연애 심리 테스트 | tests.mahalohana-bruce.com</footer>
+  </div>
+  <script>
+    const resultTexts = {
+      A: "☕ 내향적이고 깊이 있는 대화를 좋아하는 타입. 진중하고 사려깊은 연애관을 가지고 있어요.",
+      B: "🎢 외향적이고 활동적인 타입. 함께 즐거운 추억을 만들어가는 것을 중요하게 생각해요.",
+      C: "🎨 지적이고 문화적인 것을 추구하는 타입. 감성적이면서도 교양있는 연애를 선호해요.",
+      D: "🍽️ 현실적이면서도 감각적인 타입. 일상 속 소소한 즐거움을 함께 나누는 것을 좋아해요."
+    };
+    function showResult(choice) {
+      const resultBox = document.getElementById("result");
+      resultBox.innerHTML = resultTexts[choice];
+      resultBox.style.display = "block";
+    }
+    function copyLink() {
+      const dummy = document.createElement("input");
+      const text = window.location.href;
+      document.body.appendChild(dummy);
+      dummy.value = text;
+      dummy.select();
+      document.execCommand("copy");
+      document.body.removeChild(dummy);
+      alert("URL이 복사되었습니다!");
+    }
+    const url = encodeURIComponent(window.location.href);
+    const text = encodeURIComponent("연애 심리 테스트 10: 당신의 연인의 연애 경향은?");
+    document.getElementById("share-line").href = `https://social-plugins.line.me/lineit/share?url=${url}`;
+    document.getElementById("share-x").href = `https://twitter.com/intent/tweet?text=${text}&url=${url}`;
+    document.getElementById("share-fb").href = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+  </script>
+</body>
+</html>

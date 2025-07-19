@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>연애 심리 테스트 26: 당신의 고백 스타일</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>연애 심리 테스트 26: 당신의 고백 스타일</h1>
+    <div class="question"><p>Q. 좋아하는 사람에게 고백할 때 선택할 방법은?</p></div>
+    <div class="choices">
+      <button onclick="showResult('A')">A. 편지나 메시지로 진심을 전달</button>
+      <button onclick="showResult('B')">B. 직접 만나서 솔직하게 고백</button>
+      <button onclick="showResult('C')">C. 로맨틱한 이벤트와 함께 고백</button>
+      <button onclick="showResult('D')">D. 자연스러운 대화 중에 슬쩍 고백</button>
+    </div>
+    <div id="result" class="result" style="display:none; margin-top: 20px;"></div>
+    <div class="share-box">
+      <p>📢 이 테스트를 공유해보세요!</p>
+      <a id="share-line" target="_blank">LINE</a>
+      <a id="share-x" target="_blank">X</a>
+      <a id="share-fb" target="_blank">Facebook</a>
+      <button onclick="copyLink()">URL 복사</button>
+    </div>
+    <div class="nav-buttons">
+      <a href="test25.html">← 이전</a>
+      <a href="index.html">📚 목차로</a>
+      <a href="test27.html">다음 →</a>
+    </div>
+    <footer>© 당신의 연애 심리 테스트 | tests.mahalohana-bruce.com</footer>
+  </div>
+  <script>
+    const resultTexts = {
+      A: "✍️ 감성 편지형 고백! 깊은 감정을 차분하게 정리해서 전달하는 진중하고 로맨틱한 고백 스타일이에요.",
+      B: "💪 직진형 고백! 용감하고 솔직하게 마음을 표현하는 당당한 스타일. 상대에게 진정성이 전해져요.",
+      C: "🎁 이벤트형 고백! 특별한 순간을 연출해서 잊을 수 없는 추억으로 만드는 로맨틱한 고백 스타일이에요.",
+      D: "😊 자연스러운 고백! 부담 주지 않으면서도 마음을 전하는 센스있는 스타일. 상대가 편안함을 느껴요."
+    };
+    function showResult(choice) {
+      const resultBox = document.getElementById("result");
+      resultBox.innerHTML = resultTexts[choice];
+      resultBox.style.display = "block";
+    }
+    function copyLink() {
+      const dummy = document.createElement("input");
+      const text = window.location.href;
+      document.body.appendChild(dummy);
+      dummy.value = text;
+      dummy.select();
+      document.execCommand("copy");
+      document.body.removeChild(dummy);
+      alert("URL이 복사되었습니다!");
+    }
+    const url = encodeURIComponent(window.location.href);
+    const text = encodeURIComponent("연애 심리 테스트 26: 당신의 고백 스타일");
+    document.getElementById("share-line").href = `https://social-plugins.line.me/lineit/share?url=${url}`;
+    document.getElementById("share-x").href = `https://twitter.com/intent/tweet?text=${text}&url=${url}`;
+    document.getElementById("share-fb").href = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+  </script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>연애 심리 테스트 23: 당신의 첫사랑 타입</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>연애 심리 테스트 23: 당신의 첫사랑 타입</h1>
+    <div class="question"><p>Q. 학창시절 어떤 친구에게 끌렸나요?</p></div>
+    <div class="choices">
+      <button onclick="showResult('A')">A. 반에서 가장 인기 많은 친구</button>
+      <button onclick="showResult('B')">B. 조용하지만 신비로운 친구</button>
+      <button onclick="showResult('C')">C. 공부 잘하는 모범생 친구</button>
+      <button onclick="showResult('D')">D. 운동 잘하는 활발한 친구</button>
+    </div>
+    <div id="result" class="result" style="display:none; margin-top: 20px;"></div>
+    <div class="share-box">
+      <p>📢 이 테스트를 공유해보세요!</p>
+      <a id="share-line" target="_blank">LINE</a>
+      <a id="share-x" target="_blank">X</a>
+      <a id="share-fb" target="_blank">Facebook</a>
+      <button onclick="copyLink()">URL 복사</button>
+    </div>
+    <div class="nav-buttons">
+      <a href="test22.html">← 이전</a>
+      <a href="index.html">📚 목차로</a>
+      <a href="test24.html">다음 →</a>
+    </div>
+    <footer>© 당신의 연애 심리 테스트 | tests.mahalohana-bruce.com</footer>
+  </div>
+  <script>
+    const resultTexts = {
+      A: "⭐ 인기스타형 첫사랑! 밝고 사교적인 매력에 끌리는 타입. 지금도 인기 있는 상대를 좋아할 가능성이 높아요.",
+      B: "🌙 신비로움형 첫사랑! 겉으로 드러나지 않는 깊이에 끌리는 타입. 독특하고 개성있는 상대를 선호해요.",
+      C: "📚 모범생형 첫사랑! 성실하고 믿음직한 면에 끌리는 타입. 안정적이고 책임감 있는 상대를 원해요.",
+      D: "⚽ 활발함형 첫사랑! 에너지 넘치는 활동적인 면에 끌리는 타입. 건강하고 생동감 있는 상대가 이상형이에요."
+    };
+    function showResult(choice) {
+      const resultBox = document.getElementById("result");
+      resultBox.innerHTML = resultTexts[choice];
+      resultBox.style.display = "block";
+    }
+    function copyLink() {
+      const dummy = document.createElement("input");
+      const text = window.location.href;
+      document.body.appendChild(dummy);
+      dummy.value = text;
+      dummy.select();
+      document.execCommand("copy");
+      document.body.removeChild(dummy);
+      alert("URL이 복사되었습니다!");
+    }
+    const url = encodeURIComponent(window.location.href);
+    const text = encodeURIComponent("연애 심리 테스트 23: 당신의 첫사랑 타입");
+    document.getElementById("share-line").href = `https://social-plugins.line.me/lineit/share?url=${url}`;
+    document.getElementById("share-x").href = `https://twitter.com/intent/tweet?text=${text}&url=${url}`;
+    document.getElementById("share-fb").href = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+  </script>
+</body>
+</html>
