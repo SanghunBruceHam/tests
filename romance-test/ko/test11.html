@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -131,10 +130,24 @@
     };
 
     function showResult(choice) {
-      const resultElement = document.getElementById("result");
-      const resultText = document.getElementById("result-text");
-      resultText.textContent = resultTexts[choice];
-      resultElement.classList.remove("hidden");
+      const results = {
+        'A': '🌟 당신은 건강한 연애를 하는 타입입니다. 연인의 상황을 이해하고 자신만의 시간도 소중히 여기는 균형 잡힌 성격입니다.',
+        'B': '💕 당신은 적당히 연애에 빠진 타입입니다. 연인과의 시간을 소중히 여기지만 강요하지는 않는 건전한 애정을 보입니다.',
+        'C': '🔍 당신은 연애에 깊이 몰입하는 타입입니다. 연인의 모든 것이 궁금하고 관심이 많아 때로는 부담을 줄 수 있습니다.',
+        'D': '💝 당신은 연애 의존도가 높은 타입입니다. 연인 없이는 공허함을 느끼며 항상 누군가와 함께 있고 싶어합니다.'
+      };
+
+      document.getElementById('result-text').innerText = results[choice];
+      document.getElementById('result').classList.remove('hidden');
+
+      // 결과로 스크롤
+      document.getElementById('result').scrollIntoView({ behavior: 'smooth' });
+
+      // Google Analytics 이벤트 추적
+      gtag('event', 'test_completed', {
+        'test_name': 'romance_test_11',
+        'result': choice
+      });
     }
 
     function shareKakao() {
