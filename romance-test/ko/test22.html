@@ -98,7 +98,7 @@
 
     <div id="result" class="result hidden">
       <h3>🎯 당신의 이별 극복 방법</h3>
-      <p id="resultText"></p>
+      <p id="result-text"></p>
 
       <div class="share-buttons">
         <a href="#" class="share-btn" onclick="shareKakao()">카카오톡 공유</a>
@@ -130,13 +130,23 @@
     };
 
     function showResult(choice) {
+      const results = {
+        'A': '당신의 연애 스타일은 "안정 추구형"입니다. 편안하고 예측 가능한 관계를 선호하며, 서로에게 의지할 수 있는 든든한 파트너십을 중요하게 생각합니다. 갑작스러운 변화보다는 점진적인 발전을 통해 관계를 깊게 만들어갑니다.',
+        'B': '당신의 연애 스타일은 "열정 표현형"입니다. 감정을 솔직하게 드러내는 것을 좋아하며, 로맨틱하고 드라마틱한 사랑을 추구합니다. 상대방에게 자신의 마음을 적극적으로 표현하고, 특별한 순간들을 만들어가는 것을 중요하게 여깁니다.',
+        'C': '당신의 연애 스타일은 "모험 추구형"입니다. 새로운 경험과 도전을 함께 하는 관계를 선호하며, 서로에게 자극이 되는 역동적인 사랑을 원합니다. 일상에서 벗어난 특별한 데이트와 경험을 통해 관계에 활력을 불어넣습니다.',
+        'D': '당신의 연애 스타일은 "소통 중시형"입니다. 깊이 있는 대화와 정신적 교감을 가장 중요하게 생각하며, 서로의 내면을 이해하려고 노력합니다. 갈등이 생겼을 때도 대화를 통해 해결하려는 성숙한 연애관을 가지고 있습니다.'
+      };
+
+      document.getElementById('result-text').innerText = results[choice];
       document.getElementById('result').classList.remove('hidden');
-      document.getElementById('resultText').innerText = resultTexts[choice];
+
+      // 결과로 스크롤
+      document.getElementById('result').scrollIntoView({ behavior: 'smooth' });
 
       // Google Analytics 이벤트 추적
-      gtag('event', 'quiz_complete', {
-        'event_category': 'Romance Test',
-        'event_label': 'Test 22 - Choice ' + choice
+      gtag('event', 'test_completed', {
+        'test_name': 'romance_test_22',
+        'result': choice
       });
     }
 
