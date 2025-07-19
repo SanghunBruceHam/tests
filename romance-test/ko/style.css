@@ -490,7 +490,8 @@ footer a:hover {
   }
 }
 
-/* 다크모드 지원 */
+/* 다크모드 지원 - 현재 비활성화됨 */
+/* 
 @media (prefers-color-scheme: dark) {
   :root {
     --primary-gradient: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
@@ -501,3 +502,4 @@ footer a:hover {
     --border-color: rgba(255, 255, 255, 0.1);
   }
 }
+*/
