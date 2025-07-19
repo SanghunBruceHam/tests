@@ -98,7 +98,7 @@
 
     <div id="result" class="result hidden">
       <h3>💖 당신의 사랑에 열중할 때</h3>
-      <p id="resultText"></p>
+      <p id="result-text"></p>
 
       <div class="share-buttons">
         <a href="#" class="share-btn" onclick="shareKakao()">카카오톡 공유</a>
@@ -131,7 +131,7 @@
 
     function showResult(choice) {
       document.getElementById('result').classList.remove('hidden');
-      document.getElementById('resultText').innerText = results[choice];
+      document.getElementById('result-text').innerText = results[choice];
 
       // Google Analytics 이벤트 추적
       gtag('event', 'quiz_complete', {
