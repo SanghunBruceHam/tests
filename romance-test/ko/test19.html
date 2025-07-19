@@ -165,8 +165,8 @@
     }
 
     function shareTwitter() {
-      const url = window.location.href;
       const text = "연애 심리 테스트 19: 당신의 질투 성향! 나의 결과를 확인해보세요!";
+      const url = window.location.href;
       window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`);
     }
 
@@ -180,6 +180,25 @@
         alert('링크가 복사되었습니다!');
       });
     }
+  function shareToThreads() {
+      const text = '연애 심리 테스트: 당신의 연애 가치관 결과를 확인해보세요!';
+      const url = window.location.href;
+      try {
+        window.open(`https://threads.net/intent/post?text=${encodeURIComponent(text + ' ' + url)}`, '_blank', 'noopener,noreferrer');
+  } catch (e) {
+        console.error("Failed to share to Threads", e);
+      }
+    }
+  function shareToTwitter() {
+      const text = '연애 심리 테스트: 당신의 연애 가치관 결과를 확인해보세요!';
+      const url = window.location.href;
+      try {
+        window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`, '_blank', 'noopener,noreferrer');
+  } catch (e) {
+        console.error("Failed to share to Twitter", e);
+      }
+    }
   </script>
 </body>
 </html>
+```This update aims to unify SNS sharing functions based on test4.html.
