@@ -155,9 +155,14 @@
     }
 
     function shareTwitter() {
+      const text = '연애 심리 테스트: 당신의 애정 표현 스타일 결과를 확인해보세요!';
       const url = window.location.href;
-      const text = "연애 심리 테스트 26: 당신의 고백 스타일! 나의 결과를 확인해보세요!";
-      window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`);
+      try {
+        window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`, '_blank', 'noopener,noreferrer');
+      } catch (error) {
+        console.error('Twitter 공유 실패:', error);
+        copyURL();
+      }
     }
 
     function shareFacebook() {
@@ -170,180 +175,16 @@
         alert('링크가 복사되었습니다!');
       });
     }
-  </script>
-</body>
-</html>
-```<!DOCTYPE html>
-<html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>연애 심리 테스트 26: 당신의 고백 스타일 | 무료 심리 테스트</title>
-  <meta name="description" content="사랑 표현 방식과 타이밍으로 알아보는 당신의 고백 스타일은? 재미있는 연애 심리 테스트로 나의 연애 성향을 분석해보세요!">
-  <meta name="keywords" content="연애 심리 테스트, 고백 스타일, 심리 테스트, 연애 성향, 무료 테스트">
 
-  <!-- Open Graph Meta Tags -->
-  <meta property="og:type" content="article" />
-  <meta property="og:title" content="연애 심리 테스트 26: 당신의 고백 스타일" />
-  <meta property="og:description" content="사랑 표현 방식과 타이밍으로 알아보는 당신의 고백 스타일은?" />
-  <meta property="og:image" content="https://tests.mahalohana-bruce.com/romance-test/ko/thumbnail.png" />
-  <meta property="og:url" content="https://tests.mahalohana-bruce.com/romance-test/ko/test26.html" />
-
-  <!-- Twitter Card Meta Tags -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="연애 심리 테스트: 고백 스타일" />
-  <meta name="twitter:description" content="사랑 표현 방식으로 알아보는 나의 고백 스타일!" />
-  <meta name="twitter:image" content="https://tests.mahalohana-bruce.com/romance-test/ko/thumbnail.png" />
-
-  <link rel="canonical" href="https://tests.mahalohana-bruce.com/romance-test/ko/test26.html">
-  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-
-  <!-- hreflang for multilingual SEO -->
-  <link rel="alternate" hreflang="ko" href="https://tests.mahalohana-bruce.com/romance-test/ko/test26.html" />
-  <link rel="alternate" hreflang="ja" href="https://tests.mahalohana-bruce.com/romance-test/ja/test26.html" />
-  <link rel="alternate" hreflang="en" href="https://tests.mahalohana-bruce.com/romance-test/en/test26.html" />
-  <link rel="alternate" hreflang="x-default" href="https://tests.mahalohana-bruce.com/romance-test/ko/test26.html" />
-
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-45VSGEM7EZ"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-45VSGEM7EZ');
-  </script>
-
-  <!-- Google AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5508768187151867" crossorigin="anonymous"></script>
-
-  <!-- JSON-LD Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    "headline": "연애 심리 테스트 26: 당신의 고백 스타일",
-    "description": "사랑 표현 방식과 타이밍으로 알아보는 당신의 고백 스타일은?",
-    "image": "https://tests.mahalohana-bruce.com/romance-test/ko/thumbnail.png",
-    "author": {
-      "@type": "Organization",
-      "name": "Psychological Tests"
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": "Psychological Tests",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://tests.mahalohana-bruce.com/favicon.png"
+    function shareToThreads() {
+      const text = '연애 심리 테스트: 당신의 애정 표현 스타일 결과를 확인해보세요!';
+      const url = window.location.href;
+      try {
+        window.open(`https://threads.net/intent/post?text=${encodeURIComponent(text + ' ' + url)}`, '_blank', 'noopener,noreferrer');
+      } catch (error) {
+        console.error('Threads 공유 실패:', error);
+        copyURL();
       }
-    },
-    "datePublished": "2024-01-01",
-    "dateModified": "2024-01-01",
-    "mainEntityOfPage": {
-      "@type": "WebPage",
-      "@id": "https://tests.mahalohana-bruce.com/romance-test/ko/test26.html"
-    }
-  }
-  </script>
-
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <!-- Google AdSense Ad -->
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-5508768187151867"
-       data-ad-slot="7298546648"
-       data-ad-format="auto"
-       data-full-width-responsive="true"></ins>
-  <script>
-       (adsbygoogle = window.adsbygoogle || []).push({});
-  </script>
-
-  <div class="container">
-    <div class="question">
-      <h1>💖 연애 심리 테스트 26</h1>
-      <h2>좋아하는 사람에게 마음을 전할 때 당신의 방식은?</h2>
-      <div class="choices">
-        <div class="choice" onclick="showResult('A')">A. "좋아해"라고 직접 말하기</div>
-        <div class="choice" onclick="showResult('B')">B. 편지나 메시지로 마음 전하기</div>
-        <div class="choice" onclick="showResult('C')">C. 행동으로 먼저 보여주기</div>
-        <div class="choice" onclick="showResult('D')">D. 분위기를 만들어가며 자연스럽게</div>
-      </div>
-    </div>
-
-    <div id="result" class="result hidden">
-      <h3>🎯 당신의 고백 스타일</h3>
-      <p id="result-text"></p>
-
-      <div class="share-buttons">
-        <a href="#" class="share-btn" onclick="shareKakao()">카카오톡 공유</a>
-        <a href="#" class="share-btn" onclick="shareTwitter()">X 공유</a>
-        <a href="#" class="share-btn" onclick="shareFacebook()">페이스북 공유</a>
-        <a href="#" class="share-btn" onclick="copyUrl()">링크 복사</a>
-      </div>
-    </div>
-
-    <div class="navigation">
-      <a href="test25.html" class="nav-btn">← 이전</a>
-      <a href="index.html" class="nav-btn">📚 목차로</a>
-      <a href="test27.html" class="nav-btn">다음 →</a>
-    </div>
-
-    <div class="additional-nav">
-      <a href="https://tests.mahalohana-bruce.com/ko/" class="other-tests-btn">🧠 다른 심리테스트 해보기</a>
-    </div>
-  </div>
-
-  <footer>© 연애 심리 테스트 | <a href="https://tests.mahalohana-bruce.com" target="_blank" rel="noopener noreferrer">tests.mahalohana-bruce.com</a></footer>
-
-  <script>
-    const resultTexts = {
-      A: "🔥 직진형 고백 스타일! 솔직하고 당당하게 마음을 전하는 당신. 망설이지 않고 직접적으로 표현하는 용기 있는 스타일로, 상대방에게 진심이 잘 전달돼요.",
-      B: "💌 편지형 고백 스타일! 깊이 있는 감정을 차근차근 표현하는 섬세한 당신. 시간을 들여 신중하게 마음을 정리해서 전하는 로맨틱한 스타일입니다.",
-      C: "💝 행동형 고백 스타일! 말보다는 행동으로 마음을 보여주는 당신. 꾸준한 관심과 배려를 통해 자연스럽게 사랑을 표현하는 따뜻한 스타일이에요.",
-      D: "🌙 분위기형 고백 스타일! 로맨틱한 상황을 연출하며 자연스럽게 마음을 전하는 당신. 상대방이 부담스럽지 않도록 배려하는 센스 있는 스타일입니다."
-    };
-
-    function showResult(choice) {
-      document.getElementById('result').classList.remove('hidden');
-      document.getElementById('result-text').innerText = resultTexts[choice];
-
-      // Google Analytics 이벤트 추적
-      gtag('event', 'quiz_complete', {
-        'event_category': 'Romance Test',
-        'event_label': 'Test 26 - Choice ' + choice
-      });
-    }
-
-    function shareKakao() {
-      const url = window.location.href;
-      const text = "연애 심리 테스트 26: 당신의 고백 스타일! 나의 결과를 확인해보세요!";
-
-      if (navigator.share) {
-        navigator.share({
-          title: text,
-          url: url
-        });
-      } else {
-        window.open(`https://story.kakao.com/share?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`);
-      }
-    }
-
-    function shareTwitter() {
-      const url = window.location.href;
-      const text = "연애 심리 테스트 26: 당신의 고백 스타일! 나의 결과를 확인해보세요!";
-      window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`);
-    }
-
-    function shareFacebook() {
-      const url = window.location.href;
-      window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`);
-    }
-
-    function copyUrl() {
-      navigator.clipboard.writeText(window.location.href).then(() => {
-        alert('링크가 복사되었습니다!');
-      });
     }
   </script>
 </body>

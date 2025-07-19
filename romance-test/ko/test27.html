@@ -155,9 +155,14 @@
     }
 
     function shareTwitter() {
+      const text = '연애 심리 테스트: 당신의 연애 우선순위 결과를 확인해보세요!';
       const url = window.location.href;
-      const text = "연애 심리 테스트 27: 당신의 연애 우선순위! 나의 결과를 확인해보세요!";
-      window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`);
+      try {
+        window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`, '_blank', 'noopener,noreferrer');
+      } catch (error) {
+        console.error('Twitter 공유 실패:', error);
+        copyUrl();
+      }
     }
 
     function shareFacebook() {
