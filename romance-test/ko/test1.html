@@ -41,6 +41,35 @@
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5508768187151867" crossorigin="anonymous"></script>
 
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "연애 심리 테스트 1: 당신이 연인에게 요구하는 것",
+    "description": "바닐라 아이스크림 토핑 선택으로 알아보는 당신이 연인에게 요구하는 것은?",
+    "image": "https://tests.mahalohana-bruce.com/romance-test/ko/thumbnail.png",
+    "author": {
+      "@type": "Organization",
+      "name": "Mahalohana Bruce Tests"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Mahalohana Bruce Tests",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://tests.mahalohana-bruce.com/favicon.png"
+      }
+    },
+    "datePublished": "2024-01-01",
+    "dateModified": "2024-01-01",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://tests.mahalohana-bruce.com/romance-test/ko/test1.html"
+    }
+  }
+  </script>
+
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -62,116 +91,84 @@
     </div>
 
     <div class="choices">
-        <div class="choice" onclick="showResult('A')">A. 딸기 잼</div>
-        <div class="choice" onclick="showResult('B')">B. 말차 시럽</div>
-        <div class="choice" onclick="showResult('C')">C. 견과류 & 말린 과일</div>
-        <div class="choice" onclick="showResult('D')">D. 초콜릿 시럽</div>
-      </div>
+      <div class="choice" onclick="showResult('A')">A. 딸기 잼</div>
+      <div class="choice" onclick="showResult('B')">B. 말차 시럽</div>
+      <div class="choice" onclick="showResult('C')">C. 견과류 & 말린 과일</div>
+      <div class="choice" onclick="showResult('D')">D. 초콜릿 시럽</div>
     </div>
 
     <div id="result" class="result hidden">
-      <h3>🎯 당신이 연인에게 요구하는 것</h3>
-      <p id="result-text"></p>
+      <h3>💖 당신이 연인에게 요구하는 것</h3>
+      <p id="resultText"></p>
 
       <div class="share-buttons">
-        <a href="#" onclick="shareToThreads()" class="share-btn">🧵 Threads 공유</a>
-        <a href="#" onclick="shareToTwitter()" class="share-btn">𝕏 X 공유</a>
-        <a href="#" onclick="shareToFacebook()" class="share-btn">📘 Facebook 공유</a>
-        <a href="#" onclick="copyURL()" class="share-btn">🔗 URL 복사</a>
+        <a href="#" class="share-btn" onclick="shareKakao()">카카오톡 공유</a>
+        <a href="#" class="share-btn" onclick="shareTwitter()">X 공유</a>
+        <a href="#" class="share-btn" onclick="shareFacebook()">페이스북 공유</a>
+        <a href="#" class="share-btn" onclick="copyUrl()">링크 복사</a>
       </div>
     </div>
 
     <div class="navigation">
-      <a href="index.html" class="nav-btn">목차로</a>
-      <a href="test2.html" class="nav-btn">다음 테스트 →</a>
+      <a href="index.html" class="nav-btn">📚 목차로</a>
+      <a href="test2.html" class="nav-btn">다음 →</a>
     </div>
-    
+
     <div class="additional-nav">
       <a href="https://tests.mahalohana-bruce.com/ko/" class="other-tests-btn">🧠 다른 심리테스트 해보기</a>
     </div>
   </div>
 
-  <footer>© 연애 심리 테스트 | tests.mahalohana-bruce.com</footer>
+  <footer>© 연애 심리 테스트 | <a href="https://tests.mahalohana-bruce.com" target="_blank" rel="noopener noreferrer">tests.mahalohana-bruce.com</a></footer>
 
   <script>
+    const results = {
+      'A': '당신은 불타는 패션의 소유자입니다. 연인에게도 "열정"을 요구할 것입니다. 함께 있을 때 뜨거운 사랑을 나누고 싶어하며, 평범한 연애보다는 드라마틱한 로맨스를 꿈꿉니다.',
+      'B': '당신은 연인에게 "안정"을 요구할 것입니다. 변화보다는 평온함을 선호하며, 신뢰할 수 있고 의지할 수 있는 든든한 파트너를 원합니다. 꾸준하고 지속적인 사랑을 중시합니다.',
+      'C': '당신은 연인에게 "지성"을 요구할 것입니다. 함께 있어 지루한 사람에게는 흥미를 잃기 쉽습니다. 깊이 있는 대화를 나눌 수 있고, 지적 호기심을 자극하는 파트너를 선호합니다.',
+      'D': '당신은 연인에게 "상냥함"을 요구할 것입니다. 당신이 힘들 때는 격려해주는 연인이 이상적입니다. 게다가 기념일에 꽃다발을 선물해주는 로맨틱한 상대라면 최고입니다.'
+    };
+
     function showResult(choice) {
-      const results = {
-        'A': '당신은 불타는 패션의 소유자입니다. 연인에게도 "열정"을 요구할 것입니다. 함께 있을 때 뜨거운 사랑을 나누고 싶어하며, 평범한 연애보다는 드라마틱한 로맨스를 꿈꿉니다.',
-        'B': '당신은 연인에게 "안정"을 요구할 것입니다. 변화보다는 평온함을 선호하며, 신뢰할 수 있고 의지할 수 있는 든든한 파트너를 원합니다. 꾸준하고 지속적인 사랑을 중시합니다.',
-        'C': '당신은 연인에게 "지성"을 요구할 것입니다. 함께 있어 지루한 사람에게는 흥미를 잃기 쉽습니다. 깊이 있는 대화를 나눌 수 있고, 지적 호기심을 자극하는 파트너를 선호합니다.',
-        'D': '당신은 연인에게 "상냥함"을 요구할 것입니다. 당신이 힘들 때는 격려해주는 연인이 이상적입니다. 게다가 기념일에 꽃다발을 선물해주는 로맨틱한 상대라면 최고입니다.'
-      };
-
-      document.getElementById('result-text').innerText = results[choice];
       document.getElementById('result').classList.remove('hidden');
-
-      // 결과로 스크롤
-      document.getElementById('result').scrollIntoView({ behavior: 'smooth' });
+      document.getElementById('resultText').innerText = results[choice];
 
       // Google Analytics 이벤트 추적
-      gtag('event', 'test_completed', {
-        'test_name': 'romance_test_1',
-        'result': choice
+      gtag('event', 'quiz_complete', {
+        'event_category': 'Romance Test',
+        'event_label': 'Test 1 - Choice ' + choice
       });
     }
 
-    function shareToThreads() {
-      const text = '연애 심리 테스트: 당신이 연인에게 요구하는 것 결과를 확인해보세요!';
+    function shareKakao() {
       const url = window.location.href;
-      try {
-        window.open(`https://threads.net/intent/post?text=${encodeURIComponent(text + ' ' + url)}`, '_blank', 'noopener,noreferrer');
-      } catch (error) {
-        console.error('Threads 공유 실패:', error);
-        copyURL();
-      }
-    }
+      const text = "연애 심리 테스트 1: 당신이 연인에게 요구하는 것! 나의 결과를 확인해보세요!";
 
-    function shareToTwitter() {
-      const text = '연애 심리 테스트: 당신이 연인에게 요구하는 것 결과를 확인해보세요!';
-      const url = window.location.href;
-      try {
-        window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`, '_blank', 'noopener,noreferrer');
-      } catch (error) {
-        console.error('Twitter 공유 실패:', error);
-        copyURL();
-      }
-    }
-
-    function shareToFacebook() {
-      const url = window.location.href;
-      try {
-        window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank', 'noopener,noreferrer');
-      } catch (error) {
-        console.error('Facebook 공유 실패:', error);
-        copyURL();
-      }
-    }
-
-    function copyURL() {
-      if (navigator.clipboard && window.isSecureContext) {
-        navigator.clipboard.writeText(window.location.href).then(() => {
-          alert('URL이 복사되었습니다!');
-        }).catch(() => {
-          fallbackCopyURL();
+      if (navigator.share) {
+        navigator.share({
+          title: text,
+          url: url
         });
       } else {
-        fallbackCopyURL();
+        window.open(`https://story.kakao.com/share?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`);
       }
     }
 
-    function fallbackCopyURL() {
-      const textArea = document.createElement('textarea');
-      textArea.value = window.location.href;
-      document.body.appendChild(textArea);
-      textArea.select();
-      try {
-        document.execCommand('copy');
-        alert('URL이 복사되었습니다!');
-      } catch (error) {
-        console.error('URL 복사 실패:', error);
-        prompt('수동으로 복사해주세요:', window.location.href);
-      }
-      document.body.removeChild(textArea);
+    function shareTwitter() {
+      const url = window.location.href;
+      const text = "연애 심리 테스트 1: 당신이 연인에게 요구하는 것! 나의 결과를 확인해보세요!";
+      window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`);
+    }
+
+    function shareFacebook() {
+      const url = window.location.href;
+      window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`);
+    }
+
+    function copyUrl() {
+      navigator.clipboard.writeText(window.location.href).then(() => {
+        alert('링크가 복사되었습니다!');
+      });
     }
   </script>
 </body>
