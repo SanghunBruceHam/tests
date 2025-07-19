@@ -113,7 +113,6 @@
       <a href="test2.html" class="nav-btn">← 이전</a>
       <a href="index.html" class="nav-btn">📚 목차로</a>
       <a href="test4.html" class="nav-btn">다음 →</a>
-      <a href="test1.html" class="nav-btn">다시 처음부터</a>
     </div>
 
     <div class="additional-nav">
@@ -124,7 +123,7 @@
   <footer>© 연애 심리 테스트 | <a href="https://tests.mahalohana-bruce.com" target="_blank" rel="noopener noreferrer">tests.mahalohana-bruce.com</a></footer>
 
   <script>
-    const resultTexts = {
+    const results = {
       A: "🙈 당신이 감추고 싶은 모습은 '게으른 모습'! 평소에는 활발하고 부지런해 보이려고 하지만, 사실은 집에서 편하게 쉬는 것을 좋아해요. 좋아하는 사람 앞에서는 항상 에너지 넘치는 모습을 보이려 노력하는 타입이에요.",
       B: "🧹 당신이 감추고 싶은 모습은 '완벽주의적인 모습'! 모든 것을 완벽하게 정리하고 통제하려는 성향이 있지만, 이런 모습이 상대방에게 부담을 줄까 봐 걱정해요. 자연스럽고 편안한 모습을 보이려고 하는 스타일이에요.",
       C: "🎨 당신이 감추고 싶은 모습은 '혼자만의 시간을 즐기는 모습'! 자신만의 취미나 관심사에 빠져있는 시간을 소중히 여기지만, 이것이 이기적으로 보일까 봐 걱정해요. 상대방과 함께하는 시간을 더 우선시하려고 하는 배려형이에요.",
@@ -133,7 +132,7 @@
 
     function showResult(choice) {
       document.getElementById('result').classList.remove('hidden');
-      document.getElementById('resultText').innerText = resultTexts[choice];
+      document.getElementById('resultText').innerText = results[choice];
 
       // Google Analytics 이벤트 추적
       gtag('event', 'quiz_complete', {
