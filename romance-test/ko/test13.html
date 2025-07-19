@@ -51,11 +51,11 @@
     "image": "https://tests.mahalohana-bruce.com/romance-test/ko/thumbnail.png",
     "author": {
       "@type": "Organization",
-      "name": "Mahalohana Bruce Tests"
+      "name": "Psychological Tests"
     },
     "publisher": {
       "@type": "Organization",
-      "name": "Mahalohana Bruce Tests",
+      "name": "Psychological Tests",
       "logo": {
         "@type": "ImageObject",
         "url": "https://tests.mahalohana-bruce.com/favicon.png"
@@ -94,7 +94,7 @@
 
     <div id="result" class="result hidden">
       <h3>💖 당신의 엄마 같은 유형</h3>
-      <p id="resultText"></p>
+      <p id="result-text"></p>
 
       <div class="share-buttons">
         <a href="#" class="share-btn" onclick="shareKakao()">카카오톡 공유</a>
@@ -127,13 +127,23 @@
     };
 
     function showResult(choice) {
+      const results = {
+        'A': '실용적 엄마 타입! 연인이 아플 때 즉시 실질적인 도움을 주는 당신. 말보다는 행동으로 사랑을 표현하며, 상대방이 필요한 것을 정확히 파악해서 챙겨주는 든든한 파트너입니다.',
+        'B': '따뜻한 엄마 타입! 연인을 걱정하면서도 적절한 거리를 유지하는 성숙한 당신. 상대방의 회복을 위해 따뜻한 말과 관심으로 힘이 되어주는 배려 깊은 연인입니다.',
+        'C': '헌신적 엄마 타입! 연인이 아플 때 모든 것을 내려놓고 돌봐주려는 당신. 사랑하는 사람을 위해서라면 자신의 시간도 기꺼이 투자하는 깊은 애정을 가진 사람입니다.',
+        'D': '응원하는 엄마 타입! 연인에게 정신적인 힘을 주는 것을 중요시하는 당신. 직접적인 간병보다는 마음의 지지와 격려로 상대방이 빨리 회복할 수 있도록 돕는 따뜻한 사람입니다.'
+      };
+
+      document.getElementById('result-text').innerText = results[choice];
       document.getElementById('result').classList.remove('hidden');
-      document.getElementById('resultText').innerText = results[choice];
+
+      // 결과로 스크롤
+      document.getElementById('result').scrollIntoView({ behavior: 'smooth' });
 
       // Google Analytics 이벤트 추적
-      gtag('event', 'quiz_complete', {
-        'event_category': 'Romance Test',
-        'event_label': 'Test 13 - Choice ' + choice
+      gtag('event', 'test_completed', {
+        'test_name': 'romance_test_13',
+        'result': choice
       });
     }
 
@@ -165,6 +175,13 @@
     function copyUrl() {
       navigator.clipboard.writeText(window.location.href).then(() => {
         alert('링크가 복사되었습니다!');
+      });
+
+      // Google Analytics 이벤트 추적
+      gtag('event', 'share', {
+        'method': 'copy_link',
+        'content_type': 'romance_test',
+        'item_id': 'test_13'
       });
     }
   </script>
