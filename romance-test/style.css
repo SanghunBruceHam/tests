@@ -1,73 +1,275 @@
-.share-buttons {
-  display: flex;
-  gap: 8px;
-  justify-content: center;
-  flex-wrap: nowrap;
-  margin-top: 20px;
-  overflow-x: auto;
-  padding: 0 10px;
+
+/* 연애 심리 테스트 공통 스타일 */
+:root {
+  --primary-gradient: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+  --card-bg: rgba(255, 255, 255, 0.95);
+  --text-primary: #333;
+  --text-secondary: #666;
+  --accent-color: #ff6b9d;
+  --accent-hover: #e55a87;
+  --border-color: rgba(255, 255, 255, 0.3);
+  --shadow: 0 10px 30px rgba(0,0,0,0.1);
+  --border-radius: 20px;
 }
 
-.share-btn {
-  padding: 8px 12px;
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  color: white;
-  text-decoration: none;
-  border-radius: 20px;
-  font-size: 12px;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  white-space: nowrap;
-  flex-shrink: 0;
-  border: none;
-  cursor: pointer;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.share-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+body {
+  font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+  background: var(--primary-gradient);
+  min-height: 100vh;
+  color: var(--text-primary);
+  line-height: 1.6;
 }
 
-.choice {
-  background: linear-gradient(135deg, #4c51bf 0%, #553c9a 100%);
-  color: white;
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  border-radius: 12px;
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 15px;
+  min-height: 100vh;
+}
+
+h1 {
+  text-align: center;
+  color: #2d3748;
+  font-size: 2.2rem;
+  margin-bottom: 8px;
+  font-weight: 800;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #4a5568;
+  margin-bottom: 25px;
+  line-height: 1.4;
+}
+
+.test-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.test-card {
+  background: var(--card-bg);
+  border-radius: var(--border-radius);
   padding: 18px;
-  margin: 12px 0;
-  cursor: pointer;
+  text-decoration: none;
+  color: var(--text-primary);
+  box-shadow: var(--shadow);
   transition: all 0.3s ease;
-  font-weight: 600;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2), 0 2px 6px rgba(0, 0, 0, 0.15);
+  border: 2px solid transparent;
   position: relative;
-  backdrop-filter: blur(5px);
+  overflow: hidden;
 }
 
-.choice:hover {
-  background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
-  transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3), 0 4px 10px rgba(76, 81, 191, 0.4);
-  border-color: rgba(255, 255, 255, 0.5);
-}
-
-.choice::before {
+.test-card::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
-  bottom: 0;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
-  border-radius: 10px;
-  pointer-events: none;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent-color), #ffd700);
+}
+
+.test-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+  border-color: var(--accent-color);
+}
+
+.test-number {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--accent-color);
+  margin-bottom: 8px;
+}
+
+.test-card h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #2d3748;
+}
+
+.test-card p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.question {
+  background: var(--card-bg);
+  border-radius: var(--border-radius);
+  padding: 30px;
+  margin-bottom: 30px;
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+
+.question h2 {
+  color: #2d3748;
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  line-height: 1.4;
+}
+
+.choices {
+  display: grid;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.choice {
+  background: var(--card-bg);
+  border: 2px solid var(--border-color);
+  border-radius: 15px;
+  padding: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.choice:hover {
+  border-color: var(--accent-color);
+  background: linear-gradient(135deg, #fff 0%, #ffeef2 100%);
+  transform: translateX(5px);
+}
+
+.result {
+  background: linear-gradient(135deg, #fff 0%, #f8f9ff 100%);
+  border-radius: var(--border-radius);
+  padding: 30px;
+  margin-top: 30px;
+  box-shadow: var(--shadow);
+  border-left: 5px solid var(--accent-color);
+}
+
+.result h3 {
+  color: var(--accent-color);
+  font-size: 1.4rem;
+  margin-bottom: 15px;
+}
+
+.result p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--text-primary);
+}
+
+.share-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 25px;
+  flex-wrap: wrap;
+}
+
+.share-btn {
+  background: var(--accent-color);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.share-btn:hover {
+  background: var(--accent-hover);
+  transform: translateY(-2px);
+}
+
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 40px;
+  gap: 20px;
+}
+
+.nav-btn {
+  background: var(--accent-color);
+  color: white;
+  padding: 15px 25px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  min-width: 120px;
+  text-align: center;
+}
+
+.nav-btn:hover {
+  background: var(--accent-hover);
+  transform: translateY(-2px);
+}
+
+.language-selector {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.lang-btn {
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--text-primary);
+  padding: 8px 16px;
+  border-radius: 18px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: 2px solid var(--border-color);
+  font-size: 0.9rem;
+}
+
+.lang-btn:hover {
+  background: var(--accent-color);
+  color: white;
+  border-color: var(--accent-color);
+}
+
+.additional-nav {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.other-tests-btn {
+  background: var(--accent-color);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 107, 157, 0.3);
+  font-size: 0.95rem;
+}
+
+.other-tests-btn:hover {
+  background: var(--accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 107, 157, 0.4);
 }
 
 footer {
   text-align: center;
-  margin-top: 20px;
+  margin-top: 30px;
   padding: 15px;
-  color: #666;
-  font-size: 14px;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
 }
 
 footer a {
@@ -82,32 +284,93 @@ footer a:hover {
   text-decoration: underline;
 }
 
-.additional-nav {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
+.hidden {
+  display: none;
 }
 
-.other-tests-btn {
-  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-  color: white;
-  padding: 15px 30px;
-  border-radius: 25px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
-}
-
-.other-tests-btn:hover {
-  background: linear-gradient(135deg, #059669 0%, #047857 100%);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
-}
-
+/* 반응형 디자인 */
 @media (max-width: 768px) {
+  .container {
+    padding: 12px;
+  }
+  
+  h1 {
+    font-size: 1.9rem;
+  }
+  
+  .subtitle {
+    font-size: 1rem;
+    margin-bottom: 20px;
+  }
+  
+  .test-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  
+  .test-card {
+    padding: 16px;
+  }
+  
+  .question {
+    padding: 25px 20px;
+  }
+  
+  .question h2 {
+    font-size: 1.5rem;
+  }
+  
+  .choice {
+    padding: 15px;
+    font-size: 1rem;
+  }
+  
+  .share-buttons {
+    gap: 10px;
+  }
+  
+  .share-btn {
+    padding: 10px 15px;
+    font-size: 0.8rem;
+  }
+  
+  .navigation {
+    flex-direction: column;
+  }
+  
+  .nav-btn {
+    width: 100%;
+  }
+  
+  .language-selector {
+    gap: 10px;
+  }
+  
+  .lang-btn {
+    padding: 8px 15px;
+    font-size: 0.9rem;
+  }
+  
   .other-tests-btn {
     padding: 12px 24px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.8rem;
+  }
+  
+  .test-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .test-card h3 {
+    font-size: 1.1rem;
+  }
+  
+  .test-card p {
     font-size: 0.9rem;
   }
 }
