@@ -1,23 +1,24 @@
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>연애 심리 테스트 6: 당신의 로맨티스트 정도 | 무료 심리 테스트</title>
-  <meta name="description" content="크리스마스 이브 보내는 방법으로 알아보는 당신의 로맨티스트 정도는? 재미있는 연애 심리 테스트로 나의 연애 성향을 분석해보세요!">
-  <meta name="keywords" content="연애 심리 테스트, 로맨티스트 정도, 심리 테스트, 연애 성향, 무료 테스트">
+  <title>연애 심리 테스트 6: 당신의 연애 스타일 | 무료 심리 테스트</title>
+  <meta name="description" content="카페에서 주문하는 음료로 알아보는 당신의 연애 스타일은? 재미있는 연애 심리 테스트로 나의 연애 성향을 분석해보세요!">
+  <meta name="keywords" content="연애 심리 테스트, 연애 스타일, 심리 테스트, 연애 성향, 무료 테스트">
 
   <!-- Open Graph Meta Tags -->
   <meta property="og:type" content="article" />
-  <meta property="og:title" content="연애 심리 테스트 6: 당신의 로맨티스트 정도" />
-  <meta property="og:description" content="크리스마스 이브 보내는 방법으로 알아보는 당신의 로맨티스트 정도는?" />
+  <meta property="og:title" content="연애 심리 테스트 6: 당신의 연애 스타일" />
+  <meta property="og:description" content="카페에서 주문하는 음료로 알아보는 당신의 연애 스타일은?" />
   <meta property="og:image" content="https://tests.mahalohana-bruce.com/romance-test/ko/thumbnail.png" />
   <meta property="og:url" content="https://tests.mahalohana-bruce.com/romance-test/ko/test6.html" />
 
   <!-- Twitter Card Meta Tags -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="연애 심리 테스트: 로맨티스트 정도" />
-  <meta name="twitter:description" content="크리스마스 이브로 알아보는 나의 로맨틱 지수!" />
+  <meta name="twitter:title" content="연애 심리 테스트: 연애 스타일" />
+  <meta name="twitter:description" content="카페 음료로 알아보는 나의 연애 스타일!" />
   <meta name="twitter:image" content="https://tests.mahalohana-bruce.com/romance-test/ko/thumbnail.png" />
 
   <link rel="canonical" href="https://tests.mahalohana-bruce.com/romance-test/ko/test6.html">
@@ -46,16 +47,16 @@
   {
     "@context": "https://schema.org",
     "@type": "Article",
-    "headline": "연애 심리 테스트 6: 당신의 로맨티스트 정도",
-    "description": "크리스마스 이브 보내는 방법으로 알아보는 당신의 로맨티스트 정도는?",
+    "headline": "연애 심리 테스트 6: 당신의 연애 스타일",
+    "description": "카페에서 주문하는 음료로 알아보는 당신의 연애 스타일은?",
     "image": "https://tests.mahalohana-bruce.com/romance-test/ko/thumbnail.png",
     "author": {
       "@type": "Organization",
-      "name": "Mahalohana Bruce Tests"
+      "name": "Psychological Tests"
     },
     "publisher": {
       "@type": "Organization",
-      "name": "Mahalohana Bruce Tests",
+      "name": "Psychological Tests",
       "logo": {
         "@type": "ImageObject",
         "url": "https://tests.mahalohana-bruce.com/favicon.png"
@@ -87,18 +88,18 @@
   <div class="container">
     <div class="question">
       <h1>💖 연애 심리 테스트 6</h1>
-      <h2>크리스마스 이브에 연인과 함께 보낸다면?</h2>
+      <h2>카페에서 주문하는 음료는?</h2>
       <div class="choices">
-        <div class="choice" onclick="showResult('A')">A. 집에서 편안하게</div>
-        <div class="choice" onclick="showResult('B')">B. 호텔에서 특별하게</div>
-        <div class="choice" onclick="showResult('C')">C. 야경이 좋은 곳에서</div>
-        <div class="choice" onclick="showResult('D')">D. 크리스마스 마켓 구경</div>
+        <div class="choice" onclick="showResult('A')">A. 아메리카노</div>
+        <div class="choice" onclick="showResult('B')">B. 카페라테</div>
+        <div class="choice" onclick="showResult('C')">C. 프라푸치노</div>
+        <div class="choice" onclick="showResult('D')">D. 허브티</div>
       </div>
     </div>
 
     <div id="result" class="result hidden">
-      <h3>💖 당신의 로맨티스트 정도</h3>
-      <p id="resultText"></p>
+      <h3>☕ 당신의 연애 스타일</h3>
+      <p id="result-text"></p>
 
       <div class="share-buttons">
         <a href="#" class="share-btn" onclick="shareKakao()">카카오톡 공유</a>
@@ -122,16 +123,18 @@
   <footer>© 연애 심리 테스트 | <a href="https://tests.mahalohana-bruce.com" target="_blank" rel="noopener noreferrer">tests.mahalohana-bruce.com</a></footer>
 
   <script>
-    const results = {
-      'A': '당신은 "현실적인 로맨티스트"입니다. 소박하지만 진심이 담긴 로맨스를 추구합니다. 화려한 이벤트보다는 함께 있는 시간 자체를 소중히 여기며, 편안하고 자연스러운 분위기에서 사랑을 표현하는 것을 좋아합니다.',
-      'B': '당신은 "완벽한 로맨티스트"입니다. 특별한 순간을 만들기 위해 노력하는 타입입니다. 기념일이나 특별한 날에는 정말 특별한 추억을 만들고 싶어 하며, 연인을 위해 최고의 환경을 준비하려고 합니다.',
-      'C': '당신은 "감성적인 로맨티스트"입니다. 분위기와 무드를 중시하는 타입입니다. 아름다운 풍경이나 낭만적인 장소에서 연인과 함께하는 시간을 통해 감정적 교감을 나누는 것을 가장 로맨틱하다고 생각합니다.',
-      'D': '당신은 "일상적인 로맨티스트"입니다. 함께하는 시간 자체를 소중히 여깁니다. 거창한 이벤트보다는 소소하지만 따뜻한 일상 속에서 로맨스를 찾는 타입으로, 연인과의 자연스러운 데이트를 더 선호합니다.'
+    const resultTexts = {
+      A: "🖤 직설적인 연애 스타일! 솔직하고 진솔한 관계를 선호하며, 복잡한 감정 게임보다는 명확한 소통을 중시합니다. 상대방에게도 진심을 바라며, 서로에게 솔직한 관계를 만들어갑니다.",
+      B: "🤍 부드러운 연애 스타일! 상대방을 배려하고 포근한 분위기를 만드는 것을 좋아합니다. 갈등보다는 화해를 선호하며, 서로에게 편안함을 주는 따뜻한 관계를 추구합니다.",
+      C: "🌈 달콤한 연애 스타일! 로맨틱하고 특별한 순간들을 만들어가는 것을 즐깁니다. 깜짝 이벤트나 기념일을 중시하며, 마치 영화 같은 사랑을 꿈꿉니다.",
+      D: "🌿 차분한 연애 스타일! 깊이 있는 대화와 정신적 교감을 중요하게 여깁니다. 천천히 마음을 열어가며, 서로의 내면을 이해하는 성숙한 관계를 지향합니다."
     };
 
     function showResult(choice) {
-      document.getElementById('result').classList.remove('hidden');
-      document.getElementById('resultText').innerText = results[choice];
+      const resultElement = document.getElementById("result");
+      const resultText = document.getElementById("result-text");
+      resultText.textContent = resultTexts[choice];
+      resultElement.classList.remove("hidden");
 
       // Google Analytics 이벤트 추적
       gtag('event', 'quiz_complete', {
@@ -142,7 +145,7 @@
 
     function shareKakao() {
       const url = window.location.href;
-      const text = "연애 심리 테스트 6: 당신의 로맨티스트 정도! 나의 결과를 확인해보세요!";
+      const text = "연애 심리 테스트 6: 당신의 연애 스타일! 나의 결과를 확인해보세요!";
 
       if (navigator.share) {
         navigator.share({
@@ -156,7 +159,7 @@
 
     function shareTwitter() {
       const url = window.location.href;
-      const text = "연애 심리 테스트 6: 당신의 로맨티스트 정도! 나의 결과를 확인해보세요!";
+      const text = "연애 심리 테스트 6: 당신의 연애 스타일! 나의 결과를 확인해보세요!";
       window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`);
     }
 
