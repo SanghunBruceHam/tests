@@ -217,7 +217,7 @@ h1 {
   font-weight: 600;
   transition: all 0.3s ease;
   font-size: 0.9rem;
-  min-width: 120px;
+  min-width: 140px;
   text-align: center;
   display: inline-block;
 }
@@ -243,8 +243,9 @@ h1 {
   text-decoration: none;
   font-weight: 600;
   transition: all 0.3s ease;
-  min-width: 120px;
+  min-width: 180px;
   text-align: center;
+  display: inline-block;
 }
 
 .nav-btn:hover {
@@ -266,8 +267,9 @@ h1 {
   text-decoration: none;
   font-weight: 600;
   transition: all 0.3s ease;
-  min-width: 120px;
+  min-width: 180px;
   text-align: center;
+  display: inline-block;
 }
 
 .other-tests-btn:hover {
