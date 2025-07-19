@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -102,6 +101,7 @@
       <p id="result-text"></p>
 
       <div class="share-buttons">
+        <a href="#" onclick="shareToThreads()" class="share-btn">🧵 Threads共有</a>
         <a href="#" onclick="shareToLine()" class="share-btn">💬 LINE共有</a>
         <a href="#" onclick="shareToTwitter()" class="share-btn">🐦 X共有</a>
         <a href="#" onclick="shareToFacebook()" class="share-btn">📘 Facebook共有</a>
@@ -146,8 +146,19 @@
       });
     }
 
+    function shareToThreads() {
+      const text = '恋愛心理テスト：あなたの恋愛タイプ結果をチェックしてみて！';
+      const url = window.location.href;
+      try {
+        window.open(`https://threads.net/intent/post?text=${encodeURIComponent(text + ' ' + url)}`, '_blank', 'noopener,noreferrer');
+      } catch (error) {
+        console.error('Threads共有失敗:', error);
+        copyURL();
+      }
+    }
+
     function shareToLine() {
-      const text = '恋愛心理テスト：あなたの恋愛行動パターン結果をチェックしてみてください！';
+      const text = '恋愛心理テスト：あなたの恋愛タイプ結果をチェックしてみてください！';
       const url = window.location.href;
       try {
         window.open(`https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
