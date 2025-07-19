@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -62,7 +63,11 @@
       }
     },
     "datePublished": "2024-01-01",
-    "dateModified": "2024-01-01"
+    "dateModified": "2024-01-01",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://tests.mahalohana-bruce.com/romance-test/ko/test12.html"
+    }
   }
   </script>
 
@@ -83,18 +88,18 @@
   <div class="container">
     <div class="question">
       <h1>💖 연애 심리 테스트 12</h1>
-      <h2>연인과 이상적인 관계 거리는?</h2>
+      <h2>연인이 친구들과 늦게까지 놀고 온다면?</h2>
       <div class="choices">
-        <div class="choice" onclick="showResult('A')">A. 항상 함께 있고 싶다</div>
-        <div class="choice" onclick="showResult('B')">B. 자주 만나되 각자 시간도 필요</div>
-        <div class="choice" onclick="showResult('C')">C. 일주일에 1-2번 정도가 적당</div>
-        <div class="choice" onclick="showResult('D')">D. 서로 바쁠 때는 연락만으로도 충분</div>
+        <div class="choice" onclick="showResult('A')">A. 언제 들어오는지 계속 물어본다</div>
+        <div class="choice" onclick="showResult('B')">B. 안전하게 들어오라고 말한다</div>
+        <div class="choice" onclick="showResult('C')">C. 재미있게 놀고 오라고 한다</div>
+        <div class="choice" onclick="showResult('D')">D. 아무 말 하지 않는다</div>
       </div>
     </div>
 
     <div id="result" class="result hidden">
-      <h3>💖 당신의 속박 vs 자유</h3>
-      <p id="resultText"></p>
+      <h3>🔗 당신의 속박 vs 자유 성향</h3>
+      <p id="result-text"></p>
 
       <div class="share-buttons">
         <a href="#" class="share-btn" onclick="shareKakao()">카카오톡 공유</a>
@@ -118,16 +123,18 @@
   <footer>© 연애 심리 테스트 | <a href="https://tests.mahalohana-bruce.com" target="_blank" rel="noopener noreferrer">tests.mahalohana-bruce.com</a></footer>
 
   <script>
-    const results = {
-      'A': '강한 속박형! 연인과의 긴밀한 연결을 중시하며, 항상 함께하고 싶어하는 타입입니다. 사랑에 깊이 빠지면 상대방을 완전히 독차지하고 싶어하는 독점욕이 강한 편이에요. 때로는 상대방에게 숨 쉴 공간을 주는 것도 중요합니다.',
-      'B': '적당한 관심형! 연인과의 관계에서 균형을 잘 맞추는 타입입니다. 너무 집착하지도 않고 너무 소홀하지도 않은, 건강한 연애를 추구합니다. 상대방의 개인 시간도 존중하면서 꾸준한 관심을 보이는 이상적인 연인이에요.',
-      'C': '자유 추구형! 연인과의 관계에서도 개인의 독립성을 중시하는 타입입니다. 서로의 자유를 존중하며, 필요할 때만 의존하는 성숙한 연애관을 가지고 있어요. 다만 때로는 더 많은 관심과 애정 표현이 필요할 수 있습니다.',
-      'D': '완전 자유형! 연인과의 관계에서도 개인의 공간과 시간을 매우 중시하는 타입입니다. 독립적이고 자율적인 관계를 선호하며, 속박을 매우 싫어해요. 하지만 때로는 연인이 외로움을 느낄 수 있으니 적절한 관심도 필요합니다.'
+    const resultTexts = {
+      A: "🔒 강한 속박형! 연인에 대한 관심과 애정이 매우 크지만, 때로는 과도할 수 있어요. 사랑하는 만큼 걱정도 많이 하고 연인의 행동을 세세히 알고 싶어합니다. 믿음과 신뢰를 바탕으로 조금 더 여유를 가져보세요.",
+      B: "💝 배려하는 속박형! 연인을 챙기고 보살피고 싶어하는 따뜻한 마음을 가지고 있어요. 적절한 관심으로 연인을 아끼면서도 상대방의 자율성을 존중하려고 노력하는 균형 잡힌 타입입니다.",
+      C: "🕊️ 이해하는 자유형! 연인의 개인적인 시간과 공간을 존중하며, 서로의 자유를 소중히 여기는 성숙한 연애관을 가지고 있어요. 믿음을 바탕으로 한 건강한 관계를 추구합니다.",
+      D: "🌟 완전 자유형! 연인에게 최대한의 자유를 주는 타입이에요. 간섭하지 않고 각자의 삶을 존중하지만, 때로는 더 많은 관심과 애정 표현이 필요할 수도 있어요. 적절한 소통도 중요합니다."
     };
 
     function showResult(choice) {
-      document.getElementById('result').classList.remove('hidden');
-      document.getElementById('resultText').innerText = results[choice];
+      const resultElement = document.getElementById("result");
+      const resultText = document.getElementById("result-text");
+      resultText.textContent = resultTexts[choice];
+      resultElement.classList.remove("hidden");
 
       // Google Analytics 이벤트 추적
       gtag('event', 'quiz_complete', {
