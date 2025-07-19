@@ -135,6 +135,9 @@
       resultText.textContent = resultTexts[choice];
       resultElement.classList.remove("hidden");
 
+      // 결과로 스크롤
+      resultElement.scrollIntoView({ behavior: 'smooth' });
+
       // Google Analytics 이벤트 추적
       gtag('event', 'quiz_complete', {
         'event_category': 'Romance Test',
