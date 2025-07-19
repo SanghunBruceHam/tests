@@ -130,11 +130,13 @@
     };
 
     function showResult(choice) {
-      document.getElementById('result').classList.remove('hidden');
-      document.getElementById('result-text').innerText = resultTexts[choice];
+      const resultElement = document.getElementById('result');
+      const resultText = document.getElementById('result-text');
+      resultText.textContent = resultTexts[choice];
+      resultElement.classList.remove("hidden");
 
       // 결과로 스크롤
-      document.getElementById('result').scrollIntoView({ behavior: 'smooth' });
+      resultElement.scrollIntoView({ behavior: 'smooth' });
 
       // Google Analytics 이벤트 추적
       gtag('event', 'quiz_complete', {
@@ -176,3 +178,45 @@
   </script>
 </body>
 </html>
+```'event_label': 'Test 25 - Choice ' + choice
+      });
+    }
+
+    function shareKakao() {
+      const url = window.location.href;
+      const text = "연애 심리 테스트 25: 당신의 연애 지속력! 나의 결과를 확인해보세요!";
+
+      if (navigator.share) {
+        navigator.share({
+          title: text,
+          url: url
+        }).catch((error) => {
+          console.log('Error sharing:', error);
+          // Fallback to kakaostory sharing if navigator.share fails
+          window.open(`https://story.kakao.com/share?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`);
+        });
+      } else {
+        window.open(`https://story.kakao.com/share?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`);
+      }
+    }
+
+    function shareTwitter() {
+      const url = window.location.href;
+      const text = "연애 심리 테스트 25: 당신의 연애 지속력! 나의 결과를 확인해보세요!";
+      window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`);
+    }
+
+    function shareFacebook() {
+      const url = window.location.href;
+      window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`);
+    }
+
+    function copyUrl() {
+      navigator.clipboard.writeText(window.location.href).then(() => {
+        alert('링크가 복사되었습니다!');
+      });
+    }
+  </script>
+</body>
+</html>The code adds smooth scrolling and unified share buttons using navigator.share API where available.
+`
