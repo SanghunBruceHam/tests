@@ -101,10 +101,10 @@
       <p id="result-text"></p>
 
       <div class="share-buttons">
-        <a href="#" class="share-btn" onclick="shareKakao()">카카오톡 공유</a>
-        <a href="#" class="share-btn" onclick="shareTwitter()">X 공유</a>
-        <a href="#" class="share-btn" onclick="shareFacebook()">페이스북 공유</a>
-        <a href="#" class="share-btn" onclick="copyUrl()">링크 복사</a>
+        <a href="#" onclick="shareToThreads()" class="share-btn">🧵 Threads 공유</a>
+        <a href="#" onclick="shareToTwitter()" class="share-btn">🐦 X 공유</a>
+        <a href="#" onclick="shareToFacebook()" class="share-btn">📘 Facebook 공유</a>
+        <a href="#" onclick="copyURL()" class="share-btn">🔗 URL 복사</a>
       </div>
     </div>
 
@@ -140,35 +140,63 @@
       });
     }
 
-    function shareKakao() {
+    function shareToThreads() {
+      const text = '연애 심리 테스트: 당신의 사랑에 열중할 때 결과를 확인해보세요!';
       const url = window.location.href;
-      const text = "연애 심리 테스트 2: 당신의 사랑에 열중할 때! 나의 결과를 확인해보세요!";
-
-      if (navigator.share) {
-        navigator.share({
-          title: text,
-          url: url
-        });
-      } else {
-        window.open(`https://story.kakao.com/share?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`);
+      try {
+        window.open(`https://threads.net/intent/post?text=${encodeURIComponent(text + ' ' + url)}`, '_blank', 'noopener,noreferrer');
+      } catch (error) {
+        console.error('Threads 공유 실패:', error);
+        copyURL();
       }
     }
 
-    function shareTwitter() {
+    function shareToTwitter() {
+      const text = '연애 심리 테스트: 당신의 사랑에 열중할 때 결과를 확인해보세요!';
       const url = window.location.href;
-      const text = "연애 심리 테스트 2: 당신의 사랑에 열중할 때! 나의 결과를 확인해보세요!";
-      window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`);
+      try {
+        window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`, '_blank', 'noopener,noreferrer');
+      } catch (error) {
+        console.error('Twitter 공유 실패:', error);
+        copyURL();
+      }
     }
 
-    function shareFacebook() {
+    function shareToFacebook() {
       const url = window.location.href;
-      window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`);
+      try {
+        window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank', 'noopener,noreferrer');
+      } catch (error) {
+        console.error('Facebook 공유 실패:', error);
+        copyURL();
+      }
     }
 
-    function copyUrl() {
-      navigator.clipboard.writeText(window.location.href).then(() => {
-        alert('링크가 복사되었습니다!');
-      });
+    function copyURL() {
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(window.location.href).then(() => {
+          alert('URL이 복사되었습니다!');
+        }).catch(() => {
+          fallbackCopyURL();
+        });
+      } else {
+        fallbackCopyURL();
+      }
+    }
+
+    function fallbackCopyURL() {
+      const textArea = document.createElement('textarea');
+      textArea.value = window.location.href;
+      document.body.appendChild(textArea);
+      textArea.select();
+      try {
+        document.execCommand('copy');
+        alert('URL이 복사되었습니다!');
+      } catch (error) {
+        console.error('URL 복사 실패:', error);
+        prompt('수동으로 복사해주세요:', window.location.href);
+      }
+      document.body.removeChild(textArea);
     }
   </script>
 </body>
