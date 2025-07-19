@@ -134,6 +134,12 @@
       const resultText = document.getElementById("result-text");
       resultText.textContent = resultTexts[choice];
       resultElement.classList.remove("hidden");
+
+      // Google Analytics 이벤트 추적
+      gtag('event', 'quiz_complete', {
+        'event_category': 'Romance Test',
+        'event_label': 'Test 18 - Choice ' + choice
+      });
     }
 
     function shareKakao() {
@@ -164,12 +170,6 @@
     function copyUrl() {
       navigator.clipboard.writeText(window.location.href).then(() => {
         alert('링크가 복사되었습니다!');
-      });
-
-      // Google Analytics 이벤트 추적
-      gtag('event', 'quiz_complete', {
-        'event_category': 'Romance Test',
-        'event_label': 'Test 18 - Choice ' + choice
       });
     }
   </script>
