@@ -109,38 +109,62 @@
     }
 
     function shareToThreads() {
-      const text = '연애 심리 테스트: 좋아하는 사람 앞에서 감추고 싶은 모습 결과를 확인해보세요!';
+      const text = '연애 심리 테스트: 당신이 감추고 싶은 모습 결과를 확인해보세요!';
       const url = window.location.href;
-      const shareText = `${text}\n\n${url}`;
-
-      if (navigator.share) {
-        navigator.share({
-          title: '연애 심리 테스트',
-          text: shareText,
-          url: url
-        });
-      } else {
-        navigator.clipboard.writeText(shareText).then(() => {
-          alert('쓰레드 공유용 텍스트가 복사되었습니다!');
-        });
+      try {
+        window.open(`https://threads.net/intent/post?text=${encodeURIComponent(text + ' ' + url)}`, '_blank', 'noopener,noreferrer');
+      } catch (error) {
+        console.error('Threads 공유 실패:', error);
+        copyURL();
       }
     }
 
-    function shareToX() {
-      const text = '연애 심리 테스트: 좋아하는 사람 앞에서 감추고 싶은 모습 결과를 확인해보세요!';
+    function shareToTwitter() {
+      const text = '연애 심리 테스트: 당신이 감추고 싶은 모습 결과를 확인해보세요!';
       const url = window.location.href;
-      window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`);
+      try {
+        window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`, '_blank', 'noopener,noreferrer');
+      } catch (error) {
+        console.error('Twitter 공유 실패:', error);
+        copyURL();
+      }
     }
 
     function shareToFacebook() {
       const url = window.location.href;
-      window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`);
+      try {
+        window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank', 'noopener,noreferrer');
+      } catch (error) {
+        console.error('Facebook 공유 실패:', error);
+        copyURL();
+      }
     }
 
     function copyURL() {
-      navigator.clipboard.writeText(window.location.href).then(() => {
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(window.location.href).then(() => {
+          alert('URL이 복사되었습니다!');
+        }).catch(() => {
+          fallbackCopyURL();
+        });
+      } else {
+        fallbackCopyURL();
+      }
+    }
+
+    function fallbackCopyURL() {
+      const textArea = document.createElement('textarea');
+      textArea.value = window.location.href;
+      document.body.appendChild(textArea);
+      textArea.select();
+      try {
+        document.execCommand('copy');
         alert('URL이 복사되었습니다!');
-      });
+      } catch (error) {
+        console.error('URL 복사 실패:', error);
+        prompt('수동으로 복사해주세요:', window.location.href);
+      }
+      document.body.removeChild(textArea);
     }
   </script>
 </body>
