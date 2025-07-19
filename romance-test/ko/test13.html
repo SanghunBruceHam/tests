@@ -108,7 +108,6 @@
       <a href="test12.html" class="nav-btn">← 이전</a>
       <a href="index.html" class="nav-btn">📚 목차로</a>
       <a href="test14.html" class="nav-btn">다음 →</a>
-      <a href="test1.html" class="nav-btn">다시 처음부터</a>
     </div>
 
     <div class="additional-nav">
@@ -119,7 +118,7 @@
   <footer>© 연애 심리 테스트 | <a href="https://tests.mahalohana-bruce.com" target="_blank" rel="noopener noreferrer">tests.mahalohana-bruce.com</a></footer>
 
   <script>
-    const results = {
+    const resultTexts = {
       'A': '실용적 엄마 타입! 연인이 아플 때 즉시 실질적인 도움을 주는 당신. 말보다는 행동으로 사랑을 표현하며, 상대방이 필요한 것을 정확히 파악해서 챙겨주는 든든한 파트너입니다.',
       'B': '따뜻한 엄마 타입! 연인을 걱정하면서도 적절한 거리를 유지하는 성숙한 당신. 상대방의 회복을 위해 따뜻한 말과 관심으로 힘이 되어주는 배려 깊은 연인입니다.',
       'C': '헌신적 엄마 타입! 연인이 아플 때 모든 것을 내려놓고 돌봐주려는 당신. 사랑하는 사람을 위해서라면 자신의 시간도 기꺼이 투자하는 깊은 애정을 가진 사람입니다.',
@@ -127,23 +126,18 @@
     };
 
     function showResult(choice) {
-      const results = {
-        'A': '실용적 엄마 타입! 연인이 아플 때 즉시 실질적인 도움을 주는 당신. 말보다는 행동으로 사랑을 표현하며, 상대방이 필요한 것을 정확히 파악해서 챙겨주는 든든한 파트너입니다.',
-        'B': '따뜻한 엄마 타입! 연인을 걱정하면서도 적절한 거리를 유지하는 성숙한 당신. 상대방의 회복을 위해 따뜻한 말과 관심으로 힘이 되어주는 배려 깊은 연인입니다.',
-        'C': '헌신적 엄마 타입! 연인이 아플 때 모든 것을 내려놓고 돌봐주려는 당신. 사랑하는 사람을 위해서라면 자신의 시간도 기꺼이 투자하는 깊은 애정을 가진 사람입니다.',
-        'D': '응원하는 엄마 타입! 연인에게 정신적인 힘을 주는 것을 중요시하는 당신. 직접적인 간병보다는 마음의 지지와 격려로 상대방이 빨리 회복할 수 있도록 돕는 따뜻한 사람입니다.'
-      };
-
-      document.getElementById('result-text').innerText = results[choice];
-      document.getElementById('result').classList.remove('hidden');
+      const resultElement = document.getElementById("result");
+      const resultText = document.getElementById("result-text");
+      resultText.textContent = resultTexts[choice];
+      resultElement.classList.remove("hidden");
 
       // 결과로 스크롤
-      document.getElementById('result').scrollIntoView({ behavior: 'smooth' });
+      resultElement.scrollIntoView({ behavior: 'smooth' });
 
       // Google Analytics 이벤트 추적
-      gtag('event', 'test_completed', {
-        'test_name': 'romance_test_13',
-        'result': choice
+      gtag('event', 'quiz_complete', {
+        'event_category': 'Romance Test',
+        'event_label': 'Test 13 - Choice ' + choice
       });
     }
 
