@@ -101,10 +101,10 @@
       <p id="result-text"></p>
 
       <div class="share-buttons">
-        <a href="#" class="share-btn" onclick="shareKakao()">카카오톡 공유</a>
-        <a href="#" class="share-btn" onclick="shareTwitter()">X 공유</a>
-        <a href="#" class="share-btn" onclick="shareFacebook()">페이스북 공유</a>
-        <a href="#" class="share-btn" onclick="copyUrl()">링크 복사</a>
+        <a href="#" onclick="shareToThreads()" class="share-btn">🧵 Threads 공유</a>
+        <a href="#" onclick="shareToTwitter()" class="share-btn">🐦 X 공유</a>
+        <a href="#" onclick="shareToFacebook()" class="share-btn">📘 Facebook 공유</a>
+        <a href="#" onclick="copyURL()" class="share-btn">🔗 URL 복사</a>
       </div>
     </div>
 
@@ -122,19 +122,21 @@
   <footer>© 연애 심리 테스트 | <a href="https://tests.mahalohana-bruce.com" target="_blank" rel="noopener noreferrer">tests.mahalohana-bruce.com</a></footer>
 
   <script>
-    function showResult(choice) {
-      const results = {
-        'A': '당신의 연애 스타일은 "안정 추구형"입니다. 편안하고 예측 가능한 관계를 선호하며, 서로에게 의지할 수 있는 든든한 파트너십을 중요하게 생각합니다. 갑작스러운 변화보다는 점진적인 발전을 통해 관계를 깊게 만들어갑니다.',
-        'B': '당신의 연애 스타일은 "열정 표현형"입니다. 감정을 솔직하게 드러내는 것을 좋아하며, 로맨틱하고 드라마틱한 사랑을 추구합니다. 상대방에게 자신의 마음을 적극적으로 표현하고, 특별한 순간들을 만들어가는 것을 중요하게 여깁니다.',
-        'C': '당신의 연애 스타일은 "모험 추구형"입니다. 새로운 경험과 도전을 함께 하는 관계를 선호하며, 서로에게 자극이 되는 역동적인 사랑을 원합니다. 일상에서 벗어난 특별한 데이트와 경험을 통해 관계에 활력을 불어넣습니다.',
-        'D': '당신의 연애 스타일은 "소통 중시형"입니다. 깊이 있는 대화와 정신적 교감을 가장 중요하게 생각하며, 서로의 내면을 이해하려고 노력합니다. 갈등이 생겼을 때도 대화를 통해 해결하려는 성숙한 연애관을 가지고 있습니다.'
-      };
+    const resultTexts = {
+      A: "💕 로맨틱 첫사랑 타입! 설렘과 감동을 중시하는 당신의 첫사랑은 아름다운 동화 같았을 거예요. 지금도 로맨틱한 순간들을 소중히 여기는 감성적인 사람입니다.",
+      B: "😊 우정형 첫사랑 타입! 함께 웃고 즐거워했던 시간들을 가장 소중히 여기는 당신. 연애보다는 친구 같은 편안한 관계에서 시작된 첫사랑이었을 것 같아요.",
+      C: "💔 드라마틱 첫사랑 타입! 강렬하고 인상 깊었던 첫사랑을 경험한 당신. 아픔도 컸지만 그만큼 진지하고 깊이 있게 사랑했던 타입입니다.",
+      D: "🌸 순수형 첫사랑 타입! 그때의 순수했던 자신을 떠올리는 당신. 첫사랑을 통해 많이 성장했고, 지금도 그때의 순수함을 간직하고 있는 사람이에요."
+    };
 
-      document.getElementById('result-text').innerText = results[choice];
-      document.getElementById('result').classList.remove('hidden');
+    function showResult(choice) {
+      const resultElement = document.getElementById("result");
+      const resultText = document.getElementById("result-text");
+      resultText.textContent = resultTexts[choice];
+      resultElement.classList.remove("hidden");
 
       // 결과로 스크롤
-      document.getElementById('result').scrollIntoView({ behavior: 'smooth' });
+      resultElement.scrollIntoView({ behavior: 'smooth' });
 
       // Google Analytics 이벤트 추적
       gtag('event', 'test_completed', {
@@ -143,35 +145,63 @@
       });
     }
 
-    function shareKakao() {
+    function shareToThreads() {
+      const text = '연애 심리 테스트: 당신의 첫사랑 타입 결과를 확인해보세요!';
       const url = window.location.href;
-      const text = "연애 심리 테스트 23: 당신의 첫사랑 타입! 나의 결과를 확인해보세요!";
-
-      if (navigator.share) {
-        navigator.share({
-          title: text,
-          url: url
-        });
-      } else {
-        window.open(`https://story.kakao.com/share?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`);
+      try {
+        window.open(`https://threads.net/intent/post?text=${encodeURIComponent(text + ' ' + url)}`, '_blank', 'noopener,noreferrer');
+      } catch (error) {
+        console.error('Threads 공유 실패:', error);
+        copyURL();
       }
     }
 
-    function shareTwitter() {
+    function shareToTwitter() {
+      const text = '연애 심리 테스트: 당신의 첫사랑 타입 결과를 확인해보세요!';
       const url = window.location.href;
-      const text = "연애 심리 테스트 23: 당신의 첫사랑 타입! 나의 결과를 확인해보세요!";
-      window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`);
+      try {
+        window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`, '_blank', 'noopener,noreferrer');
+      } catch (error) {
+        console.error('Twitter 공유 실패:', error);
+        copyURL();
+      }
     }
 
-    function shareFacebook() {
+    function shareToFacebook() {
       const url = window.location.href;
-      window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`);
+      try {
+        window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank', 'noopener,noreferrer');
+      } catch (error) {
+        console.error('Facebook 공유 실패:', error);
+        copyURL();
+      }
     }
 
-    function copyUrl() {
-      navigator.clipboard.writeText(window.location.href).then(() => {
-        alert('링크가 복사되었습니다!');
-      });
+    function copyURL() {
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(window.location.href).then(() => {
+          alert('URL이 복사되었습니다!');
+        }).catch(() => {
+          fallbackCopyURL();
+        });
+      } else {
+        fallbackCopyURL();
+      }
+    }
+
+    function fallbackCopyURL() {
+      const textArea = document.createElement('textarea');
+      textArea.value = window.location.href;
+      document.body.appendChild(textArea);
+      textArea.select();
+      try {
+        document.execCommand('copy');
+        alert('URL이 복사되었습니다!');
+      } catch (error) {
+        console.error('URL 복사 실패:', error);
+        prompt('수동으로 복사해주세요:', window.location.href);
+      }
+      document.body.removeChild(textArea);
     }
   </script>
 </body>
