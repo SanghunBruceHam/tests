@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>연애 심리 테스트 5: 연인의 바람을 용서할 수 있습니까?</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>연애 심리 테스트 5: 연인의 바람을 용서할 수 있습니까?</h1>
+    <div class="question"><p>Q. 데이트 만남에서 10분 지나도 상대가 나타나지 않습니다.</p></div>
+    <div class="choices">
+      <button onclick="showResult('A')">A. "늦다!"라고 좌절한다</button>
+      <button onclick="showResult('B')">B. "늦네~"라고 생각하며 스마트폰으로 시간 때운다</button>
+      <button onclick="showResult('C')">C. "지금 어디?"라고 연락한다</button>
+      <button onclick="showResult('D')">D. "뭔가 있었나..."라고 걱정된다</button>
+    </div>
+    <div id="result" class="result" style="display:none; margin-top: 20px;"></div>
+    <div class="share-box">
+      <p>📢 이 테스트를 공유해보세요!</p>
+      <a id="share-line" target="_blank">LINE</a>
+      <a id="share-x" target="_blank">X</a>
+      <a id="share-fb" target="_blank">Facebook</a>
+      <button onclick="copyLink()">URL 복사</button>
+    </div>
+    <div class="nav-buttons">
+      <a href="test4.html">← 이전</a>
+      <a href="index.html">📚 목차로</a>
+      <a href="test6.html">다음 →</a>
+    </div>
+    <footer>© 당신의 연애 심리 테스트 | tests.mahalohana-bruce.com</footer>
+  </div>
+  <script>
+    const resultTexts = {
+      A: "💔 좋아하게 되면 연인 일색의 열정적인 타입. 바람은 절대 용서할 수 없을 것입니다.",
+      B: "🤷‍♀️ 사파리하고 있는 타입. 이성 친구가 많아 자신에게도 있을 수 있으므로 연인의 바람을 의외로 용서해 버릴 것 같습니다.",
+      C: "📱 상식적이고 진지한 타입. 바람에 대해서는 냉정하게 판단할 것입니다.",
+      D: "😰 연인의 마음을 독점하고 싶은 타입. 바람기는 절대 안 되지만, 현실을 직시하는 것이 무서워 강하게 추궁할 수 없습니다."
+    };
+    function showResult(choice) {
+      const resultBox = document.getElementById("result");
+      resultBox.innerHTML = resultTexts[choice];
+      resultBox.style.display = "block";
+    }
+    function copyLink() {
+      const dummy = document.createElement("input");
+      const text = window.location.href;
+      document.body.appendChild(dummy);
+      dummy.value = text;
+      dummy.select();
+      document.execCommand("copy");
+      document.body.removeChild(dummy);
+      alert("URL이 복사되었습니다!");
+    }
+    const url = encodeURIComponent(window.location.href);
+    const text = encodeURIComponent("연애 심리 테스트 5: 연인의 바람을 용서할 수 있습니까?");
+    document.getElementById("share-line").href = `https://social-plugins.line.me/lineit/share?url=${url}`;
+    document.getElementById("share-x").href = `https://twitter.com/intent/tweet?text=${text}&url=${url}`;
+    document.getElementById("share-fb").href = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+  </script>
+</body>
+</html>
