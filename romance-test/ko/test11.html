@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -87,17 +88,17 @@
   <div class="container">
     <div class="question">
       <h1>💖 연애 심리 테스트 11</h1>
-      <h2>연인과 함께 보내는 시간 vs 혼자만의 시간 비율은?</h2>
+      <h2>연인이 바쁘다고 오늘 못 만난다고 할 때 어떻게 하시겠어요?</h2>
       <div class="choices">
-        <div class="choice" onclick="showResult('A')">A. 9:1 (거의 항상 함께)</div>
-        <div class="choice" onclick="showResult('B')">B. 7:3 (대부분 함께)</div>
-        <div class="choice" onclick="showResult('C')">C. 5:5 (반반)</div>
-        <div class="choice" onclick="showResult('D')">D. 3:7 (혼자 시간이 더 많음)</div>
+        <div class="choice" onclick="showResult('A')">A. 아쉽지만 이해하고 다른 일 하기</div>
+        <div class="choice" onclick="showResult('B')">B. 조금이라도 만날 수 없는지 다시 물어보기</div>
+        <div class="choice" onclick="showResult('C')">C. 왜 바쁜지 자세히 알고 싶어하기</div>
+        <div class="choice" onclick="showResult('D')">D. 혼자 있는 게 불안해서 친구들과 만나기</div>
       </div>
     </div>
 
     <div id="result" class="result hidden">
-      <h3>💝 당신의 연애 중독도</h3>
+      <h3>💖 당신의 연애 중독도</h3>
       <p id="result-text"></p>
 
       <div class="share-buttons">
@@ -123,10 +124,10 @@
 
   <script>
     const resultTexts = {
-      A: "💕 초고도 연애 중독! 연인이 당신의 삶의 전부예요. 사랑에 푹 빠져 있는 상태로, 연인과 떨어져 있는 시간이 힘들게 느껴집니다. 하지만 때로는 자신만의 시간도 필요하다는 걸 기억하세요!",
-      B: "💖 고도 연애 중독! 연인과의 시간을 최우선으로 생각하는 타입이에요. 사랑스럽고 헌신적이지만, 가끔은 개인적인 취미나 친구들과의 시간도 소중히 여기면 더 건강한 관계가 될 거예요.",
-      C: "💗 적당한 연애 중독! 연인과의 시간과 개인 시간의 균형을 잘 맞추는 성숙한 타입이에요. 사랑도 중요하지만 자신의 삶도 소중히 여기는 건강한 연애 스타일을 가지고 있습니다.",
-      D: "💙 낮은 연애 중독! 독립적이고 자유로운 연애를 선호하는 타입이에요. 개인적인 공간과 시간을 중시하며, 서로의 자율성을 존중하는 성숙한 관계를 추구합니다. 때로는 연인과 더 많은 시간을 보내는 것도 좋을 거예요."
+      A: "🌟 당신은 건강한 연애를 하는 타입입니다. 연인의 상황을 이해하고 자신만의 시간도 소중히 여기는 균형 잡힌 성격입니다.",
+      B: "💕 당신은 적당히 연애에 빠진 타입입니다. 연인과의 시간을 소중히 여기지만 강요하지는 않는 건전한 애정을 보입니다.",
+      C: "🔍 당신은 연애에 깊이 몰입하는 타입입니다. 연인의 모든 것이 궁금하고 관심이 많아 때로는 부담을 줄 수 있습니다.",
+      D: "💝 당신은 연애 의존도가 높은 타입입니다. 연인 없이는 공허함을 느끼며 항상 누군가와 함께 있고 싶어합니다."
     };
 
     function showResult(choice) {
@@ -134,12 +135,6 @@
       const resultText = document.getElementById("result-text");
       resultText.textContent = resultTexts[choice];
       resultElement.classList.remove("hidden");
-
-      // Google Analytics 이벤트 추적
-      gtag('event', 'quiz_complete', {
-        'event_category': 'Romance Test',
-        'event_label': 'Test 11 - Choice ' + choice
-      });
     }
 
     function shareKakao() {
@@ -170,6 +165,12 @@
     function copyUrl() {
       navigator.clipboard.writeText(window.location.href).then(() => {
         alert('링크가 복사되었습니다!');
+      });
+
+      // Google Analytics 이벤트 추적
+      gtag('event', 'quiz_complete', {
+        'event_category': 'Romance Test',
+        'event_label': 'Test 11 - Choice ' + choice
       });
     }
   </script>
