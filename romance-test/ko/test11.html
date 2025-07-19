@@ -66,7 +66,8 @@
   }
   </script>
 
-  <link rel="stylesheet" href="style.css"></head>
+  <link rel="stylesheet" href="style.css">
+</head>
 <body>
   <!-- Google AdSense Ad -->
   <ins class="adsbygoogle"
@@ -105,8 +106,13 @@
     </div>
 
     <div class="navigation">
-      <a href="test10.html" class="nav-btn">← 이전 테스트</a>
-      <a href="test12.html" class="nav-btn">다음 테스트 →</a>
+      <a href="test10.html" class="nav-btn">← 이전</a>
+      <a href="index.html" class="nav-btn">📚 목차로</a>
+      <a href="test12.html" class="nav-btn">다음 →</a>
+    </div>
+
+    <div class="additional-nav">
+      <a href="https://tests.mahalohana-bruce.com/ko/" class="other-tests-btn">🧠 다른 심리테스트 해보기</a>
     </div>
   </div>
 
@@ -162,203 +168,3 @@
   </script>
 </body>
 </html>
-```
-
-Here's the modified code for test11.html, including the CSS path correction. I will proceed to generate the remaining files (test12.html to test30.html) in a similar manner. Since it's impossible to show all files individually due to the length constraint, I'll provide the core logic for generating them. Each file will follow this pattern: updating the title, meta description, og:title, og:description, og:url, twitter:title, canonical URL, and the navigation links. The question and result text will also be modified uniquely for each test.
-
-```python
-def generate_test_file(test_number):
-    file_name = f"test{test_number}.html"
-    title = f"연애 심리 테스트 {test_number}"
-    description = f"연애 심리 테스트 {test_number} 입니다."
-    og_url = f"https://tests.mahalohana-bruce.com/romance-test/ko/{file_name}"
-
-    # Modify the questions and results based on test_number
-    question = f"Test {test_number} Question?"
-    results = {
-        'A': f"Result A for Test {test_number}",
-        'B': f"Result B for Test {test_number}",
-        'C': f"Result C for Test {test_number}",
-        'D': f"Result D for Test {test_number}"
-    }
-
-    prev_test = test_number - 1
-    next_test = test_number + 1
-    prev_link = f"test{prev_test}.html" if prev_test > 0 else "test1.html"
-    next_link = f"test{next_test}.html" if next_test <= 30 else "test30.html"
-
-    html_content = f"""
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{title} | 무료 심리 테스트</title>
-  <meta name="description" content="{description}">
-  <meta name="keywords" content="연애 심리 테스트, 심리 테스트, 연애 성향, 무료 테스트">
-
-  <!-- Open Graph Meta Tags -->
-  <meta property="og:type" content="article" />
-  <meta property="og:title" content="{title}" />
-  <meta property="og:description" content="{description}" />
-  <meta property="og:image" content="https://tests.mahalohana-bruce.com/romance-test/ko/thumbnail.png" />
-  <meta property="og:url" content="{og_url}" />
-
-  <!-- Twitter Card Meta Tags -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="{title}" />
-  <meta name="twitter:description" content="{description}" />
-  <meta name="twitter:image" content="https://tests.mahalohana-bruce.com/romance-test/ko/thumbnail.png" />
-
-  <link rel="canonical" href="{og_url}">
-  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-
-  <!-- hreflang for multilingual SEO -->
-  <link rel="alternate" hreflang="ko" href="{og_url}" />
-  <link rel="alternate" hreflang="ja" href="https://tests.mahalohana-bruce.com/romance-test/ja/test{test_number}.html" />
-  <link rel="alternate" hreflang="en" href="https://tests.mahalohana-bruce.com/romance-test/en/test{test_number}.html" />
-  <link rel="alternate" hreflang="x-default" href="{og_url}" />
-
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-45VSGEM7EZ"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-45VSGEM7EZ');
-  </script>
-
-  <!-- Google AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5508768187151867" crossorigin="anonymous"></script>
-
-  <!-- JSON-LD Structured Data -->
-  <script type="application/ld+json">
-  {{
-    "@context": "https://schema.org",
-    "@type": "Article",
-    "headline": "{title}",
-    "description": "{description}",
-    "image": "https://tests.mahalohana-bruce.com/romance-test/ko/thumbnail.png",
-    "author": {{
-      "@type": "Organization",
-      "name": "Mahalohana Bruce Tests"
-    }},
-    "publisher": {{
-      "@type": "Organization",
-      "name": "Mahalohana Bruce Tests",
-      "logo": {{
-        "@type": "ImageObject",
-        "url": "https://tests.mahalohana-bruce.com/favicon.png"
-      }}
-    }},
-    "datePublished": "2024-01-01",
-    "dateModified": "2024-01-01"
-  }}
-  </script>
-
-  <link rel="stylesheet" href="style.css"></head>
-<body>
-  <!-- Google AdSense Ad -->
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-5508768187151867"
-       data-ad-slot="7298546648"
-       data-ad-format="auto"
-       data-full-width-responsive="true"></ins>
-  <script>
-       (adsbygoogle = window.adsbygoogle || []).push({{}});
-  </script>
-
-  <div class="container">
-    <div class="question">
-      <h1>💕 {title}</h1>
-      <h2>{question}</h2>
-    </div>
-
-    <div class="choices">
-      <div class="choice" onclick="showResult('A')">A. Choice A</div>
-      <div class="choice" onclick="showResult('B')">B. Choice B</div>
-      <div class="choice" onclick="showResult('C')">C. Choice C</div>
-      <div class="choice" onclick="showResult('D')">D. Choice D</div>
-    </div>
-
-    <div id="result" class="result hidden">
-      <h3>🎯 Result</h3>
-      <p id="resultText"></p>
-
-      <div class="share-buttons">
-        <a href="#" class="share-btn" onclick="shareKakao()">카카오톡 공유</a>
-        <a href="#" class="share-btn" onclick="shareTwitter()">X 공유</a>
-        <a href="#" class="share-btn" onclick="shareFacebook()">페이스북 공유</a>
-        <a href="#" class="share-btn" onclick="copyUrl()">링크 복사</a>
-      </div>
-    </div>
-
-    <div class="navigation">
-      <a href="{prev_link}" class="nav-btn">← 이전 테스트</a>
-      <a href="{next_link}" class="nav-btn">다음 테스트 →</a>
-    </div>
-  </div>
-
-  <script>
-    const results = {{
-      'A': '{results['A']}',
-      'B': '{results['B']}',
-      'C': '{results['C']}',
-      'D': '{results['D']}'
-    }};
-
-    function showResult(choice) {{
-      document.getElementById('result').classList.remove('hidden');
-      document.getElementById('resultText').innerText = results[choice];
-
-      // Google Analytics 이벤트 추적
-      gtag('event', 'quiz_complete', {{
-        'event_category': 'Romance Test',
-        'event_label': 'Test {test_number} - Choice ' + choice
-      }});
-    }}
-
-    function shareKakao() {{
-      const url = window.location.href;
-      const text = "{title}! Check out my result!";
-
-      if (navigator.share) {{
-        navigator.share({{
-          title: text,
-          url: url
-        }});
-      }} else {{
-        window.open(`https://story.kakao.com/share?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`);
-      }}
-    }}
-
-    function shareTwitter() {{
-      const url = window.location.href;
-      const text = "{title}! Check out my result!";
-      window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`);
-    }}
-
-    function shareFacebook() {{
-      const url = window.location.href;
-      window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`);
-    }}
-
-    function copyUrl() {{
-      navigator.clipboard.writeText(window.location.href).then(() => {{
-        alert('링크가 복사되었습니다!');
-      }});
-    }}
-  </script>
-</body>
-</html>
-"""
-    return html_content
-
-# Generate files from test12.html to test30.html
-for i in range(12, 31):
-    html_content = generate_test_file(i)
-    with open(f"test{i}.html", "w", encoding="utf-8") as file:
-        file.write(html_content)
-
-print("Files test12.html to test30.html have been generated.")
