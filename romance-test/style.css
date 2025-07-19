@@ -43,7 +43,7 @@ h1 {
 }
 
 .question {
-  background: var(--card-bg);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 182, 193, 0.1) 100%);
   border-radius: 15px;
   padding: 25px;
   margin-bottom: 25px;
