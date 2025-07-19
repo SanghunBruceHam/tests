@@ -74,29 +74,27 @@
 </head>
 <body>
   <div class="container">
-    <h1>연애 심리 테스트 18: 연인과 싸울 때 추천 대처법</h1>
-
     <div class="question">
-      <h2>Q. 연인과 다툴 때 가장 화가 나는 순간은?</h2>
-    </div>
-
-    <div class="choices">
-      <div class="choice" onclick="showResult('A')">A. 내 말을 끝까지 듣지 않을 때</div>
-      <div class="choice" onclick="showResult('B')">B. 논리적이지 않을 때</div>
-      <div class="choice" onclick="showResult('C')">C. 감정적으로 대응할 때</div>
-      <div class="choice" onclick="showResult('D')">D. 무시하거나 회피할 때</div>
+      <h1>💖 연애 심리 테스트 18</h1>
+      <h2>연인과 다툴 때 가장 화가 나는 순간은?</h2>
+      <div class="choices">
+        <div class="choice" onclick="showResult('A')">A. 내 말을 끝까지 듣지 않을 때</div>
+        <div class="choice" onclick="showResult('B')">B. 논리적이지 않을 때</div>
+        <div class="choice" onclick="showResult('C')">C. 감정적으로 대응할 때</div>
+        <div class="choice" onclick="showResult('D')">D. 무시하거나 회피할 때</div>
+      </div>
     </div>
 
     <div id="result" class="result hidden">
-      <h3>결과</h3>
+      <h3>🎯 당신의 싸움 대처법</h3>
       <p id="result-text"></p>
-    </div>
 
-    <div class="share-buttons">
-      <a href="#" class="share-btn" id="share-line">LINE 공유</a>
-      <a href="#" class="share-btn" id="share-x">X 공유</a>
-      <a href="#" class="share-btn" id="share-fb">Facebook 공유</a>
-      <button class="share-btn" onclick="copyLink()">URL 복사</button>
+      <div class="share-buttons">
+        <a href="#" class="share-btn" onclick="shareKakao()">카카오톡 공유</a>
+        <a href="#" class="share-btn" onclick="shareTwitter()">X 공유</a>
+        <a href="#" class="share-btn" onclick="shareFacebook()">페이스북 공유</a>
+        <a href="#" class="share-btn" onclick="copyUrl()">링크 복사</a>
+      </div>
     </div>
 
     <div class="navigation">
@@ -105,7 +103,7 @@
       <a href="test19.html" class="nav-btn">다음 →</a>
     </div>
 
-    <footer>© 당신의 연애 심리 테스트 | tests.mahalohana-bruce.com</footer>
+    <footer>© 연애 심리 테스트 | <a href="https://tests.mahalohana-bruce.com" target="_blank" rel="noopener noreferrer">tests.mahalohana-bruce.com</a></footer>
   </div>
 
   <script>
@@ -123,300 +121,42 @@
       resultElement.classList.remove("hidden");
     }
 
-    function copyLink() {
-      navigator.clipboard.writeText(window.location.href).then(() => {
-        alert("URL이 복사되었습니다!");
-      });
-    }
+    function shareKakao() {
+      const url = window.location.href;
+      const text = "연애 심리 테스트 18: 당신의 싸움 대처법! 나의 결과를 확인해보세요!";
 
-    // 공유 링크 설정
-    const url = encodeURIComponent(window.location.href);
-    const text = encodeURIComponent("연애 심리 테스트 18: 연인과 싸울 때 추천 대처법");
-
-    document.getElementById("share-line").href = `https://social-plugins.line.me/lineit/share?url=${url}`;
-    document.getElementById("share-x").href = `https://twitter.com/intent/tweet?text=${text}&url=${url}`;
-    document.getElementById("share-fb").href = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
-  </script>
-</body>
-</html>
-```<!DOCTYPE html>
-<html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>연애 심리 테스트 18: 연인과 싸울 때 추천 대처법 | 무료 심리 테스트</title>
-  <meta name="description" content="다툼에서 가장 화나는 순간으로 알아보는 당신에게 맞는 싸움 대처법은? 재미있는 연애 심리 테스트로 나의 연애 성향을 분석해보세요!">
-  <meta name="keywords" content="연애 심리 테스트, 싸움 대처법, 심리 테스트, 연애 성향, 무료 테스트">
-
-  <!-- Open Graph Meta Tags -->
-  <meta property="og:type" content="article" />
-  <meta property="og:title" content="연애 심리 테스트 18: 연인과 싸울 때 추천 대처법" />
-  <meta property="og:description" content="다툼에서 가장 화나는 순간으로 알아보는 당신에게 맞는 싸움 대처법은?" />
-  <meta property="og:image" content="https://tests.mahalohana-bruce.com/romance-test/ko/thumbnail.png" />
-  <meta property="og:url" content="https://tests.mahalohana-bruce.com/romance-test/ko/test18.html" />
-
-  <!-- Twitter Card Meta Tags -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="연애 심리 테스트: 싸움 대처법" />
-  <meta name="twitter:description" content="다툼에서 화나는 순간으로 알아보는 나만의 해결책!" />
-  <meta name="twitter:image" content="https://tests.mahalohana-bruce.com/romance-test/ko/thumbnail.png" />
-
-  <link rel="canonical" href="https://tests.mahalohana-bruce.com/romance-test/ko/test18.html">
-  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-
-  <!-- hreflang for multilingual SEO -->
-  <link rel="alternate" hreflang="ko" href="https://tests.mahalohana-bruce.com/romance-test/ko/test18.html" />
-  <link rel="alternate" hreflang="ja" href="https://tests.mahalohana-bruce.com/romance-test/ja/test18.html" />
-  <link rel="alternate" hreflang="en" href="https://tests.mahalohana-bruce.com/romance-test/en/test18.html" />
-  <link rel="alternate" hreflang="x-default" href="https://tests.mahalohana-bruce.com/romance-test/ko/test18.html" />
-
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-45VSGEM7EZ"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-45VSGEM7EZ');
-  </script>
-
-  <!-- Google AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5508768187151867" crossorigin="anonymous"></script>
-
-  <!-- JSON-LD Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    "headline": "연애 심리 테스트 18: 연인과 싸울 때 추천 대처법",
-    "description": "다툼에서 가장 화나는 순간으로 알아보는 당신에게 맞는 싸움 대처법은?",
-    "image": "https://tests.mahalohana-bruce.com/romance-test/ko/thumbnail.png",
-    "author": {
-      "@type": "Organization",
-      "name": "Psychological Tests"
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": "Psychological Tests",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://tests.mahalohana-bruce.com/favicon.png"
+      if (navigator.share) {
+        navigator.share({
+          title: text,
+          url: url
+        });
+      } else {
+        window.open(`https://story.kakao.com/share?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`);
       }
-    },
-    "datePublished": "2024-01-01",
-    "dateModified": "2024-01-01",
-    "mainEntityOfPage": {
-      "@type": "WebPage",
-      "@id": "https://tests.mahalohana-bruce.com/romance-test/ko/test18.html"
-    }
-  }
-  </script>
-
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <div class="container">
-    <h1>연애 심리 테스트 18: 연인과 싸울 때 추천 대처법</h1>
-
-    <div class="question">
-      <h2>Q. 연인과 다툴 때 가장 화가 나는 순간은?</h2>
-    </div>
-
-    <div class="choices">
-      <div class="choice" onclick="showResult('A')">A. 내 말을 끝까지 듣지 않을 때</div>
-      <div class="choice" onclick="showResult('B')">B. 논리적이지 않을 때</div>
-      <div class="choice" onclick="showResult('C')">C. 감정적으로 대응할 때</div>
-      <div class="choice" onclick="showResult('D')">D. 무시하거나 회피할 때</div>
-    </div>
-
-    <div id="result" class="result hidden">
-      <h3>결과</h3>
-      <p id="result-text"></p>
-    </div>
-
-    <div class="share-buttons">
-      <a href="#" class="share-btn" id="share-line">LINE 공유</a>
-      <a href="#" class="share-btn" id="share-x">X 공유</a>
-      <a href="#" class="share-btn" id="share-fb">Facebook 공유</a>
-      <button class="share-btn" onclick="copyLink()">URL 복사</button>
-    </div>
-
-    <div class="navigation">
-      <a href="test17.html" class="nav-btn">← 이전</a>
-      <a href="index.html" class="nav-btn">📚 목차로</a>
-      <a href="test19.html" class="nav-btn">다음 →</a>
-    </div>
-
-    <footer>© 당신의 연애 심리 테스트 | tests.mahalohana-bruce.com</footer>
-  </div>
-
-  <script>
-    const resultTexts = {
-      A: "🗣️ 대화형 해결법을 추천해요. 서로의 입장을 차근차근 들어보고 충분히 소통하는 시간을 가져보세요.",
-      B: "📊 분석형 해결법을 추천해요. 문제의 원인을 객관적으로 분석하고 단계별로 해결책을 찾아보세요.",
-      C: "💝 감정 수용형 해결법을 추천해요. 서로의 감정을 인정하고 위로하는 시간을 먼저 가져보세요.",
-      D: "⏰ 시간차 해결법을 추천해요. 잠시 시간을 두고 각자 생각을 정리한 후 다시 대화해보세요."
-    };
-
-    function showResult(choice) {
-      const resultElement = document.getElementById("result");
-      const resultText = document.getElementById("result-text");
-      resultText.textContent = resultTexts[choice];
-      resultElement.classList.remove("hidden");
     }
 
-    function copyLink() {
+    function shareTwitter() {
+      const url = window.location.href;
+      const text = "연애 심리 테스트 18: 당신의 싸움 대처법! 나의 결과를 확인해보세요!";
+      window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`);
+    }
+
+    function shareFacebook() {
+      const url = window.location.href;
+      window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`);
+    }
+
+    function copyUrl() {
       navigator.clipboard.writeText(window.location.href).then(() => {
-        alert("URL이 복사되었습니다!");
+        alert('링크가 복사되었습니다!');
+      });
+
+      // Google Analytics 이벤트 추적
+      gtag('event', 'quiz_complete', {
+        'event_category': 'Romance Test',
+        'event_label': 'Test 18 - Choice ' + choice
       });
     }
-
-    // 공유 링크 설정
-    const url = encodeURIComponent(window.location.href);
-    const text = encodeURIComponent("연애 심리 테스트 18: 연인과 싸울 때 추천 대처법");
-
-    document.getElementById("share-line").href = `https://social-plugins.line.me/lineit/share?url=${url}`;
-    document.getElementById("share-x").href = `https://twitter.com/intent/tweet?text=${text}&url=${url}`;
-    document.getElementById("share-fb").href = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
-  </script>
-</body>
-</html><!DOCTYPE html>
-<html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>연애 심리 테스트 18: 연인과 싸울 때 추천 대처법 | 무료 심리 테스트</title>
-  <meta name="description" content="다툼에서 가장 화나는 순간으로 알아보는 당신에게 맞는 싸움 대처법은? 재미있는 연애 심리 테스트로 나의 연애 성향을 분석해보세요!">
-  <meta name="keywords" content="연애 심리 테스트, 싸움 대처법, 심리 테스트, 연애 성향, 무료 테스트">
-
-  <!-- Open Graph Meta Tags -->
-  <meta property="og:type" content="article" />
-  <meta property="og:title" content="연애 심리 테스트 18: 연인과 싸울 때 추천 대처법" />
-  <meta property="og:description" content="다툼에서 가장 화나는 순간으로 알아보는 당신에게 맞는 싸움 대처법은?" />
-  <meta property="og:image" content="https://tests.mahalohana-bruce.com/romance-test/ko/thumbnail.png" />
-  <meta property="og:url" content="https://tests.mahalohana-bruce.com/romance-test/ko/test18.html" />
-
-  <!-- Twitter Card Meta Tags -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="연애 심리 테스트: 싸움 대처법" />
-  <meta name="twitter:description" content="다툼에서 화나는 순간으로 알아보는 나만의 해결책!" />
-  <meta name="twitter:image" content="https://tests.mahalohana-bruce.com/romance-test/ko/thumbnail.png" />
-
-  <link rel="canonical" href="https://tests.mahalohana-bruce.com/romance-test/ko/test18.html">
-  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-
-  <!-- hreflang for multilingual SEO -->
-  <link rel="alternate" hreflang="ko" href="https://tests.mahalohana-bruce.com/romance-test/ko/test18.html" />
-  <link rel="alternate" hreflang="ja" href="https://tests.mahalohana-bruce.com/romance-test/ja/test18.html" />
-  <link rel="alternate" hreflang="en" href="https://tests.mahalohana-bruce.com/romance-test/en/test18.html" />
-  <link rel="alternate" hreflang="x-default" href="https://tests.mahalohana-bruce.com/romance-test/ko/test18.html" />
-
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-45VSGEM7EZ"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-45VSGEM7EZ');
-  </script>
-
-  <!-- Google AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5508768187151867" crossorigin="anonymous"></script>
-
-  <!-- JSON-LD Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    "headline": "연애 심리 테스트 18: 연인과 싸울 때 추천 대처법",
-    "description": "다툼에서 가장 화나는 순간으로 알아보는 당신에게 맞는 싸움 대처법은?",
-    "image": "https://tests.mahalohana-bruce.com/romance-test/ko/thumbnail.png",
-    "author": {
-      "@type": "Organization",
-      "name": "Psychological Tests"
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": "Psychological Tests",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://tests.mahalohana-bruce.com/favicon.png"
-      }
-    },
-    "datePublished": "2024-01-01",
-    "dateModified": "2024-01-01",
-    "mainEntityOfPage": {
-      "@type": "WebPage",
-      "@id": "https://tests.mahalohana-bruce.com/romance-test/ko/test18.html"
-    }
-  }
-  </script>
-
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <div class="container">
-    <h1>연애 심리 테스트 18: 연인과 싸울 때 추천 대처법</h1>
-
-    <div class="question">
-      <h2>Q. 연인과 다툴 때 가장 화가 나는 순간은?</h2>
-    </div>
-
-    <div class="choices">
-      <div class="choice" onclick="showResult('A')">A. 내 말을 끝까지 듣지 않을 때</div>
-      <div class="choice" onclick="showResult('B')">B. 논리적이지 않을 때</div>
-      <div class="choice" onclick="showResult('C')">C. 감정적으로 대응할 때</div>
-      <div class="choice" onclick="showResult('D')">D. 무시하거나 회피할 때</div>
-    </div>
-
-    <div id="result" class="result hidden">
-      <h3>결과</h3>
-      <p id="result-text"></p>
-    </div>
-
-    <div class="share-buttons">
-      <a href="#" class="share-btn" id="share-line">LINE 공유</a>
-      <a href="#" class="share-btn" id="share-x">X 공유</a>
-      <a href="#" class="share-btn" id="share-fb">Facebook 공유</a>
-      <button class="share-btn" onclick="copyLink()">URL 복사</button>
-    </div>
-
-    <div class="navigation">
-      <a href="test17.html" class="nav-btn">← 이전</a>
-      <a href="index.html" class="nav-btn">📚 목차로</a>
-      <a href="test19.html" class="nav-btn">다음 →</a>
-    </div>
-
-    <footer>© 당신의 연애 심리 테스트 | tests.mahalohana-bruce.com</footer>
-  </div>
-
-  <script>
-    const resultTexts = {
-      A: "🗣️ 대화형 해결법을 추천해요. 서로의 입장을 차근차근 들어보고 충분히 소통하는 시간을 가져보세요.",
-      B: "📊 분석형 해결법을 추천해요. 문제의 원인을 객관적으로 분석하고 단계별로 해결책을 찾아보세요.",
-      C: "💝 감정 수용형 해결법을 추천해요. 서로의 감정을 인정하고 위로하는 시간을 먼저 가져보세요.",
-      D: "⏰ 시간차 해결법을 추천해요. 잠시 시간을 두고 각자 생각을 정리한 후 다시 대화해보세요."
-    };
-
-    function showResult(choice) {
-      const resultElement = document.getElementById("result");
-      const resultText = document.getElementById("result-text");
-      resultText.textContent = resultTexts[choice];
-      resultElement.classList.remove("hidden");
-    }
-
-    function copyLink() {
-      navigator.clipboard.writeText(window.location.href).then(() => {
-        alert("URL이 복사되었습니다!");
-      });
-    }
-
-    // 공유 링크 설정
-    const url = encodeURIComponent(window.location.href);
-    const text = encodeURIComponent("연애 심리 테스트 18: 연인과 싸울 때 추천 대처법");
-
-    document.getElementById("share-line").href = `https://social-plugins.line.me/lineit/share?url=${url}`;
-    document.getElementById("share-x").href = `https://twitter.com/intent/tweet?text=${text}&url=${url}`;
-    document.getElementById("share-fb").href = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
   </script>
 </body>
 </html>

@@ -84,24 +84,29 @@
        (adsbygoogle = window.adsbygoogle || []).push({});
   </script>
 
-  <div class="container"></div>
-    <h1>연애 심리 테스트 7: 당신이 좋아하는 스타일은?</h1>
-
+  <div class="container">
     <div class="question">
-      <h2>Q. 첫 데이트, 당신의 선택은?</h2>
-    </div>
-
-    <div class="choices">
-      <div class="choice" onclick="showResult('A')">A. 분위기 좋은 레스토랑에서 식사</div>
-      <div class="choice" onclick="showResult('B')">B. 함께 영화를 보고 카페에 가기</div>
-      <div class="choice" onclick="showResult('C')">C. 공원에서 피크닉 즐기기</div>
-      <div class="choice" onclick="showResult('D')">D. 놀이공원에서 신나는 하루 보내기</div>
+      <h1>💖 연애 심리 테스트 17</h1>
+      <h2>첫 데이트, 당신의 선택은?</h2>
+      <div class="choices">
+        <div class="choice" onclick="showResult('A')">A. 분위기 좋은 레스토랑에서 식사</div>
+        <div class="choice" onclick="showResult('B')">B. 함께 영화를 보고 카페에 가기</div>
+        <div class="choice" onclick="showResult('C')">C. 공원에서 피크닉 즐기기</div>
+        <div class="choice" onclick="showResult('D')">D. 놀이공원에서 신나는 하루 보내기</div>
+      </div>
     </div>
 
     <div id="result" class="result hidden">
-      <h3>결과</h3>
+      <h3>🎯 당신이 호감 가는 상대</h3>
       <p id="result-text"></p>
-    </div>
+
+      <div class="share-buttons">
+        <a href="#" class="share-btn" onclick="shareKakao()">카카오톡 공유</a>
+        <a href="#" class="share-btn" onclick="shareTwitter()">X 공유</a>
+        <a href="#" class="share-btn" onclick="shareFacebook()">페이스북 공유</a>
+        <a href="#" class="share-btn" onclick="copyUrl()">링크 복사</a>
+      </div>
+    </div></div>
 
     <div class="share-buttons">
       <a href="#" class="share-btn" id="share-line">LINE 공유</a>
@@ -138,19 +143,42 @@
       resultElement.classList.remove("hidden");
     }
 
-    function copyLink() {
-      navigator.clipboard.writeText(window.location.href).then(() => {
-        alert("URL이 복사되었습니다!");
-      });
+    function shareKakao() {
+      const url = window.location.href;
+      const text = "연애 심리 테스트 17: 당신이 호감 가는 상대! 나의 결과를 확인해보세요!";
+
+      if (navigator.share) {
+        navigator.share({
+          title: text,
+          url: url
+        });
+      } else {
+        window.open(`https://story.kakao.com/share?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`);
+      }
     }
 
-    // 공유 링크 설정
-    const url = encodeURIComponent(window.location.href);
-    const text = encodeURIComponent("연애 심리 테스트 7: 당신이 좋아하는 스타일은?");
+    function shareTwitter() {
+      const url = window.location.href;
+      const text = "연애 심리 테스트 17: 당신이 호감 가는 상대! 나의 결과를 확인해보세요!";
+      window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`);
+    }
 
-    document.getElementById("share-line").href = `https://social-plugins.line.me/lineit/share?url=${url}`;
-    document.getElementById("share-x").href = `https://twitter.com/intent/tweet?text=${text}&url=${url}`;
-    document.getElementById("share-fb").href = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+    function shareFacebook() {
+      const url = window.location.href;
+      window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`);
+    }
+
+    function copyUrl() {
+      navigator.clipboard.writeText(window.location.href).then(() => {
+        alert('링크가 복사되었습니다!');
+      });
+
+      // Google Analytics 이벤트 추적
+      gtag('event', 'quiz_complete', {
+        'event_category': 'Romance Test',
+        'event_label': 'Test 17 - Choice ' + choice
+      });
+    }
   </script>
 </body>
 </html>
