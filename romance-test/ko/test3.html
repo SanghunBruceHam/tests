@@ -86,8 +86,8 @@
 
   <div class="container">
     <div class="question">
-      <h1>연애 심리 테스트 3: 감추고 싶은 모습</h1>
-      <h2>Q. 혼자 있는 주말을 어떻게 보내시겠습니까?</h2>
+      <h1>💕 연애 심리 테스트 3</h1>
+      <h2>혼자 있는 주말을 어떻게 보내시겠어요?</h2>
     </div>
 
     <div class="choices">
@@ -98,15 +98,15 @@
     </div>
 
     <div id="result" class="result hidden">
-      <h3>결과</h3>
-      <p id="result-text"></p>
-    </div>
+      <h3>🎯 당신이 감추고 싶은 모습</h3>
+      <p id="resultText"></p>
 
-    <div class="share-buttons">
-      <a href="#" class="share-btn" onclick="shareToThreads()">Threads 공유</a>
-      <a href="#" class="share-btn" onclick="shareToTwitter()">X 공유</a>
-      <a href="#" class="share-btn" onclick="shareToFacebook()">Facebook 공유</a>
-      <button class="share-btn" onclick="copyURL()">URL 복사</button>
+      <div class="share-buttons">
+        <a href="#" class="share-btn" onclick="shareKakao()">카카오톡 공유</a>
+        <a href="#" class="share-btn" onclick="shareTwitter()">X 공유</a>
+        <a href="#" class="share-btn" onclick="shareFacebook()">페이스북 공유</a>
+        <a href="#" class="share-btn" onclick="copyUrl()">링크 복사</a>
+      </div>
     </div>
 
     <div class="navigation">
@@ -132,69 +132,45 @@
     };
 
     function showResult(choice) {
-      const resultElement = document.getElementById("result");
-      const resultText = document.getElementById("result-text");
-      resultText.textContent = resultTexts[choice];
-      resultElement.classList.remove("hidden");
+      document.getElementById('result').classList.remove('hidden');
+      document.getElementById('resultText').innerText = resultTexts[choice];
+
+      // Google Analytics 이벤트 추적
+      gtag('event', 'quiz_complete', {
+        'event_category': 'Romance Test',
+        'event_label': 'Test 3 - Choice ' + choice
+      });
     }
 
-    function shareToThreads() {
-      const text = '연애 심리 테스트: 감추고 싶은 모습 결과를 확인해보세요!';
+    function shareKakao() {
       const url = window.location.href;
-      try {
-        window.open(`https://threads.net/intent/post?text=${encodeURIComponent(text + ' ' + url)}`, '_blank', 'noopener,noreferrer');
-      } catch (error) {
-        console.error('Threads 공유 실패:', error);
-        copyURL();
-      }
-    }
+      const text = "연애 심리 테스트 3: 감추고 싶은 모습! 나의 결과를 확인해보세요!";
 
-    function shareToTwitter() {
-      const text = '연애 심리 테스트: 감추고 싶은 모습 결과를 확인해보세요!';
-      const url = window.location.href;
-      try {
-        window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`, '_blank', 'noopener,noreferrer');
-      } catch (error) {
-        console.error('Twitter 공유 실패:', error);
-        copyURL();
-      }
-    }
-
-    function shareToFacebook() {
-      const url = window.location.href;
-      try {
-        window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank', 'noopener,noreferrer');
-      } catch (error) {
-        console.error('Facebook 공유 실패:', error);
-        copyURL();
-      }
-    }
-
-    function copyURL() {
-      if (navigator.clipboard && window.isSecureContext) {
-        navigator.clipboard.writeText(window.location.href).then(() => {
-          alert('URL이 복사되었습니다!');
-        }).catch(() => {
-          fallbackCopyURL();
+      if (navigator.share) {
+        navigator.share({
+          title: text,
+          url: url
         });
       } else {
-        fallbackCopyURL();
+        window.open(`https://story.kakao.com/share?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`);
       }
     }
 
-    function fallbackCopyURL() {
-      const textArea = document.createElement('textarea');
-      textArea.value = window.location.href;
-      document.body.appendChild(textArea);
-      textArea.select();
-      try {
-        document.execCommand('copy');
-        alert('URL이 복사되었습니다!');
-      } catch (error) {
-        console.error('URL 복사 실패:', error);
-        prompt('수동으로 복사해주세요:', window.location.href);
-      }
-      document.body.removeChild(textArea);
+    function shareTwitter() {
+      const url = window.location.href;
+      const text = "연애 심리 테스트 3: 감추고 싶은 모습! 나의 결과를 확인해보세요!";
+      window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`);
+    }
+
+    function shareFacebook() {
+      const url = window.location.href;
+      window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`);
+    }
+
+    function copyUrl() {
+      navigator.clipboard.writeText(window.location.href).then(() => {
+        alert('링크가 복사되었습니다!');
+      });
     }
   </script>
 </body>
