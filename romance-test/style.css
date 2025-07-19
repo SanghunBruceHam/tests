@@ -29,21 +29,37 @@
 }
 
 .choice {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #4c51bf 0%, #553c9a 100%);
   color: white;
-  border: none;
-  border-radius: 10px;
-  padding: 15px;
-  margin: 10px 0;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+  padding: 18px;
+  margin: 12px 0;
   cursor: pointer;
   transition: all 0.3s ease;
   font-weight: 600;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2), 0 2px 6px rgba(0, 0, 0, 0.15);
+  position: relative;
+  backdrop-filter: blur(5px);
 }
 
 .choice:hover {
-  background: linear-gradient(135deg, #5a6fd8 0%, #6b4190 100%);
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+  background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3), 0 4px 10px rgba(76, 81, 191, 0.4);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.choice::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+  border-radius: 10px;
+  pointer-events: none;
 }
 
 footer {
@@ -52,4 +68,46 @@ footer {
   padding: 15px;
   color: #666;
   font-size: 14px;
+}
+
+footer a {
+  color: var(--accent-color);
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+footer a:hover {
+  color: var(--accent-hover);
+  text-decoration: underline;
+}
+
+.additional-nav {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.other-tests-btn {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: white;
+  padding: 15px 30px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+}
+
+.other-tests-btn:hover {
+  background: linear-gradient(135deg, #059669 0%, #047857 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+}
+
+@media (max-width: 768px) {
+  .other-tests-btn {
+    padding: 12px 24px;
+    font-size: 0.9rem;
+  }
 }
