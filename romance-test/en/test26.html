@@ -98,7 +98,7 @@
       <p id="result-text"></p>
 
       <div class="share-buttons">
-        <a href="#" onclick="shareToWhatsApp()" class="share-btn">💬 WhatsApp Share</a>
+        <a href="#" onclick="shareToThreads()" class="share-btn">🧵 Threads Share</a>
         <a href="#" onclick="shareToTwitter()" class="share-btn">🐦 X Share</a>
         <a href="#" onclick="shareToFacebook()" class="share-btn">📘 Facebook Share</a>
         <a href="#" onclick="copyURL()" class="share-btn">🔗 Copy URL</a>
@@ -142,13 +142,13 @@
       });
     }
 
-    function shareToWhatsApp() {
+    function shareToThreads() {
       const text = 'Love Psychology Test: Check out my love language result!';
       const url = window.location.href;
       try {
-        window.open(`https://wa.me/?text=${encodeURIComponent(text + ' ' + url)}`, '_blank', 'noopener,noreferrer');
+        window.open(`https://threads.net/intent/post?text=${encodeURIComponent(text + ' ' + url)}`, '_blank', 'noopener,noreferrer');
       } catch (error) {
-        console.error('WhatsApp sharing failed:', error);
+        console.error('Threads sharing failed:', error);
         copyURL();
       }
     }
