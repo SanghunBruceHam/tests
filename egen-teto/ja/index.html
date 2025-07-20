@@ -62,14 +62,8 @@
     }
   }
   </script>
-  <!-- Google AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" crossorigin="anonymous"></script>
-  <script>
-    (adsbygoogle = window.adsbygoogle || []).push({
-      google_ad_client: "ca-pub-5508768187151867",
-      enable_page_level_ads: true
-    });
-  </script>
+  <!-- AMP Ad Script -->
+  <script async custom-element="amp-ad" src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"></script>
 
   <!-- 공통 테마 CSS -->
   <link rel="stylesheet" href="/assets/common-theme.css">
@@ -1151,7 +1145,15 @@ This code replaces the old Google AdSense code with the new one provided, ensuri
     </div>
   </div>
 
-
+  <!-- AMP Ad -->
+  <amp-ad width="100vw" height="320"
+       type="adsense"
+       data-ad-client="ca-pub-5508768187151867"
+       data-ad-slot="7298546648"
+       data-auto-format="rspv"
+       data-full-width="">
+    <div overflow=""></div>
+  </amp-ad>
 
   <!-- Watermark -->
   <div style="position: fixed; left: 0; bottom: 0; width: 100vw; min-height: 36px; padding: 13px 0 11px 0; background: rgba(0,0,0,0.05); text-align: center; color: #999; font-size: 0.9rem; font-weight: 500; z-index: 1000; backdrop-filter: blur(2px);">
