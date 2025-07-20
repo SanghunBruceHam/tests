@@ -381,6 +381,30 @@ footer a:hover {
   text-decoration: underline;
 }
 
+/* PC용 추가 스타일 */
+@media (min-width: 1024px) {
+  .container {
+    padding: 30px;
+  }
+
+  .test-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .question {
+    padding: 40px;
+  }
+
+  .choices {
+    gap: 18px;
+  }
+
+  .choice {
+    padding: 22px 30px;
+  }
+}
+
 /* Responsive design */
 @media (max-width: 768px) {
   body {
