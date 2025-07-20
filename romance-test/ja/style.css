@@ -365,6 +365,30 @@ h1 {
   box-shadow: 0 8px 25px rgba(245, 158, 11, 0.4);
 }
 
+/* 한국어 버전과 완전 동일한 레이아웃 보장 */
+.result {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 모든 불필요한 버튼 완전 제거 */
+.restart-btn,
+.retry-btn,
+.again-btn {
+  display: none !important;
+  visibility: hidden !important;
+}
+
 /* リスタートボタンのスタイルを削除 - 韓国語版と統一 */
 .restart-btn {
   display: none !important;
