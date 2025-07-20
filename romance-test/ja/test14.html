@@ -1,23 +1,24 @@
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>恋愛心理テスト 14: あなたの恋愛持続力は？ | 無料心理テスト</title>
-  <meta name="description" content="恋人と別れたくなる瞬間で分かるあなたの恋愛持続力は？楽しい恋愛心理テストで自分の恋愛傾向を分析してみてください！">
-  <meta name="keywords" content="恋愛心理テスト, 恋愛持続力, 心理テスト, 恋愛傾向, 無料テスト">
+  <title>恋愛心理テスト 14: あなたの恋愛における嫉妬タイプは？ | 無料心理テスト</title>
+  <meta name="description" content="友達の成功を見た時の反応で分かるあなたの恋愛嫉妬タイプは？楽しい恋愛心理テストで自分の恋愛性格を分析してみましょう！">
+  <meta name="keywords" content="恋愛心理テスト, 嫉妬タイプ, 心理テスト, 恋愛性格, 無料テスト">
 
   <!-- Open Graph Meta Tags -->
   <meta property="og:type" content="article" />
-  <meta property="og:title" content="恋愛心理テスト 14: あなたの恋愛持続力は？" />
-  <meta property="og:description" content="恋人と別れたくなる瞬間で分かるあなたの恋愛持続力は？" />
+  <meta property="og:title" content="恋愛心理テスト 14: あなたの恋愛における嫉妬タイプは？" />
+  <meta property="og:description" content="友達の成功を見た時の反応で分かるあなたの恋愛嫉妬タイプは？" />
   <meta property="og:image" content="https://tests.mahalohana-bruce.com/romance-test/ja/thumbnail.png" />
   <meta property="og:url" content="https://tests.mahalohana-bruce.com/romance-test/ja/test14.html" />
 
   <!-- Twitter Card Meta Tags -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="恋愛心理テスト: 恋愛持続力" />
-  <meta name="twitter:description" content="別れたくなる瞬間で分かる私の恋愛持続力！" />
+  <meta name="twitter:title" content="恋愛心理テスト: 嫉妬タイプ診断" />
+  <meta name="twitter:description" content="友達の成功への反応で分かる恋愛嫉妬度！" />
   <meta name="twitter:image" content="https://tests.mahalohana-bruce.com/romance-test/ja/thumbnail.png" />
 
   <link rel="canonical" href="https://tests.mahalohana-bruce.com/romance-test/ja/test14.html">
@@ -46,8 +47,8 @@
   {
     "@context": "https://schema.org",
     "@type": "Article",
-    "headline": "恋愛心理テスト 14: あなたの恋愛持続力は？",
-    "description": "恋人と別れたくなる瞬間で分かるあなたの恋愛持続力は？",
+    "headline": "恋愛心理テスト 14: あなたの恋愛における嫉妬タイプは？",
+    "description": "友達の成功を見た時の反応で分かるあなたの恋愛嫉妬タイプは？",
     "image": "https://tests.mahalohana-bruce.com/romance-test/ja/thumbnail.png",
     "author": {
       "@type": "Organization",
@@ -87,22 +88,22 @@
   <div class="container">
     <div class="question">
       <h1>💖 恋愛心理テスト 14</h1>
-      <h2>恋人と別れたくなる瞬間は？</h2>
+      <h2>友達が大きな成功を収めたと聞いた時、最初に思うことは？</h2>
       <div class="choices">
-        <div class="choice" onclick="showResult('A')">A. 価値観の違いを感じた時</div>
-        <div class="choice" onclick="showResult('B')">B. 新鮮味がなくなった時</div>
-        <div class="choice" onclick="showResult('C')">C. 相手が変わってしまった時</div>
-        <div class="choice" onclick="showResult('D')">D. 他に好きな人ができた時</div>
+        <div class="choice" onclick="showResult('A')">A. 素直におめでとうと思う</div>
+        <div class="choice" onclick="showResult('B')">B. 自分も頑張らなきゃと思う</div>
+        <div class="choice" onclick="showResult('C')">C. なんで私じゃないんだろうと思う</div>
+        <div class="choice" onclick="showResult('D')">D. 詳しい話を聞きたくなる</div>
       </div>
     </div>
 
     <div id="result" class="result hidden">
-      <h3>⏰ あなたの恋愛持続力</h3>
+      <h3>💕 あなたの恋愛嫉妬タイプ</h3>
       <p id="result-text"></p>
 
       <div class="share-buttons">
         <a href="#" onclick="shareToThreads()" class="share-btn">🧵 Threads共有</a>
-        <a href="#" onclick="shareToLINE()" class="share-btn">💬 LINE共有</a>
+        <a href="#" onclick="shareToLine()" class="share-btn">💬 LINE共有</a>
         <a href="#" onclick="shareToTwitter()" class="share-btn">🐦 X共有</a>
         <a href="#" onclick="shareToFacebook()" class="share-btn">📘 Facebook共有</a>
         <a href="#" onclick="copyURL()" class="share-btn">🔗 URL複製</a>
@@ -124,10 +125,10 @@
 
   <script>
     const resultTexts = {
-      A: "🔍 慎重型の持続力！根本的な価値観の違いを重視するタイプで、表面的な問題には動じません。真剣に関係を考え、長期的な視点で恋愛を判断する持続力を持っています。",
-      B: "⚡ 刺激追求型の持続力！新しさと刺激を求める傾向があり、マンネリを嫌います。関係に変化と成長を求め、常に新鮮さを維持しようと努力する恋愛スタイルです。",
-      C: "💎 一途型の持続力！相手の本質的な変化に敏感で、初心を大切にします。相手への愛情が深く、変わらない関係を求める忠実で持続力のある恋愛をします。",
-      D: "🌟 感情重視型の持続力！心の動きに正直で、感情の変化に敏感です。愛情の深さを重視し、真の愛を求めて関係を発展させようとする情熱的な持続力を持っています。"
+      A: "あなたは「寛容タイプ」です。恋愛でも相手の成功や友人関係を素直に喜ぶことができる心の広い人です。嫉妬心よりも愛情が勝る、とても健全な恋愛をします。",
+      B: "あなたは「向上心タイプ」です。他人の成功を自分の成長のきっかけとして捉える前向きな性格です。恋愛でも相手と一緒に成長していける関係を築きます。",
+      C: "あなたは「競争心タイプ」です。負けず嫌いで、恋愛でも相手や周りの人への対抗意識が強い傾向があります。時には嫉妬心が恋愛関係に影響することも。",
+      D: "あなたは「好奇心タイプ」です。他人のことに興味津々で、恋愛でも相手のすべてを知りたがる傾向があります。時に束縛的になりがちなので注意が必要です。"
     };
 
     function showResult(choice) {
@@ -136,8 +137,10 @@
       resultText.textContent = resultTexts[choice];
       resultElement.classList.remove("hidden");
 
+      // 結果へスクロール
       resultElement.scrollIntoView({ behavior: 'smooth' });
 
+      // Google Analytics イベント追跡
       gtag('event', 'quiz_complete', {
         'event_category': 'Romance Test',
         'event_label': 'Test 14 - Choice ' + choice
@@ -145,7 +148,7 @@
     }
 
     function shareToThreads() {
-      const text = '恋愛心理テスト：あなたの恋愛持続力の結果をチェックしてください！';
+      const text = '恋愛心理テスト：あなたの嫉妬タイプ結果をチェックしてみて！';
       const url = window.location.href;
       try {
         window.open(`https://threads.net/intent/post?text=${encodeURIComponent(text + ' ' + url)}`, '_blank', 'noopener,noreferrer');
@@ -155,8 +158,8 @@
       }
     }
 
-    function shareToLINE() {
-      const text = '恋愛心理テスト：あなたの恋愛持続力の結果をチェックしてください！';
+    function shareToLine() {
+      const text = '恋愛心理テスト：あなたの嫉妬タイプ結果をチェックしてみてください！';
       const url = window.location.href;
       try {
         window.open(`https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
@@ -167,7 +170,7 @@
     }
 
     function shareToTwitter() {
-      const text = '恋愛心理テスト：あなたの恋愛持続力の結果をチェックしてください！';
+      const text = '恋愛心理テスト：あなたの嫉妬タイプ結果をチェックしてみてください！';
       const url = window.location.href;
       try {
         window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`, '_blank', 'noopener,noreferrer');
@@ -208,7 +211,7 @@
         document.execCommand('copy');
         alert('URLがコピーされました！');
       } catch (error) {
-        console.error('URL複製失敗:', error);
+        console.error('URLコピー失敗:', error);
         prompt('手動でコピーしてください:', window.location.href);
       }
       document.body.removeChild(textArea);
