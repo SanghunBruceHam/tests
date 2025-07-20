@@ -365,6 +365,11 @@ h1 {
   box-shadow: 0 8px 25px rgba(245, 158, 11, 0.4);
 }
 
+/* リスタートボタンのスタイルを削除 - 韓国語版と統一 */
+.restart-btn {
+  display: none !important;
+}
+
 footer {
   text-align: center;
   margin-top: 50px;
