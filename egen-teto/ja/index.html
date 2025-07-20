@@ -1012,7 +1012,7 @@ This code replaces the old Google AdSense code with the new one provided, ensuri
         <div class="progress-section">
           <div class="progress-header">
             <span class="progress-label">進捗</span>
-            <span class="progress-counter" id="progressCounter">1/10</span>
+            <span class="progress-counter" id="progressCounter">1/20</span>
           </div>
           <div class="progress-bar">
             <div class="progress-fill" id="progressFill"></div>
@@ -1851,7 +1851,7 @@ This code replaces the old Google AdSense code with the new one provided, ensuri
     function nextQuestion() {
       currentQuestion++;
 
-      if (currentQuestion < questions.length) {
+      if (currentQuestion < questions.length && currentQuestion < 20) {
         showQuestion();
       } else {
         showLoading();
@@ -1861,7 +1861,7 @@ This code replaces the old Google AdSense code with the new one provided, ensuri
     function updateProgress() {
       const progress = ((currentQuestion + 1) / questions.length) * 100;
       document.getElementById('progressFill').style.width = progress + '%';
-      document.getElementById('progressCounter').textContent = `${currentQuestion + 1}/10`;
+      document.getElementById('progressCounter').textContent = `${currentQuestion + 1}/20`;
     }
 
     function showLoading() {
@@ -2088,22 +2088,7 @@ ${result.fullDescription}
       });
     });
 
-        function updateProgress() {
-      const totalQuestions = 20;
-      const progress = ((currentQuestion + 1) / totalQuestions) * 100;
-      document.getElementById('progressFill').style.width = progress + '%';
-      document.getElementById('progressCounter').textContent = `${currentQuestion + 1}/${totalQuestions}`;
-    }
-
-    function nextQuestion() {
-      currentQuestion++;
-
-      if (currentQuestion < 20) {
-        showQuestion();
-      } else {
-        showLoading();
-      }
-    }
+        
   </script>
 </body>
 </html>
