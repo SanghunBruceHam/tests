@@ -1,4 +1,3 @@
-
 :root {
   /* トレンディなMZ世代向けカラーパレット */
   --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -470,13 +469,13 @@ footer a:hover {
   }
 
   .navigation {
-    gap: 12px;
+    flex-direction: column;
+    align-items: center;
   }
 
   .nav-btn {
-    padding: 14px 22px;
-    min-width: 140px;
-    font-size: 0.9rem;
+    width: 100%;
+    max-width: 280px;
   }
 
   .share-buttons {
