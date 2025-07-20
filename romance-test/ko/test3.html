@@ -38,3 +38,164 @@
     gtag('config', 'G-45VSGEM7EZ');
   </script>
 
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5508768187151867"
+     crossorigin="anonymous"></script>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+      google_ad_client: "ca-pub-5508768187151867",
+      enable_page_level_ads: true
+    });
+  </script>
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "연애 심리 테스트 3: 좋아하는 사람 앞에서 감추고 싶은 모습",
+    "description": "혼자 있는 주말 보내는 방법으로 알아보는 당신이 감추고 싶은 모습은?",
+    "image": "https://tests.mahalohana-bruce.com/romance-test/ko/thumbnail.png",
+    "author": {
+      "@type": "Organization",
+      "name": "Psychological Tests"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Psychological Tests",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://tests.mahalohana-bruce.com/favicon.png"
+      }
+    },
+    "datePublished": "2024-01-01",
+    "dateModified": "2024-01-01",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://tests.mahalohana-bruce.com/romance-test/ko/test3.html"
+    }
+  }
+  </script>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="question">
+      <h1>💖 연애 심리 테스트 3</h1>
+      <h2>혼자 있는 주말을 어떻게 보내시겠어요?</h2>
+      <div class="choices">
+        <div class="choice" onclick="showResult('A')">A. 집에서 영화나 드라마 정주행</div>
+        <div class="choice" onclick="showResult('B')">B. 친구들과 만나서 수다떨기</div>
+        <div class="choice" onclick="showResult('C')">C. 혼자 카페나 공원 나들이</div>
+        <div class="choice" onclick="showResult('D')">D. 집안일이나 정리정돈하기</div>
+      </div>
+    </div>
+
+    <div id="result" class="result hidden">
+      <h3>💖 당신이 감추고 싶은 모습</h3>
+      <p id="result-text"></p>
+
+      <div class="share-buttons">
+        <a href="#" onclick="shareToThreads()" class="share-btn">🧵 Threads 공유</a>
+        <a href="#" onclick="shareToTwitter()" class="share-btn">🐦 X 공유</a>
+        <a href="#" onclick="shareToFacebook()" class="share-btn">📘 Facebook 공유</a>
+        <a href="#" onclick="copyURL()" class="share-btn">🔗 URL 복사</a>
+      </div>
+    </div>
+
+    <div class="navigation">
+      <a href="test2.html" class="nav-btn">← 이전</a>
+      <a href="index.html" class="nav-btn">📚 목차로</a>
+      <a href="test4.html" class="nav-btn">다음 →</a>
+    </div>
+
+    <div class="additional-nav">
+      <a href="https://tests.mahalohana-bruce.com/ko/" class="other-tests-btn">🧠 다른 심리테스트 해보기</a>
+    </div>
+  </div>
+
+  <footer>© 연애 심리 테스트 | <a href="https://tests.mahalohana-bruce.com" target="_blank" rel="noopener noreferrer">tests.mahalohana-bruce.com</a></footer>
+
+  <script>
+    function showResult(choice) {
+      const results = {
+        'A': '당신이 감추고 싶은 모습은 "게으른 모습"입니다. 평소 활발하고 에너지 넘치는 모습을 보여주려 하지만, 사실은 집에서 뒹굴거리며 아무것도 하지 않는 시간을 좋아합니다. 연인 앞에서는 항상 완벽한 모습을 보이고 싶어해요.',
+        'B': '당신이 감추고 싶은 모습은 "외로운 모습"입니다. 평소 사교적이고 친구들과 잘 어울리는 모습을 보이지만, 때로는 혼자만의 시간이 필요할 때가 있습니다. 연인에게는 항상 밝고 사교적인 모습만 보여주고 싶어해요.',
+        'C': '당신이 감추고 싶은 모습은 "소심한 모습"입니다. 평소 자신감 있고 당당한 모습을 보이지만, 사실은 혼자만의 조용한 시간을 통해 에너지를 충전합니다. 연인 앞에서는 강하고 독립적인 모습을 유지하고 싶어해요.',
+        'D': '당신이 감추고 싶은 모습은 "완벽하지 않은 모습"입니다. 평소 깔끔하고 정리정돈된 모습을 중시하지만, 때로는 어수선하고 정리되지 않은 상태가 될 때가 있습니다. 연인에게는 항상 완벽한 모습을 보이고 싶어해요.'
+      };
+
+      document.getElementById('result-text').innerText = results[choice];
+      document.getElementById('result').classList.remove('hidden');
+
+      document.getElementById('result').scrollIntoView({ behavior: 'smooth' });
+
+      gtag('event', 'quiz_complete', {
+        'event_category': 'Romance Test',
+        'event_label': 'Test 3 - Choice ' + choice
+      });
+    }
+
+    function shareToThreads() {
+      const text = '연애 심리 테스트: 좋아하는 사람 앞에서 감추고 싶은 모습 결과를 확인해보세요!';
+      const url = window.location.href;
+      try {
+        window.open(`https://threads.net/intent/post?text=${encodeURIComponent(text + ' ' + url)}`, '_blank', 'noopener,noreferrer');
+      } catch (error) {
+        console.error('Threads 공유 실패:', error);
+        copyURL();
+      }
+    }
+
+    function shareToTwitter() {
+      const text = '연애 심리 테스트: 좋아하는 사람 앞에서 감추고 싶은 모습 결과를 확인해보세요!';
+      const url = window.location.href;
+      try {
+        window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`, '_blank', 'noopener,noreferrer');
+      } catch (error) {
+        console.error('Twitter 공유 실패:', error);
+        copyURL();
+      }
+    }
+
+    function shareToFacebook() {
+      const url = window.location.href;
+      try {
+        window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank', 'noopener,noreferrer');
+      } catch (error) {
+        console.error('Facebook 공유 실패:', error);
+        copyURL();
+      }
+    }
+
+    function copyURL() {
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(window.location.href).then(() => {
+          alert('URL이 복사되었습니다!');
+        }).catch(() => {
+          fallbackCopyURL();
+        });
+      } else {
+        fallbackCopyURL();
+      }
+    }
+
+    function fallbackCopyURL() {
+      const textArea = document.createElement('textarea');
+      textArea.value = window.location.href;
+      document.body.appendChild(textArea);
+      textArea.select();
+      try {
+        document.execCommand('copy');
+        alert('URL이 복사되었습니다!');
+      } catch (error) {
+        console.error('URL 복사 실패:', error);
+        prompt('수동으로 복사해주세요:', window.location.href);
+      }
+      document.body.removeChild(textArea);
+    }
+  </script>
+</body>
+</html>
+
