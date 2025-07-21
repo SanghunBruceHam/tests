@@ -1005,8 +1005,8 @@
             </div>
           </div>
 
-          <button id="startButton" class="start-btn" onclick="startTest()" disabled>
-            테스트 시작하기 <i class="fas fa-arrow-right"></i>
+          <button class="btn btn-primary" id="startBtn" onclick="startTest()" disabled>
+            테스트 시작하기
           </button>
         </div>
       </div>
@@ -1285,7 +1285,7 @@
       event.target.closest('.gender-option').classList.add('selected');
       
       // Enable start button
-      document.getElementById('startButton').disabled = false;
+      document.getElementById('startBtn').disabled = false;
     }
 
     function startTest() {
@@ -1474,7 +1474,7 @@
         option.classList.remove('selected');
       });
       
-      document.getElementById('startButton').disabled = true;
+      document.getElementById('startBtn').disabled = true;
     }
   </script>
 </body>
