@@ -1,23 +1,24 @@
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>恋愛心理テスト1: あなたの恋愛タイプは？ | 無料心理テスト</title>
-  <meta name="description" content="スマホでの連絡頻度で分かるあなたの恋愛タイプ。楽しい恋愛心理テストで自分の恋愛性格を分析してみよう！">
-  <meta name="keywords" content="恋愛心理テスト, 恋愛タイプ, 心理テスト, 恋愛性格, 無料テスト">
+  <title>恋愛心理テスト1: あなたが恋人に求めるもの | 無料心理テスト</title>
+  <meta name="description" content="バニラアイスのトッピング選択で分かるあなたが恋人に求めるものは？楽しい恋愛心理テストで自分の恋愛傾向を分析してみよう！">
+  <meta name="keywords" content="恋愛心理テスト, 恋人に求めるもの, 心理テスト, 恋愛傾向, 無料テスト">
 
   <!-- Open Graph Meta Tags -->
   <meta property="og:type" content="article" />
-  <meta property="og:title" content="恋愛心理テスト1: あなたの恋愛タイプは？" />
-  <meta property="og:description" content="スマホでの連絡頻度で分かるあなたの恋愛タイプは？" />
+  <meta property="og:title" content="恋愛心理テスト1: あなたが恋人に求めるもの" />
+  <meta property="og:description" content="バニラアイスのトッピング選択で分かるあなたが恋人に求めるものは？" />
   <meta property="og:image" content="https://tests.mahalohana-bruce.com/romance-test/ja/thumbnail.png" />
   <meta property="og:url" content="https://tests.mahalohana-bruce.com/romance-test/ja/test1.html" />
 
   <!-- Twitter Card Meta Tags -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="恋愛心理テスト: 恋愛タイプ診断" />
-  <meta name="twitter:description" content="連絡頻度で分かる私の恋愛タイプ！" />
+  <meta name="twitter:title" content="恋愛心理テスト: 恋人に求めるもの" />
+  <meta name="twitter:description" content="バニラアイスのトッピングで分かる私の恋愛欲求！" />
   <meta name="twitter:image" content="https://tests.mahalohana-bruce.com/romance-test/ja/thumbnail.png" />
 
   <link rel="canonical" href="https://tests.mahalohana-bruce.com/romance-test/ja/test1.html">
@@ -41,13 +42,16 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5508768187151867"
        crossorigin="anonymous"></script>
 
+  <!-- AMP Ad Script -->
+  <script async custom-element="amp-ad" src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"></script>
+
   <!-- JSON-LD Structured Data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Article",
-    "headline": "恋愛心理テスト1: あなたの恋愛タイプは？",
-    "description": "スマホでの連絡頻度で分かるあなたの恋愛タイプは？",
+    "headline": "恋愛心理テスト1: あなたが恋人に求めるもの",
+    "description": "バニラアイスのトッピング選択で分かるあなたが恋人に求めるものは？",
     "image": "https://tests.mahalohana-bruce.com/romance-test/ja/thumbnail.png",
     "author": {
       "@type": "Organization",
@@ -71,9 +75,6 @@
   </script>
 
   <link rel="stylesheet" href="style.css">
-  <!-- AMP Ad Script -->
-  <script async custom-element="amp-ad" src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"></script>
-
 </head>
 <body>
   
@@ -89,17 +90,17 @@
   <div class="container">
     <div class="question">
       <h1>💖 恋愛心理テスト1</h1>
-      <h2>恋人とのスマホでの連絡頻度は？</h2>
+      <h2>バニラアイスクリームにトッピングするなら次のうちどれ？</h2>
       <div class="choices">
-        <div class="choice" onclick="showResult('A')">A. 毎日何度もメッセージ交換</div>
-        <div class="choice" onclick="showResult('B')">B. 1日1回は必ず連絡</div>
-        <div class="choice" onclick="showResult('C')">C. 2-3日に1回程度</div>
-        <div class="choice" onclick="showResult('D')">D. 会える時だけ連絡</div>
+        <div class="choice" onclick="showResult('A')">A. いちごジャム</div>
+        <div class="choice" onclick="showResult('B')">B. 抹茶シロップ</div>
+        <div class="choice" onclick="showResult('C')">C. ナッツ＆ドライフルーツ</div>
+        <div class="choice" onclick="showResult('D')">D. チョコレートシロップ</div>
       </div>
     </div>
 
     <div id="result" class="result hidden">
-      <h3>💕 あなたの恋愛タイプ</h3>
+      <h3>💖 あなたが恋人に求めるもの</h3>
       <p id="result-text"></p>
 
       <div class="share-buttons">
@@ -124,21 +125,19 @@
   <footer>© 恋愛心理テスト | <a href="https://tests.mahalohana-bruce.com" target="_blank" rel="noopener noreferrer">tests.mahalohana-bruce.com</a></footer>
 
   <script>
-    const resultTexts = {
-      A: "💕 べったり愛情タイプ！恋人との時間を何よりも大切にし、常に繋がっていたい愛情深い性格です。相手への関心が高く、一途で献身的な恋愛をします。",
-      B: "🌸 バランス重視タイプ！恋愛と個人の時間のバランスを上手に取りながら、安定した関係を築くのが得意です。現実的で長続きする恋愛をします。",
-      C: "🎯 マイペース恋愛タイプ！自分の時間も大切にしながら恋愛を楽しむタイプです。相手に依存しすぎず、自立した関係を好みます。",
-      D: "🌟 自由奔放タイプ！個人の自由を重視し、束縛されることを嫌います。お互いの独立性を尊重する大人の恋愛を好みます。"
+    const results = {
+      'A': 'あなたは燃えるような情熱の持ち主です。恋人にも「情熱」を求めるでしょう。一緒にいる時は熱い愛を交わしたいと思い、平凡な恋愛よりもドラマチックなロマンスを夢見ています。',
+      'B': 'あなたは恋人に「安定」を求めるでしょう。変化よりも平穏を好み、信頼でき頼りになる確実なパートナーを求めています。着実で持続的な愛を重視します。',
+      'C': 'あなたは恋人に「知性」を求めるでしょう。一緒にいて退屈な人には興味を失いやすいです。深い会話ができ、知的好奇心を刺激してくれるパートナーを好みます。',
+      'D': 'あなたは恋人に「優しさ」を求めるでしょう。あなたが辛い時には励ましてくれる恋人が理想的です。さらに記念日に花束をプレゼントしてくれるロマンチックな相手なら最高です。'
     };
 
     function showResult(choice) {
-      const resultElement = document.getElementById("result");
-      const resultText = document.getElementById("result-text");
-      resultText.textContent = resultTexts[choice];
-      resultElement.classList.remove("hidden");
+      document.getElementById('result').classList.remove('hidden');
+      document.getElementById('result-text').innerText = results[choice];
 
       // 結果へスクロール
-      resultElement.scrollIntoView({ behavior: 'smooth' });
+      document.getElementById('result').scrollIntoView({ behavior: 'smooth' });
 
       // Google Analytics イベント追跡
       gtag('event', 'quiz_complete', {
@@ -148,7 +147,7 @@
     }
 
     function shareToThreads() {
-      const text = '恋愛心理テスト：あなたの恋愛スタイル結果をチェックしてみて！';
+      const text = '恋愛心理テスト：あなたが恋人に求めるもの結果をチェックしてみて！';
       const url = window.location.href;
       try {
         window.open(`https://threads.net/intent/post?text=${encodeURIComponent(text + ' ' + url)}`, '_blank', 'noopener,noreferrer');
@@ -159,7 +158,7 @@
     }
 
     function shareToLine() {
-      const text = '恋愛心理テスト: あなたの恋愛タイプ結果をチェックしてみて！';
+      const text = '恋愛心理テスト: あなたが恋人に求めるもの結果をチェックしてみて！';
       const url = window.location.href;
       try {
         window.open(`https://line.me/R/share?text=${encodeURIComponent(text + ' ' + url)}`, '_blank', 'noopener,noreferrer');
@@ -170,7 +169,7 @@
     }
 
     function shareToTwitter() {
-      const text = '恋愛心理テスト: あなたの恋愛タイプ結果をチェックしてみて！';
+      const text = '恋愛心理テスト: あなたが恋人に求めるもの結果をチェックしてみて！';
       const url = window.location.href;
       try {
         window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`, '_blank', 'noopener,noreferrer');

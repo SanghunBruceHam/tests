@@ -41,6 +41,9 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5508768187151867"
        crossorigin="anonymous"></script>
 
+  <!-- AMP Ad Script -->
+  <script async custom-element="amp-ad" src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"></script>
+
   <!-- JSON-LD Structured Data -->
   <script type="application/ld+json">
   {
@@ -70,13 +73,10 @@
   }
   </script>
 
-  <link rel="stylesheet" href="../ko/style.css">
-  <!-- AMP Ad Script -->
-  <script async custom-element="amp-ad" src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"></script>
-
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  
+
   <amp-ad width="100vw" height="320"
        type="adsense"
        data-ad-client="ca-pub-5508768187151867"
@@ -91,15 +91,15 @@
       <h1>💖 Love Psychology Test 1</h1>
       <h2>What would you add to your vanilla ice cream?</h2>
       <div class="choices">
-        <div class="choice" onclick="showResult('A')">A. Chocolate sauce</div>
-        <div class="choice" onclick="showResult('B')">B. Fresh fruits</div>
-        <div class="choice" onclick="showResult('C')">C. Nuts</div>
-        <div class="choice" onclick="showResult('D')">D. Caramel sauce</div>
+        <div class="choice" onclick="showResult('A')">A. Strawberry jam</div>
+        <div class="choice" onclick="showResult('B')">B. Matcha syrup</div>
+        <div class="choice" onclick="showResult('C')">C. Nuts & dried fruits</div>
+        <div class="choice" onclick="showResult('D')">D. Chocolate syrup</div>
       </div>
     </div>
 
     <div id="result" class="result hidden">
-      <h3>💕 What You Want From Your Partner</h3>
+      <h3>💖 What You Want From Your Partner</h3>
       <p id="result-text"></p>
 
       <div class="share-buttons">
@@ -123,21 +123,19 @@
   <footer>© Love Psychology Tests | <a href="https://tests.mahalohana-bruce.com" target="_blank" rel="noopener noreferrer">tests.mahalohana-bruce.com</a></footer>
 
   <script>
-    const resultTexts = {
-      A: "You seek PASSION from your partner. Like rich, sweet chocolate, you want to feel burning love and intense emotions. You prefer deep, intimate relationships over casual ones, desiring a love that's all-consuming and passionate.",
-      B: "You seek FRESHNESS from your partner. Like fruit that's always fresh and refreshing, you prefer someone who brings new stimulation to your life. You dislike routine and value relationships that constantly offer new experiences and surprises.",
-      C: "You seek STABILITY from your partner. Like nuts that provide solid foundation, you want someone reliable and trustworthy. Rather than fleeting romance, you value steady, long-term partnerships where you can feel secure and build something lasting.",
-      D: "You seek TENDERNESS from your partner. Like sweet, warm caramel, you want someone who envelops you with gentle, caring love. Rather than intense passion, you idealize peaceful, comfortable relationships filled with gentle affection."
+    const results = {
+      'A': 'You are the owner of burning passion. You will also demand "PASSION" from your partner. You want to share hot love when you\'re together, and dream of dramatic romance rather than ordinary relationships.',
+      'B': 'You will demand "STABILITY" from your partner. You prefer tranquility over change and want a reliable, dependable partner you can trust. You value steady and lasting love.',
+      'C': 'You will demand "INTELLIGENCE" from your partner. You easily lose interest in people who are boring to be with. You prefer partners who can engage in deep conversations and stimulate your intellectual curiosity.',
+      'D': 'You will demand "KINDNESS" from your partner. A lover who encourages you when you\'re struggling is ideal for you. Moreover, if they\'re romantic enough to give you flowers on anniversaries, that would be perfect.'
     };
 
     function showResult(choice) {
-      const resultElement = document.getElementById("result");
-      const resultText = document.getElementById("result-text");
-      resultText.textContent = resultTexts[choice];
-      resultElement.classList.remove("hidden");
+      document.getElementById('result').classList.remove('hidden');
+      document.getElementById('result-text').innerText = results[choice];
 
       // Scroll to result
-      resultElement.scrollIntoView({ behavior: 'smooth' });
+      document.getElementById('result').scrollIntoView({ behavior: 'smooth' });
 
       // Google Analytics event tracking
       gtag('event', 'quiz_complete', {
@@ -198,200 +196,6 @@
       try {
         document.execCommand('copy');
         alert('URL copied!');
-      } catch (error) {
-        console.error('URL copy failed:', error);
-        prompt('Please copy manually:', window.location.href);
-      }
-      document.body.removeChild(textArea);
-    }
-  </script>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Love Psychology Test 1: Your Dating Style | Free Personality Test</title>
-  <meta name="description" content="Discover your dating style based on communication frequency. Fun love psychology test to analyze your romantic personality!">
-  <meta name="keywords" content="love psychology test, dating style, personality test, romantic personality, free test">
-
-  <!-- Open Graph Meta Tags -->
-  <meta property="og:type" content="article" />
-  <meta property="og:title" content="Love Psychology Test 1: Your Dating Style" />
-  <meta property="og:description" content="What does your communication frequency reveal about your dating style?" />
-  <meta property="og:image" content="https://tests.mahalohana-bruce.com/romance-test/en/thumbnail.png" />
-  <meta property="og:url" content="https://tests.mahalohana-bruce.com/romance-test/en/test1.html" />
-
-  <!-- Twitter Card Meta Tags -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Love Psychology Test: Dating Style Analysis" />
-  <meta name="twitter:description" content="Find out your dating style through communication patterns!" />
-  <meta name="twitter:image" content="https://tests.mahalohana-bruce.com/romance-test/en/thumbnail.png" />
-
-  <link rel="canonical" href="https://tests.mahalohana-bruce.com/romance-test/en/test1.html">
-  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-
-  <!-- hreflang for multilingual SEO -->
-  <link rel="alternate" hreflang="ko" href="https://tests.mahalohana-bruce.com/romance-test/ko/test1.html" />
-  <link rel="alternate" hreflang="ja" href="https://tests.mahalohana-bruce.com/romance-test/ja/test1.html" />
-  <link rel="alternate" hreflang="en" href="https://tests.mahalohana-bruce.com/romance-test/en/test1.html" />
-  <link rel="alternate" hreflang="x-default" href="https://tests.mahalohana-bruce.com/romance-test/ko/test1.html" />
-
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-45VSGEM7EZ"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-45VSGEM7EZ');
-  </script>
-
-  <!-- JSON-LD Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    "headline": "Love Psychology Test 1: Your Dating Style",
-    "description": "What does your communication frequency reveal about your dating style?",
-    "image": "https://tests.mahalohana-bruce.com/romance-test/en/thumbnail.png",
-    "author": {
-      "@type": "Organization",
-      "name": "Psychological Tests"
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": "Psychological Tests",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://tests.mahalohana-bruce.com/favicon.png"
-      }
-    },
-    "datePublished": "2024-01-01",
-    "dateModified": "2024-01-01",
-    "mainEntityOfPage": {
-      "@type": "WebPage",
-      "@id": "https://tests.mahalohana-bruce.com/romance-test/en/test1.html"
-    }
-  }
-  </script>
-
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-  <div class="container">
-    <div class="question">
-      <h1>💖 Love Psychology Test 1</h1>
-      <h2>How often do you communicate with your partner via phone?</h2>
-      <div class="choices">
-        <div class="choice" onclick="showResult('A')">A. Multiple messages throughout the day</div>
-        <div class="choice" onclick="showResult('B')">B. At least once daily</div>
-        <div class="choice" onclick="showResult('C')">C. Every 2-3 days</div>
-        <div class="choice" onclick="showResult('D')">D. Only when we plan to meet</div>
-      </div>
-    </div>
-
-    <div id="result" class="result hidden">
-      <h3>💕 Your Dating Style</h3>
-      <p id="result-text"></p>
-
-      <div class="share-buttons">
-        <a href="#" onclick="shareToWhatsApp()" class="share-btn">💬 WhatsApp Share</a>
-        <a href="#" onclick="shareToTwitter()" class="share-btn">🐦 X Share</a>
-        <a href="#" onclick="shareToFacebook()" class="share-btn">📘 Facebook Share</a>
-        <a href="#" onclick="copyURL()" class="share-btn">🔗 Copy URL</a>
-      </div>
-    </div>
-
-    <div class="navigation">
-      <a href="index.html" class="nav-btn">📚 Back to List</a>
-      <a href="test2.html" class="nav-btn">Next →</a>
-    </div>
-
-    <div class="additional-nav">
-      <a href="https://tests.mahalohana-bruce.com/en/" class="other-tests-btn">🧠 Try Other Psychology Tests</a>
-    </div>
-  </div>
-
-  <footer>© Love Psychology Tests | <a href="https://tests.mahalohana-bruce.com" target="_blank" rel="noopener noreferrer">tests.mahalohana-bruce.com</a></footer>
-
-  <script>
-    const resultTexts = {
-      A: "💕 Clingy Romantic Type! You cherish every moment with your partner and want to stay constantly connected. You're affectionate, devoted, and believe in expressing love frequently.",
-      B: "🌸 Balanced Love Type! You skillfully balance romance with personal time, creating stable and lasting relationships. You're realistic and prefer sustainable love patterns.",
-      C: "🎯 Independent Lover Type! You enjoy romance while maintaining your personal space. You don't get overly dependent and prefer relationships with mutual independence.",
-      D: "🌟 Free-spirited Type! You value personal freedom and dislike being tied down. You prefer mature relationships that respect each other's independence."
-    };
-
-    function showResult(choice) {
-      const resultElement = document.getElementById("result");
-      const resultText = document.getElementById("result-text");
-      resultText.textContent = resultTexts[choice];
-      resultElement.classList.remove("hidden");
-
-      // Scroll to result
-      resultElement.scrollIntoView({ behavior: 'smooth' });
-
-      // Google Analytics event tracking
-      gtag('event', 'quiz_complete', {
-        'event_category': 'Romance Test',
-        'event_label': 'Test 1 - Choice ' + choice
-      });
-    }
-
-    function shareToWhatsApp() {
-      const text = 'Love Psychology Test: Check out my dating style result!';
-      const url = window.location.href;
-      try {
-        window.open(`https://wa.me/?text=${encodeURIComponent(text + ' ' + url)}`, '_blank', 'noopener,noreferrer');
-      } catch (error) {
-        console.error('WhatsApp share failed:', error);
-        copyURL();
-      }
-    }
-
-    function shareToTwitter() {
-      const text = 'Love Psychology Test: Check out my dating style result!';
-      const url = window.location.href;
-      try {
-        window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`, '_blank', 'noopener,noreferrer');
-      } catch (error) {
-        console.error('Twitter share failed:', error);
-        copyURL();
-      }
-    }
-
-    function shareToFacebook() {
-      const url = window.location.href;
-      try {
-        window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank', 'noopener,noreferrer');
-      } catch (error) {
-        console.error('Facebook share failed:', error);
-        copyURL();
-      }
-    }
-
-    function copyURL() {
-      if (navigator.clipboard && window.isSecureContext) {
-        navigator.clipboard.writeText(window.location.href).then(() => {
-          alert('URL copied to clipboard!');
-        }).catch(() => {
-          fallbackCopyURL();
-        });
-      } else {
-        fallbackCopyURL();
-      }
-    }
-
-    function fallbackCopyURL() {
-      const textArea = document.createElement('textarea');
-      textArea.value = window.location.href;
-      document.body.appendChild(textArea);
-      textArea.select();
-      try {
-        document.execCommand('copy');
-        alert('URL copied to clipboard!');
       } catch (error) {
         console.error('URL copy failed:', error);
         prompt('Please copy manually:', window.location.href);
