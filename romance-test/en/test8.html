@@ -76,7 +76,7 @@
 
 </head>
 <body>
-  
+
   <amp-ad width="100vw" height="320"
        type="adsense"
        data-ad-client="ca-pub-5508768187151867"
@@ -89,12 +89,12 @@
   <div class="container">
     <div class="question">
       <h1>💖 Love Psychology Test 8</h1>
-      <h2>What makes you feel most loved?</h2>
+      <h2>What's your ideal relationship style?</h2>
       <div class="choices">
-        <div class="choice" onclick="showResult('A')">A. Hearing "I love you" often</div>
-        <div class="choice" onclick="showResult('B')">B. Receiving thoughtful gifts</div>
-        <div class="choice" onclick="showResult('C')">C. Spending quality time together</div>
-        <div class="choice" onclick="showResult('D')">D. Physical affection and touch</div>
+        <div class="choice" onclick="showResult('A')">A. Independent but connected</div>
+        <div class="choice" onclick="showResult('B')">B. Always together, inseparable</div>
+        <div class="choice" onclick="showResult('C')">C. Balanced give and take</div>
+        <div class="choice" onclick="showResult('D')">D. Passionate and intense</div>
       </div>
     </div>
 
@@ -124,17 +124,17 @@
   <footer>© Love Psychology Tests | <a href="https://tests.mahalohana-bruce.com" target="_blank" rel="noopener noreferrer">tests.mahalohana-bruce.com</a></footer>
 
   <script>
-    const resultTexts = {
-      A: "💬 Words of Affirmation! You feel most loved through verbal expressions of love, appreciation, and encouragement. Hearing loving words fills your emotional tank.",
-      B: "🎁 Receiving Gifts! You feel loved through thoughtful presents and gestures. It's not about the price, but the thought and effort behind the gift that matters to you.",
-      C: "⏰ Quality Time! You feel most loved when someone gives you their undivided attention. Meaningful conversations and shared activities make you feel valued.",
-      D: "🤗 Physical Touch! You feel loved through appropriate physical affection - hugs, hand-holding, and gentle touches. Physical connection helps you feel secure and loved."
+    const results = {
+      'A': 'Balanced Partner! You value maintaining your individual identity while building a strong relationship. You believe healthy relationships need personal space and independence.',
+      'B': 'Devoted Lover! You prefer deep, exclusive connections where you and your partner are each other\'s world. You enjoy being together as much as possible.',
+      'C': 'Harmonious Partner! You seek relationships with equal effort from both sides. You believe in mutual support and shared responsibilities.',
+      'D': 'Passionate Romantic! You prefer intense, all-consuming love. You want relationships that are full of excitement, drama, and deep emotional connection.'
     };
 
     function showResult(choice) {
       const resultElement = document.getElementById("result");
       const resultText = document.getElementById("result-text");
-      resultText.textContent = resultTexts[choice];
+      resultText.textContent = results[choice];
       resultElement.classList.remove("hidden");
 
       // Scroll to result

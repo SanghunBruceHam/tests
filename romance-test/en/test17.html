@@ -76,7 +76,7 @@
 
 </head>
 <body>
-  
+
   <amp-ad width="100vw" height="320"
        type="adsense"
        data-ad-client="ca-pub-5508768187151867"
@@ -89,12 +89,12 @@
   <div class="container">
     <div class="question">
       <h1>💖 Love Psychology Test 17</h1>
-      <h2>What's your ideal first date?</h2>
+      <h2>What's most important to you in a relationship?</h2>
       <div class="choices">
-        <div class="choice" onclick="showResult('A')">A. Cozy coffee shop with deep conversation</div>
-        <div class="choice" onclick="showResult('B')">B. Fun activity like mini golf or arcade</div>
-        <div class="choice" onclick="showResult('C')">C. Fancy dinner at a nice restaurant</div>
-        <div class="choice" onclick="showResult('D')">D. Outdoor adventure like hiking or beach walk</div>
+        <div class="choice" onclick="showResult('A')">A. Deep emotional connection</div>
+        <div class="choice" onclick="showResult('B')">B. Having fun and enjoying life together</div>
+        <div class="choice" onclick="showResult('C')">C. Romance and passionate love</div>
+        <div class="choice" onclick="showResult('D')">D. Shared adventures and growth</div>
       </div>
     </div>
 
@@ -124,17 +124,17 @@
   <footer>© Love Psychology Tests | <a href="https://tests.mahalohana-bruce.com" target="_blank" rel="noopener noreferrer">tests.mahalohana-bruce.com</a></footer>
 
   <script>
-    const resultTexts = {
-      A: "☕ Intimate Conversationalist! You prefer meaningful connections over flashy activities. Deep conversation and emotional intimacy are what make a perfect date for you.",
-      B: "🎮 Playful Connector! You believe fun activities help break the ice and create natural bonding. You prefer relaxed, entertaining dates where personalities can shine through play.",
-      C: "🍽️ Classic Romantic! You appreciate traditional dating experiences and elegant settings. You believe in making a good impression and enjoy sophisticated romantic gestures.",
-      D: "🌲 Adventure Seeker! You love active dates that combine romance with excitement. Sharing new experiences and enjoying nature together is your perfect romantic combination."
+    const results = {
+      'A': 'Soul Connector! You prioritize deep emotional intimacy and understanding. You seek partners who can share their innermost thoughts and feelings.',
+      'B': 'Joy Seeker! You believe relationships should be fun and bring happiness to your life. You value laughter, playfulness, and shared enjoyment.',
+      'C': 'Passionate Romantic! You prioritize intense romantic feelings and passionate love. You want relationships that make your heart race.',
+      'D': 'Growth Partner! You seek relationships that challenge and inspire you to become better. You value shared goals and mutual development.'
     };
 
     function showResult(choice) {
       const resultElement = document.getElementById("result");
       const resultText = document.getElementById("result-text");
-      resultText.textContent = resultTexts[choice];
+      resultText.textContent = results[choice];
       resultElement.classList.remove("hidden");
 
       // Scroll to result
@@ -208,4 +208,3 @@
   </script>
 </body>
 </html>
-`
