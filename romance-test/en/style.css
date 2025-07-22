@@ -260,6 +260,8 @@ h1 {
   box-shadow: var(--shadow);
   text-align: center;
   border: 1px solid var(--border_color);
+  position: relative;
+  z-index: 9999;
 }
 
 /* 테스트 페이지 내부 질문 카드 스타일 */
@@ -381,6 +383,8 @@ h1 {
   box-shadow: var(--shadow);
   text-align: center;
   border: 1px solid var(--border_color);
+  position: relative;
+  z-index: 9999;
 }
 
 .result.hidden {
