@@ -1,51 +1,44 @@
+
 #!/usr/bin/env python3
 import os
 import re
 from pathlib import Path
 
 def clean_footer_whitespace(content):
-    """푸터 위의 화이트스페이스를 강력하게 제거"""
+    """푸터 위의 화이트스페이스를 정확하게 제거"""
     lines = content.split('\n')
     cleaned_lines = []
-    i = 0
-
-    while i < len(lines):
-        line = lines[i]
-
+    
+    for i, line in enumerate(lines):
         # 푸터 태그를 찾았을 때
-        if '<footer>' in line.lower():
-            # 현재까지 추가된 라인들에서 끝의 모든 빈 줄과 공백만 있는 줄들을 제거
-            while cleaned_lines and (cleaned_lines[-1].strip() == '' or cleaned_lines[-1].isspace()):
+        if '<footer>' in line:
+            # 이전 라인들에서 끝의 모든 빈 줄들을 제거
+            while cleaned_lines and cleaned_lines[-1].strip() == '':
                 cleaned_lines.pop()
-
-            # </div> 태그 다음에 오는 빈 줄들도 추가로 확인해서 제거
-            # 마지막 라인이 </div>로 끝나는 경우, 그 다음 빈 줄까지 제거
-            if cleaned_lines and '</div>' in cleaned_lines[-1]:
-                # 푸터 바로 앞에 빈 줄 없이 추가
-                cleaned_lines.append(line)
-            else:
-                # 다른 경우에도 빈 줄 없이 추가
-                cleaned_lines.append(line)
+            
+            # 푸터 라인 추가 (빈 줄 없이)
+            cleaned_lines.append(line)
         else:
             cleaned_lines.append(line)
-
-        i += 1
-
-    # 전체 파일 끝의 불필요한 공백도 정리
-    while cleaned_lines and cleaned_lines[-1].strip() == '':
-        cleaned_lines.pop()
-
+    
     return '\n'.join(cleaned_lines)
 
 def remove_footer_whitespace(file_path):
-    """HTML 파일에서 풋터 위의 불필요한 화이트스페이스 강력하게 제거"""
+    """HTML 파일에서 푸터 위의 화이트스페이스 제거"""
     try:
         with open(file_path, 'r', encoding='utf-8') as f:
             content = f.read()
 
         original_content = content
-
-        content = clean_footer_whitespace(content)
+        
+        # 정규식으로 푸터 위 빈 줄들 제거
+        # </div> 다음에 오는 여러 빈 줄들과 <footer> 사이의 공백 제거
+        pattern = r'(</div>\s*)\n\s*\n+\s*(<footer>)'
+        content = re.sub(pattern, r'\1\n\2', content, flags=re.MULTILINE)
+        
+        # 일반적인 경우: 푸터 앞의 모든 빈 줄 제거
+        pattern2 = r'\n\s*\n+\s*(<footer>)'
+        content = re.sub(pattern2, r'\n\1', content)
 
         # 파일 저장 (변경사항이 있을 때만)
         if content != original_content:
@@ -60,11 +53,11 @@ def remove_footer_whitespace(file_path):
         return False
 
 def main():
-    """romance-test 폴더의 모든 HTML 파일에서 풋터 위 화이트스페이스 제거"""
+    """romance-test 폴더의 모든 HTML 파일에서 푸터 위 화이트스페이스 제거"""
     base_path = Path('romance-test')
     languages = ['ko', 'ja', 'en']
 
-    print("🧹 풋터 위 화이트스페이스 강력 제거 중...\n")
+    print("🧹 푸터 위 화이트스페이스 정확한 제거 중...\n")
 
     total_processed = 0
 
