@@ -399,6 +399,15 @@ footer a:hover {
   width: 100% !important;
 }
 
+/* 통계 */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+  margin-top: 30px;
+  margin-bottom: 25px;
+}
+
 /* Normal Footer Style */
 
 /* PC용 추가 스타일 */
