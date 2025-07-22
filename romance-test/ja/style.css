@@ -45,6 +45,7 @@ body::before {
     radial-gradient(400px circle at 75% 75%, rgba(255, 179, 217, 0.2) 0%, transparent 50%);
   pointer-events: none;
   z-index: -1;
+  overflow: hidden;
 }
 
 .container {
@@ -674,12 +675,14 @@ footer a:hover {
 @media (max-width: 480px) {
   body {
     padding: 4px;
+    overflow-x: hidden;
   }
 
   .container {
     padding: 4px;
     max-width: 100%;
     margin: 0;
+    overflow-x: hidden;
   }
 
   h1 {
