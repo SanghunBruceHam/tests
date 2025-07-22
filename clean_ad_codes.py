@@ -11,7 +11,7 @@ def add_adsense_before_footer(html_file_path):
         original_content = content
         
         # 이미 애드센스 코드가 풋터 위에 있는지 확인
-        adsense_pattern = r'<!-- AdSense Ad Unit -->.*?data-ad-slot="9345718962".*?</script>'
+        adsense_pattern = r'<!-- AdSense Ad Unit -->.*?data-ad-slot="7298546648".*?</script>'
         if re.search(adsense_pattern, content, re.DOTALL):
             return False  # 이미 있으면 수정하지 않음
         
@@ -21,11 +21,13 @@ def add_adsense_before_footer(html_file_path):
   <!-- AdSense Ad Unit -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5508768187151867"
        crossorigin="anonymous"></script>
+  <!-- 디스플레이 가로 -->
   <ins class="adsbygoogle"
        style="display:block"
-       data-ad-format="autorelaxed"
        data-ad-client="ca-pub-5508768187151867"
-       data-ad-slot="9345718962"></ins>
+       data-ad-slot="7298546648"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
   <script>
        (adsbygoogle = window.adsbygoogle || []).push({});
   </script>
