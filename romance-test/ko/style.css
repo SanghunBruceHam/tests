@@ -1,18 +1,18 @@
 :root {
-  /* 트렌디한 MZ 컬러 팔레트 */
-  --primary_gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  --secondary_gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-  --soft_gradient: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
-  --card_bg: rgba(255, 255, 255, 0.9);
-  --glass_bg: rgba(255, 255, 255, 0.1);
-  --text_primary: #1a202c;
-  --text_secondary: #4a5568;
-  --accent_color: #8b5cf6;
-  --accent_hover: #7c3aed;
-  --accent_secondary: #f59e0b;
-  --border_color: rgba(255, 255, 255, 0.2);
-  --shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-  --glow_shadow: 0 0 40px rgba(139, 92, 246, 0.3);
+  /* 라이트 핑크 컬러 팔레트 */
+  --primary_gradient: linear-gradient(135deg, #ffeef8 0%, #ffc2d8 100%);
+  --secondary_gradient: linear-gradient(135deg, #ffb3d9 0%, #ff8fab 100%);
+  --soft_gradient: linear-gradient(135deg, #fff0f5 0%, #fce4ec 100%);
+  --card_bg: rgba(255, 255, 255, 0.95);
+  --glass_bg: rgba(255, 182, 193, 0.1);
+  --text_primary: #2d1b3d;
+  --text_secondary: #6b5b73;
+  --accent_color: #ff6b9d;
+  --accent_hover: #ff5588;
+  --accent_secondary: #ffb3d9;
+  --border_color: rgba(255, 182, 193, 0.3);
+  --shadow: 0 20px 25px -5px rgba(255, 107, 157, 0.1), 0 10px 10px -5px rgba(255, 107, 157, 0.05);
+  --glow_shadow: 0 0 40px rgba(255, 107, 157, 0.3);
   --border_radius: 20px;
 }
 
@@ -41,8 +41,8 @@ body::before {
   right: 0;
   bottom: 0;
   background: 
-    radial-gradient(600px circle at 25% 25%, rgba(255, 182, 193, 0.1) 0%, transparent 50%),
-    radial-gradient(400px circle at 75% 75%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
+    radial-gradient(600px circle at 25% 25%, rgba(255, 182, 193, 0.2) 0%, transparent 50%),
+    radial-gradient(400px circle at 75% 75%, rgba(255, 179, 217, 0.2) 0%, transparent 50%);
   pointer-events: none;
   z-index: -1;
 }
