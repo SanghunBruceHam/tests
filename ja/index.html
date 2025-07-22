@@ -53,7 +53,60 @@
     .container {
       max-width: 1000px;
       margin: 0 auto;
-      padding-top: 40px;
+      padding-top: 60px;
+    }
+
+    .header-controls {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+      display: flex;
+      gap: 15px;
+      align-items: center;
+    }
+
+    .language-selector {
+      display: flex;
+      gap: 8px;
+    }
+
+    .lang-btn {
+      padding: 8px 16px;
+      border: 2px solid var(--accent-color);
+      background: transparent;
+      color: var(--accent-color);
+      border-radius: 25px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 600;
+      font-size: 14px;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .lang-btn.active,
+    .lang-btn:hover {
+      background: var(--accent-color);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    .theme-toggle {
+      padding: 10px;
+      border: none;
+      background: var(--card-bg);
+      color: var(--text-primary);
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+      transition: all 0.3s ease;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
     }
 
     .header {
@@ -249,8 +302,7 @@
 </head>
 <body>
   <div class="header-controls">
-  <!-- Language selector modification: Centered and added margin -->
-    <div class="language-selector" style="text-align: center; margin-bottom: 10px;">
+    <div class="language-selector">
       <a href="/ko/" class="lang-btn">한국어</a>
       <a href="/ja/" class="lang-btn active">日本語</a>
       <a href="/en/" class="lang-btn">English</a>
