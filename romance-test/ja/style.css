@@ -534,21 +534,24 @@ footer a:hover {
   clear: both !important;
 }
 
-/* 구글 자동광고 오버레이 방지 */
+/* 구글 자동광고 요소 완전 숨김 */
 ins[data-ad-status] {
-  position: relative !important;
-  z-index: 1 !important;
-  margin: 10px 0 !important;
-  clear: both !important;
-  display: block !important;
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  width: 0 !important;
+  height: 0 !important;
+  overflow: hidden !important;
 }
 
-/* 구글 광고 iframe 컨테이너 */
+/* 구글 광고 iframe 컨테이너 숨김 */
 div[id^="google_ads_iframe"] {
-  position: relative !important;
-  z-index: 1 !important;
-  clear: both !important;
-  margin: 10px 0 !important;
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  width: 0 !important;
+  height: 0 !important;
+  overflow: hidden !important;
 }
 
 /* 자동광고가 콘텐츠를 덮지 않도록 */

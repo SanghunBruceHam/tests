@@ -534,21 +534,24 @@ footer a:hover {
   clear: both !important;
 }
 
-/* Google Auto-Ad Overlay Prevention */
+/* Hide Google Auto-Ad Elements Completely */
 ins[data-ad-status] {
-  position: relative !important;
-  z-index: 1 !important;
-  margin: 10px 0 !important;
-  clear: both !important;
-  display: block !important;
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  width: 0 !important;
+  height: 0 !important;
+  overflow: hidden !important;
 }
 
-/* Google Ad iframe container */
+/* Hide Google Ad iframe container */
 div[id^="google_ads_iframe"] {
-  position: relative !important;
-  z-index: 1 !important;
-  clear: both !important;
-  margin: 10px 0 !important;
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  width: 0 !important;
+  height: 0 !important;
+  overflow: hidden !important;
 }
 
 /* Prevent auto-ads from covering content */
