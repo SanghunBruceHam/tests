@@ -68,7 +68,7 @@ h1 {
 .subtitle {
   text-align: center;
   font-size: 1.1rem;
-  color: var(--text-secondary);
+  color: rgba(255, 255, 255, 0.9);
   margin-bottom: 30px;
   line-height: 1.4;
   font-weight: 500;
