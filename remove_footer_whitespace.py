@@ -18,8 +18,14 @@ def clean_footer_whitespace(content):
             while cleaned_lines and (cleaned_lines[-1].strip() == '' or cleaned_lines[-1].isspace()):
                 cleaned_lines.pop()
 
-            # 푸터 바로 앞에 빈 줄 없이 추가
-            cleaned_lines.append(line)  # 푸터 추가
+            # </div> 태그 다음에 오는 빈 줄들도 추가로 확인해서 제거
+            # 마지막 라인이 </div>로 끝나는 경우, 그 다음 빈 줄까지 제거
+            if cleaned_lines and '</div>' in cleaned_lines[-1]:
+                # 푸터 바로 앞에 빈 줄 없이 추가
+                cleaned_lines.append(line)
+            else:
+                # 다른 경우에도 빈 줄 없이 추가
+                cleaned_lines.append(line)
         else:
             cleaned_lines.append(line)
 
