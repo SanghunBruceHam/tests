@@ -531,3 +531,27 @@ footer a:hover {
     font-size: 0.85rem;
   }
 }
+
+    .test-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(52, 152, 219, 0.3);
+    }
+
+    .ad-grid-item {
+      grid-column: 1 / -1;
+      background: var(--card-bg);
+      border-radius: var(--border-radius);
+      padding: 20px;
+      margin: 10px 0;
+      border: 1px solid var(--border-color);
+      text-align: center;
+      min-height: 250px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .ad-grid-item ins {
+      width: 100% !important;
+      min-height: 200px;
+    }
