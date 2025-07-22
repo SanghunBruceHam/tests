@@ -5,44 +5,52 @@ import re
 from pathlib import Path
 
 def completely_remove_footer_whitespace(file_path):
-    """푸터 앞의 모든 빈 줄과 공백을 완전히 제거"""
+    """푸터 앞의 모든 빈 줄과 공백을 완전히 제거하는 강력한 함수"""
     try:
         with open(file_path, 'r', encoding='utf-8') as f:
-            content = f.read()
+            lines = f.readlines()
         
-        original_content = content
+        original_lines = lines[:]
         
-        # 1. </div> 다음부터 <footer> 사이의 모든 빈 줄과 공백 제거
-        pattern = r'(</div>\s*)\n+\s*(<footer>)'
-        content = re.sub(pattern, r'\1\n\2', content)
+        # 푸터 라인 찾기
+        footer_line_index = -1
+        for i, line in enumerate(lines):
+            if '<footer>' in line:
+                footer_line_index = i
+                break
         
-        # 2. </body> 앞의 빈 줄들도 제거
-        pattern = r'\n+\s*\n+\s*(</body>)'
-        content = re.sub(pattern, r'\n\1', content)
+        if footer_line_index == -1:
+            return False
         
-        # 3. 연속된 빈 줄들을 하나로 통합
-        content = re.sub(r'\n\s*\n\s*\n+', '\n\n', content)
-        
-        # 4. 탭이나 스페이스로만 이루어진 줄들 제거
-        lines = content.split('\n')
-        cleaned_lines = []
+        # 푸터 앞의 모든 빈 줄 제거
+        new_lines = []
+        skip_empty_lines = False
         
         for i, line in enumerate(lines):
-            # 푸터 바로 앞의 빈 줄들을 찾아서 제거
-            if i < len(lines) - 1 and '<footer>' in lines[i + 1]:
-                if line.strip() == '':
-                    continue
-            cleaned_lines.append(line)
+            # </div> 이후부터 푸터까지 빈 줄 제거 모드 시작
+            if '</div>' in line and i < footer_line_index:
+                new_lines.append(line)
+                skip_empty_lines = True
+                continue
+            
+            # 푸터에 도달하면 빈 줄 제거 모드 종료
+            if i == footer_line_index:
+                # 푸터 앞에 정확히 한 줄 추가
+                new_lines.append('\n')
+                new_lines.append(line)
+                skip_empty_lines = False
+                continue
+            
+            # 빈 줄 제거 모드일 때 빈 줄은 스킵
+            if skip_empty_lines and line.strip() == '':
+                continue
+            
+            new_lines.append(line)
         
-        content = '\n'.join(cleaned_lines)
-        
-        # 5. 마지막으로 </div>와 <footer> 사이에 정확히 한 줄만 남기기
-        content = re.sub(r'(</div>)\s*\n\s*\n+\s*(<footer>)', r'\1\n\n\2', content)
-        content = re.sub(r'(</div>)\s*\n\s*(<footer>)', r'\1\n\n\2', content)
-        
-        if content != original_content:
+        # 변경사항이 있는 경우에만 파일 저장
+        if new_lines != original_lines:
             with open(file_path, 'w', encoding='utf-8') as f:
-                f.write(content)
+                f.writelines(new_lines)
             return True
         
         return False
