@@ -534,6 +534,40 @@ footer a:hover {
   clear: both !important;
 }
 
+/* Google Auto-Ad Overlay Prevention */
+ins[data-ad-status] {
+  position: relative !important;
+  z-index: 1 !important;
+  margin: 10px 0 !important;
+  clear: both !important;
+  display: block !important;
+}
+
+/* Google Ad iframe container */
+div[id^="google_ads_iframe"] {
+  position: relative !important;
+  z-index: 1 !important;
+  clear: both !important;
+  margin: 10px 0 !important;
+}
+
+/* Prevent auto-ads from covering content */
+.container {
+  overflow: visible !important;
+  padding-top: 20px !important;
+  position: relative;
+  z-index: 100 !important;
+}
+
+.test-card,
+.question,
+.result {
+  position: relative !important;
+  z-index: 200 !important;
+  background: var(--card_bg) !important;
+  border: 1px solid var(--border_color) !important;
+}
+
 /* PC용 추가 스타일 */
 @media (min-width: 1024px) {
   .container {

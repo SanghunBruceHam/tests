@@ -536,6 +536,40 @@ footer a:hover {
   clear: both !important;
 }
 
+/* 구글 자동광고 오버레이 방지 */
+ins[data-ad-status] {
+  position: relative !important;
+  z-index: 1 !important;
+  margin: 10px 0 !important;
+  clear: both !important;
+  display: block !important;
+}
+
+/* 구글 광고 iframe 컨테이너 */
+div[id^="google_ads_iframe"] {
+  position: relative !important;
+  z-index: 1 !important;
+  clear: both !important;
+  margin: 10px 0 !important;
+}
+
+/* 자동광고가 콘텐츠를 덮지 않도록 */
+.container {
+  overflow: visible !important;
+  padding-top: 20px !important;
+  position: relative;
+  z-index: 100 !important;
+}
+
+.test-card,
+.question,
+.result {
+  position: relative !important;
+  z-index: 200 !important;
+  background: var(--card_bg) !important;
+  border: 1px solid var(--border_color) !important;
+}
+
 /* 일반 푸터 스타일 */
 
 /* PC용 추가 스타일 */
