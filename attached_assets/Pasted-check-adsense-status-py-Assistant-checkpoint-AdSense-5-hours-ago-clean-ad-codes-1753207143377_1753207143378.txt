@@ -1,0 +1,84 @@
+check_adsense_status.py
+Assistant checkpoint: AdSense 구현 상태 전수 조사 스크립트 실행
+5 hours ago
+clean_ad_codes.py
+Assistant checkpoint: Remove old autorelaxed ads from all romance-tes…
+10 hours ago
+clean_incomplete_adsense.py
+Assistant checkpoint: 불완전한 AdSense 코드 모두 정리
+2 hours ago
+favicon.ico
+Initial commit
+last week
+favicon.png
+Initial commit
+last week
+fix_adsense.py
+Assistant checkpoint: AdSense 광고 구조 최적화 및 중복 제거
+9 hours ago
+fix_css_link_scripts.py
+Assistant checkpoint: CSS 링크 위에 </script> 태그 추가
+1 hour ago
+fix_favicon_paths.py
+Assistant checkpoint: 파비콘 경로 수정 및 일괄 업데이트
+6 hours ago
+fix_ja_css_links.py
+Assistant checkpoint: Fix Japanese CSS link paths and copy CSS file
+1 hour ago
+fix_json_ld_and_css.py
+Assistant checkpoint: JSON-LD 스크립트와 CSS 링크 문제 수정
+1 hour ago
+fix_json_ld_scripts.py
+Assistant checkpoint: Fix missing JSON-LD script closing tags
+1 hour ago
+fix_missing_script_closing_tags.py
+Assistant checkpoint: </script> 태그 추가 스크립트 생성 및 실행
+1 hour ago
+fix_missing_script_tags.py
+Assistant checkpoint: Fix missing </script> tags before CSS links
+1 hour ago
+fix_romance_ads.py
+Assistant checkpoint: Fix ad structure in all romance-test pages
+8 hours ago
+googlee53980ef2acb81e6.html
+Initial commit
+last week
+index.html
+Assistant checkpoint: Update footer watermarks for consistency across…
+6 hours ago
+pyproject.toml
+Initial commit
+last week
+remove_all_adsense.py
+Assistant checkpoint: Remove all AdSense codes from romance-test files
+5 hours ago
+remove_footer_whitespace.py
+Assistant checkpoint: 풋터 위 화이트스페이스 강력 제거
+2 hours ago
+robots.txt
+Initial commit
+last week
+sitemap.xml
+🤖 Auto-update files and index.html [skip ci]
+28 minutes ago
+sitemap_generator.py
+Initial commit
+last week
+submit_sitemap.py
+Initial commit
+last week
+update_amp_ads.py
+Assistant checkpoint: 완전한 광고 구조로 모든 romance-test 페이지 업데이트
+8 hours ago
+update_files.py
+Initial commit
+last week
+update_index.py
+Initial commit
+last week
+uv.lock
+Initial commit
+last week
+validate_and_fix_js_errors.py
+Assistant checkpoint: JavaScript 구문 오류 검증 및 수정
+1 hour ago
