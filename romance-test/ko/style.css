@@ -224,6 +224,62 @@ h1 {
   border: 1px solid var(--border_color);
 }
 
+/* 테스트 페이지 내부 질문 카드 스타일 */
+.question-card {
+  background: var(--card_bg);
+  backdrop-filter: blur(20px);
+  border-radius: 16px;
+  padding: 16px;
+  text-decoration: none;
+  color: var(--text_primary);
+  box-shadow: var(--shadow);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid var(--border_color);
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-width: 280px;
+  text-align: center;
+}
+
+.question-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--secondary_gradient);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.question-card:hover::before {
+  transform: scaleX(1);
+}
+
+.question-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(52, 152, 219, 0.3);
+}
+
+.question-card h3 {
+  background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+.question-card p {
+  color: var(--text_secondary);
+  font-size: 0.85rem;
+  line-height: 1.4;
+  font-weight: 400;
+}
+
 .question h2 {
   background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
   -webkit-background-clip: text;
@@ -442,16 +498,31 @@ footer a:hover {
     gap: 15px;
   }
 
+  /* 메인 페이지 카드는 원래 크기 유지 */
   .test-card {
+    padding: 16px;
+    max-width: 280px;
+  }
+
+  .test-card h3 {
+    font-size: 1.1rem;
+  }
+
+  .test-card p {
+    font-size: 0.85rem;
+  }
+
+  /* 테스트 페이지 내부 카드만 작게 */
+  .question-card {
     padding: 11px;
     max-width: 224px;
   }
 
-  .test-card h3 {
+  .question-card h3 {
     font-size: 0.84rem;
   }
 
-  .test-card p {
+  .question-card p {
     font-size: 0.64rem;
   }
 
