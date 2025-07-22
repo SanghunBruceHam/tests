@@ -443,15 +443,16 @@ footer a:hover {
   }
 
   .test-card {
-    padding: 14px;
+    padding: 11px;
+    max-width: 224px;
   }
 
   .test-card h3 {
-    font-size: 1.05rem;
+    font-size: 0.84rem;
   }
 
   .test-card p {
-    font-size: 0.8rem;
+    font-size: 0.64rem;
   }
 
   .question {
