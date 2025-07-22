@@ -5,25 +5,33 @@ import re
 from pathlib import Path
 
 def remove_footer_whitespace(file_path):
-    """HTML 파일에서 풋터 위의 불필요한 화이트스페이스 제거"""
+    """HTML 파일에서 풋터 위의 불필요한 화이트스페이스 강력하게 제거"""
     try:
         with open(file_path, 'r', encoding='utf-8') as f:
             content = f.read()
         
         original_content = content
         
-        # 풋터 앞의 과도한 빈 줄들 제거
-        # 여러 개의 연속된 빈 줄을 하나로 줄임
-        content = re.sub(r'\n\s*\n\s*\n+(?=\s*<footer)', '\n\n<footer', content)
+        # 1. </div> 뒤에서 <footer> 사이의 모든 공백과 빈 줄 제거
+        content = re.sub(r'(</div>)\s*\n\s*\n+\s*(<footer)', r'\1\n\n\2', content)
         
-        # 풋터 바로 앞의 불필요한 공백 라인들 제거
-        content = re.sub(r'\n\s+\n\s*<footer', '\n\n<footer', content)
+        # 2. 풋터 바로 앞의 연속된 빈 줄들을 2개로 제한
+        content = re.sub(r'\n\s*\n\s*\n+\s*(<footer)', r'\n\n\1', content)
         
-        # </div> 다음에 오는 과도한 빈 줄들을 정리 (풋터 앞에서)
-        content = re.sub(r'(</div>)\s*\n\s*\n\s*\n+(?=\s*<footer)', r'\1\n\n<footer', content)
+        # 3. 풋터 앞의 과도한 공백 제거 (탭이나 스페이스)
+        content = re.sub(r'[ \t]+\n\s*(<footer)', r'\n\n\1', content)
         
-        # 일반적인 과도한 빈 줄들 정리 (3개 이상의 연속 빈 줄을 2개로)
+        # 4. </div> 바로 다음에 오는 빈 줄들 정리
+        content = re.sub(r'(</div>)[ \t]*\n[ \t]*\n[ \t]*\n+', r'\1\n\n', content)
+        
+        # 5. 일반적인 과도한 빈 줄들 정리 (3개 이상을 2개로)
         content = re.sub(r'\n\s*\n\s*\n\s*\n+', '\n\n', content)
+        
+        # 6. 풋터 직전의 탭이나 스페이스만 있는 라인들 제거
+        content = re.sub(r'\n[ \t]+\n\s*(<footer)', r'\n\n\1', content)
+        
+        # 7. 빈 줄 사이에 공백만 있는 경우 정리
+        content = re.sub(r'\n[ \t]*\n[ \t]*\n[ \t]*(<footer)', r'\n\n\1', content)
         
         # 파일 저장 (변경사항이 있을 때만)
         if content != original_content:
@@ -42,7 +50,7 @@ def main():
     base_path = Path('romance-test')
     languages = ['ko', 'ja', 'en']
     
-    print("🧹 풋터 위 화이트스페이스 제거 중...\n")
+    print("🧹 풋터 위 화이트스페이스 강력 제거 중...\n")
     
     total_processed = 0
     
