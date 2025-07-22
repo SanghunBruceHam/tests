@@ -380,6 +380,22 @@ footer a:hover {
   text-decoration: underline;
 }
 
+/* 광고 영역 스타일 */
+.ad-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 20px auto;
+  text-align: center;
+}
+
+.adsbygoogle {
+  margin: 0 auto !important;
+  display: block !important;
+  text-align: center !important;
+}
+
 /* 일반 푸터 스타일 */
 
 /* PC용 추가 스타일 */
