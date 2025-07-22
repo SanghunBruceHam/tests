@@ -604,7 +604,8 @@ footer a:hover {
 
   .test-card {
     padding: 16px 12px;
-    min-height: 100px;
+    height: 140px;
+    min-height: 140px;
     margin: 0;
     max-width: 100%;
     width: 100%;
