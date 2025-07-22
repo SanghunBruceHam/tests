@@ -48,9 +48,9 @@ body::before {
 }
 
 .container {
-  max-width: 800px;
+  max-width: 600px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 15px;
   min-height: 100vh;
   position: relative;
   z-index: 1;
@@ -184,9 +184,9 @@ h1 {
 .question {
   background: var(--card-bg);
   backdrop-filter: blur(20px);
-  border-radius: 16px;
-  padding: 18px;
-  margin-bottom: 18px;
+  border-radius: 14px;
+  padding: 15px;
+  margin-bottom: 15px;
   box-shadow: var(--shadow);
   text-align: center;
   border: 1px solid var(--border-color);
@@ -197,8 +197,8 @@ h1 {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  font-size: 1.2rem;
-  margin-bottom: 16px;
+  font-size: 1.1rem;
+  margin-bottom: 14px;
   line-height: 1.4;
   font-weight: 700;
 }
@@ -206,19 +206,19 @@ h1 {
 .choices {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
 }
 
 .choice {
   background: var(--glass-bg);
   backdrop-filter: blur(10px);
-  padding: 12px 16px;
-  border-radius: 12px;
+  padding: 10px 14px;
+  border-radius: 10px;
   cursor: pointer;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   font-weight: 600;
   border: 2px solid var(--border-color);
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   position: relative;
   overflow: hidden;
 }
@@ -249,9 +249,9 @@ h1 {
 .result {
   background: var(--card-bg);
   backdrop-filter: blur(20px);
-  border-radius: 16px;
-  padding: 18px;
-  margin-bottom: 18px;
+  border-radius: 14px;
+  padding: 15px;
+  margin-bottom: 15px;
   box-shadow: var(--shadow);
   text-align: center;
   border: 1px solid var(--border-color);
@@ -438,53 +438,53 @@ footer a:hover {
 /* 반응형 디자인 */
 @media (max-width: 768px) {
   body {
-    padding: 10px;
+    padding: 8px;
   }
 
   .container {
-    padding: 15px;
+    padding: 12px;
   }
 
   h1 {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
   }
 
   .test-grid {
     grid-template-columns: 1fr;
-    gap: 12px;
-  }
-
-  .question {
-    padding: 18px;
-  }
-
-  .question h2 {
-    font-size: 1.3rem;
-  }
-
-  .choice {
-    padding: 14px 18px;
-    font-size: 0.9rem;
-  }
-
-  .navigation {
-    gap: 12px;
-  }
-
-  .nav-btn {
-    padding: 14px 22px;
-    min-width: 140px;
-    font-size: 0.9rem;
-  }
-
-  .share-buttons {
     gap: 10px;
   }
 
-  .share-btn {
-    padding: 12px 18px;
+  .question {
+    padding: 14px;
+  }
+
+  .question h2 {
+    font-size: 1.1rem;
+  }
+
+  .choice {
+    padding: 12px 16px;
+    font-size: 0.85rem;
+  }
+
+  .navigation {
+    gap: 10px;
+  }
+
+  .nav-btn {
+    padding: 12px 20px;
     min-width: 120px;
     font-size: 0.85rem;
+  }
+
+  .share-buttons {
+    gap: 8px;
+  }
+
+  .share-btn {
+    padding: 10px 16px;
+    min-width: 100px;
+    font-size: 0.8rem;
   }
 }
 
