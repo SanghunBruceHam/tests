@@ -76,10 +76,11 @@ h1 {
 
 .test-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 300px));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 320px));
   gap: 16px;
   margin-bottom: 30px;
   justify-content: center;
+  justify-items: center;
 }
 
 .test-card {
@@ -94,6 +95,8 @@ h1 {
   border: 1px solid var(--border-color);
   position: relative;
   overflow: hidden;
+  width: 100%;
+  max-width: 320px;
 }
 
 .test-card::before {
