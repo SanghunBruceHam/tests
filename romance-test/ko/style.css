@@ -85,11 +85,13 @@ h1 {
 
 .test-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 280px));
-  gap: 4px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
   margin-bottom: 30px;
   justify-content: center;
   justify-items: center;
+  max-width: 900px;
+  margin: 0 auto 30px auto;
 }
 
 .test-card {
@@ -436,8 +438,8 @@ footer a:hover {
   }
 
   .test-grid {
-    grid-template-columns: repeat(4, 1fr);
-    gap: 8px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
   }
 
   .test-card {
