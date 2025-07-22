@@ -184,8 +184,8 @@ h1 {
   background: var(--card-bg);
   backdrop-filter: blur(20px);
   border-radius: 20px;
-  padding: 30px;
-  margin-bottom: 25px;
+  padding: 20px;
+  margin-bottom: 20px;
   box-shadow: var(--shadow);
   text-align: center;
   border: 1px solid var(--border-color);
@@ -196,8 +196,8 @@ h1 {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  font-size: 1.7rem;
-  margin-bottom: 25px;
+  font-size: 1.4rem;
+  margin-bottom: 20px;
   line-height: 1.4;
   font-weight: 700;
 }
@@ -205,19 +205,19 @@ h1 {
 .choices {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 10px;
 }
 
 .choice {
   background: var(--glass-bg);
   backdrop-filter: blur(10px);
-  padding: 20px 25px;
+  padding: 15px 20px;
   border-radius: 15px;
   cursor: pointer;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   font-weight: 600;
   border: 2px solid var(--border-color);
-  font-size: 1.05rem;
+  font-size: 0.95rem;
   position: relative;
   overflow: hidden;
 }
@@ -249,8 +249,8 @@ h1 {
   background: var(--card-bg);
   backdrop-filter: blur(20px);
   border-radius: 20px;
-  padding: 30px;
-  margin-bottom: 25px;
+  padding: 20px;
+  margin-bottom: 20px;
   box-shadow: var(--shadow);
   text-align: center;
   border: 1px solid var(--border-color);
@@ -422,15 +422,15 @@ footer a:hover {
   }
 
   .question {
-    padding: 35px;
+    padding: 25px;
   }
 
   .choices {
-    gap: 15px;
+    gap: 12px;
   }
 
   .choice {
-    padding: 18px 25px;
+    padding: 16px 22px;
   }
 }
 
@@ -454,16 +454,16 @@ footer a:hover {
   }
 
   .question {
-    padding: 25px;
+    padding: 18px;
   }
 
   .question h2 {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
   }
 
   .choice {
-    padding: 18px 20px;
-    font-size: 1rem;
+    padding: 14px 18px;
+    font-size: 0.9rem;
   }
 
   .navigation {
@@ -497,15 +497,15 @@ footer a:hover {
   }
 
   .question {
-    padding: 20px;
+    padding: 16px;
   }
 
   .question h2 {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
   }
 
   .choice {
-    padding: 16px 18px;
+    padding: 12px 16px;
   }
 
   .navigation {
