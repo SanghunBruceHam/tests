@@ -382,18 +382,17 @@ footer a:hover {
 
 /* 광고 영역 스타일 */
 .ad-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: 100%;
   margin: 20px auto;
   text-align: center;
+  display: block;
 }
 
 .adsbygoogle {
   margin: 0 auto !important;
   display: block !important;
   text-align: center !important;
+  width: 100% !important;
 }
 
 /* 일반 푸터 스타일 */

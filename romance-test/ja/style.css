@@ -414,18 +414,17 @@ footer a:hover {
 
 /* 広告エリアスタイル */
 .ad-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: 100%;
   margin: 20px auto;
   text-align: center;
+  display: block;
 }
 
 .adsbygoogle {
   margin: 0 auto !important;
   display: block !important;
   text-align: center !important;
+  width: 100% !important;
 }
 
 /* 通常のフッタースタイル */
