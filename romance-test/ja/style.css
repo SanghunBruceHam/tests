@@ -495,7 +495,22 @@ footer a:hover {
 
   .test-grid {
     grid-template-columns: 1fr;
-    gap: 12px;
+    gap: 16px;
+  }
+
+  .test-card {
+    padding: 24px;
+    min-height: 140px;
+  }
+
+  .test-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 12px;
+  }
+
+  .test-card p {
+    font-size: 1rem;
+    line-height: 1.5;
   }
 
   .question {
