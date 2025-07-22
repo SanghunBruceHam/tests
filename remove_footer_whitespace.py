@@ -12,26 +12,23 @@ def remove_footer_whitespace(file_path):
         
         original_content = content
         
-        # 1. </div> 뒤에서 <footer> 사이의 모든 공백과 빈 줄 제거
-        content = re.sub(r'(</div>)\s*\n\s*\n+\s*(<footer)', r'\1\n\n\2', content)
+        # 1. </div>와 <footer> 사이의 모든 공백, 탭, 빈 줄 제거
+        content = re.sub(r'(</div>)[\s\n\t]*(<footer)', r'\1\n\n\2', content)
         
-        # 2. 풋터 바로 앞의 연속된 빈 줄들을 2개로 제한
-        content = re.sub(r'\n\s*\n\s*\n+\s*(<footer)', r'\n\n\1', content)
+        # 2. container div 닫기 후 푸터 전까지의 모든 공백 정리
+        content = re.sub(r'(</div>\s*</div>)[\s\n\t]*(<footer)', r'\1\n\n\2', content)
         
-        # 3. 풋터 앞의 과도한 공백 제거 (탭이나 스페이스)
-        content = re.sub(r'[ \t]+\n\s*(<footer)', r'\n\n\1', content)
+        # 3. 여러 개의 연속된 빈 줄들을 2개로 제한
+        content = re.sub(r'\n\s*\n\s*\n+', '\n\n', content)
         
-        # 4. </div> 바로 다음에 오는 빈 줄들 정리
-        content = re.sub(r'(</div>)[ \t]*\n[ \t]*\n[ \t]*\n+', r'\1\n\n', content)
+        # 4. 탭과 스페이스만 있는 줄들 제거
+        content = re.sub(r'\n[ \t]+\n', '\n\n', content)
         
-        # 5. 일반적인 과도한 빈 줄들 정리 (3개 이상을 2개로)
-        content = re.sub(r'\n\s*\n\s*\n\s*\n+', '\n\n', content)
+        # 5. 푸터 직전의 모든 공백 문자 정리
+        content = re.sub(r'[\s\t]*\n[\s\t]*\n[\s\t]*(<footer)', r'\n\n\1', content)
         
-        # 6. 풋터 직전의 탭이나 스페이스만 있는 라인들 제거
-        content = re.sub(r'\n[ \t]+\n\s*(<footer)', r'\n\n\1', content)
-        
-        # 7. 빈 줄 사이에 공백만 있는 경우 정리
-        content = re.sub(r'\n[ \t]*\n[ \t]*\n[ \t]*(<footer)', r'\n\n\1', content)
+        # 6. 추가적인 정리: 4개 이상의 연속 빈줄을 2개로
+        content = re.sub(r'\n\n\n\n+', '\n\n', content)
         
         # 파일 저장 (변경사항이 있을 때만)
         if content != original_content:
