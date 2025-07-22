@@ -2,6 +2,50 @@
 import re
 from pathlib import Path
 
+def add_adsense_before_footer(html_file_path):
+    """풋터 위에 애드센스 코드를 추가하는 함수"""
+    try:
+        with open(html_file_path, 'r', encoding='utf-8') as file:
+            content = file.read()
+        
+        original_content = content
+        
+        # 이미 애드센스 코드가 풋터 위에 있는지 확인
+        adsense_pattern = r'<!-- AdSense Ad Unit -->.*?data-ad-slot="9345718962".*?</script>'
+        if re.search(adsense_pattern, content, re.DOTALL):
+            return False  # 이미 있으면 수정하지 않음
+        
+        # 풋터 위에 애드센스 코드 추가
+        footer_pattern = r'(\s*<footer>)'
+        adsense_code = '''
+  <!-- AdSense Ad Unit -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5508768187151867"
+       crossorigin="anonymous"></script>
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-format="autorelaxed"
+       data-ad-client="ca-pub-5508768187151867"
+       data-ad-slot="9345718962"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
+\\1'''
+        
+        content = re.sub(footer_pattern, adsense_code, content)
+        
+        # 내용이 변경되었으면 파일에 저장
+        if content != original_content:
+            with open(html_file_path, 'w', encoding='utf-8') as file:
+                file.write(content)
+            return True
+        
+        return False
+        
+    except Exception as e:
+        print(f"Error processing {html_file_path}: {e}")
+        return False
+
 def clean_ad_codes_in_file(html_file_path):
     """Clean and replace ad codes in a single HTML file"""
     try:
@@ -61,7 +105,7 @@ def clean_ad_codes_in_file(html_file_path):
         return False
 
 def main():
-    """Clean ad codes in all romance-test HTML files"""
+    """romance-test의 모든 HTML 파일에 풋터 위 애드센스 코드 추가"""
     romance_test_path = Path('romance-test')
     
     if not romance_test_path.exists():
@@ -81,7 +125,7 @@ def main():
             updated_count = 0
             
             for html_file in html_files:
-                if clean_ad_codes_in_file(html_file):
+                if add_adsense_before_footer(html_file):
                     print(f"✅ Updated: {html_file}")
                     updated_count += 1
                 else:
