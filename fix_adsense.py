@@ -25,9 +25,16 @@ def fix_adsense_in_file(file_path):
             flags=re.DOTALL
         )
         
-        # AdSense 광고 초기화 스크립트 추가
+        # 중복된 adsbygoogle 초기화 스크립트 제거
+        content = re.sub(
+            r'(\s*<script>\s*\(adsbygoogle = window\.adsbygoogle \|\| \[\]\)\.push\(\{\}\);\s*</script>\s*\n)\s*<script>\s*\(adsbygoogle = window\.adsbygoogle \|\| \[\]\)\.push\(\{\}\);\s*</script>',
+            r'\1',
+            content
+        )
+        
+        # AdSense 광고 초기화 스크립트가 없는 경우 추가
         adsense_pattern = r'(\s*<ins class="adsbygoogle"[^>]*></ins>)\s*\n'
-        if re.search(adsense_pattern, content):
+        if re.search(adsense_pattern, content) and not re.search(r'<script>\s*\(adsbygoogle = window\.adsbygoogle \|\| \[\]\)\.push\(\{\}\);\s*</script>', content):
             content = re.sub(
                 adsense_pattern,
                 r'\1\n  <script>\n       (adsbygoogle = window.adsbygoogle || []).push({});\n  </script>\n',
