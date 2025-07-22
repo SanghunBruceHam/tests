@@ -214,9 +214,9 @@ h1 {
 .question {
   background: var(--card_bg);
   backdrop-filter: blur(20px);
-  border-radius: 14px;
-  padding: 15px;
-  margin-bottom: 15px;
+  border-radius: 20px;
+  padding: 30px;
+  margin-bottom: 25px;
   box-shadow: var(--shadow);
   text-align: center;
   border: 1px solid var(--border_color);
@@ -227,8 +227,8 @@ h1 {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  font-size: 1.1rem;
-  margin-bottom: 14px;
+  font-size: 1.7rem;
+  margin-bottom: 25px;
   line-height: 1.4;
   font-weight: 700;
 }
@@ -236,19 +236,19 @@ h1 {
 .choices {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 15px;
 }
 
 .choice {
   background: var(--glass_bg);
   backdrop-filter: blur(10px);
-  padding: 10px 14px;
-  border-radius: 10px;
+  padding: 20px 25px;
+  border-radius: 15px;
   cursor: pointer;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   font-weight: 600;
   border: 2px solid var(--border_color);
-  font-size: 0.85rem;
+  font-size: 1.05rem;
   position: relative;
   overflow: hidden;
 }
@@ -279,9 +279,9 @@ h1 {
 .result {
   background: var(--card_bg);
   backdrop-filter: blur(20px);
-  border-radius: 14px;
-  padding: 15px;
-  margin-bottom: 15px;
+  border-radius: 20px;
+  padding: 30px;
+  margin-bottom: 25px;
   box-shadow: var(--shadow);
   text-align: center;
   border: 1px solid var(--border_color);
@@ -453,68 +453,68 @@ footer a:hover {
   }
 
   .question {
-    padding: 25px;
+    padding: 40px;
   }
 
   .choices {
-    gap: 12px;
+    gap: 18px;
   }
 
   .choice {
-    padding: 16px 22px;
+    padding: 22px 30px;
   }
 }
 
 /* 반응형 디자인 */
 @media (max-width: 768px) {
   body {
-    padding: 8px;
+    padding: 10px;
   }
 
   .container {
-    padding: 12px;
+    padding: 15px;
   }
 
   h1 {
-    font-size: 1.6rem;
+    font-size: 1.8rem;
   }
 
   .test-grid {
     grid-template-columns: 1fr;
-    gap: 6px;
+    gap: 12px;
   }
 
   .question {
-    padding: 14px;
+    padding: 25px;
   }
 
   .question h2 {
-    font-size: 1.1rem;
+    font-size: 1.4rem;
   }
 
   .choice {
-    padding: 12px 16px;
-    font-size: 0.85rem;
+    padding: 18px 20px;
+    font-size: 1rem;
   }
 
   .navigation {
-    gap: 10px;
+    flex-direction: column;
+    align-items: center;
   }
 
   .nav-btn {
-    padding: 12px 20px;
-    min-width: 120px;
-    font-size: 0.85rem;
+    width: 100%;
+    max-width: 280px;
   }
 
   .share-buttons {
-    gap: 8px;
+    gap: 10px;
   }
 
   .share-btn {
-    padding: 10px 16px;
-    min-width: 100px;
-    font-size: 0.8rem;
+    padding: 12px 18px;
+    min-width: 120px;
+    font-size: 0.85rem;
   }
 }
 
