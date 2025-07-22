@@ -18,10 +18,8 @@ def clean_footer_whitespace(content):
             while cleaned_lines and (cleaned_lines[-1].strip() == '' or cleaned_lines[-1].isspace()):
                 cleaned_lines.pop()
 
-            # </div> 태그가 있는지 확인하고 적절한 간격 추가
-            if cleaned_lines and '</div>' in cleaned_lines[-1]:
-                cleaned_lines.append('')  # </div> 후 한 줄 간격
-
+            # </div> 태그 바로 다음에 푸터가 오도록 하여 빈 줄을 없애기
+            cleaned_lines.append('')  # 푸터 앞에 한 줄만 추가
             cleaned_lines.append(line)  # 푸터 추가
         else:
             cleaned_lines.append(line)
