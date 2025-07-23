@@ -522,31 +522,48 @@
     }
 
     @media (max-width: 768px) {
-    .container {
-      padding: 12px;
-      padding-top: 60px;
-      max-width: 100%;
-    }
+      .container {
+        padding: 12px;
+        padding-top: 60px;
+        max-width: 100%;
+      }
 
-    .header-controls {
-      top: 8px;
-      right: 8px;
-      flex-direction: row;
-      gap: 6px;
-      background: rgba(255, 255, 255, 0.1);
-      padding: 6px;
-      border-radius: 12px;
-      backdrop-filter: blur(10px);
-    }
+      .header-controls {
+        top: 8px;
+        right: 8px;
+        flex-direction: row;
+        gap: 6px;
+        background: rgba(255, 255, 255, 0.1);
+        padding: 6px;
+        border-radius: 12px;
+        backdrop-filter: blur(10px);
+      }
 
-    .language-selector {
-      gap: 4px;
-    }
+      .language-selector {
+        gap: 4px;
+      }
 
-    .lang-btn {
-      padding: 6px 10px;
-      font-size: 11px;
-    }
+      .lang-btn {
+        padding: 6px 10px;
+        font-size: 11px;
+      }
+
+      .filter-buttons {
+        justify-content: center;
+        gap: 4px;
+        margin-bottom: 15px;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        padding: 0 5px;
+      }
+
+      .filter-btn {
+        padding: 6px 10px;
+        font-size: 11px;
+        white-space: nowrap;
+        min-width: auto;
+        flex-shrink: 0;
+      }
 
     .theme-toggle {
       width: 36px;
@@ -885,6 +902,7 @@
 
   <!-- Scroll to Top Button -->
   <div class="scroll-to-top" onclick="scrollToTop()">
+    ```html
     <i class="fas fa-arrow-up"></i>
   </div>
 
