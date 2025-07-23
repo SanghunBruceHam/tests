@@ -339,29 +339,13 @@
     }
 
     .tests-grid {
-      display: flex;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
       gap: 8px;
       margin-bottom: 20px;
       max-width: 900px;
       margin-left: auto;
       margin-right: auto;
-      overflow-x: auto;
-      padding: 10px 0;
-      scroll-behavior: smooth;
-    }
-
-    .tests-grid::-webkit-scrollbar {
-      height: 6px;
-    }
-
-    .tests-grid::-webkit-scrollbar-track {
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 3px;
-    }
-
-    .tests-grid::-webkit-scrollbar-thumb {
-      background: var(--accent-color);
-      border-radius: 3px;
     }
 
     .test-card {
@@ -375,13 +359,11 @@
       border: 1px solid var(--border-color);
       backdrop-filter: blur(10px);
       min-height: 120px;
-      min-width: 280px;
-      max-width: 280px;
+      width: 100%;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       position: relative;
-      flex-shrink: 0;
     }
 
     .test-title {
@@ -643,18 +625,17 @@
     }
 
     .tests-grid {
+      grid-template-columns: 1fr;
       gap: 6px;
       margin-bottom: 20px;
       max-width: 100%;
       padding: 0 12px;
-      overflow-x: auto;
     }
 
     .test-card {
       padding: 14px;
       min-height: 100px;
-      min-width: 250px;
-      max-width: 250px;
+      width: 100%;
     }
 
     .test-title {
@@ -730,6 +711,7 @@
     }
 
     .tests-grid {
+      grid-template-columns: 1fr;
       gap: 4px;
       padding: 0;
     }
@@ -737,8 +719,7 @@
     .test-card {
       padding: 12px;
       min-height: 90px;
-      min-width: 220px;
-      max-width: 220px;
+      width: 100%;
     }
 
     .test-title {
