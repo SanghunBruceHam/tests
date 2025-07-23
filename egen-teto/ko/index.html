@@ -948,6 +948,146 @@
     .hidden {
       display: none;
     }
+
+    /* 상세 분석 섹션 스타일 */
+    .detailed-analysis-section {
+      margin: 32px 0;
+    }
+
+    .analysis-title {
+      font-size: 20px;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 24px;
+      color: #1f2937;
+    }
+
+    [data-theme="dark"] .analysis-title {
+      color: #e0e0e0;
+    }
+
+    .analysis-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+    }
+
+    .analysis-card {
+      background: #f9fafb;
+      border-radius: 16px;
+      padding: 20px;
+      border: 1px solid #e5e7eb;
+    }
+
+    [data-theme="dark"] .analysis-card {
+      background: rgba(55, 65, 81, 0.3);
+      border-color: #374151;
+    }
+
+    .analysis-card-title {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: #1f2937;
+      display: flex;
+      align-items: center;
+    }
+
+    [data-theme="dark"] .analysis-card-title {
+      color: #e0e0e0;
+    }
+
+    .confidence-meter, .balance-meter {
+      margin-bottom: 12px;
+    }
+
+    .confidence-bar, .balance-bar {
+      width: 100%;
+      height: 12px;
+      background: #e5e7eb;
+      border-radius: 6px;
+      overflow: hidden;
+      margin-bottom: 8px;
+    }
+
+    [data-theme="dark"] .confidence-bar, 
+    [data-theme="dark"] .balance-bar {
+      background: #374151;
+    }
+
+    .confidence-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #10b981, #34d399);
+      border-radius: 6px;
+      transition: width 1s ease;
+    }
+
+    .balance-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #3b82f6, #60a5fa);
+      border-radius: 6px;
+      transition: width 1s ease;
+    }
+
+    .confidence-text, .balance-text {
+      font-size: 14px;
+      font-weight: 600;
+      color: #374151;
+      text-align: center;
+    }
+
+    [data-theme="dark"] .confidence-text, 
+    [data-theme="dark"] .balance-text {
+      color: #e0e0e0;
+    }
+
+    .category-breakdown {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .insight-item {
+      background: white;
+      padding: 10px 12px;
+      border-radius: 8px;
+      font-size: 14px;
+      color: #374151;
+      border-left: 3px solid #3b82f6;
+    }
+
+    [data-theme="dark"] .insight-item {
+      background: rgba(30, 30, 50, 0.5);
+      color: #b0b0b0;
+    }
+
+    .test-stats {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .stat-item {
+      background: white;
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 14px;
+      color: #374151;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    [data-theme="dark"] .stat-item {
+      background: rgba(30, 30, 50, 0.5);
+      color: #b0b0b0;
+    }
+
+    @media (max-width: 768px) {
+      .analysis-grid {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
 <body>
@@ -1146,9 +1286,20 @@
   </footer>
 
   <script>
-    // Test data - 50개 질문 풀
+    // Enhanced Test data with categories and adaptive logic
+    const questionCategories = {
+      social: '사회성',
+      emotional: '감정성',
+      logical: '논리성',
+      leadership: '리더십',
+      creativity: '창의성'
+    };
+
     const allQuestions = [
       {
+        id: 'social_1',
+        category: 'social',
+        difficulty: 1,
         q: '친구들과 있을 때, 보통 당신은:',
         type: 'scale',
         options: [
@@ -1397,13 +1548,30 @@
       }
     };
 
-    // Test state
+    // Enhanced Test state with real-time analytics
     let selectedGender = '';
     let currentQuestion = 0;
     let questions = [];
     let answers = [];
     let estrogenScore = 0;
     let testosteroneScore = 0;
+    let startTime = Date.now();
+    let questionStartTime = Date.now();
+    let responseTimes = [];
+    let categoryScores = {
+      social: { estrogen: 0, testosterone: 0 },
+      emotional: { estrogen: 0, testosterone: 0 },
+      logical: { estrogen: 0, testosterone: 0 },
+      leadership: { estrogen: 0, testosterone: 0 },
+      creativity: { estrogen: 0, testosterone: 0 }
+    };
+    let confidenceLevel = 0;
+    let testSession = {
+      id: Date.now().toString(),
+      startTime: Date.now(),
+      userAgent: navigator.userAgent,
+      screenSize: `${screen.width}x${screen.height}`
+    };
 
     // Theme functionality
     const themeToggle = document.getElementById('themeToggle');
@@ -1457,6 +1625,7 @@
 
     function showQuestion() {
       const question = questions[currentQuestion];
+      questionStartTime = Date.now(); // 응답 시간 측정 시작
 
       document.getElementById('questionTitle').textContent = question.q;
       document.getElementById('questionNumber').textContent = `질문 ${currentQuestion + 1}`;
@@ -1498,6 +1667,8 @@
 
     function selectAnswer(index) {
       const question = questions[currentQuestion];
+      const responseTime = Date.now() - questionStartTime;
+      responseTimes.push(responseTime);
 
       if (question.type === 'yn') {
         document.querySelectorAll('.yn-option').forEach(option => {
@@ -1514,10 +1685,30 @@
       const selectedOption = question.options[index];
       answers[currentQuestion] = selectedOption;
 
+      // 전체 점수 업데이트
       if (selectedOption.type === 'estrogen') {
         estrogenScore += selectedOption.score;
       } else if (selectedOption.type === 'testosterone') {
         testosteroneScore += selectedOption.score;
+      }
+
+      // 카테고리별 점수 업데이트
+      if (question.category && categoryScores[question.category]) {
+        if (selectedOption.type === 'estrogen') {
+          categoryScores[question.category].estrogen += selectedOption.score;
+        } else if (selectedOption.type === 'testosterone') {
+          categoryScores[question.category].testosterone += selectedOption.score;
+        }
+      }
+
+      // 고급 분석을 위한 데이터 저장
+      if (window.egenTetoEnhanced) {
+        window.egenTetoEnhanced.recordAnswer(question.id || currentQuestion, {
+          answer: selectedOption,
+          responseTime: responseTime,
+          category: question.category,
+          difficulty: question.difficulty
+        });
       }
 
       document.getElementById('nextBtn').disabled = false;
@@ -1552,12 +1743,16 @@
       document.getElementById('loadingScreen').classList.add('hidden');
       document.getElementById('resultScreen').classList.remove('hidden');
 
-      const totalScore = estrogenScore + testosteroneScore;
-      const estrogenPercent = totalScore > 0 ? Math.round((estrogenScore / totalScore) * 100) : 50;
-      const testosteronePercent = 100 - estrogenPercent;
-
-      const resultType = estrogenScore > testosteroneScore ? 'estrogen' : 'testosterone';
+      // 고급 분석 수행
+      const analysis = performAdvancedAnalysis();
+      const resultType = analysis.dominantType;
       const result = results[resultType][selectedGender];
+      
+      // 신뢰도 계산
+      confidenceLevel = calculateConfidenceLevel();
+      
+      // 상세 분석 리포트 생성
+      const detailedReport = generateDetailedReport(analysis);
 
       document.getElementById('resultEmoji').textContent = result.emoji;
       document.getElementById('resultTitle').textContent = result.title;
@@ -1594,7 +1789,65 @@
       document.getElementById('musicList').innerHTML = 
         result.music.map(item => `<div class="info-item">${item}</div>`).join('');
 
+      // 상세 분석 정보 추가
+      addDetailedAnalysisSection(analysis, detailedReport);
+      
+      // 고급 차트 표시
+      if (window.ChartVisualization) {
+        window.ChartVisualization.renderAdvancedCharts(analysis.categoryBreakdown);
+      }
+
       trackEvent('test_completed', 'test_interaction');
+    }
+    
+    function addDetailedAnalysisSection(analysis, report) {
+      const analysisSection = document.createElement('div');
+      analysisSection.className = 'detailed-analysis-section';
+      analysisSection.innerHTML = `
+        <div class="analysis-title">📈 상세 분석 리포트</div>
+        <div class="analysis-grid">
+          <div class="analysis-card">
+            <div class="analysis-card-title">🎯 결과 신뢰도</div>
+            <div class="confidence-meter">
+              <div class="confidence-bar">
+                <div class="confidence-fill" style="width: ${confidenceLevel}%"></div>
+              </div>
+              <div class="confidence-text">${confidenceLevel}% 신뢰도</div>
+            </div>
+          </div>
+          
+          <div class="analysis-card">
+            <div class="analysis-card-title">⚖️ 성격 균형도</div>
+            <div class="balance-meter">
+              <div class="balance-bar">
+                <div class="balance-fill" style="width: ${analysis.balance}%"></div>
+              </div>
+              <div class="balance-text">${analysis.balance}% 균형</div>
+            </div>
+          </div>
+          
+          <div class="analysis-card">
+            <div class="analysis-card-title">📊 카테고리별 분석</div>
+            <div class="category-breakdown">
+              ${report.categoryInsights.map(insight => 
+                `<div class="insight-item">${insight}</div>`
+              ).join('')}
+            </div>
+          </div>
+          
+          <div class="analysis-card">
+            <div class="analysis-card-title">⏱️ 테스트 정보</div>
+            <div class="test-stats">
+              <div class="stat-item">소요시간: ${report.testDuration.split(': ')[1]}</div>
+              <div class="stat-item">응답 일관성: ${analysis.consistency}%</div>
+              <div class="stat-item">평균 응답시간: ${Math.round(responseTimes.reduce((sum, time) => sum + time, 0) / responseTimes.length / 1000)}초</div>
+            </div>
+          </div>
+        </div>
+      `;
+      
+      const shareSection = document.querySelector('.share-section');
+      shareSection.parentNode.insertBefore(analysisSection, shareSection);
     }
 
     function getShareText() {
@@ -1707,11 +1960,110 @@ ${result.fullDescription}
       window.location.href = '/ko/';
     }
 
+    // 고급 분석 함수들
+    function performAdvancedAnalysis() {
+      const totalScore = estrogenScore + testosteroneScore;
+      const estrogenPercent = totalScore > 0 ? Math.round((estrogenScore / totalScore) * 100) : 50;
+      const testosteronePercent = 100 - estrogenPercent;
+      
+      const balance = calculateBalance(estrogenScore, testosteroneScore);
+      const consistency = calculateConsistency();
+      const dominantType = estrogenScore > testosteroneScore ? 'estrogen' : 'testosterone';
+      
+      return {
+        estrogenPercent,
+        testosteronePercent,
+        balance,
+        consistency,
+        dominantType,
+        categoryBreakdown: analyzeCategoryScores()
+      };
+    }
+    
+    function calculateBalance(egen, teto) {
+      const total = egen + teto;
+      if (total === 0) return 50;
+      const difference = Math.abs(egen - teto);
+      return Math.round((1 - difference / total) * 100);
+    }
+    
+    function calculateConsistency() {
+      if (answers.length < 3) return 0;
+      
+      let consistencyScore = 0;
+      const scoreValues = answers.map(answer => answer.score || 0);
+      
+      for (let i = 0; i < scoreValues.length - 1; i++) {
+        const diff = Math.abs(scoreValues[i] - scoreValues[i + 1]);
+        consistencyScore += Math.max(0, 3 - diff); // 최대 3점에서 차이만큼 빼기
+      }
+      
+      return Math.round((consistencyScore / (scoreValues.length - 1)) * 33.33);
+    }
+    
+    function calculateConfidenceLevel() {
+      const avgResponseTime = responseTimes.reduce((sum, time) => sum + time, 0) / responseTimes.length;
+      const timeVariance = calculateTimeVariance();
+      const consistencyScore = calculateConsistency();
+      
+      // 빠르고 일정한 응답 = 높은 확신도
+      const speedScore = Math.max(0, 100 - avgResponseTime / 100);
+      const stabilityScore = Math.max(0, 100 - timeVariance / 10);
+      
+      return Math.round((speedScore + stabilityScore + consistencyScore) / 3);
+    }
+    
+    function calculateTimeVariance() {
+      const avg = responseTimes.reduce((sum, time) => sum + time, 0) / responseTimes.length;
+      const variance = responseTimes.reduce((sum, time) => sum + Math.pow(time - avg, 2), 0) / responseTimes.length;
+      return Math.sqrt(variance);
+    }
+    
+    function analyzeCategoryScores() {
+      const breakdown = {};
+      for (const category in categoryScores) {
+        const catScore = categoryScores[category];
+        const total = catScore.estrogen + catScore.testosterone;
+        breakdown[category] = {
+          estrogen: total > 0 ? Math.round((catScore.estrogen / total) * 100) : 50,
+          testosterone: total > 0 ? Math.round((catScore.testosterone / total) * 100) : 50,
+          dominant: catScore.estrogen > catScore.testosterone ? 'estrogen' : 'testosterone'
+        };
+      }
+      return breakdown;
+    }
+    
+    function generateDetailedReport(analysis) {
+      return {
+        summary: `당신의 성격은 ${analysis.dominantType === 'estrogen' ? '감성적' : '논리적'} 성향이 ${analysis.estrogenPercent > analysis.testosteronePercent ? analysis.estrogenPercent : analysis.testosteronePercent}%로 우세합니다.`,
+        balance: `성격 균형도: ${analysis.balance}%`,
+        consistency: `응답 일관성: ${analysis.consistency}%`,
+        confidence: `결과 신뢰도: ${confidenceLevel}%`,
+        testDuration: `테스트 소요시간: ${Math.round((Date.now() - startTime) / 1000)}초`,
+        categoryInsights: generateCategoryInsights(analysis.categoryBreakdown)
+      };
+    }
+    
+    function generateCategoryInsights(breakdown) {
+      const insights = [];
+      for (const [category, scores] of Object.entries(breakdown)) {
+        const percentage = Math.max(scores.estrogen, scores.testosterone);
+        const type = scores.dominant === 'estrogen' ? '감성적' : '논리적';
+        insights.push(`${questionCategories[category]}: ${type} ${percentage}%`);
+      }
+      return insights;
+    }
+
     function trackEvent(action, category = 'engagement') {
       if (typeof gtag !== 'undefined') {
         gtag('event', action, {
           event_category: category,
-          event_label: 'ko'
+          event_label: 'ko',
+          custom_parameters: {
+            session_id: testSession.id,
+            confidence_level: confidenceLevel,
+            test_duration: Math.round((Date.now() - startTime) / 1000)
+          }
         });
       }
     }
