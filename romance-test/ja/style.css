@@ -88,7 +88,7 @@ h1 {
 .test-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
+    gap: 8px;
     margin-bottom: 40px;
     justify-content: center;
     justify-items: center;
@@ -559,7 +559,7 @@ footer a:hover {
 
   .test-grid {
     grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
+    gap: 8px;
   }
 
   /* 메인 페이지 카드는 원래 크기 유지 */
