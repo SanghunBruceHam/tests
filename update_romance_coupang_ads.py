@@ -95,6 +95,15 @@ def update_coupang_ad_in_test_file(file_path):
         if 'max-width: 840px' in content and 'isSmallMobile' in content:
             return False, "이미 업데이트됨"
         
+        # 중복된 쿠팡 파트너스 문구 제거
+        duplicate_patterns = [
+            r'</div>\s*</div>\s*<p[^>]*>\s*"이 포스팅은 쿠팡 파트너스.*?</p>\s*</div>',
+            r'</div>\s*<p[^>]*>\s*"이 포스팅은 쿠팡 파트너스.*?</p>'
+        ]
+        
+        for pattern in duplicate_patterns:
+            content = re.sub(pattern, '</div>', content, flags=re.DOTALL)
+        
         # 기존 쿠팡 광고 섹션을 찾아서 교체
         patterns = [
             r'<!-- Coupang Partners Ad Section -->.*?</div>\s*</div>',
