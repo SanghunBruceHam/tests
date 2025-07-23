@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -22,11 +23,6 @@
   <link rel="alternate" hreflang="ja" href="https://tests.mahalohana-bruce.com/egen-teto/ja/" />
   <link rel="alternate" hreflang="en" href="https://tests.mahalohana-bruce.com/egen-teto/en/" />
   <link rel="alternate" hreflang="x-default" href="https://tests.mahalohana-bruce.com/egen-teto/ko/" />
-
-  <!-- 공통 테마 CSS -->
-  <link rel="stylesheet" href="/assets/common-theme.css">
-  <link rel="stylesheet" href="/assets/enhanced-animations.css">
-  <script src="/assets/enhanced-features.js"></script>
 
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-45VSGEM7EZ"></script>
@@ -66,6 +62,9 @@
 
   <!-- Google AdSense Auto Ads -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5508768187151867" crossorigin="anonymous"></script>
+
+  <!-- 공통 테마 CSS -->
+  <link rel="stylesheet" href="/assets/common-theme.css">
 
   <style>
     * {
@@ -130,8 +129,8 @@
 
     .card {
       background: white;
-      border-radius: 16px;
-      padding: 28px;
+      border-radius: 20px;
+      padding: 32px;
       box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
       width: 100%;
       position: relative;
@@ -143,9 +142,10 @@
       color: #e0e0e0;
     }
 
+    /* Header */
     .header {
       text-align: center;
-      margin-bottom: 28px;
+      margin-bottom: 32px;
     }
 
     .title {
@@ -177,7 +177,7 @@
       font-size: 16px;
       color: #6b7280;
       margin-bottom: 24px;
-      line-height: 1.6;
+      line-height: 1.5;
     }
 
     .info-badge {
@@ -204,11 +204,12 @@
       margin-right: 6px;
     }
 
+    /* Gender Selection */
     .gender-section h3 {
       text-align: center;
       font-size: 20px;
       font-weight: 700;
-      margin-bottom: 20px;
+      margin-bottom: 24px;
       color: #1f2937;
     }
 
@@ -218,8 +219,8 @@
 
     .gender-options {
       display: grid;
-      gap: 8px;
-      margin-bottom: 20px;
+      gap: 12px;
+      margin-bottom: 32px;
     }
 
     .gender-option {
@@ -268,7 +269,7 @@
 
     .gender-text {
       flex: 1;
-      font-size: 18px;
+      font-size: 16px;
       font-weight: 600;
     }
 
@@ -297,6 +298,7 @@
       transform: translate(-50%, -50%);
     }
 
+    /* Progress Bar */
     .progress-section {
       margin-bottom: 32px;
     }
@@ -344,6 +346,7 @@
       width: 0%;
     }
 
+    /* Question Section */
     .question-section {
       text-align: center;
     }
@@ -376,6 +379,7 @@
       color: #e0e0e0;
     }
 
+    /* Answer Options */
     .answer-options {
       display: grid;
       gap: 12px;
@@ -416,6 +420,7 @@
       color: white;
     }
 
+    /* Yes/No Options */
     .yn-options {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -475,6 +480,7 @@
       content: '✗';
     }
 
+    /* Buttons */
     .btn {
       width: 100%;
       padding: 16px 24px;
@@ -502,6 +508,7 @@
       transform: none !important;
     }
 
+    /* Loading Screen */
     .loading-section {
       text-align: center;
       padding: 60px 0;
@@ -532,6 +539,7 @@
       color: #e0e0e0;
     }
 
+    /* Result Screen */
     .result-section {
       text-align: center;
     }
@@ -554,9 +562,9 @@
     }
 
     .result-title {
-      font-size: 28px;
+      font-size: 24px;
       font-weight: 800;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
       color: #1f2937;
     }
 
@@ -580,6 +588,7 @@
       color: #b0b0b0;
     }
 
+    /* Chart */
     .chart-section {
       background: #f9fafb;
       border-radius: 16px;
@@ -684,6 +693,7 @@
       color: #e0e0e0;
     }
 
+    /* Result Cards */
     .result-cards {
       display: grid;
       gap: 16px;
@@ -764,6 +774,7 @@
       color: #e0e0e0;
     }
 
+    /* Info Grid */
     .info-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -825,6 +836,7 @@
       color: #b0b0b0;
     }
 
+    /* Share Section */
     .share-section {
       margin-top: 32px;
     }
@@ -919,6 +931,7 @@
       background: rgba(75, 85, 99, 0.3);
     }
 
+    /* Responsive */
     @media (max-width: 480px) {
       .container {
         padding: 10px;
@@ -948,147 +961,6 @@
     .hidden {
       display: none;
     }
-
-    /* 상세 분석 섹션 스타일 */
-    .detailed-analysis-section {
-      margin: 32px 0;
-    }
-
-    .analysis-title {
-      font-size: 20px;
-      font-weight: 700;
-      text-align: center;
-      margin-bottom: 24px;
-      color: #1f2937;
-    }
-
-    [data-theme="dark"] .analysis-title {
-      color: #e0e0e0;
-    }
-
-    .analysis-grid {
-      display: grid;
-      ```html
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 16px;
-    }
-
-    .analysis-card {
-      background: #f9fafb;
-      border-radius: 16px;
-      padding: 20px;
-      border: 1px solid #e5e7eb;
-    }
-
-    [data-theme="dark"] .analysis-card {
-      background: rgba(55, 65, 81, 0.3);
-      border-color: #374151;
-    }
-
-    .analysis-card-title {
-      font-size: 16px;
-      font-weight: 700;
-      margin-bottom: 16px;
-      color: #1f2937;
-      display: flex;
-      align-items: center;
-    }
-
-    [data-theme="dark"] .analysis-card-title {
-      color: #e0e0e0;
-    }
-
-    .confidence-meter, .balance-meter {
-      margin-bottom: 12px;
-    }
-
-    .confidence-bar, .balance-bar {
-      width: 100%;
-      height: 12px;
-      background: #e5e7eb;
-      border-radius: 6px;
-      overflow: hidden;
-      margin-bottom: 8px;
-    }
-
-    [data-theme="dark"] .confidence-bar, 
-    [data-theme="dark"] .balance-bar {
-      background: #374151;
-    }
-
-    .confidence-fill {
-      height: 100%;
-      background: linear-gradient(90deg, #10b981, #34d399);
-      border-radius: 6px;
-      transition: width 1s ease;
-    }
-
-    .balance-fill {
-      height: 100%;
-      background: linear-gradient(90deg, #3b82f6, #60a5fa);
-      border-radius: 6px;
-      transition: width 1s ease;
-    }
-
-    .confidence-text, .balance-text {
-      font-size: 14px;
-      font-weight: 600;
-      color: #374151;
-      text-align: center;
-    }
-
-    [data-theme="dark"] .confidence-text, 
-    [data-theme="dark"] .balance-text {
-      color: #e0e0e0;
-    }
-
-    .category-breakdown {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .insight-item {
-      background: white;
-      padding: 10px 12px;
-      border-radius: 8px;
-      font-size: 14px;
-      color: #374151;
-      border-left: 3px solid #3b82f6;
-    }
-
-    [data-theme="dark"] .insight-item {
-      background: rgba(30, 30, 50, 0.5);
-      color: #b0b0b0;
-    }
-
-    .test-stats {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .stat-item {
-      background: white;
-      padding: 8px 12px;
-      border-radius: 8px;
-      font-size: 14px;
-      color: #374151;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    [data-theme="dark"] .stat-item {
-      background: rgba(30, 30, 50, 0.5);
-      color: #b0b0b0;
-    }
-
-    @media (max-width: 768px) {
-      .analysis-grid {
-        grid-template-columns: 1fr;
-      }
-    }
   </style>
 </head>
 <body>
@@ -1114,13 +986,13 @@
           <h3>성별을 선택하세요</h3>
 
           <div class="gender-options">
-            <div class="gender-option" data-gender="female">
+            <div class="gender-option" onclick="selectGender('female')">
               <div class="gender-icon">👩</div>
               <div class="gender-text">여성</div>
               <div class="radio-circle"></div>
             </div>
 
-            <div class="gender-option" data-gender="male">
+            <div class="gender-option" onclick="selectGender('male')">
               <div class="gender-icon">👨</div>
               <div class="gender-text">남성</div>
               <div class="radio-circle"></div>
@@ -1287,20 +1159,9 @@
   </footer>
 
   <script>
-    // Enhanced Test data with categories and adaptive logic
-    const questionCategories = {
-      social: '사회성',
-      emotional: '감정성',
-      logical: '논리성',
-      leadership: '리더십',
-      creativity: '창의성'
-    };
-
+    // Test data - 50개 질문 풀
     const allQuestions = [
       {
-        id: 'social_1',
-        category: 'social',
-        difficulty: 1,
         q: '친구들과 있을 때, 보통 당신은:',
         type: 'scale',
         options: [
@@ -1486,6 +1347,9 @@
       }
     ];
 
+    // 20개 질문을 랜덤하게 선택
+    let questions = [];
+
     const results = {
       estrogen: {
         male: {
@@ -1549,80 +1413,28 @@
       }
     };
 
-    // Enhanced Test state with real-time analytics
+    // Test state
     let selectedGender = '';
     let currentQuestion = 0;
-    let questions = [];
     let answers = [];
     let estrogenScore = 0;
     let testosteroneScore = 0;
-    let startTime = Date.now();
-    let questionStartTime = Date.now();
-    let responseTimes = [];
-    let categoryScores = {
-      social: { estrogen: 0, testosterone: 0 },
-      emotional: { estrogen: 0, testosterone: 0 },
-      logical: { estrogen: 0, testosterone: 0 },
-      leadership: { estrogen: 0, testosterone: 0 },
-      creativity: { estrogen: 0, testosterone: 0 }
-    };
-    let confidenceLevel = 0;
-    let testSession = {
-      id: Date.now().toString(),
-      startTime: Date.now(),
-      userAgent: navigator.userAgent,
-      screenSize: `${screen.width}x${screen.height}`
-    };
-
-    // Theme functionality
-    const themeToggle = document.getElementById('themeToggle');
-    const body = document.body;
-
-    const currentTheme = localStorage.getItem('theme') || 'light';
-    body.setAttribute('data-theme', currentTheme);
-    updateThemeIcon();
-
-    themeToggle.addEventListener('click', () => {
-      const currentTheme = body.getAttribute('data-theme');
-      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-
-      body.setAttribute('data-theme', newTheme);
-      localStorage.setItem('theme', newTheme);
-      updateThemeIcon();
-    });
-
-    function updateThemeIcon() {
-      const currentTheme = body.getAttribute('data-theme');
-      const icon = themeToggle.querySelector('i');
-      icon.className = currentTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
-    }
 
     function selectGender(gender) {
       selectedGender = gender;
 
-      // 모든 성별 옵션에서 selected 클래스 제거
       document.querySelectorAll('.gender-option').forEach(option => {
         option.classList.remove('selected');
       });
 
-      // 클릭된 성별 옵션에 selected 클래스 추가
-      const clickedOption = event ? event.target.closest('.gender-option') : 
-                           document.querySelector(`.gender-option[onclick="selectGender('${gender}')"]`);
-      
-      if (clickedOption) {
-        clickedOption.classList.add('selected');
-      }
-
-      // 시작 버튼 활성화
+      event.target.closest('.gender-option').classList.add('selected');
       document.getElementById('startBtn').disabled = false;
-      
-      // Google Analytics 이벤트 추적
-      trackEvent('gender_selected', 'test_interaction');
     }
 
     function startTest() {
       if (!selectedGender) return;
 
+      // 50개 질문 중 20개를 랜덤하게 선택
       questions = getRandomQuestions(allQuestions, 20);
 
       document.getElementById('startScreen').classList.add('hidden');
@@ -1638,7 +1450,6 @@
 
     function showQuestion() {
       const question = questions[currentQuestion];
-      questionStartTime = Date.now(); // 응답 시간 측정 시작
 
       document.getElementById('questionTitle').textContent = question.q;
       document.getElementById('questionNumber').textContent = `질문 ${currentQuestion + 1}`;
@@ -1680,8 +1491,6 @@
 
     function selectAnswer(index) {
       const question = questions[currentQuestion];
-      const responseTime = Date.now() - questionStartTime;
-      responseTimes.push(responseTime);
 
       if (question.type === 'yn') {
         document.querySelectorAll('.yn-option').forEach(option => {
@@ -1698,163 +1507,191 @@
       const selectedOption = question.options[index];
       answers[currentQuestion] = selectedOption;
 
-      // 전체 점수 업데이트
       if (selectedOption.type === 'estrogen') {
         estrogenScore += selectedOption.score;
       } else if (selectedOption.type === 'testosterone') {
         testosteroneScore += selectedOption.score;
       }
 
-      // 카테고리별 점수 업데이트
-      if (question.category && categoryScores[question.category]) {
-        if (selectedOption.type === 'estrogen') {
-          categoryScores[question.category].estrogen += selectedOption.score;
-        } else if (selectedOption.type === 'testosterone') {
-          categoryScores[question.category].testosterone += selectedOption.score;
-        }
-      }
-
-      // 고급 분석을 위한 데이터 저장
-      if (window.egenTetoEnhanced) {
-        window.egenTetoEnhanced.recordAnswer(question.id || currentQuestion, {
-          answer: selectedOption,
-          responseTime: responseTime,
-          category: question.category,
-          difficulty: question.difficulty
-        });
-      }
-
       document.getElementById('nextBtn').disabled = false;
     }
 
     function nextQuestion() {
-      if (currentQuestion < questions.length - 1) {
-        currentQuestion++;
+      currentQuestion++;
+
+      if (currentQuestion < questions.length && currentQuestion < 20) {
         showQuestion();
       } else {
-        showResult();
+        showLoading();
       }
     }
 
     function updateProgress() {
       const progress = ((currentQuestion + 1) / questions.length) * 100;
-      document.getElementById('progressFill').style.width = `${progress}%`;
-      document.getElementById('progressCounter').textContent = `${currentQuestion + 1}/${questions.length}`;
+      document.getElementById('progressFill').style.width = progress + '%';
+      document.getElementById('progressCounter').textContent = `${currentQuestion + 1}/20`;
     }
 
-    function showResult() {
+    function showLoading() {
       document.getElementById('questionScreen').classList.add('hidden');
       document.getElementById('loadingScreen').classList.remove('hidden');
 
-      // Simulate loading time
       setTimeout(() => {
-        document.getElementById('loadingScreen').classList.add('hidden');
-        document.getElementById('resultScreen').classList.remove('hidden');
-        displayResult();
-      }, 2000);
+        showResult();
+      }, 3000);
     }
 
-    function displayResult() {
-      const resultType = estrogenScore >= testosteroneScore ? 'estrogen' : 'testosterone';
-      const resultData = results[resultType][selectedGender];
+    function showResult() {
+      document.getElementById('loadingScreen').classList.add('hidden');
+      document.getElementById('resultScreen').classList.remove('hidden');
 
-      document.getElementById('resultEmoji').textContent = resultData.emoji;
-      document.getElementById('resultTitle').textContent = resultData.title;
-      document.getElementById('resultSubtitle').textContent = resultData.subtitle;
-      document.getElementById('resultDescription').textContent = resultData.description;
+      const totalScore = estrogenScore + testosteroneScore;
+      const estrogenPercent = totalScore > 0 ? Math.round((estrogenScore / totalScore) * 100) : 50;
+      const testosteronePercent = 100 - estrogenPercent;
 
-      document.getElementById('estrogenPercent').textContent = `${estrogenScore}%`;
-      document.getElementById('testosteronePercent').textContent = `${testosteroneScore}%`;
-      document.getElementById('estrogenBar').style.width = `${estrogenScore}%`;
-      document.getElementById('testosteroneBar').style.width = `${testosteroneScore}%`;
+      const resultType = estrogenScore > testosteroneScore ? 'estrogen' : 'testosterone';
+      const result = results[resultType][selectedGender];
 
-      // 결과 카드 내용 채우기
-      document.getElementById('personalityContent').textContent = resultData.fullDescription;
+      // Set result header
+      document.getElementById('resultEmoji').textContent = result.emoji;
+      document.getElementById('resultTitle').textContent = result.title;
+      document.getElementById('resultSubtitle').textContent = result.subtitle;
+      document.getElementById('resultDescription').textContent = result.description;
+
+      // Update chart
+      setTimeout(() => {
+        document.getElementById('estrogenBar').style.width = estrogenPercent + '%';
+        document.getElementById('testosteroneBar').style.width = testosteronePercent + '%';
+        document.getElementById('estrogenPercent').textContent = estrogenPercent + '%';
+        document.getElementById('testosteronePercent').textContent = testosteronePercent + '%';
+      }, 500);
+
+      // Update result content
+      document.getElementById('personalityContent').textContent = result.fullDescription;
       document.getElementById('matchContent').innerHTML = `
-        <div class="match-badge">${resultData.match}</div>
-        <p>${resultData.matchDesc}</p>
+        <div class="match-badge">${result.match}</div>
+        <div>${result.matchDesc}</div>
       `;
 
-      // 키워드 표시
+      // Keywords
       const keywordsGrid = document.getElementById('keywordsGrid');
-      keywordsGrid.innerHTML = '';
-      resultData.keywords.forEach(keyword => {
-        const tag = document.createElement('span');
-        tag.className = 'keyword-tag';
-        tag.textContent = keyword;
-        keywordsGrid.appendChild(tag);
-      });
+      keywordsGrid.innerHTML = result.keywords.map(keyword => 
+        `<span class="keyword-tag">${keyword}</span>`
+      ).join('');
 
-      // 정보 카드들 채우기
-      const famousList = document.getElementById('famousList');
-      famousList.innerHTML = '';
-      resultData.famous.forEach(person => {
-        const item = document.createElement('div');
-        item.className = 'info-item';
-        item.textContent = person;
-        famousList.appendChild(item);
-      });
+      // Detailed info
+      document.getElementById('famousList').innerHTML = 
+        result.famous.map(person => `<div class="info-item">${person}</div>`).join('');
 
-      const careerList = document.getElementById('careerList');
-      careerList.innerHTML = '';
-      resultData.careers.forEach(career => {
-        const item = document.createElement('div');
-        item.className = 'info-item';
-        item.textContent = career;
-        careerList.appendChild(item);
-      });
+      document.getElementById('careerList').innerHTML = 
+        result.careers.map(career => `<div class="info-item">${career}</div>`).join('');
 
-      const lifestyleList = document.getElementById('lifestyleList');
-      lifestyleList.innerHTML = '';
-      resultData.lifestyle.forEach(lifestyle => {
-        const item = document.createElement('div');
-        item.className = 'info-item';
-        item.textContent = lifestyle;
-        lifestyleList.appendChild(item);
-      });
+      document.getElementById('lifestyleList').innerHTML = 
+        result.lifestyle.map(item => `<div class="info-item">${item}</div>`).join('');
 
-      const musicList = document.getElementById('musicList');
-      musicList.innerHTML = '';
-      resultData.music.forEach(music => {
-        const item = document.createElement('div');
-        item.className = 'info-item';
-        item.textContent = music;
-        musicList.appendChild(item);
-      });
+      document.getElementById('musicList').innerHTML = 
+        result.music.map(item => `<div class="info-item">${item}</div>`).join('');
+
+      // 테스트 완료 이벤트 추적
+      trackEvent('test_completed', 'test_interaction');
     }
 
-    // 공유 기능들
-    function shareTwitter() {
-      const resultType = estrogenScore >= testosteroneScore ? 'estrogen' : 'testosterone';
-      const resultData = results[resultType][selectedGender];
-      const text = `나의 에겐 vs 테토 테스트 결과: ${resultData.title} ${resultData.emoji}\n\n${resultData.description}\n\n#에겐테토테스트 #성격테스트`;
-      const url = 'https://tests.mahalohana-bruce.com/egen-teto/ko/';
-      window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`, '_blank');
-    }
+    function getShareText() {
+      const resultType = estrogenScore > testosteroneScore ? 'estrogen' : 'testosterone';
+      const result = results[resultType][selectedGender];
 
-    function shareFacebook() {
-      const url = 'https://tests.mahalohana-bruce.com/egen-teto/ko/';
-      window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank');
-    }
+      return `🧠💖 에겐 vs 테토 성격 테스트 결과
 
-    function shareThreads() {
-      const resultType = estrogenScore >= testosteroneScore ? 'estrogen' : 'testosterone';
-      const resultData = results[resultType][selectedGender];
-      const text = `나의 에겐 vs 테토 테스트 결과: ${resultData.title} ${resultData.emoji}\n\n${resultData.description}`;
-      const url = 'https://tests.mahalohana-bruce.com/egen-teto/ko/';
-      window.open(`https://threads.net/intent/post?text=${encodeURIComponent(text + '\n\n' + url)}`, '_blank');
+🎯 나는 ${result.title}입니다!
+${result.fullDescription}
+
+💕 찰떡궁합: ${result.match}
+💼 추천 직업: ${result.careers.join(', ')}
+🏷️ 키워드: ${result.keywords.join(', ')}
+
+✨ 테스트 해보기: https://tests.mahalohana-bruce.com/egen-teto/ko/`;
     }
 
     function copyResult() {
-      const resultType = estrogenScore >= testosteroneScore ? 'estrogen' : 'testosterone';
-      const resultData = results[resultType][selectedGender];
-      const text = `나의 에겐 vs 테토 테스트 결과: ${resultData.title} ${resultData.emoji}\n\n${resultData.description}\n\n찰떡궁합: ${resultData.match}\n\n테스트 해보기: https://tests.mahalohana-bruce.com/egen-teto/ko/`;
-      
-      navigator.clipboard.writeText(text).then(() => {
-        alert('결과가 클립보드에 복사되었습니다!');
-      }).catch(() => {
-        alert('복사에 실패했습니다. 다시 시도해주세요.');
-      });
+      const text = getShareText();
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(() => {
+          alert('🎉 결과가 클립보드에 복사되었습니다!');
+        }).catch(() => {
+          fallbackCopy(text);
+        });
+      } else {
+        fallbackCopy(text);
+      }
+    }
+
+    function fallbackCopy(text) {
+      const textArea = document.createElement('textarea');
+      textArea.value = text;
+      textArea.style.position = 'fixed';
+      textArea.style.opacity = '0';
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+
+      try {
+        document.execCommand('copy');
+        alert('🎉 결과가 클립보드에 복사되었습니다!');
+      } catch (err) {
+        alert('복사 기능이 이 브라우저에서 지원되지 않습니다.');
+      }
+
+      document.body.removeChild(textArea);
+    }
+
+    function shareTwitter() {
+      const resultType = estrogenScore > testosteroneScore ? 'estrogen' : 'testosterone';
+      const result = results[resultType][selectedGender];
+      const text = `나는 ${result.title}입니다! 너도 테스트해봐~ https://tests.mahalohana-bruce.com/egen-teto/ko/`;
+
+      try {
+        const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
+        window.open(url, '_blank', 'noopener,noreferrer');
+      } catch (err) {
+        copyToClipboard(text);
+        alert('텍스트가 복사되었습니다! X에 붙여넣어 주세요.');
+      }
+    }
+
+    function shareFacebook() {
+      try {
+        const url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent('https://tests.mahalohana-bruce.com/egen-teto/ko/')}`;
+        window.open(url, '_blank', 'noopener,noreferrer');
+      } catch (err) {
+        const text = '에겐 vs 테토 성격 테스트 https://tests.mahalohana-bruce.com/egen-teto/ko/';
+        copyToClipboard(text);
+        alert('텍스트가 복사되었습니다! 페이스북에 붙여넣어 주세요.');
+      }
+    }
+
+    function shareThreads() {
+      const resultType = estrogenScore > testosteroneScore ? 'estrogen' : 'testosterone';
+      const result = results[resultType][selectedGender];
+      const text = `나는 ${result.title}입니다! 너도 테스트해봐~ https://tests.mahalohana-bruce.com/egen-teto/ko/`;
+
+      try {
+        const url = `https://www.threads.net/intent/post?text=${encodeURIComponent(text)}`;
+        window.open(url, '_blank', 'noopener,noreferrer');
+      } catch (err) {
+        copyToClipboard(text);
+        alert('텍스트가 복사되었습니다! 쓰레드에 붙여넣어 주세요.');
+      }
+    }
+
+    function copyToClipboard(text) {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).catch(() => {
+          fallbackCopy(text);
+        });
+      } else {
+        fallbackCopy(text);
+      }
     }
 
     function restartTest() {
@@ -1888,19 +1725,33 @@
       }
     }
 
-    // 초기화 함수
-    function initializeTest() {
-      // 성별 선택 이벤트 리스너 설정
-      document.querySelectorAll('.gender-option').forEach(option => {
-        option.addEventListener('click', function() {
-          const gender = this.getAttribute('data-gender');
-          selectGender(gender);
-        });
-      });
+    // 다크모드 기능
+    let isDarkMode = localStorage.getItem('darkMode') === 'true';
 
-      // 테마 토글 기능 초기화
-      updateThemeIcon();
+    function updateTheme() {
+      const themeToggle = document.querySelector('.theme-toggle');
+      const icon = themeToggle.querySelector('i');
+
+      if (isDarkMode) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        icon.className = 'fas fa-sun';
+      } else {
+        document.documentElement.removeAttribute('data-theme');
+        icon.className = 'fas fa-moon';
+      }
+
+      localStorage.setItem('darkMode', isDarkMode);
     }
 
-    // 페이지 로드 시 초기화
-    document.addEventListener('DOMContentLoaded', initializeTest);
+    document.addEventListener('DOMContentLoaded', function() {
+      updateTheme();
+
+      // 테마 토글 이벤트 리스너
+      document.querySelector('.theme-toggle').addEventListener('click', () => {
+        isDarkMode = !isDarkMode;
+        updateTheme();
+      });
+    });
+  </script>
+</body>
+</html>
