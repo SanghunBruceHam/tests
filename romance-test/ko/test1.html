@@ -185,9 +185,16 @@
       document.getElementById('result').scrollIntoView({ behavior: 'smooth' });
 
       // Google Analytics 이벤트 추적
+      const resultLabels = {
+        'A': '직관적 연애형',
+        'B': '계획적 연애형',
+        'C': '감정적 연애형',
+        'D': '현실적 연애형'
+      };
+      
       gtag('event', 'quiz_complete', {
         'event_category': 'Romance Test',
-        'event_label': 'Test 1 - Choice ' + choice
+        'event_label': 'Test 1 - Choice ' + choice + ' - ' + resultLabels[choice]
       });
     }
 
