@@ -1114,13 +1114,13 @@
           <h3>성별을 선택하세요</h3>
 
           <div class="gender-options">
-            <div class="gender-option" onclick="selectGender('female')">
+            <div class="gender-option" data-gender="female">
               <div class="gender-icon">👩</div>
               <div class="gender-text">여성</div>
               <div class="radio-circle"></div>
             </div>
 
-            <div class="gender-option" onclick="selectGender('male')">
+            <div class="gender-option" data-gender="male">
               <div class="gender-icon">👨</div>
               <div class="gender-text">남성</div>
               <div class="radio-circle"></div>
@@ -1600,12 +1600,24 @@
     function selectGender(gender) {
       selectedGender = gender;
 
+      // 모든 성별 옵션에서 selected 클래스 제거
       document.querySelectorAll('.gender-option').forEach(option => {
         option.classList.remove('selected');
       });
 
-      event.target.closest('.gender-option').classList.add('selected');
+      // 클릭된 성별 옵션에 selected 클래스 추가
+      const clickedOption = event ? event.target.closest('.gender-option') : 
+                           document.querySelector(`.gender-option[onclick="selectGender('${gender}')"]`);
+      
+      if (clickedOption) {
+        clickedOption.classList.add('selected');
+      }
+
+      // 시작 버튼 활성화
       document.getElementById('startBtn').disabled = false;
+      
+      // Google Analytics 이벤트 추적
+      trackEvent('gender_selected', 'test_interaction');
     }
 
     function startTest() {
@@ -1875,3 +1887,20 @@
         });
       }
     }
+
+    // 초기화 함수
+    function initializeTest() {
+      // 성별 선택 이벤트 리스너 설정
+      document.querySelectorAll('.gender-option').forEach(option => {
+        option.addEventListener('click', function() {
+          const gender = this.getAttribute('data-gender');
+          selectGender(gender);
+        });
+      });
+
+      // 테마 토글 기능 초기화
+      updateThemeIcon();
+    }
+
+    // 페이지 로드 시 초기화
+    document.addEventListener('DOMContentLoaded', initializeTest);
