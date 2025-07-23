@@ -31,8 +31,8 @@ def get_improved_coupang_ad_html():
         adWidth = Math.min(window.innerWidth - 40, 500);
         adHeight = 180;
       } else {
-        adWidth = 840;
-        adHeight = 200;
+        adWidth = 700;
+        adHeight = 140;
       }
       
       new PartnersCoupang.G({
