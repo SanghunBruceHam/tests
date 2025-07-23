@@ -40,9 +40,9 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Article",
-    "headline": "연애 심리 테스트 1: 당신이 연인에게 요구하는 것",
-    "description": "바닐라 아이스크림 토핑 선택으로 알아보는 당신이 연인에게 요구하는 것은?",
+    "@type": "Quiz",
+    "name": "연애 심리 테스트 1: 당신이 연인에게 요구하는 것",
+    "description": "바닐라 아이스크림 토핑 선택으로 알아보는 당신이 연인에게 요구하는 것은? 간단한 선택으로 당신의 연애 성향을 분석해보세요.",
     "image": "https://tests.mahalohana-bruce.com/romance-test/ko/thumbnail.png",
     "author": {
       "@type": "Organization",
@@ -58,12 +58,64 @@
     },
     "datePublished": "2024-01-01",
     "dateModified": "2024-01-01",
-    "mainEntityOfPage": {
-      "@type": "WebPage",
-      "@id": "https://tests.mahalohana-bruce.com/romance-test/ko/test1.html"
-    }
+    "url": "https://tests.mahalohana-bruce.com/romance-test/ko/test1.html",
+    "educationalLevel": "beginner",
+    "timeRequired": "PT2M",
+    "inLanguage": "ko",
+    "keywords": ["연애 심리 테스트", "연인에게 요구하는 것", "연애 성향", "심리 분석", "무료 테스트"]
   }
+  </script>
 
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1,
+      "name": "홈",
+      "item": "https://tests.mahalohana-bruce.com/"
+    }, {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "연애 심리 테스트",
+      "item": "https://tests.mahalohana-bruce.com/romance-test/ko/"
+    }, {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "연인에게 요구하는 것",
+      "item": "https://tests.mahalohana-bruce.com/romance-test/ko/test1.html"
+    }]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [{
+      "@type": "Question",
+      "name": "이 연애 심리 테스트는 얼마나 정확한가요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "이 테스트는 심리학적 개념을 바탕으로 설계되었지만, 엔터테인먼트와 자기 이해를 목적으로 합니다. 임상적 진단이 아닌 재미있는 자기 탐구 도구로 활용해주세요."
+      }
+    }, {
+      "@type": "Question",
+      "name": "테스트 결과는 변할 수 있나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "네, 사람의 성격과 상황은 시간에 따라 변화하므로 시기별로 결과가 달라질 수 있습니다. 정기적으로 테스트해보시면 흥미로운 변화를 발견할 수 있어요."
+      }
+    }, {
+      "@type": "Question",
+      "name": "이 테스트는 누구에게 추천하나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "자신의 연애 성향을 객관적으로 이해하고 싶은 분, 연인과의 궁합을 알아보고 싶은 분, 친구들과 재미있는 심리 테스트를 즐기고 싶은 분들께 추천합니다."
+      }
+    }]
+  }
   </script>
 
   <link rel="stylesheet" href="./style.css">
@@ -74,9 +126,18 @@
 <body>
 
 <div class="container">
+    <div class="test-intro" style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8fafc; border-radius: 12px;">
+      <p style="font-size: 16px; color: #374151; line-height: 1.6; margin: 0;">
+        <strong>🎯 소요 시간:</strong> 약 2분 | <strong>👥 대상:</strong> 연애 성향을 알고 싶은 모든 분 | <strong>📊 결과:</strong> 당신이 연인에게 진정으로 원하는 것
+      </p>
+    </div>
+    
     <div class="question">
-      <h1>💖 연애 심리 테스트 1</h1>
+      <h1>💖 연애 심리 테스트 1: 당신이 연인에게 요구하는 것</h1>
       <h2>바닐라 아이스크림에 토핑한다면 다음 중 어느 것?</h2>
+      <p style="text-align: center; color: #6b7280; margin-bottom: 20px;">
+        간단한 선택으로 당신의 숨겨진 연애 욕구를 분석해보세요
+      </p>
       <div class="choices">
         <div class="choice" onclick="showResult('A')">A. 딸기 잼</div>
         <div class="choice" onclick="showResult('B')">B. 말차 시럽</div>
