@@ -364,7 +364,7 @@
     }
 
     .main-navigation {
-      margin: 15px 0;
+      margin: 10px 0;
     }
 
     .nav-list {
@@ -395,16 +395,16 @@
     }
 
     .test-section {
-      margin-bottom: 30px;
+      margin-bottom: 25px;
     }
 
     .section-title {
       font-size: 1.8rem;
       font-weight: 700;
-      margin-bottom: 18px;
+      margin-bottom: 12px;
       text-align: center;
       color: var(--text-primary);
-      padding: 10px 0;
+      padding: 8px 0;
       border-bottom: 2px solid var(--border-color);
     }
 
@@ -692,7 +692,7 @@
       <h1>심리테스트 모음</h1>
       <h2 class="subtitle">나를 알아가는 재미있는 심리테스트<br>성격, 연애, 직업까지 모든 테스트가 여기에!</h2>
 
-      
+
     </header>
 
     <div class="recommendations">
@@ -725,7 +725,7 @@
         <button class="filter-btn" data-category="career">💼 직업 & 적성</button>
         <button class="filter-btn" data-category="fun">🎭 재미 테스트</button>
       </div>
-      
+
       <div class="tests-grid">
         <!-- 성격 분석 테스트 -->
         <a href="/egen-teto/ko/" class="test-card" data-category="personality">
@@ -825,7 +825,7 @@
     function filterTests(category) {
       const testCards = document.querySelectorAll('.test-card');
       const filterBtns = document.querySelectorAll('.filter-btn');
-      
+
       // Update active filter button
       filterBtns.forEach(btn => {
         if (btn.dataset.category === category) {
@@ -834,7 +834,7 @@
           btn.classList.remove('active');
         }
       });
-      
+
       // Show/hide test cards
       testCards.forEach(card => {
         if (category === 'all' || card.dataset.category === category) {
