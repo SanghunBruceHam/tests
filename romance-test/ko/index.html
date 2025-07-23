@@ -302,25 +302,20 @@
     </section>
   </div>
 
-  <!-- Back to Top Button -->
-  <button class="back-to-top" id="backToTop" onclick="scrollToTop()">
-    ↑
-  </button>
-
   <!-- Coupang Partners Ad Section -->
-  <div style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border-radius: 15px; padding: 30px; margin: 40px auto; max-width: 800px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.2);">
-    <h3 style="color: #ffffff; margin-bottom: 15px; font-size: 1.4rem; font-weight: 700; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">💕 연애 & 데이트 추천 상품</h3>
-    <p style="color: #ffffff; font-size: 1rem; margin-bottom: 20px; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">연애 심리테스트 후 로맨틱한 데이트와 연애에 도움이 되는 상품들을 만나보세요!</p>
+  <div style="background: var(--card_bg); backdrop-filter: blur(20px); border-radius: 16px; padding: 20px; margin: 40px auto; max-width: 800px; text-align: center; border: 1px solid var(--border_color); box-shadow: var(--shadow);">
+    <h3 style="color: var(--text_primary); margin-bottom: 15px; font-size: 1.3rem; font-weight: 700;">💕 연애 관련 추천 상품</h3>
+    <p style="color: var(--text_secondary); font-size: 1rem; margin-bottom: 20px;">연애 심리 테스트와 함께 보면 좋은 상품들을 추천합니다!</p>
     
     <!-- 쿠팡 파트너스 광고 -->
-    <div style="margin: 20px 0; width: 100%; max-width: 750px; overflow: hidden; margin-left: auto; margin-right: auto;">
-      <div id="coupang-ad-container" style="width: 100%; max-width: 750px; overflow: hidden;">
+    <div style="margin: 20px 0; width: 100%; max-width: 680px; overflow: hidden; margin-left: auto; margin-right: auto;">
+      <div id="coupang-ad-container" style="width: 100%; max-width: 680px; overflow: hidden;">
         <script src="https://ads-partners.coupang.com/g.js"></script>
         <script>
           // 모바일 대응 광고 크기 조정
           const isMobile = window.innerWidth <= 768;
-          const adWidth = isMobile ? Math.min(window.innerWidth - 40, 300) : 750;
-          const adHeight = isMobile ? 120 : 150;
+          const adWidth = isMobile ? Math.min(window.innerWidth - 40, 300) : 680;
+          const adHeight = isMobile ? 120 : 140;
           
           new PartnersCoupang.G({
             "id": 867629,
@@ -334,10 +329,15 @@
       </div>
     </div>
     
-    <p style="color: #ffffff; font-size: 0.8rem; margin-top: 15px; font-style: italic; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">
+    <p style="color: var(--text_secondary); font-size: 0.85rem; margin-top: 20px; font-style: italic;">
       "이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다."
     </p>
   </div>
+
+  <!-- Back to Top Button -->
+  <button class="back-to-top" id="backToTop" onclick="scrollToTop()">
+    ↑
+  </button>
 
 <footer>© 연애 심리 테스트 | <a href="https://tests.mahalohana-bruce.com" target="_blank" rel="noopener noreferrer">tests.mahalohana-bruce.com</a></footer>
 <script>
@@ -358,35 +358,3 @@ function scrollToTop() {
 </script>
 </body>
 </html>
-
-
-<script>
-// 모바일 성능 최적화
-if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-  // 스크롤 최적화
-  let ticking = false;
-  function updateScrollPosition() {
-    ticking = false;
-  }
-
-  function requestTick() {
-    if (!ticking) {
-      requestAnimationFrame(updateScrollPosition);
-      ticking = true;
-    }
-  }
-
-  window.addEventListener('scroll', requestTick, { passive: true });
-
-  // 터치 이벤트 최적화
-  document.addEventListener('touchstart', function() {}, { passive: true });
-  document.addEventListener('touchmove', function() {}, { passive: true });
-
-  // iOS Safari 뷰포트 고정 방지
-  window.addEventListener('orientationchange', function() {
-    setTimeout(function() {
-      window.scrollTo(0, 0);
-    }, 100);
-  });
-}
-</script>
