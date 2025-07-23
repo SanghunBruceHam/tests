@@ -358,3 +358,35 @@ function scrollToTop() {
 </script>
 </body>
 </html>
+
+
+<script>
+// 모바일 성능 최적화
+if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+  // 스크롤 최적화
+  let ticking = false;
+  function updateScrollPosition() {
+    ticking = false;
+  }
+  
+  function requestTick() {
+    if (!ticking) {
+      requestAnimationFrame(updateScrollPosition);
+      ticking = true;
+    }
+  }
+  
+  window.addEventListener('scroll', requestTick, { passive: true });
+  
+  // 터치 이벤트 최적화
+  document.addEventListener('touchstart', function() {}, { passive: true });
+  document.addEventListener('touchmove', function() {}, { passive: true });
+  
+  // iOS Safari 뷰포트 고정 방지
+  window.addEventListener('orientationchange', function() {
+    setTimeout(function() {
+      window.scrollTo(0, 0);
+    }, 100);
+  });
+}
+</script>

@@ -353,6 +353,8 @@ h1 {
   font-size: 1rem;
   position: relative;
   overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 
 .choice::before {
@@ -607,14 +609,45 @@ footer a:hover {
 
 /* 반응형 디자인 */
 @media (max-width: 768px) {
+  /* 모바일 성능 최적화 */
+  * {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+
   body {
     padding: 8px;
+    -webkit-overflow-scrolling: touch;
+    overflow-x: hidden;
   }
 
   .container {
     padding: 8px;
     max-width: 100%;
     margin: 0;
+    overflow-x: hidden;
+  }
+
+  /* 모바일에서 backdrop-filter 성능 최적화 */
+  .test-card, .question, .result {
+    backdrop-filter: none;
+    background: rgba(255, 255, 255, 0.98);
+  }
+
+  /* 애니메이션 간소화 */
+  .test-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .choice {
+    transition: background-color 0.2s ease, transform 0.2s ease;
+  }
+
+  /* 그라데이션 간소화 */
+  body::before {
+    background: rgba(255, 182, 193, 0.1);
   }
 
   h1 {
