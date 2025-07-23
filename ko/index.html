@@ -165,17 +165,30 @@
       color: var(--text-secondary);
     }
 
-    .tests-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 12px;
-      margin-bottom: 40px;
+    .recommendations {
+      margin-bottom: 25px;
     }
 
-    .test-card {
+    .section-subtitle {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    .recommendation-cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .recommendation-item {
       background: var(--card-bg);
       border-radius: var(--border-radius);
-      padding: 22px;
+      padding: 16px;
       text-decoration: none;
       color: inherit;
       transition: all 0.3s ease;
@@ -183,9 +196,137 @@
       border: 1px solid var(--border-color);
       backdrop-filter: blur(10px);
       min-height: 120px;
+      width: 100%;
       display: flex;
       flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    .recommendation-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+      border-color: var(--accent-color);
+    }
+
+    .rec-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+
+    .rec-desc {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      flex-grow: 1;
+    }
+
+    .rank-badge {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: linear-gradient(135deg, #ff6b9d, #c94b70);
+      color: white;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      z-index: 1;
+      box-shadow: 0 2px 8px rgba(255, 107, 157, 0.3);
+      letter-spacing: 0.5px;
+    }
+
+    .test-section {
+      margin-bottom: 25px;
+    }
+
+    .section-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      text-align: center;
+      color: var(--text-primary);
+      padding: 8px 0;
+      border-bottom: 2px solid var(--border-color);
+    }
+
+    .filter-buttons {
+      display: flex;
       justify-content: center;
+      gap: 10px;
+      margin-bottom: 25px;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      padding: 10px 20px;
+      border: 2px solid var(--border-color);
+      background: var(--card-bg);
+      color: var(--text-primary);
+      border-radius: 25px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 600;
+      font-size: 0.9rem;
+      backdrop-filter: blur(10px);
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: var(--accent-color);
+      color: white;
+      border-color: var(--accent-color);
+      transform: translateY(-2px);
+    }
+
+    .tests-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 8px;
+      margin-bottom: 0;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .test-card {
+      background: var(--card-bg);
+      border-radius: var(--border-radius);
+      padding: 14px;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border-color);
+      backdrop-filter: blur(10px);
+      min-height: 100px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    .test-card.hidden {
+      display: none;
+    }
+
+    .badge {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: linear-gradient(135deg, #ff6b9d, #c94b70);
+      color: white;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      z-index: 1;
+      box-shadow: 0 2px 8px rgba(255, 107, 157, 0.3);
+      letter-spacing: 0.5px;
     }
 
     .test-card:hover {
@@ -282,24 +423,89 @@
         font-size: 0.9rem;
       }
 
-      .tests-grid {
+      .recommendation-cards {
         grid-template-columns: 1fr;
-        gap: 12px;
-        margin-bottom: 20px;
+        gap: 8px;
       }
 
-      .test-card {
-        padding: 20px;
+      .recommendation-item {
+        padding: 14px;
         min-height: 100px;
       }
 
-      .test-title {
-        font-size: 1.2rem;
+      .rec-title {
+        font-size: 1.1rem;
         margin-bottom: 8px;
+      }
+
+      .rec-desc {
+        font-size: 0.9rem;
+      }
+
+      .rank-badge {
+        top: 8px;
+        right: 8px;
+        padding: 4px 8px;
+        font-size: 0.6rem;
+      }
+
+      .filter-buttons {
+        justify-content: center;
+        gap: 4px;
+        margin-bottom: 15px;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        padding: 0 5px;
+      }
+
+      .filter-btn {
+        padding: 6px 10px;
+        font-size: 11px;
+        white-space: nowrap;
+        min-width: auto;
+        flex-shrink: 0;
+      }
+
+      .section-title {
+        font-size: 1.4rem;
+        margin-bottom: 15px;
+        padding: 8px 0;
+      }
+
+      .test-section {
+        margin-bottom: 25px;
+      }
+
+      .tests-grid {
+        grid-template-columns: 1fr;
+        gap: 6px;
+        margin-bottom: 0;
+        max-width: 100%;
+        padding: 0 12px;
+      }
+
+      .test-card {
+        padding: 14px;
+        min-height: 100px;
+        width: 100%;
+      }
+
+      .test-title {
+        font-size: 1.1rem;
+        margin-bottom: 8px;
+        line-height: 1.3;
       }
 
       .test-description {
         font-size: 0.9rem;
+        line-height: 1.5;
+      }
+
+      .badge {
+        top: 8px;
+        right: 8px;
+        padding: 4px 8px;
+        font-size: 0.6rem;
       }
 
       .footer {
@@ -406,37 +612,85 @@
       </div>
     </div>
 
-    <div class="tests-grid">
-      <a href="/egen-teto/ko/" class="test-card">
-        <div class="test-title">💖 에겐 vs 테토 성향 테스트</div>
-        <div class="test-description">호르몬 특성 기반 성격 분석! 에겐파/테토파 중 어디에 속하는지 알아보고 찰떡궁합 이상형까지 찾아보세요.</div>
-      </a>
+    <div class="recommendations">
+        <h3 class="section-subtitle">🔥 인기 테스트</h3>
+        <div class="recommendation-cards">
+          <a href="/romance-test/ko/" class="recommendation-item">
+            <div class="rec-title">💕 연애 스타일 테스트</div>
+            <div class="rec-desc">당신의 연애 패턴과 이상형을 분석해보세요. 사랑에 빠지는 방식부터 관계 유지법까지!</div>
+            <span class="rank-badge">1위</span>
+          </a>
+          <a href="/egen-teto/ko/" class="recommendation-item">
+            <div class="rec-title">🔥 에겐 vs 테토 테스트</div>
+            <div class="rec-desc">호르몬 특성 기반 성격 분석! 에겐파/테토파 중 어디에 속하는지 알아보고 찰떡궁합 이상형까지 찾아보세요!</div>
+            <span class="rank-badge">2위</span>
+          </a>
+        </div>
+      </div>
 
-      <a href="/romance-test/ko/" class="test-card">
-        <div class="test-title">🌟 연애 스타일 테스트</div>
-        <div class="test-description">당신의 연애 패턴과 이상형을 분석해보세요. 사랑에 빠지는 방식부터 관계 유지법까지!</div>
-      </a>
+    <!-- 모든 심리테스트 -->
+    <section id="all-tests" class="test-section">
+      <h2 class="section-title">🎯 모든 심리테스트</h2>
+      <div class="filter-buttons">
+        <button class="filter-btn active" data-category="all">전체</button>
+        <button class="filter-btn" data-category="personality">🧠 성격분석</button>
+        <button class="filter-btn" data-category="romance">💕 연애·관계</button>
+        <button class="filter-btn" data-category="career">💼 직업·적성</button>
+        <button class="filter-btn" data-category="fun">🎭 재미있는 테스트</button>
+      </div>
 
-      <a href="#" class="test-card" onclick="alert('준비 중입니다!')">
-        <div class="test-title">💼 직업 적성 검사</div>
-        <div class="test-description">나에게 맞는 직업을 찾아보세요. 성격, 관심사, 능력을 종합한 맞춤 직업 추천!</div>
-      </a>
+      <div class="tests-grid">
+        <!-- 성격분석 테스트 -->
+        <a href="/egen-teto/ko/" class="test-card" data-category="personality">
+          <div class="test-title">💖 에겐 vs 테토 성향 테스트</div>
+          <div class="test-description">호르몬 특성 기반 성격 분석! 에겐파/테토파 중 어디에 속하는지 알아보고 찰떡궁합 이상형까지 찾아보세요.</div>
+        </a>
 
-      <a href="#" class="test-card" onclick="alert('준비 중입니다!')">
-        <div class="test-title">🎭 MBTI 성격 테스트</div>
-        <div class="test-description">16가지 성격 유형 중 나는 어디에? 정확한 MBTI 진단과 상세한 성격 분석!</div>
-      </a>
+        <a href="#" class="test-card" data-category="personality" onclick="alert('준비 중입니다!')">
+          <div class="test-title">🎭 MBTI 성격 테스트</div>
+          <div class="test-description">16가지 성격 유형 중 나는 어디에? 정확한 MBTI 진단과 상세한 성격 분석!</div>
+          <span class="badge">준비중</span>
+        </a>
 
-      <a href="#" class="test-card" onclick="alert('준비 중입니다!')">
-        <div class="test-title">🧩 IQ 테스트</div>
-        <div class="test-description">논리력, 수리력, 공간지각력을 종합한 지능 측정 테스트. 당신의 IQ는 몇일까요?</div>
-      </a>
+        <!-- 연애·관계 테스트 -->
+        <a href="/romance-test/ko/" class="test-card" data-category="romance">
+          <div class="test-title">🌟 연애 스타일 테스트</div>
+          <div class="test-description">당신의 연애 패턴과 이상형을 분석해보세요. 사랑에 빠지는 방식부터 관계 유지법까지!</div>
+        </a>
 
-      <a href="#" class="test-card" onclick="alert('준비 중입니다!')">
-        <div class="test-title">💝 사랑의 언어 테스트</div>
-        <div class="test-description">나와 상대방의 사랑 표현 방식을 알아보세요. 더 깊은 관계를 위한 소통법!</div>
-      </a>
-    </div>
+        <a href="#" class="test-card" data-category="romance" onclick="alert('준비 중입니다!')">
+          <div class="test-title">💝 사랑의 언어 테스트</div>
+          <div class="test-description">나와 상대방의 사랑 표현 방식을 알아보세요. 더 깊은 관계를 위한 소통법!</div>
+          <span class="badge">준비중</span>
+        </a>
+
+        <!-- 직업·적성 테스트 -->
+        <a href="#" class="test-card" data-category="career" onclick="alert('준비 중입니다!')">
+          <div class="test-title">💼 직업 적성 검사</div>
+          <div class="test-description">나에게 맞는 직업을 찾아보세요. 성격, 관심사, 능력을 종합한 맞춤 직업 추천!</div>
+          <span class="badge">준비중</span>
+        </a>
+
+        <a href="#" class="test-card" data-category="career" onclick="alert('준비 중입니다!')">
+          <div class="test-title">🧩 IQ 테스트</div>
+          <div class="test-description">논리력, 수리력, 공간지각력을 종합한 지능 측정 테스트. 당신의 IQ는 몇일까요?</div>
+          <span class="badge">준비중</span>
+        </a>
+
+        <!-- 재미있는 테스트 -->
+        <a href="#" class="test-card" data-category="fun" onclick="alert('준비 중입니다!')">
+          <div class="test-title">🔮 운세·타로</div>
+          <div class="test-description">오늘의 운세와 타로카드로 미래를 점쳐보세요!</div>
+          <span class="badge">준비중</span>
+        </a>
+
+        <a href="#" class="test-card" data-category="fun" onclick="alert('준비 중입니다!')">
+          <div class="test-title">🎪 재미있는 심리게임</div>
+          <div class="test-description">친구들과 함께 즐길 수 있는 재미있는 심리테스트 모음!</div>
+          <span class="badge">준비중</span>
+        </a>
+      </div>
+    </section>
 
 
 
@@ -450,5 +704,47 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
   <script src="/assets/common-components.js"></script>
+
+  <script>
+    // 테스트 필터링 기능
+    function filterTests(category) {
+      const testCards = document.querySelectorAll('.test-card');
+      const filterBtns = document.querySelectorAll('.filter-btn');
+
+      // 활성 필터 버튼 업데이트
+      filterBtns.forEach(btn => {
+        if (btn.dataset.category === category) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+
+      // 테스트 카드 표시/숨김
+      testCards.forEach(card => {
+        if (category === 'all' || card.dataset.category === category) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+
+      // 테스트 섹션으로 부드럽게 스크롤
+      document.getElementById('all-tests').scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+
+    // 필터 버튼 초기화
+    document.addEventListener('DOMContentLoaded', function() {
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+          filterTests(this.dataset.category);
+        });
+      });
+    });
+  </script>
 </body>
 </html>
