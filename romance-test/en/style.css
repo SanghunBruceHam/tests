@@ -88,7 +88,7 @@ h1 {
 .test-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
+    gap: 8px;
     margin-bottom: 40px;
     justify-content: center;
     justify-items: center;
@@ -211,8 +211,8 @@ h1 {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  font-size: 1.05rem;
-  margin-bottom: 2px;
+  font-size: 1.15rem;
+  margin-bottom: 4px;
   font-weight: 700;
   padding-right: 35px;
   line-height: 1.2;
@@ -220,7 +220,7 @@ h1 {
 
 .test-card p {
   color: var(--text_secondary);
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   line-height: 1.3;
   font-weight: 400;
   margin: 0;
