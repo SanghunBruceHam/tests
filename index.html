@@ -329,8 +329,10 @@
     .tests-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
+      gap: 15px;
       margin-bottom: 20px;
+      justify-items: center;
+      align-items: start;
     }
 
     .test-card {
@@ -343,7 +345,9 @@
       box-shadow: var(--shadow);
       border: 1px solid var(--border-color);
       backdrop-filter: blur(10px);
-      min-height: 120px;
+      min-height: 140px;
+      width: 100%;
+      max-width: 260px;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -581,8 +585,9 @@
 
       .tests-grid {
         grid-template-columns: repeat(3, 1fr);
-        gap: 8px;
+        gap: 10px;
         margin-bottom: 30px;
+        justify-items: center;
       }
 
       .test-card {
@@ -671,7 +676,8 @@
 
       .tests-grid {
         grid-template-columns: repeat(3, 1fr);
-        gap: 6px;
+        gap: 8px;
+        justify-items: center;
       }
 
       .test-card {
