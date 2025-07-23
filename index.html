@@ -466,6 +466,41 @@
       z-index: 1;
     }
 
+    /* Filter buttons */
+    .filter-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 25px;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      padding: 10px 20px;
+      border: 2px solid var(--border-color);
+      background: var(--card-bg);
+      color: var(--text-primary);
+      border-radius: 25px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 600;
+      font-size: 0.9rem;
+      backdrop-filter: blur(10px);
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: var(--accent-color);
+      color: white;
+      border-color: var(--accent-color);
+      transform: translateY(-2px);
+    }
+
+    /* Hidden test cards */
+    .test-card.hidden {
+      display: none;
+    }
+
     @media (max-width: 768px) {
       .container {
         padding: 15px;
@@ -610,6 +645,19 @@
         max-width: 400px;
       }
 
+      .filter-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .filter-btn {
+        width: 100%;
+        max-width: 300px;
+        padding: 12px 20px;
+        font-size: 0.9rem;
+      }
+
       .section-title {
         font-size: 1.3rem;
         margin-bottom: 15px;
@@ -645,10 +693,11 @@
 
       <nav aria-label="테스트 카테고리" class="main-navigation">
         <ul class="nav-list">
-          <li><a href="#personality-tests" class="nav-link">🧠 성격 분석</a></li>
-          <li><a href="#romance-tests" class="nav-link">💕 연애 & 관계</a></li>
-          <li><a href="#career-tests" class="nav-link">💼 직업 & 적성</a></li>
-          <li><a href="#fun-tests" class="nav-link">🎭 재미 테스트</a></li>
+          <li><a href="#all-tests" class="nav-link" onclick="filterTests('all')">🏠 전체</a></li>
+          <li><a href="#all-tests" class="nav-link" onclick="filterTests('personality')">🧠 성격 분석</a></li>
+          <li><a href="#all-tests" class="nav-link" onclick="filterTests('romance')">💕 연애 & 관계</a></li>
+          <li><a href="#all-tests" class="nav-link" onclick="filterTests('career')">💼 직업 & 적성</a></li>
+          <li><a href="#all-tests" class="nav-link" onclick="filterTests('fun')">🎭 재미 테스트</a></li>
         </ul>
       </nav>
     </header>
@@ -673,69 +722,63 @@
         </div>
       </div>
 
-    <!-- 성격 분석 테스트 -->
-    <section id="personality-tests" class="test-section">
-      <h2 class="section-title">🧠 성격 분석 테스트</h2>
+    <!-- 전체 테스트 모음 -->
+    <section id="all-tests" class="test-section">
+      <h2 class="section-title">🎯 모든 심리테스트</h2>
+      <div class="filter-buttons">
+        <button class="filter-btn active" data-category="all">전체</button>
+        <button class="filter-btn" data-category="personality">🧠 성격 분석</button>
+        <button class="filter-btn" data-category="romance">💕 연애 & 관계</button>
+        <button class="filter-btn" data-category="career">💼 직업 & 적성</button>
+        <button class="filter-btn" data-category="fun">🎭 재미 테스트</button>
+      </div>
+      
       <div class="tests-grid">
-        <a href="/egen-teto/ko/" class="test-card">
+        <!-- 성격 분석 테스트 -->
+        <a href="/egen-teto/ko/" class="test-card" data-category="personality">
           <div class="test-title">💖 에겐 vs 테토 성향 테스트</div>
           <div class="test-description">호르몬 특성 기반 성격 분석! 에겐파/테토파 중 어디에 속하는지 알아보고 찰떡궁합 이상형까지 찾아보세요.</div>
         </a>
 
-        <a href="#" class="test-card" onclick="alert('준비 중입니다!')">
+        <a href="#" class="test-card" data-category="personality" onclick="alert('준비 중입니다!')">
           <div class="test-title">🎭 MBTI 성격 테스트</div>
           <div class="test-description">16가지 성격 유형 중 나는 어디에? 정확한 MBTI 진단과 상세한 성격 분석!</div>
           <span class="badge">준비중</span>
         </a>
-      </div>
-    </section>
 
-    <!-- 연애 & 관계 테스트 -->
-    <section id="romance-tests" class="test-section">
-      <h2 class="section-title">💕 연애 & 관계 테스트</h2>
-      <div class="tests-grid">
-        <a href="/romance-test/ko/" class="test-card">
+        <!-- 연애 & 관계 테스트 -->
+        <a href="/romance-test/ko/" class="test-card" data-category="romance">
           <div class="test-title">🌟 연애 스타일 테스트</div>
           <div class="test-description">당신의 연애 패턴과 이상형을 분석해보세요. 사랑에 빠지는 방식부터 관계 유지법까지!</div>
         </a>
 
-        <a href="#" class="test-card" onclick="alert('준비 중입니다!')">
+        <a href="#" class="test-card" data-category="romance" onclick="alert('준비 중입니다!')">
           <div class="test-title">💝 사랑의 언어 테스트</div>
           <div class="test-description">나와 상대방의 사랑 표현 방식을 알아보세요. 더 깊은 관계를 위한 소통법!</div>
           <span class="badge">준비중</span>
         </a>
-      </div>
-    </section>
 
-    <!-- 직업 & 적성 테스트 -->
-    <section id="career-tests" class="test-section">
-      <h2 class="section-title">💼 직업 & 적성 테스트</h2>
-      <div class="tests-grid">
-        <a href="#" class="test-card" onclick="alert('준비 중입니다!')">
+        <!-- 직업 & 적성 테스트 -->
+        <a href="#" class="test-card" data-category="career" onclick="alert('준비 중입니다!')">
           <div class="test-title">💼 직업 적성 검사</div>
           <div class="test-description">나에게 맞는 직업을 찾아보세요. 성격, 관심사, 능력을 종합한 맞춤 직업 추천!</div>
-           <span class="badge">준비중</span>
+          <span class="badge">준비중</span>
         </a>
 
-        <a href="#" class="test-card" onclick="alert('준비 중입니다!')">
+        <a href="#" class="test-card" data-category="career" onclick="alert('준비 중입니다!')">
           <div class="test-title">🧩 IQ 테스트</div>
           <div class="test-description">논리력, 수리력, 공간지각력을 종합한 지능 측정 테스트. 당신의 IQ는 몇일까요?</div>
-           <span class="badge">준비중</span>
+          <span class="badge">준비중</span>
         </a>
-      </div>
-    </section>
 
-    <!-- 재미 테스트 -->
-    <section id="fun-tests" class="test-section">
-      <h2 class="section-title">🎭 재미 테스트</h2>
-      <div class="tests-grid">
-        <a href="#" class="test-card" onclick="alert('준비 중입니다!')">
+        <!-- 재미 테스트 -->
+        <a href="#" class="test-card" data-category="fun" onclick="alert('준비 중입니다!')">
           <div class="test-title">🔮 운세 & 타로</div>
           <div class="test-description">오늘의 운세와 타로 카드로 미래를 점쳐보세요!</div>
-           <span class="badge">준비중</span>
+          <span class="badge">준비중</span>
         </a>
 
-        <a href="#" class="test-card" onclick="alert('준비 중입니다!')">
+        <a href="#" class="test-card" data-category="fun" onclick="alert('준비 중입니다!')">
           <div class="test-title">🎪 재미있는 심리게임</div>
           <div class="test-description">친구들과 함께 즐길 수 있는 재미있는 심리 테스트 모음!</div>
           <span class="badge">준비중</span>
@@ -784,6 +827,46 @@
       document.body.scrollTop = 0; // For Safari
       document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
     }
+
+    // Test filtering functionality
+    function filterTests(category) {
+      const testCards = document.querySelectorAll('.test-card');
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      
+      // Update active filter button
+      filterBtns.forEach(btn => {
+        if (btn.dataset.category === category) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+      
+      // Show/hide test cards
+      testCards.forEach(card => {
+        if (category === 'all' || card.dataset.category === category) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+
+      // Smooth scroll to tests section
+      document.getElementById('all-tests').scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+
+    // Initialize filter buttons
+    document.addEventListener('DOMContentLoaded', function() {
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+          filterTests(this.dataset.category);
+        });
+      });
+    });
   </script>
 </body>
 </html>
