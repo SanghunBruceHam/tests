@@ -303,42 +303,40 @@
   </div>
 
   <!-- Coupang Partners Ad Section -->
-  <div style="background: var(--card_bg); backdrop-filter: blur(20px); border-radius: 16px; padding: 20px; margin: 40px auto; max-width: 900px; text-align: center; border: 1px solid var(--border_color); box-shadow: var(--shadow);">
+  <div class="ad-section">
     <h3 style="color: var(--text_primary); margin-bottom: 15px; font-size: 1.3rem; font-weight: 700;">💕 연애 관련 추천 상품</h3>
     <p style="color: var(--text_secondary); font-size: 1rem; margin-bottom: 20px;">연애 심리 테스트와 함께 보면 좋은 상품들을 추천합니다!</p>
     
     <!-- 쿠팡 파트너스 광고 -->
-    <div style="margin: 20px 0; width: 100%; max-width: 860px; overflow: hidden; margin-left: auto; margin-right: auto;">
-      <div id="coupang-ad-container" style="width: 100%; max-width: 860px; overflow: hidden; min-height: 200px;">
-        <script src="https://ads-partners.coupang.com/g.js"></script>
-        <script>
-          // 화면 크기에 따른 광고 크기 조정
-          const isMobile = window.innerWidth <= 768;
-          const isTablet = window.innerWidth <= 1024 && window.innerWidth > 768;
-          
-          let adWidth, adHeight;
-          
-          if (isMobile) {
-            adWidth = Math.min(window.innerWidth - 60, 320);
-            adHeight = 180;
-          } else if (isTablet) {
-            adWidth = 600;
-            adHeight = 200;
-          } else {
-            adWidth = 800;
-            adHeight = 220;
-          }
-          
-          new PartnersCoupang.G({
-            "id": 867629,
-            "template": "carousel",
-            "trackingCode": "AF6959276",
-            "width": adWidth.toString(),
-            "height": adHeight.toString(),
-            "tsource": ""
-          });
-        </script>
-      </div>
+    <div id="coupang-ad-container">
+      <script src="https://ads-partners.coupang.com/g.js"></script>
+      <script>
+        // 화면 크기에 따른 광고 크기 조정
+        const isMobile = window.innerWidth <= 768;
+        const isSmallMobile = window.innerWidth <= 480;
+        
+        let adWidth, adHeight;
+        
+        if (isSmallMobile) {
+          adWidth = Math.min(window.innerWidth - 40, 320);
+          adHeight = 160;
+        } else if (isMobile) {
+          adWidth = Math.min(window.innerWidth - 40, 500);
+          adHeight = 180;
+        } else {
+          adWidth = 840;
+          adHeight = 200;
+        }
+        
+        new PartnersCoupang.G({
+          "id": 867629,
+          "template": "carousel",
+          "trackingCode": "AF6959276",
+          "width": adWidth.toString(),
+          "height": adHeight.toString(),
+          "tsource": ""
+        });
+      </script>
     </div>
     
     <p style="color: var(--text_secondary); font-size: 0.85rem; margin-top: 20px; font-style: italic;">
