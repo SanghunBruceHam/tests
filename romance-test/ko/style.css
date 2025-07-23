@@ -632,9 +632,9 @@ footer a:hover {
   }
 
   .test-card {
-    padding: 16px 12px;
-    height: 140px;
-    min-height: 140px;
+    padding: 12px 10px;
+    height: 120px;
+    min-height: 120px;
     margin: 0;
     max-width: 100%;
     width: 100%;
@@ -728,12 +728,12 @@ footer a:hover {
   }
 
   .test-card {
-    padding: 18px 16px;
+    padding: 12px 12px;
     margin: 0;
     width: 100%;
     max-width: 100%;
-    height: 110px;
-    min-height: 110px;
+    height: 100px;
+    min-height: 100px;
   }
 
   .test-card h3 {
