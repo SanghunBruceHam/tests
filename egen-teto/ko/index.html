@@ -968,6 +968,7 @@
 
     .analysis-grid {
       display: grid;
+      ```html
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 16px;
     }
@@ -1662,7 +1663,7 @@
       }
 
       updateProgress();
-      document.getElementById('nextBtn').disabled = false;
+      document.getElementById('nextBtn').disabled = true;
     }
 
     function selectAnswer(index) {
@@ -1713,3 +1714,86 @@
 
       document.getElementById('nextBtn').disabled = false;
     }
+
+    function nextQuestion() {
+      if (currentQuestion < questions.length - 1) {
+        currentQuestion++;
+        showQuestion();
+      } else {
+        showResult();
+      }
+    }
+
+    function updateProgress() {
+      const progress = ((currentQuestion + 1) / questions.length) * 100;
+      document.getElementById('progressFill').style.width = `${progress}%`;
+      document.getElementById('progressCounter').textContent = `${currentQuestion + 1}/${questions.length}`;
+    }
+
+    function showResult() {
+      document.getElementById('questionScreen').classList.add('hidden');
+      document.getElementById('loadingScreen').classList.remove('hidden');
+
+      // Simulate loading time
+      setTimeout(() => {
+        document.getElementById('loadingScreen').classList.add('hidden');
+        document.getElementById('resultScreen').classList.remove('hidden');
+        displayResult();
+      }, 2000);
+    }
+
+    function displayResult() {
+      const resultType = estrogenScore >= testosteroneScore ? 'estrogen' : 'testosterone';
+      const resultData = results[resultType][selectedGender];
+
+      document.getElementById('resultEmoji').textContent = resultData.emoji;
+      document.getElementById('resultTitle').textContent = resultData.title;
+      document.getElementById('resultSubtitle').textContent = resultData.subtitle;
+      document.getElementById('resultDescription').textContent = resultData.description;
+
+      document.getElementById('estrogenPercent').textContent = `${estrogenScore}%`;
+      document.getElementById('testosteronePercent').textContent = `${testosteroneScore}%`;
+      document.getElementById('estrogenBar').style.width = `${estrogenScore}%`;
+      document.getElementById('testosteroneBar').style.width = `${testosteroneScore}%`;}
+
+    function nextQuestion() {
+      if (currentQuestion < questions.length - 1) {
+        currentQuestion++;
+        showQuestion();
+      } else {
+        showResult();
+      }
+    }
+
+    function updateProgress() {
+      const progress = ((currentQuestion + 1) / questions.length) * 100;
+      document.getElementById('progressFill').style.width = `${progress}%`;
+      document.getElementById('progressCounter').textContent = `${currentQuestion + 1}/${questions.length}`;
+      document.getElementById('nextBtn').disabled = false;
+    }
+
+    function showResult() {
+      document.getElementById('questionScreen').classList.add('hidden');
+      document.getElementById('loadingScreen').classList.remove('hidden');
+
+      // Simulate loading time
+      setTimeout(() => {
+        document.getElementById('loadingScreen').classList.add('hidden');
+        document.getElementById('resultScreen').classList.remove('hidden');
+        displayResult();
+      }, 2000);
+    }
+
+    function displayResult() {
+      const resultType = estrogenScore >= testosteroneScore ? 'estrogen' : 'testosterone';
+      const resultData = results[resultType][selectedGender];
+
+      document.getElementById('resultEmoji').textContent = resultData.emoji;
+      document.getElementById('resultTitle').textContent = resultData.title;
+      document.getElementById('resultSubtitle').textContent = resultData.subtitle;
+      document.getElementById('resultDescription').textContent = resultData.description;
+
+      document.getElementById('estrogenPercent').textContent = `${estrogenScore}%`;
+      document.getElementById('testosteronePercent').textContent = `${testosteroneScore}%`;
+      document.getElementById('estrogenBar').style.width = `${estrogenScore}%`;
+      document.getElementById('testosteroneBar').style.width = `${testosteroneScore}%`;
