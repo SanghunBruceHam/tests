@@ -10,43 +10,45 @@ def get_improved_coupang_ad_html():
     """개선된 쿠팡 파트너스 광고 HTML 반환"""
     return '''
 <!-- Coupang Partners Ad Section -->
-<div style="background: var(--card_bg); backdrop-filter: blur(20px); border-radius: 16px; padding: 20px; margin: 40px auto; max-width: 840px; text-align: center; border: 1px solid var(--border_color); box-shadow: var(--shadow);">
-  <h3 style="color: var(--text_primary); margin-bottom: 15px; font-size: 1.3rem; font-weight: 700;">💕 연애 관련 추천 상품</h3>
-  <p style="color: var(--text_secondary); font-size: 1rem; margin-bottom: 20px;">연애 테스트를 즐기며 쇼핑도 함께! 쿠팡에서 다양한 상품을 만나보세요.</p>
+<div style="background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(15px); border-radius: 16px; padding: 25px; margin: 40px auto; max-width: 750px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.3); box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+  <h3 style="color: #333; margin-bottom: 15px; font-size: 1.3rem; font-weight: 700;">💕 연애 관련 추천 상품</h3>
+  <p style="color: #666; font-size: 1rem; margin-bottom: 20px;">연애 테스트를 즐기며 쇼핑도 함께! 쿠팡에서 다양한 상품을 만나보세요.</p>
   
   <!-- 쿠팡 파트너스 광고 -->
-  <div id="coupang-ad-container" style="width: 100%; max-width: 840px; margin: 20px auto; display: flex; justify-content: center; align-items: center; overflow: hidden;">
-    <script src="https://ads-partners.coupang.com/g.js"></script>
-    <script>
-      // 화면 크기에 따른 광고 크기 조정
-      const isMobile = window.innerWidth <= 768;
-      const isSmallMobile = window.innerWidth <= 480;
-      
-      let adWidth, adHeight;
-      
-      if (isSmallMobile) {
-        adWidth = Math.min(window.innerWidth - 40, 320);
-        adHeight = 160;
-      } else if (isMobile) {
-        adWidth = Math.min(window.innerWidth - 40, 500);
-        adHeight = 180;
-      } else {
-        adWidth = 700;
-        adHeight = 140;
-      }
-      
-      new PartnersCoupang.G({
-        "id": 867629,
-        "template": "carousel",
-        "trackingCode": "AF6959276",
-        "width": adWidth.toString(),
-        "height": adHeight.toString(),
-        "tsource": ""
-      });
-    </script>
+  <div style="margin: 20px 0; width: 100%; max-width: 750px; overflow: hidden; margin-left: auto; margin-right: auto;">
+    <div id="coupang-ad-container" style="width: 100%; max-width: 750px; overflow: hidden;">
+      <script src="https://ads-partners.coupang.com/g.js"></script>
+      <script>
+        // 모바일 대응 광고 크기 조정
+        const isMobile = window.innerWidth <= 768;
+        const isSmallMobile = window.innerWidth <= 480;
+        
+        let adWidth, adHeight;
+        
+        if (isSmallMobile) {
+          adWidth = Math.min(window.innerWidth - 40, 300);
+          adHeight = 120;
+        } else if (isMobile) {
+          adWidth = Math.min(window.innerWidth - 40, 400);
+          adHeight = 150;
+        } else {
+          adWidth = 750;
+          adHeight = 150;
+        }
+        
+        new PartnersCoupang.G({
+          "id": 867629,
+          "template": "carousel",
+          "trackingCode": "AF6959276",
+          "width": adWidth.toString(),
+          "height": adHeight.toString(),
+          "tsource": ""
+        });
+      </script>
+    </div>
   </div>
   
-  <p style="color: var(--text_secondary); font-size: 0.85rem; margin-top: 20px; font-style: italic;">
+  <p style="color: #666; font-size: 0.85rem; margin-top: 20px; font-style: italic;">
     "이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다."
   </p>
 </div>'''
@@ -55,29 +57,37 @@ def get_coupang_css_styles():
     """쿠팡 광고용 CSS 스타일 반환"""
     return '''
     /* 쿠팡 광고 반응형 스타일 */
+    #coupang-ad-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      max-width: 750px;
+      margin: 0 auto;
+    }
+
     #coupang-ad-container iframe,
     #coupang-ad-container > div {
-      max-width: 100% !important;
+      max-width: 750px !important;
       width: 100% !important;
+      height: 150px !important;
     }
 
     @media (max-width: 768px) {
-      #coupang-ad-container {
-        max-width: 100% !important;
-      }
-      
       #coupang-ad-container iframe,
       #coupang-ad-container > div {
-        max-width: 500px !important;
+        max-width: 400px !important;
         width: 100% !important;
+        height: 150px !important;
       }
     }
 
     @media (max-width: 480px) {
       #coupang-ad-container iframe,
       #coupang-ad-container > div {
-        max-width: 320px !important;
+        max-width: 300px !important;
         width: 100% !important;
+        height: 120px !important;
       }
     }'''
 
