@@ -1754,46 +1754,124 @@
       document.getElementById('estrogenPercent').textContent = `${estrogenScore}%`;
       document.getElementById('testosteronePercent').textContent = `${testosteroneScore}%`;
       document.getElementById('estrogenBar').style.width = `${estrogenScore}%`;
-      document.getElementById('testosteroneBar').style.width = `${testosteroneScore}%`;}
+      document.getElementById('testosteroneBar').style.width = `${testosteroneScore}%`;
 
-    function nextQuestion() {
-      if (currentQuestion < questions.length - 1) {
-        currentQuestion++;
-        showQuestion();
-      } else {
-        showResult();
-      }
+      // 결과 카드 내용 채우기
+      document.getElementById('personalityContent').textContent = resultData.fullDescription;
+      document.getElementById('matchContent').innerHTML = `
+        <div class="match-badge">${resultData.match}</div>
+        <p>${resultData.matchDesc}</p>
+      `;
+
+      // 키워드 표시
+      const keywordsGrid = document.getElementById('keywordsGrid');
+      keywordsGrid.innerHTML = '';
+      resultData.keywords.forEach(keyword => {
+        const tag = document.createElement('span');
+        tag.className = 'keyword-tag';
+        tag.textContent = keyword;
+        keywordsGrid.appendChild(tag);
+      });
+
+      // 정보 카드들 채우기
+      const famousList = document.getElementById('famousList');
+      famousList.innerHTML = '';
+      resultData.famous.forEach(person => {
+        const item = document.createElement('div');
+        item.className = 'info-item';
+        item.textContent = person;
+        famousList.appendChild(item);
+      });
+
+      const careerList = document.getElementById('careerList');
+      careerList.innerHTML = '';
+      resultData.careers.forEach(career => {
+        const item = document.createElement('div');
+        item.className = 'info-item';
+        item.textContent = career;
+        careerList.appendChild(item);
+      });
+
+      const lifestyleList = document.getElementById('lifestyleList');
+      lifestyleList.innerHTML = '';
+      resultData.lifestyle.forEach(lifestyle => {
+        const item = document.createElement('div');
+        item.className = 'info-item';
+        item.textContent = lifestyle;
+        lifestyleList.appendChild(item);
+      });
+
+      const musicList = document.getElementById('musicList');
+      musicList.innerHTML = '';
+      resultData.music.forEach(music => {
+        const item = document.createElement('div');
+        item.className = 'info-item';
+        item.textContent = music;
+        musicList.appendChild(item);
+      });
     }
 
-    function updateProgress() {
-      const progress = ((currentQuestion + 1) / questions.length) * 100;
-      document.getElementById('progressFill').style.width = `${progress}%`;
-      document.getElementById('progressCounter').textContent = `${currentQuestion + 1}/${questions.length}`;
-      document.getElementById('nextBtn').disabled = false;
-    }
-
-    function showResult() {
-      document.getElementById('questionScreen').classList.add('hidden');
-      document.getElementById('loadingScreen').classList.remove('hidden');
-
-      // Simulate loading time
-      setTimeout(() => {
-        document.getElementById('loadingScreen').classList.add('hidden');
-        document.getElementById('resultScreen').classList.remove('hidden');
-        displayResult();
-      }, 2000);
-    }
-
-    function displayResult() {
+    // 공유 기능들
+    function shareTwitter() {
       const resultType = estrogenScore >= testosteroneScore ? 'estrogen' : 'testosterone';
       const resultData = results[resultType][selectedGender];
+      const text = `나의 에겐 vs 테토 테스트 결과: ${resultData.title} ${resultData.emoji}\n\n${resultData.description}\n\n#에겐테토테스트 #성격테스트`;
+      const url = 'https://tests.mahalohana-bruce.com/egen-teto/ko/';
+      window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`, '_blank');
+    }
 
-      document.getElementById('resultEmoji').textContent = resultData.emoji;
-      document.getElementById('resultTitle').textContent = resultData.title;
-      document.getElementById('resultSubtitle').textContent = resultData.subtitle;
-      document.getElementById('resultDescription').textContent = resultData.description;
+    function shareFacebook() {
+      const url = 'https://tests.mahalohana-bruce.com/egen-teto/ko/';
+      window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank');
+    }
 
-      document.getElementById('estrogenPercent').textContent = `${estrogenScore}%`;
-      document.getElementById('testosteronePercent').textContent = `${testosteroneScore}%`;
-      document.getElementById('estrogenBar').style.width = `${estrogenScore}%`;
-      document.getElementById('testosteroneBar').style.width = `${testosteroneScore}%`;
+    function shareThreads() {
+      const resultType = estrogenScore >= testosteroneScore ? 'estrogen' : 'testosterone';
+      const resultData = results[resultType][selectedGender];
+      const text = `나의 에겐 vs 테토 테스트 결과: ${resultData.title} ${resultData.emoji}\n\n${resultData.description}`;
+      const url = 'https://tests.mahalohana-bruce.com/egen-teto/ko/';
+      window.open(`https://threads.net/intent/post?text=${encodeURIComponent(text + '\n\n' + url)}`, '_blank');
+    }
+
+    function copyResult() {
+      const resultType = estrogenScore >= testosteroneScore ? 'estrogen' : 'testosterone';
+      const resultData = results[resultType][selectedGender];
+      const text = `나의 에겐 vs 테토 테스트 결과: ${resultData.title} ${resultData.emoji}\n\n${resultData.description}\n\n찰떡궁합: ${resultData.match}\n\n테스트 해보기: https://tests.mahalohana-bruce.com/egen-teto/ko/`;
+      
+      navigator.clipboard.writeText(text).then(() => {
+        alert('결과가 클립보드에 복사되었습니다!');
+      }).catch(() => {
+        alert('복사에 실패했습니다. 다시 시도해주세요.');
+      });
+    }
+
+    function restartTest() {
+      selectedGender = '';
+      currentQuestion = 0;
+      answers = [];
+      estrogenScore = 0;
+      testosteroneScore = 0;
+
+      document.getElementById('resultScreen').classList.add('hidden');
+      document.getElementById('startScreen').classList.remove('hidden');
+
+      document.querySelectorAll('.gender-option').forEach(option => {
+        option.classList.remove('selected');
+      });
+
+      document.getElementById('startBtn').disabled = true;
+    }
+
+    function goToMainPage() {
+      window.location.href = '/ko/';
+    }
+
+    // Google Analytics 이벤트 추적
+    function trackEvent(action, category = 'engagement') {
+      if (typeof gtag !== 'undefined') {
+        gtag('event', action, {
+          event_category: category,
+          event_label: 'ko'
+        });
+      }
+    }
