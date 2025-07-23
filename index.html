@@ -263,6 +263,21 @@
       align-items: center;
       gap: 12px;
       width: 280px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .recommendation-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+      border-color: var(--accent-color);
+    }
+
+    .recommendation-item:hover .rec-icon {
+      transform: scale(1.1);
+      transition: transform 0.3s ease;
     }
 
     .rec-icon {
@@ -536,6 +551,16 @@
         max-width: 300px;
       }
 
+      .recommendation-cards {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .recommendation-item {
+        width: 100%;
+        max-width: 350px;
+      }
+
       .section-title {
         font-size: 1.3rem;
         margin-bottom: 15px;
@@ -582,34 +607,34 @@
     <div class="recommendations">
         <h3 class="section-subtitle">🎯 어떤 테스트부터 시작할까요?</h3>
         <div class="recommendation-cards">
-          <div class="recommendation-item">
+          <a href="/romance-test/ko/" class="recommendation-item">
             <div class="rec-icon">💕</div>
             <div class="rec-content">
               <div class="rec-title">연애 초보자</div>
-              <div class="rec-desc">연애 스타일 테스트로 시작</div>
+              <div class="rec-desc">30가지 연애 스타일 분석</div>
             </div>
-          </div>
-          <div class="recommendation-item">
+          </a>
+          <a href="/egen-teto/ko/" class="recommendation-item">
             <div class="rec-icon">🔥</div>
             <div class="rec-content">
               <div class="rec-title">인기 급상승</div>
               <div class="rec-desc">에겐 vs 테토 성향 테스트</div>
             </div>
-          </div>
-          <div class="recommendation-item">
+          </a>
+          <a href="/egen-teto/ko/" class="recommendation-item">
             <div class="rec-icon">🎯</div>
             <div class="rec-content">
-              <div class="rec-title">성격 분석</div>
-              <div class="rec-desc">곧 출시 예정</div>
+              <div class="rec-title">성격 분석 원조</div>
+              <div class="rec-desc">호르몬 기반 성격 진단</div>
             </div>
-          </div>
-          <div class="recommendation-item">
-            <div class="rec-icon">💼</div>
+          </a>
+          <a href="/romance-test/ko/" class="recommendation-item">
+            <div class="rec-icon">💎</div>
             <div class="rec-content">
-              <div class="rec-title">직업 적성</div>
-              <div class="rec-desc">준비 중</div>
+              <div class="rec-title">깊이 있는 분석</div>
+              <div class="rec-desc">상세한 연애 심리 파악</div>
             </div>
-          </div>
+          </a>
         </div>
       </div>
 
