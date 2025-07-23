@@ -246,14 +246,14 @@
 
     .recommendation-cards {
       display: flex;
-      flex-wrap: wrap;
       justify-content: center;
-      gap: 15px;
+      gap: 20px;
+      flex-wrap: wrap;
     }
 
     .recommendation-item {
       background: var(--card-bg);
-      padding: 15px 20px;
+      padding: 18px 24px;
       border-radius: var(--border-radius);
       text-align: left;
       box-shadow: var(--shadow);
@@ -261,12 +261,13 @@
       backdrop-filter: blur(10px);
       display: flex;
       align-items: center;
-      gap: 12px;
-      width: 280px;
+      gap: 15px;
+      width: 320px;
       cursor: pointer;
       transition: all 0.3s ease;
       text-decoration: none;
       color: inherit;
+      position: relative;
     }
 
     .recommendation-item:hover {
@@ -554,11 +555,12 @@
       .recommendation-cards {
         flex-direction: column;
         align-items: center;
+        gap: 15px;
       }
 
       .recommendation-item {
         width: 100%;
-        max-width: 350px;
+        max-width: 400px;
       }
 
       .section-title {
@@ -605,34 +607,20 @@
     </header>
 
     <div class="recommendations">
-        <h3 class="section-subtitle">🎯 어떤 테스트부터 시작할까요?</h3>
+        <h3 class="section-subtitle">🎯 지금 바로 시작할 수 있는 테스트</h3>
         <div class="recommendation-cards">
           <a href="/romance-test/ko/" class="recommendation-item">
             <div class="rec-icon">💕</div>
             <div class="rec-content">
-              <div class="rec-title">연애 초보자</div>
-              <div class="rec-desc">30가지 연애 스타일 분석</div>
+              <div class="rec-title">연애 스타일 테스트</div>
+              <div class="rec-desc">30가지 연애 유형 분석 • 즉시 이용 가능</div>
             </div>
           </a>
           <a href="/egen-teto/ko/" class="recommendation-item">
             <div class="rec-icon">🔥</div>
             <div class="rec-content">
-              <div class="rec-title">인기 급상승</div>
-              <div class="rec-desc">에겐 vs 테토 성향 테스트</div>
-            </div>
-          </a>
-          <a href="/egen-teto/ko/" class="recommendation-item">
-            <div class="rec-icon">🎯</div>
-            <div class="rec-content">
-              <div class="rec-title">성격 분석 원조</div>
-              <div class="rec-desc">호르몬 기반 성격 진단</div>
-            </div>
-          </a>
-          <a href="/romance-test/ko/" class="recommendation-item">
-            <div class="rec-icon">💎</div>
-            <div class="rec-content">
-              <div class="rec-title">깊이 있는 분석</div>
-              <div class="rec-desc">상세한 연애 심리 파악</div>
+              <div class="rec-title">에겐 vs 테토 테스트</div>
+              <div class="rec-desc">호르몬 기반 성격 진단 • 즉시 이용 가능</div>
             </div>
           </a>
         </div>
