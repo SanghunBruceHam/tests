@@ -204,6 +204,38 @@
 
 </div>
 
+
+  <!-- Coupang Partners Ad Section -->
+  <div style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border-radius: 15px; padding: 30px; margin: 40px auto; max-width: 800px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.2);">
+    <h3 style="color: #ffffff; margin-bottom: 15px; font-size: 1.4rem; font-weight: 700; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">💕 연애 테스트 #2 관련 추천 상품</h3>
+    <p style="color: #ffffff; font-size: 1rem; margin-bottom: 20px; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">연애 심리 분석 결과와 함께 연인과의 시간을 더욱 특별하게 만들어줄 상품들을 확인해보세요!</p>
+    
+    <!-- 쿠팡 파트너스 광고 -->
+    <div style="margin: 20px 0; width: 100%; max-width: 750px; overflow: hidden; margin-left: auto; margin-right: auto;">
+      <div id="coupang-ad-container" style="width: 100%; max-width: 750px; overflow: hidden;">
+        <script src="https://ads-partners.coupang.com/g.js"></script>
+        <script>
+          // 모바일 대응 광고 크기 조정
+          const isMobile = window.innerWidth <= 768;
+          const adWidth = isMobile ? Math.min(window.innerWidth - 40, 300) : 750;
+          const adHeight = isMobile ? 120 : 150;
+          
+          new PartnersCoupang.G({
+            "id": 867629,
+            "template": "carousel",
+            "trackingCode": "AF6959276",
+            "width": adWidth.toString(),
+            "height": adHeight.toString(),
+            "tsource": ""
+          });
+        </script>
+      </div>
+    </div>
+    
+    <p style="color: #ffffff; font-size: 0.8rem; margin-top: 15px; font-style: italic; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">
+      "이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다."
+    </p>
+  </div>
 <footer>© 연애 심리 테스트 | <a href="https://tests.mahalohana-bruce.com" rel="noopener noreferrer" target="_blank">tests.mahalohana-bruce.com</a></footer>
 <script>
     const results = {
