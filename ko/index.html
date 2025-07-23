@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -13,6 +14,18 @@
   <meta property="og:description" content="성격, 연애, 직업 등 다양한 심리테스트로 나를 알아보세요! 결과 공유와 모바일 최적화 완비.">
   <meta property="og:image" content="https://tests.mahalohana-bruce.com/favicon.png">
   <meta property="og:url" content="https://tests.mahalohana-bruce.com/ko/">
+  <meta property="og:locale" content="ko_KR">
+  <meta property="og:locale:alternate" content="ja_JP">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:site_name" content="심리테스트 모음">
+
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="심리테스트 모음 | 무료 성격·연애·직업 테스트">
+  <meta name="twitter:description" content="성격, 연애, 직업 등 다양한 심리테스트로 나를 알아보세요!">
+  <meta name="twitter:image" content="https://tests.mahalohana-bruce.com/favicon.png">
+  <meta name="twitter:site" content="@tests_mahalohana">
+  <meta name="twitter:creator" content="@mahalohana_bruce">
 
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
   <link rel="icon" href="/favicon.png" type="image/png">
@@ -30,7 +43,9 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-45VSGEM7EZ');
+    gtag('config', 'G-45VSGEM7EZ', {
+      'privacy_sandbox': false
+    });
   </script>
 
   <!-- AMP Ad Script -->
@@ -40,7 +55,90 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5508768187151867"
        crossorigin="anonymous"></script>
 
+  <!-- Font Awesome -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
+
   <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "심리테스트 모음",
+    "description": "무료 심리테스트 모음! 성격 테스트, 연애 궁합, 직업 적성 검사 등 다양한 테스트로 나를 알아보세요.",
+    "url": "https://tests.mahalohana-bruce.com/ko/",
+    "applicationCategory": "Entertainment",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "KRW"
+    },
+    "inLanguage": "ko",
+    "isAccessibleForFree": true,
+    "author": {
+      "@type": "Organization",
+      "name": "심리테스트 연구소"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "심리테스트 연구소",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://tests.mahalohana-bruce.com/favicon.png"
+      }
+    }
+  }
+  </script>
+
+  <!-- BreadcrumbList Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "홈",
+        "item": "https://tests.mahalohana-bruce.com/ko/"
+      }
+    ]
+  }
+  </script>
+
+  <!-- FAQ Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "심리테스트는 무료인가요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "네, 모든 심리테스트는 완전 무료로 제공됩니다. 회원가입이나 결제 없이 즉시 테스트를 시작할 수 있습니다."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "테스트 결과는 정확한가요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "심리학 이론을 바탕으로 설계되어 자기 이해와 재미를 위한 목적입니다. 임상적 진단 목적이 아닙니다."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "결과를 친구들과 공유할 수 있나요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "네! SNS, 메신저 등으로 쉽게 공유하거나 결과를 복사해서 친구들에게 보낼 수 있습니다."
+        }
+      }
+    ]
+  }
+  </script>
 
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/common-theme.css">
@@ -56,9 +154,9 @@
     }
 
     .container {
-      max-width: 1000px;
+      max-width: 800px;
       margin: 0 auto;
-      padding-top: 60px;
+      padding-top: 40px;
     }
 
     .header-controls {
@@ -116,7 +214,7 @@
 
     .header {
       text-align: center;
-      margin-bottom: 40px;
+      margin-bottom: 25px;
     }
 
     h1 {
@@ -132,37 +230,8 @@
     .subtitle {
       font-size: 1.2rem;
       color: var(--text-secondary);
-      margin-bottom: 25px;
-      line-height: 1.5;
-    }
-
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
-      margin-bottom: 40px;
-    }
-
-    .stat-item {
-      background: var(--card-bg);
-      padding: 20px;
-      border-radius: var(--border-radius);
-      text-align: center;
-      box-shadow: var(--shadow);
-      border: 1px solid var(--border-color);
-      backdrop-filter: blur(10px);
-    }
-
-    .stat-number {
-      font-size: 2rem;
-      font-weight: 700;
-      color: var(--accent-color);
-      margin-bottom: 5px;
-    }
-
-    .stat-label {
-      font-size: 1rem;
-      color: var(--text-secondary);
+      margin-bottom: 15px;
+      line-height: 1.4;
     }
 
     .recommendations {
@@ -179,7 +248,7 @@
 
     .recommendation-cards {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 8px;
       max-width: 900px;
       margin: 0 auto;
@@ -207,6 +276,11 @@
       transform: translateY(-3px);
       box-shadow: 0 15px 35px rgba(0,0,0,0.15);
       border-color: var(--accent-color);
+    }
+
+    .rec-icon {
+      font-size: 1.5rem;
+      margin-bottom: 8px;
     }
 
     .rec-title {
@@ -239,47 +313,33 @@
       letter-spacing: 0.5px;
     }
 
-    .test-section {
-      margin-bottom: 25px;
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      margin-bottom: 40px;
     }
 
-    .section-title {
-      font-size: 1.8rem;
-      font-weight: 700;
-      margin-bottom: 12px;
-      text-align: center;
-      color: var(--text-primary);
-      padding: 8px 0;
-      border-bottom: 2px solid var(--border-color);
-    }
-
-    .filter-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      margin-bottom: 25px;
-      flex-wrap: wrap;
-    }
-
-    .filter-btn {
-      padding: 10px 20px;
-      border: 2px solid var(--border-color);
+    .stat-item {
       background: var(--card-bg);
-      color: var(--text-primary);
-      border-radius: 25px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      font-weight: 600;
-      font-size: 0.9rem;
+      padding: 20px;
+      border-radius: var(--border-radius);
+      text-align: center;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border-color);
       backdrop-filter: blur(10px);
     }
 
-    .filter-btn:hover,
-    .filter-btn.active {
-      background: var(--accent-color);
-      color: white;
-      border-color: var(--accent-color);
-      transform: translateY(-2px);
+    .stat-number {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--accent-color);
+      margin-bottom: 5px;
+    }
+
+    .stat-label {
+      font-size: 1rem;
+      color: var(--text-secondary);
     }
 
     .tests-grid {
@@ -310,10 +370,111 @@
       position: relative;
     }
 
-    .test-card.hidden {
-      display: none;
+    .test-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+      line-height: 1.3;
     }
 
+    .test-description {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.4;
+      flex-grow: 1;
+    }
+
+    .main-navigation {
+      margin: 10px 0;
+    }
+
+    .nav-list {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+
+    .nav-link {
+      padding: 8px 16px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid var(--border-color);
+      border-radius: 25px;
+      color: var(--text-primary);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    .nav-link:hover {
+      background: var(--accent-color);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    .test-section {
+      margin-bottom: 25px;
+    }
+
+    .section-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      text-align: center;
+      color: var(--text-primary);
+      padding: 8px 0;
+      border-bottom: 2px solid var(--border-color);
+    }
+
+    .nav-link {
+      scroll-behavior: smooth;
+    }
+
+    .footer {
+      text-align: center;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin-top: 50px;
+      padding: 20px;
+    }
+
+    /* Scroll to top button */
+    .scroll-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: var(--accent-color);
+      color: #fff;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 50px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
+    }
+
+    .scroll-to-top:hover {
+      background: var(--accent-hover);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .scroll-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* Badge styles */
     .badge {
       position: absolute;
       top: 12px;
@@ -329,124 +490,66 @@
       letter-spacing: 0.5px;
     }
 
-    .test-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    /* Filter buttons */
+    .filter-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 25px;
+      flex-wrap: wrap;
     }
 
-    .test-title {
-      font-size: 1.5rem;
-      font-weight: 700;
+    .filter-btn {
+      padding: 10px 20px;
+      border: 2px solid var(--border-color);
+      background: var(--card-bg);
       color: var(--text-primary);
-      margin-bottom: 12px;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 600;
+      font-size: 0.9rem;
+      backdrop-filter: blur(10px);
     }
 
-    .test-description {
-      font-size: 1rem;
-      color: var(--text-secondary);
-      line-height: 1.6;
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: var(--accent-color);
+      color: white;
+      border-color: var(--accent-color);
+      transform: translateY(-2px);
     }
 
-    .footer {
-      text-align: center;
-      margin-top: 40px;
-      padding: 20px;
-      color: #ffffff;
-      font-size: 1.1rem;
-      font-weight: 500;
-      text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    /* Hidden test cards */
+    .test-card.hidden {
+      display: none;
     }
 
     @media (max-width: 768px) {
       .container {
-        padding: 8px;
-        padding-top: 70px;
+        padding: 12px;
+        padding-top: 60px;
+        max-width: 100%;
       }
 
       .header-controls {
-        top: 10px;
-        right: 10px;
+        top: 8px;
+        right: 8px;
         flex-direction: row;
-        gap: 8px;
+        gap: 6px;
         background: rgba(255, 255, 255, 0.1);
-        padding: 8px;
-        border-radius: 15px;
+        padding: 6px;
+        border-radius: 12px;
         backdrop-filter: blur(10px);
       }
 
       .language-selector {
-        gap: 6px;
+        gap: 4px;
       }
 
       .lang-btn {
-        padding: 6px 12px;
-        font-size: 12px;
-      }
-
-      .theme-toggle {
-        width: 40px;
-        height: 40px;
-        font-size: 16px;
-      }
-
-      h1 {
-        font-size: 2.5rem;
-        margin-bottom: 8px;
-      }
-
-      .logo {
-        font-size: 2rem;
-        margin-bottom: 8px;
-      }
-
-      .subtitle {
-        font-size: 1.1rem;
-        margin-bottom: 30px;
-      }
-
-      .stats {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 8px;
-        margin-bottom: 20px;
-      }
-
-      .stat-item {
-        padding: 12px;
-      }
-
-      .stat-number {
-        font-size: 1.5rem;
-        margin-bottom: 3px;
-      }
-
-      .stat-label {
-        font-size: 0.9rem;
-      }
-
-      .recommendation-cards {
-        grid-template-columns: 1fr;
-        gap: 8px;
-      }
-
-      .recommendation-item {
-        padding: 14px;
-        min-height: 100px;
-      }
-
-      .rec-title {
-        font-size: 1.1rem;
-        margin-bottom: 8px;
-      }
-
-      .rec-desc {
-        font-size: 0.9rem;
-      }
-
-      .rank-badge {
-        top: 8px;
-        right: 8px;
-        padding: 4px 8px;
-        font-size: 0.6rem;
+        padding: 6px 10px;
+        font-size: 11px;
       }
 
       .filter-buttons {
@@ -466,119 +569,237 @@
         flex-shrink: 0;
       }
 
-      .section-title {
-        font-size: 1.4rem;
-        margin-bottom: 15px;
-        padding: 8px 0;
-      }
+    .theme-toggle {
+      width: 36px;
+      height: 36px;
+      font-size: 14px;
+    }
 
-      .test-section {
-        margin-bottom: 25px;
-      }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 6px;
+      line-height: 1.2;
+    }
 
-      .tests-grid {
-        grid-template-columns: 1fr;
-        gap: 6px;
-        margin-bottom: 0;
-        max-width: 100%;
-        padding: 0 12px;
-      }
+    .logo {
+      font-size: 1.8rem;
+      margin-bottom: 6px;
+    }
 
-      .test-card {
-        padding: 14px;
-        min-height: 100px;
-        width: 100%;
-      }
+    .subtitle {
+      font-size: 1rem;
+      margin-bottom: 20px;
+      line-height: 1.4;
+    }
 
-      .test-title {
-        font-size: 1.1rem;
-        margin-bottom: 8px;
-        line-height: 1.3;
-      }
+    .stats {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-bottom: 20px;
+    }
 
-      .test-description {
-        font-size: 0.9rem;
-        line-height: 1.5;
-      }
+    .stat-item {
+      padding: 12px;
+    }
 
-      .badge {
-        top: 8px;
-        right: 8px;
-        padding: 4px 8px;
-        font-size: 0.6rem;
-      }
+    .stat-number {
+      font-size: 1.4rem;
+      margin-bottom: 2px;
+    }
 
-      .footer {
-        margin-top: 20px;
-        font-size: 0.8rem;
-      }
+    .stat-label {
+      font-size: 0.85rem;
+    }
+
+    .nav-list {
+      flex-direction: row;
+      gap: 6px;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 15px 0;
+    }
+
+    .nav-link {
+      width: auto;
+      min-width: 75px;
+      text-align: center;
+      padding: 6px 10px;
+      font-size: 0.75rem;
+    }
+
+    .tests-grid {
+      grid-template-columns: 1fr;
+      gap: 6px;
+      margin-bottom: 0;
+      max-width: 100%;
+      padding: 0 12px;
+    }
+
+    .test-card {
+      padding: 14px;
+      min-height: 100px;
+      width: 100%;
+    }
+
+    .test-title {
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+
+    .test-description {
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
     }
 
     @media (max-width: 480px) {
-      .container {
-        padding: 4px;
-        padding-top: 90px;
-      }
-
-      h1 {
-        font-size: 2rem;
-      }
-
-      .stats {
-        grid-template-columns: 1fr;
-        gap: 6px;
-      }
-
-      .test-card {
-        padding: 16px;
-        min-height: 90px;
-      }
-
-      .test-title {
-        font-size: 1.1rem;
-        margin-bottom: 6px;
-      }
-
-      .test-description {
-        font-size: 0.85rem;
-      }
+    .container {
+      padding: 10px;
+      padding-top: 70px;
     }
 
-    @media (max-width: 480px) {
-      .container {
-        padding: 10px;
-        padding-top: 90px;
-      }
+    h1 {
+      font-size: 1.8rem;
+    }
 
-      h1 {
-        font-size: 2rem;
-      }
+    .subtitle {
+      font-size: 0.9rem;
+      margin-bottom: 15px;
+    }
 
-      .stats {
-        grid-template-columns: 1fr;
-        gap: 10px;
-      }
+    .stats {
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }
 
-      .test-card {
-        padding: 20px;
-      }
+    .nav-link {
+      width: auto;
+      min-width: 65px;
+      padding: 6px 8px;
+      font-size: 0.7rem;
+    }
+
+    .recommendation-cards {
+      gap: 4px;
+    }
+
+    .recommendation-item {
+      padding: 12px;
+      min-height: 90px;
+      gap: 12px;
+    }
+
+    .filter-buttons {
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .filter-btn {
+      width: 100%;
+      max-width: 280px;
+      padding: 10px 18px;
+      font-size: 0.85rem;
+    }
+
+    .section-title {
+      font-size: 1.2rem;
+      margin-bottom: 12px;
+      padding: 6px 0;
+    }
+
+    .test-section {
+      margin-bottom: 20px;
+    }
+
+    .tests-grid {
+      grid-template-columns: 1fr;
+      gap: 8px;
+      padding: 0;
+    }
+
+    .test-card {
+      padding: 12px;
+      min-height: 90px;
+      width: 100%;
+    }
+
+    .test-title {
+      font-size: 1rem;
+      margin-bottom: 6px;
+      line-height: 1.3;
+    }
+
+    .test-description {
+      font-size: 0.85rem;
+      line-height: 1.4;
+    }
+
+    .badge {
+      top: 8px;
+      right: 8px;
+      padding: 4px 8px;
+      font-size: 0.6rem;
+    }
+  }
+
+    .recommendations {
+      margin-bottom: 20px;
+    }
+
+    .section-subtitle {
+      font-size: 1.3rem;
+      margin-bottom: 12px;
+    }
+
+    .recommendation-cards {
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }
+
+    .recommendation-item {
+      padding: 14px;
+      min-height: 100px;
+    }
+
+    .rec-title {
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+    }
+
+    .rec-desc {
+      font-size: 0.9rem;
+    }
+
+    .rank-badge {
+      top: 8px;
+      right: 8px;
+      padding: 4px 8px;
+      font-size: 0.6rem;
+    }
+
+    .section-title {
+      font-size: 1.4rem;
+      margin-bottom: 15px;
+      padding: 8px 0;
+    }
+
+    .test-section {
+      margin-bottom: 25px;
+    }
+
+    .footer {
+      margin-top: 30px;
+      font-size: 0.8rem;
     }
   </style>
 </head>
 <body>
-  <!-- AMP Ad -->
-  <amp-ad width="100vw" height="320"
-       type="adsense"
-       data-ad-client="ca-pub-5508768187151867"
-       data-ad-slot="4067267701"
-       data-auto-format="rspv"
-       data-full-width="">
-    <div overflow=""></div>
-  </amp-ad>
-
   <div class="header-controls">
     <div class="language-selector">
-      <a href="/" class="lang-btn active">한국어</a>
+      <a href="/" class="lang-btn">한국어</a>
       <a href="/ja/" class="lang-btn">日本語</a>
       <a href="/en/" class="lang-btn">English</a>
     </div>
@@ -588,29 +809,10 @@
   </div>
 
   <div class="container">
-    <div class="header">
+    <header class="header">
       <h1>심리테스트 모음</h1>
-      <p class="subtitle">나를 알아가는 재미있는 심리테스트<br>성격, 연애, 직업까지 모든 테스트가 여기에!</p>
-    </div>
-
-    <div class="stats">
-      <div class="stat-item">
-        <div class="stat-number">15+</div>
-        <div class="stat-label">테스트 종류</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-number">1만+</div>
-        <div class="stat-label">누적 참여자</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-number">100%</div>
-        <div class="stat-label">무료</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-number">3개</div>
-        <div class="stat-label">언어 지원</div>
-      </div>
-    </div>
+      <h2 class="subtitle">나를 알아가는 재미있는 심리테스트<br>성격, 연애, 직업까지 모든 테스트가 여기에!</h2>
+    </header>
 
     <div class="recommendations">
         <h3 class="section-subtitle">🔥 인기 테스트</h3>
@@ -622,25 +824,25 @@
           </a>
           <a href="/egen-teto/ko/" class="recommendation-item">
             <div class="rec-title">🔥 에겐 vs 테토 테스트</div>
-            <div class="rec-desc">호르몬 특성 기반 성격 분석! 에겐파/테토파 중 어디에 속하는지 알아보고 찰떡궁합 이상형까지 찾아보세요!</div>
+            <div class="rec-desc">호르몬 특성 기반 성격 분석! 에겐파/테토파 중 어디에 속하는지 알아보고 찰떡궁합 이상형까지 찾아보세요.</div>
             <span class="rank-badge">2위</span>
           </a>
         </div>
       </div>
 
-    <!-- 모든 심리테스트 -->
+    <!-- 전체 테스트 모음 -->
     <section id="all-tests" class="test-section">
       <h2 class="section-title">🎯 모든 심리테스트</h2>
       <div class="filter-buttons">
         <button class="filter-btn active" data-category="all">전체</button>
-        <button class="filter-btn" data-category="personality">🧠 성격분석</button>
-        <button class="filter-btn" data-category="romance">💕 연애·관계</button>
-        <button class="filter-btn" data-category="career">💼 직업·적성</button>
-        <button class="filter-btn" data-category="fun">🎭 재미있는 테스트</button>
+        <button class="filter-btn" data-category="personality">🧠 성격 분석</button>
+        <button class="filter-btn" data-category="romance">💕 연애 & 관계</button>
+        <button class="filter-btn" data-category="career">💼 직업 & 적성</button>
+        <button class="filter-btn" data-category="fun">🎭 재미 테스트</button>
       </div>
 
       <div class="tests-grid">
-        <!-- 성격분석 테스트 -->
+        <!-- 성격 분석 테스트 -->
         <a href="/egen-teto/ko/" class="test-card" data-category="personality">
           <div class="test-title">💖 에겐 vs 테토 성향 테스트</div>
           <div class="test-description">호르몬 특성 기반 성격 분석! 에겐파/테토파 중 어디에 속하는지 알아보고 찰떡궁합 이상형까지 찾아보세요.</div>
@@ -652,7 +854,7 @@
           <span class="badge">준비중</span>
         </a>
 
-        <!-- 연애·관계 테스트 -->
+        <!-- 연애 & 관계 테스트 -->
         <a href="/romance-test/ko/" class="test-card" data-category="romance">
           <div class="test-title">🌟 연애 스타일 테스트</div>
           <div class="test-description">당신의 연애 패턴과 이상형을 분석해보세요. 사랑에 빠지는 방식부터 관계 유지법까지!</div>
@@ -664,7 +866,7 @@
           <span class="badge">준비중</span>
         </a>
 
-        <!-- 직업·적성 테스트 -->
+        <!-- 직업 & 적성 테스트 -->
         <a href="#" class="test-card" data-category="career" onclick="alert('준비 중입니다!')">
           <div class="test-title">💼 직업 적성 검사</div>
           <div class="test-description">나에게 맞는 직업을 찾아보세요. 성격, 관심사, 능력을 종합한 맞춤 직업 추천!</div>
@@ -677,41 +879,68 @@
           <span class="badge">준비중</span>
         </a>
 
-        <!-- 재미있는 테스트 -->
+        <!-- 재미 테스트 -->
         <a href="#" class="test-card" data-category="fun" onclick="alert('준비 중입니다!')">
-          <div class="test-title">🔮 운세·타로</div>
-          <div class="test-description">오늘의 운세와 타로카드로 미래를 점쳐보세요!</div>
+          <div class="test-title">🔮 운세 & 타로</div>
+          <div class="test-description">오늘의 운세와 타로 카드로 미래를 점쳐보세요!</div>
           <span class="badge">준비중</span>
         </a>
 
         <a href="#" class="test-card" data-category="fun" onclick="alert('준비 중입니다!')">
           <div class="test-title">🎪 재미있는 심리게임</div>
-          <div class="test-description">친구들과 함께 즐길 수 있는 재미있는 심리테스트 모음!</div>
+          <div class="test-description">친구들과 함께 즐길 수 있는 재미있는 심리 테스트 모음!</div>
           <span class="badge">준비중</span>
         </a>
       </div>
     </section>
 
+    <!-- AMP Ad -->
+    <amp-ad width="100vw" height="320"
+         type="adsense"
+         data-ad-client="ca-pub-5508768187151867"
+         data-ad-slot="4067267701"
+         data-auto-format="rspv"
+         data-full-width="">
+      <div overflow=""></div>
+    </amp-ad>
+  </div>
 
-
+  <!-- Scroll to Top Button -->
+  <div class="scroll-to-top" onclick="scrollToTop()">
+    ↑
+  </div>
 
   <!-- Footer -->
   <footer style="text-align: center; color: #ffffff; padding: 20px; font-size: 1.1rem; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">
     © 심리테스트 모음 | <a href="https://tests.mahalohana-bruce.com" target="_blank" rel="noopener noreferrer" style="color: #ffffff; text-decoration: underline; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">tests.mahalohana-bruce.com</a>
   </footer>
 
-  </div>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
   <script src="/assets/common-components.js"></script>
 
   <script>
-    // 테스트 필터링 기능
+    // Scroll to top functionality
+    window.onscroll = function() {scrollFunction()};
+
+    function scrollFunction() {
+      const scrollToTopBtn = document.querySelector(".scroll-to-top");
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        scrollToTopBtn.classList.add("visible");
+      } else {
+        scrollToTopBtn.classList.remove("visible");
+      }
+    }
+
+    function scrollToTop() {
+      document.body.scrollTop = 0; // For Safari
+      document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+    }
+
+    // Test filtering functionality
     function filterTests(category) {
       const testCards = document.querySelectorAll('.test-card');
       const filterBtns = document.querySelectorAll('.filter-btn');
 
-      // 활성 필터 버튼 업데이트
+      // Update active filter button
       filterBtns.forEach(btn => {
         if (btn.dataset.category === category) {
           btn.classList.add('active');
@@ -720,7 +949,7 @@
         }
       });
 
-      // 테스트 카드 표시/숨김
+      // Show/hide test cards
       testCards.forEach(card => {
         if (category === 'all' || card.dataset.category === category) {
           card.classList.remove('hidden');
@@ -729,14 +958,14 @@
         }
       });
 
-      // 테스트 섹션으로 부드럽게 스크롤
+      // Smooth scroll to tests section
       document.getElementById('all-tests').scrollIntoView({ 
         behavior: 'smooth',
         block: 'start'
       });
     }
 
-    // 필터 버튼 초기화
+    // Initialize filter buttons
     document.addEventListener('DOMContentLoaded', function() {
       const filterBtns = document.querySelectorAll('.filter-btn');
       filterBtns.forEach(btn => {
