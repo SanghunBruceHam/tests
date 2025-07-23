@@ -194,16 +194,19 @@
       // 결과로 스크롤
       document.getElementById('result').scrollIntoView({ behavior: 'smooth' });
 
-      // Google Analytics 이벤트 추적
-      gtag('event', 'test_completed', {
+      // Google Analytics 이벤트 추적 (향상된 버전)
+      gtag('event', 'quiz_complete', {
+        'event_category': 'Romance Test',
+        'event_label': `Test 19 - Choice ${choice} - ${results[choice].substring(0, 20)}`,
         'test_name': 'romance_test_19',
-        'result': choice
+        'result': choice,
+        'result_type': choice === 'A' ? '초쿨타입' : choice === 'B' ? '호기심타입' : choice === 'C' ? '질투쟁이타입' : '자신감타입'
       });
     }
 
     function shareToThreads() {
       const text = '연애 심리 테스트: 당신의 질투 성향 결과를 확인해보세요!';
-      const url = window.location.href;
+      const url = window.location.href + '?utm_source=threads&utm_medium=share&utm_campaign=test19';
       try {
         window.open(`https://threads.net/intent/post?text=${encodeURIComponent(text + ' ' + url)}`, '_blank', 'noopener,noreferrer');
       } catch (error) {
@@ -214,7 +217,7 @@
 
     function shareToTwitter() {
       const text = '연애 심리 테스트: 당신의 질투 성향 결과를 확인해보세요!';
-      const url = window.location.href;
+      const url = window.location.href + '?utm_source=twitter&utm_medium=share&utm_campaign=test19';
       try {
         window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`, '_blank', 'noopener,noreferrer');
       } catch (error) {
@@ -224,7 +227,7 @@
     }
 
     function shareToFacebook() {
-      const url = window.location.href;
+      const url = window.location.href + '?utm_source=facebook&utm_medium=share&utm_campaign=test19';
       try {
         window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank', 'noopener,noreferrer');
       } catch (error) {
