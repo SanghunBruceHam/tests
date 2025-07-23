@@ -326,6 +326,24 @@
       transform: translateY(-2px);
     }
 
+    .test-section {
+      margin-bottom: 50px;
+    }
+
+    .section-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 25px;
+      text-align: center;
+      color: var(--text-primary);
+      padding: 15px 0;
+      border-bottom: 2px solid var(--border-color);
+    }
+
+    .nav-link {
+      scroll-behavior: smooth;
+    }
+
     .footer {
       text-align: center;
       color: var(--text-secondary);
@@ -431,6 +449,16 @@
         font-size: 0.95rem;
       }
 
+      .section-title {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+        padding: 10px 0;
+      }
+
+      .test-section {
+        margin-bottom: 40px;
+      }
+
       .footer {
         margin-top: 40px;
         font-size: 0.8rem;
@@ -455,6 +483,16 @@
       .nav-link {
         width: 100%;
         max-width: 300px;
+      }
+
+      .section-title {
+        font-size: 1.3rem;
+        margin-bottom: 15px;
+        padding: 8px 0;
+      }
+
+      .test-section {
+        margin-bottom: 30px;
       }
 
       .test-card {
@@ -482,10 +520,10 @@
       
       <nav aria-label="테스트 카테고리" class="main-navigation">
         <ul class="nav-list">
-          <li><a href="/egen-teto/ko/" class="nav-link">에겐 vs 테토 성향 테스트</a></li>
-          <li><a href="/romance-test/ko/" class="nav-link">연애 스타일 테스트</a></li>
-          <li><a href="#personality" class="nav-link">성격 테스트</a></li>
-          <li><a href="#career" class="nav-link">직업 적성 검사</a></li>
+          <li><a href="#personality-tests" class="nav-link">🧠 성격 분석</a></li>
+          <li><a href="#romance-tests" class="nav-link">💕 연애 & 관계</a></li>
+          <li><a href="#career-tests" class="nav-link">💼 직업 & 적성</a></li>
+          <li><a href="#fun-tests" class="nav-link">🎭 재미 테스트</a></li>
         </ul>
       </nav>
     </header>
@@ -509,37 +547,69 @@
       </div>
     </div>
 
-    <div class="tests-grid">
-      <a href="/egen-teto/ko/" class="test-card">
-        <div class="test-title">💖 에겐 vs 테토 성향 테스트</div>
-        <div class="test-description">호르몬 특성 기반 성격 분석! 에겐파/테토파 중 어디에 속하는지 알아보고 찰떡궁합 이상형까지 찾아보세요.</div>
-      </a>
+    <!-- 성격 분석 테스트 -->
+    <section id="personality-tests" class="test-section">
+      <h2 class="section-title">🧠 성격 분석 테스트</h2>
+      <div class="tests-grid">
+        <a href="/egen-teto/ko/" class="test-card">
+          <div class="test-title">💖 에겐 vs 테토 성향 테스트</div>
+          <div class="test-description">호르몬 특성 기반 성격 분석! 에겐파/테토파 중 어디에 속하는지 알아보고 찰떡궁합 이상형까지 찾아보세요.</div>
+        </a>
 
-      <a href="/romance-test/ko/" class="test-card">
-        <div class="test-title">🌟 연애 스타일 테스트</div>
-        <div class="test-description">당신의 연애 패턴과 이상형을 분석해보세요. 사랑에 빠지는 방식부터 관계 유지법까지!</div>
-      </a>
+        <a href="#" class="test-card" onclick="alert('준비 중입니다!')">
+          <div class="test-title">🎭 MBTI 성격 테스트</div>
+          <div class="test-description">16가지 성격 유형 중 나는 어디에? 정확한 MBTI 진단과 상세한 성격 분석!</div>
+        </a>
+      </div>
+    </section>
 
-      <a href="#" class="test-card" onclick="alert('준비 중입니다!')">
-        <div class="test-title">💼 직업 적성 검사</div>
-        <div class="test-description">나에게 맞는 직업을 찾아보세요. 성격, 관심사, 능력을 종합한 맞춤 직업 추천!</div>
-      </a>
+    <!-- 연애 & 관계 테스트 -->
+    <section id="romance-tests" class="test-section">
+      <h2 class="section-title">💕 연애 & 관계 테스트</h2>
+      <div class="tests-grid">
+        <a href="/romance-test/ko/" class="test-card">
+          <div class="test-title">🌟 연애 스타일 테스트</div>
+          <div class="test-description">당신의 연애 패턴과 이상형을 분석해보세요. 사랑에 빠지는 방식부터 관계 유지법까지!</div>
+        </a>
 
-      <a href="#" class="test-card" onclick="alert('준비 중입니다!')">
-        <div class="test-title">🎭 MBTI 성격 테스트</div>
-        <div class="test-description">16가지 성격 유형 중 나는 어디에? 정확한 MBTI 진단과 상세한 성격 분석!</div>
-      </a>
+        <a href="#" class="test-card" onclick="alert('준비 중입니다!')">
+          <div class="test-title">💝 사랑의 언어 테스트</div>
+          <div class="test-description">나와 상대방의 사랑 표현 방식을 알아보세요. 더 깊은 관계를 위한 소통법!</div>
+        </a>
+      </div>
+    </section>
 
-      <a href="#" class="test-card" onclick="alert('준비 중입니다!')">
-        <div class="test-title">🧩 IQ 테스트</div>
-        <div class="test-description">논리력, 수리력, 공간지각력을 종합한 지능 측정 테스트. 당신의 IQ는 몇일까요?</div>
-      </a>
+    <!-- 직업 & 적성 테스트 -->
+    <section id="career-tests" class="test-section">
+      <h2 class="section-title">💼 직업 & 적성 테스트</h2>
+      <div class="tests-grid">
+        <a href="#" class="test-card" onclick="alert('준비 중입니다!')">
+          <div class="test-title">💼 직업 적성 검사</div>
+          <div class="test-description">나에게 맞는 직업을 찾아보세요. 성격, 관심사, 능력을 종합한 맞춤 직업 추천!</div>
+        </a>
 
-      <a href="#" class="test-card" onclick="alert('준비 중입니다!')">
-        <div class="test-title">💝 사랑의 언어 테스트</div>
-        <div class="test-description">나와 상대방의 사랑 표현 방식을 알아보세요. 더 깊은 관계를 위한 소통법!</div>
-      </a>
-    </div>
+        <a href="#" class="test-card" onclick="alert('준비 중입니다!')">
+          <div class="test-title">🧩 IQ 테스트</div>
+          <div class="test-description">논리력, 수리력, 공간지각력을 종합한 지능 측정 테스트. 당신의 IQ는 몇일까요?</div>
+        </a>
+      </div>
+    </section>
+
+    <!-- 재미 테스트 -->
+    <section id="fun-tests" class="test-section">
+      <h2 class="section-title">🎭 재미 테스트</h2>
+      <div class="tests-grid">
+        <a href="#" class="test-card" onclick="alert('준비 중입니다!')">
+          <div class="test-title">🔮 운세 & 타로</div>
+          <div class="test-description">오늘의 운세와 타로 카드로 미래를 점쳐보세요!</div>
+        </a>
+
+        <a href="#" class="test-card" onclick="alert('준비 중입니다!')">
+          <div class="test-title">🎪 재미있는 심리게임</div>
+          <div class="test-description">친구들과 함께 즐길 수 있는 재미있는 심리 테스트 모음!</div>
+        </a>
+      </div>
+    </section>
 
     <!-- AMP Ad -->
     <amp-ad width="100vw" height="320"
