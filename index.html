@@ -230,6 +230,57 @@
       line-height: 1.5;
     }
 
+    .recommendations {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+
+    .section-subtitle {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 20px;
+    }
+
+    .recommendation-cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .recommendation-item {
+      background: var(--card-bg);
+      padding: 15px 20px;
+      border-radius: var(--border-radius);
+      text-align: left;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border-color);
+      backdrop-filter: blur(10px);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      width: 280px;
+    }
+
+    .rec-icon {
+      font-size: 2rem;
+    }
+
+    .rec-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 3px;
+    }
+
+    .rec-desc {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+
     .stats {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -517,7 +568,7 @@
     <header class="header">
       <h1>심리테스트 모음</h1>
       <h2 class="subtitle">나를 알아가는 재미있는 심리테스트<br>성격, 연애, 직업까지 모든 테스트가 여기에!</h2>
-      
+
       <nav aria-label="테스트 카테고리" class="main-navigation">
         <ul class="nav-list">
           <li><a href="#personality-tests" class="nav-link">🧠 성격 분석</a></li>
@@ -528,24 +579,39 @@
       </nav>
     </header>
 
-    <div class="stats">
-      <div class="stat-item">
-        <div class="stat-number">15+</div>
-        <div class="stat-label">테스트 종류</div>
+    <div class="recommendations">
+        <h3 class="section-subtitle">🎯 어떤 테스트부터 시작할까요?</h3>
+        <div class="recommendation-cards">
+          <div class="recommendation-item">
+            <div class="rec-icon">💕</div>
+            <div class="rec-content">
+              <div class="rec-title">연애 초보자</div>
+              <div class="rec-desc">연애 스타일 테스트로 시작</div>
+            </div>
+          </div>
+          <div class="recommendation-item">
+            <div class="rec-icon">🔥</div>
+            <div class="rec-content">
+              <div class="rec-title">인기 급상승</div>
+              <div class="rec-desc">에겐 vs 테토 성향 테스트</div>
+            </div>
+          </div>
+          <div class="recommendation-item">
+            <div class="rec-icon">🎯</div>
+            <div class="rec-content">
+              <div class="rec-title">성격 분석</div>
+              <div class="rec-desc">곧 출시 예정</div>
+            </div>
+          </div>
+          <div class="recommendation-item">
+            <div class="rec-icon">💼</div>
+            <div class="rec-content">
+              <div class="rec-title">직업 적성</div>
+              <div class="rec-desc">준비 중</div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="stat-item">
-        <div class="stat-number">1만+</div>
-        <div class="stat-label">누적 참여자</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-number">100%</div>
-        <div class="stat-label">무료</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-number">3개</div>
-        <div class="stat-label">언어 지원</div>
-      </div>
-    </div>
 
     <!-- 성격 분석 테스트 -->
     <section id="personality-tests" class="test-section">
