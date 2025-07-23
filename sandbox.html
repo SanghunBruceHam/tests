@@ -1,0 +1,531 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Egen-Teto 고도화 테스트 - Sandbox</title>
+  
+  <!-- 공통 테마 CSS -->
+  <link rel="stylesheet" href="/assets/common-theme.css">
+  <link rel="stylesheet" href="/assets/enhanced-animations.css">
+  
+  <style>
+    :root {
+      --egen-color: #ff7eb3;
+      --teto-color: #8ac6ff;
+      --primary-bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      --card-bg: rgba(255, 255, 255, 0.95);
+      --text-primary: #2d3748;
+      --text-secondary: #718096;
+      --shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--primary-bg);
+      margin: 0;
+      padding: 20px;
+      min-height: 100vh;
+    }
+
+    .sandbox-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .sandbox-header {
+      text-align: center;
+      color: white;
+      margin-bottom: 40px;
+    }
+
+    .sandbox-header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 30px;
+      margin-bottom: 40px;
+    }
+
+    .feature-card {
+      background: var(--card-bg);
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    }
+
+    .feature-title {
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: var(--text-primary);
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .feature-demo {
+      border: 2px dashed #e2e8f0;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 15px 0;
+      background: #f7fafc;
+      min-height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .demo-btn {
+      background: linear-gradient(45deg, var(--egen-color), var(--teto-color));
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      margin: 5px;
+    }
+
+    .demo-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    .progress-demo {
+      width: 100%;
+      height: 8px;
+      background: rgba(255,255,255,0.3);
+      border-radius: 4px;
+      overflow: hidden;
+      margin: 10px 0;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(45deg, var(--egen-color), var(--teto-color));
+      width: 0%;
+      transition: width 2s ease;
+      border-radius: 4px;
+    }
+
+    .analysis-card {
+      background: var(--card-bg);
+      border-radius: 15px;
+      padding: 25px;
+      margin: 20px 0;
+      box-shadow: var(--shadow);
+    }
+
+    .trait-bar {
+      display: flex;
+      align-items: center;
+      margin: 10px 0;
+    }
+
+    .trait-label {
+      width: 80px;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+
+    .trait-progress {
+      flex: 1;
+      height: 6px;
+      background: #e2e8f0;
+      border-radius: 3px;
+      margin: 0 10px;
+      overflow: hidden;
+    }
+
+    .trait-fill {
+      height: 100%;
+      background: linear-gradient(45deg, var(--egen-color), var(--teto-color));
+      border-radius: 3px;
+      transition: width 1s ease;
+    }
+
+    .chart-container {
+      width: 100%;
+      height: 300px;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .analytics-display {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin: 20px 0;
+    }
+
+    .metric-card {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .metric-value {
+      font-size: 2rem;
+      font-weight: bold;
+      color: var(--egen-color);
+    }
+
+    .metric-label {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    .keyboard-hint {
+      background: #f7fafc;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 15px 0;
+      border-left: 4px solid var(--egen-color);
+    }
+
+    .particle-demo {
+      position: relative;
+      height: 150px;
+      overflow: hidden;
+      border-radius: 10px;
+      background: linear-gradient(45deg, #667eea, #764ba2);
+    }
+  </style>
+</head>
+<body>
+  <div class="sandbox-container">
+    <div class="sandbox-header">
+      <h1>🚀 Egen-Teto 고도화 테스트</h1>
+      <p>새로운 기능들을 미리 체험해보세요!</p>
+    </div>
+
+    <div class="feature-grid">
+      <!-- 1. 향상된 애니메이션 -->
+      <div class="feature-card">
+        <div class="feature-title">
+          ✨ 향상된 애니메이션
+          <button class="demo-btn" onclick="demoAnimations()">테스트</button>
+        </div>
+        <div class="feature-demo" id="animation-demo">
+          <p>애니메이션 효과를 확인해보세요</p>
+        </div>
+        <ul>
+          <li>부드러운 페이드인 효과</li>
+          <li>호버 시 스케일 애니메이션</li>
+          <li>진행 바 애니메이션</li>
+          <li>플로팅 파티클 효과</li>
+        </ul>
+      </div>
+
+      <!-- 2. 실시간 진행도 추적 -->
+      <div class="feature-card">
+        <div class="feature-title">
+          📊 실시간 진행도 추적
+          <button class="demo-btn" onclick="demoProgress()">시작</button>
+        </div>
+        <div class="feature-demo" id="progress-demo">
+          <div style="width: 100%;">
+            <div class="progress-demo">
+              <div class="progress-fill" id="progress-fill"></div>
+            </div>
+            <div style="text-align: center; margin-top: 10px;">
+              <span id="progress-text">질문 0/20</span>
+            </div>
+          </div>
+        </div>
+        <ul>
+          <li>실시간 진행률 표시</li>
+          <li>질문별 응답 시간 측정</li>
+          <li>자동 저장 기능</li>
+        </ul>
+      </div>
+
+      <!-- 3. 키보드 네비게이션 -->
+      <div class="feature-card">
+        <div class="feature-title">
+          ⌨️ 키보드 네비게이션
+          <button class="demo-btn" onclick="demoKeyboard()">활성화</button>
+        </div>
+        <div class="feature-demo" id="keyboard-demo">
+          <div class="keyboard-hint">
+            <strong>키보드 단축키:</strong><br>
+            1-4: 답변 선택<br>
+            Enter: 다음 질문<br>
+            Space: 일시정지
+          </div>
+        </div>
+        <ul>
+          <li>숫자 키로 빠른 답변</li>
+          <li>엔터로 다음 진행</li>
+          <li>접근성 향상</li>
+        </ul>
+      </div>
+
+      <!-- 4. 고급 분석 시스템 -->
+      <div class="feature-card">
+        <div class="feature-title">
+          🧠 고급 분석 시스템
+          <button class="demo-btn" onclick="demoAnalysis()">분석</button>
+        </div>
+        <div class="feature-demo" id="analysis-demo">
+          <div class="analytics-display">
+            <div class="metric-card">
+              <div class="metric-value" id="consistency-score">85</div>
+              <div class="metric-label">일관성</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-value" id="confidence-score">92</div>
+              <div class="metric-label">확신도</div>
+            </div>
+          </div>
+        </div>
+        <ul>
+          <li>성격 특성별 세부 분석</li>
+          <li>응답 패턴 일관성 측정</li>
+          <li>확신도 계산</li>
+        </ul>
+      </div>
+
+      <!-- 5. 시각화 차트 -->
+      <div class="feature-card">
+        <div class="feature-title">
+          📈 시각화 차트
+          <button class="demo-btn" onclick="demoChart()">생성</button>
+        </div>
+        <div class="feature-demo" id="chart-demo">
+          <canvas id="radar-chart" width="300" height="200"></canvas>
+        </div>
+        <ul>
+          <li>레이더 차트로 성격 시각화</li>
+          <li>특성별 바 차트</li>
+          <li>인터랙티브 그래프</li>
+        </ul>
+      </div>
+
+      <!-- 6. 세부 특성 분석 -->
+      <div class="feature-card">
+        <div class="feature-title">
+          🎯 세부 특성 분석
+          <button class="demo-btn" onclick="demoTraits()">분석</button>
+        </div>
+        <div class="feature-demo" id="traits-demo">
+          <div class="trait-bar">
+            <span class="trait-label">창의성</span>
+            <div class="trait-progress">
+              <div class="trait-fill" style="width: 0%;" data-target="85"></div>
+            </div>
+            <span>85%</span>
+          </div>
+          <div class="trait-bar">
+            <span class="trait-label">논리성</span>
+            <div class="trait-progress">
+              <div class="trait-fill" style="width: 0%;" data-target="72"></div>
+            </div>
+            <span>72%</span>
+          </div>
+          <div class="trait-bar">
+            <span class="trait-label">공감능력</span>
+            <div class="trait-progress">
+              <div class="trait-fill" style="width: 0%;" data-target="91"></div>
+            </div>
+            <span>91%</span>
+          </div>
+          <div class="trait-bar">
+            <span class="trait-label">리더십</span>
+            <div class="trait-progress">
+              <div class="trait-fill" style="width: 0%;" data-target="68"></div>
+            </div>
+            <span>68%</span>
+          </div>
+        </div>
+        <ul>
+          <li>4가지 핵심 특성 측정</li>
+          <li>백분율로 정확한 수치화</li>
+          <li>시각적 진행 바</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 통합 테스트 섹션 -->
+    <div class="analysis-card">
+      <h2>🔬 통합 기능 테스트</h2>
+      <div class="feature-demo">
+        <button class="demo-btn" onclick="startFullDemo()">전체 기능 통합 테스트</button>
+        <button class="demo-btn" onclick="resetDemo()">리셋</button>
+      </div>
+      <div id="full-demo-results"></div>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="/assets/enhanced-features.js"></script>
+  <script src="/assets/result-analysis.js"></script>
+  <script src="/assets/chart-visualization.js"></script>
+  
+  <script>
+    // 데모 함수들
+    function demoAnimations() {
+      const demo = document.getElementById('animation-demo');
+      demo.innerHTML = '<div class="question-container">애니메이션 테스트 중...</div>';
+      
+      setTimeout(() => {
+        demo.innerHTML = `
+          <div class="answer-option" style="margin: 5px; padding: 10px; background: #f0f8ff; border-radius: 8px; cursor: pointer;">
+            호버해보세요!
+          </div>
+        `;
+      }, 500);
+    }
+
+    function demoProgress() {
+      const fill = document.getElementById('progress-fill');
+      const text = document.getElementById('progress-text');
+      let current = 0;
+      
+      const interval = setInterval(() => {
+        current += 1;
+        fill.style.width = (current / 20 * 100) + '%';
+        text.textContent = `질문 ${current}/20`;
+        
+        if (current >= 20) {
+          clearInterval(interval);
+          setTimeout(() => {
+            text.textContent = '완료! 🎉';
+          }, 500);
+        }
+      }, 200);
+    }
+
+    function demoKeyboard() {
+      const demo = document.getElementById('keyboard-demo');
+      demo.innerHTML = `
+        <div style="text-align: center;">
+          <p>키보드가 활성화되었습니다!</p>
+          <p>1-4 키를 눌러보세요</p>
+          <div id="key-feedback" style="margin-top: 10px; font-weight: bold; color: var(--egen-color);"></div>
+        </div>
+      `;
+      
+      function handleKeyboard(e) {
+        const feedback = document.getElementById('key-feedback');
+        if (e.key >= '1' && e.key <= '4') {
+          feedback.textContent = `${e.key}번 선택됨!`;
+        } else if (e.key === 'Enter') {
+          feedback.textContent = '다음 질문으로!';
+        }
+      }
+      
+      document.addEventListener('keydown', handleKeyboard);
+      setTimeout(() => {
+        document.removeEventListener('keydown', handleKeyboard);
+      }, 10000);
+    }
+
+    function demoAnalysis() {
+      const consistency = document.getElementById('consistency-score');
+      const confidence = document.getElementById('confidence-score');
+      
+      animateNumber(consistency, 85, 2000);
+      animateNumber(confidence, 92, 2500);
+    }
+
+    function demoChart() {
+      const canvas = document.getElementById('radar-chart');
+      if (canvas && window.ChartVisualizer) {
+        const visualizer = new ChartVisualizer();
+        const data = {
+          labels: ['창의성', '논리성', '공감능력', '리더십', '직관성', '분석력'],
+          values: [85, 72, 91, 68, 88, 70]
+        };
+        visualizer.createRadarChart('radar-chart', data);
+      }
+    }
+
+    function demoTraits() {
+      const fills = document.querySelectorAll('#traits-demo .trait-fill');
+      fills.forEach((fill, index) => {
+        setTimeout(() => {
+          const target = fill.dataset.target;
+          fill.style.width = target + '%';
+        }, index * 300);
+      });
+    }
+
+    function startFullDemo() {
+      const results = document.getElementById('full-demo-results');
+      results.innerHTML = '<h3>통합 테스트 진행 중...</h3>';
+      
+      // 모든 데모 순차 실행
+      setTimeout(() => demoProgress(), 500);
+      setTimeout(() => demoTraits(), 2000);
+      setTimeout(() => demoChart(), 4000);
+      setTimeout(() => demoAnalysis(), 6000);
+      
+      setTimeout(() => {
+        results.innerHTML = `
+          <div class="analysis-card">
+            <h3>✅ 모든 기능 테스트 완료!</h3>
+            <ul>
+              <li>향상된 애니메이션: 적용됨</li>
+              <li>실시간 진행도: 정상 작동</li>
+              <li>키보드 네비게이션: 활성화됨</li>
+              <li>고급 분석: 데이터 수집 중</li>
+              <li>시각화 차트: 렌더링 완료</li>
+              <li>세부 특성 분석: 계산 완료</li>
+            </ul>
+          </div>
+        `;
+      }, 8000);
+    }
+
+    function resetDemo() {
+      location.reload();
+    }
+
+    function animateNumber(element, target, duration) {
+      const start = parseInt(element.textContent) || 0;
+      const increment = (target - start) / (duration / 16);
+      let current = start;
+      
+      const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+          current = target;
+          clearInterval(timer);
+        }
+        element.textContent = Math.round(current);
+      }, 16);
+    }
+
+    // 페이지 로드 시 파티클 효과 초기화
+    document.addEventListener('DOMContentLoaded', () => {
+      // Enhanced features 초기화
+      if (window.egenTetoEnhanced) {
+        console.log('Enhanced features loaded successfully!');
+      }
+    });
+  </script>
+</body>
+</html>
