@@ -40,7 +40,12 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Article",
+    "@type": "Quiz",
+    "partOfSeries": {
+      "@type": "CreativeWorkSeries",
+      "name": "연애 심리 테스트 시리즈",
+      "url": "https://tests.mahalohana-bruce.com/romance-test/ko/"
+    },
     "headline": "연애 심리 테스트 2: 급하게 외출해야 할 때 가장 먼저 챙기는 것은?",
     "description": "급하게 외출해야 할 때 가장 먼저 챙기는 것은?",
     "image": "https://tests.mahalohana-bruce.com/romance-test/ko/thumbnail.png",
@@ -129,13 +134,14 @@
       // Google Analytics 이벤트 추적
       gtag('event', 'quiz_complete', {
         'event_category': 'Romance Test',
-        'event_label': 'Test 2 - Choice ' + choice
+        'event_label': 'Test 2 - Choice ' + choice,
+        'result_text': results[choice]
       });
     }
 
     function shareToThreads() {
-      const text = '연애 심리 테스트: 당신의 사랑에 열중할 때 결과를 확인해보세요!';
-      const url = window.location.href;
+      const text = '연애 심리 테스트: 당신의 연애 성향 결과를 확인해보세요!';
+      const url = window.location.href + '?utm_source=threads&utm_medium=share&utm_campaign=test2';
       try {
         window.open(`https://threads.net/intent/post?text=${encodeURIComponent(text + ' ' + url)}`, '_blank', 'noopener,noreferrer');
       } catch (error) {
@@ -145,8 +151,8 @@
     }
 
     function shareToTwitter() {
-      const text = '연애 심리 테스트: 당신의 사랑에 열중할 때 결과를 확인해보세요!';
-      const url = window.location.href;
+      const text = '연애 심리 테스트: 당신의 연애 성향 결과를 확인해보세요!';
+      const url = window.location.href + '?utm_source=twitter&utm_medium=share&utm_campaign=test2';
       try {
         window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`, '_blank', 'noopener,noreferrer');
       } catch (error) {
