@@ -36,12 +36,6 @@
   <link rel="alternate" hreflang="en" href="https://tests.mahalohana-bruce.com/en/">
   <link rel="alternate" hreflang="x-default" href="https://tests.mahalohana-bruce.com/">
 
-  <!-- hreflang for multilingual SEO -->
-  <link rel="alternate" hreflang="ko" href="https://tests.mahalohana-bruce.com/">
-  <link rel="alternate" hreflang="ja" href="https://tests.mahalohana-bruce.com/ja/">
-  <link rel="alternate" hreflang="en" href="https://tests.mahalohana-bruce.com/en/">
-  <link rel="alternate" hreflang="x-default" href="https://tests.mahalohana-bruce.com/">
-
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-45VSGEM7EZ"></script>
   <script>
@@ -169,17 +163,6 @@
       display: flex;
       gap: 15px;
       align-items: center;
-
-
-  <amp-ad width="100vw" height="320"
-       type="adsense"
-       data-ad-client="ca-pub-5508768187151867"
-       data-ad-slot="7298546648"
-       data-auto-format="rspv"
-       data-full-width="">
-    <div overflow=""></div>
-  </amp-ad>
-
     }
 
     .language-selector {
@@ -312,6 +295,37 @@
       line-height: 1.5;
     }
 
+    .main-navigation {
+      margin: 25px 0;
+    }
+
+    .nav-list {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+
+    .nav-link {
+      padding: 8px 16px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid var(--border-color);
+      border-radius: 25px;
+      color: var(--text-primary);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    .nav-link:hover {
+      background: var(--accent-color);
+      color: white;
+      transform: translateY(-2px);
+    }
+
     .footer {
       text-align: center;
       color: var(--text-secondary);
@@ -386,6 +400,17 @@
         font-size: 0.9rem;
       }
 
+      .nav-list {
+        flex-direction: column;
+        gap: 12px;
+        align-items: center;
+      }
+
+      .nav-link {
+        width: 280px;
+        text-align: center;
+      }
+
       .tests-grid {
         grid-template-columns: 1fr;
         gap: 20px;
@@ -427,6 +452,11 @@
         gap: 10px;
       }
 
+      .nav-link {
+        width: 100%;
+        max-width: 300px;
+      }
+
       .test-card {
         padding: 20px;
       }
@@ -450,12 +480,12 @@
       <h1>심리테스트 모음</h1>
       <h2 class="subtitle">나를 알아가는 재미있는 심리테스트<br>성격, 연애, 직업까지 모든 테스트가 여기에!</h2>
       
-      <nav aria-label="테스트 카테고리">
-        <ul style="display: none;">
-          <li><a href="/egen-teto/ko/">에겐 vs 테토 성향 테스트</a></li>
-          <li><a href="/romance-test/ko/">연애 스타일 테스트</a></li>
-          <li><a href="#personality">성격 테스트</a></li>
-          <li><a href="#career">직업 적성 검사</a></li>
+      <nav aria-label="테스트 카테고리" class="main-navigation">
+        <ul class="nav-list">
+          <li><a href="/egen-teto/ko/" class="nav-link">에겐 vs 테토 성향 테스트</a></li>
+          <li><a href="/romance-test/ko/" class="nav-link">연애 스타일 테스트</a></li>
+          <li><a href="#personality" class="nav-link">성격 테스트</a></li>
+          <li><a href="#career" class="nav-link">직업 적성 검사</a></li>
         </ul>
       </nav>
     </header>
