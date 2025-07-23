@@ -1,23 +1,24 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Love Psychology Test 4: Your View on Marriage | Free Psychology Test</title>
-  <meta name="description" content="What does your ideal wedding venue reveal about your view on marriage? Discover your romantic perspectives with this fun psychology test!">
-  <meta name="keywords" content="love psychology test, marriage views, psychology test, relationship perspectives, free test">
+  <title>Love Psychology Test 4: Your Dating Style | Free Psychology Test</title>
+  <meta name="description" content="What does what catches your eye first in a park reveal about your dating style? Discover your romantic personality with fun psychology tests!">
+  <meta name="keywords" content="love psychology test, dating style, psychology test, romantic personality, free test">
 
   <!-- Open Graph Meta Tags -->
   <meta property="og:type" content="article" />
-  <meta property="og:title" content="Love Psychology Test 4: Your View on Marriage" />
-  <meta property="og:description" content="What does your ideal wedding venue reveal about your view on marriage?" />
+  <meta property="og:title" content="Love Psychology Test 4: Your Dating Style" />
+  <meta property="og:description" content="What does what catches your eye first in a park reveal about your dating style?" />
   <meta property="og:image" content="https://tests.mahalohana-bruce.com/romance-test/en/thumbnail.png" />
   <meta property="og:url" content="https://tests.mahalohana-bruce.com/romance-test/en/test4.html" />
 
   <!-- Twitter Card Meta Tags -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Love Psychology Test: Marriage Views" />
-  <meta name="twitter:description" content="Discover your romantic perspectives through wedding preferences!" />
+  <meta name="twitter:title" content="Love Psychology Test: Dating Style" />
+  <meta name="twitter:description" content="Discover your romantic tendencies through park observations!" />
   <meta name="twitter:image" content="https://tests.mahalohana-bruce.com/romance-test/en/thumbnail.png" />
 
   <link rel="canonical" href="https://tests.mahalohana-bruce.com/romance-test/en/test4.html">
@@ -41,8 +42,8 @@
   {
     "@context": "https://schema.org",
     "@type": "Article",
-    "headline": "Love Psychology Test 4: Your View on Marriage",
-    "description": "What does your ideal wedding venue reveal about your view on marriage?",
+    "headline": "Love Psychology Test 4: Your Dating Style",
+    "description": "What does what catches your eye first in a park reveal about your dating style?",
     "image": "https://tests.mahalohana-bruce.com/romance-test/en/thumbnail.png",
     "author": {
       "@type": "Organization",
@@ -63,10 +64,9 @@
       "@id": "https://tests.mahalohana-bruce.com/romance-test/en/test4.html"
     }
   }
-
   </script>
 
-  <link rel="stylesheet" href="./style.css">  
+  <link rel="stylesheet" href="./style.css">
 
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5508768187151867"
        crossorigin="anonymous"></script>
@@ -76,21 +76,21 @@
 <div class="container">
     <div class="question">
       <h1>💖 Love Psychology Test 4</h1>
-      <h2>What's your ideal wedding venue?</h2>
+      <h2>What catches your eye first in a park?</h2>
       <div class="choices">
-        <div class="choice" onclick="showResult('A')">A. Beach resort</div>
-        <div class="choice" onclick="showResult('B')">B. Classic cathedral</div>
-        <div class="choice" onclick="showResult('C')">C. Small garden</div>
-        <div class="choice" onclick="showResult('D')">D. Luxury hotel</div>
+        <div class="choice" onclick="showResult('A')">A. Beautiful flowers</div>
+        <div class="choice" onclick="showResult('B')">B. Couples walking together</div>
+        <div class="choice" onclick="showResult('C')">C. People sitting on benches</div>
+        <div class="choice" onclick="showResult('D')">D. Children playing</div>
       </div>
     </div>
 
     <div id="result" class="result hidden">
-      <h3>💍 Your View on Marriage</h3>
+      <h3>💖 Your Dating Style</h3>
       <p id="result-text"></p>
 
       <div class="share-buttons">
-        <a href="#" onclick="shareToThreads()" class="share-btn">🧵 Threads Share</a>
+        <a href="#" onclick="shareToWhatsApp()" class="share-btn">💬 WhatsApp Share</a>
         <a href="#" onclick="shareToTwitter()" class="share-btn">🐦 X Share</a>
         <a href="#" onclick="shareToFacebook()" class="share-btn">📘 Facebook Share</a>
         <a href="#" onclick="copyURL()" class="share-btn">🔗 Copy URL</a>
@@ -108,46 +108,41 @@
     </div>
   </div>
 
-  
 <footer>© Love Psychology Tests | <a href="https://tests.mahalohana-bruce.com" target="_blank" rel="noopener noreferrer">tests.mahalohana-bruce.com</a></footer>
 
   <script>
-    const resultTexts = {
-      A: "💕 Traditional Marriage View! You value family bonds and want to build a warm, stable home. You believe in respecting each other's families and maintaining harmonious relationships.",
-      B: "💝 Romantic Marriage View! You want to maintain a romantic relationship even after marriage and value creating special moments together. You dream of a love-filled married life.",
-      C: "🌟 Adventurous Marriage View! You enjoy new experiences and challenges together, wanting a dynamic and vibrant married life. You seek a partnership that inspires each other.",
-      D: "🏆 Practical Marriage View! You value financial stability and future planning, wanting a practical and well-planned married life. You believe in being reliable supporters for each other."
-    };
-
     function showResult(choice) {
-      const resultElement = document.getElementById("result");
-      const resultText = document.getElementById("result-text");
-      resultText.textContent = resultTexts[choice];
-      resultElement.classList.remove("hidden");
+      const results = {
+        'A': '🌸 Romantic Dreamer! Your dating style is romantic and beauty-focused. You seek special, romantic moments with your partner and appreciate the aesthetic aspects of love. You value emotional connection and beautiful experiences.',
+        'B': '👫 Social Observer! Your dating style is socially-aware and relationship-focused. You learn from other couples and enjoy being part of the dating community. You value shared experiences and togetherness.',
+        'C': '🛋️ Peaceful Companion! Your dating style is calm and stability-focused. You prefer comfortable, steady relationships and enjoy quiet, peaceful moments with your partner. You value trust and emotional security.',
+        'D': '🎯 Energetic Partner! Your dating style is fun and activity-focused. You enjoy active, playful relationships and like sharing energy and adventures with your partner. You value excitement and vitality in love.'
+      };
 
-      // Scroll to result
-      resultElement.scrollIntoView({ behavior: 'smooth' });
+      document.getElementById('result-text').innerText = results[choice];
+      document.getElementById('result').classList.remove('hidden');
 
-      // Google Analytics event tracking
+      document.getElementById('result').scrollIntoView({ behavior: 'smooth' });
+
       gtag('event', 'quiz_complete', {
         'event_category': 'Romance Test',
         'event_label': 'Test 4 - Choice ' + choice
       });
     }
 
-    function shareToThreads() {
-      const text = 'Love Psychology Test: Check out my marriage view result!';
+    function shareToWhatsApp() {
+      const text = 'Love Psychology Test: Check out my dating style results!';
       const url = window.location.href;
       try {
-        window.open(`https://threads.net/intent/post?text=${encodeURIComponent(text + ' ' + url)}`, '_blank', 'noopener,noreferrer');
+        window.open(`https://wa.me/?text=${encodeURIComponent(text + ' ' + url)}`, '_blank', 'noopener,noreferrer');
       } catch (error) {
-        console.error('Threads sharing failed:', error);
+        console.error('WhatsApp sharing failed:', error);
         copyURL();
       }
     }
 
     function shareToTwitter() {
-      const text = 'Love Psychology Test: Check out my marriage view result!';
+      const text = 'Love Psychology Test: Check out my dating style results!';
       const url = window.location.href;
       try {
         window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`, '_blank', 'noopener,noreferrer');
