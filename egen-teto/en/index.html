@@ -1987,12 +1987,303 @@
     function selectGender(gender) {
       selectedGender = gender;
 
+      // 모든 성별 옵션에서 selected 클래스 제거
       document.querySelectorAll('.gender-option').forEach(option => {
         option.classList.remove('selected');
       });
 
+      // 클릭된 옵션에 selected 클래스 추가
       event.target.closest('.gender-option').classList.add('selected');
-      document.getElementById('startBtn').disabled = false;
+      
+      // 테스트 시작 버튼 활성화
+      const startBtn = document.getElementById('startBtn');
+      if (startBtn) {
+        startBtn.disabled = false;
+      }
+    }
+
+    function startTest() {
+      if (!selectedGender) return;
+
+      // 50개 질문 중 20개를 랜덤하게 선택
+      questions = getRandomQuestions(allQuestions, 20);
+
+      document.getElementById('startScreen').classList.add('hidden');
+      document.getElementById('questionScreen').classList.remove('hidden');
+
+      showQuestion();
+    }
+
+    function getRandomQuestions(questionPool, count) {
+      const shuffled = [...questionPool].sort(() => 0.5 - Math.random());
+      return shuffled.slice(0, count);
+    }
+
+    function showQuestion() {
+      const question = questions[currentQuestion];
+
+      document.getElementById('questionTitle').textContent = question.q;
+      document.getElementById('questionNumber').textContent = `Question ${currentQuestion + 1}`;
+
+      const container = document.getElementById('answerContainer');
+      container.innerHTML = '';
+
+      if (question.type === 'yn') {
+        const ynDiv = document.createElement('div');
+        ynDiv.className = 'yn-options';
+
+        question.options.forEach((option, index) => {
+          const button = document.createElement('div');
+          button.className = `yn-option ${index === 0 ? 'yes' : 'no'}`;
+          button.textContent = option.text;
+          button.onclick = () => selectAnswer(index);
+          ynDiv.appendChild(button);
+        });
+
+        container.appendChild(ynDiv);
+      } else {
+        const optionsDiv = document.createElement('div');
+        optionsDiv.className = 'answer-options';
+
+        question.options.forEach((option, index) => {
+          const button = document.createElement('div');
+          button.className = 'answer-option';
+          button.textContent = option.text;
+          button.onclick = () => selectAnswer(index);
+          optionsDiv.appendChild(button);
+        });
+
+        container.appendChild(optionsDiv);
+      }
+
+      updateProgress();
+      document.getElementById('nextBtn').disabled = true;
+    }
+
+    function selectAnswer(index) {
+      const question = questions[currentQuestion];
+
+      if (question.type === 'yn') {
+        document.querySelectorAll('.yn-option').forEach(option => {
+          option.classList.remove('selected');
+        });
+        document.querySelectorAll('.yn-option')[index].classList.add('selected');
+      } else {
+        document.querySelectorAll('.answer-option').forEach(option => {
+          option.classList.remove('selected');
+        });
+        document.querySelectorAll('.answer-option')[index].classList.add('selected');
+      }
+
+      const selectedOption = question.options[index];
+      answers[currentQuestion] = selectedOption;
+
+      if (selectedOption.type === 'estrogen') {
+        estrogenScore += selectedOption.score;
+      } else if (selectedOption.type === 'testosterone') {
+        testosteroneScore += selectedOption.score;
+      }
+
+      document.getElementById('nextBtn').disabled = false;
+    }
+
+    function nextQuestion() {
+      currentQuestion++;
+
+      if (currentQuestion < questions.length && currentQuestion < 20) {
+        showQuestion();
+      } else {
+        showLoading();
+      }
+    }
+
+    function updateProgress() {
+      const progress = ((currentQuestion + 1) / questions.length) * 100;
+      document.getElementById('progressFill').style.width = progress + '%';
+      document.getElementById('progressCounter').textContent = `${currentQuestion + 1}/20`;
+    }
+
+    function showLoading() {
+      document.getElementById('questionScreen').classList.add('hidden');
+      document.getElementById('loadingScreen').classList.remove('hidden');
+
+      setTimeout(() => {
+        showResult();
+      }, 3000);
+    }
+
+    function restartTest() {
+      selectedGender = '';
+      currentQuestion = 0;
+      answers = [];
+      estrogenScore = 0;
+      testosteroneScore = 0;
+
+      document.getElementById('resultScreen').classList.add('hidden');
+      document.getElementById('startScreen').classList.remove('hidden');
+
+      document.querySelectorAll('.gender-option').forEach(option => {
+        option.classList.remove('selected');
+      });
+
+      document.getElementById('startBtn').disabled = true;
+    }
+
+    function showResult() {
+      document.getElementById('loadingScreen').classList.add('hidden');
+      document.getElementById('resultScreen').classList.remove('hidden');
+
+      const totalScore = estrogenScore + testosteroneScore;
+      const estrogenPercent = totalScore > 0 ? Math.round((estrogenScore / totalScore) * 100) : 50;
+      const testosteronePercent = 100 - estrogenPercent;
+
+      const resultType = estrogenScore > testosteroneScore ? 'estrogen' : 'testosterone';
+      const result = results[resultType][selectedGender];
+
+      // Set result header
+      document.getElementById('resultEmoji').textContent = result.emoji;
+      document.getElementById('resultTitle').textContent = result.title;
+      document.getElementById('resultSubtitle').textContent = result.subtitle;
+      document.getElementById('resultDescription').textContent = result.description;
+
+      // Update chart
+      setTimeout(() => {
+        document.getElementById('estrogenBar').style.width = estrogenPercent + '%';
+        document.getElementById('testosteroneBar').style.width = testosteronePercent + '%';
+        document.getElementById('estrogenPercent').textContent = estrogenPercent + '%';
+        document.getElementById('testosteronePercent').textContent = testosteronePercent + '%';
+      }, 500);
+
+      // Update result content
+      document.getElementById('personalityContent').textContent = result.fullDescription;
+      document.getElementById('matchContent').innerHTML = `
+        <div class="match-badge">${result.match}</div>
+        <div>${result.matchDesc}</div>
+      `;
+
+      // Keywords
+      const keywordsGrid = document.getElementById('keywordsGrid');
+      keywordsGrid.innerHTML = result.keywords.map(keyword => 
+        `<span class="keyword-tag">${keyword}</span>`
+      ).join('');
+
+      // Detailed info
+      document.getElementById('famousList').innerHTML = 
+        result.famous.map(person => `<div class="info-item">${person}</div>`).join('');
+
+      document.getElementById('careerList').innerHTML = 
+        result.careers.map(career => `<div class="info-item">${career}</div>`).join('');
+
+      document.getElementById('lifestyleList').innerHTML = 
+        result.lifestyle.map(item => `<div class="info-item">${item}</div>`).join('');
+
+      document.getElementById('musicList').innerHTML = 
+        result.music.map(item => `<div class="info-item">${item}</div>`).join('');
+
+      // 테스트 완료 이벤트 추적
+      trackEvent('test_completed', 'test_interaction');
+    }
+
+    function getShareText() {
+      const resultType = estrogenScore > testosteroneScore ? 'estrogen' : 'testosterone';
+      const result = results[resultType][selectedGender];
+
+      return `🧠💖 Estrogen vs Testosterone Personality Test Results
+
+🎯 I am ${result.title}!
+${result.fullDescription}
+
+💕 Perfect Match: ${result.match}
+💼 Recommended Careers: ${result.careers.join(', ')}
+🏷️ Keywords: ${result.keywords.join(', ')}
+
+✨ Take the test: https://tests.mahalohana-bruce.com/egen-teto/en/`;
+    }
+
+    function copyResult() {
+      const text = getShareText();
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(() => {
+          alert('🎉 Results copied to clipboard!');
+        }).catch(() => {
+          fallbackCopy(text);
+        });
+      } else {
+        fallbackCopy(text);
+      }
+    }
+
+    function fallbackCopy(text) {
+      const textArea = document.createElement('textarea');
+      textArea.value = text;
+      textArea.style.position = 'fixed';
+      textArea.style.opacity = '0';
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+
+      try {
+        document.execCommand('copy');
+        alert('🎉 Results copied to clipboard!');
+      } catch (err) {
+        alert('Copy function is not supported in this browser.');
+      }
+
+      document.body.removeChild(textArea);
+    }
+
+    function shareTwitter() {
+      const resultType = estrogenScore > testosteroneScore ? 'estrogen' : 'testosterone';
+      const result = results[resultType][selectedGender];
+      const text = `I am ${result.title}! Take the test too~ https://tests.mahalohana-bruce.com/egen-teto/en/`;
+
+      try {
+        const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
+        window.open(url, '_blank', 'noopener,noreferrer');
+      } catch (err) {
+        copyToClipboard(text);
+        alert('Text copied! Please paste it on X.');
+      }
+    }
+
+    function shareFacebook() {
+      try {
+        const url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent('https://tests.mahalohana-bruce.com/egen-teto/en/')}`;
+        window.open(url, '_blank', 'noopener,noreferrer');
+      } catch (err) {
+        const text = 'Estrogen vs Testosterone Personality Test https://tests.mahalohana-bruce.com/egen-teto/en/';
+        copyToClipboard(text);
+        alert('Text copied! Please paste it on Facebook.');
+      }
+    }
+
+    function shareThreads() {
+      const resultType = estrogenScore > testosteroneScore ? 'estrogen' : 'testosterone';
+      const result = results[resultType][selectedGender];
+      const text = `I am ${result.title}! Take the test too~ https://tests.mahalohana-bruce.com/egen-teto/en/`;
+
+      try {
+        const url = `https://www.threads.net/intent/post?text=${encodeURIComponent(text)}`;
+        window.open(url, '_blank', 'noopener,noreferrer');
+      } catch (err) {
+        copyToClipboard(text);
+        alert('Text copied! Please paste it on Threads.');
+      }
+    }
+
+    function copyToClipboard(text) {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).catch(() => {
+          fallbackCopy(text);
+        });
+      } else {
+        fallbackCopy(text);
+      }
+    }
+
+    function restartTest() {
+      selectedGendestartBtn').disabled = false;
     }
 
     function startTest() {
