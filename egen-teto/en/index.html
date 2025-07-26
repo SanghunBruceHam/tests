@@ -1192,13 +1192,13 @@
           <h3>Please select your gender</h3>
 
           <div class="gender-options">
-            <div class="gender-option" onclick="selectGender('female', this)">
+            <div class="gender-option" onclick="selectGender('female')">
               <div class="gender-icon">👩</div>
               <div class="gender-text">Female</div>
               <div class="radio-circle"></div>
             </div>
 
-            <div class="gender-option" onclick="selectGender('male', this)">
+            <div class="gender-option" onclick="selectGender('male')">
               <div class="gender-icon">👨</div>
               <div class="gender-text">Male</div>
               <div class="radio-circle"></div>
@@ -1984,7 +1984,7 @@
     let estrogenScore = 0;
     let testosteroneScore = 0;
 
-    function selectGender(gender, element) {
+    function selectGender(gender) {
       selectedGender = gender;
 
       // 모든 성별 옵션에서 selected 클래스 제거
@@ -1992,8 +1992,8 @@
         option.classList.remove('selected');
       });
 
-      // 클릭된 옵션에 selected 클래스 추가
-      element.classList.add('selected');
+      // 클릭된 옵션에 selected 클래스 추가 (이벤트 타겟 사용)
+      event.currentTarget.classList.add('selected');
       
       // 테스트 시작 버튼 활성화
       const startBtn = document.getElementById('startBtn');
