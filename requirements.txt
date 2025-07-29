@@ -1,0 +1,25 @@
+# 심리테스트 플랫폼 Python 의존성
+
+# HTML 파싱 및 처리
+beautifulsoup4>=4.13.4
+
+# Google API 클라이언트
+google-api-python-client>=2.174.0
+google-auth>=2.40.3
+
+# HTTP 요청 (Google API 의존성)
+urllib3>=1.26.0
+
+# XML 처리 (사이트맵 생성용)
+lxml>=4.9.0
+
+# 환경변수 관리
+python-dotenv>=1.0.0
+
+# 로깅 및 설정
+pyyaml>=6.0
+
+# 개발 도구 (선택사항)
+# black>=23.0.0        # 코드 포매팅
+# flake8>=6.0.0        # 린팅
+# pytest>=7.0.0        # 테스팅
