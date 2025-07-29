@@ -118,13 +118,42 @@ h1 {
     box-shadow: var(--shadow);
     text-align: center;
     min-height: 300px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     grid-column: 1 / -1;
+    position: relative;
+    overflow: hidden;
   }
 
-  .ad-section .adsbygoogle {
+  /* 쿠팡 광고 전용 영역 - 구글 애드센스 차단 */
+  .ad-section.coupang-only {
+    /* 구글 애드센스 자동 삽입 방지 */
+    data-ad-client: none !important;
+    data-adtest: off !important;
+  }
+
+  /* 구글 애드센스가 쿠팡 광고 영역에 삽입되지 않도록 차단 */
+  .ad-section.coupang-only .adsbygoogle,
+  .ad-section.coupang-only ins[class*="adsbygoogle"],
+  .ad-section.coupang-only [data-ad-client] {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    width: 0 !important;
+    position: absolute !important;
+    top: -9999px !important;
+    left: -9999px !important;
+  }
+
+  /* 쿠팡 광고 컨테이너 보호 */
+  #coupang-ad-container {
+    position: relative;
+    z-index: 10;
+    min-height: 200px;
+    display: block !important;
+    visibility: visible !important;
+  }
+
+  /* 일반 광고 섹션 (구글 애드센스 허용) */
+  .ad-section:not(.coupang-only) .adsbygoogle {
     width: 100% !important;
     min-height: 250px;
   }
