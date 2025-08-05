@@ -53,3 +53,8 @@
 2025-08-05 01:10:21,479 - utils - INFO - 발견된 HTML 파일: 106개
 2025-08-05 01:10:21,480 - utils - ERROR - OS error writing sitemap.xml: [Errno 2] No such file or directory: ''
 2025-08-05 01:10:21,480 - utils - ERROR - 사이트맵 생성 실패
+2025-08-05 06:27:08,932 - utils - INFO - 스캔 완료: 2개 테스트 발견
+2025-08-05 06:27:08,933 - utils - WARNING - 업데이트할 내용이 없습니다.
+2025-08-05 06:27:08,988 - utils - INFO - 발견된 HTML 파일: 106개
+2025-08-05 06:27:08,989 - utils - ERROR - OS error writing sitemap.xml: [Errno 2] No such file or directory: ''
+2025-08-05 06:27:08,989 - utils - ERROR - 사이트맵 생성 실패
