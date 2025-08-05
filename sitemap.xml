@@ -636,4 +636,16 @@
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://tests.mahalohana-bruce.com/anime-personality/ko/index.html</loc>
+    <lastmod>2025-08-05T12:00:00Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://tests.mahalohana-bruce.com/anime-personality/ja/index.html</loc>
+    <lastmod>2025-08-05T12:00:00Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
 </urlset>

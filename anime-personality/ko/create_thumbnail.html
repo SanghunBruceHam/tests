@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>애니메 성격 테스트 썸네일 생성기</title>
+    <style>
+        #canvas {
+            border: 1px solid #ccc;
+            background: linear-gradient(135deg, #ffb3e6 0%, #ffccf9 25%, #e6ccff 50%, #ccf2ff 75%, #ffffcc 100%);
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h2>애니메 성격 테스트 썸네일</h2>
+    <canvas id="canvas" width="800" height="600"></canvas>
+    <br><br>
+    <button onclick="downloadCanvas()">다운로드</button>
+
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+
+        // 그라디언트 배경
+        const gradient = ctx.createLinearGradient(0, 0, 800, 600);
+        gradient.addColorStop(0, '#ffb3e6');
+        gradient.addColorStop(0.25, '#ffccf9');
+        gradient.addColorStop(0.5, '#e6ccff');
+        gradient.addColorStop(0.75, '#ccf2ff');
+        gradient.addColorStop(1, '#ffffcc');
+        
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, 800, 600);
+
+        // 메인 텍스트
+        ctx.fillStyle = '#5a4fcf';
+        ctx.font = 'bold 48px Arial';
+        ctx.textAlign = 'center';
+        ctx.fillText('애니메 성격 테스트', 400, 200);
+
+        // 서브 텍스트
+        ctx.fillStyle = '#7b68ee';
+        ctx.font = '28px Arial';
+        ctx.fillText('나는 어떤 애니메 캐릭터 타입일까?', 400, 250);
+
+        // 이모지들 (애니메 관련)
+        ctx.font = '60px Arial';
+        ctx.fillText('🌸', 150, 150);
+        ctx.fillText('⭐', 650, 120);
+        ctx.fillText('💖', 100, 400);
+        ctx.fillText('✨', 700, 400);
+        ctx.fillText('🎀', 150, 500);
+        ctx.fillText('🌙', 650, 500);
+
+        // 캐릭터 실루엣들
+        ctx.fillStyle = '#9370db';
+        // 왼쪽 캐릭터 (여성형)
+        ctx.beginPath();
+        ctx.arc(250, 350, 40, 0, Math.PI * 2);
+        ctx.fill();
+        
+        ctx.fillRect(230, 380, 40, 80);
+        ctx.fillRect(220, 390, 20, 30);
+        ctx.fillRect(270, 390, 20, 30);
+
+        // 오른쪽 캐릭터 (남성형)
+        ctx.fillStyle = '#8a2be2';
+        ctx.beginPath();
+        ctx.arc(550, 350, 40, 0, Math.PI * 2);
+        ctx.fill();
+        
+        ctx.fillRect(530, 380, 40, 80);
+        ctx.fillRect(520, 390, 20, 30);
+        ctx.fillRect(570, 390, 20, 30);
+
+        // 장식적 요소들
+        ctx.strokeStyle = '#ff69b4';
+        ctx.lineWidth = 3;
+        ctx.beginPath();
+        ctx.arc(400, 350, 80, 0, Math.PI * 2);
+        ctx.stroke();
+
+        // 하단 텍스트
+        ctx.fillStyle = '#4b0082';
+        ctx.font = '24px Arial';
+        ctx.fillText('6가지 성격 유형으로 알아보는 나의 애니메 캐릭터!', 400, 520);
+
+        function downloadCanvas() {
+            const link = document.createElement('a');
+            link.download = 'anime-personality-test-thumbnail.png';
+            link.href = canvas.toDataURL();
+            link.click();
+        }
+    </script>
+</body>
+</html>

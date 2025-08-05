@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>アニメ性格テスト サムネイル生成器</title>
+    <style>
+        #canvas {
+            border: 1px solid #ccc;
+            background: linear-gradient(135deg, #ffb3e6 0%, #ffccf9 25%, #e6ccff 50%, #ccf2ff 75%, #ffffcc 100%);
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h2>アニメ性格テスト サムネイル</h2>
+    <canvas id="canvas" width="800" height="600"></canvas>
+    <br><br>
+    <button onclick="downloadCanvas()">ダウンロード</button>
+
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+
+        // グラデーション背景
+        const gradient = ctx.createLinearGradient(0, 0, 800, 600);
+        gradient.addColorStop(0, '#ffb3e6');
+        gradient.addColorStop(0.25, '#ffccf9');
+        gradient.addColorStop(0.5, '#e6ccff');
+        gradient.addColorStop(0.75, '#ccf2ff');
+        gradient.addColorStop(1, '#ffffcc');
+        
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, 800, 600);
+
+        // メインテキスト
+        ctx.fillStyle = '#5a4fcf';
+        ctx.font = 'bold 48px Arial';
+        ctx.textAlign = 'center';
+        ctx.fillText('アニメ性格診断', 400, 200);
+
+        // サブテキスト
+        ctx.fillStyle = '#7b68ee';
+        ctx.font = '28px Arial';
+        ctx.fillText('あなたはどのアニメキャラタイプ？', 400, 250);
+
+        // 絵文字（アニメ関連）
+        ctx.font = '60px Arial';
+        ctx.fillText('🌸', 150, 150);
+        ctx.fillText('⭐', 650, 120);
+        ctx.fillText('💖', 100, 400);
+        ctx.fillText('✨', 700, 400);
+        ctx.fillText('🎀', 150, 500);
+        ctx.fillText('🌙', 650, 500);
+
+        // キャラクターシルエット
+        ctx.fillStyle = '#9370db';
+        // 左キャラクター（女性型）
+        ctx.beginPath();
+        ctx.arc(250, 350, 40, 0, Math.PI * 2);
+        ctx.fill();
+        
+        ctx.fillRect(230, 380, 40, 80);
+        ctx.fillRect(220, 390, 20, 30);
+        ctx.fillRect(270, 390, 20, 30);
+
+        // 右キャラクター（男性型）
+        ctx.fillStyle = '#8a2be2';
+        ctx.beginPath();
+        ctx.arc(550, 350, 40, 0, Math.PI * 2);
+        ctx.fill();
+        
+        ctx.fillRect(530, 380, 40, 80);
+        ctx.fillRect(520, 390, 20, 30);
+        ctx.fillRect(570, 390, 20, 30);
+
+        // 装飾要素
+        ctx.strokeStyle = '#ff69b4';
+        ctx.lineWidth = 3;
+        ctx.beginPath();
+        ctx.arc(400, 350, 80, 0, Math.PI * 2);
+        ctx.stroke();
+
+        // 下部テキスト
+        ctx.fillStyle = '#4b0082';
+        ctx.font = '24px Arial';
+        ctx.fillText('6つの性格タイプであなたのアニメキャラを診断！', 400, 520);
+
+        function downloadCanvas() {
+            const link = document.createElement('a');
+            link.download = 'anime-personality-test-thumbnail-ja.png';
+            link.href = canvas.toDataURL();
+            link.click();
+        }
+    </script>
+</body>
+</html>

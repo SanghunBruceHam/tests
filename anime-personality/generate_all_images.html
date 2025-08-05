@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>애니메 성격 테스트 이미지 생성기</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        canvas {
+            border: 1px solid #ccc;
+            margin: 10px;
+        }
+        .section {
+            margin: 30px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            background: #5a4fcf;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #4a3fb7;
+        }
+    </style>
+</head>
+<body>
+    <h1>애니메 성격 테스트 이미지 생성기</h1>
+    
+    <div class="section">
+        <h2>한국어 썸네일 (800x600)</h2>
+        <canvas id="ko-thumbnail" width="800" height="600"></canvas>
+        <br>
+        <button onclick="downloadCanvas('ko-thumbnail', 'anime-test-ko-thumbnail.png')">다운로드</button>
+    </div>
+    
+    <div class="section">
+        <h2>일본어 썸네일 (800x600)</h2>
+        <canvas id="ja-thumbnail" width="800" height="600"></canvas>
+        <br>
+        <button onclick="downloadCanvas('ja-thumbnail', 'anime-test-ja-thumbnail.png')">다운로드</button>
+    </div>
+    
+    <div class="section">
+        <h2>파비콘 (64x64)</h2>
+        <canvas id="favicon" width="64" height="64"></canvas>
+        <br>
+        <button onclick="downloadCanvas('favicon', 'anime-test-favicon.png')">다운로드</button>
+    </div>
+
+    <script>
+        function createThumbnail(canvasId, mainText, subText, bottomText) {
+            const canvas = document.getElementById(canvasId);
+            const ctx = canvas.getContext('2d');
+            const width = canvas.width;
+            const height = canvas.height;
+
+            // 그라디언트 배경
+            const gradient = ctx.createLinearGradient(0, 0, width, height);
+            gradient.addColorStop(0, '#ffb3e6');
+            gradient.addColorStop(0.25, '#ffccf9');
+            gradient.addColorStop(0.5, '#e6ccff');
+            gradient.addColorStop(0.75, '#ccf2ff');
+            gradient.addColorStop(1, '#ffffcc');
+            
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, width, height);
+
+            // 메인 텍스트
+            ctx.fillStyle = '#5a4fcf';
+            ctx.font = 'bold 48px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText(mainText, width/2, 180);
+
+            // 서브 텍스트
+            ctx.fillStyle = '#7b68ee';
+            ctx.font = '28px Arial';
+            ctx.fillText(subText, width/2, 230);
+
+            // 이모지들
+            ctx.font = '60px Arial';
+            ctx.fillText('🌸', 120, 120);
+            ctx.fillText('⭐', 680, 100);
+            ctx.fillText('💖', 80, 380);
+            ctx.fillText('✨', 720, 380);
+            ctx.fillText('🎀', 120, 480);
+            ctx.fillText('🌙', 680, 480);
+
+            // 캐릭터 실루엣들
+            ctx.fillStyle = '#9370db';
+            // 왼쪽 캐릭터 (여성형)
+            ctx.beginPath();
+            ctx.arc(250, 350, 40, 0, Math.PI * 2);
+            ctx.fill();
+            
+            ctx.fillRect(230, 380, 40, 80);
+            ctx.fillRect(220, 390, 20, 30);
+            ctx.fillRect(270, 390, 20, 30);
+
+            // 오른쪽 캐릭터 (남성형)
+            ctx.fillStyle = '#8a2be2';
+            ctx.beginPath();
+            ctx.arc(550, 350, 40, 0, Math.PI * 2);
+            ctx.fill();
+            
+            ctx.fillRect(530, 380, 40, 80);
+            ctx.fillRect(520, 390, 20, 30);
+            ctx.fillRect(570, 390, 20, 30);
+
+            // 장식적 요소들
+            ctx.strokeStyle = '#ff69b4';
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            ctx.arc(width/2, 350, 80, 0, Math.PI * 2);
+            ctx.stroke();
+
+            // 하단 텍스트
+            ctx.fillStyle = '#4b0082';
+            ctx.font = '24px Arial';
+            ctx.fillText(bottomText, width/2, 520);
+        }
+
+        function createFavicon() {
+            const canvas = document.getElementById('favicon');
+            const ctx = canvas.getContext('2d');
+            const size = 64;
+
+            // 그라디언트 배경
+            const gradient = ctx.createLinearGradient(0, 0, size, size);
+            gradient.addColorStop(0, '#ffb3e6');
+            gradient.addColorStop(1, '#e6ccff');
+            
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, size, size);
+
+            // 중앙에 하트 모양
+            ctx.fillStyle = '#ff69b4';
+            ctx.beginPath();
+            ctx.arc(20, 25, 8, 0, Math.PI * 2);
+            ctx.arc(35, 25, 8, 0, Math.PI * 2);
+            ctx.fill();
+            
+            ctx.beginPath();
+            ctx.moveTo(12, 30);
+            ctx.lineTo(32, 50);
+            ctx.lineTo(52, 30);
+            ctx.fill();
+
+            // 작은 별 장식
+            ctx.fillStyle = '#ffd700';
+            ctx.font = '12px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText('✨', 50, 15);
+        }
+
+        function downloadCanvas(canvasId, filename) {
+            const canvas = document.getElementById(canvasId);
+            const link = document.createElement('a');
+            link.download = filename;
+            link.href = canvas.toDataURL();
+            link.click();
+        }
+
+        // 페이지 로드시 모든 이미지 생성
+        window.onload = function() {
+            createThumbnail(
+                'ko-thumbnail',
+                '애니메 성격 테스트',
+                '나는 어떤 애니메 캐릭터 타입일까?',
+                '6가지 성격 유형으로 알아보는 나의 애니메 캐릭터!'
+            );
+            
+            createThumbnail(
+                'ja-thumbnail',
+                'アニメ性格診断',
+                'あなたはどのアニメキャラタイプ？',
+                '6つの性格タイプであなたのアニメキャラを診断！'
+            );
+            
+            createFavicon();
+        };
+    </script>
+</body>
+</html>
