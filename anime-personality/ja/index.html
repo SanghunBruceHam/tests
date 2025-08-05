@@ -786,36 +786,58 @@
     }
 
     .result-title {
-      font-size: 24px;
-      font-weight: 800;
-      margin-bottom: 6px;
-      color: #1f2937;
-      background: linear-gradient(45deg, #ff6b9d, #6c5ce7);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      font-size: 32px;
+      font-weight: 900;
+      margin-bottom: 12px;
+      color: #ff1493;
+      text-shadow: 
+        2px 2px 0px #ffffff,
+        -2px -2px 0px #ffffff,
+        2px -2px 0px #ffffff,
+        -2px 2px 0px #ffffff,
+        3px 3px 5px rgba(255, 20, 147, 0.3);
+      font-family: 'Noto Sans JP', 'Hiragino Sans', sans-serif;
+      letter-spacing: 1px;
     }
 
     [data-theme="dark"] .result-title {
-      background: linear-gradient(45deg, #ff9ff3, #a29bfe);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      color: #ff69b4;
+      text-shadow: 
+        2px 2px 0px #0f0f1f,
+        -2px -2px 0px #0f0f1f,
+        2px -2px 0px #0f0f1f,
+        -2px 2px 0px #0f0f1f,
+        3px 3px 10px rgba(255, 105, 180, 0.5);
     }
 
     .result-subtitle {
-      font-size: 16px;
-      color: #6b7280;
-      margin-bottom: 12px;
+      font-size: 18px;
+      color: #2d3748;
+      margin-bottom: 16px;
+      font-weight: 700;
+      background: rgba(255, 255, 255, 0.8);
+      padding: 8px 16px;
+      border-radius: 20px;
+      display: inline-block;
+      border: 2px solid #ffc0cb;
+    }
+
+    [data-theme="dark"] .result-subtitle {
+      color: #f7fafc;
+      background: rgba(30, 30, 50, 0.8);
+      border-color: #9c88ff;
     }
 
     .result-description {
-      font-size: 14px;
-      color: #374151;
-      line-height: 1.5;
+      font-size: 16px;
+      color: #1a202c;
+      line-height: 1.6;
+      font-weight: 600;
+      margin-top: 10px;
     }
 
     [data-theme="dark"] .result-description {
-      color: #b0b0b0;
+      color: #f7fafc;
     }
 
     /* Result Cards */
@@ -1209,25 +1231,29 @@
     /* 개선된 푸터 스타일 */
     .footer {
       text-align: center;
-      margin-top: 50px;
-      padding: 30px 20px;
-      background: rgba(255, 255, 255, 0.1);
+      margin-top: 60px;
+      padding: 40px 20px;
+      background: rgba(255, 255, 255, 0.95);
       backdrop-filter: blur(10px);
-      border-radius: 25px 25px 0 0;
-      border-top: 3px solid #ff69b4;
+      border-radius: 30px 30px 0 0;
+      border-top: 4px solid #ff69b4;
       position: relative;
+      box-shadow: 
+        0 -10px 30px rgba(255, 105, 180, 0.3),
+        0 -5px 15px rgba(0, 0, 0, 0.1);
     }
 
     .footer::before {
       content: '';
       position: absolute;
-      top: 0;
+      top: -4px;
       left: 0;
       right: 0;
-      height: 3px;
+      height: 4px;
       background: linear-gradient(90deg, #ff69b4, #ff1493, #ffc0cb, #ff69b4);
       background-size: 200% 200%;
       animation: borderShimmer 3s ease-in-out infinite;
+      box-shadow: 0 0 15px rgba(255, 105, 180, 0.6);
     }
 
     .footer-content {
@@ -1236,49 +1262,61 @@
     }
 
     .footer-content p {
-      margin: 8px 0;
-      color: #5a4fcf;
-      font-weight: 600;
-      text-shadow: 1px 1px 2px rgba(90, 79, 207, 0.1);
+      margin: 10px 0;
+      color: #2d3748;
+      font-weight: 700;
+      font-size: 1.1rem;
+      text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
     }
 
     .footer-title {
       font-weight: 800;
+      font-size: 1.3rem;
       background: linear-gradient(45deg, #ff69b4, #5a4fcf, #ff69b4);
       background-size: 200% 200%;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
       animation: cuteGradient 4s ease-in-out infinite;
+      display: inline-block;
+      margin-bottom: 5px;
     }
 
     .footer-link a {
-      color: #ff69b4;
+      color: #ff1493;
       text-decoration: none;
-      font-weight: 700;
+      font-weight: 800;
+      font-size: 1.05rem;
       transition: all 0.3s ease;
-      border-bottom: 2px solid transparent;
+      border-bottom: 2px solid #ff69b4;
+      padding-bottom: 2px;
     }
 
     .footer-link a:hover {
-      color: #ff1493;
-      border-bottom-color: #ff1493;
-      text-shadow: 0 0 10px rgba(255, 20, 147, 0.3);
+      color: #5a4fcf;
+      border-bottom-color: #5a4fcf;
+      text-shadow: 0 0 10px rgba(90, 79, 207, 0.3);
+      transform: scale(1.05);
     }
 
     /* 다크 테마 푸터 */
     [data-theme="dark"] .footer {
-      background: rgba(30, 30, 50, 0.1);
+      background: rgba(15, 15, 30, 0.95);
       border-top-color: #9c88ff;
+      box-shadow: 
+        0 -10px 30px rgba(156, 136, 255, 0.3),
+        0 -5px 15px rgba(0, 0, 0, 0.3);
     }
 
     [data-theme="dark"] .footer::before {
       background: linear-gradient(90deg, #9c88ff, #7c4dff, #b39ddb, #9c88ff);
       background-size: 200% 200%;
+      box-shadow: 0 0 15px rgba(156, 136, 255, 0.6);
     }
 
     [data-theme="dark"] .footer-content p {
-      color: #9c88ff;
+      color: #f7fafc;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
     }
 
     [data-theme="dark"] .footer-title {
@@ -1290,13 +1328,14 @@
     }
 
     [data-theme="dark"] .footer-link a {
-      color: #9c88ff;
+      color: #b39ddb;
+      border-bottom-color: #9c88ff;
     }
 
     [data-theme="dark"] .footer-link a:hover {
-      color: #b39ddb;
-      border-bottom-color: #b39ddb;
-      text-shadow: 0 0 10px rgba(179, 157, 219, 0.3);
+      color: #ff69b4;
+      border-bottom-color: #ff69b4;
+      text-shadow: 0 0 10px rgba(255, 105, 180, 0.5);
     }
 
     /* 모바일 반응형 */
