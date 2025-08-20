@@ -1,0 +1,137 @@
+name: 🏥 Health Monitoring
+
+on:
+  schedule:
+    # 매 30분마다 실행 (업무시간: 9-18시 KST)
+    - cron: '0,30 0-9 * * *'  # UTC 기준 (KST 9-18시)
+  workflow_dispatch:  # 수동 실행 가능
+  push:
+    paths:
+      - 'monitoring/**'
+      - '.github/workflows/health-monitoring.yml'
+
+env:
+  PYTHON_VERSION: '3.11'
+
+jobs:
+  health-check:
+    runs-on: ubuntu-latest
+    name: 🔍 Website Health Check
+    
+    steps:
+    - name: 📥 Checkout repository
+      uses: actions/checkout@v4
+    
+    - name: 🐍 Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ env.PYTHON_VERSION }}
+    
+    - name: 📦 Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install requests python-dotenv
+    
+    - name: 🔍 Run health check
+      env:
+        EMAIL_USER: ${{ secrets.EMAIL_USER }}
+        EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+        TO_EMAIL: ${{ secrets.TO_EMAIL }}
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+      run: |
+        python monitoring/health_checker.py
+    
+    - name: 📊 Upload monitoring report
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: health-report-${{ github.run_number }}
+        path: monitoring/reports/
+        retention-days: 30
+    
+    - name: 💬 Notify on failure
+      if: failure()
+      env:
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+      run: |
+        curl -X POST -H 'Content-type: application/json' \
+        --data '{
+          "text": "🚨 GitHub Actions: Health monitoring workflow failed!",
+          "attachments": [{
+            "color": "danger",
+            "fields": [{
+              "title": "Repository", 
+              "value": "${{ github.repository }}", 
+              "short": true
+            }, {
+              "title": "Workflow",
+              "value": "${{ github.workflow }}",
+              "short": true  
+            }, {
+              "title": "Run ID",
+              "value": "${{ github.run_id }}",
+              "short": true
+            }]
+          }]
+        }' $SLACK_WEBHOOK_URL
+
+  performance-audit:
+    runs-on: ubuntu-latest
+    name: ⚡ Performance Audit
+    if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 1 * * 1'  # 매주 월요일
+    
+    steps:
+    - name: 📥 Checkout repository
+      uses: actions/checkout@v4
+    
+    - name: 🐍 Set up Python  
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ env.PYTHON_VERSION }}
+    
+    - name: 🟢 Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+    
+    - name: 🔍 Install Lighthouse
+      run: npm install -g lighthouse
+    
+    - name: ⚡ Run performance audit
+      run: |
+        python performance_monitor.py
+    
+    - name: 📊 Upload performance reports
+      uses: actions/upload-artifact@v4
+      with:
+        name: performance-reports-${{ github.run_number }}
+        path: performance_reports/
+        retention-days: 90
+
+  security-scan:
+    runs-on: ubuntu-latest
+    name: 🔒 Security Scan
+    if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 2 * * 0'  # 매주 일요일
+    
+    steps:
+    - name: 📥 Checkout repository
+      uses: actions/checkout@v4
+    
+    - name: 🔒 Run security headers check
+      run: |
+        curl -s -I https://tests.mahalohana-bruce.com | grep -E "(X-Frame-Options|X-Content-Type-Options|X-XSS-Protection|Strict-Transport-Security|Content-Security-Policy)" || echo "⚠️ Some security headers missing"
+    
+    - name: 🕷️ Check for broken links  
+      uses: lycheeverse/lychee-action@v1
+      with:
+        args: --verbose --no-progress 'https://tests.mahalohana-bruce.com/**/*.html'
+        fail: false
+    
+    - name: 📊 Upload security report
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: security-report-${{ github.run_number }}
+        path: lychee/
+        retention-days: 30
