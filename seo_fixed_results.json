@@ -242,7 +242,7 @@
       "meta_desc_found": true,
       "images_count": 0,
       "images_with_alt": 0,
-      "json_ld_count": 2,
+      "json_ld_count": 4,
       "og_tags_found": 5,
       "twitter_tags_found": 5
     },
@@ -266,25 +266,6 @@
       "twitter_tags_found": 5
     },
     "file": "anime-personality/ko/create_thumbnail.html"
-  },
-  {
-    "score": 95,
-    "issues": [
-      "⚠️ 메타 설명이 너무 길음 (174자)"
-    ],
-    "raw_score": 95,
-    "max_score": 100,
-    "details": {
-      "title_length": 59,
-      "meta_desc_length": 174,
-      "meta_desc_found": true,
-      "images_count": 0,
-      "images_with_alt": 0,
-      "json_ld_count": 1,
-      "og_tags_found": 5,
-      "twitter_tags_found": 5
-    },
-    "file": "anime-personality/en/index.html"
   },
   {
     "score": 95,
@@ -951,7 +932,7 @@
       "meta_desc_found": true,
       "images_count": 0,
       "images_with_alt": 0,
-      "json_ld_count": 3,
+      "json_ld_count": 4,
       "og_tags_found": 5,
       "twitter_tags_found": 5
     },
@@ -970,7 +951,7 @@
       "meta_desc_found": true,
       "images_count": 0,
       "images_with_alt": 0,
-      "json_ld_count": 3,
+      "json_ld_count": 5,
       "og_tags_found": 5,
       "twitter_tags_found": 5
     },
@@ -1008,7 +989,7 @@
       "meta_desc_found": true,
       "images_count": 0,
       "images_with_alt": 0,
-      "json_ld_count": 3,
+      "json_ld_count": 5,
       "og_tags_found": 5,
       "twitter_tags_found": 5
     },
@@ -1046,7 +1027,7 @@
       "meta_desc_found": true,
       "images_count": 0,
       "images_with_alt": 0,
-      "json_ld_count": 3,
+      "json_ld_count": 5,
       "og_tags_found": 5,
       "twitter_tags_found": 5
     },
@@ -1084,11 +1065,30 @@
       "meta_desc_found": true,
       "images_count": 0,
       "images_with_alt": 0,
-      "json_ld_count": 2,
+      "json_ld_count": 4,
       "og_tags_found": 5,
       "twitter_tags_found": 5
     },
     "file": "anime-personality/ko/index.html"
+  },
+  {
+    "score": 100,
+    "issues": [
+      "⚠️ 메타 설명이 너무 길음 (174자)"
+    ],
+    "raw_score": 100,
+    "max_score": 100,
+    "details": {
+      "title_length": 59,
+      "meta_desc_length": 174,
+      "meta_desc_found": true,
+      "images_count": 0,
+      "images_with_alt": 0,
+      "json_ld_count": 3,
+      "og_tags_found": 5,
+      "twitter_tags_found": 5
+    },
+    "file": "anime-personality/en/index.html"
   },
   {
     "score": 100,
