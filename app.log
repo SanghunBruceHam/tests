@@ -177,4 +177,13 @@
 2025-08-20 17:53:23,177 - utils - INFO - 사이트맵 생성 완료: 110개 URL
 2025-08-20 17:53:23,177 - utils - INFO - 사이트맵 유효성 검사 통과
 2025-08-20 17:53:23,177 - utils - INFO - 사이트맵 생성 프로세스 완료
-2025-08-20 18:15:00,000 - INFO - Fixed duplicate JSON-LD blocks across 85+ romance-test files
+2025-08-20 18:15:00,000 - INFO - Fixed duplicate JSON-LD blocks across 85+ romance-test files2025-08-20 12:16:18,991 - utils - INFO - 스캔 완료: 3개 테스트 발견
+2025-08-20 12:16:18,992 - utils - WARNING - 업데이트할 내용이 없습니다.
+2025-08-20 12:16:19,054 - utils - INFO - SEO에서 제외: googlee53980ef2acb81e6.html
+2025-08-20 12:16:19,054 - utils - INFO - SEO에서 제외: sandbox.html
+2025-08-20 12:16:19,054 - utils - INFO - SEO에서 제외: yandex_1010c8523eee2722.html
+2025-08-20 12:16:19,056 - utils - INFO - 발견된 HTML 파일: 111개
+2025-08-20 12:16:19,057 - utils - INFO - Successfully wrote file: /home/runner/work/tests/tests/sitemap.xml
+2025-08-20 12:16:19,057 - utils - INFO - 사이트맵 생성 완료: 111개 URL
+2025-08-20 12:16:19,057 - utils - INFO - 사이트맵 유효성 검사 통과
+2025-08-20 12:16:19,057 - utils - INFO - 사이트맵 생성 프로세스 완료
