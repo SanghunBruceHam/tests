@@ -13,8 +13,18 @@ class SitemapGenerator:
     
     def __init__(self):
         self.base_url = Config.BASE_URL
-        self.sitemap_file = Config.SITEMAP_FILE
+        self.sitemap_file = os.path.join(os.getcwd(), Config.SITEMAP_FILE)
         self.excluded_patterns = ['.git', 'node_modules', '__pycache__', '.DS_Store']
+        
+        # SEO에서 제외할 파일들 (검색엔진 검증, 개발용 파일 등)
+        self.excluded_files = [
+            'sandbox.html',
+            'googlee53980ef2acb81e6.html', 
+            'yandex_1010c8523eee2722.html',
+            'test.html',
+            'debug.html',
+            'temp.html'
+        ]
         
     def find_html_files(self, directory: str = ".") -> List[Dict[str, str]]:
         """HTML 파일들을 찾아서 메타데이터와 함께 반환"""
@@ -31,6 +41,11 @@ class SitemapGenerator:
                         
                         # 제외 패턴 확인
                         if any(pattern in full_path for pattern in self.excluded_patterns):
+                            continue
+                            
+                        # SEO에서 제외할 파일 확인
+                        if any(excluded in file for excluded in self.excluded_files):
+                            logger.info(f"SEO에서 제외: {file}")
                             continue
                         
                         # URL 생성 (안전한 인코딩)

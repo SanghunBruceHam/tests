@@ -1,0 +1,53 @@
+# 불필요한 에셋 파일들
+attached_assets/
+
+# 임시 파일들
+*.tmp
+*.temp
+*_temp_*
+*temp*
+
+# 스크린샷 파일들
+Screenshot*
+screenshot*
+
+# OS 생성 파일들
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# 개발 도구
+.vscode/settings.json
+*.log
+app.log
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Node.js (if used in future)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# 백업 파일들
+*.bak
+*.backup
+*~
+
+# 프로덕션 빌드 (if needed)
+dist/
+build/

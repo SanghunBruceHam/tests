@@ -1,6 +1,32 @@
 User-agent: *
 Allow: /
 
+# 불필요한 파일들 크롤링 제외
+Disallow: /attached_assets/
+Disallow: /sandbox.html
+Disallow: /googlee53980ef2acb81e6.html
+Disallow: /yandex_1010c8523eee2722.html
+Disallow: *.log
+Disallow: /assets/*.map
+Disallow: /temp/
+Disallow: /_temp/
+
+# 개발 도구 및 설정 파일들
+Disallow: /.git/
+Disallow: /.github/
+Disallow: /.vscode/
+Disallow: /pyproject.toml
+Disallow: /requirements.txt
+Disallow: /uv.lock
+Disallow: *.py
+Disallow: /config.py
+Disallow: /utils.py
+
+# 썸네일 생성 및 관리 도구들
+Disallow: /*/create_thumbnail.html
+Disallow: /*/generate_all_images.html
+Disallow: /anime-personality/create_favicon.html
+
 Sitemap: https://tests.mahalohana-bruce.com/sitemap.xml
 
 #DaumWebMasterTool:9add863220c94ce5ce0e5e7ff689b22964cfdbd2b97303e6ad356185fffba89e:NnJbOlYdct0Jzm/G1OzHmA==
