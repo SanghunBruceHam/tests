@@ -153,3 +153,13 @@
 2025-08-20 00:59:59,843 - utils - INFO - 발견된 HTML 파일: 113개
 2025-08-20 00:59:59,844 - utils - ERROR - OS error writing sitemap.xml: [Errno 2] No such file or directory: ''
 2025-08-20 00:59:59,844 - utils - ERROR - 사이트맵 생성 실패
+2025-08-20 08:56:43,944 - utils - INFO - 스캔 완료: 3개 테스트 발견
+2025-08-20 08:56:43,945 - utils - WARNING - 업데이트할 내용이 없습니다.
+2025-08-20 08:56:43,998 - utils - INFO - SEO에서 제외: googlee53980ef2acb81e6.html
+2025-08-20 08:56:43,998 - utils - INFO - SEO에서 제외: sandbox.html
+2025-08-20 08:56:43,998 - utils - INFO - SEO에서 제외: yandex_1010c8523eee2722.html
+2025-08-20 08:56:44,000 - utils - INFO - 발견된 HTML 파일: 110개
+2025-08-20 08:56:44,001 - utils - INFO - Successfully wrote file: /home/runner/work/tests/tests/sitemap.xml
+2025-08-20 08:56:44,001 - utils - INFO - 사이트맵 생성 완료: 110개 URL
+2025-08-20 08:56:44,001 - utils - INFO - 사이트맵 유효성 검사 통과
+2025-08-20 08:56:44,001 - utils - INFO - 사이트맵 생성 프로세스 완료
