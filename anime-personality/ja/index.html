@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
   <title>アニメ性格診断 | あなたのアニメキャラタイプを発見！- 無料心理テスト</title>
   <meta name="description" content="🎭 あなたはどのアニメキャラタイプ？主人公、ツンデレ、クールなど6つのタイプから診断！20問で性格分析、相性の良いキャラタイプも分かる無料心理テスト" />
-  <meta name="keywords" content="アニメ性格診断, アニメキャラタイプ, 心理テスト無料, ツンデレ診断, 主人公タイプ, アニメ性格分析, キャラクター診断, 日本アニメ, 二次元診断, オタク診断" />
+  <meta name="robots" content="index, follow" />
+
 
   <!-- Open Graph Meta Tags -->
   <meta property="og:type" content="website" />
@@ -15,6 +16,10 @@
   <meta property="og:locale" content="ja_JP" />
   <meta property="og:site_name" content="アニメ性格診断テスト" />
   <meta property="og:url" content="https://tests.mahalohana-bruce.com/anime-personality/ja/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="🎭 アニメ性格診断 | あなたのアニメキャラタイプを発見！" />
+  <meta name="twitter:description" content="主人公、ツンデレ、クール系など6つのアニメキャラタイプから診断！20問の無料心理テストで性格分析 🎯" />
+  <meta name="twitter:image" content="https://tests.mahalohana-bruce.com/anime-personality/ja/thumbnail.png" />
 
   <link rel="icon" href="./favicon.png" type="image/png" />
   <link rel="canonical" href="https://tests.mahalohana-bruce.com/anime-personality/ja/" />
@@ -50,7 +55,7 @@
   },
   "inLanguage": "ja",
   "datePublished": "2025-08-05T00:00:00.000Z",
-  "dateModified": "2025-08-05T00:00:00.000Z",
+  "dateModified": "2025-08-16T00:00:00+09:00",
   "isAccessibleForFree": true,
   "interactionStatistic": [
     {
@@ -80,6 +85,8 @@
 }
 </script>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet"></noscript>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -1416,13 +1423,13 @@
           <h3>性別を選択してください</h3>
 
           <div class="gender-options">
-            <div class="gender-option" onclick="selectGender('female')">
+            <div class="gender-option" onclick="selectGender(this, 'female')">
               <div class="gender-icon">👩</div>
               <div class="gender-text">女性</div>
               <div class="radio-circle"></div>
             </div>
 
-            <div class="gender-option" onclick="selectGender('male')">
+            <div class="gender-option" onclick="selectGender(this, 'male')">
               <div class="gender-icon">👨</div>
               <div class="gender-text">男性</div>
               <div class="radio-circle"></div>
@@ -1879,14 +1886,15 @@
       sage: 0
     };
 
-    function selectGender(gender) {
+    function selectGender(el, gender) {
       selectedGender = gender;
 
       document.querySelectorAll('.gender-option').forEach(option => {
         option.classList.remove('selected');
       });
 
-      event.target.closest('.gender-option').classList.add('selected');
+      // Mark the clicked option as selected (without relying on a global event)
+      el.classList.add('selected');
       document.getElementById('startBtn').disabled = false;
     }
 
