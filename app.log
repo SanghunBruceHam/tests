@@ -197,3 +197,13 @@
 2025-08-21 00:59:12,459 - utils - INFO - 사이트맵 생성 완료: 111개 URL
 2025-08-21 00:59:12,459 - utils - INFO - 사이트맵 유효성 검사 통과
 2025-08-21 00:59:12,459 - utils - INFO - 사이트맵 생성 프로세스 완료
+2025-08-22 00:59:52,648 - utils - INFO - 스캔 완료: 4개 테스트 발견
+2025-08-22 00:59:52,649 - utils - WARNING - 업데이트할 내용이 없습니다.
+2025-08-22 00:59:52,710 - utils - INFO - SEO에서 제외: googlee53980ef2acb81e6.html
+2025-08-22 00:59:52,710 - utils - INFO - SEO에서 제외: sandbox.html
+2025-08-22 00:59:52,710 - utils - INFO - SEO에서 제외: yandex_1010c8523eee2722.html
+2025-08-22 00:59:52,713 - utils - INFO - 발견된 HTML 파일: 112개
+2025-08-22 00:59:52,713 - utils - INFO - Successfully wrote file: /home/runner/work/tests/tests/sitemap.xml
+2025-08-22 00:59:52,713 - utils - INFO - 사이트맵 생성 완료: 112개 URL
+2025-08-22 00:59:52,713 - utils - INFO - 사이트맵 유효성 검사 통과
+2025-08-22 00:59:52,713 - utils - INFO - 사이트맵 생성 프로세스 완료
