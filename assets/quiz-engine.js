@@ -6,6 +6,51 @@
 // }
 
 (function(){
+  const locale = (function(){
+    const lang = (document.documentElement.getAttribute('lang') || '').toLowerCase();
+    if (lang.startsWith('ja')) return 'ja';
+    if (lang.startsWith('en')) return 'en';
+    return 'ko';
+  })();
+
+  const I18N = {
+    ko: {
+      prev: '◀ 이전',
+      next: '다음 ▶',
+      submit: '결과 보기',
+      selectOne: '하나를 선택해주세요.',
+      resultBadge: 'RESULT',
+      shareX: 'X (Twitter)',
+      copy: '링크 복사',
+      copied: '링크를 복사했어요!\n친구에게 바로 공유해보세요.',
+      copyFailed: '복사 실패. 주소창에서 직접 복사해주세요.',
+      tryAgain: '다시 하기'
+    },
+    ja: {
+      prev: '◀ 前へ',
+      next: '次へ ▶',
+      submit: '結果を見る',
+      selectOne: '1つ選んでください。',
+      resultBadge: '結果',
+      shareX: 'X (Twitter)',
+      copy: 'リンクをコピー',
+      copied: 'リンクをコピーしました！\n友だちにシェアしましょう。',
+      copyFailed: 'コピーに失敗しました。アドレスバーからコピーしてください。',
+      tryAgain: 'もう一度'
+    },
+    en: {
+      prev: '◀ Prev',
+      next: 'Next ▶',
+      submit: 'See Result',
+      selectOne: 'Please select one.',
+      resultBadge: 'RESULT',
+      shareX: 'X (Twitter)',
+      copy: 'Copy link',
+      copied: 'Link copied!\nShare it with your friends.',
+      copyFailed: 'Copy failed. Please copy from the address bar.',
+      tryAgain: 'Try Again'
+    }
+  }[locale];
   function $(sel, root=document){ return root.querySelector(sel); }
   function $all(sel, root=document){ return Array.from(root.querySelectorAll(sel)); }
 
@@ -32,9 +77,9 @@
     const actions = document.createElement('div');
     actions.className = 'q-actions';
     actions.innerHTML = `
-      <button class="prev" disabled>◀ 이전</button>
-      <button class="next">다음 ▶</button>
-      <button class="submit" style="display:none">결과 보기</button>
+      <button class="prev" disabled>${I18N.prev}</button>
+      <button class="next">${I18N.next}</button>
+      <button class="submit" style="display:none">${I18N.submit}</button>
     `;
     root.appendChild(actions);
 
@@ -97,7 +142,7 @@
 
     nextBtn.addEventListener('click', () => {
       const sel = currentSelection();
-      if (!sel){ alert('하나를 선택해주세요.'); return; }
+      if (!sel){ alert(I18N.selectOne); return; }
       answers.set(sel.questionId, sel);
       if (window.track){
         document.dispatchEvent(new CustomEvent('question_answered', { detail: { questionNumber: idx+1, answerValue: sel.index, responseTime: 0 }}));
@@ -113,7 +158,7 @@
 
     submitBtn.addEventListener('click', () => {
       const sel = currentSelection();
-      if (!sel){ alert('하나를 선택해주세요.'); return; }
+      if (!sel){ alert(I18N.selectOne); return; }
       answers.set(sel.questionId, sel);
       const result = computeResult(config, answers);
       renderResult(root, config, result);
@@ -146,14 +191,14 @@
     const container = document.createElement('div');
     container.className = 'q-result';
     container.innerHTML = `
-      <div class="badge">RESULT</div>
+      <div class="badge">${I18N.resultBadge}</div>
       <h2>${escapeHtml(cat.name)}</h2>
       <p class="muted">${escapeHtml(cat.description)}</p>
       <div class="share">
-        <button class="share-x">X (Twitter)</button>
-        <button class="copy">링크 복사</button>
+        <button class="share-x">${I18N.shareX}</button>
+        <button class="copy">${I18N.copy}</button>
       </div>
-      <div class="again"><a href="?">다시 하기</a></div>
+      <div class="again"><a href="?">${I18N.tryAgain}</a></div>
     `;
     root.innerHTML = '';
     root.appendChild(container);
@@ -172,8 +217,8 @@
     $('.copy', container).addEventListener('click', async () => {
       try{
         await navigator.clipboard.writeText(window.location.href);
-        alert('링크를 복사했어요!');
-      }catch(e){ alert('복사 실패. 주소창에서 직접 복사해주세요.'); }
+        alert(I18N.copied);
+      }catch(e){ alert(I18N.copyFailed); }
     });
   }
 
@@ -221,4 +266,3 @@
     renderQuiz(root, window.quizConfig);
   });
 })();
-
