@@ -75,8 +75,10 @@ class FileManager:
                          encoding: str = 'utf-8') -> bool:
         """안전한 파일 쓰기"""
         try:
-            # 디렉토리 생성
-            os.makedirs(os.path.dirname(file_path), exist_ok=True)
+            # 디렉토리 생성 (루트 파일인 경우 dirname이 비어있을 수 있음)
+            dirpath = os.path.dirname(file_path)
+            if dirpath:
+                os.makedirs(dirpath, exist_ok=True)
             
             with open(file_path, 'w', encoding=encoding) as f:
                 f.write(content)

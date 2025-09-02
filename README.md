@@ -199,6 +199,21 @@ window.track('feature_used', {
 - 언어별 sitemap 생성
 - 지역화된 메타 태그
 
+## 📚 문서
+
+- 아키텍처: docs/architecture.md
+- 설정: docs/configuration.md
+- 스크립트: docs/scripts.md
+- 운영: docs/operations.md
+- SEO 가이드: docs/seo.md
+- 기능 명세: docs/features.md
+- Runbooks: docs/runbooks.md
+- 체크리스트: docs/checklists.md
+- 트러블슈팅: docs/troubleshooting.md
+- 유지보수: docs/maintenance.md
+- 문서 개요: docs/README.md
+
+
 ## 📈 성능 벤치마크
 
 | 메트릭 | 목표 | 현재 |

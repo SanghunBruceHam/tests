@@ -121,8 +121,9 @@ def update_language_index_files(tests):
                 
                 # 테스트 개수 업데이트
                 test_count = len(tests)
+                # 라벨 텍스트(테스트/Tests/テスト) 대안 그룹을 정확히 매칭
                 content = re.sub(
-                    r'(<div class="stat-number"[^>]*>)\d+(</div>\s*<div class="stat-label"[^>]*>테스트|Tests|テスト)',
+                    r'(<div class="stat-number"[^>]*>)\d+(</div>\s*<div class="stat-label"[^>]*>(?:테스트|Tests|テスト))',
                     f'\\g<1>{test_count}\\g<2>',
                     content
                 )

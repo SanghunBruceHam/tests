@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 from PIL import Image, ImageDraw, ImageFont
 import os
+from pathlib import Path
 
 def create_thumbnail(text_main, text_sub, text_bottom, filename):
     # 썸네일 크기
@@ -104,12 +105,13 @@ def create_favicon(filename):
 
 # 이미지 생성
 if __name__ == "__main__":
+    base_dir = Path(__file__).resolve().parent
     # 한국어 썸네일
     create_thumbnail(
         "애니메 성격 테스트",
         "나는 어떤 애니메 캐릭터 타입일까?",
         "6가지 성격 유형으로 알아보는 나의 애니메 캐릭터!",
-        "/Users/sanghunbruceham/Documents/GitHub/tests/anime-personality/ko/thumbnail.png"
+        str(base_dir / "ko/thumbnail.png")
     )
     
     # 일본어 썸네일
@@ -117,9 +119,9 @@ if __name__ == "__main__":
         "アニメ性格診断",
         "あなたはどのアニメキャラタイプ？",
         "6つの性格タイプであなたのアニメキャラを診断！",
-        "/Users/sanghunbruceham/Documents/GitHub/tests/anime-personality/ja/thumbnail.png"
+        str(base_dir / "ja/thumbnail.png")
     )
     
     # 파비콘
-    create_favicon("/Users/sanghunbruceham/Documents/GitHub/tests/anime-personality/ko/favicon.png")
-    create_favicon("/Users/sanghunbruceham/Documents/GitHub/tests/anime-personality/ja/favicon.png")
+    create_favicon(str(base_dir / "ko/favicon.png"))
+    create_favicon(str(base_dir / "ja/favicon.png"))

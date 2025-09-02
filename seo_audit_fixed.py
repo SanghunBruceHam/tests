@@ -14,9 +14,11 @@ def analyze_seo_fixed(html_content, file_path):
     max_score = 100
     
     # 파일 경로에서 URL 생성
-    relative_path = file_path.replace('/Users/sanghunbruceham/Documents/GitHub/tests', '')
-    if relative_path.startswith('/'):
-        relative_path = relative_path[1:]
+    base_dir = os.path.abspath(os.path.dirname(__file__))
+    try:
+        relative_path = os.path.relpath(file_path, start=base_dir)
+    except Exception:
+        relative_path = file_path
     
     # 1. DOCTYPE 검사 (5점)
     if re.search(r'<!DOCTYPE\s+html>', html_content, re.IGNORECASE):
@@ -168,7 +170,7 @@ def analyze_seo_fixed(html_content, file_path):
 
 def scan_all_html_files():
     """모든 HTML 파일을 스캔하여 정확한 SEO 분석"""
-    base_path = '/Users/sanghunbruceham/Documents/GitHub/tests'
+    base_path = os.path.abspath(os.path.dirname(__file__))
     
     results = []
     
@@ -269,7 +271,8 @@ if __name__ == "__main__":
     generate_detailed_report(results)
     
     # 결과를 JSON으로 저장
-    with open('/Users/sanghunbruceham/Documents/GitHub/tests/seo_fixed_results.json', 'w', encoding='utf-8') as f:
+    output_path = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'seo_fixed_results.json')
+    with open(output_path, 'w', encoding='utf-8') as f:
         json.dump(results, f, ensure_ascii=False, indent=2)
     
     print("\n✅ 정확한 분석 완료! 결과가 'seo_fixed_results.json'에 저장되었습니다.")

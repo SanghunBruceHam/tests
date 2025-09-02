@@ -53,7 +53,7 @@ class PerformanceMonitor:
             '--output=json',
             '--output=html',
             f'--output-path={output_dir}/{filename}',
-            '--chrome-flags="--headless"',
+            '--chrome-flags=--headless',
             '--quiet'
         ]
         

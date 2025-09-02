@@ -65,7 +65,7 @@ def add_meta_description(file_path, content, description):
 
 def fix_romance_test_meta_descriptions():
     """Fix missing meta descriptions in romance test files"""
-    base_dir = Path("/Users/sanghunbruceham/Documents/GitHub/tests/romance-test")
+    base_dir = (Path(__file__).resolve().parent / "romance-test")
     fixed_count = 0
     
     for lang in ['en', 'ja', 'ko']:
@@ -110,7 +110,7 @@ def fix_romance_test_meta_descriptions():
 
 def fix_title_lengths():
     """Fix titles that are too long (>60 chars)"""
-    base_dir = Path("/Users/sanghunbruceham/Documents/GitHub/tests")
+    base_dir = Path(__file__).resolve().parent
     
     # Title optimizations for specific files
     title_fixes = {
@@ -148,7 +148,7 @@ def fix_title_lengths():
 
 def add_twitter_cards():
     """Add missing Twitter Card tags to files that need them"""
-    base_dir = Path("/Users/sanghunbruceham/Documents/GitHub/tests")
+    base_dir = Path(__file__).resolve().parent
     
     # Files that need Twitter Card tags
     files_needing_twitter = [
@@ -219,7 +219,7 @@ def add_twitter_cards():
 
 def fix_anime_personality_utility_files():
     """Fix basic HTML structure in anime personality utility files"""
-    base_dir = Path("/Users/sanghunbruceham/Documents/GitHub/tests/anime-personality")
+    base_dir = Path(__file__).resolve().parent / "anime-personality"
     
     utility_files = [
         'create_favicon.html',

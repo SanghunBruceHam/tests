@@ -8,7 +8,7 @@ import re
 
 def find_title_length_issues():
     """제목 길이가 30-60자 범위를 벗어나는 파일들을 찾기"""
-    base_path = '/Users/sanghunbruceham/Documents/GitHub/tests'
+    base_path = os.path.abspath(os.path.dirname(__file__))
     
     title_issues = []
     

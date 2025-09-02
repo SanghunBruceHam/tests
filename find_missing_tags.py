@@ -8,7 +8,7 @@ import re
 
 def find_files_missing_tags():
     """Twitter Card와 Open Graph 태그가 누락된 파일들을 찾기"""
-    base_path = '/Users/sanghunbruceham/Documents/GitHub/tests'
+    base_path = os.path.abspath(os.path.dirname(__file__))
     
     missing_twitter = []
     missing_og = []
