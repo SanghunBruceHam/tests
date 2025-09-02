@@ -1,3 +1,95 @@
 <!doctype html>
-<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>フード相性テスト (JA)</title><meta name="description" content="好きな食べ物でカップル相性チェック"><link rel="canonical" href="https://tests.mahalohana-bruce.com/food-compat/ja/index.html"><link rel="alternate" hreflang="ko" href="https://tests.mahalohana-bruce.com/food-compat/ko/index.html"><link rel="alternate" hreflang="ja" href="https://tests.mahalohana-bruce.com/food-compat/ja/index.html"><link rel="alternate" hreflang="en" href="https://tests.mahalohana-bruce.com/food-compat/en/index.html"><meta name="mobile-web-app-capable" content="yes"><script defer src="/assets/seo-optimizer.js"></script><script defer src="/assets/analytics-enhanced.js"></script></head><body><main class="container"><h1>フード相性テスト</h1><p>日本語版は近日公開。韓国語版をお試しください。</p></main></body></html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>フード相性テスト：カップルのケミ診断</title>
+  <meta name="description" content="食の好みからカップル相性をチェック。デートメニューの相性を1分で診断！" />
+  <link rel="canonical" href="https://tests.mahalohana-bruce.com/food-compat/ja/index.html" />
 
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="フード相性テスト：カップルのケミ診断" />
+  <meta property="og:description" content="食の好みを軸に、二人のケミをクイックチェック。" />
+  <meta property="og:image" content="https://tests.mahalohana-bruce.com/favicon.png" />
+  <meta property="og:url" content="https://tests.mahalohana-bruce.com/food-compat/ja/index.html" />
+  <meta property="og:locale" content="ja_JP" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="フード相性テスト：カップルのケミ診断" />
+  <meta name="twitter:description" content="食の好みから相性を診断。1分クイックテスト。" />
+  <meta name="twitter:image" content="https://tests.mahalohana-bruce.com/favicon.png" />
+
+  <link rel="alternate" hreflang="ko" href="https://tests.mahalohana-bruce.com/food-compat/ko/index.html">
+  <link rel="alternate" hreflang="ja" href="https://tests.mahalohana-bruce.com/food-compat/ja/index.html">
+  <link rel="alternate" hreflang="en" href="https://tests.mahalohana-bruce.com/food-compat/en/index.html">
+  <link rel="alternate" hreflang="x-default" href="https://tests.mahalohana-bruce.com/food-compat/ko/index.html">
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-45VSGEM7EZ"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-45VSGEM7EZ');</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5508768187151867" crossorigin="anonymous"></script>
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="icon" href="/favicon.png">
+  <link rel="stylesheet" href="/assets/common-theme.css" />
+  <script defer src="/assets/seo-optimizer.js"></script>
+  <script defer src="/assets/analytics-enhanced.js"></script>
+  <script defer src="/assets/quiz-engine.js"></script>
+</head>
+<body>
+  <main class="container" style="max-width:860px;">
+    <div id="quiz"></div>
+  </main>
+
+  <script>
+    window.quizConfig = {
+      id: 'food-compat',
+      title: 'フード相性テスト',
+      subtitle: '1分・6問・メニュー相性チェック',
+      share: { title: 'フード相性テスト', hashtags: 'カップル,相性,フード' },
+      categories: {
+        perfect: { name:'完璧ケミ', description:'味覚もムードもほぼ一致！メニュー選びも楽しいだけ。' },
+        good: { name:'かなり良いケミ', description:'大きな衝突は少なく、譲り合いながら美味しく楽しめる。' },
+        spicy: { name:'ピリ辛ケミ', description:'好みの違いがむしろ面白さに。刺激がスパイス。' },
+        tricky: { name:'ちょっと難しいケミ', description:'序盤はメニューのルール決めがポイント。対話が鍵。' }
+      },
+      questions: [
+        { id:'q1', text:'辛さの耐性は？', options:[
+          { text:'激辛でも平気', weights:{ perfect:2, spicy:1 } },
+          { text:'中辛', weights:{ good:2 } },
+          { text:'ほとんど辛いのは無理', weights:{ tricky:2 } },
+          { text:'相手に合わせる', weights:{ good:2 } }
+        ]},
+        { id:'q2', text:'メニューの志向', options:[
+          { text:'韓国料理が安定', weights:{ good:2 } },
+          { text:'世界の料理に挑戦', weights:{ spicy:2 } },
+          { text:'無難/クラシック', weights:{ good:2 } },
+          { text:'雰囲気重視', weights:{ perfect:1, spicy:1 } }
+        ]},
+        { id:'q3', text:'デザートの好み', options:[
+          { text:'甘くてリッチ', weights:{ perfect:2 } },
+          { text:'すっきり軽め', weights:{ good:2 } },
+          { text:'トレンディな新作', weights:{ spicy:2 } },
+          { text:'基本は食べない', weights:{ tricky:2 } }
+        ]},
+        { id:'q4', text:'量の好み', options:[
+          { text:'大盛りOK', weights:{ perfect:1, spicy:1 } },
+          { text:'ふつう', weights:{ good:2 } },
+          { text:'少食', weights:{ tricky:2 } },
+          { text:'相手に合わせる', weights:{ good:2 } }
+        ]},
+        { id:'q5', text:'その場でのメニュー変更', options:[
+          { text:'ワクワクする', weights:{ spicy:2 } },
+          { text:'状況次第', weights:{ good:2 } },
+          { text:'決めた通りが安心', weights:{ tricky:2 } },
+          { text:'写真映えならOK', weights:{ perfect:1, spicy:1 } }
+        ]},
+        { id:'q6', text:'一緒に食べたいのは', options:[
+          { text:'定食/コース', weights:{ perfect:2 } },
+          { text:'麺/屋台フード', weights:{ good:2 } },
+          { text:'BBQ/各国料理', weights:{ spicy:2 } },
+          { text:'サラダ/ライトメニュー', weights:{ tricky:2 } }
+        ]}
+      ]
+    };
+  </script>
+</body>
+</html>

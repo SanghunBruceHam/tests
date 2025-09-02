@@ -1,3 +1,95 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Food Compatibility Test (EN)</title><meta name="description" content="Check couple chemistry from favorite foods."><link rel="canonical" href="https://tests.mahalohana-bruce.com/food-compat/en/index.html"><link rel="alternate" hreflang="ko" href="https://tests.mahalohana-bruce.com/food-compat/ko/index.html"><link rel="alternate" hreflang="ja" href="https://tests.mahalohana-bruce.com/food-compat/ja/index.html"><link rel="alternate" hreflang="en" href="https://tests.mahalohana-bruce.com/food-compat/en/index.html"><meta name="mobile-web-app-capable" content="yes"><script defer src="/assets/seo-optimizer.js"></script><script defer src="/assets/analytics-enhanced.js"></script></head><body><main class="container"><h1>Food Compatibility Test</h1><p>English version coming soon. Please try the Korean version.</p></main></body></html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Food Compatibility: Couple Chemistry Check</title>
+  <meta name="description" content="Check your couple chemistry from food preferences. 1‑minute quiz for date‑menu harmony!" />
+  <link rel="canonical" href="https://tests.mahalohana-bruce.com/food-compat/en/index.html" />
 
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Food Compatibility: Couple Chemistry Check" />
+  <meta property="og:description" content="A quick food‑taste quiz to gauge your couple chemistry." />
+  <meta property="og:image" content="https://tests.mahalohana-bruce.com/favicon.png" />
+  <meta property="og:url" content="https://tests.mahalohana-bruce.com/food-compat/en/index.html" />
+  <meta property="og:locale" content="en_US" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Food Compatibility: Couple Chemistry Check" />
+  <meta name="twitter:description" content="Check couple chemistry from food preferences. 1‑minute quiz." />
+  <meta name="twitter:image" content="https://tests.mahalohana-bruce.com/favicon.png" />
+
+  <link rel="alternate" hreflang="ko" href="https://tests.mahalohana-bruce.com/food-compat/ko/index.html">
+  <link rel="alternate" hreflang="ja" href="https://tests.mahalohana-bruce.com/food-compat/ja/index.html">
+  <link rel="alternate" hreflang="en" href="https://tests.mahalohana-bruce.com/food-compat/en/index.html">
+  <link rel="alternate" hreflang="x-default" href="https://tests.mahalohana-bruce.com/food-compat/ko/index.html">
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-45VSGEM7EZ"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-45VSGEM7EZ');</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5508768187151867" crossorigin="anonymous"></script>
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="icon" href="/favicon.png">
+  <link rel="stylesheet" href="/assets/common-theme.css" />
+  <script defer src="/assets/seo-optimizer.js"></script>
+  <script defer src="/assets/analytics-enhanced.js"></script>
+  <script defer src="/assets/quiz-engine.js"></script>
+</head>
+<body>
+  <main class="container" style="max-width:860px;">
+    <div id="quiz"></div>
+  </main>
+
+  <script>
+    window.quizConfig = {
+      id: 'food-compat',
+      title: 'Food Compatibility: Couple Chemistry',
+      subtitle: '1 minute · 6 questions · menu harmony',
+      share: { title: 'Food Compatibility Test', hashtags: 'couple,chemistry,food' },
+      categories: {
+        perfect: { name:'Perfect Match', description:'Tastes and mood align almost perfectly. Choosing menus is pure joy.' },
+        good: { name:'Pretty Good Match', description:'Few conflicts — you flex and enjoy together.' },
+        spicy: { name:'Spicy Match', description:'Contrasting tastes keep things exciting.' },
+        tricky: { name:'Tricky Match', description:'Early rules for menu choice will help. Communication matters.' }
+      },
+      questions: [
+        { id:'q1', text:'Spice tolerance?', options:[
+          { text:'Very spicy, no problem', weights:{ perfect:2, spicy:1 } },
+          { text:'Medium heat', weights:{ good:2 } },
+          { text:'Barely spicy', weights:{ tricky:2 } },
+          { text:'I match my partner', weights:{ good:2 } }
+        ]},
+        { id:'q2', text:'Menu style', options:[
+          { text:'Korean comfort', weights:{ good:2 } },
+          { text:'Global adventure', weights:{ spicy:2 } },
+          { text:'Safe & classic', weights:{ good:2 } },
+          { text:'Atmosphere first', weights:{ perfect:1, spicy:1 } }
+        ]},
+        { id:'q3', text:'Dessert preference', options:[
+          { text:'Sweet & rich', weights:{ perfect:2 } },
+          { text:'Clean & light', weights:{ good:2 } },
+          { text:'Trendy & new', weights:{ spicy:2 } },
+          { text:'Usually skip', weights:{ tricky:2 } }
+        ]},
+        { id:'q4', text:'Portion size', options:[
+          { text:'Big eater OK', weights:{ perfect:1, spicy:1 } },
+          { text:'Average', weights:{ good:2 } },
+          { text:'Small eater', weights:{ tricky:2 } },
+          { text:'Match my partner', weights:{ good:2 } }
+        ]},
+        { id:'q5', text:'Change of plan on the spot', options:[
+          { text:'Thrilling', weights:{ spicy:2 } },
+          { text:'Depends on context', weights:{ good:2 } },
+          { text:'Prefer fixed plan', weights:{ tricky:2 } },
+          { text:'If it looks photogenic, OK', weights:{ perfect:1, spicy:1 } }
+        ]},
+        { id:'q6', text:'Most likely to share', options:[
+          { text:'Full Korean set', weights:{ perfect:2 } },
+          { text:'Noodles / street food', weights:{ good:2 } },
+          { text:'BBQ / world cuisines', weights:{ spicy:2 } },
+          { text:'Salad / light menu', weights:{ tricky:2 } }
+        ]}
+      ]
+    };
+  </script>
+</body>
+</html>
