@@ -434,3 +434,5 @@
 2025-09-02 23:18:33,574 - utils - INFO - Successfully wrote file: /Users/sanghunbruceham/Documents/GitHub/tests/compat-pick/ko/index.html
 2025-09-02 23:18:33,647 - utils - INFO - Successfully wrote file: /Users/sanghunbruceham/Documents/GitHub/tests/monitoring/dashboard.html
 2025-09-02 23:18:33,647 - utils - INFO - mobile-web-app-capable ensured. Scanned: 116, Updated: 116
+2025-09-02 23:43:51,092 - utils - INFO - 스캔 완료: 9개 테스트 발견
+2025-09-02 23:43:51,095 - utils - WARNING - 업데이트할 내용이 없습니다.

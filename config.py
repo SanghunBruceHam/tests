@@ -24,7 +24,7 @@ class Config:
     
     # 파일 경로 설정
     DIRECTORIES = {
-        'tests': ['romance-test', 'egen-teto'],
+        'tests': ['romance-test', 'egen-teto', 'kfood-romance', 'food-compat', 'kpop-egen-teto', 'kpop-idol-romance'],
         'assets': 'assets',
         'attached_assets': 'attached_assets'
     }
