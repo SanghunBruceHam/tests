@@ -72,6 +72,8 @@
 
     const qwrap = document.createElement('div');
     qwrap.className = 'q-wrap';
+    qwrap.setAttribute('role', 'region');
+    qwrap.setAttribute('aria-live', 'polite');
     root.appendChild(qwrap);
 
     const actions = document.createElement('div');
@@ -89,6 +91,16 @@
 
     let idx = 0;
     const answers = new Map();
+    const storeKey = `quiz:${config.id}`;
+
+    // restore state if present
+    try {
+      const saved = JSON.parse(sessionStorage.getItem(storeKey) || 'null');
+      if (saved && Array.isArray(saved.answers)){
+        idx = Math.max(0, Math.min(saved.idx || 0, (config.questions.length - 1)));
+        saved.answers.forEach(a => answers.set(a.questionId, a));
+      }
+    } catch(e) {}
     const total = config.questions.length;
 
     function updateProgress(){
@@ -101,10 +113,13 @@
       qwrap.innerHTML = '';
       const card = document.createElement('div');
       card.className = 'q-card';
-      card.innerHTML = `<div class="q-num">Q${idx+1}/${total}</div><h2>${escapeHtml(q.text)}</h2>`;
+      const qTitleId = `q_title_${idx+1}`;
+      card.innerHTML = `<div class="q-num">Q${idx+1}/${total}</div><h2 id="${qTitleId}">${escapeHtml(q.text)}</h2>`;
 
       const list = document.createElement('div');
       list.className = 'q-options';
+      list.setAttribute('role', 'radiogroup');
+      list.setAttribute('aria-labelledby', qTitleId);
       q.options.forEach((opt, i) => {
         const id = `${q.id}_${i}`;
         const item = document.createElement('label');
@@ -129,6 +144,19 @@
       nextBtn.style.display = idx < total - 1 ? '' : 'none';
       submitBtn.style.display = idx === total - 1 ? '' : 'none';
       updateProgress();
+
+      // keyboard navigation: up/down to move selection
+      list.addEventListener('keydown', (ev) => {
+        if (!['ArrowDown','ArrowUp'].includes(ev.key)) return;
+        const radios = Array.from(list.querySelectorAll(`input[name="${q.id}"]`));
+        const current = radios.findIndex(r => r.checked);
+        let nextIndex = current;
+        if (ev.key === 'ArrowDown') nextIndex = Math.min(radios.length-1, current < 0 ? 0 : current+1);
+        if (ev.key === 'ArrowUp') nextIndex = Math.max(0, current < 0 ? 0 : current-1);
+        radios[nextIndex]?.focus();
+        radios[nextIndex].checked = true;
+        ev.preventDefault();
+      });
     }
 
     function currentSelection(){
@@ -144,6 +172,8 @@
       const sel = currentSelection();
       if (!sel){ alert(I18N.selectOne); return; }
       answers.set(sel.questionId, sel);
+      // persist state
+      try { sessionStorage.setItem(storeKey, JSON.stringify({ idx, answers: Array.from(answers.values()) })); } catch(e) {}
       if (window.track){
         document.dispatchEvent(new CustomEvent('question_answered', { detail: { questionNumber: idx+1, answerValue: sel.index, responseTime: 0 }}));
       }
@@ -162,6 +192,14 @@
       answers.set(sel.questionId, sel);
       const result = computeResult(config, answers);
       renderResult(root, config, result);
+      // update URL with result for share/deeplink
+      try{
+        const url = new URL(window.location.href);
+        url.searchParams.set('r', result.categoryId);
+        history.replaceState(null, '', url.toString());
+      }catch(e){}
+      // clear saved state on finish
+      try { sessionStorage.removeItem(storeKey); } catch(e) {}
     });
 
     // start
@@ -255,6 +293,58 @@
     document.head.appendChild(style);
   }
 
+  function renderRecommendations(root, config, locale){
+    const map = {
+      'kfood-romance': [
+        { id: 'food-compat', path: 'food-compat' },
+        { id: 'romance-test', path: 'romance-test' }
+      ],
+      'food-compat': [
+        { id: 'kfood-romance', path: 'kfood-romance' },
+        { id: 'romance-test', path: 'romance-test' }
+      ],
+      'kpop-idol-romance': [
+        { id: 'kpop-egen-teto', path: 'kpop-egen-teto' },
+        { id: 'egen-teto', path: 'egen-teto' }
+      ],
+      'kpop-egen-teto': [
+        { id: 'kpop-idol-romance', path: 'kpop-idol-romance' },
+        { id: 'egen-teto', path: 'egen-teto' }
+      ]
+    };
+    const items = map[config.id] || [];
+    if (!items.length) return;
+    const base = locale; // 'ko' | 'ja' | 'en'
+    const section = document.createElement('div');
+    section.className = 'q-recs';
+    const title = locale==='ja' ? 'おすすめのテスト' : locale==='en' ? 'Recommended Tests' : '추천 테스트';
+    section.innerHTML = `<h3 style="margin:14px 0 8px;">${title}</h3>`;
+    const list = document.createElement('div');
+    list.style.display = 'grid'; list.style.gap = '8px';
+    items.forEach(it => {
+      const a = document.createElement('a');
+      a.className = 'q-option';
+      a.style.textDecoration='none';
+      a.href = `/${it.path}/${base}/`;
+      a.innerHTML = `<span>• /${it.path}/${base}/</span>`;
+      list.appendChild(a);
+    });
+    section.appendChild(list);
+    root.appendChild(section);
+  }
+
+  function tryDeeplinkResult(root, config){
+    try{
+      const url = new URL(window.location.href);
+      const r = url.searchParams.get('r');
+      if (r && config.categories && config.categories[r]){
+        renderResult(root, config, { categoryId: r, scores: {} });
+        return true;
+      }
+    }catch(e){}
+    return false;
+  }
+
   document.addEventListener('DOMContentLoaded', () => {
     injectStyles();
     const root = document.getElementById('quiz');
@@ -263,6 +353,12 @@
       root.textContent = '퀴즈 구성이 없습니다.';
       return;
     }
-    renderQuiz(root, window.quizConfig);
+    // if deep link to result exists, render result directly
+    if (!tryDeeplinkResult(root, window.quizConfig)) {
+      renderQuiz(root, window.quizConfig);
+    }
+    // render recommendations (under result container if present)
+    const recRoot = root.querySelector('.q-result') || root;
+    renderRecommendations(recRoot, window.quizConfig, (document.documentElement.lang||'ko').slice(0,2));
   });
 })();
