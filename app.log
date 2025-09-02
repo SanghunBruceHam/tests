@@ -436,3 +436,13 @@
 2025-09-02 23:18:33,647 - utils - INFO - mobile-web-app-capable ensured. Scanned: 116, Updated: 116
 2025-09-02 23:43:51,092 - utils - INFO - 스캔 완료: 9개 테스트 발견
 2025-09-02 23:43:51,095 - utils - WARNING - 업데이트할 내용이 없습니다.
+2025-09-02 14:44:18,292 - utils - INFO - 스캔 완료: 9개 테스트 발견
+2025-09-02 14:44:18,294 - utils - WARNING - 업데이트할 내용이 없습니다.
+2025-09-02 14:44:18,353 - utils - INFO - SEO에서 제외: yandex_1010c8523eee2722.html
+2025-09-02 14:44:18,353 - utils - INFO - SEO에서 제외: googlee53980ef2acb81e6.html
+2025-09-02 14:44:18,353 - utils - INFO - SEO에서 제외: sandbox.html
+2025-09-02 14:44:18,356 - utils - INFO - 발견된 HTML 파일: 125개
+2025-09-02 14:44:18,357 - utils - INFO - Successfully wrote file: /home/runner/work/tests/tests/sitemap.xml
+2025-09-02 14:44:18,357 - utils - INFO - 사이트맵 생성 완료: 125개 URL
+2025-09-02 14:44:18,357 - utils - INFO - 사이트맵 유효성 검사 통과
+2025-09-02 14:44:18,357 - utils - INFO - 사이트맵 생성 프로세스 완료
