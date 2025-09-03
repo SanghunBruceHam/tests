@@ -357,16 +357,17 @@ function renderResult(root, config, result){
         <p class="muted">${escapeHtml(cat.description)}</p>
       </div>
     </div>
+    ${generateDetailedInsights(result, config, lang)}
     ${insightsHtml}
     ${tipsHtml ? `<div class=\"q-tips\">${tipsHtml}</div>` : ''}
     <div class="share">
-      <button class="share-x">${I18N.shareX}</button>
-      <button class="copy">${I18N.copy}</button>
-        <button class="fb">${I18N.shareFacebook}</button>
-        <button class="line">${I18N.shareLine}</button>
-        <button class="threads">${I18N.shareThreads}</button>
-        <button class="native">${I18N.shareNative}</button>
-      </div>
+      <button class="share-x">🐦 X(Twitter)</button>
+      <button class="copy">🔗 ${I18N.copy}</button>
+      <button class="fb">📘 Facebook</button>
+      <button class="line">📱 LINE</button>
+      <button class="threads">🧵 Threads</button>
+      <button class="native">📤 ${I18N.shareNative}</button>
+    </div>
       <div class="again"><a href="?">${I18N.tryAgain}</a></div>
       <div class="q-nav">
         <a class="q-nav-btn" href="${baseUrl}">${I18N.goHome}</a>
@@ -421,6 +422,193 @@ function renderResult(root, config, result){
     });
   }
 
+  function generateDetailedInsights(result, config, lang) {
+    const testId = config.id;
+    const categoryId = result.categoryId;
+    
+    const insights = {
+      'kfood-romance': {
+        ko: {
+          stability: {
+            personality: "안정감을 중시하는 당신은 깊이 있는 관계를 추구합니다.",
+            compatibility: "차분하고 믿을 수 있는 파트너와 잘 맞아요.",
+            advice: "급하지 않게, 천천히 서로를 알아가는 시간을 가지세요."
+          },
+          passion: {
+            personality: "열정적이고 모험을 좋아하는 활발한 타입이에요.",
+            compatibility: "에너지가 넘치고 새로운 도전을 함께할 수 있는 사람과 좋아요.",
+            advice: "함께 새로운 경험을 만들어가며 관계에 활력을 불어넣으세요."
+          },
+          caretaking: {
+            personality: "따뜻한 마음으로 상대를 챙기는 것을 좋아해요.",
+            compatibility: "감정 표현이 풍부하고 소통을 중요하게 생각하는 사람과 잘 맞아요.",
+            advice: "작은 관심과 배려로 상대의 마음을 따뜻하게 해주세요."
+          },
+          free: {
+            personality: "자유롭고 유연한 사고를 가진 개방적인 성격이에요.",
+            compatibility: "속박하지 않고 서로의 개성을 존중하는 파트너가 좋아요.",
+            advice: "서로의 자유를 인정하면서도 함께하는 시간을 소중히 하세요."
+          }
+        },
+        ja: {
+          stability: {
+            personality: "安定感を重視するあなたは、深みのある関係を求めます。",
+            compatibility: "落ち着いていて信頼できるパートナーと相性が良いです。",
+            advice: "急がず、ゆっくりとお互いを知る時間を持ってください。"
+          },
+          passion: {
+            personality: "情熱的で冒険好きな活発なタイプです。",
+            compatibility: "エネルギッシュで新しい挑戦を一緒にできる人と良いですね。",
+            advice: "一緒に新しい経験を作りながら関係に活力を吹き込みましょう。"
+          },
+          caretaking: {
+            personality: "温かい心で相手を気遣うのが好きです。",
+            compatibility: "感情表現が豊かでコミュニケーションを大切にする人と合います。",
+            advice: "小さな気遣いと思いやりで相手の心を温かくしてあげてください。"
+          },
+          free: {
+            personality: "自由で柔軟な思考を持つ開放的な性格です。",
+            compatibility: "束縛せずお互いの個性を尊重するパートナーが良いです。",
+            advice: "お互いの自由を認めながらも一緒にいる時間を大切にしましょう。"
+          }
+        },
+        en: {
+          stability: {
+            personality: "You value stability and seek deep, meaningful relationships.",
+            compatibility: "You match well with calm and trustworthy partners.",
+            advice: "Take time to slowly get to know each other without rushing."
+          },
+          passion: {
+            personality: "You're passionate and adventurous, full of energy.",
+            compatibility: "You work well with energetic people who enjoy new challenges.",
+            advice: "Create new experiences together to bring vitality to your relationship."
+          },
+          caretaking: {
+            personality: "You have a warm heart and love caring for your partner.",
+            compatibility: "You match with emotionally expressive and communicative people.",
+            advice: "Warm your partner's heart with small gestures of care and attention."
+          },
+          free: {
+            personality: "You're free-spirited with flexible thinking and an open personality.",
+            compatibility: "You need partners who respect individuality without being possessive.",
+            advice: "Respect each other's freedom while cherishing your time together."
+          }
+        }
+      },
+      'food-compat': {
+        ko: {
+          perfect: {
+            personality: "음식 취향까지 완벽하게 맞는 당신들은 진정한 소울메이트예요.",
+            compatibility: "서로의 모든 면에서 깊은 이해와 공감대를 형성해요.",
+            advice: "이 특별한 케미를 계속 유지하며 더 많은 추억을 만들어가세요."
+          },
+          good: {
+            personality: "적당히 비슷하면서도 새로운 것을 받아들이는 유연한 타입이에요.",
+            compatibility: "서로 다른 점을 존중하면서도 공통점을 찾는 능력이 있어요.",
+            advice: "가끔은 상대의 취향에 맞춰보며 새로운 맛을 발견해보세요."
+          },
+          spicy: {
+            personality: "자극적이고 도전적인 것을 좋아하는 모험가 타입이에요.",
+            compatibility: "열정적이고 에너지 넘치는 관계를 만들어갈 수 있어요.",
+            advice: "서로의 다른 취향을 재미있는 도전으로 받아들여보세요."
+          },
+          tricky: {
+            personality: "개성이 강하고 자신만의 확고한 기준을 가진 타입이에요.",
+            compatibility: "서로의 차이를 인정하고 조율하는 과정이 필요해요.",
+            advice: "타협점을 찾아가며 서로를 이해하는 시간을 충분히 가지세요."
+          }
+        }
+      },
+      'kpop-idol-romance': {
+        ko: {
+          leader: {
+            personality: "리더십이 강하고 계획적인 연애를 추구하는 타입이에요.",
+            compatibility: "든든하고 주도적인 관계에서 빛을 발해요.",
+            advice: "상대방의 의견도 충분히 들어주며 함께 방향을 정해가세요."
+          },
+          vocal: {
+            personality: "감정 표현이 풍부하고 소통을 중시하는 타입이에요.",
+            compatibility: "마음을 활짝 열고 진솔한 대화를 나누는 관계가 좋아요.",
+            advice: "당신의 따뜻한 마음을 더 많이 표현해보세요."
+          },
+          rap: {
+            personality: "직설적이고 솔직한 소통을 선호하는 쿨한 타입이에요.",
+            compatibility: "서로 솔직하고 터놓고 지내는 관계에서 편안함을 느껴요.",
+            advice: "가끔은 부드러운 표현으로 마음을 전해보세요."
+          },
+          center: {
+            personality: "매력적이고 분위기를 이끄는 것을 좋아하는 타입이에요.",
+            compatibility: "시각적이고 감각적인 즐거움을 함께할 수 있는 관계가 좋아요.",
+            advice: "외적인 매력뿐만 아니라 내면의 깊이도 보여주세요."
+          },
+          all: {
+            personality: "다재다능하고 상황에 맞게 유연하게 대응하는 타입이에요.",
+            compatibility: "어떤 상대와도 조화를 이룰 수 있는 포용력이 있어요.",
+            advice: "때로는 자신만의 색깔을 명확히 드러내는 것도 중요해요."
+          }
+        }
+      },
+      'kpop-egen-teto': {
+        ko: {
+          egen: {
+            personality: "실험적이고 창의적인 것을 추구하는 자유로운 영혼이에요.",
+            compatibility: "새로운 시도를 함께 즐기고 변화를 두려워하지 않는 파트너와 좋아요.",
+            advice: "당신의 창의성과 실험정신을 관계에도 적용해보세요."
+          },
+          teto: {
+            personality: "완성도와 안정감을 중시하는 체계적인 타입이에요.",
+            compatibility: "신뢰할 수 있고 일관성 있는 관계를 만들어가는 파트너와 잘 맞아요.",
+            advice: "때로는 예상치 못한 변화도 받아들여보는 유연함을 기르세요."
+          },
+          mix: {
+            personality: "상황에 따라 유연하게 대응하는 균형잡힌 타입이에요.",
+            compatibility: "다양한 매력을 가진 파트너와 조화롭게 어울릴 수 있어요.",
+            advice: "당신의 밸런스 감각을 활용해 관계의 조화를 만들어가세요."
+          }
+        }
+      }
+    };
+
+    const testInsights = insights[testId];
+    if (!testInsights || !testInsights[lang] || !testInsights[lang][categoryId]) {
+      return '';
+    }
+
+    const insight = testInsights[lang][categoryId];
+    
+    const titles = {
+      ko: "💡 상세 분석",
+      ja: "💡 詳細分析", 
+      en: "💡 Detailed Analysis"
+    };
+
+    const labels = {
+      ko: { personality: "🎯 성격 특징", compatibility: "💕 궁합 타입", advice: "✨ 연애 조언" },
+      ja: { personality: "🎯 性格特徴", compatibility: "💕 相性タイプ", advice: "✨ 恋愛アドバイス" },
+      en: { personality: "🎯 Personality", compatibility: "💕 Compatibility", advice: "✨ Dating Advice" }
+    };
+
+    return `
+      <div class="q-detailed-insights">
+        <h3 style="color:var(--accent-color,#667eea); margin-bottom:16px; text-align:center;">${titles[lang] || titles.ko}</h3>
+        <div style="display:grid; gap:12px; margin-bottom:16px;">
+          <div style="background:rgba(102,126,234,0.05); border-radius:12px; padding:16px; border-left:4px solid var(--accent-color,#667eea);">
+            <div style="font-weight:700; color:var(--accent-color,#667eea); margin-bottom:8px;">${labels[lang]?.personality || labels.ko.personality}</div>
+            <div style="color:var(--text-secondary,#666); line-height:1.5;">${insight.personality}</div>
+          </div>
+          <div style="background:rgba(245,158,11,0.05); border-radius:12px; padding:16px; border-left:4px solid #f59e0b;">
+            <div style="font-weight:700; color:#f59e0b; margin-bottom:8px;">${labels[lang]?.compatibility || labels.ko.compatibility}</div>
+            <div style="color:var(--text-secondary,#666); line-height:1.5;">${insight.compatibility}</div>
+          </div>
+          <div style="background:rgba(34,197,94,0.05); border-radius:12px; padding:16px; border-left:4px solid #22c55e;">
+            <div style="font-weight:700; color:#22c55e; margin-bottom:8px;">${labels[lang]?.advice || labels.ko.advice}</div>
+            <div style="color:var(--text-secondary,#666); line-height:1.5;">${insight.advice}</div>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
   function escapeHtml(s){
     return String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
   }
@@ -461,10 +649,16 @@ function renderResult(root, config, result){
     .scorebar .bar{ flex:1; height:8px; background:#eef2f7; border-radius:999px; overflow:hidden; }
     .scorebar .bar > span{ display:block; height:100%; background:linear-gradient(90deg,#667eea,#764ba2); box-shadow: 0 2px 8px rgba(102,126,234,.35); border-radius:999px; }
     .q-tips{ background:#f8fafc; border:1px solid #e5e7eb; border-radius:12px; padding:10px; margin:12px 0; font-size:.95rem; color:#374151; }
-    .q-result .share{ display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin-top:12px; 
-      background: var(--share-bg, #f8fafc); border:1px solid var(--border-color,#e5e7eb); border-radius:12px; padding:8px; backdrop-filter: blur(6px); }
-    .q-result .share button{ padding:8px 12px; border-radius:999px; border:1px solid var(--border-color,#e5e7eb); background:#ffffff; color:#111; cursor:pointer; box-shadow: 0 2px 10px rgba(0,0,0,.08); }
-    .q-result .share button:hover{ border-color: var(--accent-color,#667eea); }
+    .q-result .share{ display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin-top:12px; 
+      background: var(--share-bg, #f8fafc); border:1px solid var(--border-color,#e5e7eb); border-radius:12px; padding:12px; backdrop-filter: blur(6px); }
+    .q-result .share button{ padding:10px 16px; border-radius:8px; border:none; color:#fff; cursor:pointer; box-shadow: 0 2px 10px rgba(0,0,0,.1); font-weight:600; font-size:13px; transition: all 0.2s ease; }
+    .q-result .share .share-x{ background:linear-gradient(135deg,#1da1f2,#0d8bd9); }
+    .q-result .share .copy{ background:linear-gradient(135deg,#6c757d,#495057); }
+    .q-result .share .fb{ background:linear-gradient(135deg,#1877f2,#166fe5); }
+    .q-result .share .line{ background:linear-gradient(135deg,#00c300,#00b300); }
+    .q-result .share .threads{ background:linear-gradient(135deg,#000,#333); }
+    .q-result .share .native{ background:linear-gradient(135deg,var(--accent-color,#667eea),var(--accent-color,#667eea)); }
+    .q-result .share button:hover{ transform:translateY(-1px); box-shadow: 0 4px 15px rgba(0,0,0,.15); }
     .q-result .again{ margin-top:10px; }
     .q-nav{ display:flex; gap:10px; justify-content:center; margin-top:12px; }
     .q-nav-btn{ display:inline-block; padding:10px 14px; border-radius:999px; background:linear-gradient(90deg,#667eea,#764ba2); color:#fff; text-decoration:none; }
