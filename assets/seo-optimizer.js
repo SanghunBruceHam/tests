@@ -208,6 +208,10 @@ class SEOOptimizer {
 
   // 빵부스러기 내비게이션
   setupBreadcrumbs() {
+    // 퀴즈/테스트 화면에서는 화면 상 빵부스러기 숨김
+    const isQuizPage = this.isTestPage() || document.querySelector('#quiz');
+    if (isQuizPage) return;
+
     const breadcrumbs = this.generateBreadcrumbs();
     if (breadcrumbs.length > 1) {
       this.renderBreadcrumbs(breadcrumbs);
@@ -425,7 +429,7 @@ class SEOOptimizer {
   // 유틸리티 메서드
   isTestPage() {
     return window.location.pathname.includes('test') || 
-           document.querySelector('.test-container, .quiz-container');
+           document.querySelector('.test-container, .quiz-container, #quiz');
   }
 
   // 성능 모니터링
