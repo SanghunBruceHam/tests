@@ -5,18 +5,24 @@
 <title>🔥 이름 케미 테스트 | 궁합 퍼센트 뽑기 - 바이럴 테스트</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="💘 이름만 입력하면 끝! 케미 퍼센트와 재밌는 분석 결과를 받아보세요. 친구들과 공유하고 비교해보는 재미까지! 지금 바로 테스트하고 SNS에 자랑하세요 ✨">
-<link rel="canonical" href="https://tests.mahalohana-bruce.com/viral/compat-pick/ko/index.html">
+<link rel="canonical" href="https://tests.mahalohana-bruce.com/compat-pick/ko/">
+
+<!-- hreflang -->
+<link rel="alternate" hreflang="ko" href="https://tests.mahalohana-bruce.com/compat-pick/ko/">
+<link rel="alternate" hreflang="ja" href="https://tests.mahalohana-bruce.com/compat-pick/ja/">
+<link rel="alternate" hreflang="en" href="https://tests.mahalohana-bruce.com/compat-pick/en/">
+<link rel="alternate" hreflang="x-default" href="https://tests.mahalohana-bruce.com/compat-pick/ko/">
 
 <!-- OGP -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="🔥 이름 케미 테스트 | 지금 바로 확인하세요!">
 <meta property="og:description" content="💘 이름만 입력하면 케미 퍼센트 완료! 친구들과 비교하고 SNS에 공유하는 재미까지 ✨ 바로 해보세요!">
-<meta property="og:url" content="https://tests.mahalohana-bruce.com/viral/compat-pick/ko/index.html">
-<meta property="og:image" content="https://tests.mahalohana-bruce.com/viral/compat-pick/assets/og-default.png">
+<meta property="og:url" content="https://tests.mahalohana-bruce.com/compat-pick/ko/">
+<meta property="og:image" content="https://tests.mahalohana-bruce.com/compat-pick/og-ko.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="🔥 이름 케미 테스트 | 지금 바로 확인하세요!">
 <meta name="twitter:description" content="💘 이름만 입력하면 케미 퍼센트 완료! 친구들과 비교하고 SNS에 공유하는 재미까지 ✨">
-<meta name="twitter:image" content="https://tests.mahalohana-bruce.com/viral/compat-pick/assets/og-default.png">
+<meta name="twitter:image" content="https://tests.mahalohana-bruce.com/compat-pick/og-ko.png">
 <meta name="twitter:site" content="@tests_mahalohana">
 
 <link rel="icon" href="https://tests.mahalohana-bruce.com/favicon.png" type="image/png">
@@ -141,6 +147,21 @@ button.primary{
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position:relative; overflow:hidden;
 }
+button.primary:disabled{
+  opacity:0.7; cursor:not-allowed; transform:none !important;
+}
+button.primary.loading{
+  pointer-events:none;
+}
+button.primary.loading::after{
+  content:''; position:absolute; top:50%; left:50%; width:20px; height:20px;
+  margin:-10px 0 0 -10px; border:2px solid transparent; border-top:2px solid #fff;
+  border-radius:50%; animation:spin 1s linear infinite;
+}
+@keyframes spin{
+  0%{transform:rotate(0deg);}
+  100%{transform:rotate(360deg);}
+}
 button.primary:hover{
   transform: translateY(-2px) scale(1.05);
   box-shadow:0 15px 40px rgba(255,107,107,0.4);
@@ -160,10 +181,92 @@ button.primary:hover::before{
 .badge{display:inline-flex; gap:8px; align-items:center; padding:8px 12px; border-radius:999px; font-size:12px; font-weight:800; background:rgba(255,107,107,0.1); color:var(--brand); border:1px solid rgba(255,107,107,0.3); backdrop-filter:blur(5px);}
 .grid2{display:grid; grid-template-columns:1fr 1fr; gap:14px}
 @media (max-width: 720px){ 
+  .container {max-width: 100%; padding: 12px;}
   .row{grid-template-columns:1fr; gap:12px;}
-  #result {padding:24px 16px !important;}
+  .hero{grid-template-columns:1fr; gap:16px; text-align:center;}
+  .example-card{margin-top:20px;}
+  input[type=text]{font-size:16px; padding:14px 16px;}
+  button.primary{padding:14px 24px; font-size:16px;}
+  #result {padding:20px 12px !important;}
   #result > div[style*="flex"] {flex-direction:column !important;}
-  #result a, #result button {min-width:200px; text-align:center;}
+  #result a, #result button {min-width:200px; text-align:center; margin-bottom:8px;}
+  .share{justify-content:center;}
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 8px;
+    max-width: 100%;
+  }
+  
+  .header-controls {
+    top: 4px;
+    right: 4px;
+    padding: 4px;
+    gap: 4px;
+  }
+  
+  .lang-btn {
+    padding: 4px 8px;
+    font-size: 10px;
+  }
+  
+  .theme-toggle {
+    width: 32px;
+    height: 32px;
+    font-size: 12px;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+    line-height: 1.2;
+  }
+
+  .subtitle {
+    font-size: 0.85rem;
+    margin-bottom: 12px;
+    padding: 0 8px;
+  }
+  
+  .pill {
+    font-size: 11px;
+    padding: 6px 12px;
+  }
+  
+  input[type=text] {
+    font-size: 16px;
+    padding: 12px 14px;
+  }
+  
+  .card {
+    padding: 16px;
+    border-radius: 16px;
+  }
+  
+  .example-card {
+    padding: 20px;
+  }
+  
+  #result {
+    padding: 16px 8px !important;
+  }
+  
+  #result .badge {
+    font-size: 14px;
+    padding: 6px 12px;
+  }
+  
+  #result #score {
+    font-size: clamp(48px, 10vw, 72px) !important;
+  }
+  
+  #result #type {
+    font-size: clamp(16px, 4vw, 20px) !important;
+  }
+  
+  #result #comment {
+    font-size: 16px !important;
+  }
 }
 .share{display:flex; gap:10px; flex-wrap:wrap}
 .share a, .share button{padding:12px 16px; border-radius:12px; font-weight:800; transition:all 0.2s ease;}
@@ -181,6 +284,12 @@ small.hint{color:var(--muted); display:block; margin-top:6px}
 .toast{
   position:fixed; left:50%; bottom:24px; transform:translateX(-50%);
   background:linear-gradient(135deg,var(--brand),var(--brand2)); color:#fff; padding:12px 20px; border-radius:15px; z-index:9999; font-weight:800; box-shadow:0 10px 30px var(--glow); animation:toast-in 0.3s ease;
+}
+.toast.error{
+  background:linear-gradient(135deg,#dc2626,#b91c1c); box-shadow:0 10px 30px rgba(220,38,38,0.3);
+}
+.toast.success{
+  background:linear-gradient(135deg,#059669,#047857); box-shadow:0 10px 30px rgba(5,150,105,0.3);
 }
 @keyframes toast-in {
   from { opacity:0; transform:translateX(-50%) translateY(20px); }
@@ -200,6 +309,18 @@ small.hint{color:var(--muted); display:block; margin-top:6px}
 }
 </style>
 
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-45VSGEM7EZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-45VSGEM7EZ', {
+    page_title: 'Name Chemistry Test KO',
+    page_location: window.location.href
+  });
+</script>
+
 <!-- (선택) 애드센스 위치 예시
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXX" crossorigin="anonymous"></script>
 -->
@@ -209,7 +330,7 @@ small.hint{color:var(--muted); display:block; margin-top:6px}
   "@context":"https://schema.org",
   "@type":"WebApplication",
   "name":"랜덤 궁합 뽑기",
-  "url":"https://tests.mahalohana-bruce.com/viral/compat-pick/ko/index.html",
+  "url":"https://tests.mahalohana-bruce.com/compat-pick/ko/",
   "applicationCategory":"EntertainmentApplication",
   "inLanguage":"ko",
   "operatingSystem":"All"
@@ -347,26 +468,41 @@ function seededPercent(seedStr){
 
 // 바이럴한 타입/코멘트
 const TYPES = [
-  {range:[90,100], name:"소울메이트", emoji:"💘", comments:[
-    "진짜 케미 미쳤다... 둘이 붙으면 시간 순삭 😍", "이런 케미는 평생에 한 번! 부럽다 진짜 🥺", "연락 템포까지 찰떡... 이게 진짜 인연이지 ✨"
+  {range:[95,100], name:"운명의 반쪽", emoji:"💫", comments:[
+    "하... 이건 진짜 운명이다 💫 평생 못 놓아", "신도 인정한 찰떡궁합! 부모님께 인사드려 👰", "DNA 수준에서 끌리는 케미... 이건 못 참지 🧬", "전생에 부부였나봄 ㄹㅇ 소름돋는 싱크로율 😱"
   ]},
-  {range:[75,89], name:"불꽃 케미", emoji:"🔥", comments:[
-    "이 정도면 진짜 화끈하지 🔥 싸워도 금방 화해", "에너지 미쳤네요 💥 함께 있으면 행복 과몰입!", "이런 케미 어떻게 참지? 진짜 부럽다 😤"
+  {range:[90,94], name:"소울메이트", emoji:"💘", comments:[
+    "진짜 케미 미쳤다... 둘이 붙으면 시간 순삭 😍", "이런 케미는 평생에 한 번! 부럽다 진짜 🥺", "연락 템포까지 찰떡... 이게 진짜 인연이지 ✨", "같이 있으면 세상이 다 내 것 같음 🌍💕"
   ]},
-  {range:[60,74], name:"티키타카", emoji:"🎯", comments:[
-    "대화 핑퐁이 좋음 🏓 먹을 때도 합 맞고!", "서로 텐션 맞으면 완벽한 케미 ✨", "이 조합 의외로 괜찮네? 계속 보고싶어 😊"
+  {range:[80,89], name:"불꽃 케미", emoji:"🔥", comments:[
+    "이 정도면 진짜 화끈하지 🔥 싸워도 금방 화해", "에너지 미쳤네요 💥 함께 있으면 행복 과몰입!", "이런 케미 어떻게 참지? 진짜 부럽다 😤", "매일이 설렘... 심장 터질 것 같아 💓"
   ]},
-  {range:[45,59], name:"친구가 최고", emoji:"🤝", comments:[
-    "사람 좋고 편안해 🤗 친구로는 찰떡!", "썸업은 천천히... 우정부터 깊게 가자", "이런 사람 곁에 두고 싶다 진짜 💫"
+  {range:[70,79], name:"꿀떨어지는 사이", emoji:"🍯", comments:[
+    "달달함 MAX! 주변 사람들 당뇨 걸리겠어 🍯", "이정도면 공식 커플 인정! SNS 프사 바꿔 📸", "함께 있으면 세상이 핑크빛 필터 ON 🌸", "데이트 코스 뭘 해도 재밌겠다 진짜 🎡"
   ]},
-  {range:[30,44], name:"극과 극", emoji:"⚖️", comments:[
-    "정반대인데 그게 또 매력이야 ⚖️", "취향 다른 게 오히려 신선하네?", "서로 다른 게 매력... 균형만 맞추면 OK! 🎭"
+  {range:[60,69], name:"티키타카", emoji:"🎯", comments:[
+    "대화 핑퐁이 좋음 🏓 먹을 때도 합 맞고!", "서로 텐션 맞으면 완벽한 케미 ✨", "이 조합 의외로 괜찮네? 계속 보고싶어 😊", "드립 주고받기 찰떡... 개그 콤비 가능 🎪"
   ]},
-  {range:[15,29], name:"냉온탕", emoji:"🧊🔥", comments:[
-    "롤러코스터 같은 케미 🎢 좋을 땐 미쳐!", "감정 스위치 조절 필요... 힘들긴 하지만", "기대치 낮추고 시작하면 의외의 발견 있을걸? 🤔"
+  {range:[50,59], name:"썸타기 딱 좋음", emoji:"💭", comments:[
+    "밀당의 정석! 썸 타면서 알아가는 재미 💭", "설레는 마음 70% + 궁금함 30% = 완벽 🎯", "카톡 1일 1답... 그래도 기다려지는 사이 📱", "친구인지 썸인지 애매한 그 느낌 아시죠? 😏"
   ]},
-  {range:[0,14], name:"웃픈 드라마", emoji:"🎭", comments:[
-    "밈 소재로는 완벽 😂 추억으로 봉인각!", "이 조합... 드립치기엔 좋은데 현실은...", "그냥 웃으면서 지나가자 ㅋㅋ 인생 뭐있어 🎭"
+  {range:[40,49], name:"친구가 최고", emoji:"🤝", comments:[
+    "사람 좋고 편안해 🤗 친구로는 찰떡!", "썸업은 천천히... 우정부터 깊게 가자", "이런 사람 곁에 두고 싶다 진짜 💫", "술 한잔하면서 인생 얘기하기 딱 좋음 🍺"
+  ]},
+  {range:[30,39], name:"극과 극", emoji:"⚖️", comments:[
+    "정반대인데 그게 또 매력이야 ⚖️", "취향 다른 게 오히려 신선하네?", "서로 다른 게 매력... 균형만 맞추면 OK! 🎭", "N극과 S극... 끌리긴 하는데 힘들 듯? 🧲"
+  ]},
+  {range:[20,29], name:"노력이 필요해", emoji:"🏗️", comments:[
+    "관계도 건설이야... 차근차근 쌓아가자 🏗️", "지금은 어색해도 시간이 해결해줄거야 ⏰", "첫인상은 그저 그런데... 매력 있을지도? 🤷", "한 달만 더 알아보고 결정하자... 🗓️"
+  ]},
+  {range:[10,19], name:"냉온탕", emoji:"🧊🔥", comments:[
+    "롤러코스터 같은 케미 🎢 좋을 땐 미쳐!", "감정 스위치 조절 필요... 힘들긴 하지만", "기대치 낮추고 시작하면 의외의 발견 있을걸? 🤔", "3일 좋고 3일 싸우고... 그래도 정들면? 😅"
+  ]},
+  {range:[5,9], name:"현실 체크 필요", emoji:"🚨", comments:[
+    "야... 이건 좀 다시 생각해봐 🚨", "친구들이 말릴 확률 99.9% 📊", "차라리 혼자가 나을지도... 진심 충고야 💔", "이 케미로 연애하면 스트레스 MAX 보장 😰"
+  ]},
+  {range:[0,4], name:"웃픈 드라마", emoji:"🎭", comments:[
+    "밈 소재로는 완벽 😂 추억으로 봉인각!", "이 조합... 드립치기엔 좋은데 현실은...", "그냥 웃으면서 지나가자 ㅋㅋ 인생 뭐있어 🎭", "우정 파괴 게임보다 위험한 케미... RIP 🪦"
   ]}
 ];
 function pickType(score){
@@ -398,20 +534,40 @@ const els = {
   canvas: document.getElementById('card'),
 };
 
-function toast(msg){
-  const t=document.createElement('div'); t.className='toast'; t.textContent=msg; document.body.appendChild(t);
-  setTimeout(()=>t.remove(),1500);
+function toast(msg, type='info'){
+  const t=document.createElement('div'); 
+  t.className=`toast ${type}`; 
+  t.textContent=msg; 
+  document.body.appendChild(t);
+  setTimeout(()=>t.remove(), type==='error' ? 3000 : 1500);
 }
 
 function compute(a,b){
-  a=normalizeName(a); b=normalizeName(b);
-  if(!a || !b){ toast('이름을 둘 다 입력해주세요!'); return null; }
-  // 오늘의 운명 모드로 고정
-  const seed = pairKey(a,b) + '|' + todayStr();
-  const score = seededPercent(seed);
-  const t = pickType(score);
-  const cmt = randFrom(t.comments, seed);
-  return {a,b,score,type:t,comment:cmt,seed};
+  try {
+    a=normalizeName(a); b=normalizeName(b);
+    if(!a || !b){ 
+      toast('이름을 둘 다 입력해주세요! 💕', 'error'); 
+      return null; 
+    }
+    if(a.length < 2 || b.length < 2){
+      toast('이름을 최소 2글자 이상 입력해주세요! ✍️', 'error');
+      return null;
+    }
+    if(a === b){
+      toast('같은 이름으로는 테스트할 수 없어요! 😅', 'error');
+      return null;
+    }
+    // 오늘의 운명 모드로 고정
+    const seed = pairKey(a,b) + '|' + todayStr();
+    const score = seededPercent(seed);
+    const t = pickType(score);
+    const cmt = randFrom(t.comments, seed);
+    return {a,b,score,type:t,comment:cmt,seed};
+  } catch(error) {
+    console.error('계산 오류:', error);
+    toast('오류가 발생했어요! 다시 시도해주세요 🔄', 'error');
+    return null;
+  }
 }
 
 function render(res){
@@ -516,8 +672,31 @@ function setupShare(url, title){
   els.shareLine.href = `https://line.me/R/msg/text/?${txt}%0A${u}`;
   els.shareX.href    = `https://twitter.com/intent/tweet?text=${txt}&url=${u}`;
   els.shareFb.href   = `https://www.facebook.com/sharer/sharer.php?u=${u}`;
-  els.copy.onclick = async ()=>{ try{ await navigator.clipboard.writeText(url); toast('링크를 복사했어요!'); }catch(e){ alert(url); } };
-  els.save.onclick = savePng;
+  
+  // 공유 버튼 이벤트 추가
+  els.shareLine.onclick = () => { 
+    if(typeof gtag !== 'undefined') gtag('event', 'share', {method: 'line'});
+  };
+  els.shareX.onclick = () => {
+    if(typeof gtag !== 'undefined') gtag('event', 'share', {method: 'twitter'});
+  };
+  els.shareFb.onclick = () => {
+    if(typeof gtag !== 'undefined') gtag('event', 'share', {method: 'facebook'});
+  };
+  
+  els.copy.onclick = async ()=>{ 
+    try{ 
+      await navigator.clipboard.writeText(url); 
+      toast('링크를 복사했어요!', 'success'); 
+      if(typeof gtag !== 'undefined') gtag('event', 'share', {method: 'copy_link'});
+    }catch(e){ 
+      alert(url); 
+    } 
+  };
+  els.save.onclick = () => {
+    savePng();
+    if(typeof gtag !== 'undefined') gtag('event', 'download_result_card');
+  };
 }
 
 // ========== 이벤트 ==========
@@ -528,10 +707,45 @@ els.again.onclick = ()=>{
   window.scrollTo({ top: 0, behavior: 'smooth' });
 };
 
-els.go.onclick = ()=>{
-  const res = compute(els.a.value, els.b.value);
-  if(!res) return;
-  render(res);
+els.go.onclick = async ()=>{
+  const btn = els.go;
+  if(btn.classList.contains('loading')) return;
+  
+  try {
+    // 로딩 시작
+    btn.classList.add('loading');
+    btn.disabled = true;
+    const originalText = btn.textContent;
+    btn.textContent = '케미 분석 중...';
+    
+    // 최소 로딩 시간 (UX)
+    await new Promise(resolve => setTimeout(resolve, 800));
+    
+    const res = compute(els.a.value, els.b.value);
+    if(!res) return;
+    
+    render(res);
+    toast('✨ 케미 분석 완료!', 'success');
+    
+    // GA 이벤트 추적
+    if(typeof gtag !== 'undefined') {
+      gtag('event', 'chemistry_test_completed', {
+        event_category: 'engagement',
+        event_label: `${res.a}-${res.b}`,
+        chemistry_score: res.score,
+        chemistry_type: res.type.name
+      });
+    }
+    
+  } catch(error) {
+    console.error('테스트 실행 오류:', error);
+    toast('오류가 발생했어요! 페이지를 새로고침해주세요 🔄', 'error');
+  } finally {
+    // 로딩 종료
+    btn.classList.remove('loading');
+    btn.disabled = false;
+    btn.textContent = '🔮 지금 운명 확인하기! 🔮';
+  }
 };
 
 // 엔터키 지원

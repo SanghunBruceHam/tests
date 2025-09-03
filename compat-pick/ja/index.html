@@ -5,24 +5,24 @@
 <title>🔥 名前相性テスト | 相性パーセント診断 - バイラルテスト</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="💘 名前を入力するだけで完成！相性パーセントと楽しい分析結果をゲットしよう。友達とシェアして比較する楽しさまで！今すぐテストしてSNSで自慢しよう ✨">
-<link rel="canonical" href="https://tests.mahalohana-bruce.com/viral/compat-pick/ja/index.html">
+<link rel="canonical" href="https://tests.mahalohana-bruce.com/compat-pick/ja/">
 
 <!-- hreflang -->
-<link rel="alternate" hreflang="ko" href="https://tests.mahalohana-bruce.com/viral/compat-pick/ko/index.html">
-<link rel="alternate" hreflang="ja" href="https://tests.mahalohana-bruce.com/viral/compat-pick/ja/index.html">
-<link rel="alternate" hreflang="en" href="https://tests.mahalohana-bruce.com/viral/compat-pick/en/index.html">
-<link rel="alternate" hreflang="x-default" href="https://tests.mahalohana-bruce.com/viral/compat-pick/en/index.html">
+<link rel="alternate" hreflang="ko" href="https://tests.mahalohana-bruce.com/compat-pick/ko/">
+<link rel="alternate" hreflang="ja" href="https://tests.mahalohana-bruce.com/compat-pick/ja/">
+<link rel="alternate" hreflang="en" href="https://tests.mahalohana-bruce.com/compat-pick/en/">
+<link rel="alternate" hreflang="x-default" href="https://tests.mahalohana-bruce.com/compat-pick/ko/">
 
 <!-- OGP -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="🔥 名前相性テスト | 今すぐ確認してみよう！">
 <meta property="og:description" content="💘 名前を入力するだけで相性パーセント完成！友達と比較してSNSでシェアする楽しさまで ✨ 今すぐやってみよう！">
-<meta property="og:url" content="https://tests.mahalohana-bruce.com/viral/compat-pick/ja/index.html">
-<meta property="og:image" content="https://tests.mahalohana-bruce.com/viral/compat-pick/assets/og-ja.png">
+<meta property="og:url" content="https://tests.mahalohana-bruce.com/compat-pick/ja/">
+<meta property="og:image" content="https://tests.mahalohana-bruce.com/compat-pick/og-ja.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="🔥 名前相性テスト | 今すぐ確認してみよう！">
 <meta name="twitter:description" content="💘 名前を入力するだけで相性パーセント完成！友達と比較する楽しさまで ✨">
-<meta name="twitter:image" content="https://tests.mahalohana-bruce.com/viral/compat-pick/assets/og-ja.png">
+<meta name="twitter:image" content="https://tests.mahalohana-bruce.com/compat-pick/og-ja.png">
 <meta name="twitter:site" content="@tests_mahalohana">
 
 <link rel="icon" href="https://tests.mahalohana-bruce.com/favicon.png" type="image/png">
@@ -147,6 +147,21 @@ button.primary{
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position:relative; overflow:hidden;
 }
+button.primary:disabled{
+  opacity:0.7; cursor:not-allowed; transform:none !important;
+}
+button.primary.loading{
+  pointer-events:none;
+}
+button.primary.loading::after{
+  content:''; position:absolute; top:50%; left:50%; width:20px; height:20px;
+  margin:-10px 0 0 -10px; border:2px solid transparent; border-top:2px solid #fff;
+  border-radius:50%; animation:spin 1s linear infinite;
+}
+@keyframes spin{
+  0%{transform:rotate(0deg);}
+  100%{transform:rotate(360deg);}
+}
 button.primary:hover{
   transform: translateY(-2px) scale(1.05);
   box-shadow:0 15px 40px rgba(255,107,107,0.4);
@@ -166,10 +181,92 @@ button.primary:hover::before{
 .badge{display:inline-flex; gap:8px; align-items:center; padding:8px 12px; border-radius:999px; font-size:12px; font-weight:800; background:rgba(255,107,107,0.1); color:var(--brand); border:1px solid rgba(255,107,107,0.3); backdrop-filter:blur(5px);}
 .grid2{display:grid; grid-template-columns:1fr 1fr; gap:14px}
 @media (max-width: 720px){ 
+  .container {max-width: 100%; padding: 12px;}
   .row{grid-template-columns:1fr; gap:12px;}
-  #result {padding:24px 16px !important;}
+  .hero{grid-template-columns:1fr; gap:16px; text-align:center;}
+  .example-card{margin-top:20px;}
+  input[type=text]{font-size:16px; padding:14px 16px;}
+  button.primary{padding:14px 24px; font-size:16px;}
+  #result {padding:20px 12px !important;}
   #result > div[style*="flex"] {flex-direction:column !important;}
-  #result a, #result button {min-width:200px; text-align:center;}
+  #result a, #result button {min-width:200px; text-align:center; margin-bottom:8px;}
+  .share{justify-content:center;}
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 8px;
+    max-width: 100%;
+  }
+  
+  .header-controls {
+    top: 4px;
+    right: 4px;
+    padding: 4px;
+    gap: 4px;
+  }
+  
+  .lang-btn {
+    padding: 4px 8px;
+    font-size: 10px;
+  }
+  
+  .theme-toggle {
+    width: 32px;
+    height: 32px;
+    font-size: 12px;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+    line-height: 1.2;
+  }
+
+  .subtitle {
+    font-size: 0.85rem;
+    margin-bottom: 12px;
+    padding: 0 8px;
+  }
+  
+  .pill {
+    font-size: 11px;
+    padding: 6px 12px;
+  }
+  
+  input[type=text] {
+    font-size: 16px;
+    padding: 12px 14px;
+  }
+  
+  .card {
+    padding: 16px;
+    border-radius: 16px;
+  }
+  
+  .example-card {
+    padding: 20px;
+  }
+  
+  #result {
+    padding: 16px 8px !important;
+  }
+  
+  #result .badge {
+    font-size: 14px;
+    padding: 6px 12px;
+  }
+  
+  #result #score {
+    font-size: clamp(48px, 10vw, 72px) !important;
+  }
+  
+  #result #type {
+    font-size: clamp(16px, 4vw, 20px) !important;
+  }
+  
+  #result #comment {
+    font-size: 16px !important;
+  }
 }
 .share{display:flex; gap:10px; flex-wrap:wrap}
 .share a, .share button{padding:12px 16px; border-radius:12px; font-weight:800; transition:all 0.2s ease;}
@@ -187,6 +284,12 @@ small.hint{color:var(--muted); display:block; margin-top:6px}
 .toast{
   position:fixed; left:50%; bottom:24px; transform:translateX(-50%);
   background:linear-gradient(135deg,var(--brand),var(--brand2)); color:#fff; padding:12px 20px; border-radius:15px; z-index:9999; font-weight:800; box-shadow:0 10px 30px var(--glow); animation:toast-in 0.3s ease;
+}
+.toast.error{
+  background:linear-gradient(135deg,#dc2626,#b91c1c); box-shadow:0 10px 30px rgba(220,38,38,0.3);
+}
+.toast.success{
+  background:linear-gradient(135deg,#059669,#047857); box-shadow:0 10px 30px rgba(5,150,105,0.3);
 }
 @keyframes toast-in {
   from { opacity:0; transform:translateX(-50%) translateY(20px); }
@@ -206,6 +309,18 @@ small.hint{color:var(--muted); display:block; margin-top:6px}
 }
 </style>
 
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-45VSGEM7EZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-45VSGEM7EZ', {
+    page_title: 'Name Chemistry Test JA',
+    page_location: window.location.href
+  });
+</script>
+
 <!-- (オプション) アドセンス位置の例
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXX" crossorigin="anonymous"></script>
 -->
@@ -216,7 +331,7 @@ small.hint{color:var(--muted); display:block; margin-top:6px}
   "@type":"Quiz",
   "name":"名前相性テスト",
   "description":"名前の相性をテストして楽しい相性パーセント結果を取得",
-  "url":"https://tests.mahalohana-bruce.com/viral/compat-pick/ja/index.html",
+  "url":"https://tests.mahalohana-bruce.com/compat-pick/ja/",
   "applicationCategory":"EntertainmentApplication",
   "inLanguage":"ja",
   "operatingSystem":"All",
@@ -359,26 +474,41 @@ function seededPercent(seedStr){
 
 // バイラルなタイプ/コメント
 const TYPES = [
-  {range:[90,100], name:"ソウルメイト", emoji:"💘", comments:[
-    "本当に相性やばい...二人でいると時間が秒で過ぎる😍", "こんな相性は一生に一度！羨ましすぎる🥺", "連絡のテンポまでぴったり...これが本当の運命✨"
+  {range:[95,100], name:"運命の赤い糸", emoji:"💫", comments:[
+    "これは...前世からの約束としか思えない💫", "DNAレベルで引かれ合ってる...結婚しかない👰", "出会えた奇跡に感謝...この相性は宝くじ当選級🎰", "もうこれ以上の相性は存在しないでしょ...羨ましすぎて泣く😭"
   ]},
-  {range:[75,89], name:"燃える相性", emoji:"🔥", comments:[
-    "これくらい熱い！喧嘩してもすぐ仲直り🔥", "エネルギーやばいです💥 一緒にいると幸せ過多！", "この相性をどうやって我慢する？本当に羨ましい😤"
+  {range:[90,94], name:"ソウルメイト", emoji:"💘", comments:[
+    "本当に相性やばい...二人でいると時間が秒で過ぎる😍", "こんな相性は一生に一度！羨ましすぎる🥺", "連絡のテンポまでぴったり...これが本当の運命✨", "一緒にいるだけで世界が輝いて見える🌟"
   ]},
-  {range:[60,74], name:"息ぴったり", emoji:"🎯", comments:[
-    "会話のキャッチボールが良い🏓 食べる時も合うし！", "お互いのテンションが合えば完璧な相性✨", "この組み合わせ意外にいいね？もっと見たい😊"
+  {range:[80,89], name:"燃える相性", emoji:"🔥", comments:[
+    "これくらい熱い！喧嘩してもすぐ仲直り🔥", "エネルギーやばいです💥 一緒にいると幸せ過多！", "この相性をどうやって我慢する？本当に羨ましい😤", "毎日がドラマみたい...心臓に悪いけど最高💓"
   ]},
-  {range:[45,59], name:"友達が最高", emoji:"🤝", comments:[
-    "人柄が良くて楽🤗 友達としてはぴったり！", "恋愛は慎重に...まず友情を深めよう", "こんな人を側に置いておきたい本当に💫"
+  {range:[70,79], name:"ハニーカップル", emoji:"🍯", comments:[
+    "甘々すぎて見てる人が恥ずかしい🍯", "この二人の周りだけピンク色のオーラが...🌸", "デートプラン何でも楽しそう！遊園地でも図書館でも💑", "SNSのカップル写真が眩しすぎる問題📸"
   ]},
-  {range:[30,44], name:"正反対の魅力", emoji:"⚖️", comments:[
-    "正反対だけどそれがまた魅力⚖️", "趣味が違うのが逆に新鮮？", "お互い違うのが魅力...バランスさえ取れればOK！🎭"
+  {range:[60,69], name:"息ぴったり", emoji:"🎯", comments:[
+    "会話のキャッチボールが良い🏓 食べる時も合うし！", "お互いのテンションが合えば完璧な相性✨", "この組み合わせ意外にいいね？もっと見たい😊", "ツッコミとボケの配分が絶妙...お笑いコンビ結成？🎪"
   ]},
-  {range:[15,29], name:"冷温浴", emoji:"🧊🔥", comments:[
-    "ジェットコースターみたいな相性🎢 良い時は最高！", "感情のスイッチ調節が必要...辛いけど", "期待値を下げてスタートすれば意外な発見があるかも？🤔"
+  {range:[50,59], name:"微妙な駆け引き", emoji:"💭", comments:[
+    "友達以上恋人未満...もどかしい関係性💭", "気になるけど一歩踏み出せない...その感じわかる😌", "LINEの既読スルーで一喜一憂する日々📱", "告白のタイミング見計らい中...頑張れ！🎯"
   ]},
-  {range:[0,14], name:"お笑いドラマ", emoji:"🎭", comments:[
-    "ミーム素材としては完璧😂 思い出として封印各！", "この組み合わせ...ギャグには良いけど現実は...", "笑いながら通り過ぎよう(笑) 人生何があるの🎭"
+  {range:[40,49], name:"友達が最高", emoji:"🤝", comments:[
+    "人柄が良くて楽🤗 友達としてはぴったり！", "恋愛は慎重に...まず友情を深めよう", "こんな人を側に置いておきたい本当に💫", "飲み友達としては最高！恋愛は...うーん？🍺"
+  ]},
+  {range:[30,39], name:"正反対の魅力", emoji:"⚖️", comments:[
+    "正反対だけどそれがまた魅力⚖️", "趣味が違うのが逆に新鮮？", "お互い違うのが魅力...バランスさえ取ればOK！🎭", "インドアとアウトドア...でも意外と？🏠⛺"
+  ]},
+  {range:[20,29], name:"努力次第", emoji:"🏗️", comments:[
+    "関係も建設中...コツコツ積み上げよう🏗️", "今は微妙でも時間が解決してくれるはず⏰", "第一印象はイマイチだけど...実は魅力的かも？🤷", "3ヶ月様子見て...それから判断しよう📅"
+  ]},
+  {range:[10,19], name:"冷温浴", emoji:"🧊🔥", comments:[
+    "ジェットコースターみたいな相性🎢 良い時は最高！", "感情のスイッチ調節が必要...辛いけど", "期待値を下げてスタートすれば意外な発見があるかも？🤔", "月3で喧嘩、月4で仲直り...疲れそう😅"
+  ]},
+  {range:[5,9], name:"赤信号", emoji:"🚨", comments:[
+    "ちょっと待って...これは考え直した方が🚨", "友達みんなが止めるレベルの相性💔", "ソロ活の方が幸せかも...本気のアドバイス🙏", "この相性で付き合うとストレスMAX確定😰"
+  ]},
+  {range:[0,4], name:"お笑いドラマ", emoji:"🎭", comments:[
+    "ミーム素材としては完璧😂 思い出として封印各！", "この組み合わせ...ギャグには良いけど現実は...", "笑いながら通り過ぎよう(笑) 人生何があるの🎭", "友情破壊ゲームより危険な相性...さようなら👋"
   ]}
 ];
 function pickType(score){
@@ -410,14 +540,29 @@ const els = {
   canvas: document.getElementById('card'),
 };
 
-function toast(msg){
-  const t=document.createElement('div'); t.className='toast'; t.textContent=msg; document.body.appendChild(t);
-  setTimeout(()=>t.remove(),1500);
+function toast(msg, type='info'){
+  const t=document.createElement('div'); 
+  t.className=`toast ${type}`; 
+  t.textContent=msg; 
+  document.body.appendChild(t);
+  setTimeout(()=>t.remove(), type==='error' ? 3000 : 1500);
 }
 
 function compute(a,b){
-  a=normalizeName(a); b=normalizeName(b);
-  if(!a || !b){ toast('名前を両方入力してください！'); return null; }
+  try {
+    a=normalizeName(a); b=normalizeName(b);
+    if(!a || !b){ 
+      toast('名前を両方入力してください! 💕', 'error'); 
+      return null; 
+    }
+    if(a.length < 2 || b.length < 2){
+      toast('名前は最低2文字以上入力してください! ✍️', 'error');
+      return null;
+    }
+    if(a === b){
+      toast('同じ名前ではテストできません! 😅', 'error');
+      return null;
+    }
   // 今日の運命モードに固定
   const seed = pairKey(a,b) + '|' + todayStr();
   const score = seededPercent(seed);
@@ -540,10 +685,45 @@ els.again.onclick = ()=>{
   window.scrollTo({ top: 0, behavior: 'smooth' });
 };
 
-els.go.onclick = ()=>{
-  const res = compute(els.a.value, els.b.value);
-  if(!res) return;
-  render(res);
+els.go.onclick = async ()=>{
+  const btn = els.go;
+  if(btn.classList.contains('loading')) return;
+  
+  try {
+    // ローディング開始
+    btn.classList.add('loading');
+    btn.disabled = true;
+    const originalText = btn.textContent;
+    btn.textContent = '相性分析中...';
+    
+    // 最低ローディング時間 (UX)
+    await new Promise(resolve => setTimeout(resolve, 800));
+    
+    const res = compute(els.a.value, els.b.value);
+    if(!res) return;
+    
+    render(res);
+    toast('✨ 相性分析完了!', 'success');
+    
+    // GA イベント追跡
+    if(typeof gtag !== 'undefined') {
+      gtag('event', 'chemistry_test_completed', {
+        event_category: 'engagement',
+        event_label: `${res.a}-${res.b}`,
+        chemistry_score: res.score,
+        chemistry_type: res.type.name
+      });
+    }
+    
+  } catch(error) {
+    console.error('テスト実行エラー:', error);
+    toast('エラーが発生しました! ページを更新してください 🔄', 'error');
+  } finally {
+    // ローディング終了
+    btn.classList.remove('loading');
+    btn.disabled = false;
+    btn.textContent = '🔮 今すぐ運命確認！ 🔮';
+  }
 };
 
 // Enterキーサポート
