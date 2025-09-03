@@ -79,7 +79,7 @@
     window.quizConfig = {
       id: 'kfood-romance',
       title: '좋아하는 한국음식으로 보는 연애 취향',
-      subtitle: '1분, 6문항, 결과 카드 공유',
+      subtitle: '1분, 10문항, 결과 카드 공유',
       share: { title: 'K-FOOD 로맨스 테스트', hashtags: '심리테스트,연애,한식' },
       categories: {
         stability: { name: '따뜻한 안정형', description: '정갈하고 균형 잡힌 연애를 선호. 믿음과 루틴을 소중히 여겨요.' },
@@ -123,6 +123,30 @@
           { text:'달고 강렬!', weights:{ passion:2 } },
           { text:'따뜻한 차/커피', weights:{ caretaking:2 } },
           { text:'계절 한정 신상', weights:{ free:2 } }
+        ]},
+        { id:'q7', text:'밥/면/빵 중 데이트 때 더 자주?', options:[
+          { text:'한식 밥 위주', weights:{ stability:2 } },
+          { text:'면/분식', weights:{ passion:2 } },
+          { text:'빵/디저트', weights:{ free:2 } },
+          { text:'상대 취향 맞춤', weights:{ caretaking:2 } }
+        ]},
+        { id:'q8', text:'국/찌개 vs 마른 반찬 위주', options:[
+          { text:'국물 있어야 든든', weights:{ stability:2 } },
+          { text:'메인/사이드 위주', weights:{ passion:2 } },
+          { text:'균형 잡힌 한 상', weights:{ caretaking:2 } },
+          { text:'그날 살짝 다른 스타일', weights:{ free:2 } }
+        ]},
+        { id:'q9', text:'식사 장소 선택', options:[
+          { text:'조용한 아지트', weights:{ stability:2 } },
+          { text:'핫한 신상', weights:{ passion:2 } },
+          { text:'집에서 요리', weights:{ caretaking:2 } },
+          { text:'야외/피크닉', weights:{ free:2 } }
+        ]},
+        { id:'q10', text:'매운맛 단계', options:[
+          { text:'순한맛', weights:{ caretaking:2 } },
+          { text:'보통', weights:{ stability:2 } },
+          { text:'매운맛', weights:{ passion:2 } },
+          { text:'그때그때', weights:{ free:2 } }
         ]}
       ]
     };

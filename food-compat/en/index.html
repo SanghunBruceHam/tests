@@ -51,16 +51,13 @@
     <div id="quiz"></div>
   </main>
 
-  <div class="mid-ad" aria-label="Sponsored">
-    <script src="https://ads-partners.coupang.com/g.js"></script>
-    <script>new PartnersCoupang.G({"id":867629,"template":"carousel","trackingCode":"AF6959276","width":"680","height":"140","tsource":""});</script>
-  </div>
+
 
   <script>
     window.quizConfig = {
       id: 'food-compat',
       title: 'Food Compatibility: Couple Chemistry',
-      subtitle: '1 minute · 6 questions · menu harmony',
+      subtitle: '1 minute · 10 questions · menu harmony',
       share: { title: 'Food Compatibility Test', hashtags: 'couple,chemistry,food' },
       categories: {
         perfect: { name:'Perfect Match', description:'Tastes and mood align almost perfectly. Choosing menus is pure joy.' },
@@ -104,6 +101,30 @@
           { text:'Noodles / street food', weights:{ good:2 } },
           { text:'BBQ / world cuisines', weights:{ spicy:2 } },
           { text:'Salad / light menu', weights:{ tricky:2 } }
+        ]},
+        { id:'q7', text:'Food photos / journaling', options:[
+          { text:'Always record', weights:{ perfect:2 } },
+          { text:'Sometimes', weights:{ good:2 } },
+          { text:'For SNS frequently', weights:{ spicy:2 } },
+          { text:'Rarely take photos', weights:{ tricky:2 } }
+        ]},
+        { id:'q8', text:'Reservation vs. spontaneous', options:[
+          { text:'Reserve ahead', weights:{ perfect:2 } },
+          { text:'Depends on context', weights:{ good:2 } },
+          { text:'Spontaneous exploration', weights:{ spicy:2 } },
+          { text:'Fixed places mostly', weights:{ tricky:2 } }
+        ]},
+        { id:'q9', text:'Pace of eating', options:[
+          { text:'Slow with conversations', weights:{ perfect:2 } },
+          { text:'Average', weights:{ good:2 } },
+          { text:'Quick tasting & move', weights:{ spicy:2 } },
+          { text:'Slow/small portions', weights:{ tricky:2 } }
+        ]},
+        { id:'q10', text:'Beverage choice', options:[
+          { text:'Pairing with menu', weights:{ perfect:2 } },
+          { text:'Safe choice', weights:{ good:2 } },
+          { text:'Signature/new item', weights:{ spicy:2 } },
+          { text:'Water/light', weights:{ tricky:2 } }
         ]}
       ]
     };

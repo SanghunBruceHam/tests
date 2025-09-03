@@ -51,16 +51,13 @@
     <div id="quiz"></div>
   </main>
 
-  <div class="mid-ad" aria-label="おすすめ">
-    <script src="https://ads-partners.coupang.com/g.js"></script>
-    <script>new PartnersCoupang.G({"id":867629,"template":"carousel","trackingCode":"AF6959276","width":"680","height":"140","tsource":""});</script>
-  </div>
+
 
   <script>
     window.quizConfig = {
       id: 'food-compat',
       title: 'フード相性テスト',
-      subtitle: '1分・6問・メニュー相性チェック',
+      subtitle: '1分・10問・メニュー相性チェック',
       share: { title: 'フード相性テスト', hashtags: 'カップル,相性,フード' },
       categories: {
         perfect: { name:'完璧ケミ', description:'味覚もムードもほぼ一致！メニュー選びも楽しいだけ。' },
@@ -104,6 +101,30 @@
           { text:'麺/屋台フード', weights:{ good:2 } },
           { text:'BBQ/各国料理', weights:{ spicy:2 } },
           { text:'サラダ/ライトメニュー', weights:{ tricky:2 } }
+        ]},
+        { id:'q7', text:'食事の記録', options:[
+          { text:'必ず写真を撮る', weights:{ perfect:2 } },
+          { text:'時々', weights:{ good:2 } },
+          { text:'SNS用によく撮る', weights:{ spicy:2 } },
+          { text:'ほとんど撮らない', weights:{ tricky:2 } }
+        ]},
+        { id:'q8', text:'予約 vs 即興', options:[
+          { text:'事前に予約', weights:{ perfect:2 } },
+          { text:'状況次第', weights:{ good:2 } },
+          { text:'即興で探索', weights:{ spicy:2 } },
+          { text:'決まった店が多い', weights:{ tricky:2 } }
+        ]},
+        { id:'q9', text:'食べるペース', options:[
+          { text:'ゆっくり会話しながら', weights:{ perfect:2 } },
+          { text:'ふつう', weights:{ good:2 } },
+          { text:'さっと味見して次へ', weights:{ spicy:2 } },
+          { text:'ゆっくり少食', weights:{ tricky:2 } }
+        ]},
+        { id:'q10', text:'ドリンク選び', options:[
+          { text:'料理とペアリング', weights:{ perfect:2 } },
+          { text:'無難な飲み物', weights:{ good:2 } },
+          { text:'新作/シグネチャー', weights:{ spicy:2 } },
+          { text:'水/ライト', weights:{ tricky:2 } }
         ]}
       ]
     };

@@ -51,16 +51,13 @@
     <div id="quiz"></div>
   </main>
 
-  <div class="mid-ad" aria-label="Sponsored">
-    <script src="https://ads-partners.coupang.com/g.js"></script>
-    <script>new PartnersCoupang.G({"id":867629,"template":"carousel","trackingCode":"AF6959276","width":"680","height":"140","tsource":""});</script>
-  </div>
+
 
   <script>
     window.quizConfig = {
       id: 'kpop-egen-teto',
       title: 'K‑POP EGEN/TETO Preference',
-      subtitle: '1 minute · 6 questions · music vibe',
+      subtitle: '1 minute · 10 questions · music vibe',
       share: { title: 'EGEN/TETO Preference Test', hashtags: 'kpop,egen,teto' },
       categories: {
         egen: { name:'EGEN', description:'Loves experiment/variation/freedom. Bold attempts and creativity.' },
@@ -103,6 +100,30 @@
           { text:'R&B / ballad', weights:{ teto:2 } },
           { text:'Hip‑hop / alt', weights:{ mix:2 } },
           { text:'Pop', weights:{ mix:1 } }
+        ]},
+        { id:'q7', text:'Concept photos', options:[
+          { text:'Experimental colors', weights:{ egen:2 } },
+          { text:'Refined mood', weights:{ teto:2 } },
+          { text:'Immersive lore', weights:{ mix:2 } },
+          { text:'Casual/natural', weights:{ mix:1, egen:1 } }
+        ]},
+        { id:'q8', text:'Remix preference', options:[
+          { text:'Welcome new twists', weights:{ egen:2 } },
+          { text:'Stick to the original', weights:{ teto:2 } },
+          { text:'Depends on project', weights:{ mix:2 } },
+          { text:'Don’t mind much', weights:{ mix:1 } }
+        ]},
+        { id:'q9', text:'Stage props/set', options:[
+          { text:'Minimal experiments', weights:{ egen:2 } },
+          { text:'High‑finish details', weights:{ teto:2 } },
+          { text:'Concept‑immersion', weights:{ mix:2 } },
+          { text:'Natural presence', weights:{ mix:1 } }
+        ]},
+        { id:'q10', text:'Playlist curation', options:[
+          { text:'Wide genre range', weights:{ egen:2 } },
+          { text:'Album‑centric', weights:{ teto:2 } },
+          { text:'Theme mix', weights:{ mix:2 } },
+          { text:'Title‑track focused', weights:{ mix:1 } }
         ]}
       ]
     };

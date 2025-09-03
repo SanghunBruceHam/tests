@@ -70,16 +70,13 @@
     <div id="quiz"></div>
   </main>
 
-  <div class="mid-ad" aria-label="Sponsored">
-    <script src="https://ads-partners.coupang.com/g.js"></script>
-    <script>new PartnersCoupang.G({"id":867629,"template":"carousel","trackingCode":"AF6959276","width":"680","height":"140","tsource":""});</script>
-  </div>
+
 
   <script>
     window.quizConfig = {
       id: 'kfood-romance',
       title: 'K‑FOOD Romance: Find Your Dating Style',
-      subtitle: '1 minute · 6 questions · shareable result card',
+      subtitle: '1 minute · 10 questions · shareable result card',
       share: { title: 'K‑FOOD Romance Test', hashtags: 'psychology,love,kfood' },
       categories: {
         stability: { name: 'Warm & Stable', description: 'Prefers steady, balanced relationships with trust and comforting routines.' },
@@ -123,6 +120,30 @@
           { text:'Bold & sweet', weights:{ passion:2 } },
           { text:'Warm tea / coffee', weights:{ caretaking:2 } },
           { text:'Seasonal limited items', weights:{ free:2 } }
+        ]},
+        { id:'q7', text:'Rice / noodles / bakery for dates?', options:[
+          { text:'Korean rice dishes', weights:{ stability:2 } },
+          { text:'Noodles / street food', weights:{ passion:2 } },
+          { text:'Bakery / dessert', weights:{ free:2 } },
+          { text:'Match my partner', weights:{ caretaking:2 } }
+        ]},
+        { id:'q8', text:'Soup/stew vs dry dishes', options:[
+          { text:'Soup/stew is a must', weights:{ stability:2 } },
+          { text:'Main + sides', weights:{ passion:2 } },
+          { text:'Balanced combo', weights:{ caretaking:2 } },
+          { text:'Depends on the day', weights:{ free:2 } }
+        ]},
+        { id:'q9', text:'Place selection', options:[
+          { text:'Quiet hideout', weights:{ stability:2 } },
+          { text:'Hot new place', weights:{ passion:2 } },
+          { text:'Cook at home', weights:{ caretaking:2 } },
+          { text:'Outdoor / picnic', weights:{ free:2 } }
+        ]},
+        { id:'q10', text:'Spice level', options:[
+          { text:'Mild', weights:{ caretaking:2 } },
+          { text:'Medium', weights:{ stability:2 } },
+          { text:'Spicy', weights:{ passion:2 } },
+          { text:'It varies', weights:{ free:2 } }
         ]}
       ]
     };

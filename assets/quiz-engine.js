@@ -247,10 +247,88 @@
     const container = document.createElement('div');
     container.className = 'q-result';
     const baseUrl = (document.documentElement.lang||'ko').startsWith('ja') ? '/ja/' : (document.documentElement.lang||'ko').startsWith('en') ? '/en/' : '/';
+    // Build insights (score bars + secondary trait) and tips
+    const insightsHtml = (function(){
+      const entries = Object.entries(result.scores||{});
+      if (!entries.length) return '';
+      const sorted = entries.sort((a,b)=>b[1]-a[1]);
+      const top = sorted[0];
+      const second = sorted[1];
+      const bars = sorted.map(([k,v])=>{
+        const max = top ? top[1] : 1;
+        const pct = Math.max(6, Math.round((v / (max||1)) * 100));
+        const name = (config.categories[k] && config.categories[k].name) || k;
+        return `<div class="scorebar"><div class="label">${escapeHtml(name)}</div><div class="bar"><span style="width:${pct}%"></span></div></div>`;
+      }).join('');
+      const secLine = second && config.categories[second[0]] ? `<div class="secondary">${escapeHtml(config.categories[second[0]].name)} 기질이 함께 보여요.</div>` : '';
+      return `<div class="q-insights">${secLine}<div class="score-list">${bars}</div></div>`;
+    })();
+    const tipsHtml = (function(){
+      const lang = (document.documentElement.lang||'ko').slice(0,2);
+      const T = {
+        ko: {
+          stability: '루틴과 신뢰를 살린 데이트를 계획해보세요. 조용한 맛집, 산책이 잘 맞아요.',
+          passion: '새롭고 강렬한 경험을 탐색해보세요. 테마공원/콘서트/핫플 탐방 추천!',
+          caretaking: '따뜻한 관심과 배려가 큰 힘이 돼요. 직접 만든 작은 선물도 좋습니다.',
+          free: '자유롭고 편안한 분위기를 만들어보세요. 피크닉/드라이브 찰떡!',
+          perfect: '메뉴 고민이 즐거운 케미! 음식 사진 챌린지를 함께 해보세요.',
+          good: '합의점을 정하고 가끔 새로운 맛도 시도해보세요.',
+          spicy: '취향 차이를 놀이로! “매운맛 챌린지” 같은 미션으로 재미를.',
+          tricky: '“주 1회 번갈아 선택” 같은 룰을 정하면 편해요.',
+          leader: '명확한 플랜 공유 + 경청을 함께. 일정은 간결하게.',
+          vocal: '감정을 자주 표현하고 공감 대화를 연습하세요.',
+          rap: '쿨한 솔직함에 배려 한 스푼을 더하면 완벽!',
+          center: '무드/비주얼 연출이 강점. 사진 스폿/드레스코드로 설렘↑',
+          all: '상황 적응형 장점! 파트너 스타일에 맞춰 모드 전환.',
+          egen: '새 장르/콜라보 탐험! 실험정신이 매력 포인트.',
+          teto: '완성도 높은 디테일로 설득력↑ 정성 플랜 잘 어울림.',
+          mix: 'EGEN×TETO 밸런스! 순간에 맞게 톤 조절로 시너지.'
+        },
+        en: {
+          stability: 'Plan calm, trust‑building dates—cozy spots and walks work well.',
+          passion: 'Try bold, novel experiences—theme parks, concerts, hot places.',
+          caretaking: 'Warm care matters—a small handmade gift can be lovely.',
+          free: 'Keep it light and free—picnic or scenic drives shine.',
+          perfect: 'Make menu‑picking fun—start a food photo challenge together.',
+          good: 'Find middle ground and try new tastes occasionally.',
+          spicy: 'Turn differences into play—try a “spice challenge.”',
+          tricky: 'Set simple rules like “take turns choosing weekly.”',
+          leader: 'Share clear plans yet listen well; keep the itinerary concise.',
+          vocal: 'Express feelings often and practice empathetic talks.',
+          rap: 'Be direct yet kind—cool honesty plus care wins.',
+          center: 'Lean into mood/visuals—photo spots and dress codes spark fun.',
+          all: 'Adapt strengths to partner’s style; switch modes as needed.',
+          egen: 'Explore genres/collabs—the experimental vibe attracts.',
+          teto: 'Show refined details—a well‑crafted plan fits you.',
+          mix: 'Balance EGEN×TETO; tune your tone to the moment.'
+        },
+        ja: {
+          stability: '落ち着いた信頼づくりデートを。居心地のよい店と散歩が相性◎',
+          passion: '新しく刺激的な体験を。テーマパーク/ライブ/話題スポットへ',
+          caretaking: 'やさしい気遣いが鍵。手作りの小さなギフトも素敵',
+          free: '軽やかで自由な空気を。ピクニックやドライブが映えます',
+          perfect: 'メニュー選び自体を楽しもう。写真企画を一緒に！',
+          good: '歩み寄りルールを作り、時々新しい味にも挑戦',
+          spicy: '違いを遊びに。辛さチャレンジなどミッション制も楽しい',
+          tricky: '「週1交代で選ぶ」など簡単なルール設定が有効',
+          leader: '方向性を示しつつ傾聴を。プラン共有は簡潔に',
+          vocal: '気持ちを言葉に。共感の会話を習慣化しよう',
+          rap: '率直さに思いやりを添えて最強に',
+          center: 'ムード/ビジュアル演出が得意。撮影スポットやドレスコードも',
+          all: '状況適応の強み。相手の性格に合わせてモード切替を',
+          egen: '新ジャンル/コラボの探索を。実験精神が魅力',
+          teto: '完成度の高いディテールを。丁寧なプランが似合う',
+          mix: 'EGEN×TETOのバランス。瞬間に合わせてトーン調整'
+        }
+      };
+      return (T[lang] && T[lang][result.categoryId]) || '';
+    })();
     container.innerHTML = `
       <div class="badge">${I18N.resultBadge}</div>
       <h2>${escapeHtml(cat.name)}</h2>
       <p class="muted">${escapeHtml(cat.description)}</p>
+      ${insightsHtml}
+      ${tipsHtml ? `<div class=\"q-tips\">${tipsHtml}</div>` : ''}
       <div class="share">
         <button class="share-x">${I18N.shareX}</button>
         <button class="copy">${I18N.copy}</button>
@@ -339,6 +417,14 @@
     .q-result .badge{ display:inline-block; padding:4px 10px; border-radius:999px; background:#f1f5f9; color:#64748b; font-size:12px; margin-bottom:8px; }
     .q-result h2{ margin:6px 0 8px; }
     .q-result .muted{ color: var(--text-secondary,#666); }
+    .q-insights{ margin-top:10px; text-align:left; max-width:820px; margin-left:auto; margin-right:auto; }
+    .q-insights .secondary{ font-size:.95rem; color: var(--text-secondary,#666); margin:4px 0 8px; }
+    .score-list{ display:grid; gap:6px; }
+    .scorebar{ display:flex; align-items:center; gap:8px; }
+    .scorebar .label{ width:120px; font-size:.9rem; color:#374151; }
+    .scorebar .bar{ flex:1; height:8px; background:#eef2f7; border-radius:999px; overflow:hidden; }
+    .scorebar .bar > span{ display:block; height:100%; background:linear-gradient(90deg,#667eea,#764ba2); }
+    .q-tips{ background:#f8fafc; border:1px solid #e5e7eb; border-radius:12px; padding:10px; margin:12px 0; font-size:.95rem; color:#374151; }
     .q-result .share{ display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin-top:12px; 
       background: var(--share-bg, #f8fafc); border:1px solid var(--border-color,#e5e7eb); border-radius:12px; padding:8px; }
     .q-result .share button{ padding:8px 12px; border-radius:999px; border:1px solid var(--border-color,#e5e7eb); background:#ffffff; color:#111; cursor:pointer; box-shadow: 0 2px 6px rgba(0,0,0,.06); }
@@ -360,19 +446,27 @@
     const map = {
       'kfood-romance': [
         { id: 'food-compat', path: 'food-compat' },
-        { id: 'romance-test', path: 'romance-test' }
+        { id: 'romance-test', path: 'romance-test' },
+        { id: 'anime-personality', path: 'anime-personality' },
+        { id: 'egen-teto', path: 'egen-teto' }
       ],
       'food-compat': [
         { id: 'kfood-romance', path: 'kfood-romance' },
-        { id: 'romance-test', path: 'romance-test' }
+        { id: 'romance-test', path: 'romance-test' },
+        { id: 'anime-personality', path: 'anime-personality' },
+        { id: 'egen-teto', path: 'egen-teto' }
       ],
       'kpop-idol-romance': [
         { id: 'kpop-egen-teto', path: 'kpop-egen-teto' },
-        { id: 'egen-teto', path: 'egen-teto' }
+        { id: 'egen-teto', path: 'egen-teto' },
+        { id: 'romance-test', path: 'romance-test' },
+        { id: 'anime-personality', path: 'anime-personality' }
       ],
       'kpop-egen-teto': [
         { id: 'kpop-idol-romance', path: 'kpop-idol-romance' },
-        { id: 'egen-teto', path: 'egen-teto' }
+        { id: 'egen-teto', path: 'egen-teto' },
+        { id: 'romance-test', path: 'romance-test' },
+        { id: 'anime-personality', path: 'anime-personality' }
       ]
     };
     const items = map[config.id] || [];
@@ -409,7 +503,7 @@
     const title = locale==='ja' ? 'おすすめのテスト' : locale==='en' ? 'Recommended Tests' : '추천 테스트';
     section.innerHTML = `<h3 style="margin:14px 0 8px;">${title}</h3>`;
     const list = document.createElement('div');
-    list.style.display = 'grid'; list.style.gap = '8px';
+    list.style.display = 'grid'; list.style.gap = '8px'; list.style.gridTemplateColumns = '1fr';
     items.forEach(it => {
       const a = document.createElement('a');
       a.className = 'q-option';

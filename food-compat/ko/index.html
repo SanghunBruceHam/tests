@@ -57,7 +57,7 @@
     window.quizConfig = {
       id: 'food-compat',
       title: '좋아하는 음식으로 보는 연인 궁합',
-      subtitle: '1분, 6문항, 데이트 케미 체크',
+      subtitle: '1분, 10문항, 데이트 케미 체크',
       share: { title: '음식 궁합 테스트', hashtags: '커플,궁합,심리테스트' },
       categories: {
         perfect: { name:'완벽 케미', description:'식성/무드가 거의 일치! 메뉴 고민이 즐겁기만 해요.' },
@@ -101,6 +101,30 @@
           { text:'면/분식', weights:{ good:2 } },
           { text:'BBQ/이국요리', weights:{ spicy:2 } },
           { text:'샐러드/라이트', weights:{ tricky:2 } }
+        ]},
+        { id:'q7', text:'음식 사진/기록', options:[
+          { text:'꼭 남긴다', weights:{ perfect:2 } },
+          { text:'가끔', weights:{ good:2 } },
+          { text:'SNS용 빼먹지 않음', weights:{ spicy:2 } },
+          { text:'잘 안찍음', weights:{ tricky:2 } }
+        ]},
+        { id:'q8', text:'예약 vs 즉흥', options:[
+          { text:'미리 예약', weights:{ perfect:2 } },
+          { text:'상황에 따라', weights:{ good:2 } },
+          { text:'즉흥 탐험', weights:{ spicy:2 } },
+          { text:'정해진 곳 위주', weights:{ tricky:2 } }
+        ]},
+        { id:'q9', text:'식사 속도', options:[
+          { text:'천천히 대화하며', weights:{ perfect:2 } },
+          { text:'보통', weights:{ good:2 } },
+          { text:'빠르게 맛보고 다음', weights:{ spicy:2 } },
+          { text:'천천히 소식', weights:{ tricky:2 } }
+        ]},
+        { id:'q10', text:'음료 선택', options:[
+          { text:'메뉴와 페어링', weights:{ perfect:2 } },
+          { text:'무난한 음료', weights:{ good:2 } },
+          { text:'신상/시그니처', weights:{ spicy:2 } },
+          { text:'물/라이트', weights:{ tricky:2 } }
         ]}
       ]
     };

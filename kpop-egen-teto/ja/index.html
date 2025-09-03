@@ -51,16 +51,13 @@
     <div id="quiz"></div>
   </main>
 
-  <div class="mid-ad" aria-label="おすすめ">
-    <script src="https://ads-partners.coupang.com/g.js"></script>
-    <script>new PartnersCoupang.G({"id":867629,"template":"carousel","trackingCode":"AF6959276","width":"680","height":"140","tsource":""});</script>
-  </div>
+
 
   <script>
     window.quizConfig = {
       id: 'kpop-egen-teto',
       title: 'K‑POP EGEN/TETO 性向',
-      subtitle: '1分・6問・音楽気質',
+      subtitle: '1分・10問・音楽気質',
       share: { title: 'EGEN/TETO 性向テスト', hashtags: 'kpop,egen,teto' },
       categories: {
         egen: { name:'EGEN', description:'実験/変化/自由を愛する。大胆な挑戦と創造性を重視。' },
@@ -103,6 +100,30 @@
           { text:'R&B/バラード', weights:{ teto:2 } },
           { text:'Hip‑hop/オルタナ', weights:{ mix:2 } },
           { text:'Pop', weights:{ mix:1 } }
+        ]},
+        { id:'q7', text:'コンセプトフォト', options:[
+          { text:'実験的な色', weights:{ egen:2 } },
+          { text:'洗練ムード', weights:{ teto:2 } },
+          { text:'世界観に没入', weights:{ mix:2 } },
+          { text:'カジュアル/自然', weights:{ mix:1, egen:1 } }
+        ]},
+        { id:'q8', text:'リミックスの好み', options:[
+          { text:'新しい試み歓迎', weights:{ egen:2 } },
+          { text:'原曲重視', weights:{ teto:2 } },
+          { text:'プロジェクト次第', weights:{ mix:2 } },
+          { text:'特にこだわりなし', weights:{ mix:1 } }
+        ]},
+        { id:'q9', text:'ステージ小道具/セット', options:[
+          { text:'ミニマル実験', weights:{ egen:2 } },
+          { text:'完成度の高いディテール', weights:{ teto:2 } },
+          { text:'コンセプト没入装置', weights:{ mix:2 } },
+          { text:'自然な臨場感', weights:{ mix:1 } }
+        ]},
+        { id:'q10', text:'プレイリスト構成', options:[
+          { text:'ジャンル幅広く', weights:{ egen:2 } },
+          { text:'完成型アルバム中心', weights:{ teto:2 } },
+          { text:'テーマミックス', weights:{ mix:2 } },
+          { text:'タイトル曲中心', weights:{ mix:1 } }
         ]}
       ]
     };

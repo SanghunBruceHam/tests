@@ -65,16 +65,13 @@
     <div id="quiz"></div>
   </main>
 
-  <div class="mid-ad" aria-label="おすすめ">
-    <script src="https://ads-partners.coupang.com/g.js"></script>
-    <script>new PartnersCoupang.G({"id":867629,"template":"carousel","trackingCode":"AF6959276","width":"680","height":"140","tsource":""});</script>
-  </div>
+
 
   <script>
     window.quizConfig = {
       id: 'kfood-romance',
       title: 'K‑FOOD 恋愛タイプ診断',
-      subtitle: '1分・6問・結果カード共有',
+      subtitle: '1分・10問・結果カード共有',
       share: { title: 'K‑FOOD 恋愛タイプ診断', hashtags: '心理テスト,恋愛,韓国料理' },
       categories: {
         stability: { name: 'あたたかい安定型', description: '信頼と心地よいルーティンを大切にする、落ち着いた恋愛を好むタイプ。' },
@@ -118,6 +115,30 @@
           { text:'甘くてインパクト', weights:{ passion:2 } },
           { text:'温かいお茶/コーヒー', weights:{ caretaking:2 } },
           { text:'季節限定スイーツ', weights:{ free:2 } }
+        ]},
+        { id:'q7', text:'デートで多いのは？', options:[
+          { text:'ご飯（韓国料理）', weights:{ stability:2 } },
+          { text:'麺/屋台フード', weights:{ passion:2 } },
+          { text:'ベーカリー/デザート', weights:{ free:2 } },
+          { text:'相手に合わせる', weights:{ caretaking:2 } }
+        ]},
+        { id:'q8', text:'汁物/メイン重視', options:[
+          { text:'汁物が欲しい', weights:{ stability:2 } },
+          { text:'メイン+おかず', weights:{ passion:2 } },
+          { text:'バランス重視', weights:{ caretaking:2 } },
+          { text:'その日の気分', weights:{ free:2 } }
+        ]},
+        { id:'q9', text:'食事場所の選び方', options:[
+          { text:'落ち着く隠れ家', weights:{ stability:2 } },
+          { text:'話題の新店', weights:{ passion:2 } },
+          { text:'家で手料理', weights:{ caretaking:2 } },
+          { text:'屋外/ピクニック', weights:{ free:2 } }
+        ]},
+        { id:'q10', text:'辛さレベル', options:[
+          { text:'マイルド', weights:{ caretaking:2 } },
+          { text:'中辛', weights:{ stability:2 } },
+          { text:'辛口', weights:{ passion:2 } },
+          { text:'日による', weights:{ free:2 } }
         ]}
       ]
     };

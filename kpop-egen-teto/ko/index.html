@@ -51,7 +51,7 @@
     window.quizConfig = {
       id: 'kpop-egen-teto',
       title: 'K-POP 음악으로 보는 에겐/테토 성향',
-      subtitle: '1분, 6문항, 음악 취향으로 분석',
+      subtitle: '1분, 10문항, 음악 취향으로 분석',
       share: { title: 'EGEN/TETO 성향 테스트', hashtags: 'kpop,egen,teto' },
       categories: {
         egen: { name:'EGEN 성향', description:'실험/변주/자율을 사랑. 과감한 시도와 창의성을 중시해요.' },
@@ -94,6 +94,30 @@
           { text:'R&B/발라드', weights:{ teto:2 } },
           { text:'Hip-hop/Alt', weights:{ mix:2 } },
           { text:'Pop', weights:{ mix:1 } }
+        ]},
+        { id:'q7', text:'콘셉트 포토 취향', options:[
+          { text:'실험적 색감', weights:{ egen:2 } },
+          { text:'정제된 무드', weights:{ teto:2 } },
+          { text:'세계관/스토리', weights:{ mix:2 } },
+          { text:'캐주얼/네추럴', weights:{ mix:1, egen:1 } }
+        ]},
+        { id:'q8', text:'리믹스 선호', options:[
+          { text:'새로운 시도 환영', weights:{ egen:2 } },
+          { text:'원곡 충실', weights:{ teto:2 } },
+          { text:'상황에 따라', weights:{ mix:2 } },
+          { text:'상관없음', weights:{ mix:1 } }
+        ]},
+        { id:'q9', text:'무대 소품/세트', options:[
+          { text:'미니멀 실험', weights:{ egen:2 } },
+          { text:'완성도 높은 디테일', weights:{ teto:2 } },
+          { text:'컨셉 몰입 장치', weights:{ mix:2 } },
+          { text:'자연스러운 현장감', weights:{ mix:1 } }
+        ]},
+        { id:'q10', text:'플레이리스트 구성', options:[
+          { text:'장르 폭넓게', weights:{ egen:2 } },
+          { text:'완성형 앨범 위주', weights:{ teto:2 } },
+          { text:'테마 믹스', weights:{ mix:2 } },
+          { text:'타이틀곡 중심', weights:{ mix:1 } }
         ]}
       ]
     };
