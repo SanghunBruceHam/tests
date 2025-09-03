@@ -852,6 +852,54 @@ function renderResult(root, config, result){
             advice: "당신의 밸런스 감각을 활용해 관계의 조화를 만들어가세요."
           }
         }
+      },
+      'money-style': {
+        ko: {
+          frugal: {
+            personality: "계획적이고 미래지향적인 경제관념을 가진 현명한 타입이에요.",
+            compatibility: "신중하고 책임감 있는 파트너와 잘 어울려요.",
+            advice: "가끔은 현재의 즐거움에도 투자해보는 것도 좋아요."
+          },
+          flex: {
+            personality: "경험과 순간을 중시하는 활동적이고 적극적인 타입이에요.",
+            compatibility: "열정적이고 모험을 즐기는 파트너와 케미가 좋아요.",
+            advice: "미래를 위한 저축도 조금씩 시작해보세요."
+          },
+          balance: {
+            personality: "상황을 종합적으로 판단하는 균형감각이 뛰어난 타입이에요.",
+            compatibility: "안정적이면서도 유연한 사고를 가진 파트너와 잘 맞아요.",
+            advice: "이미 훌륭한 밸런스를 유지하고 계세요!"
+          },
+          impulse: {
+            personality: "감정과 직감을 따라 행동하는 솔직하고 순수한 타입이에요.",
+            compatibility: "이해심 많고 포용력 있는 파트너가 좋아요.",
+            advice: "소비 전 3초만 생각해보는 습관을 만들어보세요."
+          }
+        }
+      },
+      'phone-style': {
+        ko: {
+          organized: {
+            personality: "체계적이고 완벽주의적인 성향으로 모든 일을 계획적으로 처리해요.",
+            compatibility: "규칙적이고 정리정돈을 좋아하는 파트너와 잘 어울려요.",
+            advice: "가끔은 예상치 못한 즐거움에도 마음을 열어보세요."
+          },
+          social: {
+            personality: "사람과의 관계를 소중히 여기고 소통을 즐기는 외향적인 타입이에요.",
+            compatibility: "활발하고 사교적인 파트너와 에너지가 잘 맞아요.",
+            advice: "온라인뿐만 아니라 오프라인 만남도 중요하게 여겨보세요."
+          },
+          creative: {
+            personality: "창의적이고 예술적 감각이 뛰어난 감성적인 타입이에요.",
+            compatibility: "상상력이 풍부하고 예술을 이해하는 파트너가 좋아요.",
+            advice: "창작 활동을 통해 내면의 에너지를 표현해보세요."
+          },
+          minimal: {
+            personality: "본질을 추구하며 불필요한 것을 배제하는 실용적인 타입이에요.",
+            compatibility: "심플하고 진정성 있는 파트너와 깊은 관계를 만들어요.",
+            advice: "때로는 작은 사치나 꾸밈도 인생의 양념이 될 수 있어요."
+          }
+        }
       }
     };
 
