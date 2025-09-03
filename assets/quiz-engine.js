@@ -25,6 +25,7 @@
       copied: '링크를 복사했어요!\n친구에게 바로 공유해보세요.',
       copyFailed: '복사 실패. 주소창에서 직접 복사해주세요.',
       tryAgain: '다시 하기',
+      analyzing: '결과 분석 중...',
       shareFacebook: 'Facebook',
       shareLine: 'LINE',
       shareThreads: 'Threads',
@@ -43,6 +44,7 @@
       copied: 'リンクをコピーしました！\n友だちにシェアしましょう。',
       copyFailed: 'コピーに失敗しました。アドレスバーからコピーしてください。',
       tryAgain: 'もう一度',
+      analyzing: '結果を分析中...',
       shareFacebook: 'Facebook',
       shareLine: 'LINE',
       shareThreads: 'Threads',
@@ -61,6 +63,7 @@
       copied: 'Link copied!\nShare it with your friends.',
       copyFailed: 'Copy failed. Please copy from the address bar.',
       tryAgain: 'Try Again',
+      analyzing: 'Analyzing results...',
       shareFacebook: 'Facebook',
       shareLine: 'LINE',
       shareThreads: 'Threads',
@@ -245,7 +248,7 @@
       answers.set(sel.questionId, sel);
       
       // Show loading state
-      submitBtn.innerHTML = '<div style="display: inline-flex; align-items: center; gap: 8px;"><div class="loading-spinner"></div>결과 분석 중...</div>';
+      submitBtn.innerHTML = `<div style="display: inline-flex; align-items: center; gap: 8px;"><div class="loading-spinner"></div>${I18N.analyzing}</div>`;
       submitBtn.disabled = true;
       
       // Add loading animation styles if not exists
@@ -270,8 +273,21 @@
       
       // Simulate processing time for better UX
       setTimeout(() => {
-        const result = computeResult(config, answers);
-        renderResult(root, config, result);
+        console.log('Starting result computation...');
+        console.log('Config:', config);
+        console.log('Answers:', answers);
+        console.log('Root element:', root);
+        
+        try {
+          const result = computeResult(config, answers);
+          console.log('Computed result:', result);
+          
+          console.log('About to call renderResult...');
+          renderResult(root, config, result);
+          console.log('renderResult completed');
+        } catch (error) {
+          console.error('Error during result computation or rendering:', error);
+        }
         
         // update URL with result for share/deeplink
         try{
@@ -329,13 +345,40 @@ function getCategoryTheme(config, categoryId){
 }
 
 function renderResult(root, config, result){
+  console.log('=== renderResult called ===');
+  console.log('Root:', root);
+  console.log('Config:', config);
+  console.log('Result:', result);
+  
+  if (!result || !result.categoryId) {
+    console.error('Invalid result object:', result);
+    return;
+  }
+  
+  if (!config || !config.categories) {
+    console.error('Invalid config object:', config);
+    return;
+  }
+  
   const cat = config.categories[result.categoryId];
+  console.log('Category found:', cat);
+  
+  if (!cat) {
+    console.error('Category not found for ID:', result.categoryId);
+    return;
+  }
+  
   const theme = getCategoryTheme(config, result.categoryId);
-    const container = document.createElement('div');
-    container.className = 'q-result';
-    const baseUrl = (document.documentElement.lang||'ko').startsWith('ja') ? '/ja/' : (document.documentElement.lang||'ko').startsWith('en') ? '/en/' : '/';
-    // Build insights (score bars + secondary trait) and tips
-    const insightsHtml = (function(){
+  const lang = (document.documentElement.lang||'ko').slice(0,2);
+  const container = document.createElement('div');
+  container.className = 'q-result';
+  const baseUrl = (document.documentElement.lang||'ko').startsWith('ja') ? '/ja/' : (document.documentElement.lang||'ko').startsWith('en') ? '/en/' : '/';
+  
+  // Generate detailed insights first
+  const detailedInsightsHtml = generateDetailedInsights(result, config, lang);
+  
+  // Build insights (score bars + secondary trait) and tips
+  const insightsHtml = (function(){
       const entries = Object.entries(result.scores||{});
       if (!entries.length) return '';
       const sorted = entries.sort((a,b)=>b[1]-a[1]);
@@ -412,6 +455,12 @@ function renderResult(root, config, result){
       };
       return (T[lang] && T[lang][result.categoryId]) || '';
     })();
+  
+  console.log('About to set container.innerHTML');
+  console.log('detailedInsightsHtml:', detailedInsightsHtml);
+  console.log('insightsHtml:', insightsHtml);
+  console.log('tipsHtml:', tipsHtml);
+  
   container.innerHTML = `
     <div class="q-hero" style="--hero-gradient:${theme.gradient}">
       <div class="q-emoji-container" aria-hidden="true">
@@ -424,7 +473,7 @@ function renderResult(root, config, result){
         <p class="muted animate-desc">${escapeHtml(cat.description)}</p>
       </div>
     </div>
-    ${generateDetailedInsights(result, config, lang)}
+    ${detailedInsightsHtml}
     ${insightsHtml}
     ${tipsHtml ? `<div class=\"q-tips\">${tipsHtml}</div>` : ''}
     <div class="share enhanced-share">
@@ -462,8 +511,17 @@ function renderResult(root, config, result){
         <a class="q-nav-btn" href="${baseUrl}#all-tests">${I18N.allTests}</a>
       </div>
     `;
+    
+    console.log('Container HTML generated, length:', container.innerHTML.length);
+    console.log('About to clear root and append container');
+    console.log('Root element before clear:', root);
+    
     root.innerHTML = '';
+    console.log('Root cleared, about to append container');
     root.appendChild(container);
+    
+    console.log('Container appended successfully');
+    console.log('Final root innerHTML length:', root.innerHTML.length);
     
     // Add enhanced result animations
     if (!document.querySelector('#result-animations')) {
