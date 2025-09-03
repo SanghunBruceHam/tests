@@ -30,14 +30,30 @@
   <meta name="mobile-web-app-capable" content="yes">
   <link rel="icon" href="/favicon.png">
   <link rel="stylesheet" href="/assets/common-theme.css" />
+  <style>
+    :root{ --accent-color:#c471ed; --primary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);} 
+    .hero{display:flex;gap:16px;align-items:center;justify-content:center;max-width:860px;margin:12px auto 6px}
+    .hero img{width:56px;height:56px;border-radius:12px;box-shadow:var(--shadow)}
+    .hero .title{font-weight:800;font-size:1.4rem;color:var(--text-primary)}
+    .mid-ad{background:var(--card-bg);border:1px solid var(--border-color);border-radius:12px;padding:8px;margin:12px auto;max-width:860px;text-align:center}
+  </style>
   <script defer src="/assets/seo-optimizer.js"></script>
   <script defer src="/assets/analytics-enhanced.js"></script>
   <script defer src="/assets/quiz-engine.js"></script>
 </head>
 <body>
+  <div class="hero" aria-hidden="true">
+    <img src="/favicon.png" alt="">
+    <div class="title">🎤 K‑POP 아이돌 연애 취향</div>
+  </div>
   <main class="container" style="max-width:860px;">
     <div id="quiz"></div>
   </main>
+
+  <div class="mid-ad" aria-label="추천 상품">
+    <script src="https://ads-partners.coupang.com/g.js"></script>
+    <script>new PartnersCoupang.G({"id":867629,"template":"carousel","trackingCode":"AF6959276","width":"680","height":"140","tsource":""});</script>
+  </div>
 
   <script>
     window.quizConfig = {
@@ -92,5 +108,9 @@
       ]
     };
   </script>
+  <footer class="site-footer" style="text-align:center;padding:20px;color:var(--text-secondary,#666);font-size:.95rem;">
+    © 심리테스트 모음 · <a href="https://tests.mahalohana-bruce.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">tests.mahalohana-bruce.com</a>
+  </footer>
+
 </body>
 </html>
