@@ -111,14 +111,15 @@
     const answers = new Map();
     const storeKey = `quiz:${config.id}`;
 
-    // restore state if present
-    try {
-      const saved = JSON.parse(sessionStorage.getItem(storeKey) || 'null');
-      if (saved && Array.isArray(saved.answers)){
-        idx = Math.max(0, Math.min(saved.idx || 0, (config.questions.length - 1)));
-        saved.answers.forEach(a => answers.set(a.questionId, a));
-      }
-    } catch(e) {}
+    // Always start fresh - no session persistence
+    // (commented out session restore to prevent state persistence)
+    // try {
+    //   const saved = JSON.parse(sessionStorage.getItem(storeKey) || 'null');
+    //   if (saved && Array.isArray(saved.answers)){
+    //     idx = Math.max(0, Math.min(saved.idx || 0, (config.questions.length - 1)));
+    //     saved.answers.forEach(a => answers.set(a.questionId, a));
+    //   }
+    // } catch(e) {}
     const total = config.questions.length;
 
     function updateProgress(){
@@ -224,8 +225,8 @@
       const sel = currentSelection();
       if (!sel){ alert(I18N.selectOne); return; }
       answers.set(sel.questionId, sel);
-      // persist state
-      try { sessionStorage.setItem(storeKey, JSON.stringify({ idx, answers: Array.from(answers.values()) })); } catch(e) {}
+      // persist state disabled - always start fresh
+      // try { sessionStorage.setItem(storeKey, JSON.stringify({ idx, answers: Array.from(answers.values()) })); } catch(e) {}
       if (window.track){
         document.dispatchEvent(new CustomEvent('question_answered', { detail: { questionNumber: idx+1, answerValue: sel.index, responseTime: 0 }}));
       }
@@ -278,8 +279,8 @@
           url.searchParams.set('r', result.categoryId);
           history.replaceState(null, '', url.toString());
         }catch(e){}
-        // clear saved state on finish
-        try { sessionStorage.removeItem(storeKey); } catch(e) {}
+        // session storage disabled - no need to clear
+        // try { sessionStorage.removeItem(storeKey); } catch(e) {}
       }, 1200); // 1.2초 로딩 시뮬레이션
     });
 
