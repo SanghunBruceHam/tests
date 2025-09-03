@@ -372,6 +372,32 @@
     const items = map[config.id] || [];
     if (!items.length) return;
     const base = locale; // 'ko' | 'ja' | 'en'
+    const titles = {
+      ko: {
+        'food-compat': '🍽️ 음식 궁합 테스트',
+        'kfood-romance': '🍲 K-FOOD 연애 취향',
+        'romance-test': '💕 연애 스타일 테스트',
+        'kpop-idol-romance': '🎤 K-POP 아이돌 연애 취향',
+        'kpop-egen-teto': '🎵 K-POP EGEN/TETO 성향',
+        'egen-teto': '💖 에겐 vs 테토 성향 테스트'
+      },
+      ja: {
+        'food-compat': '🍽️ フード相性テスト',
+        'kfood-romance': '🍲 K-FOOD 恋愛タイプ',
+        'romance-test': '💕 恋愛スタイルテスト',
+        'kpop-idol-romance': '🎤 K-POP アイドル恋愛',
+        'kpop-egen-teto': '🎵 K-POP EGEN/TETO 性向',
+        'egen-teto': '💖 エゲン vs テト 性向テスト'
+      },
+      en: {
+        'food-compat': '🍽️ Food Compatibility Test',
+        'kfood-romance': '🍲 K-FOOD Romance',
+        'romance-test': '💕 Love Style Test',
+        'kpop-idol-romance': '🎤 K-POP Idol Romance',
+        'kpop-egen-teto': '🎵 K-POP EGEN/TETO Preference',
+        'egen-teto': '💖 Estrogen vs Testosterone Personality Test'
+      }
+    }[base] || {};
     const section = document.createElement('div');
     section.className = 'q-recs';
     const title = locale==='ja' ? 'おすすめのテスト' : locale==='en' ? 'Recommended Tests' : '추천 테스트';
@@ -383,7 +409,8 @@
       a.className = 'q-option';
       a.style.textDecoration='none';
       a.href = `/${it.path}/${base}/`;
-      a.innerHTML = `<span>• /${it.path}/${base}/</span>`;
+      const label = titles[it.id] || `/${it.path}/${base}/`;
+      a.innerHTML = `<span>${escapeHtml(label)}</span>`;
       list.appendChild(a);
     });
     section.appendChild(list);
