@@ -967,12 +967,12 @@ function renderResult(root, config, result){
     .q-actions .prev:not([disabled]){ background: linear-gradient(90deg,#667eea,#764ba2); color:#fff; border:none; }
     .q-actions .next, .q-actions .submit{ background: linear-gradient(90deg,#667eea,#764ba2); color:#fff; border:none; }
     .q-result{ max-width:820px; margin:0 auto; background:var(--card-bg,#fff); border:1px solid var(--border-color,#e5e7eb); border-radius:12px; padding:18px; text-align:center; box-shadow: var(--shadow, 0 6px 18px rgba(0,0,0,.08)); }
-    .q-hero{ position:relative; display:flex; gap:12px; align-items:center; border-radius:12px; padding:14px; margin-bottom:10px; background: var(--hero-gradient, linear-gradient(135deg,#667eea,#764ba2)); color:#0b0f14; overflow:hidden; }
-    .q-hero::after{ content:''; position:absolute; inset:0; background: radial-gradient(600px 240px at 90% -10%, rgba(255,255,255,.25), transparent); pointer-events:none; }
-    .q-emoji{ width:54px; height:54px; border-radius:12px; background: rgba(255,255,255,.85); display:flex; align-items:center; justify-content:center; font-size:28px; box-shadow: 0 6px 18px rgba(0,0,0,.12); }
-    .q-hero .badge{ display:inline-block; padding:4px 10px; border-radius:999px; background: rgba(255,255,255,.7); color:#111; font-weight:700; font-size:.75rem; }
-    .q-hero h2{ margin:6px 0 2px; color:#0b0f14; }
-    .q-hero p{ margin:0; color:#0b0f14; opacity:.85; }
+    .q-hero{ position:relative; display:flex; gap:12px; align-items:center; border-radius:12px; padding:14px; margin-bottom:10px; background: var(--hero-gradient, linear-gradient(135deg,#667eea,#764ba2)); color:#ffffff; overflow:hidden; }
+    .q-hero::after{ content:''; position:absolute; inset:0; background: radial-gradient(600px 240px at 90% -10%, rgba(255,255,255,.15), transparent); pointer-events:none; }
+    .q-emoji{ width:54px; height:54px; border-radius:12px; background: rgba(255,255,255,.9); display:flex; align-items:center; justify-content:center; font-size:28px; box-shadow: 0 6px 18px rgba(0,0,0,.2); }
+    .q-hero .badge{ display:inline-block; padding:4px 10px; border-radius:999px; background: rgba(255,255,255,.9); color:#111; font-weight:700; font-size:.75rem; box-shadow: 0 2px 8px rgba(0,0,0,.1); }
+    .q-hero h2{ margin:6px 0 2px; color:#ffffff; text-shadow: 0 1px 3px rgba(0,0,0,.3); }
+    .q-hero p{ margin:0; color:#ffffff; opacity:.9; text-shadow: 0 1px 2px rgba(0,0,0,.2); }
     .q-result .badge{ display:inline-block; padding:4px 10px; border-radius:999px; background:#f1f5f9; color:#64748b; font-size:12px; margin-bottom:8px; }
     .q-result h2{ margin:6px 0 8px; }
     .q-result .muted{ color: var(--text-secondary,#666); }
