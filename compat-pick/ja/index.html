@@ -488,12 +488,20 @@ function pairKey(a,b){ // 対称性を保証：名前の順序を変えても同
 }
 function todayStr(){ const d=new Date(); return d.toISOString().slice(0,10); }
 
-// ハッシュ → PRNG (xmur3 + mulberry32)
-function xmur3(str){ for(var i=1779033703^str.length, h1=3432918353, h2=461845907; i<str.length; i++) { h1 = Math.imul(h1 ^ str.charCodeAt(i), 2246822507); h2 = Math.imul(h2 ^ str.charCodeAt(i), 3266489909);} h1 = (h1^ (h1>>>16))>>>0; h2 = (h2^ (h2>>>13))>>>0; return function(){ h1 = Math.imul(h1 ^ (h1>>>16), 2246822507); h2 = Math.imul(h2 ^ (h2>>>13), 3266489909); return (h1^h2)>>>0; } }
-function mulberry32(a){ return function(){ a |= 0; a = (a + 0x6D2B79F5) | 0; var t = Math.imul(a ^ (a >>> 15), 1 | a); t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t; return ((t ^ (t >>> 14)) >>> 0) / 4294967296; } }
+// 間単で安定したハッシュ → パーセント変換
+function simpleHash(str) {
+  let hash = 0;
+  for (let i = 0; i < str.length; i++) {
+    const char = str.charCodeAt(i);
+    hash = ((hash << 5) - hash) + char;
+    hash = hash & hash; // 32bit int 変換
+  }
+  return Math.abs(hash);
+}
+
 function seededPercent(seedStr){
-  const seed = xmur3(seedStr)(); const rng = mulberry32(seed);
-  return Math.floor(rng()*101); // 0~100
+  const hash = simpleHash(seedStr);
+  return hash % 101; // 0~100
 }
 
 // バイラルなタイプ/コメント
