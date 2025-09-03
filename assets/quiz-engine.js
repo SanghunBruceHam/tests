@@ -123,7 +123,14 @@
 
     function updateProgress(){
       const pct = Math.round(((idx) / total) * 100);
-      $('.bar', progress).style.width = pct + '%';
+      const bar = $('.bar', progress);
+      bar.style.transition = 'width 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+      bar.style.width = pct + '%';
+      
+      // Add visual feedback for progress
+      if (pct > 0) {
+        bar.style.background = `linear-gradient(90deg, #4ade80 0%, #22c55e ${Math.max(20, pct)}%, #16a34a 100%)`;
+      }
     }
 
     function renderQuestion(){
@@ -147,15 +154,42 @@
           <span>${escapeHtml(opt.text)}</span>
         `;
         list.appendChild(item);
+        
+        // Add enhanced interaction feedback
+        const input = item.querySelector('input');
+        input.addEventListener('change', () => {
+          // Visual feedback for selection
+          const allOptions = list.querySelectorAll('.q-option');
+          allOptions.forEach(opt => opt.classList.remove('selected'));
+          if (input.checked) {
+            item.classList.add('selected');
+            item.style.transform = 'scale(1.02)';
+            setTimeout(() => {
+              item.style.transform = '';
+            }, 200);
+          }
+        });
       });
       card.appendChild(list);
       qwrap.appendChild(card);
+      
+      // Add smooth slide-in animation
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(20px)';
+      card.style.transition = 'opacity 0.4s ease-out, transform 0.4s ease-out';
+      setTimeout(() => {
+        card.style.opacity = '1';
+        card.style.transform = 'translateY(0)';
+      }, 50);
 
-      // restore selection
+      // restore selection with visual feedback
       if (answers.has(q.id)){
         const savedIdx = answers.get(q.id).index;
         const input = $(`input#${q.id}_${savedIdx}`, qwrap);
-        if (input) input.checked = true;
+        if (input) {
+          input.checked = true;
+          input.closest('.q-option').classList.add('selected');
+        }
       }
 
       prevBtn.disabled = idx === 0;
@@ -208,16 +242,45 @@
       const sel = currentSelection();
       if (!sel){ alert(I18N.selectOne); return; }
       answers.set(sel.questionId, sel);
-      const result = computeResult(config, answers);
-      renderResult(root, config, result);
-      // update URL with result for share/deeplink
-      try{
-        const url = new URL(window.location.href);
-        url.searchParams.set('r', result.categoryId);
-        history.replaceState(null, '', url.toString());
-      }catch(e){}
-      // clear saved state on finish
-      try { sessionStorage.removeItem(storeKey); } catch(e) {}
+      
+      // Show loading state
+      submitBtn.innerHTML = '<div style="display: inline-flex; align-items: center; gap: 8px;"><div class="loading-spinner"></div>결과 분석 중...</div>';
+      submitBtn.disabled = true;
+      
+      // Add loading animation styles if not exists
+      if (!document.querySelector('#loading-spinner-styles')) {
+        const style = document.createElement('style');
+        style.id = 'loading-spinner-styles';
+        style.textContent = `
+          .loading-spinner {
+            width: 16px; height: 16px;
+            border: 2px solid #f3f3f3;
+            border-top: 2px solid #3498db;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+          }
+          @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+          }
+        `;
+        document.head.appendChild(style);
+      }
+      
+      // Simulate processing time for better UX
+      setTimeout(() => {
+        const result = computeResult(config, answers);
+        renderResult(root, config, result);
+        
+        // update URL with result for share/deeplink
+        try{
+          const url = new URL(window.location.href);
+          url.searchParams.set('r', result.categoryId);
+          history.replaceState(null, '', url.toString());
+        }catch(e){}
+        // clear saved state on finish
+        try { sessionStorage.removeItem(storeKey); } catch(e) {}
+      }, 1200); // 1.2초 로딩 시뮬레이션
     });
 
     // start
@@ -350,23 +413,47 @@ function renderResult(root, config, result){
     })();
   container.innerHTML = `
     <div class="q-hero" style="--hero-gradient:${theme.gradient}">
-      <div class="q-emoji" aria-hidden="true">${escapeHtml(theme.emoji || '✨')}</div>
+      <div class="q-emoji-container" aria-hidden="true">
+        <div class="q-emoji">${escapeHtml(theme.emoji || '✨')}</div>
+        <div class="q-emoji-shadow"></div>
+      </div>
       <div class="q-hero-text">
-        <div class="badge">${I18N.resultBadge}</div>
-        <h2>${escapeHtml(cat.name)}</h2>
-        <p class="muted">${escapeHtml(cat.description)}</p>
+        <div class="badge animate-badge">${I18N.resultBadge}</div>
+        <h2 class="animate-title">${escapeHtml(cat.name)}</h2>
+        <p class="muted animate-desc">${escapeHtml(cat.description)}</p>
       </div>
     </div>
     ${generateDetailedInsights(result, config, lang)}
     ${insightsHtml}
     ${tipsHtml ? `<div class=\"q-tips\">${tipsHtml}</div>` : ''}
-    <div class="share">
-      <button class="share-x">🐦 X(Twitter)</button>
-      <button class="copy">🔗 ${I18N.copy}</button>
-      <button class="fb">📘 Facebook</button>
-      <button class="line">📱 LINE</button>
-      <button class="threads">🧵 Threads</button>
-      <button class="native">📤 ${I18N.shareNative}</button>
+    <div class="share enhanced-share">
+      <div class="share-header">${I18N.shareNative}</div>
+      <div class="share-grid">
+        <button class="share-x share-btn twitter-btn">
+          <div class="btn-icon">𝕏</div>
+          <div class="btn-text">Twitter</div>
+        </button>
+        <button class="copy share-btn copy-btn">
+          <div class="btn-icon">🔗</div>
+          <div class="btn-text">${I18N.copy}</div>
+        </button>
+        <button class="fb share-btn facebook-btn">
+          <div class="btn-icon">f</div>
+          <div class="btn-text">Facebook</div>
+        </button>
+        <button class="line share-btn line-btn">
+          <div class="btn-icon">📱</div>
+          <div class="btn-text">LINE</div>
+        </button>
+        <button class="threads share-btn threads-btn">
+          <div class="btn-icon">@</div>
+          <div class="btn-text">Threads</div>
+        </button>
+        <button class="native share-btn native-btn">
+          <div class="btn-icon">📤</div>
+          <div class="btn-text">${I18N.shareNative}</div>
+        </button>
+      </div>
     </div>
       <div class="again"><a href="?">${I18N.tryAgain}</a></div>
       <div class="q-nav">
@@ -376,6 +463,131 @@ function renderResult(root, config, result){
     `;
     root.innerHTML = '';
     root.appendChild(container);
+    
+    // Add enhanced result animations
+    if (!document.querySelector('#result-animations')) {
+      const style = document.createElement('style');
+      style.id = 'result-animations';
+      style.textContent = `
+        .q-emoji-container {
+          position: relative;
+          display: inline-block;
+        }
+        .q-emoji {
+          display: inline-block;
+          animation: emojiPop 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+          transform: scale(0) rotate(-180deg);
+        }
+        .q-emoji-shadow {
+          position: absolute;
+          top: 100%;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 60%;
+          height: 20%;
+          background: rgba(0,0,0,0.1);
+          border-radius: 50%;
+          animation: shadowGrow 0.8s ease-out 0.3s forwards;
+          opacity: 0;
+        }
+        .animate-badge {
+          animation: slideUp 0.6s ease-out 0.4s backwards;
+        }
+        .animate-title {
+          animation: slideUp 0.6s ease-out 0.6s backwards;
+        }
+        .animate-desc {
+          animation: slideUp 0.6s ease-out 0.8s backwards;
+        }
+        .q-insights {
+          animation: slideUp 0.6s ease-out 1.0s backwards;
+        }
+        .q-tips {
+          animation: slideUp 0.6s ease-out 1.2s backwards;
+        }
+        .share {
+          animation: slideUp 0.6s ease-out 1.4s backwards;
+        }
+        @keyframes emojiPop {
+          0% { transform: scale(0) rotate(-180deg); }
+          50% { transform: scale(1.2) rotate(-90deg); }
+          100% { transform: scale(1) rotate(0deg); }
+        }
+        @keyframes shadowGrow {
+          to { opacity: 1; }
+        }
+        @keyframes slideUp {
+          from { opacity: 0; transform: translateY(30px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        .enhanced-share {
+          padding: 20px;
+          background: rgba(255,255,255,0.95);
+          border-radius: 16px;
+          box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+          backdrop-filter: blur(10px);
+          border: 1px solid rgba(255,255,255,0.2);
+        }
+        .share-header {
+          text-align: center;
+          font-weight: bold;
+          color: #333;
+          margin-bottom: 16px;
+          font-size: 1.1em;
+        }
+        .share-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+          gap: 12px;
+        }
+        .share-btn {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          padding: 16px 8px;
+          border: none;
+          border-radius: 12px;
+          background: #f8f9fa;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          font-family: inherit;
+          position: relative;
+          overflow: hidden;
+        }
+        .share-btn:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+        }
+        .share-btn:active {
+          transform: translateY(0);
+        }
+        .btn-icon {
+          font-size: 24px;
+          font-weight: bold;
+          margin-bottom: 8px;
+        }
+        .btn-text {
+          font-size: 12px;
+          font-weight: 500;
+          color: #666;
+        }
+        .twitter-btn:hover { background: #1da1f2; color: white; }
+        .facebook-btn:hover { background: #4267b2; color: white; }
+        .line-btn:hover { background: #00b900; color: white; }
+        .threads-btn:hover { background: #000; color: white; }
+        .copy-btn:hover { background: #6c757d; color: white; }
+        .native-btn:hover { background: #28a745; color: white; }
+        .twitter-btn:hover .btn-text,
+        .facebook-btn:hover .btn-text,
+        .line-btn:hover .btn-text,
+        .threads-btn:hover .btn-text,
+        .copy-btn:hover .btn-text,
+        .native-btn:hover .btn-text {
+          color: white;
+        }
+      `;
+      document.head.appendChild(style);
+    }
 
     if (window.track){
       document.dispatchEvent(new CustomEvent('test_completed', { detail: { testType: config.id, completionTime: 0, resultType: cat.name }}));
