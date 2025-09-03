@@ -24,7 +24,13 @@
       copy: '링크 복사',
       copied: '링크를 복사했어요!\n친구에게 바로 공유해보세요.',
       copyFailed: '복사 실패. 주소창에서 직접 복사해주세요.',
-      tryAgain: '다시 하기'
+      tryAgain: '다시 하기',
+      shareFacebook: 'Facebook',
+      shareLine: 'LINE',
+      shareThreads: 'Threads',
+      shareNative: '공유',
+      goHome: '메인으로',
+      allTests: '모든 테스트'
     },
     ja: {
       prev: '◀ 前へ',
@@ -36,7 +42,13 @@
       copy: 'リンクをコピー',
       copied: 'リンクをコピーしました！\n友だちにシェアしましょう。',
       copyFailed: 'コピーに失敗しました。アドレスバーからコピーしてください。',
-      tryAgain: 'もう一度'
+      tryAgain: 'もう一度',
+      shareFacebook: 'Facebook',
+      shareLine: 'LINE',
+      shareThreads: 'Threads',
+      shareNative: '共有',
+      goHome: 'ホームへ',
+      allTests: 'すべてのテスト'
     },
     en: {
       prev: '◀ Prev',
@@ -48,7 +60,13 @@
       copy: 'Copy link',
       copied: 'Link copied!\nShare it with your friends.',
       copyFailed: 'Copy failed. Please copy from the address bar.',
-      tryAgain: 'Try Again'
+      tryAgain: 'Try Again',
+      shareFacebook: 'Facebook',
+      shareLine: 'LINE',
+      shareThreads: 'Threads',
+      shareNative: 'Share',
+      goHome: 'Go Home',
+      allTests: 'All Tests'
     }
   }[locale];
   function $(sel, root=document){ return root.querySelector(sel); }
@@ -228,6 +246,7 @@
     const cat = config.categories[result.categoryId];
     const container = document.createElement('div');
     container.className = 'q-result';
+    const baseUrl = (document.documentElement.lang||'ko').startsWith('ja') ? '/ja/' : (document.documentElement.lang||'ko').startsWith('en') ? '/en/' : '/';
     container.innerHTML = `
       <div class="badge">${I18N.resultBadge}</div>
       <h2>${escapeHtml(cat.name)}</h2>
@@ -235,8 +254,16 @@
       <div class="share">
         <button class="share-x">${I18N.shareX}</button>
         <button class="copy">${I18N.copy}</button>
+        <button class="fb">${I18N.shareFacebook}</button>
+        <button class="line">${I18N.shareLine}</button>
+        <button class="threads">${I18N.shareThreads}</button>
+        <button class="native">${I18N.shareNative}</button>
       </div>
       <div class="again"><a href="?">${I18N.tryAgain}</a></div>
+      <div class="q-nav">
+        <a class="q-nav-btn" href="${baseUrl}">${I18N.goHome}</a>
+        <a class="q-nav-btn" href="${baseUrl}#all-tests">${I18N.allTests}</a>
+      </div>
     `;
     root.innerHTML = '';
     root.appendChild(container);
@@ -257,6 +284,32 @@
         await navigator.clipboard.writeText(window.location.href);
         alert(I18N.copied);
       }catch(e){ alert(I18N.copyFailed); }
+    });
+    $('.fb', container).addEventListener('click', () => {
+      const u = encodeURIComponent(window.location.href);
+      window.open(`https://www.facebook.com/sharer/sharer.php?u=${u}`, '_blank', 'noopener');
+    });
+    $('.line', container).addEventListener('click', () => {
+      const title = config.share?.title || config.title;
+      const url = window.location.href;
+      const text = `${title} - ${cat.name}`;
+      window.open(`https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`, '_blank', 'noopener');
+    });
+    $('.threads', container).addEventListener('click', () => {
+      const title = config.share?.title || config.title;
+      const url = window.location.href;
+      const text = `${title} - ${cat.name}`;
+      window.open(`https://www.threads.net/intent/post?text=${encodeURIComponent(text + ' ' + url)}`, '_blank', 'noopener');
+    });
+    $('.native', container).addEventListener('click', async () => {
+      try{
+        if (navigator.share){
+          await navigator.share({ title: document.title, url: window.location.href, text: (config.share?.title || config.title) + ' - ' + cat.name });
+        } else {
+          await navigator.clipboard.writeText(window.location.href);
+          alert(I18N.copied);
+        }
+      }catch(e){}
     });
   }
 
@@ -284,8 +337,11 @@
     .q-result .badge{ display:inline-block; padding:4px 10px; border-radius:999px; background:#f1f5f9; color:#64748b; font-size:12px; margin-bottom:8px; }
     .q-result h2{ margin:6px 0 8px; }
     .q-result .muted{ color: var(--text-secondary,#666); }
-    .q-result .share{ display:flex; gap:10px; justify-content:center; margin-top:12px; }
+    .q-result .share{ display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin-top:12px; }
+    .q-result .share button{ padding:8px 12px; border-radius:999px; border:1px solid var(--border-color,#e5e7eb); background:var(--card-bg,#fff); cursor:pointer;}
     .q-result .again{ margin-top:10px; }
+    .q-nav{ display:flex; gap:10px; justify-content:center; margin-top:12px; }
+    .q-nav-btn{ display:inline-block; padding:10px 14px; border-radius:999px; background:linear-gradient(90deg,#667eea,#764ba2); color:#fff; text-decoration:none; }
     @media (max-width:600px){ .q-option{ padding:10px; } }
     `;
     const style = document.createElement('style');
