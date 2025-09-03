@@ -409,6 +409,30 @@ small.hint{color:var(--muted); display:block; margin-top:6px}
       <p id="comment" style="color:var(--muted); font-size:18px; font-weight:600; line-height:1.4; margin:0; max-width:400px; margin:0 auto;"></p>
     </div>
     
+    <!-- 상세 분석 섹션 -->
+    <div style="background:rgba(255,255,255,0.7); border-radius:20px; padding:24px; margin-bottom:24px; border:1px solid rgba(225,29,72,0.1);">
+      <div style="text-align:center; margin-bottom:20px;">
+        <h3 style="color:var(--brand); font-size:20px; font-weight:800; margin:0 0 8px 0;">💡 상세 분석</h3>
+      </div>
+      
+      <div class="grid2" style="gap:16px;">
+        <div style="background:rgba(225,29,72,0.05); border-radius:12px; padding:16px;">
+          <div style="color:var(--brand); font-weight:700; font-size:14px; margin-bottom:8px;">🎯 케미 포인트</div>
+          <div id="chemistryTips" style="color:var(--muted); font-size:14px; line-height:1.4;"></div>
+        </div>
+        
+        <div style="background:rgba(124,58,237,0.05); border-radius:12px; padding:16px;">
+          <div style="color:var(--brand2); font-weight:700; font-size:14px; margin-bottom:8px;">💫 관계 조언</div>
+          <div id="relationshipTips" style="color:var(--muted); font-size:14px; line-height:1.4;"></div>
+        </div>
+      </div>
+      
+      <div style="margin-top:16px; background:rgba(245,158,11,0.05); border-radius:12px; padding:16px;">
+        <div style="color:#d97706; font-weight:700; font-size:14px; margin-bottom:8px;">🌟 특별한 한마디</div>
+        <div id="specialMessage" style="color:var(--muted); font-size:14px; line-height:1.4; font-style:italic;"></div>
+      </div>
+    </div>
+
     <!-- 공유 및 액션 버튼 -->
     <div style="display:flex; flex-direction:column; gap:16px; margin-bottom:24px;">
       <div style="display:flex; flex-wrap:wrap; gap:12px; justify-content:center;">
@@ -514,6 +538,63 @@ function randFrom(arr, seedExtra=""){
   return arr[Math.floor(r*arr.length)];
 }
 
+// ========== 인사이트 데이터 ==========
+const INSIGHTS = {
+  chemistryTips: {
+    95: ["완벽한 호흡! 서로의 말을 끝까지 듣지 않아도 통해요", "같은 것에 웃고, 같은 것에 화내는 신비한 케미"],
+    90: ["대화가 끊기지 않는 마법 같은 사이", "서로의 단점마저 귀엽게 보이는 특별함"],
+    80: ["에너지가 비슷해서 함께 있으면 시너지 폭발!", "서로를 보완하며 더 나은 사람이 되게 해줘요"],
+    70: ["달달한 로맨스의 정석! 주변이 부러워하는 케미", "소소한 일상도 특별하게 만드는 마법"],
+    60: ["대화 스타일이 잘 맞아서 편안한 관계", "서로의 유머 코드가 통하는 즐거운 사이"],
+    50: ["천천히 알아가는 재미가 있는 관계", "첫인상과 다른 매력을 발견하게 될 거예요"],
+    40: ["편안하고 안정적인 우정의 토대가 탄탄해요", "서로를 이해하려는 노력이 빛나는 관계"],
+    30: ["다름이 오히려 새로운 자극이 되는 사이", "서로 다른 관점으로 세상을 더 넓게 볼 수 있어요"],
+    20: ["시간과 노력이 필요하지만 가능성은 충분해요", "인내심을 갖고 서서히 다가가면 좋을 듯"],
+    10: ["감정의 기복이 클 수 있지만 그것도 추억", "서로 다른 에너지지만 균형을 찾으면 OK"],
+    0: ["이 경험도 소중한 인생의 한 페이지예요", "때로는 웃으며 넘길 수 있는 관계도 필요해요"]
+  },
+  relationshipTips: {
+    95: ["지금처럼만 해주세요! 완벽한 케미니까", "서로의 특별함을 계속 인정해주세요"],
+    90: ["소소한 깜짝 선물로 더 특별하게!", "함께하는 시간을 더 많이 만들어보세요"],
+    80: ["활발한 대화와 다양한 경험을 함께해요", "서로의 에너지를 북돋워주는 관계 유지"],
+    70: ["달콤한 말과 스킨십으로 더 가까워져요", "로맨틱한 데이트 코스를 개발해보세요"],
+    60: ["공통 관심사를 더 많이 찾아보세요", "서로의 취미를 존중하고 이해하려 노력해요"],
+    50: ["천천히, 부담 없이 시간을 보내보세요", "서로에 대해 더 많이 알아가는 시간을 가져요"],
+    40: ["우정을 먼저 탄탄히 쌓아가세요", "편안한 대화로 서로를 더 깊이 이해해요"],
+    30: ["서로의 다름을 인정하고 존중해요", "새로운 시각으로 서로를 바라보려 노력해요"],
+    20: ["충분한 시간을 갖고 차근차근 다가가세요", "급하지 않게, 자연스럽게 관계를 발전시켜요"],
+    10: ["감정 조절에 신경쓰며 소통해보세요", "서로의 차이점을 받아들이는 연습이 필요해요"],
+    0: ["가벼운 친구 관계로 시작해보는 것도 좋아요", "서로에게 부담이 되지 않는 선에서 만나요"]
+  },
+  specialMessages: {
+    95: "두 사람은 정말 특별한 인연이에요. 이런 케미는 정말 드물거든요! 💫",
+    90: "마치 퍼즐 조각이 딱 맞춰지는 것처럼, 서로에게 완벽한 상대예요 ✨",
+    80: "함께 있으면 세상이 더 밝아 보이는 그런 사이네요! 🌟",
+    70: "달달한 로맨스 영화의 주인공 같은 두 사람이에요 💕",
+    60: "편안하면서도 재미있는, 이상적인 관계의 모습이에요 😊",
+    50: "천천히 알아가는 재미가 있는 두 사람! 기대되네요 🎯",
+    40: "좋은 친구가 될 수 있는 든든한 케미를 가지고 있어요 🤝",
+    30: "서로 다른 매력으로 새로운 자극을 주는 관계예요 🎭",
+    20: "시간이 흐르면서 더 좋아질 수 있는 가능성이 보여요 🌱",
+    10: "때로는 이런 롤러코스터 같은 관계도 추억이 되죠 🎢",
+    0: "이것도 하나의 경험! 인생은 다양한 만남으로 풍부해져요 🎪"
+  }
+};
+
+function getInsightForScore(category, score) {
+  const keys = Object.keys(INSIGHTS[category]).map(Number).sort((a,b) => b-a);
+  for (const key of keys) {
+    if (score >= key) return randFrom(INSIGHTS[category][key], category + score);
+  }
+  return INSIGHTS[category][0];
+}
+
+function renderInsights(res) {
+  els.chemistryTips.textContent = getInsightForScore('chemistryTips', res.score);
+  els.relationshipTips.textContent = getInsightForScore('relationshipTips', res.score);
+  els.specialMessage.textContent = getInsightForScore('specialMessages', res.score);
+}
+
 // ========== 결과 렌더 ==========
 const els = {
   a: document.getElementById('a'),
@@ -532,6 +613,9 @@ const els = {
   again: document.getElementById('again'),
   testCount: document.getElementById('testCount'),
   canvas: document.getElementById('card'),
+  chemistryTips: document.getElementById('chemistryTips'),
+  relationshipTips: document.getElementById('relationshipTips'),
+  specialMessage: document.getElementById('specialMessage'),
 };
 
 function toast(msg, type='info'){
@@ -577,6 +661,9 @@ function render(res){
   els.type.textContent  = `${res.type.name} ${res.type.emoji}`;
   els.comment.textContent = res.comment;
   els.result.classList.remove('hidden');
+  
+  // 추가 인사이트 렌더링
+  renderInsights(res);
 
   // 테스트 카운트 업데이트
   const count = parseInt(localStorage.getItem('testCount') || '0') + 1;

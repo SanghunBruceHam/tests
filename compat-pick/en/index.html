@@ -411,6 +411,30 @@ button.primary.loading::after {
       <p id="comment" style="color:var(--muted); font-size:18px; font-weight:600; line-height:1.4; margin:0; max-width:400px; margin:0 auto;"></p>
     </div>
     
+    <!-- Detailed Analysis Section -->
+    <div style="background:rgba(255,255,255,0.7); border-radius:20px; padding:24px; margin-bottom:24px; border:1px solid rgba(225,29,72,0.1);">
+      <div style="text-align:center; margin-bottom:20px;">
+        <h3 style="color:var(--brand); font-size:20px; font-weight:800; margin:0 0 8px 0;">💡 Detailed Analysis</h3>
+      </div>
+      
+      <div class="grid2" style="gap:16px;">
+        <div style="background:rgba(225,29,72,0.05); border-radius:12px; padding:16px;">
+          <div style="color:var(--brand); font-weight:700; font-size:14px; margin-bottom:8px;">🎯 Chemistry Points</div>
+          <div id="chemistryTips" style="color:var(--muted); font-size:14px; line-height:1.4;"></div>
+        </div>
+        
+        <div style="background:rgba(124,58,237,0.05); border-radius:12px; padding:16px;">
+          <div style="color:var(--brand2); font-weight:700; font-size:14px; margin-bottom:8px;">💫 Relationship Advice</div>
+          <div id="relationshipTips" style="color:var(--muted); font-size:14px; line-height:1.4;"></div>
+        </div>
+      </div>
+      
+      <div style="margin-top:16px; background:rgba(245,158,11,0.05); border-radius:12px; padding:16px;">
+        <div style="color:#d97706; font-weight:700; font-size:14px; margin-bottom:8px;">🌟 Special Message</div>
+        <div id="specialMessage" style="color:var(--muted); font-size:14px; line-height:1.4; font-style:italic;"></div>
+      </div>
+    </div>
+
     <!-- Share and action buttons -->
     <div style="display:flex; flex-direction:column; gap:16px; margin-bottom:24px;">
       <div style="display:flex; flex-wrap:wrap; gap:12px; justify-content:center;">
@@ -516,6 +540,63 @@ function randFrom(arr, seedExtra=""){
   return arr[Math.floor(r*arr.length)];
 }
 
+// ========== Insights Data ==========
+const INSIGHTS = {
+  chemistryTips: {
+    95: ["Perfect harmony! You understand each other without finishing sentences", "You laugh at the same things and get upset about the same things - magical chemistry"],
+    90: ["Conversations that never end, like magic", "Even each other's flaws look adorable - that's special"],
+    80: ["Similar energy creates explosive synergy when together!", "You complement each other and become better people"],
+    70: ["Sweet romance at its finest! Everyone around you is jealous", "Even small daily moments become magical"],
+    60: ["Great conversation style that creates comfortable relationships", "Your humor codes match - such a fun connection"],
+    50: ["There's joy in getting to know each other slowly", "You'll discover charms different from first impressions"],
+    40: ["Solid foundation of comfortable and stable friendship", "The effort to understand each other really shines"],
+    30: ["Differences actually create fresh stimulation", "You can see the world more broadly through different perspectives"],
+    20: ["Time and effort needed, but plenty of potential", "Take it slow and patient approach will work well"],
+    10: ["Emotional ups and downs possible, but that's also memories", "Different energies, but finding balance is possible"],
+    0: ["This experience is also a precious page of life", "Sometimes relationships you can laugh off are needed too"]
+  },
+  relationshipTips: {
+    95: ["Keep doing what you're doing! Perfect chemistry", "Continue recognizing each other's specialness"],
+    90: ["Small surprise gifts make it even more special!", "Create more time to spend together"],
+    80: ["Active conversations and various experiences together", "Maintain relationships that boost each other's energy"],
+    70: ["Sweet words and physical affection bring you closer", "Develop romantic date courses together"],
+    60: ["Find more common interests together", "Respect and try to understand each other's hobbies"],
+    50: ["Spend time slowly and without pressure", "Take time to learn more about each other"],
+    40: ["Build a solid friendship foundation first", "Understand each other more deeply through comfortable conversations"],
+    30: ["Acknowledge and respect each other's differences", "Try to see each other from new perspectives"],
+    20: ["Take enough time and approach gradually", "Don't rush - develop the relationship naturally"],
+    10: ["Pay attention to emotional control while communicating", "Practice accepting each other's differences is needed"],
+    0: ["Starting with a light friendship might be good too", "Meet within limits that don't burden each other"]
+  },
+  specialMessages: {
+    95: "You two have a truly special connection. This kind of chemistry is really rare! 💫",
+    90: "Like puzzle pieces fitting perfectly together, you're perfect matches for each other ✨",
+    80: "Being together makes the world seem brighter! 🌟",
+    70: "You two are like the main characters of a sweet romance movie 💕",
+    60: "Comfortable yet fun - the ideal relationship dynamic 😊",
+    50: "Two people with the joy of getting to know each other slowly! Exciting 🎯",
+    40: "You have reliable chemistry that could make great friends 🤝",
+    30: "Different charms that provide fresh stimulation to each other 🎭",
+    20: "There's potential to get better as time passes 🌱",
+    10: "Sometimes these roller coaster relationships become memories too 🎢",
+    0: "This is also an experience! Life becomes richer with various encounters 🎪"
+  }
+};
+
+function getInsightForScore(category, score) {
+  const keys = Object.keys(INSIGHTS[category]).map(Number).sort((a,b) => b-a);
+  for (const key of keys) {
+    if (score >= key) return randFrom(INSIGHTS[category][key], category + score);
+  }
+  return INSIGHTS[category][0];
+}
+
+function renderInsights(res) {
+  els.chemistryTips.textContent = getInsightForScore('chemistryTips', res.score);
+  els.relationshipTips.textContent = getInsightForScore('relationshipTips', res.score);
+  els.specialMessage.textContent = getInsightForScore('specialMessages', res.score);
+}
+
 // ========== Result render ==========
 const els = {
   a: document.getElementById('a'),
@@ -534,6 +615,9 @@ const els = {
   again: document.getElementById('again'),
   testCount: document.getElementById('testCount'),
   canvas: document.getElementById('card'),
+  chemistryTips: document.getElementById('chemistryTips'),
+  relationshipTips: document.getElementById('relationshipTips'),
+  specialMessage: document.getElementById('specialMessage'),
 };
 
 function toast(msg){
@@ -571,6 +655,9 @@ function render(res){
   els.type.textContent  = `${res.type.name} ${res.type.emoji}`;
   els.comment.textContent = res.comment;
   els.result.classList.remove('hidden');
+  
+  // Additional insights rendering
+  renderInsights(res);
 
   // Update test count
   const count = parseInt(localStorage.getItem('testCount') || '0') + 1;

@@ -415,6 +415,30 @@ small.hint{color:var(--muted); display:block; margin-top:6px}
       <p id="comment" style="color:var(--muted); font-size:18px; font-weight:600; line-height:1.4; margin:0; max-width:400px; margin:0 auto;"></p>
     </div>
     
+    <!-- 詳細分析セクション -->
+    <div style="background:rgba(255,255,255,0.7); border-radius:20px; padding:24px; margin-bottom:24px; border:1px solid rgba(225,29,72,0.1);">
+      <div style="text-align:center; margin-bottom:20px;">
+        <h3 style="color:var(--brand); font-size:20px; font-weight:800; margin:0 0 8px 0;">💡 詳細分析</h3>
+      </div>
+      
+      <div class="grid2" style="gap:16px;">
+        <div style="background:rgba(225,29,72,0.05); border-radius:12px; padding:16px;">
+          <div style="color:var(--brand); font-weight:700; font-size:14px; margin-bottom:8px;">🎯 相性ポイント</div>
+          <div id="chemistryTips" style="color:var(--muted); font-size:14px; line-height:1.4;"></div>
+        </div>
+        
+        <div style="background:rgba(124,58,237,0.05); border-radius:12px; padding:16px;">
+          <div style="color:var(--brand2); font-weight:700; font-size:14px; margin-bottom:8px;">💫 関係アドバイス</div>
+          <div id="relationshipTips" style="color:var(--muted); font-size:14px; line-height:1.4;"></div>
+        </div>
+      </div>
+      
+      <div style="margin-top:16px; background:rgba(245,158,11,0.05); border-radius:12px; padding:16px;">
+        <div style="color:#d97706; font-weight:700; font-size:14px; margin-bottom:8px;">🌟 特別なひとこと</div>
+        <div id="specialMessage" style="color:var(--muted); font-size:14px; line-height:1.4; font-style:italic;"></div>
+      </div>
+    </div>
+
     <!-- シェア・アクションボタン -->
     <div style="display:flex; flex-direction:column; gap:16px; margin-bottom:24px;">
       <div style="display:flex; flex-wrap:wrap; gap:12px; justify-content:center;">
@@ -520,6 +544,63 @@ function randFrom(arr, seedExtra=""){
   return arr[Math.floor(r*arr.length)];
 }
 
+// ========== インサイトデータ ==========
+const INSIGHTS = {
+  chemistryTips: {
+    95: ["完璧な息づかい！ お互いの言葉を最後まで聞かなくても通じ合える", "同じことに笑い、同じことに怒る神秘的な相性"],
+    90: ["会話が途切れることのない魔法のような関係", "お互いの短所まで可愛く見える特別さ"],
+    80: ["エネルギーが似ていて一緒にいるとシナジー爆発！", "お互いを補い合ってより良い人になれる"],
+    70: ["甘いロマンスの定番！ 周りが羨むような相性", "些細な日常も特別にしてくれる魔法"],
+    60: ["会話スタイルがよく合う快適な関係", "お互いのユーモアのツボが分かる楽しい関係"],
+    50: ["ゆっくりと知り合う楽しさがある関係", "第一印象とは違う魅力を発見できそう"],
+    40: ["快適で安定した友情の土台がしっかりしている", "お互いを理解しようとする努力が光る関係"],
+    30: ["違いがむしろ新しい刺激になる関係", "お互い異なる視点で世界をより広く見ることができる"],
+    20: ["時間と努力が必要だが可能性は十分", "忍耐強くゆっくり近づいていけば良さそう"],
+    10: ["感情の起伏が大きいかもしれないがそれも思い出", "お互い違うエネルギーだがバランスを取れればOK"],
+    0: ["この経験も貴重な人生の一ページ", "時には笑って流せる関係も必要"]
+  },
+  relationshipTips: {
+    95: ["今のままでお願いします！ 完璧な相性なので", "お互いの特別さを認め続けてください"],
+    90: ["ささやかなサプライズでもっと特別に！", "一緒にいる時間をもっと増やしてみて"],
+    80: ["活発な会話と様々な経験を一緒に", "お互いのエネルギーを高め合う関係を維持"],
+    70: ["甘い言葉とスキンシップでもっと親しく", "ロマンチックなデートコースを開発してみて"],
+    60: ["共通の趣味をもっと見つけてみて", "お互いの趣味を尊重し理解しようと努力を"],
+    50: ["ゆっくり、負担なく時間を過ごしてみて", "お互いについてもっと知る時間を持とう"],
+    40: ["友情をまずしっかりと築いていこう", "快適な会話でお互いをより深く理解しよう"],
+    30: ["お互いの違いを認めて尊重しよう", "新しい視点でお互いを見ようと努力しよう"],
+    20: ["十分な時間をかけて少しずつ近づいてみて", "急がず、自然に関係を発展させよう"],
+    10: ["感情調整に気をつけながらコミュニケーションを", "お互いの違いを受け入れる練習が必要"],
+    0: ["軽い友達関係から始めてみるのも良いかも", "お互いに負担にならない程度で会おう"]
+  },
+  specialMessages: {
+    95: "二人は本当に特別なご縁ですね。こんな相性は本当に珍しいんです！ 💫",
+    90: "まるでパズルのピースがぴったり合うように、お互いにとって完璧な相手ですね ✨",
+    80: "一緒にいると世界がより明るく見えるような関係ですね！ 🌟",
+    70: "甘いロマンス映画の主人公のような二人ですね 💕",
+    60: "快適でありながら楽しい、理想的な関係の姿です 😊",
+    50: "ゆっくりと知り合う楽しみがある二人！ 期待できますね 🎯",
+    40: "良い友達になれる頼もしい相性を持っていますね 🤝",
+    30: "お互い違う魅力で新しい刺激を与える関係ですね 🎭",
+    20: "時間が経つにつれてより良くなる可能性が見えますね 🌱",
+    10: "時にはこんなジェットコースターのような関係も思い出になりますね 🎢",
+    0: "これも一つの経験！ 人生は様々な出会いで豊かになります 🎪"
+  }
+};
+
+function getInsightForScore(category, score) {
+  const keys = Object.keys(INSIGHTS[category]).map(Number).sort((a,b) => b-a);
+  for (const key of keys) {
+    if (score >= key) return randFrom(INSIGHTS[category][key], category + score);
+  }
+  return INSIGHTS[category][0];
+}
+
+function renderInsights(res) {
+  els.chemistryTips.textContent = getInsightForScore('chemistryTips', res.score);
+  els.relationshipTips.textContent = getInsightForScore('relationshipTips', res.score);
+  els.specialMessage.textContent = getInsightForScore('specialMessages', res.score);
+}
+
 // ========== 結果レンダリング ==========
 const els = {
   a: document.getElementById('a'),
@@ -538,6 +619,9 @@ const els = {
   again: document.getElementById('again'),
   testCount: document.getElementById('testCount'),
   canvas: document.getElementById('card'),
+  chemistryTips: document.getElementById('chemistryTips'),
+  relationshipTips: document.getElementById('relationshipTips'),
+  specialMessage: document.getElementById('specialMessage'),
 };
 
 function toast(msg, type='info'){
@@ -578,6 +662,9 @@ function render(res){
   els.type.textContent  = `${res.type.name} ${res.type.emoji}`;
   els.comment.textContent = res.comment;
   els.result.classList.remove('hidden');
+  
+  // 追加インサイトレンダリング
+  renderInsights(res);
 
   // テストカウント更新
   const count = parseInt(localStorage.getItem('testCount') || '0') + 1;
