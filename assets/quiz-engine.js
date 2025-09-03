@@ -457,60 +457,75 @@ function renderResult(root, config, result){
     })();
   
   console.log('About to set container.innerHTML');
-  console.log('detailedInsightsHtml:', detailedInsightsHtml);
-  console.log('insightsHtml:', insightsHtml);
-  console.log('tipsHtml:', tipsHtml);
+  console.log('detailedInsightsHtml length:', detailedInsightsHtml.length);
+  console.log('insightsHtml length:', insightsHtml.length);
+  console.log('tipsHtml length:', tipsHtml ? tipsHtml.length : 0);
+  console.log('cat:', cat);
+  console.log('theme:', theme);
   
-  container.innerHTML = `
-    <div class="q-hero" style="--hero-gradient:${theme.gradient}">
-      <div class="q-emoji-container" aria-hidden="true">
-        <div class="q-emoji">${escapeHtml(theme.emoji || '✨')}</div>
-        <div class="q-emoji-shadow"></div>
+  try {
+    console.log('Setting container.innerHTML with components:');
+    console.log('- theme.gradient:', theme.gradient);
+    console.log('- theme.emoji:', theme.emoji);
+    console.log('- cat.name:', cat.name);
+    console.log('- cat.description:', cat.description);
+    
+    container.innerHTML = `
+      <div class="q-hero" style="--hero-gradient:${theme.gradient}">
+        <div class="q-emoji-container" aria-hidden="true">
+          <div class="q-emoji">${escapeHtml(theme.emoji || '✨')}</div>
+          <div class="q-emoji-shadow"></div>
+        </div>
+        <div class="q-hero-text">
+          <div class="badge animate-badge">${I18N.resultBadge}</div>
+          <h2 class="animate-title">${escapeHtml(cat.name)}</h2>
+          <p class="muted animate-desc">${escapeHtml(cat.description)}</p>
+        </div>
       </div>
-      <div class="q-hero-text">
-        <div class="badge animate-badge">${I18N.resultBadge}</div>
-        <h2 class="animate-title">${escapeHtml(cat.name)}</h2>
-        <p class="muted animate-desc">${escapeHtml(cat.description)}</p>
+      ${detailedInsightsHtml}
+      ${insightsHtml}
+      ${tipsHtml ? `<div class="q-tips">${tipsHtml}</div>` : ''}
+      <div class="share enhanced-share">
+        <div class="share-header">${I18N.shareNative}</div>
+        <div class="share-grid">
+          <button class="share-x share-btn twitter-btn">
+            <div class="btn-icon">𝕏</div>
+            <div class="btn-text">Twitter</div>
+          </button>
+          <button class="copy share-btn copy-btn">
+            <div class="btn-icon">🔗</div>
+            <div class="btn-text">${I18N.copy}</div>
+          </button>
+          <button class="fb share-btn facebook-btn">
+            <div class="btn-icon">f</div>
+            <div class="btn-text">Facebook</div>
+          </button>
+          <button class="line share-btn line-btn">
+            <div class="btn-icon">📱</div>
+            <div class="btn-text">LINE</div>
+          </button>
+          <button class="threads share-btn threads-btn">
+            <div class="btn-icon">@</div>
+            <div class="btn-text">Threads</div>
+          </button>
+          <button class="native share-btn native-btn">
+            <div class="btn-icon">📤</div>
+            <div class="btn-text">${I18N.shareNative}</div>
+          </button>
+        </div>
       </div>
-    </div>
-    ${detailedInsightsHtml}
-    ${insightsHtml}
-    ${tipsHtml ? `<div class=\"q-tips\">${tipsHtml}</div>` : ''}
-    <div class="share enhanced-share">
-      <div class="share-header">${I18N.shareNative}</div>
-      <div class="share-grid">
-        <button class="share-x share-btn twitter-btn">
-          <div class="btn-icon">𝕏</div>
-          <div class="btn-text">Twitter</div>
-        </button>
-        <button class="copy share-btn copy-btn">
-          <div class="btn-icon">🔗</div>
-          <div class="btn-text">${I18N.copy}</div>
-        </button>
-        <button class="fb share-btn facebook-btn">
-          <div class="btn-icon">f</div>
-          <div class="btn-text">Facebook</div>
-        </button>
-        <button class="line share-btn line-btn">
-          <div class="btn-icon">📱</div>
-          <div class="btn-text">LINE</div>
-        </button>
-        <button class="threads share-btn threads-btn">
-          <div class="btn-icon">@</div>
-          <div class="btn-text">Threads</div>
-        </button>
-        <button class="native share-btn native-btn">
-          <div class="btn-icon">📤</div>
-          <div class="btn-text">${I18N.shareNative}</div>
-        </button>
-      </div>
-    </div>
-      <div class="again"><a href="?">${I18N.tryAgain}</a></div>
-      <div class="q-nav">
-        <a class="q-nav-btn" href="${baseUrl}">${I18N.goHome}</a>
-        <a class="q-nav-btn" href="${baseUrl}#all-tests">${I18N.allTests}</a>
-      </div>
-    `;
+        <div class="again"><a href="?">${I18N.tryAgain}</a></div>
+        <div class="q-nav">
+          <a class="q-nav-btn" href="${baseUrl}">${I18N.goHome}</a>
+          <a class="q-nav-btn" href="${baseUrl}#all-tests">${I18N.allTests}</a>
+        </div>
+      `;
+      
+      console.log('Container innerHTML set successfully');
+    } catch (error) {
+      console.error('Error setting container.innerHTML:', error);
+      container.innerHTML = '<div>결과를 표시하는 중 오류가 발생했습니다.</div>';
+    }
     
     console.log('Container HTML generated, length:', container.innerHTML.length);
     console.log('About to clear root and append container');
@@ -842,7 +857,8 @@ function renderResult(root, config, result){
 
     const testInsights = insights[testId];
     if (!testInsights || !testInsights[lang] || !testInsights[lang][categoryId]) {
-      return '';
+      console.log('No detailed insights found for:', testId, lang, categoryId);
+      return '<div style="display:none;"><!-- No detailed insights --></div>';
     }
 
     const insight = testInsights[lang][categoryId];
