@@ -242,8 +242,31 @@
     return { categoryId, scores };
   }
 
-  function renderResult(root, config, result){
-    const cat = config.categories[result.categoryId];
+function getCategoryTheme(config, categoryId){
+  const fallback = { emoji: '✨', gradient: 'linear-gradient(135deg,#667eea,#764ba2)' };
+  const catCfg = (config.categories && config.categories[categoryId]) || {};
+  if (catCfg.emoji || catCfg.gradient){
+    return { emoji: catCfg.emoji || fallback.emoji, gradient: catCfg.gradient || fallback.gradient };
+  }
+  const map = {
+    stability: { emoji: '🛋️', gradient: 'linear-gradient(135deg,#34d399,#10b981)' },
+    passion:   { emoji: '🔥', gradient: 'linear-gradient(135deg,#f472b6,#ef4444)' },
+    caretaking:{ emoji: '💞', gradient: 'linear-gradient(135deg,#f59e0b,#fcd34d)' },
+    free:      { emoji: '🌈', gradient: 'linear-gradient(135deg,#60a5fa,#a78bfa)' },
+    egen:      { emoji: '🎨', gradient: 'linear-gradient(135deg,#22d3ee,#818cf8)' },
+    teto:      { emoji: '🧠', gradient: 'linear-gradient(135deg,#f43f5e,#f59e0b)' },
+    mix:       { emoji: '⚡', gradient: 'linear-gradient(135deg,#14b8a6,#6366f1)' },
+    teen:      { emoji: '⚡', gradient: 'linear-gradient(135deg,#67e8f9,#a78bfa)' },
+    twenties:  { emoji: '🔥', gradient: 'linear-gradient(135deg,#8b5cf6,#f472b6)' },
+    thirties:  { emoji: '⚖️', gradient: 'linear-gradient(135deg,#22c55e,#86efac)' },
+    forties:   { emoji: '🍶', gradient: 'linear-gradient(135deg,#f59e0b,#fde68a)' }
+  };
+  return map[categoryId] || fallback;
+}
+
+function renderResult(root, config, result){
+  const cat = config.categories[result.categoryId];
+  const theme = getCategoryTheme(config, result.categoryId);
     const container = document.createElement('div');
     container.className = 'q-result';
     const baseUrl = (document.documentElement.lang||'ko').startsWith('ja') ? '/ja/' : (document.documentElement.lang||'ko').startsWith('en') ? '/en/' : '/';
@@ -325,15 +348,20 @@
       };
       return (T[lang] && T[lang][result.categoryId]) || '';
     })();
-    container.innerHTML = `
-      <div class="badge">${I18N.resultBadge}</div>
-      <h2>${escapeHtml(cat.name)}</h2>
-      <p class="muted">${escapeHtml(cat.description)}</p>
-      ${insightsHtml}
-      ${tipsHtml ? `<div class=\"q-tips\">${tipsHtml}</div>` : ''}
-      <div class="share">
-        <button class="share-x">${I18N.shareX}</button>
-        <button class="copy">${I18N.copy}</button>
+  container.innerHTML = `
+    <div class="q-hero" style="--hero-gradient:${theme.gradient}">
+      <div class="q-emoji" aria-hidden="true">${escapeHtml(theme.emoji || '✨')}</div>
+      <div class="q-hero-text">
+        <div class="badge">${I18N.resultBadge}</div>
+        <h2>${escapeHtml(cat.name)}</h2>
+        <p class="muted">${escapeHtml(cat.description)}</p>
+      </div>
+    </div>
+    ${insightsHtml}
+    ${tipsHtml ? `<div class=\"q-tips\">${tipsHtml}</div>` : ''}
+    <div class="share">
+      <button class="share-x">${I18N.shareX}</button>
+      <button class="copy">${I18N.copy}</button>
         <button class="fb">${I18N.shareFacebook}</button>
         <button class="line">${I18N.shareLine}</button>
         <button class="threads">${I18N.shareThreads}</button>
@@ -416,6 +444,12 @@
     .q-actions .prev:not([disabled]){ background: linear-gradient(90deg,#667eea,#764ba2); color:#fff; border:none; }
     .q-actions .next, .q-actions .submit{ background: linear-gradient(90deg,#667eea,#764ba2); color:#fff; border:none; }
     .q-result{ max-width:820px; margin:0 auto; background:var(--card-bg,#fff); border:1px solid var(--border-color,#e5e7eb); border-radius:12px; padding:18px; text-align:center; box-shadow: var(--shadow, 0 6px 18px rgba(0,0,0,.08)); }
+    .q-hero{ position:relative; display:flex; gap:12px; align-items:center; border-radius:12px; padding:14px; margin-bottom:10px; background: var(--hero-gradient, linear-gradient(135deg,#667eea,#764ba2)); color:#0b0f14; overflow:hidden; }
+    .q-hero::after{ content:''; position:absolute; inset:0; background: radial-gradient(600px 240px at 90% -10%, rgba(255,255,255,.25), transparent); pointer-events:none; }
+    .q-emoji{ width:54px; height:54px; border-radius:12px; background: rgba(255,255,255,.85); display:flex; align-items:center; justify-content:center; font-size:28px; box-shadow: 0 6px 18px rgba(0,0,0,.12); }
+    .q-hero .badge{ display:inline-block; padding:4px 10px; border-radius:999px; background: rgba(255,255,255,.7); color:#111; font-weight:700; font-size:.75rem; }
+    .q-hero h2{ margin:6px 0 2px; color:#0b0f14; }
+    .q-hero p{ margin:0; color:#0b0f14; opacity:.85; }
     .q-result .badge{ display:inline-block; padding:4px 10px; border-radius:999px; background:#f1f5f9; color:#64748b; font-size:12px; margin-bottom:8px; }
     .q-result h2{ margin:6px 0 8px; }
     .q-result .muted{ color: var(--text-secondary,#666); }
@@ -425,11 +459,11 @@
     .scorebar{ display:flex; align-items:center; gap:8px; }
     .scorebar .label{ width:120px; font-size:.9rem; color:#374151; }
     .scorebar .bar{ flex:1; height:8px; background:#eef2f7; border-radius:999px; overflow:hidden; }
-    .scorebar .bar > span{ display:block; height:100%; background:linear-gradient(90deg,#667eea,#764ba2); }
+    .scorebar .bar > span{ display:block; height:100%; background:linear-gradient(90deg,#667eea,#764ba2); box-shadow: 0 2px 8px rgba(102,126,234,.35); border-radius:999px; }
     .q-tips{ background:#f8fafc; border:1px solid #e5e7eb; border-radius:12px; padding:10px; margin:12px 0; font-size:.95rem; color:#374151; }
     .q-result .share{ display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin-top:12px; 
-      background: var(--share-bg, #f8fafc); border:1px solid var(--border-color,#e5e7eb); border-radius:12px; padding:8px; }
-    .q-result .share button{ padding:8px 12px; border-radius:999px; border:1px solid var(--border-color,#e5e7eb); background:#ffffff; color:#111; cursor:pointer; box-shadow: 0 2px 6px rgba(0,0,0,.06); }
+      background: var(--share-bg, #f8fafc); border:1px solid var(--border-color,#e5e7eb); border-radius:12px; padding:8px; backdrop-filter: blur(6px); }
+    .q-result .share button{ padding:8px 12px; border-radius:999px; border:1px solid var(--border-color,#e5e7eb); background:#ffffff; color:#111; cursor:pointer; box-shadow: 0 2px 10px rgba(0,0,0,.08); }
     .q-result .share button:hover{ border-color: var(--accent-color,#667eea); }
     .q-result .again{ margin-top:10px; }
     .q-nav{ display:flex; gap:10px; justify-content:center; margin-top:12px; }
@@ -487,7 +521,10 @@
         'romance-test': '💕 연애 스타일 테스트',
         'kpop-idol-romance': '🎤 K-POP 아이돌 연애 취향',
         'kpop-egen-teto': '🎵 K-POP EGEN/TETO 성향',
-        'egen-teto': '💖 에겐 vs 테토 성향 테스트'
+        'egen-teto': '💖 에겐 vs 테토 성향 테스트',
+        'anime-personality': '🎭 애니메 성격 진단',
+        'age-vibe': '🕒 감성연령 테스트',
+        'compat-pick': '🔥 이름 케미 테스트'
       },
       ja: {
         'food-compat': '🍽️ フード相性テスト',
@@ -495,7 +532,10 @@
         'romance-test': '💕 恋愛スタイルテスト',
         'kpop-idol-romance': '🎤 K-POP アイドル恋愛',
         'kpop-egen-teto': '🎵 K-POP EGEN/TETO 性向',
-        'egen-teto': '💖 エゲン vs テト 性向テスト'
+        'egen-teto': '💖 エゲン vs テト 性向テスト',
+        'anime-personality': '🎭 アニメ性格診断',
+        'age-vibe': '🕒 感性年齢テスト',
+        'compat-pick': '🔥 名前相性テスト'
       },
       en: {
         'food-compat': '🍽️ Food Compatibility Test',
@@ -503,7 +543,10 @@
         'romance-test': '💕 Love Style Test',
         'kpop-idol-romance': '🎤 K-POP Idol Romance',
         'kpop-egen-teto': '🎵 K-POP EGEN/TETO Preference',
-        'egen-teto': '💖 Estrogen vs Testosterone Personality Test'
+        'egen-teto': '💖 Estrogen vs Testosterone Personality Test',
+        'anime-personality': '🎭 Anime Personality Test',
+        'age-vibe': '🕒 Emotional Age Test',
+        'compat-pick': '🔥 Name Chemistry Test'
       }
     }[base] || {};
     const section = document.createElement('div');
