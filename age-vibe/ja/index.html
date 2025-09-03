@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <title>あなたの感性年齢は？ | 感性年齢テスト</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="感性年齢テスト｜約1分、8問であなたの本当の感性年齢を診断。Z世代・MZ・バランス型・クラシック大人のどれに近い？シェアできる結果カード付き。" />
+  <meta name="keywords" content="感性年齢, 感性, Z世代, ミレニアル, 性格診断, 無料テスト" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://tests.mahalohana-bruce.com/age-vibe/ja/index.html" />
+
+  <!-- hreflang (相互リンク) -->
+  <link rel="alternate" hreflang="ja" href="https://tests.mahalohana-bruce.com/age-vibe/ja/index.html" />
+  <link rel="alternate" hreflang="ko" href="https://tests.mahalohana-bruce.com/age-vibe/ko/index.html" />
+  <link rel="alternate" hreflang="en" href="https://tests.mahalohana-bruce.com/age-vibe/en/index.html" />
+  <link rel="alternate" hreflang="x-default" href="https://tests.mahalohana-bruce.com/age-vibe/ko/index.html" />
+
+  <!-- Social meta -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="あなたの感性年齢は？ | 感性年齢テスト" />
+  <meta property="og:description" content="8問であなたの感性年齢を診断。すぐにシェアできる結果カードを生成します。" />
+  <meta property="og:url" content="https://tests.mahalohana-bruce.com/age-vibe/ja/index.html" />
+  <meta property="og:image" content="https://tests.mahalohana-bruce.com/age-vibe/assets/og-ja.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="あなたの感性年齢は？ | 感性年齢テスト" />
+  <meta name="twitter:description" content="8問であなたの感性年齢を診断。すぐにシェアできる結果カードを生成します。" />
+  <meta name="twitter:image" content="https://tests.mahalohana-bruce.com/age-vibe/assets/og-ja.png" />
+  <meta name="twitter:site" content="@tests_mahalohana" />
+  <link rel="icon" href="https://tests.mahalohana-bruce.com/favicon.png" type="image/png" />
+
+  <meta name="theme-color" content="#6ee7ff">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "感性年齢テスト",
+    "description": "約1分でわかる本当の感性年齢。",
+    "url": "https://tests.mahalohana-bruce.com/age-vibe/ja/index.html",
+    "applicationCategory": "LifestyleApplication",
+    "operatingSystem": "Any",
+    "offers": {"@type": "Offer", "price": "0", "priceCurrency": "JPY"}
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Quiz",
+    "name": "感性年齢テスト",
+    "description": "8問であなたの感性年齢を診断。すぐにシェアできる結果カードを生成します。",
+    "url": "https://tests.mahalohana-bruce.com/age-vibe/ja/index.html",
+    "inLanguage": "ja",
+    "isAccessibleForFree": true,
+    "audience": { "@type": "Audience", "audienceType": "general" }
+  }
+  </script>
+
+  <style>
+    :root{--bg:#0b0f14; --card:#121826; --muted:#9aa4b2; --text:#e6edf6; --brand:#6ee7ff; --brand2:#a78bfa}
+    *{box-sizing:border-box}
+    body{margin:0; font-family: ui-sans-serif, system-ui, -apple-system, "Noto Sans JP", "Hiragino Kaku Gothic ProN", sans-serif; color:var(--text); background:#0b0f14}
+    .wrap{max-width:960px; margin:0 auto; padding:24px 16px}
+    .header{margin-bottom:12px}
+    .header h1{margin:0 0 6px; font-size:1.6rem}
+    .header p{color:var(--muted); margin:0}
+    .panel{background:linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02)); border:1px solid rgba(255,255,255,0.08); border-radius:16px; padding:16px}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="header">
+      <h1>🕒 感性年齢テスト</h1>
+      <p>全8問・約1分・結果カードをすぐ生成</p>
+    </div>
+    <div class="panel">
+      <div id="quiz" aria-live="polite"></div>
+    </div>
+  </div>
+
+  <script defer>
+    window.quizConfig = {
+      id: 'age-vibe',
+      title: '感性年齢テスト',
+      subtitle: '全8問・約1分。いまの“雰囲気年齢”をサクッと診断。',
+      share: { title: '感性年齢テスト', hashtags: '感性年齢テスト,心理テスト' },
+      categories: {
+        teen:      { name: 'Z世代っぽさ',           description: 'ミームに強く、トレンドに敏感。返信はサクサク速いタイプ。' },
+        twenties:  { name: 'トレンディMZ（ミレニアル×Z）', description: 'オシャレで実用的。流行を追いつつ、現実的なバランスも大事に。' },
+        thirties:  { name: 'バランス達人',           description: '仕事と趣味の両立、計画的で落ち着いた魅力。たまに即興性もプラス。' },
+        forties:   { name: 'クラシック大人',         description: '伝統と品質を重視。タイムレスな心地よさ。穏やかで温かい雰囲気。' }
+      },
+      questions: [
+        { id: 'q1', text: '週末の気分は？', options: [
+          { text: 'TikTok/ショートやOTTを一気見 🍿',       weights: { teen: 2 } },
+          { text: 'カフェ巡り・ポップアップをチェック ☕',  weights: { twenties: 2 } },
+          { text: 'ジム/登山/ランニング・趣味に没頭 🏃',     weights: { thirties: 2 } },
+          { text: '家で読書＆ニュース、ドキュ鑑賞 📚',       weights: { forties: 2 } } ] },
+
+        { id: 'q2', text: '返信スピードは？', options: [
+          { text: 'すぐ！5分以内 💨',                    weights: { teen: 2 } },
+          { text: '1〜2時間以内 ⏰',                     weights: { twenties: 2 } },
+          { text: '1日に1回まとめて 📝',                 weights: { thirties: 2 } },
+          { text: '既読スルーしがち… 😅',               weights: { forties: 2 } } ] },
+
+        { id: 'q3', text: 'SNSの使い方は？', options: [
+          { text: 'TikTok/ショートでトレンド追い 📱',      weights: { teen: 2 } },
+          { text: 'Instagram ストーリー/フィード活発 📸',  weights: { twenties: 2 } },
+          { text: 'ブログ/Notionでじっくり記録 ✍️',        weights: { thirties: 2 } },
+          { text: '主にメッセージアプリ。SNSは疲れる 😴',   weights: { forties: 2 } } ] },
+
+        { id: 'q4', text: 'ファッションの気分は？', options: [
+          { text: '楽ちんだけど今っぽく 😎',             weights: { teen: 2 } },
+          { text: 'インフルエンサーやトレンドを参考 👗',    weights: { twenties: 2 } },
+          { text: '定番ブランドのベーシック 👔',           weights: { thirties: 2 } },
+          { text: '良ければ古着も長く着る 👚',            weights: { forties: 2 } } ] },
+
+        { id: 'q5', text: '音楽の趣味は？', options: [
+          { text: '最新のK‑POP/ヒップホップ/ポップ 🎵',    weights: { teen: 2 } },
+          { text: 'インディー/シティポップ/ジャズ 🎶',     weights: { twenties: 2 } },
+          { text: 'バラード/OST/エモ系 🎤',                weights: { thirties: 2 } },
+          { text: '80〜90年代の名曲・懐メロ 🎼',            weights: { forties: 2 } } ] },
+
+        { id: 'q6', text: '買い物スタイルは？', options: [
+          { text: '新作/限定はまずチェック 💳',             weights: { teen: 2 } },
+          { text: 'セール/コスパ重視で比較 🛍️',            weights: { twenties: 2 } },
+          { text: '必要なものだけミニマルに 🎯',            weights: { thirties: 2 } },
+          { text: 'たまにドーンとご褒美買い 💸',            weights: { forties: 2 } } ] },
+
+        { id: 'q7', text: '新しいアプリ／技術が出たら？', options: [
+          { text: '即インストール、まず試す 🚀',             weights: { teen: 2 } },
+          { text: '様子を見て素早く順応 👥',                 weights: { twenties: 2 } },
+          { text: '必要な時だけ導入 🤔',                     weights: { thirties: 2 } },
+          { text: '慣れたものを使い続ける 📱',               weights: { forties: 2 } } ] },
+
+        { id: 'q8', text: '生活リズムは？', options: [
+          { text: '完全に夜型 🦉',                           weights: { teen: 2 } },
+          { text: '夜型だがリズムは保つ 🌙',                 weights: { twenties: 2 } },
+          { text: '朝型。早寝早起き 🌅',                      weights: { thirties: 2 } },
+          { text: 'かなりの早寝早起き ⏰',                   weights: { forties: 2 } } ] }
+      ]
+    };
+    // A/Bコピー（short/casual）。?ab=short|casual またはランダム。セッションに保持。
+    (function(){
+      try {
+        const p = new URLSearchParams(location.search);
+        let v = p.get('ab') || sessionStorage.getItem('ageVibeAB');
+        if (!v || !['short','casual'].includes(v)) v = Math.random() < 0.5 ? 'short' : 'casual';
+        sessionStorage.setItem('ageVibeAB', v);
+        window.__abVariantAgeVibe = v;
+        const cfg = window.quizConfig;
+        if (v === 'short') {
+          cfg.subtitle = '全8問・約1分で判定。';
+          cfg.categories.teen.description = 'トレンド感度高め、返信は速い。';
+          cfg.categories.twenties.description = 'オシャレで実用的。';
+          cfg.categories.thirties.description = 'バランス重視で安定。';
+          cfg.categories.forties.description = '品質重視で落ち着き。';
+          const map = {
+            q1: ['週末は？', ['TikTok/OTT', 'カフェ/ポップアップ', 'ジム/趣味', '読書/ニュース']],
+            q2: ['返信速度は？', ['すぐ', '1〜2時間', '1日1回', '既読スルーも']],
+            q3: ['SNSは？', ['TikTok/ショート', 'Instagram', 'ブログ/Notion', '主にメッセージ']],
+            q4: ['ファッションは？', ['楽ちん今っぽ', 'トレンド参考', 'ベーシック', '気に入れば長く']],
+            q5: ['音楽は？', ['K‑POP/ヒップホップ/ポップ', 'インディー/シティポップ/ジャズ', 'バラード/OST', '80〜90年代名曲']],
+            q6: ['買い物は？', ['新作/限定優先', 'コスパ比較', '必要最低限', 'ご褒美買い']],
+            q7: ['新アプリ/技術？', ['即インストール', '様子見→順応', '必要なら導入', '慣れた物でOK']],
+            q8: ['生活リズム？', ['夜型', '夜型×安定', '朝型', '超早寝早起き']]
+          };
+          cfg.questions = cfg.questions.map(q => map[q.id] ? ({
+            ...q,
+            text: map[q.id][0],
+            options: q.options.map((opt,i) => ({ ...opt, text: map[q.id][1][i] }))
+          }) : q);
+        } else {
+          cfg.subtitle = '約1分で、いまの雰囲気年齢がわかる。';
+          cfg.categories.teen.description = 'ミームに強くトレンド感度◎。返信サクサク。';
+          cfg.categories.twenties.description = 'オシャレで地に足。リアルさも大事に。';
+          cfg.categories.thirties.description = '仕事も趣味も両立。お金の使い方もスマート。';
+          cfg.categories.forties.description = '品質と心地よさ重視。穏やかで温かい雰囲気。';
+        }
+      } catch(e) { /* noop */ }
+    })();
+  </script>
+  <script src="/assets/quiz-engine.js" defer></script>
+  <script src="/assets/seo-optimizer.js" defer></script>
+  <script src="/assets/analytics-enhanced.js" defer></script>
+</body>
+ </html>

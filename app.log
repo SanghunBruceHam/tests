@@ -546,3 +546,19 @@
 2025-09-03 01:25:58,931 - utils - INFO - 사이트맵 생성 완료: 125개 URL
 2025-09-03 01:25:58,931 - utils - INFO - 사이트맵 유효성 검사 통과
 2025-09-03 01:25:58,931 - utils - INFO - 사이트맵 생성 프로세스 완료
+2025-09-03 11:39:02,002 - utils - INFO - SEO에서 제외: yandex_1010c8523eee2722.html
+2025-09-03 11:39:02,003 - utils - INFO - SEO에서 제외: googlee53980ef2acb81e6.html
+2025-09-03 11:39:02,003 - utils - INFO - SEO에서 제외: sandbox.html
+2025-09-03 11:39:02,024 - utils - INFO - 발견된 HTML 파일: 127개
+2025-09-03 11:39:02,028 - utils - INFO - Successfully wrote file: /Users/sanghunbruceham/Documents/GitHub/tests/sitemap.xml
+2025-09-03 11:39:02,028 - utils - INFO - 사이트맵 생성 완료: 127개 URL
+2025-09-03 11:39:02,029 - utils - INFO - 사이트맵 유효성 검사 통과
+2025-09-03 11:39:02,029 - utils - INFO - 사이트맵 생성 프로세스 완료
+2025-09-03 12:39:30,125 - utils - INFO - SEO에서 제외: yandex_1010c8523eee2722.html
+2025-09-03 12:39:30,125 - utils - INFO - SEO에서 제외: googlee53980ef2acb81e6.html
+2025-09-03 12:39:30,125 - utils - INFO - SEO에서 제외: sandbox.html
+2025-09-03 12:39:30,133 - utils - INFO - 발견된 HTML 파일: 127개
+2025-09-03 12:39:30,133 - utils - INFO - Successfully wrote file: /Users/sanghunbruceham/Documents/GitHub/tests/sitemap.xml
+2025-09-03 12:39:30,133 - utils - INFO - 사이트맵 생성 완료: 127개 URL
+2025-09-03 12:39:30,134 - utils - INFO - 사이트맵 유효성 검사 통과
+2025-09-03 12:39:30,134 - utils - INFO - 사이트맵 생성 프로세스 완료

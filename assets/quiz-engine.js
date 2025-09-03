@@ -260,7 +260,9 @@
         const name = (config.categories[k] && config.categories[k].name) || k;
         return `<div class="scorebar"><div class="label">${escapeHtml(name)}</div><div class="bar"><span style="width:${pct}%"></span></div></div>`;
       }).join('');
-      const secLine = second && config.categories[second[0]] ? `<div class="secondary">${escapeHtml(config.categories[second[0]].name)} 기질이 함께 보여요.</div>` : '';
+      const lang2 = (document.documentElement.lang||'ko').slice(0,2);
+      const secMsg = lang2==='en' ? 'also shows up in your vibe.' : lang2==='ja' ? 'の傾向も見られます。' : '기질이 함께 보여요.';
+      const secLine = second && config.categories[second[0]] ? `<div class="secondary">${escapeHtml(config.categories[second[0]].name)} ${secMsg}</div>` : '';
       return `<div class="q-insights">${secLine}<div class="score-list">${bars}</div></div>`;
     })();
     const tipsHtml = (function(){
@@ -444,6 +446,12 @@
 
   function renderRecommendations(root, config, locale){
     const map = {
+      'age-vibe': [
+        { id: 'romance-test', path: 'romance-test' },
+        { id: 'anime-personality', path: 'anime-personality' },
+        { id: 'food-compat', path: 'food-compat' },
+        { id: 'kfood-romance', path: 'kfood-romance' }
+      ],
       'kfood-romance': [
         { id: 'food-compat', path: 'food-compat' },
         { id: 'romance-test', path: 'romance-test' },

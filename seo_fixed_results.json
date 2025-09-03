@@ -73,6 +73,157 @@
     "file": "yandex_1010c8523eee2722.html"
   },
   {
+    "score": 85,
+    "issues": [
+      "⚠️ 제목이 너무 짧음 (18자)",
+      "⚠️ 메타 설명이 너무 짧음 (57자)",
+      "⚠️ 메타 키워드 누락",
+      "❌ JSON-LD 구조화 데이터 누락"
+    ],
+    "raw_score": 85,
+    "max_score": 100,
+    "details": {
+      "title_length": 18,
+      "meta_desc_length": 57,
+      "meta_desc_found": true,
+      "images_count": 1,
+      "images_with_alt": 1,
+      "json_ld_count": 0,
+      "og_tags_found": 5,
+      "twitter_tags_found": 5
+    },
+    "file": "kpop-egen-teto/ja/index.html"
+  },
+  {
+    "score": 85,
+    "issues": [
+      "⚠️ 제목이 너무 짧음 (26자)",
+      "⚠️ 메타 설명이 너무 짧음 (115자)",
+      "⚠️ 메타 키워드 누락",
+      "❌ JSON-LD 구조화 데이터 누락"
+    ],
+    "raw_score": 85,
+    "max_score": 100,
+    "details": {
+      "title_length": 26,
+      "meta_desc_length": 115,
+      "meta_desc_found": true,
+      "images_count": 1,
+      "images_with_alt": 1,
+      "json_ld_count": 0,
+      "og_tags_found": 5,
+      "twitter_tags_found": 5
+    },
+    "file": "kpop-egen-teto/en/index.html"
+  },
+  {
+    "score": 85,
+    "issues": [
+      "⚠️ 제목이 너무 짧음 (25자)",
+      "⚠️ 메타 설명이 너무 짧음 (53자)",
+      "⚠️ 메타 키워드 누락",
+      "❌ JSON-LD 구조화 데이터 누락"
+    ],
+    "raw_score": 85,
+    "max_score": 100,
+    "details": {
+      "title_length": 25,
+      "meta_desc_length": 53,
+      "meta_desc_found": true,
+      "images_count": 1,
+      "images_with_alt": 1,
+      "json_ld_count": 0,
+      "og_tags_found": 5,
+      "twitter_tags_found": 5
+    },
+    "file": "kpop-idol-romance/ja/index.html"
+  },
+  {
+    "score": 85,
+    "issues": [
+      "⚠️ 제목이 너무 짧음 (18자)",
+      "⚠️ 메타 설명이 너무 짧음 (35자)",
+      "⚠️ 메타 키워드 누락",
+      "❌ JSON-LD 구조화 데이터 누락"
+    ],
+    "raw_score": 85,
+    "max_score": 100,
+    "details": {
+      "title_length": 18,
+      "meta_desc_length": 35,
+      "meta_desc_found": true,
+      "images_count": 1,
+      "images_with_alt": 1,
+      "json_ld_count": 0,
+      "og_tags_found": 5,
+      "twitter_tags_found": 5
+    },
+    "file": "food-compat/ja/index.html"
+  },
+  {
+    "score": 90,
+    "issues": [
+      "⚠️ 메타 설명이 너무 짧음 (53자)",
+      "⚠️ 메타 키워드 누락",
+      "❌ JSON-LD 구조화 데이터 누락"
+    ],
+    "raw_score": 90,
+    "max_score": 100,
+    "details": {
+      "title_length": 42,
+      "meta_desc_length": 53,
+      "meta_desc_found": true,
+      "images_count": 1,
+      "images_with_alt": 1,
+      "json_ld_count": 0,
+      "og_tags_found": 5,
+      "twitter_tags_found": 5
+    },
+    "file": "kpop-egen-teto/ko/index.html"
+  },
+  {
+    "score": 90,
+    "issues": [
+      "⚠️ 메타 설명이 너무 짧음 (59자)",
+      "⚠️ 메타 키워드 누락",
+      "❌ JSON-LD 구조화 데이터 누락"
+    ],
+    "raw_score": 90,
+    "max_score": 100,
+    "details": {
+      "title_length": 37,
+      "meta_desc_length": 59,
+      "meta_desc_found": true,
+      "images_count": 1,
+      "images_with_alt": 1,
+      "json_ld_count": 0,
+      "og_tags_found": 5,
+      "twitter_tags_found": 5
+    },
+    "file": "kpop-idol-romance/ko/index.html"
+  },
+  {
+    "score": 90,
+    "issues": [
+      "⚠️ 메타 설명이 너무 짧음 (111자)",
+      "⚠️ 메타 키워드 누락",
+      "❌ JSON-LD 구조화 데이터 누락"
+    ],
+    "raw_score": 90,
+    "max_score": 100,
+    "details": {
+      "title_length": 44,
+      "meta_desc_length": 111,
+      "meta_desc_found": true,
+      "images_count": 1,
+      "images_with_alt": 1,
+      "json_ld_count": 0,
+      "og_tags_found": 5,
+      "twitter_tags_found": 5
+    },
+    "file": "kpop-idol-romance/en/index.html"
+  },
+  {
     "score": 90,
     "issues": [
       "⚠️ 제목이 너무 짧음 (27자)",
@@ -131,6 +282,68 @@
       "twitter_tags_found": 5
     },
     "file": "romance-test/en/test13.html"
+  },
+  {
+    "score": 90,
+    "issues": [
+      "⚠️ 메타 설명이 너무 짧음 (86자)",
+      "⚠️ 메타 키워드 누락"
+    ],
+    "raw_score": 90,
+    "max_score": 100,
+    "details": {
+      "title_length": 33,
+      "meta_desc_length": 86,
+      "meta_desc_found": true,
+      "images_count": 0,
+      "images_with_alt": 0,
+      "json_ld_count": 1,
+      "og_tags_found": 5,
+      "twitter_tags_found": 5
+    },
+    "file": "compat-pick/ko/index.html"
+  },
+  {
+    "score": 90,
+    "issues": [
+      "⚠️ 메타 설명이 너무 짧음 (49자)",
+      "⚠️ 메타 키워드 누락",
+      "❌ JSON-LD 구조화 데이터 누락"
+    ],
+    "raw_score": 90,
+    "max_score": 100,
+    "details": {
+      "title_length": 30,
+      "meta_desc_length": 49,
+      "meta_desc_found": true,
+      "images_count": 1,
+      "images_with_alt": 1,
+      "json_ld_count": 0,
+      "og_tags_found": 5,
+      "twitter_tags_found": 5
+    },
+    "file": "food-compat/ko/index.html"
+  },
+  {
+    "score": 90,
+    "issues": [
+      "⚠️ 메타 설명이 너무 짧음 (87자)",
+      "⚠️ 메타 키워드 누락",
+      "❌ JSON-LD 구조화 데이터 누락"
+    ],
+    "raw_score": 90,
+    "max_score": 100,
+    "details": {
+      "title_length": 42,
+      "meta_desc_length": 87,
+      "meta_desc_found": true,
+      "images_count": 1,
+      "images_with_alt": 1,
+      "json_ld_count": 0,
+      "og_tags_found": 5,
+      "twitter_tags_found": 5
+    },
+    "file": "food-compat/en/index.html"
   },
   {
     "score": 95,
@@ -270,6 +483,46 @@
   {
     "score": 95,
     "issues": [
+      "⚠️ 제목이 너무 짧음 (20자)",
+      "⚠️ 메타 설명이 너무 짧음 (71자)"
+    ],
+    "raw_score": 95,
+    "max_score": 100,
+    "details": {
+      "title_length": 20,
+      "meta_desc_length": 71,
+      "meta_desc_found": true,
+      "images_count": 0,
+      "images_with_alt": 0,
+      "json_ld_count": 2,
+      "og_tags_found": 5,
+      "twitter_tags_found": 5
+    },
+    "file": "age-vibe/ja/index.html"
+  },
+  {
+    "score": 95,
+    "issues": [
+      "⚠️ 제목이 너무 짧음 (24자)",
+      "⚠️ 메타 설명이 너무 짧음 (89자)"
+    ],
+    "raw_score": 95,
+    "max_score": 100,
+    "details": {
+      "title_length": 24,
+      "meta_desc_length": 89,
+      "meta_desc_found": true,
+      "images_count": 0,
+      "images_with_alt": 0,
+      "json_ld_count": 3,
+      "og_tags_found": 5,
+      "twitter_tags_found": 5
+    },
+    "file": "age-vibe/ko/index.html"
+  },
+  {
+    "score": 95,
+    "issues": [
       "⚠️ 메타 설명이 너무 짧음 (55자)"
     ],
     "raw_score": 95,
@@ -285,25 +538,6 @@
       "twitter_tags_found": 5
     },
     "file": "romance-test/ja/test1.html"
-  },
-  {
-    "score": 95,
-    "issues": [
-      "⚠️ 메타 설명이 너무 짧음 (82자)"
-    ],
-    "raw_score": 95,
-    "max_score": 100,
-    "details": {
-      "title_length": 32,
-      "meta_desc_length": 82,
-      "meta_desc_found": true,
-      "images_count": 0,
-      "images_with_alt": 0,
-      "json_ld_count": 1,
-      "og_tags_found": 5,
-      "twitter_tags_found": 5
-    },
-    "file": "romance-test/ko/index.html"
   },
   {
     "score": 95,
@@ -920,6 +1154,27 @@
     "file": "monitoring/dashboard.html"
   },
   {
+    "score": 95,
+    "issues": [
+      "⚠️ 제목이 너무 짧음 (14자)",
+      "⚠️ 메타 설명이 너무 짧음 (57자)",
+      "⚠️ 메타 키워드 누락"
+    ],
+    "raw_score": 95,
+    "max_score": 100,
+    "details": {
+      "title_length": 14,
+      "meta_desc_length": 57,
+      "meta_desc_found": true,
+      "images_count": 1,
+      "images_with_alt": 1,
+      "json_ld_count": 1,
+      "og_tags_found": 5,
+      "twitter_tags_found": 5
+    },
+    "file": "kfood-romance/ja/index.html"
+  },
+  {
     "score": 100,
     "issues": [
       "⚠️ 메타 설명이 너무 짧음 (79자)"
@@ -1089,6 +1344,25 @@
       "twitter_tags_found": 5
     },
     "file": "anime-personality/en/index.html"
+  },
+  {
+    "score": 100,
+    "issues": [
+      "⚠️ 메타 설명이 너무 길음 (180자)"
+    ],
+    "raw_score": 100,
+    "max_score": 100,
+    "details": {
+      "title_length": 47,
+      "meta_desc_length": 180,
+      "meta_desc_found": true,
+      "images_count": 0,
+      "images_with_alt": 0,
+      "json_ld_count": 2,
+      "og_tags_found": 5,
+      "twitter_tags_found": 5
+    },
+    "file": "age-vibe/en/index.html"
   },
   {
     "score": 100,
@@ -1701,6 +1975,25 @@
   {
     "score": 100,
     "issues": [
+      "⚠️ 메타 설명이 너무 짧음 (82자)"
+    ],
+    "raw_score": 100,
+    "max_score": 100,
+    "details": {
+      "title_length": 32,
+      "meta_desc_length": 82,
+      "meta_desc_found": true,
+      "images_count": 0,
+      "images_with_alt": 0,
+      "json_ld_count": 2,
+      "og_tags_found": 5,
+      "twitter_tags_found": 5
+    },
+    "file": "romance-test/ko/index.html"
+  },
+  {
+    "score": 100,
+    "issues": [
       "⚠️ 메타 설명이 너무 짧음 (80자)"
     ],
     "raw_score": 100,
@@ -2229,5 +2522,43 @@
       "twitter_tags_found": 5
     },
     "file": "en/index.html"
+  },
+  {
+    "score": 100,
+    "issues": [
+      "⚠️ 메타 설명이 너무 짧음 (74자)"
+    ],
+    "raw_score": 105,
+    "max_score": 100,
+    "details": {
+      "title_length": 37,
+      "meta_desc_length": 74,
+      "meta_desc_found": true,
+      "images_count": 1,
+      "images_with_alt": 1,
+      "json_ld_count": 1,
+      "og_tags_found": 5,
+      "twitter_tags_found": 5
+    },
+    "file": "kfood-romance/ko/index.html"
+  },
+  {
+    "score": 100,
+    "issues": [
+      "⚠️ 메타 키워드 누락"
+    ],
+    "raw_score": 105,
+    "max_score": 100,
+    "details": {
+      "title_length": 38,
+      "meta_desc_length": 143,
+      "meta_desc_found": true,
+      "images_count": 1,
+      "images_with_alt": 1,
+      "json_ld_count": 1,
+      "og_tags_found": 5,
+      "twitter_tags_found": 5
+    },
+    "file": "kfood-romance/en/index.html"
   }
 ]
