@@ -330,8 +330,8 @@
     .q-options{ display:grid; gap:8px; margin-top:12px; }
     .q-option{ display:flex; gap:10px; align-items:center; padding:12px; border:1px solid var(--border-color,#e5e7eb); border-radius:10px; cursor:pointer; background:rgba(255,255,255,.9); }
     .q-option:hover{ border-color: var(--accent-color,#667eea); }
-    .q-actions{ display:flex; gap:8px; justify-content:center; margin:12px 0; }
-    .q-actions button{ padding:10px 16px; min-width:110px; border-radius:999px; border:1px solid var(--border-color,#e5e7eb); background:var(--card-bg,#fff); cursor:pointer; }
+    .q-actions{ display:flex; gap:8px; justify-content:center; margin:12px 0; z-index:5; }
+    .q-actions button{ padding:10px 16px; min-width:110px; border-radius:999px; border:1px solid var(--border-color,#e5e7eb); background:var(--card-bg,#fff); cursor:pointer; color: var(--text-primary,#111); }
     .q-actions .prev[disabled]{ opacity:.5; }
     .q-actions .next, .q-actions .submit{ background: linear-gradient(90deg,#667eea,#764ba2); color:#fff; border:none; }
     .q-result{ max-width:820px; margin:0 auto; background:var(--card-bg,#fff); border:1px solid var(--border-color,#e5e7eb); border-radius:12px; padding:18px; text-align:center; box-shadow: var(--shadow, 0 6px 18px rgba(0,0,0,.08)); }
@@ -344,6 +344,9 @@
     .q-nav{ display:flex; gap:10px; justify-content:center; margin-top:12px; }
     .q-nav-btn{ display:inline-block; padding:10px 14px; border-radius:999px; background:linear-gradient(90deg,#667eea,#764ba2); color:#fff; text-decoration:none; }
     @media (max-width:600px){ .q-option{ padding:10px; } }
+    @media (max-width: 720px){
+      .q-actions{ position: sticky; bottom: 8px; background: rgba(255,255,255,.92); backdrop-filter: blur(6px); padding: 8px; border:1px solid var(--border-color,#e5e7eb); border-radius: 12px; box-shadow: var(--shadow, 0 6px 18px rgba(0,0,0,.08)); max-width: 820px; margin-left:auto; margin-right:auto; }
+    }
     `;
     const style = document.createElement('style');
     style.textContent = css;
