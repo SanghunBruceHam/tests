@@ -333,6 +333,7 @@
     .q-actions{ display:flex; gap:8px; justify-content:center; margin:12px 0; z-index:5; }
     .q-actions button{ padding:10px 16px; min-width:110px; border-radius:999px; border:1px solid var(--border-color,#e5e7eb); background:var(--card-bg,#fff); cursor:pointer; color: var(--text-primary,#111); }
     .q-actions .prev[disabled]{ opacity:.5; }
+    .q-actions .prev:not([disabled]){ background: linear-gradient(90deg,#667eea,#764ba2); color:#fff; border:none; }
     .q-actions .next, .q-actions .submit{ background: linear-gradient(90deg,#667eea,#764ba2); color:#fff; border:none; }
     .q-result{ max-width:820px; margin:0 auto; background:var(--card-bg,#fff); border:1px solid var(--border-color,#e5e7eb); border-radius:12px; padding:18px; text-align:center; box-shadow: var(--shadow, 0 6px 18px rgba(0,0,0,.08)); }
     .q-result .badge{ display:inline-block; padding:4px 10px; border-radius:999px; background:#f1f5f9; color:#64748b; font-size:12px; margin-bottom:8px; }
