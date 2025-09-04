@@ -592,11 +592,16 @@ const INSIGHTS = {
 };
 
 function getInsightForScore(category, score) {
-  const keys = Object.keys(INSIGHTS[category]).map(Number).sort((a,b) => b-a);
+  const bucket = INSIGHTS[category];
+  const keys = Object.keys(bucket).map(Number).sort((a,b) => b-a);
   for (const key of keys) {
-    if (score >= key) return randFrom(INSIGHTS[category][key], category + score);
+    if (score >= key) {
+      const val = bucket[key];
+      return Array.isArray(val) ? randFrom(val, category + score) : val;
+    }
   }
-  return INSIGHTS[category][0];
+  const fallback = bucket[0];
+  return Array.isArray(fallback) ? randFrom(fallback, category + score) : fallback;
 }
 
 function renderInsights(res) {
