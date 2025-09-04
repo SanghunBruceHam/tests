@@ -43,13 +43,38 @@ class CommonComponents {
     document.addEventListener('DOMContentLoaded', () => {
       const langButtons = document.querySelectorAll('.lang-btn');
       const currentLang = this.getCurrentLanguage();
-      
+
       langButtons.forEach(btn => {
         const btnLang = this.getLangFromUrl(btn.href);
         if (btnLang === currentLang) {
           btn.classList.add('active');
         }
       });
+
+      // Adjust language links to point to the same page across locales when possible
+      try {
+        const path = window.location.pathname; // e.g., /age-vibe/ja/index.html or /ja/index.html
+        const hasLocaleSegment = /\/(ko|ja|en)\//.test(path);
+        const anchors = document.querySelectorAll('.footer-lang a, .language-selector a');
+        anchors.forEach(a => {
+          const targetLang = this.getLangFromUrl(a.href);
+          if (!targetLang) return;
+          let newPath;
+          if (/\/(ko|ja|en)\//.test(path)) {
+            // Replace in-path language segment to target language
+            newPath = path.replace(/\/(ko|ja|en)\//, `/${targetLang}/`);
+          } else if (/^\/(ko|ja|en)\/?(index\.html)?$/.test(path)) {
+            // Language root page
+            newPath = `/${targetLang}/`;
+          } else {
+            // Fallback to language root
+            newPath = targetLang === 'ko' ? '/' : `/${targetLang}/`;
+          }
+          const url = new URL(a.href, window.location.origin);
+          url.pathname = newPath;
+          a.href = url.toString();
+        });
+      } catch (e) { /* noop */ }
     });
   }
 
