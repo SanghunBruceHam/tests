@@ -64,6 +64,38 @@
     .header h1{margin:0 0 6px; font-size:1.6rem}
     .header p{color:var(--muted); margin:0}
     .panel{background:linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02)); border:1px solid rgba(255,255,255,0.08); border-radius:16px; padding:16px}
+
+    /* Accessibility: improve contrast for dark theme UI inside quiz */
+    :root{
+      --card-bg: #121826;
+      --border-color: rgba(255,255,255,0.12);
+      --text-primary: #e6edf6;
+      --text-secondary: #9aa4b2;
+      --accent-color: var(--brand);
+      --share-bg: rgba(255,255,255,0.06);
+    }
+
+    /* Quiz container cards and options */
+    .q-card{ background:#121826 !important; border:1px solid rgba(255,255,255,0.12) !important; color:#e6edf6; }
+    .q-num{ color:#9aa4b2 !important; }
+    .q-header .muted{ color:#9aa4b2 !important; }
+    .q-progress{ background: rgba(255,255,255,0.12) !important; }
+    .q-option{ background: rgba(18,24,38,0.92) !important; border-color: rgba(255,255,255,0.14) !important; color:#e6edf6; }
+    .q-option:hover{ border-color: var(--brand) !important; }
+
+    /* Navigation actions bar/buttons */
+    .q-actions{ background: rgba(18,24,38,0.92) !important; border:1px solid rgba(255,255,255,0.12) !important; }
+    .q-actions button{ background:#121826; color:#e6edf6; border-color: rgba(255,255,255,0.16); }
+    .q-actions .prev:not([disabled]), .q-actions .next, .q-actions .submit{ color:#fff; }
+
+    /* Result sections */
+    .q-result{ background:#121826 !important; border:1px solid rgba(255,255,255,0.12) !important; color:#e6edf6; }
+    .q-result .muted, .q-insights .secondary{ color:#a8b3c2 !important; }
+    .q-result .badge{ background: rgba(255,255,255,0.16) !important; color:#e6edf6 !important; }
+    .q-result .share{ background: rgba(255,255,255,0.06) !important; border-color: rgba(255,255,255,0.12) !important; }
+    .scorebar .label{ color:#cbd5e1 !important; }
+    .scorebar .bar{ background: rgba(255,255,255,0.12) !important; }
+    .q-tips{ background: rgba(255,255,255,0.06) !important; border-color: rgba(255,255,255,0.12) !important; color:#e6edf6; }
   </style>
   <meta name="mobile-web-app-capable" content="yes">
 
