@@ -51,3 +51,6 @@ yarn-error.log*
 # 프로덕션 빌드 (if needed)
 dist/
 build/
+ 
+# Reports / artifacts
+performance_reports/
