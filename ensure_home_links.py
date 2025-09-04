@@ -79,34 +79,55 @@ def build_link_block(lang: str) -> str:
     )
 
 
+def build_lang_switcher(lang: str) -> str:
+    def lang_item(code: str, label: str) -> str:
+        if code == lang:
+            return f'<span style="font-weight:700;color:#334155;">{label}</span>'
+        return f'<a href="{LANG_HOME[code]}" style="color:#475569;text-decoration:none;">{label}</a>'
+
+    return (
+        '  <div class="footer-lang" style="margin-top:8px;font-size:0.92rem;">\n'
+        f'    {lang_item("ko", "한국어")} · {lang_item("ja", "日本語")} · {lang_item("en", "English")}\n'
+        '  </div>'
+    )
+
+
 def build_footer(lang: str) -> str:
     href = LANG_HOME[lang]
     text = HOME_TEXT[lang]
     return (
         "<footer style=\"text-align:center; margin-top:24px; color:#64748b; font-weight:600;\">\n"
         f"  <a id=\"home-link\" href=\"{href}\" style=\"text-decoration:none; color:#2563eb; font-weight:700;\">{text}</a>\n"
+        f"{build_lang_switcher(lang)}\n"
         "</footer>\n"
     )
 
 
 def process_html(content: str, lang: str) -> Tuple[str, bool]:
-    if has_home_link(content, lang):
-        return content, False
+    updated = False
+    new_content = content
 
     # prefer inserting inside existing footer
-    if FOOTER_CLOSE_RE.search(content):
-        link_block = build_link_block(lang)
-        new_content = FOOTER_CLOSE_RE.sub(link_block + "\n</footer>", content, count=1)
-        return new_content, True
+    if FOOTER_CLOSE_RE.search(new_content):
+        if not has_home_link(new_content, lang):
+            link_block = build_link_block(lang)
+            new_content = FOOTER_CLOSE_RE.sub(link_block + "\n</footer>", new_content, count=1)
+            updated = True
+        # ensure language switcher exists
+        if 'footer-lang' not in new_content:
+            lang_block = build_lang_switcher(lang)
+            new_content = FOOTER_CLOSE_RE.sub(lang_block + "\n</footer>", new_content, count=1)
+            updated = True
+        return new_content, updated
 
     # else inject a small footer before </body>
-    if BODY_CLOSE_RE.search(content):
+    if BODY_CLOSE_RE.search(new_content):
         footer = build_footer(lang)
-        new_content = BODY_CLOSE_RE.sub(footer + "</body>", content, count=1)
+        new_content = BODY_CLOSE_RE.sub(footer + "</body>", new_content, count=1)
         return new_content, True
 
     # as a last resort, append at end
-    return content + "\n" + build_footer(lang), True
+    return new_content + "\n" + build_footer(lang), True
 
 
 def should_skip_file(path: str) -> bool:
