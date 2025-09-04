@@ -925,30 +925,40 @@
       <div class="recommendations">
         <h3 class="section-subtitle">🔥 인기 테스트</h3>
         <div class="recommendation-cards">
-          <a href="/compat-pick/ko/" class="recommendation-item">
+          <a href="/age-vibe/ko/" class="recommendation-item" data-id="age-vibe">
+            <div class="rec-title">🕒 감성연령</div>
+            <div class="rec-desc">8문항으로 감성 나이 확인 — Z세대·MZ·밸런스·클래식.</div>
+            <span class="rank-badge">NEW</span>
+          </a>
+          <a href="/compat-pick/ko/" class="recommendation-item" data-id="compat-pick">
             <div class="rec-title">🔥 이름 케미 테스트</div>
             <div class="rec-desc">이름만 입력하면 케미 퍼센트 — 공유하고 비교해보세요.</div>
-            <span class="rank-badge">HOT</span>
+            <span class="rank-badge">NEW</span>
           </a>
-          <a href="/kfood-romance/ko/" class="recommendation-item">
+          <a href="/kfood-romance/ko/" class="recommendation-item" data-id="kfood-romance">
             <div class="rec-title">🍲 K-FOOD 연애 취향</div>
             <div class="rec-desc">최애 한식으로 연애 성향 진단 — 1분 테스트.</div>
             <span class="rank-badge">NEW</span>
           </a>
-          <a href="/food-compat/ko/" class="recommendation-item">
+          <a href="/food-compat/ko/" class="recommendation-item" data-id="food-compat">
             <div class="rec-title">🍽️ 음식 궁합 테스트</div>
             <div class="rec-desc">음식 취향으로 커플 케미 체크 — 데이트 메뉴 고민 끝.</div>
             <span class="rank-badge">NEW</span>
           </a>
-          <a href="/kpop-idol-romance/ko/" class="recommendation-item">
+          <a href="/kpop-idol-romance/ko/" class="recommendation-item" data-id="kpop-idol-romance">
             <div class="rec-title">🎤 K-POP 아이돌 연애 취향</div>
             <div class="rec-desc">선호 포지션으로 연애 성향 분석.</div>
             <span class="rank-badge">NEW</span>
           </a>
-          <a href="/kpop-egen-teto/ko/" class="recommendation-item">
+          <a href="/kpop-egen-teto/ko/" class="recommendation-item" data-id="kpop-egen-teto">
             <div class="rec-title">🎵 K-POP EGEN/TETO 성향</div>
             <div class="rec-desc">음악 취향으로 에겐/테토 성향 분석.</div>
             <span class="rank-badge">NEW</span>
+          </a>
+          <a href="/anime-personality/ko/" class="recommendation-item" data-id="anime-personality">
+            <div class="rec-title">🎭 애니메 성격 진단</div>
+            <div class="rec-desc">6가지 타입(주인공·츤데레·쿨계열 등) — 나의 캐릭터 성향 확인!</div>
+            <span class="rank-badge">1위</span>
           </a>
           <a href="/money-style/ko/" class="recommendation-item">
             <div class="rec-title">💰 돈 쓰는 패턴 테스트</div>
@@ -960,10 +970,15 @@
             <div class="rec-desc">앱·알림·배경화면 선택으로 보는 디지털 라이프스타일 분석.</div>
             <span class="rank-badge">NEW</span>
           </a>
-          <a href="/romance-test/ko/" class="recommendation-item">
+          <a href="/romance-test/ko/" class="recommendation-item" data-id="romance-test">
             <div class="rec-title">💕 연애 스타일 테스트</div>
             <div class="rec-desc">연애 패턴과 이상형 분석 — 사랑에 빠지는 방식부터 유지법까지.</div>
-            <span class="rank-badge">1위</span>
+            <span class="rank-badge">2위</span>
+          </a>
+          <a href="/egen-teto/ko/" class="recommendation-item" data-id="egen-teto">
+            <div class="rec-title">🔥 에겐 vs 테토 테스트</div>
+            <div class="rec-desc">호르몬 특성 기반 성격 분석 — 에겐/테토 성향과 이상형 제안.</div>
+            <span class="rank-badge">3위</span>
           </a>
         </div>
       </div>
@@ -1262,6 +1277,7 @@
     </div>
 
     <script src="/assets/common-components.js"></script>
+    <script defer src="/assets/recommendations-manager.js"></script>
     <script defer src="/assets/analytics-enhanced.js"></script>
 
     <script>
