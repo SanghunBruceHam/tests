@@ -268,7 +268,7 @@
 
     .recommendation-cards {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 8px;
       max-width: 900px;
       margin: 0 auto;
@@ -774,9 +774,8 @@
       margin-bottom: 12px;
     }
 
-    .recommendation-cards {
-      grid-template-columns: 1fr;
-      gap: 8px;
+    @media (max-width: 720px){
+      .recommendation-cards { grid-template-columns: 1fr; gap: 8px; }
     }
 
     .recommendation-item {
