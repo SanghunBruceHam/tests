@@ -372,7 +372,9 @@ function renderResult(root, config, result){
   const lang = (document.documentElement.lang||'ko').slice(0,2);
   const container = document.createElement('div');
   container.className = 'q-result';
-  const baseUrl = (document.documentElement.lang||'ko').startsWith('ja') ? '/ja/' : (document.documentElement.lang||'ko').startsWith('en') ? '/en/' : '/';
+  // Prefer path-based language detection to avoid mismatches
+  const pth = window.location.pathname || '';
+  const baseUrl = /^\/ja\//.test(pth) ? '/ja/' : (/^\/en\//.test(pth) ? '/en/' : '/');
   
   // Generate detailed insights first
   const detailedInsightsHtml = generateDetailedInsights(result, config, lang);
