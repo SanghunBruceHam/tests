@@ -763,6 +763,11 @@
       padding: 4px 8px;
       font-size: 0.6rem;
     }
+
+    /* Unify recommendations to single column on mobile */
+    @media (max-width: 720px){
+      .recommendation-cards { grid-template-columns: 1fr; gap: 8px; }
+    }
   }
 
     .recommendations {
@@ -1050,6 +1055,7 @@
 </footer>
 
   <script src="/assets/common-components.js"></script>
+  <script defer src="/assets/analytics-enhanced.js"></script>
 
   <script>
     // Scroll to top functionality

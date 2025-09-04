@@ -857,9 +857,8 @@
         margin-bottom: 12px;
       }
 
-      .recommendation-cards {
-        grid-template-columns: 1fr;
-        gap: 8px;
+      @media (max-width: 720px){
+        .recommendation-cards { grid-template-columns: 1fr; gap: 8px; }
       }
 
       .recommendation-item {
@@ -1276,6 +1275,7 @@
     </div>
 
     <script src="/assets/common-components.js"></script>
+    <script defer src="/assets/analytics-enhanced.js"></script>
 
     <script>
       // Scroll to top functionality
