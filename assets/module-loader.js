@@ -59,11 +59,23 @@ class ModuleLoader {
   // 페이지 타입 감지
   _detectPageType() {
     const path = window.location.pathname;
-    
-    if (path.includes('/test') && path.includes('.html')) return 'test';
-    if (path.includes('/index.html') || path === '/') return 'index';
+    // Prefer DOM-based detection to avoid misclassifying subfolder index.html
+    try {
+      if (document.querySelector('#quiz, .quiz-container, .question-section, .answer-option, .result-section, #result')) {
+        return 'test';
+      }
+    } catch (e) { /* noop */ }
+
+    // Site home indexes
+    const isSiteIndex = (
+      path === '/' ||
+      /\/(ko|ja|en)\/?$/.test(path) ||
+      path === '/index.html' ||
+      /^\/(ko|ja|en)\/index\.html$/.test(path)
+    );
+    if (isSiteIndex) return 'index';
+
     if (path.includes('/about')) return 'about';
-    
     return 'default';
   }
 
