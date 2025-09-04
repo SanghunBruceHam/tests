@@ -15,6 +15,7 @@ from __future__ import annotations
 import os
 import re
 from typing import Optional, Tuple
+from datetime import datetime
 
 # Root-relative home paths per language
 LANG_HOME = {
@@ -95,10 +96,19 @@ def build_lang_switcher(lang: str) -> str:
 def build_footer(lang: str) -> str:
     href = LANG_HOME[lang]
     text = HOME_TEXT[lang]
+    year = datetime.utcnow().year
+    site_name = {'ko':'심리테스트 모음','ja':'心理テスト集','en':'Psychological Tests Collection'}.get(lang,'심리테스트 모음')
+    brand = 'Tests Mahalohana Bruce'
     return (
-        "<footer style=\"text-align:center; margin-top:24px; color:#64748b; font-weight:600;\">\n"
-        f"  <a id=\"home-link\" href=\"{href}\" style=\"text-decoration:none; color:#2563eb; font-weight:700;\">{text}</a>\n"
+        "<footer class=\"site-footer\" style=\"text-align:center;padding:16px 12px;color:#64748b;font-size:14px;\">\n"
+        f"  <a id=\"home-link\" href=\"{href}\" style=\"display:inline-block;text-decoration:none;color:#2563eb;font-weight:800;\">{text}</a>\n"
         f"{build_lang_switcher(lang)}\n"
+        "  <div class=\"footer-brand\" style=\"margin-top:8px;font-size:12px;color:#94a3b8;\">\n"
+        f"    <span class=\"site-name\">{site_name}</span> · <a href=\"https://tests.mahalohana-bruce.com\" style=\"color:#94a3b8;text-decoration:none;\">tests.mahalohana-bruce.com</a>\n"
+        "  </div>\n"
+        "  <div class=\"copyright\" style=\"margin-top:4px;font-size:12px;color:#94a3b8;\">\n"
+        f"    © {year} {brand}. All rights reserved.\n"
+        "  </div>\n"
         "</footer>\n"
     )
 

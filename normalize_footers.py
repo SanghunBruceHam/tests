@@ -14,6 +14,7 @@ from __future__ import annotations
 import os
 import re
 from typing import Tuple
+from datetime import datetime
 
 EXCLUDE_DIRS = {
     '.git', '__pycache__', 'assets', 'monitoring', 'docs', 'node_modules'
@@ -34,6 +35,15 @@ HOME_LABEL = {
     'ja': '🏠 テスト一覧',
     'en': '🏠 Browse All Tests',
 }
+
+SITE_NAME = {
+    'ko': '심리테스트 모음',
+    'ja': '心理テスト集',
+    'en': 'Psychological Tests Collection',
+}
+
+BRAND_NAME = 'Tests Mahalohana Bruce'
+SITE_URL = 'https://tests.mahalohana-bruce.com'
 
 
 def detect_lang(path: str) -> str:
@@ -59,14 +69,22 @@ def lang_switcher(active: str) -> str:
 
 
 def build_footer(lang: str) -> str:
+    year = datetime.utcnow().year
+    site_name = SITE_NAME.get(lang, SITE_NAME['ko'])
     return (
         '<footer class="site-footer" '
         'style="text-align:center;padding:16px 12px;color:#64748b;font-size:14px;">\n'
         f'  <a id="home-link" href="{LANG_HOME[lang]}" '
-        'style="display:inline-block;text-decoration:none;color:#2563eb;'
-        'font-weight:800;">'
+        'style="display:inline-block;text-decoration:none;color:#2563eb;font-weight:800;">'
         f'{HOME_LABEL[lang]}</a>\n'
         f'{lang_switcher(lang)}\n'
+        '  <div class="footer-brand" style="margin-top:8px;font-size:12px;color:#94a3b8;">\n'
+        f'    <span class="site-name">{site_name}</span> · '
+        f'    <a href="{SITE_URL}" style="color:#94a3b8;text-decoration:none;">tests.mahalohana-bruce.com</a>\n'
+        '  </div>\n'
+        '  <div class="copyright" style="margin-top:4px;font-size:12px;color:#94a3b8;">\n'
+        f'    © {year} {BRAND_NAME}. All rights reserved.\n'
+        '  </div>\n'
         '</footer>'
     )
 
@@ -117,4 +135,3 @@ def main() -> None:
 
 if __name__ == '__main__':
     main()
-
