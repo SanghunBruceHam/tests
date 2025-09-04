@@ -610,39 +610,42 @@ function renderResult(root, config, result){
           font-size: 1.1em;
         }
         .share-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-          gap: 12px;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 8px;
         }
         .share-btn {
           display: flex;
-          flex-direction: column;
+          flex-direction: row;
           align-items: center;
-          padding: 16px 8px;
+          padding: 8px 12px;
           border: none;
-          border-radius: 12px;
+          border-radius: 8px;
           background: #f8f9fa;
           cursor: pointer;
           transition: all 0.3s ease;
           font-family: inherit;
           position: relative;
           overflow: hidden;
+          min-width: auto;
         }
         .share-btn:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+          transform: translateY(-1px);
+          box-shadow: 0 2px 8px rgba(0,0,0,0.15);
         }
         .share-btn:active {
           transform: translateY(0);
         }
         .btn-icon {
-          font-size: 24px;
+          font-size: 16px;
           font-weight: bold;
-          margin-bottom: 8px;
+          margin-right: 6px;
+          margin-bottom: 0;
         }
         .btn-text {
-          font-size: 12px;
-          font-weight: 500;
+          font-size: 11px;
+          font-weight: 600;
           color: #666;
         }
         .twitter-btn:hover { background: #1da1f2; color: white; }
@@ -658,6 +661,22 @@ function renderResult(root, config, result){
         .copy-btn:hover .btn-text,
         .native-btn:hover .btn-text {
           color: white;
+        }
+        @media (max-width: 480px) {
+          .share-grid {
+            gap: 6px;
+          }
+          .share-btn {
+            padding: 6px 8px;
+            font-size: 10px;
+          }
+          .btn-icon {
+            font-size: 14px;
+            margin-right: 4px;
+          }
+          .btn-text {
+            font-size: 10px;
+          }
         }
       `;
       document.head.appendChild(style);
