@@ -55,8 +55,35 @@ class Config:
                 'main_width': '680',
                 'main_height': '140',
                 'test_width': '750',
-                'test_height': '150'
+                'test_height': '150',
+                'small_width': '520',
+                'small_height': '130',
+                'large_width': '800',
+                'large_height': '160'
             }
+        }
+    
+    @classmethod
+    def get_adaptive_coupang_config(cls, container_width: int) -> Dict[str, Any]:
+        """컨테이너 크기에 따른 적응형 쿠팡 광고 설정 반환"""
+        base_config = cls.get_coupang_ad_config()
+        
+        # 컨테이너 크기에 따른 광고 크기 결정
+        if container_width <= 600:
+            # 작은 컨테이너 (egen-teto 등)
+            width, height = base_config['templates']['small_width'], base_config['templates']['small_height']
+        elif container_width <= 800:
+            # 중간 컨테이너 (메인 페이지)
+            width, height = base_config['templates']['main_width'], base_config['templates']['main_height']
+        else:
+            # 큰 컨테이너 (kpop, romance-test 등)
+            width, height = base_config['templates']['large_width'], base_config['templates']['large_height']
+        
+        return {
+            'id': base_config['id'],
+            'tracking_code': base_config['tracking_code'],
+            'width': width,
+            'height': height
         }
     
     @classmethod

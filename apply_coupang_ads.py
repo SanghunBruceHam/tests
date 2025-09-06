@@ -8,21 +8,22 @@ from pathlib import Path
 from typing import List
 from utils import FileManager, ContentProcessor, SecurityUtils, logger
 from config import Config
+import re
 
-def get_coupang_ad_html() -> str:
-    """쿠팡 파트너스 광고 HTML 반환"""
-    config = Config.get_coupang_ad_config()
+def get_coupang_ad_html(container_width: int = 800) -> str:
+    """쿠팡 파트너스 광고 HTML 반환 (적응형)"""
+    config = Config.get_adaptive_coupang_config(container_width)
     return f'''
-<!-- Coupang Partners Ad Section -->
-<div style="background: rgba(255, 255, 255, 0.95); border-radius: 15px; padding: 20px; margin: 30px auto; max-width: 800px; text-align: center; border: 1px solid #e2e8f0; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+<!-- Coupang Partners Ad Section (Adaptive: {config['width']}x{config['height']}) -->
+<div style="background: rgba(255, 255, 255, 0.95); border-radius: 15px; padding: 20px; margin: 30px auto; max-width: {container_width}px; text-align: center; border: 1px solid #e2e8f0; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
   <h3 style="color: #2d3748; margin-bottom: 15px; font-size: 1.2rem;">🛍️ 추천 상품</h3>
   <p style="color: #4a5568; font-size: 0.9rem; margin-bottom: 15px;">연애 테스트를 즐기며 쇼핑도 함께! 쿠팡에서 다양한 상품을 만나보세요.</p>
 
-  <!-- 쿠팡 파트너스 광고 -->
-  <div style="margin: 15px 0; width: 100%; max-width: {config['templates']['test_width']}px;">
+  <!-- 쿠팡 파트너스 광고 (적응형 크기) -->
+  <div style="margin: 15px 0; width: 100%; max-width: {config['width']}px; margin-left: auto; margin-right: auto;">
     <script src="https://ads-partners.coupang.com/g.js"></script>
     <script>
-      new PartnersCoupang.G({{"id":{config['id']},"template":"carousel","trackingCode":"{config['tracking_code']}","width":"{config['templates']['test_width']}","height":"{config['templates']['test_height']}","tsource":""}});
+      new PartnersCoupang.G({{"id":{config['id']},"template":"carousel","trackingCode":"{config['tracking_code']}","width":"{config['width']}","height":"{config['height']}","tsource":""}});
     </script>
   </div>
 
@@ -31,20 +32,20 @@ def get_coupang_ad_html() -> str:
   </p>
 </div>'''
 
-def get_main_page_coupang_ad_html() -> str:
-    """메인 페이지용 쿠팡 파트너스 광고 HTML 반환"""
-    config = Config.get_coupang_ad_config()
+def get_main_page_coupang_ad_html(container_width: int = 800) -> str:
+    """메인 페이지용 쿠팡 파트너스 광고 HTML 반환 (적응형)"""
+    config = Config.get_adaptive_coupang_config(container_width)
     return f'''
-  <!-- Coupang Partners Ad Section -->
-  <div style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border-radius: 15px; padding: 20px; margin: 40px auto; max-width: 800px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.2);">
+  <!-- Coupang Partners Ad Section (Adaptive: {config['width']}x{config['height']}) -->
+  <div style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border-radius: 15px; padding: 20px; margin: 40px auto; max-width: {container_width}px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.2);">
     <h3 style="color: #ffffff; margin-bottom: 15px; font-size: 1.2rem; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">🛍️ 추천 상품</h3>
     <p style="color: #ffffff; font-size: 0.9rem; margin-bottom: 15px; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">심리테스트를 즐기며 쇼핑도 함께! 쿠팡에서 다양한 상품을 만나보세요.</p>
     
-    <!-- 쿠팡 파트너스 광고 -->
-    <div style="margin: 15px 0;">
+    <!-- 쿠팡 파트너스 광고 (적응형 크기) -->
+    <div style="margin: 15px 0; width: 100%; max-width: {config['width']}px; margin-left: auto; margin-right: auto;">
       <script src="https://ads-partners.coupang.com/g.js"></script>
       <script>
-        new PartnersCoupang.G({{"id":{config['id']},"template":"carousel","trackingCode":"{config['tracking_code']}","width":"{config['templates']['main_width']}","height":"{config['templates']['main_height']}","tsource":""}});
+        new PartnersCoupang.G({{"id":{config['id']},"template":"carousel","trackingCode":"{config['tracking_code']}","width":"{config['width']}","height":"{config['height']}","tsource":""}});
       </script>
     </div>
     
@@ -62,6 +63,23 @@ def has_coupang_ad(content: str) -> bool:
     return ContentProcessor.has_content_marker(content, 'Coupang Partners') or \
            ContentProcessor.has_content_marker(content, 'PartnersCoupang.G')
 
+def detect_container_width(content: str) -> int:
+    """컨테이너 크기 감지"""
+    patterns = [
+        r'<main[^>]*style="[^"]*max-width:\s*(\d+)px',
+        r'\.container[^}]*max-width:\s*(\d+)px',
+        r'\.hero[^}]*max-width:\s*(\d+)px',
+        r'max-width:\s*min\([^,]*,\s*(\d+)px\)',
+        r'max-width:\s*(\d+)px'
+    ]
+    
+    for pattern in patterns:
+        matches = re.findall(pattern, content, re.IGNORECASE)
+        if matches:
+            return max(int(match) for match in matches)
+    
+    return 800  # 기본값
+
 def add_coupang_ad_to_main_page(file_path: str) -> bool:
     """메인 페이지에 쿠팡 광고 추가"""
     if not SecurityUtils.validate_file_path(file_path, ['.html']):
@@ -77,6 +95,9 @@ def add_coupang_ad_to_main_page(file_path: str) -> bool:
         return False
     
     try:
+        # 컨테이너 크기 감지
+        container_width = detect_container_width(content)
+        
         # AMP Ad 다음에 추가
         amp_ad_pattern = r'(.*?<amp-ad.*?</amp-ad>)'
         footer_pattern = r'(\s*</div>\s*<!-- Scroll to Top Button -->)'
@@ -84,14 +105,14 @@ def add_coupang_ad_to_main_page(file_path: str) -> bool:
         if re.search(amp_ad_pattern, content, re.DOTALL):
             content = re.sub(
                 amp_ad_pattern,
-                r'\1' + get_main_page_coupang_ad_html(),
+                r'\1' + get_main_page_coupang_ad_html(container_width),
                 content,
                 flags=re.DOTALL
             )
         elif re.search(footer_pattern, content):
             content = re.sub(
                 footer_pattern,
-                get_main_page_coupang_ad_html() + r'\1',
+                get_main_page_coupang_ad_html(container_width) + r'\1',
                 content
             )
         else:
@@ -99,7 +120,7 @@ def add_coupang_ad_to_main_page(file_path: str) -> bool:
             if re.search(container_end_pattern, content):
                 content = re.sub(
                     container_end_pattern,
-                    get_main_page_coupang_ad_html() + r'\1',
+                    get_main_page_coupang_ad_html(container_width) + r'\1',
                     content
                 )
         
@@ -127,6 +148,9 @@ def add_coupang_ad_to_test_page(file_path: str) -> bool:
         return False
     
     try:
+        # 컨테이너 크기 감지
+        container_width = detect_container_width(content)
+        
         insertion_patterns = [
             r'(<div class="additional-nav">.*?</div>)',
             r'(<div class="navigation">.*?</div>)',
@@ -138,7 +162,7 @@ def add_coupang_ad_to_test_page(file_path: str) -> bool:
             if re.search(pattern, content, re.DOTALL):
                 content = re.sub(
                     pattern,
-                    r'\1' + get_coupang_ad_html(),
+                    r'\1' + get_coupang_ad_html(container_width),
                     content,
                     flags=re.DOTALL
                 )
