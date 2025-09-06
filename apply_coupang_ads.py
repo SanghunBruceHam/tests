@@ -15,7 +15,7 @@ def get_coupang_ad_html(container_width: int = 800) -> str:
     config = Config.get_adaptive_coupang_config(container_width)
     return f'''
 <!-- Coupang Partners Ad Section (Adaptive: {config['width']}x{config['height']}) -->
-<div style="background: rgba(255, 255, 255, 0.95); border-radius: 15px; padding: 20px; margin: 30px auto; max-width: {container_width}px; text-align: center; border: 1px solid #e2e8f0; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+<div id="coupang-partners-ad" style="background: rgba(255, 255, 255, 0.95); border-radius: 15px; padding: 20px; margin: 30px auto; max-width: {container_width}px; text-align: center; border: 1px solid #e2e8f0; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
   <h3 style="color: #2d3748; margin-bottom: 15px; font-size: 1.2rem;">🛍️ 추천 상품</h3>
   <p style="color: #4a5568; font-size: 0.9rem; margin-bottom: 15px;">연애 테스트를 즐기며 쇼핑도 함께! 쿠팡에서 다양한 상품을 만나보세요.</p>
 
@@ -37,7 +37,7 @@ def get_main_page_coupang_ad_html(container_width: int = 800) -> str:
     config = Config.get_adaptive_coupang_config(container_width)
     return f'''
   <!-- Coupang Partners Ad Section (Adaptive: {config['width']}x{config['height']}) -->
-  <div style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border-radius: 15px; padding: 20px; margin: 40px auto; max-width: {container_width}px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.2);">
+  <div id="coupang-partners-ad" style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border-radius: 15px; padding: 20px; margin: 40px auto; max-width: {container_width}px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.2);">
     <h3 style="color: #ffffff; margin-bottom: 15px; font-size: 1.2rem; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">🛍️ 추천 상품</h3>
     <p style="color: #ffffff; font-size: 0.9rem; margin-bottom: 15px; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">심리테스트를 즐기며 쇼핑도 함께! 쿠팡에서 다양한 상품을 만나보세요.</p>
     
@@ -60,8 +60,11 @@ def find_korean_html_files() -> List[str]:
 
 def has_coupang_ad(content: str) -> bool:
     """이미 쿠팡 광고가 있는지 확인"""
-    return ContentProcessor.has_content_marker(content, 'Coupang Partners') or \
-           ContentProcessor.has_content_marker(content, 'PartnersCoupang.G')
+    return (
+        ContentProcessor.has_content_marker(content, 'Coupang Partners') or 
+        ContentProcessor.has_content_marker(content, 'PartnersCoupang.G') or
+        ContentProcessor.has_content_marker(content, 'id="coupang-partners-ad"')
+    )
 
 def detect_container_width(content: str) -> int:
     """컨테이너 크기 감지"""

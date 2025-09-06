@@ -10,6 +10,11 @@ attached_assets/
 # 스크린샷 파일들
 Screenshot*
 screenshot*
+screenshots/
+tmp-*.png
+
+# 분석 리포트 산출물
+seo_audit_advanced_results.json
 
 # OS 생성 파일들
 .DS_Store

@@ -48,7 +48,7 @@ def get_adaptive_coupang_ad_html(container_width: int, is_main_page: bool = Fals
     
     return f'''
 <!-- Coupang Partners Ad Section (Adaptive: {config['width']}x{config['height']}) -->
-<div style="{bg_style} border-radius: 15px; padding: 20px; margin: 30px auto; max-width: {container_width}px; text-align: center;">
+<div id="coupang-partners-ad" style="{bg_style} border-radius: 15px; padding: 20px; margin: 30px auto; max-width: {container_width}px; text-align: center;">
   <h3 style="color: {text_color}; margin-bottom: 15px; font-size: 1.2rem; {text_shadow}">🛍️ 추천 상품</h3>
   <p style="color: {text_color}; font-size: 0.9rem; margin-bottom: 15px; {text_shadow}">{"심리테스트를 즐기며" if is_main_page else "연애 테스트를 즐기며"} 쇼핑도 함께! 쿠팡에서 다양한 상품을 만나보세요.</p>
 
@@ -67,21 +67,50 @@ def get_adaptive_coupang_ad_html(container_width: int, is_main_page: bool = Fals
 
 def has_coupang_ad(content: str) -> bool:
     """이미 쿠팡 광고가 있는지 확인"""
-    return ContentProcessor.has_content_marker(content, 'Coupang Partners') or \
-           ContentProcessor.has_content_marker(content, 'PartnersCoupang.G')
+    return (
+        ContentProcessor.has_content_marker(content, 'Coupang Partners') or
+        ContentProcessor.has_content_marker(content, 'PartnersCoupang.G') or
+        ContentProcessor.has_content_marker(content, 'id="coupang-partners-ad"')
+    )
 
 def remove_existing_coupang_ad(content: str) -> str:
-    """기존 쿠팡 광고를 제거"""
-    # 쿠팡 광고 섹션 전체를 찾아서 제거
-    patterns = [
-        r'<!-- Coupang Partners Ad Section.*?</div>',
-        r'<div[^>]*쿠팡.*?</div>(?:\s*</div>)*',
-        r'<script src="https://ads-partners\.coupang\.com/g\.js"></script>.*?</script>'
-    ]
-    
-    for pattern in patterns:
-        content = re.sub(pattern, '', content, flags=re.DOTALL | re.MULTILINE)
-    
+    """기존 쿠팡 광고(및 중복 공지)를 안전하게 제거"""
+    original = None
+    # 반복적으로 제거하여 중복 흔적까지 정리
+    while original != content:
+        original = content
+        # 1) id가 있는 최신 광고 블록 제거
+        content = re.sub(
+            r'<div[^>]*id=["\']coupang-partners-ad["\'][^>]*>.*?</div>',
+            '',
+            content,
+            flags=re.DOTALL | re.IGNORECASE,
+        )
+
+        # 2) 코멘트로 시작하는 이전 광고 블록을 공지 단락까지 포함하여 제거
+        content = re.sub(
+            r'<!--\s*Coupang\s+Partners\s+Ad\s+Section.*?<p[^>]*>\s*"이\s*포스팅은\s*쿠팡\s*파트너스\s*활동의\s*일환으로,\s*이에\s*따른\s*일정액의\s*수수료를\s*제공받습니다\."\s*</p>\s*</div>',
+            '',
+            content,
+            flags=re.DOTALL | re.IGNORECASE,
+        )
+
+        # 3) 쿠팡 스크립트 포함 블록(광고 컨테이너) 제거 시도
+        content = re.sub(
+            r'<script\s+src=\"https://ads-partners\.coupang\.com/g\.js\"></script>.*?</script>\s*</div>',
+            '',
+            content,
+            flags=re.DOTALL | re.IGNORECASE,
+        )
+
+        # 4) 남아있는 중복 공지 단락과 그 직후의 닫는 div까지 제거 (잔여물 정리)
+        content = re.sub(
+            r'\s*<p[^>]*>\s*"이\s*포스팅은\s*쿠팡\s*파트너스\s*활동의\s*일환으로,\s*이에\s*따른\s*일정액의\s*수수료를\s*제공받습니다\."\s*</p>\s*</div>\s*',
+            '',
+            content,
+            flags=re.DOTALL | re.IGNORECASE,
+        )
+
     return content
 
 def optimize_coupang_ad_in_file(file_path: str) -> bool:
@@ -172,24 +201,16 @@ def optimize_coupang_ad_in_file(file_path: str) -> bool:
         logger.error(f"Unexpected error processing {file_path}: {e}")
         return False
 
-def find_files_with_coupang_ads() -> List[str]:
-    """쿠팡 광고가 있는 파일들을 찾기"""
-    all_html_files = FileManager.find_html_files_by_language('ko')
-    files_with_ads = []
-    
-    for file_path in all_html_files:
-        content = FileManager.read_file_safely(file_path)
-        if content and has_coupang_ad(content):
-            files_with_ads.append(file_path)
-    
-    return files_with_ads
+def find_candidate_files() -> List[str]:
+    """최적화 대상 파일 찾기: 한국어 HTML 전체"""
+    return FileManager.find_html_files_by_language('ko')
 
 def main():
     """메인 실행 함수"""
     logger.info("쿠팡 광고 크기 최적화 시작")
     
-    # 쿠팡 광고가 있는 파일들 찾기
-    files_to_optimize = find_files_with_coupang_ads()
+    # 한국어 HTML 전체를 최적화 대상으로 사용 (있다면 제거 후 1회 삽입)
+    files_to_optimize = find_candidate_files()
     
     if not files_to_optimize:
         logger.error("쿠팡 광고가 있는 파일을 찾을 수 없습니다.")
