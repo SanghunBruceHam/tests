@@ -273,20 +273,14 @@
       
       // Simulate processing time for better UX
       setTimeout(() => {
-        console.log('Starting result computation...');
-        console.log('Config:', config);
-        console.log('Answers:', answers);
-        console.log('Root element:', root);
+        // Starting result computation
         
         try {
           const result = computeResult(config, answers);
-          console.log('Computed result:', result);
-          
-          console.log('About to call renderResult...');
+          // Rendering computed result
           renderResult(root, config, result);
-          console.log('renderResult completed');
         } catch (error) {
-          console.error('Error during result computation or rendering:', error);
+          // Error during result computation
         }
         
         // update URL with result for share/deeplink
@@ -458,19 +452,10 @@ function renderResult(root, config, result){
       return (T[lang] && T[lang][result.categoryId]) || '';
     })();
   
-  console.log('About to set container.innerHTML');
-  console.log('detailedInsightsHtml length:', detailedInsightsHtml.length);
-  console.log('insightsHtml length:', insightsHtml.length);
-  console.log('tipsHtml length:', tipsHtml ? tipsHtml.length : 0);
-  console.log('cat:', cat);
-  console.log('theme:', theme);
+  // Preparing to render result content
   
   try {
-    console.log('Setting container.innerHTML with components:');
-    console.log('- theme.gradient:', theme.gradient);
-    console.log('- theme.emoji:', theme.emoji);
-    console.log('- cat.name:', cat.name);
-    console.log('- cat.description:', cat.description);
+    // Setting container content with themed components
     
     container.innerHTML = `
       <div class="q-hero" style="--hero-gradient:${theme.gradient}">

@@ -509,9 +509,7 @@ class AnalyticsEnhanced {
 
     this.eventQueue.push(enrichedEvent);
 
-    if (this.config.debugMode) {
-      console.log('Event queued:', enrichedEvent);
-    }
+    // Debug logging removed for production
 
     // 큐가 가득 찬 경우 즉시 전송
     if (this.eventQueue.length >= this.config.batchSize) {
@@ -551,9 +549,7 @@ class AnalyticsEnhanced {
       // 커스텀 분석 서버로 전송 (있는 경우)
       await this.sendToCustomAnalytics(eventsToSend);
       
-      if (this.config.debugMode) {
-        console.log(`${eventsToSend.length} events sent successfully`);
-      }
+      // Debug logging removed for production
     } catch (error) {
       console.error('Failed to send analytics events:', error);
       
